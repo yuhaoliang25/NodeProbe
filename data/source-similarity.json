@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-19T18:37:41.951Z",
+  "generatedAt": "2026-09-19T22:19:26.038Z",
   "method": {
     "description": "Endpoint-overlap graph for source similarity; similarity is an independence signal, not a source-quality penalty.",
     "minSourceNodes": 5,
@@ -8,25 +8,25 @@
     "strongSimilarityThreshold": 0.3
   },
   "summary": {
-    "candidates": 3820,
+    "candidates": 3805,
     "eligibleSources": 12,
     "relatedPairs": 6
   },
   "sources": {
     "FreeNodes-clashmeta": {
-      "nodes": 1467,
+      "nodes": 1452,
       "similarSources": [
         {
           "source": "FreeNodes-freeclashnode",
           "intersection": 206,
-          "union": 1628,
-          "jaccard": 0.1265
+          "union": 1613,
+          "jaccard": 0.1277
         },
         {
           "source": "FreeNodes-nodev2ray",
           "intersection": 153,
-          "union": 1489,
-          "jaccard": 0.1028
+          "union": 1474,
+          "jaccard": 0.1038
         }
       ],
       "strongSimilarityCount": 0,
@@ -81,8 +81,8 @@
         {
           "source": "FreeNodes-clashmeta",
           "intersection": 206,
-          "union": 1628,
-          "jaccard": 0.1265
+          "union": 1613,
+          "jaccard": 0.1277
         }
       ],
       "strongSimilarityCount": 2,
@@ -119,8 +119,8 @@
         {
           "source": "FreeNodes-clashmeta",
           "intersection": 153,
-          "union": 1489,
-          "jaccard": 0.1028
+          "union": 1474,
+          "jaccard": 0.1038
         }
       ],
       "strongSimilarityCount": 1,
@@ -189,8 +189,8 @@
       "a": "FreeNodes-clashmeta",
       "b": "FreeNodes-freeclashnode",
       "intersection": 206,
-      "union": 1628,
-      "jaccard": 0.1265
+      "union": 1613,
+      "jaccard": 0.1277
     },
     {
       "a": "FreeNodes-clashnode",
@@ -203,8 +203,8 @@
       "a": "FreeNodes-clashmeta",
       "b": "FreeNodes-nodev2ray",
       "intersection": 153,
-      "union": 1489,
-      "jaccard": 0.1028
+      "union": 1474,
+      "jaccard": 0.1038
     }
   ]
 }
