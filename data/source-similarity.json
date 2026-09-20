@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-20T18:46:26.191Z",
+  "generatedAt": "2026-09-20T22:26:43.954Z",
   "method": {
     "description": "Endpoint-overlap graph for source similarity; similarity is an independence signal, not a source-quality penalty.",
     "minSourceNodes": 5,
@@ -8,7 +8,7 @@
     "strongSimilarityThreshold": 0.3
   },
   "summary": {
-    "candidates": 3196,
+    "candidates": 3192,
     "eligibleSources": 12,
     "relatedPairs": 4
   },
@@ -27,19 +27,19 @@
       "independenceWeight": 1
     },
     "FreeNodes-clashmeta": {
-      "nodes": 852,
+      "nodes": 849,
       "similarSources": [
         {
           "source": "FreeNodes-freeclashnode",
           "intersection": 200,
-          "union": 853,
-          "jaccard": 0.2345
+          "union": 850,
+          "jaccard": 0.2353
         },
         {
           "source": "FreeNodes-yudou",
           "intersection": 189,
-          "union": 919,
-          "jaccard": 0.2057
+          "union": 916,
+          "jaccard": 0.2063
         }
       ],
       "strongSimilarityCount": 0,
@@ -63,8 +63,8 @@
         {
           "source": "FreeNodes-clashmeta",
           "intersection": 189,
-          "union": 919,
-          "jaccard": 0.2057
+          "union": 916,
+          "jaccard": 0.2063
         }
       ],
       "strongSimilarityCount": 1,
@@ -82,8 +82,8 @@
         {
           "source": "FreeNodes-clashmeta",
           "intersection": 200,
-          "union": 853,
-          "jaccard": 0.2345
+          "union": 850,
+          "jaccard": 0.2353
         }
       ],
       "strongSimilarityCount": 1,
@@ -103,7 +103,7 @@
       "independenceWeight": 1
     },
     "FreeNodes-cfmem": {
-      "nodes": 51,
+      "nodes": 50,
       "similarSources": [],
       "strongSimilarityCount": 0,
       "independenceWeight": 1
@@ -151,15 +151,15 @@
       "a": "FreeNodes-clashmeta",
       "b": "FreeNodes-freeclashnode",
       "intersection": 200,
-      "union": 853,
-      "jaccard": 0.2345
+      "union": 850,
+      "jaccard": 0.2353
     },
     {
       "a": "FreeNodes-clashmeta",
       "b": "FreeNodes-yudou",
       "intersection": 189,
-      "union": 919,
-      "jaccard": 0.2057
+      "union": 916,
+      "jaccard": 0.2063
     },
     {
       "a": "FreeNodes-clashnode",

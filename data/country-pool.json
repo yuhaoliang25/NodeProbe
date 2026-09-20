@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-20T18:58:31.936Z",
+  "generatedAt": "2026-09-20T22:36:57.784Z",
   "targets": {
     "US": "United States",
     "JP": "Japan",
@@ -19,7 +19,7 @@
   "countries": {
     "US": {
       "name": "United States",
-      "available": 348,
+      "available": 370,
       "selected": [
         {
           "name": "🇺🇸US-198.98.53.130-414",
@@ -38,12 +38,12 @@
           "countrySource": "ip"
         },
         {
-          "name": "🇫🇷FR_581|269KB/s|A004-260618 01",
-          "type": "vless",
+          "name": "🇺🇸US_709|120KB/s|R002-260618 01",
+          "type": "http",
           "score": 73,
-          "declaredCountry": "FR",
-          "detectedCountry": "US",
-          "countrySource": "ip"
+          "declaredCountry": "US",
+          "detectedCountry": null,
+          "countrySource": "declared"
         }
       ]
     },
@@ -54,13 +54,13 @@
         {
           "name": "JP日本(mibei77.com 米贝节点分享)",
           "type": "vless",
-          "score": 74,
+          "score": 75,
           "declaredCountry": null,
           "detectedCountry": "JP",
           "countrySource": "ip"
         },
         {
-          "name": "🇯🇵JP_12|666KB/s|A004-260618 01",
+          "name": "🇯🇵JP_7|636KB/s|A004-260618 01",
           "type": "ss",
           "score": 73,
           "declaredCountry": "JP",
@@ -68,7 +68,7 @@
           "countrySource": "ip"
         },
         {
-          "name": "🇯🇵JP_30|575KB/s|A004-260618 01",
+          "name": "🇯🇵JP_13|84KB/s|A004-260618 01",
           "type": "vmess",
           "score": 73,
           "declaredCountry": "JP",
@@ -90,12 +90,12 @@
           "countrySource": "ip"
         },
         {
-          "name": "🇰🇷KR_36|676KB/s|C002-260622 01",
+          "name": "🇰🇷KR_8|344KB/s|A004-260618 01",
           "type": "vmess",
           "score": 73,
           "declaredCountry": "KR",
-          "detectedCountry": null,
-          "countrySource": "declared"
+          "detectedCountry": "KR",
+          "countrySource": "ip"
         },
         {
           "name": "🇰🇷KR_10|558KB/s|A004-260618 01",
@@ -109,16 +109,8 @@
     },
     "SG": {
       "name": "Singapore",
-      "available": 11,
+      "available": 15,
       "selected": [
-        {
-          "name": "🇸🇬SG_10|691KB/s|R002-260618 01",
-          "type": "http",
-          "score": 73,
-          "declaredCountry": "SG",
-          "detectedCountry": "SG",
-          "countrySource": "ip"
-        },
         {
           "name": "🇸🇬SG_2|298KB/s|C002-260622 01",
           "type": "vmess",
@@ -128,8 +120,16 @@
           "countrySource": "ip"
         },
         {
-          "name": "🇸🇬SG_68|569KB/s|A004-260618 01",
-          "type": "vless",
+          "name": "🇸🇬SG_10|691KB/s|R002-260618 01",
+          "type": "http",
+          "score": 73,
+          "declaredCountry": "SG",
+          "detectedCountry": "SG",
+          "countrySource": "ip"
+        },
+        {
+          "name": "🇸🇬SG_36|831KB/s|A004-260618 01",
+          "type": "ss",
           "score": 73,
           "declaredCountry": "SG",
           "detectedCountry": null,
@@ -139,7 +139,7 @@
     },
     "GB": {
       "name": "United Kingdom",
-      "available": 18,
+      "available": 19,
       "selected": [
         {
           "name": "🇬🇧GB_1|481KB/s 01",
@@ -150,16 +150,16 @@
           "countrySource": "ip"
         },
         {
-          "name": "🇬🇧GB_133|1.9MB/s|V001-260618 01",
-          "type": "vless",
+          "name": "🇬🇧GB_79|2.3MB/s|R002-260618 01",
+          "type": "http",
           "score": 73,
           "declaredCountry": "GB",
           "detectedCountry": null,
           "countrySource": "declared"
         },
         {
-          "name": "🇬🇧GB_79|2.3MB/s|R002-260618 01",
-          "type": "http",
+          "name": "🇬🇧GB_135|2.0MB/s|A004-260618 01",
+          "type": "vless",
           "score": 73,
           "declaredCountry": "GB",
           "detectedCountry": null,
@@ -172,7 +172,7 @@
       "available": 31,
       "selected": [
         {
-          "name": "🇩🇪DE_64|1.4MB/s|A004-260618 01",
+          "name": "🇩🇪DE_24|7.2MB/s 01",
           "type": "ss",
           "score": 73,
           "declaredCountry": "DE",
@@ -188,30 +188,30 @@
           "countrySource": "ip"
         },
         {
-          "name": "🇩🇪DE_25|426KB/s|B007-260618 01",
-          "type": "vless",
+          "name": "🇩🇪DE_12|601KB/s|R002-260618 01",
+          "type": "http",
           "score": 73,
           "declaredCountry": "DE",
-          "detectedCountry": null,
-          "countrySource": "declared"
+          "detectedCountry": "DE",
+          "countrySource": "ip"
         }
       ]
     },
     "FR": {
       "name": "France",
-      "available": 41,
+      "available": 44,
       "selected": [
         {
-          "name": "🇫🇷FR_359|321KB/s|M003-260806 01",
-          "type": "trojan",
+          "name": "🇫🇷FR_580|263KB/s|B007-260618 01",
+          "type": "vless",
           "score": 73,
           "declaredCountry": "FR",
           "detectedCountry": null,
           "countrySource": "declared"
         },
         {
-          "name": "🇫🇷FR_580|263KB/s|B007-260618 01",
-          "type": "vless",
+          "name": "🇫🇷FR_224|1.1MB/s|M001-260618 01",
+          "type": "trojan",
           "score": 73,
           "declaredCountry": "FR",
           "detectedCountry": null,
@@ -229,10 +229,10 @@
     },
     "NL": {
       "name": "Netherlands",
-      "available": 129,
+      "available": 141,
       "selected": [
         {
-          "name": "🇬🇧GB-82.38.31.217-442",
+          "name": "🇬🇧GB-82.38.31.179-424",
           "type": "ss",
           "score": 74,
           "declaredCountry": null,
@@ -240,12 +240,12 @@
           "countrySource": "ip"
         },
         {
-          "name": "🇳🇱NL_139|2.5MB/s|P002-260618 01",
+          "name": "🇳🇱NL_208|4.4MB/s|K001-260618 01",
           "type": "http",
           "score": 73,
           "declaredCountry": "NL",
-          "detectedCountry": "NL",
-          "countrySource": "ip"
+          "detectedCountry": null,
+          "countrySource": "declared"
         },
         {
           "name": "🇳🇱NL_120|333KB/s|A001-260618 01",
@@ -259,27 +259,27 @@
     },
     "CA": {
       "name": "Canada",
-      "available": 10,
+      "available": 14,
       "selected": [
         {
-          "name": "❓Other_196|234KB/s|A004-260618 01",
-          "type": "vmess",
+          "name": "🇨🇦CA_15|1.3MB/s|A004-260618 01",
+          "type": "ss",
           "score": 73,
-          "declaredCountry": null,
+          "declaredCountry": "CA",
           "detectedCountry": "CA",
           "countrySource": "ip"
         },
         {
-          "name": "🇨🇦CA_35|92KB/s|R002-260618 01",
-          "type": "http",
+          "name": "🇨🇦CA_5|604KB/s|C002-260622 01",
+          "type": "vmess",
           "score": 73,
           "declaredCountry": "CA",
-          "detectedCountry": null,
-          "countrySource": "declared"
+          "detectedCountry": "CA",
+          "countrySource": "ip"
         },
         {
-          "name": "🇨🇦CA_3|322KB/s|A004-260618 01",
-          "type": "ss",
+          "name": "🇨🇦CA_1|348KB/s|M002-260618 01",
+          "type": "vmess",
           "score": 73,
           "declaredCountry": "CA",
           "detectedCountry": "CA",
@@ -292,6 +292,14 @@
       "available": 3,
       "selected": [
         {
+          "name": "🇦🇺 澳大利亚_J2KUWM",
+          "type": "vless",
+          "score": 73,
+          "declaredCountry": "AU",
+          "detectedCountry": null,
+          "countrySource": "declared"
+        },
+        {
           "name": "🇦🇺AU_2|442KB/s|R002-260618 01",
           "type": "http",
           "score": 73,
@@ -303,14 +311,6 @@
           "name": "🇦🇺AU_5|442KB/s|R002-260618 01",
           "type": "http",
           "score": 73,
-          "declaredCountry": "AU",
-          "detectedCountry": null,
-          "countrySource": "declared"
-        },
-        {
-          "name": "🇦🇺 澳大利亚_J2KUWM",
-          "type": "vless",
-          "score": 72,
           "declaredCountry": "AU",
           "detectedCountry": null,
           "countrySource": "declared"
@@ -363,18 +363,18 @@
     },
     "HK": {
       "name": "Hong Kong",
-      "available": 20,
+      "available": 17,
       "selected": [
         {
-          "name": "🇭🇰 香港 16",
-          "type": "socks5",
+          "name": "🇭🇰 香港_0J4S9S",
+          "type": "vless",
           "score": 73,
           "declaredCountry": "HK",
-          "detectedCountry": null,
-          "countrySource": "declared"
+          "detectedCountry": "HK",
+          "countrySource": "ip"
         },
         {
-          "name": "🇭🇰 香港 01",
+          "name": "🇭🇰 香港 09",
           "type": "trojan",
           "score": 73,
           "declaredCountry": "HK",
@@ -382,12 +382,12 @@
           "countrySource": "ip"
         },
         {
-          "name": "🇭🇰 香港_MXWHR4",
-          "type": "vless",
+          "name": "🇭🇰 香港 16",
+          "type": "socks5",
           "score": 73,
           "declaredCountry": "HK",
-          "detectedCountry": "HK",
-          "countrySource": "ip"
+          "detectedCountry": null,
+          "countrySource": "declared"
         }
       ]
     }

@@ -59674,35 +59674,6 @@
     ]
   },
   {
-    "client-fingerprint": "chrome",
-    "name": "🇯🇵JP_23|64KB/s|A004-260618 01",
-    "network": "ws",
-    "port": 443,
-    "server": "104.21.70.21",
-    "sub_tag": "A004-260618",
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "4e4f1f70-5e56-4a76-bb9d-db087f4690c4",
-    "ws-opts": {
-      "headers": {
-        "Host": "jp3.yohototo.top",
-        "User-Agent": "Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/534.7 (KHTML, like Gecko) Chrome/7.0.517.44 Safari/534.7"
-      },
-      "path": "/tyxyws"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "servername": "jp3.yohototo.top",
-    "endpoint-id": "122344364ee2c55c",
-    "_id": "122344364ee2c55c",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
     "name": "🇺🇸US_440|760KB/s|P002-260618 01",
     "password": "None",
     "port": 443,
@@ -62148,21 +62119,6 @@
     ]
   },
   {
-    "name": "🇨🇦CA_35|92KB/s|R002-260618 01",
-    "port": 3118,
-    "server": "184.75.221.82",
-    "sub_tag": "R002-260618",
-    "type": "http",
-    "udp": true,
-    "endpoint-id": "ce19e9dd3456ade2",
-    "_id": "ce19e9dd3456ade2",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
     "client-fingerprint": "chrome",
     "name": "🇫🇷FR_28|1.0MB/s|B007-260618 01",
     "network": "ws",
@@ -62886,35 +62842,6 @@
   },
   {
     "client-fingerprint": "chrome",
-    "name": "🇺🇸US_436|422KB/s|F003-260618 01",
-    "network": "ws",
-    "port": 443,
-    "server": "172.67.173.191",
-    "sub_tag": "F003-260618",
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "7e26fd8f-d75a-473d-84ba-9f4e3f47d086",
-    "ws-opts": {
-      "headers": {
-        "Host": "3-m20.e00e.ccwu.cc",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36"
-      },
-      "path": "/8qMLgNapWf6SBxo8fhQlVPYO"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "servername": "3-m20.e00e.ccwu.cc",
-    "endpoint-id": "a3e453c7b47a28ab",
-    "_id": "a3e453c7b47a28ab",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
     "name": "🇺🇸US_457|146KB/s|F003-260618 01",
     "network": "ws",
     "port": 443,
@@ -63401,64 +63328,6 @@
   },
   {
     "client-fingerprint": "chrome",
-    "name": "🇺🇸US_555|665KB/s|F003-260618 01",
-    "network": "ws",
-    "port": 443,
-    "server": "104.21.62.234",
-    "sub_tag": "F003-260618",
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "a90c264d-3853-4eef-9a3d-628b2d02d15e",
-    "ws-opts": {
-      "headers": {
-        "Host": "5-M19.sUdaN-PArK.ccWu.CC",
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.101 Safari/537.36"
-      },
-      "path": "/CjBjB9sn5pCvaSwScc"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "servername": "5-M19.sudaN-parK.ccwU.cC",
-    "endpoint-id": "10ce4ce93eeb5543",
-    "_id": "10ce4ce93eeb5543",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "name": "🇺🇸US_689|241KB/s|F003-260618 01",
-    "network": "ws",
-    "port": 443,
-    "server": "172.67.176.60",
-    "sub_tag": "F003-260618",
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "a90c264d-3853-4eef-9a3d-628b2d02d15e",
-    "ws-opts": {
-      "headers": {
-        "Host": "2-M19.sOutH-aFrIca.CCwU.cC",
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36"
-      },
-      "path": "/CjBjB9sn5pCvaSwScc"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "servername": "2-m19.SOUTh-AFrIcA.cCwU.cc",
-    "endpoint-id": "1c1c3cd1529fa5da",
-    "_id": "1c1c3cd1529fa5da",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
     "encryption": "none",
     "name": "🇺🇸US_714|277KB/s|X001-260618 01",
     "network": "ws",
@@ -63527,39 +63396,6 @@
     "udp": true,
     "endpoint-id": "0607afd282990178",
     "_id": "0607afd282990178",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "alpn": [
-      "http/1.1"
-    ],
-    "client-fingerprint": "chrome",
-    "encryption": "none",
-    "name": "🇺🇸US_368|293KB/s|A001-260618 01",
-    "network": "ws",
-    "port": 443,
-    "server": "104.21.12.3",
-    "sub_tag": "A001-260618",
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "a90c264d-3853-4eef-9a3d-628b2d02d15e",
-    "ws-opts": {
-      "headers": {
-        "Host": "6-m19.mExiCo-pOrT.cCwu.cc",
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36"
-      },
-      "path": "/CjBjB9sn5pCvaSwScc"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "servername": "6-m19.MexiCO-PoRt.CcWU.Cc",
-    "endpoint-id": "a1e524d17d8ab30d",
-    "_id": "a1e524d17d8ab30d",
     "_poolOnly": true,
     "_source": null,
     "_sources": [
@@ -64123,6 +63959,672 @@
     ]
   },
   {
+    "client-fingerprint": "qq",
+    "name": "🇳🇱NL_194|238KB/s|M003-260806 01",
+    "network": "ws",
+    "port": 443,
+    "server": "151.242.2.81",
+    "sub_tag": "M003-260806",
+    "tls": true,
+    "type": "vless",
+    "udp": true,
+    "uuid": "0a2dde28-70da-4863-a06f-35d007d94d35",
+    "ws-opts": {
+      "headers": {
+        "Host": "cf9.rumedia-cdn.com",
+        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36"
+      },
+      "path": "/cdn/v3/live"
+    },
+    "xudp": true,
+    "packet-encoding": "xudp",
+    "servername": "cf9.rumedia-cdn.com",
+    "endpoint-id": "f55e8d802d308f01",
+    "_id": "f55e8d802d308f01",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "🇸🇬SG_77|714KB/s|A004-260618 01",
+    "network": "ws",
+    "port": 8443,
+    "server": "141.193.213.20",
+    "sub_tag": "A004-260618",
+    "tls": true,
+    "type": "vless",
+    "udp": true,
+    "uuid": "29c3dd6b-b164-40ca-a0d5-f06aca52a8b2",
+    "ws-opts": {
+      "headers": {
+        "Host": "u.srilankangrill.online",
+        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36"
+      },
+      "path": "/"
+    },
+    "xudp": true,
+    "packet-encoding": "xudp",
+    "servername": "u.srilankangrill.online",
+    "endpoint-id": "39c808dac1260f76",
+    "_id": "39c808dac1260f76",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "alterId": "0",
+    "cipher": "auto",
+    "name": "🇸🇬SG_6|893KB/s|C002-260622 01",
+    "network": "raw",
+    "port": 18000,
+    "server": "149.88.23.207",
+    "skip-cert-verify": false,
+    "sub_tag": "C002-260622",
+    "tls": false,
+    "type": "vmess",
+    "udp": true,
+    "uuid": "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe",
+    "xudp": true,
+    "packet-encoding": "xudp",
+    "endpoint-id": "7b3a12470181acf5",
+    "_id": "7b3a12470181acf5",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "🇫🇷FR_120|264KB/s 01",
+    "network": "ws",
+    "password": "humanity",
+    "port": 443,
+    "server": "104.18.152.77",
+    "skip-cert-verify": false,
+    "sni": "www.ignitelimit.com",
+    "type": "trojan",
+    "udp": true,
+    "ws-opts": {
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Linux; Android 7.0; SM-J710F Build/NRD90M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.84 Mobile Safari/537.36"
+      },
+      "path": "/assignment"
+    },
+    "endpoint-id": "186e8c4842c0ecef",
+    "_id": "186e8c4842c0ecef",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "cipher": "chacha20-ietf-poly1305",
+    "name": "🇳🇱NL_65|2.4MB/s|B007-260618 01",
+    "password": "k1dBOmOB4oqi7Ump37a1bQ",
+    "port": 8080,
+    "server": "193.29.139.132",
+    "sub_tag": "B007-260618",
+    "type": "ss",
+    "udp": true,
+    "endpoint-id": "3bac20308359d733",
+    "_id": "3bac20308359d733",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "cipher": "chacha20-ietf-poly1305",
+    "name": "❓Other_10|288KB/s 01",
+    "password": "k1dBOmOB4oqi7Ump37a1bQ",
+    "port": 8080,
+    "server": "82.38.31.219",
+    "type": "ss",
+    "udp": true,
+    "endpoint-id": "5b63d2226bb6392d",
+    "_id": "5b63d2226bb6392d",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "alterId": "0",
+    "cipher": "auto",
+    "name": "🇨🇦CA_9|1.1MB/s|C002-260622 01",
+    "network": "raw",
+    "port": 18000,
+    "server": "23.162.200.198",
+    "skip-cert-verify": false,
+    "sub_tag": "C002-260622",
+    "tls": false,
+    "type": "vmess",
+    "udp": true,
+    "uuid": "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe",
+    "xudp": true,
+    "packet-encoding": "xudp",
+    "endpoint-id": "1f81fd8359b56a6d",
+    "_id": "1f81fd8359b56a6d",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "🇫🇷FR_458|817KB/s|M003-260806 01",
+    "network": "ws",
+    "password": "humanity",
+    "port": 443,
+    "server": "104.16.174.109",
+    "skip-cert-verify": false,
+    "sni": "www.ignitelimit.com",
+    "sub_tag": "M003-260806",
+    "type": "trojan",
+    "udp": true,
+    "ws-opts": {
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Linux; Android 7.0; SM-J730GM Build/NRD90M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.111 Mobile Safari/537.36"
+      },
+      "path": "/assignment"
+    },
+    "endpoint-id": "8a37df03f0e6959e",
+    "_id": "8a37df03f0e6959e",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "🇫🇷FR_520|245KB/s|A001-260618 01",
+    "network": "ws",
+    "password": "humanity",
+    "port": 443,
+    "server": "104.18.152.161",
+    "skip-cert-verify": false,
+    "sni": "www.ignitelimit.com",
+    "sub_tag": "A001-260618",
+    "type": "trojan",
+    "udp": true,
+    "ws-opts": {
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36"
+      },
+      "path": "/assignment"
+    },
+    "endpoint-id": "021f31345a1f47ec",
+    "_id": "021f31345a1f47ec",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "name": "🇺🇸US_770|738KB/s|R002-260618 01",
+    "password": "null",
+    "port": 443,
+    "server": "jgwynphotoarts.pro",
+    "skip-cert-verify": true,
+    "sub_tag": "R002-260618",
+    "tls": true,
+    "type": "http",
+    "username": "null",
+    "udp": true,
+    "sni": "jgwynphotoarts.pro",
+    "endpoint-id": "0f142c87e8a8c6c3",
+    "_id": "0f142c87e8a8c6c3",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "name": "🇧🇷BR_23|418KB/s|R002-260618 01",
+    "port": 8666,
+    "server": "45.228.89.114",
+    "sub_tag": "R002-260618",
+    "type": "http",
+    "udp": true,
+    "endpoint-id": "38b77bdfa5563032",
+    "_id": "38b77bdfa5563032",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "🇺🇸US_506|481KB/s|S001-260618 01",
+    "network": "ws",
+    "port": 443,
+    "server": "172.67.204.201",
+    "sub_tag": "S001-260618",
+    "tls": true,
+    "type": "vless",
+    "udp": true,
+    "uuid": "ef5c5d5c-08c6-4549-b05e-d1ff29ecc8ba",
+    "ws-opts": {
+      "headers": {
+        "Host": "7-m16.CHiaN-MAi-8.KDNS.Fr",
+        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.120 Safari/537.36"
+      },
+      "path": "/JRr6VGcSLFc034DC6sDbwyWJLbB"
+    },
+    "servername": "7-m16.CHiaN-MAi-8.KDNs.FR",
+    "endpoint-id": "1977b94291310fdb",
+    "_id": "1977b94291310fdb",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "🇫🇷FR_74|640KB/s|C002-260622 01",
+    "network": "ws",
+    "password": "humanity",
+    "port": 443,
+    "server": "104.16.174.46",
+    "skip-cert-verify": false,
+    "sni": "www.ignitelimit.com",
+    "sub_tag": "C002-260622",
+    "type": "trojan",
+    "udp": true,
+    "ws-opts": {
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Linux; Android 6.0; CAM-L03 Build/HUAWEICAM-L03) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36"
+      },
+      "path": "/assignment"
+    },
+    "endpoint-id": "65073d3f84b235c0",
+    "_id": "65073d3f84b235c0",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "name": "🇫🇷 法国_KHRAR9",
+    "server": "176.123.162.100",
+    "port": 9880,
+    "type": "vless",
+    "uuid": "5d16ac22-6eea-426f-b778-6f4c2961faef",
+    "tls": true,
+    "tfo": false,
+    "skip-cert-verify": false,
+    "reality-opts": {
+      "public-key": "bnRIb3Er1i-K6NGGByCO9UbGfOvu43ZoiK7ulPd1SzU",
+      "short-id": "aabb"
+    },
+    "servername": "dl.google.com",
+    "client-fingerprint": "firefox",
+    "network": "grpc",
+    "grpc-opts": {
+      "grpc-service-name": "grpc-tunnel"
+    },
+    "udp": true,
+    "endpoint-id": "ecbf10b65561efff",
+    "_id": "ecbf10b65561efff",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashstair"
+    ]
+  },
+  {
+    "alpn": [
+      "h3",
+      "h2",
+      "http/1.1"
+    ],
+    "client-fingerprint": "ios",
+    "name": "🇫🇷FR_1133|417KB/s|B007-260618 01",
+    "network": "ws",
+    "password": "humanity",
+    "port": 443,
+    "server": "45.130.125.158",
+    "skip-cert-verify": false,
+    "sni": "www.ignitelimit.com",
+    "sub_tag": "B007-260618",
+    "type": "trojan",
+    "udp": true,
+    "ws-opts": {
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36"
+      },
+      "path": "/assignment"
+    },
+    "endpoint-id": "ab7772b557c0c8d6",
+    "_id": "ab7772b557c0c8d6",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "🇫🇷FR_310|245KB/s|B007-260618 01",
+    "network": "ws",
+    "password": "humanity",
+    "port": 443,
+    "server": "render.com",
+    "skip-cert-verify": false,
+    "sni": "www.ignitelimit.com",
+    "sub_tag": "B007-260618",
+    "type": "trojan",
+    "udp": true,
+    "ws-opts": {
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Linux; Android 7.0; SM-G610M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.80 Mobile Safari/537.36"
+      },
+      "path": "/assignment"
+    },
+    "endpoint-id": "9a652c16555ed539",
+    "_id": "9a652c16555ed539",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "🇺🇸US_456|765KB/s|F003-260618 01",
+    "network": "ws",
+    "port": 443,
+    "server": "104.21.69.218",
+    "sub_tag": "F003-260618",
+    "tls": true,
+    "type": "vless",
+    "udp": true,
+    "uuid": "7e26fd8f-d75a-473d-84ba-9f4e3f47d086",
+    "ws-opts": {
+      "headers": {
+        "Host": "8-m20.cd6b506e-5a88-4c5d-9e11-906f39613c04.kdns.fr",
+        "User-Agent": "Mozilla/5.0 (Windows NT 6.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36"
+      },
+      "path": "/8qMLgNapWf6SBxo8fhQlVPYO"
+    },
+    "xudp": true,
+    "packet-encoding": "xudp",
+    "servername": "8-m20.cd6b506e-5a88-4c5d-9e11-906f39613c04.kdns.fr",
+    "endpoint-id": "e3068171dc3bbade",
+    "_id": "e3068171dc3bbade",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "🇺🇸US_486|706KB/s|F003-260618 01",
+    "network": "ws",
+    "port": 443,
+    "server": "172.67.140.11",
+    "sub_tag": "F003-260618",
+    "tls": true,
+    "type": "vless",
+    "udp": true,
+    "uuid": "a90c264d-3853-4eef-9a3d-628b2d02d15e",
+    "ws-opts": {
+      "headers": {
+        "Host": "7-m19.sUDAN-pArk.CCwu.CC",
+        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36"
+      },
+      "path": "/CjBjB9sn5pCvaSwScc"
+    },
+    "xudp": true,
+    "packet-encoding": "xudp",
+    "servername": "7-m19.suDan-pARK.CcwU.cc",
+    "endpoint-id": "76b6d1aff946ba74",
+    "_id": "76b6d1aff946ba74",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "🇺🇸US_553|453KB/s|F003-260618 01",
+    "network": "ws",
+    "port": 443,
+    "server": "104.21.53.73",
+    "sub_tag": "F003-260618",
+    "tls": true,
+    "type": "vless",
+    "udp": true,
+    "uuid": "a90c264d-3853-4eef-9a3d-628b2d02d15e",
+    "ws-opts": {
+      "headers": {
+        "Host": "9-M19.SOUtH-aFrica-LINE.CCwu.Cc",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36"
+      },
+      "path": "/CjBjB9sn5pCvaSwScc"
+    },
+    "xudp": true,
+    "packet-encoding": "xudp",
+    "servername": "9-M19.SOUtH-aFrICA-LINe.Ccwu.cC",
+    "endpoint-id": "cbc012824d2c24e5",
+    "_id": "cbc012824d2c24e5",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "🇺🇸US_543|1.1MB/s|F003-260618 01",
+    "network": "ws",
+    "port": 443,
+    "server": "172.67.212.14",
+    "sub_tag": "F003-260618",
+    "tls": true,
+    "type": "vless",
+    "udp": true,
+    "uuid": "a90c264d-3853-4eef-9a3d-628b2d02d15e",
+    "ws-opts": {
+      "headers": {
+        "Host": "0-M19.SoUtH-afrICA-ONline.CcWu.CC",
+        "User-Agent": "Mozilla/5.0 (Linux; Android 7.0; TRT-LX3 Build/HUAWEITRT-LX3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36"
+      },
+      "path": "/CjBjB9sn5pCvaSwScc"
+    },
+    "xudp": true,
+    "packet-encoding": "xudp",
+    "servername": "0-m19.souTH-AFRiCA-oNlInE.Ccwu.cc",
+    "endpoint-id": "777fe75d38c2d686",
+    "_id": "777fe75d38c2d686",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "🇺🇸US_620|740KB/s|F003-260618 01",
+    "network": "ws",
+    "port": 443,
+    "server": "104.21.39.137",
+    "sub_tag": "F003-260618",
+    "tls": true,
+    "type": "vless",
+    "udp": true,
+    "uuid": "a90c264d-3853-4eef-9a3d-628b2d02d15e",
+    "ws-opts": {
+      "headers": {
+        "Host": "5-M19.IKL.cCWU.cc",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.67 Safari/537.36"
+      },
+      "path": "/CjBjB9sn5pCvaSwScc"
+    },
+    "xudp": true,
+    "packet-encoding": "xudp",
+    "servername": "5-M19.ikL.Ccwu.cc",
+    "endpoint-id": "fe36c0fa42575781",
+    "_id": "fe36c0fa42575781",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "🇭🇰 香港 04-f60ec6cb9f71d37f",
+    "network": "tcp",
+    "password": "BxceQaOe",
+    "port": 443,
+    "server": "119.246.1.143",
+    "skip-cert-verify": true,
+    "sni": "t.me%2fripaojiedian",
+    "sub_tag": "A004-260618",
+    "type": "trojan",
+    "udp": true,
+    "endpoint-id": "f60ec6cb9f71d37f",
+    "_id": "f60ec6cb9f71d37f",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "name": "🇹🇭TH_4|657KB/s|R002-260618 01",
+    "port": 8888,
+    "server": "47.81.56.193",
+    "sub_tag": "R002-260618",
+    "type": "http",
+    "udp": true,
+    "endpoint-id": "8693a4223a37c17b",
+    "_id": "8693a4223a37c17b",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "name": "🇻🇪VE_1|572KB/s|R002-260618 01",
+    "port": 999,
+    "server": "181.233.89.128",
+    "sub_tag": "R002-260618",
+    "type": "http",
+    "udp": true,
+    "endpoint-id": "c2b8adde120c24ed",
+    "_id": "c2b8adde120c24ed",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "🇫🇷FR_315|559KB/s|B007-260618 01",
+    "network": "ws",
+    "password": "humanity",
+    "port": 443,
+    "server": "104.18.152.159",
+    "skip-cert-verify": false,
+    "sni": "www.ignitelimit.com",
+    "sub_tag": "B007-260618",
+    "type": "trojan",
+    "udp": true,
+    "ws-opts": {
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.67 Safari/537.36"
+      },
+      "path": "/assignment"
+    },
+    "endpoint-id": "cde85156c8637f3f",
+    "_id": "cde85156c8637f3f",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "🇺🇸US_488|624KB/s|F003-260618 01",
+    "network": "ws",
+    "port": 443,
+    "server": "104.21.90.161",
+    "sub_tag": "F003-260618",
+    "tls": true,
+    "type": "vless",
+    "udp": true,
+    "uuid": "a90c264d-3853-4eef-9a3d-628b2d02d15e",
+    "ws-opts": {
+      "headers": {
+        "Host": "4-m19.pERU-LIne.CCwu.CC",
+        "User-Agent": "Mozilla/5.0 (Linux; Android 4.4.2; de-de; SAMSUNG GT-I9195 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Version/1.5 Chrome/28.0.1500.94 Mobile Safari/537.36"
+      },
+      "path": "/CjBjB9sn5pCvaSwScc"
+    },
+    "xudp": true,
+    "packet-encoding": "xudp",
+    "servername": "4-m19.pErU-Line.cCwU.cc",
+    "endpoint-id": "9cf53344ad7ee956",
+    "_id": "9cf53344ad7ee956",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "🇺🇸US_550|355KB/s|F003-260618 01",
+    "network": "ws",
+    "port": 443,
+    "server": "104.21.90.161",
+    "sub_tag": "F003-260618",
+    "tls": true,
+    "type": "vless",
+    "udp": true,
+    "uuid": "a90c264d-3853-4eef-9a3d-628b2d02d15e",
+    "ws-opts": {
+      "headers": {
+        "Host": "5-m19.peRu-linE.CcWu.cC",
+        "User-Agent": "Mozilla/5.0 (Linux; Android 6.0.1; Redmi 4A Build/MMB29M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/60.0.3112.116 Mobile Safari/537.36"
+      },
+      "path": "/CjBjB9sn5pCvaSwScc"
+    },
+    "xudp": true,
+    "packet-encoding": "xudp",
+    "servername": "5-M19.PeRu-linE.Ccwu.CC",
+    "endpoint-id": "a2ee1257b13612f1",
+    "_id": "a2ee1257b13612f1",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
     "name": "🇺🇸_US_美国_1-21a1b9aadc8d72a1",
     "type": "vless",
     "server": "139.64.235.225",
@@ -64267,91 +64769,6 @@
     ]
   },
   {
-    "client-fingerprint": "qq",
-    "name": "🇳🇱NL_194|238KB/s|M003-260806 01",
-    "network": "ws",
-    "port": 443,
-    "server": "151.242.2.81",
-    "sub_tag": "M003-260806",
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "0a2dde28-70da-4863-a06f-35d007d94d35",
-    "ws-opts": {
-      "headers": {
-        "Host": "cf9.rumedia-cdn.com",
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36"
-      },
-      "path": "/cdn/v3/live"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "servername": "cf9.rumedia-cdn.com",
-    "endpoint-id": "f55e8d802d308f01",
-    "_id": "f55e8d802d308f01",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "encryption": "none",
-    "name": "🇩🇪DE_44|880KB/s|B007-260618 01",
-    "network": "ws",
-    "port": 2087,
-    "server": "163.8.195.241",
-    "sub_tag": "B007-260618",
-    "type": "vless",
-    "udp": true,
-    "uuid": "56ba5d34-ef22-4ba6-8090-4188b807df54",
-    "ws-opts": {
-      "headers": {
-        "Host": "",
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36"
-      },
-      "path": "/29c8fed7ca22"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "endpoint-id": "396d7fb9aaaf7499",
-    "_id": "396d7fb9aaaf7499",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "name": "🇸🇬SG_77|714KB/s|A004-260618 01",
-    "network": "ws",
-    "port": 8443,
-    "server": "141.193.213.20",
-    "sub_tag": "A004-260618",
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "29c3dd6b-b164-40ca-a0d5-f06aca52a8b2",
-    "ws-opts": {
-      "headers": {
-        "Host": "u.srilankangrill.online",
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36"
-      },
-      "path": "/"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "servername": "u.srilankangrill.online",
-    "endpoint-id": "39c808dac1260f76",
-    "_id": "39c808dac1260f76",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
     "alterId": "0",
     "cipher": "auto",
     "name": "🇬🇧GB_28|149KB/s|C002-260622 01",
@@ -64488,40 +64905,6 @@
     ]
   },
   {
-    "alpn": [
-      "http/1.1"
-    ],
-    "client-fingerprint": "chrome",
-    "name": "🇫🇷FR_962|650KB/s|S004-260618 01",
-    "network": "ws",
-    "port": 8443,
-    "server": "104.17.3.81",
-    "sub_tag": "S004-260618",
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "e1b81abf-2c98-487a-9b4d-e678f718f4b9",
-    "ws-opts": {
-      "headers": {
-        "Host": "tiny-shadow-2432.quillypanel26.workers.dev",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36"
-      },
-      "path": "/eyJqdW5rIjoiSVIwdkdQSmhrT0xRNyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJlZml4IiwicGFuZWxJUHMiOlsiWzJhMDI6ODk4OjE0Njo2NDo6XSJdfQ==",
-      "early-data-header-name": "Sec-WebSocket-Protocol",
-      "max-early-data": 2560
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "servername": "Tiny-ShADow-2432.QuillYPaNeL26.woRKers.dev",
-    "endpoint-id": "bfbf9f095661a578",
-    "_id": "bfbf9f095661a578",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
     "client-fingerprint": "chrome",
     "name": "🇺🇸US_561|577KB/s|F003-260618 01",
     "network": "ws",
@@ -64632,35 +65015,6 @@
     "servername": "3-M19.fGh.cCwU.cC",
     "endpoint-id": "f531a88450e235a2",
     "_id": "f531a88450e235a2",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "name": "🇺🇸US_549|522KB/s|F003-260618 01",
-    "network": "ws",
-    "port": 443,
-    "server": "172.67.153.78",
-    "sub_tag": "F003-260618",
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "a90c264d-3853-4eef-9a3d-628b2d02d15e",
-    "ws-opts": {
-      "headers": {
-        "Host": "3-M19.sOuth-AfRiCa-liNk.CcWu.cc",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36"
-      },
-      "path": "/CjBjB9sn5pCvaSwScc"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "servername": "3-M19.soUTh-AfRica-LInK.CcWu.Cc",
-    "endpoint-id": "3b01ad6900ee8563",
-    "_id": "3b01ad6900ee8563",
     "_poolOnly": true,
     "_source": null,
     "_sources": [
@@ -64933,35 +65287,6 @@
     ]
   },
   {
-    "client-fingerprint": "chrome",
-    "name": "🇫🇷FR_612|313KB/s|F003-260618 01",
-    "network": "ws",
-    "port": 443,
-    "server": "104.18.32.47",
-    "sub_tag": "F003-260618",
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "da78f96e-01d3-4289-9d0b-fbbe3f0a5472",
-    "ws-opts": {
-      "headers": {
-        "Host": "aio.zxcore.biz.id",
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131 Safari/537.36"
-      },
-      "path": "/aioproxybot/124.153.168.248-50001"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "servername": "aio.zxcore.biz.id",
-    "endpoint-id": "9f0b26ef57bc413a",
-    "_id": "9f0b26ef57bc413a",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
     "name": "🇺🇸US_632|380KB/s|P002-260618 01",
     "password": "None",
     "port": 8090,
@@ -65131,19 +65456,430 @@
     ]
   },
   {
-    "name": "🇰🇷 韩国_12GUFZ",
-    "server": "121.169.46.116",
-    "port": 1090,
-    "type": "socks5",
+    "client-fingerprint": "chrome",
+    "name": "🇫🇷FR_970|2.3MB/s|M003-260806 01",
+    "network": "ws",
+    "password": "humanity",
+    "port": 2053,
+    "server": "82.117.245.125",
+    "skip-cert-verify": false,
+    "sni": "www.calmlunch.com",
+    "sub_tag": "M003-260806",
+    "type": "trojan",
     "udp": true,
-    "username": "VDJjbE0wUWxNMFE2Og==",
-    "password": "VDJjbE0wUWxNMFE2Og==",
-    "endpoint-id": "7ad53e612e908d10",
-    "_id": "7ad53e612e908d10",
+    "ws-opts": {
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.112 Safari/537.36"
+      },
+      "path": "/assignment"
+    },
+    "endpoint-id": "1f39f41efee0755b",
+    "_id": "1f39f41efee0755b",
     "_poolOnly": true,
     "_source": null,
     "_sources": [
-      "FreeNodes-clashstair"
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "🇫🇷FR_90|1.3MB/s|T001-260618 01",
+    "network": "ws",
+    "password": "humanity",
+    "port": 8443,
+    "server": "77.221.138.199",
+    "skip-cert-verify": false,
+    "sni": "www.calmlunch.com",
+    "sub_tag": "T001-260618",
+    "type": "trojan",
+    "udp": true,
+    "ws-opts": {
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36"
+      },
+      "path": "/assignment"
+    },
+    "endpoint-id": "5d8c4b4fd10f5965",
+    "_id": "5d8c4b4fd10f5965",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "🇫🇷FR_704|1.5MB/s|M003-260806 01",
+    "network": "ws",
+    "password": "humanity",
+    "port": 443,
+    "server": "88.99.189.60",
+    "skip-cert-verify": false,
+    "sni": "www.calmlunch.com",
+    "sub_tag": "M003-260806",
+    "type": "trojan",
+    "udp": true,
+    "ws-opts": {
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36"
+      },
+      "path": "/assignment"
+    },
+    "endpoint-id": "da0d3828fc5c0993",
+    "_id": "da0d3828fc5c0993",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "🇫🇷FR_1159|470KB/s|V002-260618 01",
+    "network": "ws",
+    "password": "humanity",
+    "port": 8443,
+    "server": "5.78.92.27",
+    "skip-cert-verify": false,
+    "sni": "www.calmlunch.com",
+    "sub_tag": "V002-260618",
+    "type": "trojan",
+    "udp": true,
+    "ws-opts": {
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.109 Safari/537.36"
+      },
+      "path": "/assignment"
+    },
+    "endpoint-id": "ed8a4d88539d33bf",
+    "_id": "ed8a4d88539d33bf",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "cipher": "aes-256-cfb",
+    "name": "🇱🇹LT_8|1.7MB/s|A004-260618 01",
+    "password": "y9VURyNzJWNRYEGQ",
+    "port": 9008,
+    "server": "195.238.126.20",
+    "sub_tag": "A004-260618",
+    "type": "ss",
+    "udp": true,
+    "endpoint-id": "8efcac690a9a8aaf",
+    "_id": "8efcac690a9a8aaf",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "🇫🇷FR_911|383KB/s|V002-260618 01",
+    "network": "ws",
+    "password": "humanity",
+    "port": 8443,
+    "server": "193.233.87.41",
+    "skip-cert-verify": false,
+    "sni": "www.calmlunch.com",
+    "sub_tag": "V002-260618",
+    "type": "trojan",
+    "udp": true,
+    "ws-opts": {
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Linux; Android 8.0.0; FIG-LX3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.80 Mobile Safari/537.36"
+      },
+      "path": "/assignment"
+    },
+    "endpoint-id": "5a7d67714389159c",
+    "_id": "5a7d67714389159c",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "🇫🇷FR_969|867KB/s|M003-260806 01",
+    "network": "ws",
+    "password": "humanity",
+    "port": 443,
+    "server": "195.181.244.216",
+    "skip-cert-verify": false,
+    "sni": "www.calmlunch.com",
+    "sub_tag": "M003-260806",
+    "type": "trojan",
+    "udp": true,
+    "ws-opts": {
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.57 Safari/537.36"
+      },
+      "path": "/assignment"
+    },
+    "endpoint-id": "67f898f8bd1b73e9",
+    "_id": "67f898f8bd1b73e9",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "🇮🇩ID_1|131KB/s|M003-260806 01",
+    "network": "ws",
+    "password": "018b8e7b-7813-4dcb-84a5-3c98f1521e00",
+    "port": 443,
+    "server": "172.67.176.157",
+    "skip-cert-verify": true,
+    "sni": "id1.nathaya.web.id",
+    "sub_tag": "M003-260806",
+    "type": "trojan",
+    "udp": true,
+    "ws-opts": {
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36"
+      },
+      "path": "/trojan"
+    },
+    "endpoint-id": "dc5db4adc8d96dee",
+    "_id": "dc5db4adc8d96dee",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "🇮🇩ID_3|107KB/s|B007-260618 01",
+    "network": "ws",
+    "password": "018b8e7b-7813-4dcb-84a5-3c98f1521e00",
+    "port": 443,
+    "server": "edu.ruangguru.com",
+    "skip-cert-verify": true,
+    "sni": "id1.nathaya.web.id",
+    "sub_tag": "B007-260618",
+    "type": "trojan",
+    "udp": true,
+    "ws-opts": {
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36"
+      },
+      "path": "/trojan"
+    },
+    "endpoint-id": "614d97a033e64c15",
+    "_id": "614d97a033e64c15",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "unsafe",
+    "name": "🇮🇩ID_4|230KB/s|M002-260618 01",
+    "network": "ws",
+    "password": "018b8e7b-7813-4dcb-84a5-3c98f1521e00",
+    "port": 443,
+    "server": "104.21.33.59",
+    "skip-cert-verify": false,
+    "sni": "id1.nathaya.web.id",
+    "sub_tag": "M002-260618",
+    "type": "trojan",
+    "udp": true,
+    "ws-opts": {
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.1805 Safari/537.36 MVisionPlayer/1.0.0.0"
+      },
+      "path": "/trojan"
+    },
+    "endpoint-id": "7820f6c88bd1a045",
+    "_id": "7820f6c88bd1a045",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "🇫🇷FR_80|1.0MB/s|T001-260618 01",
+    "network": "ws",
+    "password": "humanity",
+    "port": 443,
+    "server": "185.255.179.166",
+    "skip-cert-verify": false,
+    "sni": "www.calmlunch.com",
+    "sub_tag": "T001-260618",
+    "type": "trojan",
+    "udp": true,
+    "ws-opts": {
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36"
+      },
+      "path": "/assignment"
+    },
+    "endpoint-id": "da52e7267f6851d2",
+    "_id": "da52e7267f6851d2",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "cipher": "aes-256-gcm",
+    "name": "🇨🇦CA_37|153KB/s|B007-260618 01",
+    "password": "kDWvXYZoTBcGkC4",
+    "port": 8882,
+    "server": "51.222.136.236",
+    "sub_tag": "B007-260618",
+    "type": "ss",
+    "udp": true,
+    "endpoint-id": "b64cd82a041471b6",
+    "_id": "b64cd82a041471b6",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "🇫🇷FR_468|852KB/s|T001-260618 01",
+    "network": "ws",
+    "password": "humanity",
+    "port": 443,
+    "server": "45.87.41.18",
+    "skip-cert-verify": false,
+    "sni": "www.calmlunch.com",
+    "sub_tag": "T001-260618",
+    "type": "trojan",
+    "udp": true,
+    "ws-opts": {
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Linux; Android 7.0; SM-J710F Build/NRD90M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.84 Mobile Safari/537.36"
+      },
+      "path": "/assignment"
+    },
+    "endpoint-id": "0d02858d7cb2a2e6",
+    "_id": "0d02858d7cb2a2e6",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "🇫🇷FR_689|351KB/s|M003-260806 01",
+    "network": "ws",
+    "password": "humanity",
+    "port": 443,
+    "server": "80.77.25.142",
+    "skip-cert-verify": false,
+    "sni": "www.calmlunch.com",
+    "sub_tag": "M003-260806",
+    "type": "trojan",
+    "udp": true,
+    "ws-opts": {
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36"
+      },
+      "path": "/assignment"
+    },
+    "endpoint-id": "9d9267c615b93cfd",
+    "_id": "9d9267c615b93cfd",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "🇫🇷FR_208|1.4MB/s|M003-260806 01",
+    "network": "ws",
+    "password": "humanity",
+    "port": 443,
+    "server": "185.36.141.81",
+    "skip-cert-verify": false,
+    "sni": "www.calmlunch.com",
+    "sub_tag": "M003-260806",
+    "type": "trojan",
+    "udp": true,
+    "ws-opts": {
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36"
+      },
+      "path": "/assignment"
+    },
+    "endpoint-id": "4a1f059649845450",
+    "_id": "4a1f059649845450",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "encryption": "none",
+    "name": "🇫🇷FR_33|118KB/s 01",
+    "network": "ws",
+    "port": 443,
+    "server": "bab-6.site",
+    "tls": true,
+    "type": "vless",
+    "udp": true,
+    "uuid": "b585dc5e-55bf-4a8b-913a-27c9ccac05c3",
+    "ws-opts": {
+      "headers": {
+        "Host": "bab-6.site",
+        "User-Agent": "Mozilla/5.0 (Linux; Android 7.1.1; CPH1723 Build/N6F26Q) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.98 Mobile Safari/537.36"
+      },
+      "path": "/vws/"
+    },
+    "xudp": true,
+    "packet-encoding": "xudp",
+    "servername": "bab-6.site",
+    "endpoint-id": "088f7c7e0bebed02",
+    "_id": "088f7c7e0bebed02",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "🇫🇷FR_1140|957KB/s|A003-260618 01",
+    "network": "ws",
+    "password": "humanity",
+    "port": 443,
+    "server": "185.225.68.232",
+    "skip-cert-verify": false,
+    "sni": "www.calmlunch.com",
+    "sub_tag": "A003-260618",
+    "type": "trojan",
+    "udp": true,
+    "ws-opts": {
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36"
+      },
+      "path": "/assignment"
+    },
+    "endpoint-id": "3d0c05bcb7027710",
+    "_id": "3d0c05bcb7027710",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
     ]
   },
   {
@@ -65160,6 +65896,29 @@
     "_source": null,
     "_sources": [
       "FreeNodes-clashstair"
+    ]
+  },
+  {
+    "name": "🇭🇰_HK_中国香港_1",
+    "type": "vmess",
+    "server": "47.244.120.197",
+    "port": 44867,
+    "uuid": "845e6b08-2919-4290-ade0-5dc7dcea59ca",
+    "alterId": 0,
+    "cipher": "auto",
+    "tls": false,
+    "skip-cert-verify": true,
+    "network": "ws",
+    "ws-opts": {
+      "path": "/arki?ed=2048"
+    },
+    "udp": true,
+    "endpoint-id": "0426c64eb4fe6e7d",
+    "_id": "0426c64eb4fe6e7d",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-oneclash"
     ]
   },
   {
@@ -65186,6 +65945,125 @@
     "_source": null,
     "_sources": [
       "FreeNodes-clashstair"
+    ]
+  },
+  {
+    "encryption": "none",
+    "name": "🇩🇪DE_44|880KB/s|B007-260618 01",
+    "network": "ws",
+    "port": 2087,
+    "server": "163.8.195.241",
+    "sub_tag": "B007-260618",
+    "type": "vless",
+    "udp": true,
+    "uuid": "56ba5d34-ef22-4ba6-8090-4188b807df54",
+    "ws-opts": {
+      "headers": {
+        "Host": "",
+        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36"
+      },
+      "path": "/29c8fed7ca22"
+    },
+    "xudp": true,
+    "packet-encoding": "xudp",
+    "endpoint-id": "396d7fb9aaaf7499",
+    "_id": "396d7fb9aaaf7499",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "alpn": [
+      "http/1.1"
+    ],
+    "client-fingerprint": "chrome",
+    "name": "🇫🇷FR_962|650KB/s|S004-260618 01",
+    "network": "ws",
+    "port": 8443,
+    "server": "104.17.3.81",
+    "sub_tag": "S004-260618",
+    "tls": true,
+    "type": "vless",
+    "udp": true,
+    "uuid": "e1b81abf-2c98-487a-9b4d-e678f718f4b9",
+    "ws-opts": {
+      "headers": {
+        "Host": "tiny-shadow-2432.quillypanel26.workers.dev",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36"
+      },
+      "path": "/eyJqdW5rIjoiSVIwdkdQSmhrT0xRNyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJlZml4IiwicGFuZWxJUHMiOlsiWzJhMDI6ODk4OjE0Njo2NDo6XSJdfQ==",
+      "early-data-header-name": "Sec-WebSocket-Protocol",
+      "max-early-data": 2560
+    },
+    "xudp": true,
+    "packet-encoding": "xudp",
+    "servername": "Tiny-ShADow-2432.QuillYPaNeL26.woRKers.dev",
+    "endpoint-id": "bfbf9f095661a578",
+    "_id": "bfbf9f095661a578",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "🇺🇸US_549|522KB/s|F003-260618 01",
+    "network": "ws",
+    "port": 443,
+    "server": "172.67.153.78",
+    "sub_tag": "F003-260618",
+    "tls": true,
+    "type": "vless",
+    "udp": true,
+    "uuid": "a90c264d-3853-4eef-9a3d-628b2d02d15e",
+    "ws-opts": {
+      "headers": {
+        "Host": "3-M19.sOuth-AfRiCa-liNk.CcWu.cc",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36"
+      },
+      "path": "/CjBjB9sn5pCvaSwScc"
+    },
+    "xudp": true,
+    "packet-encoding": "xudp",
+    "servername": "3-M19.soUTh-AfRica-LInK.CcWu.Cc",
+    "endpoint-id": "3b01ad6900ee8563",
+    "_id": "3b01ad6900ee8563",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "🇫🇷FR_612|313KB/s|F003-260618 01",
+    "network": "ws",
+    "port": 443,
+    "server": "104.18.32.47",
+    "sub_tag": "F003-260618",
+    "tls": true,
+    "type": "vless",
+    "udp": true,
+    "uuid": "da78f96e-01d3-4289-9d0b-fbbe3f0a5472",
+    "ws-opts": {
+      "headers": {
+        "Host": "aio.zxcore.biz.id",
+        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131 Safari/537.36"
+      },
+      "path": "/aioproxybot/124.153.168.248-50001"
+    },
+    "xudp": true,
+    "packet-encoding": "xudp",
+    "servername": "aio.zxcore.biz.id",
+    "endpoint-id": "9f0b26ef57bc413a",
+    "_id": "9f0b26ef57bc413a",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
     ]
   },
   {
@@ -65223,23 +66101,6 @@
     },
     "endpoint-id": "e462b55994e1fa6f",
     "_id": "e462b55994e1fa6f",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "cipher": "aes-256-cfb",
-    "name": "🇮🇹IT_6|1.5MB/s|A004-260618 01",
-    "password": "qYEN5HX4JKeVCdEC",
-    "port": 9039,
-    "server": "91.201.65.122",
-    "sub_tag": "A004-260618",
-    "type": "ss",
-    "udp": true,
-    "endpoint-id": "8adf380e05aa7e8f",
-    "_id": "8adf380e05aa7e8f",
     "_poolOnly": true,
     "_source": null,
     "_sources": [
@@ -65325,82 +66186,6 @@
     ]
   },
   {
-    "cipher": "chacha20-ietf-poly1305",
-    "name": "🇳🇴NO_2|840KB/s|A004-260618 01",
-    "password": "ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=",
-    "port": 990,
-    "server": "185.213.23.63",
-    "sub_tag": "A004-260618",
-    "type": "ss",
-    "udp": true,
-    "endpoint-id": "ed4db0e99d8f7985",
-    "_id": "ed4db0e99d8f7985",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "name": "🇺🇸US_655|264KB/s|F003-260618 01",
-    "network": "ws",
-    "port": 443,
-    "server": "172.67.178.166",
-    "sub_tag": "F003-260618",
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "7700ff6d-cefb-4768-a806-ec4f63fe3b38",
-    "ws-opts": {
-      "headers": {
-        "Host": "9-m13.2243867c-5fEe-4B94-803f-85790942D471.kdNS.FR",
-        "User-Agent": "Mozilla/5.0 (Linux; Android 6.0.1; vivo 1603 Build/MMB29M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.83 Mobile Safari/537.36"
-      },
-      "path": "/ED3ZQPu7lqyeDGD58KabZ"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "servername": "9-m13.2243867C-5fee-4B94-803F-85790942d471.KdNs.fR",
-    "endpoint-id": "6e5ab2bc92debe3b",
-    "_id": "6e5ab2bc92debe3b",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "encryption": "none",
-    "name": "🇺🇸US_560|703KB/s|A001-260618 01",
-    "network": "ws",
-    "port": 443,
-    "server": "172.67.155.252",
-    "sub_tag": "A001-260618",
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "1aa96574-c28b-4ee9-855d-ebdbbf1f7e90",
-    "ws-opts": {
-      "headers": {
-        "Host": "2-m13.0ee25773-D3d3-479D-a8ff-3F51d1D20031.kDnS.Fr",
-        "User-Agent": "Mozilla/5.0 (Linux; Android 6.0; vivo 1610 Build/MMB29M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.124 Mobile Safari/537.36"
-      },
-      "path": "/ED3ZQPu7lqyeDGD58KabZ"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "servername": "2-m13.0ee25773-D3D3-479D-a8fF-3F51D1D20031.kDNs.fR",
-    "endpoint-id": "3c1015f21381465c",
-    "_id": "3c1015f21381465c",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
     "cipher": "aes-256-cfb",
     "name": "🇧🇬BG_2|1.5MB/s|A004-260618 01",
     "password": "PRBf4BS2HvJqtWxY",
@@ -65477,35 +66262,6 @@
   },
   {
     "client-fingerprint": "chrome",
-    "name": "🇺🇸US_753|241KB/s|F003-260618 01",
-    "network": "ws",
-    "port": 443,
-    "server": "104.21.39.176",
-    "sub_tag": "F003-260618",
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "1aa96574-c28b-4ee9-855d-ebdbbf1f7e90",
-    "ws-opts": {
-      "headers": {
-        "Host": "4-M13.AYUtTHAya.KdNS.fr",
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36"
-      },
-      "path": "/ED3ZQPu7lqyeDGD58KabZ"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "servername": "4-M13.aYuttHAYa.KDns.fr",
-    "endpoint-id": "a7213da85490b674",
-    "_id": "a7213da85490b674",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
     "name": "🇺🇸US_646|306KB/s|F003-260618 01",
     "network": "ws",
     "port": 443,
@@ -65563,6 +66319,799 @@
     ]
   },
   {
+    "client-fingerprint": "chrome",
+    "name": "🇺🇸US_690|547KB/s|F003-260618 01",
+    "network": "ws",
+    "port": 443,
+    "server": "172.67.176.60",
+    "sub_tag": "F003-260618",
+    "tls": true,
+    "type": "vless",
+    "udp": true,
+    "uuid": "a90c264d-3853-4eef-9a3d-628b2d02d15e",
+    "ws-opts": {
+      "headers": {
+        "Host": "1-m19.sOuTH-AfriCa.ccwu.cC",
+        "User-Agent": "Mozilla/5.0 (Linux; Android 6.0.1; SM-J700M Build/MMB29K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36"
+      },
+      "path": "/CjBjB9sn5pCvaSwScc"
+    },
+    "xudp": true,
+    "packet-encoding": "xudp",
+    "servername": "1-M19.SoUth-AFRicA.ccwu.CC",
+    "endpoint-id": "d6f4b6f75e1e06a7",
+    "_id": "d6f4b6f75e1e06a7",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "name": "🇭🇰 香港 12",
+    "password": "admin",
+    "port": 8899,
+    "server": "47.242.19.215",
+    "skip-cert-verify": true,
+    "sub_tag": "R002-260618",
+    "type": "socks5",
+    "username": "admin",
+    "udp": true,
+    "endpoint-id": "b7e74aa6e43d409a",
+    "_id": "b7e74aa6e43d409a",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "encryption": "none",
+    "name": "🇫🇷FR_112|168KB/s|M002-260618 01",
+    "network": "ws",
+    "port": 443,
+    "server": "bab-6.site",
+    "sub_tag": "M002-260618",
+    "tls": true,
+    "type": "vless",
+    "udp": true,
+    "uuid": "b585dc5e-55bf-4a8b-913a-27c9ccac05c3",
+    "ws-opts": {
+      "headers": {
+        "Host": "",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.75 Safari/537.36"
+      },
+      "path": "/vws/"
+    },
+    "xudp": true,
+    "packet-encoding": "xudp",
+    "servername": "bab-6.site",
+    "endpoint-id": "c49fbcd65f8c1519",
+    "_id": "c49fbcd65f8c1519",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "🇫🇷FR_1158|1.8MB/s|V002-260618 01",
+    "network": "ws",
+    "password": "humanity",
+    "port": 8443,
+    "server": "212.227.144.37",
+    "skip-cert-verify": false,
+    "sni": "www.calmlunch.com",
+    "sub_tag": "V002-260618",
+    "type": "trojan",
+    "udp": true,
+    "ws-opts": {
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Linux; Android 6.0.1; SM-G532M Build/MMB29T) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.91 Mobile Safari/537.36"
+      },
+      "path": "/assignment"
+    },
+    "endpoint-id": "c683b48a79923d5b",
+    "_id": "c683b48a79923d5b",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "name": "🇺🇸US_500|154KB/s|R002-260618 01",
+    "password": "e4b72b531a2d10900519",
+    "port": 443,
+    "server": "107.151.238.27",
+    "sni": "6b97ee1b.acsnet.co",
+    "sub_tag": "R002-260618",
+    "tls": true,
+    "type": "http",
+    "username": "testuser1",
+    "udp": true,
+    "endpoint-id": "dd95a5924866d039",
+    "_id": "dd95a5924866d039",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "encryption": "none",
+    "name": "🇫🇷FR_1152|581KB/s|B007-260618 01",
+    "network": "ws",
+    "port": 443,
+    "server": "cf.008500.xyz",
+    "sub_tag": "B007-260618",
+    "tls": true,
+    "type": "vless",
+    "udp": true,
+    "uuid": "5dc15e15-f285-4a9d-959b-0e4fbdd77b63",
+    "ws-opts": {
+      "headers": {
+        "Host": "powered-by-surena.configfarsi695fd01a94fe7.workers.dev",
+        "User-Agent": "Mozilla/5.0 (Linux; Android 4.4.2; de-de; SAMSUNG GT-I9195 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Version/1.5 Chrome/28.0.1500.94 Mobile Safari/537.36"
+      },
+      "path": "/",
+      "early-data-header-name": "Sec-WebSocket-Protocol",
+      "max-early-data": 2560
+    },
+    "xudp": true,
+    "packet-encoding": "xudp",
+    "servername": "powered-by-surena.configfarsi695fd01a94fe7.workers.dev",
+    "endpoint-id": "532aa6f17ce34824",
+    "_id": "532aa6f17ce34824",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "name": "🇳🇱NL_205|2.2MB/s|R002-260618 01",
+    "port": 443,
+    "server": "157.22.183.72",
+    "sub_tag": "R002-260618",
+    "tls": true,
+    "type": "http",
+    "udp": true,
+    "endpoint-id": "8e6eb65d2c1a985e",
+    "_id": "8e6eb65d2c1a985e",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "alterId": 0,
+    "cipher": "auto",
+    "name": "🇭🇰 香港 11",
+    "network": "ws",
+    "port": 443,
+    "server": "www.shopify.com",
+    "skip-cert-verify": false,
+    "sub_tag": "F003-260618",
+    "tls": true,
+    "type": "vmess",
+    "udp": true,
+    "uuid": "3aa71202-a099-49c1-99fc-6662f3335369",
+    "ws-opts": {
+      "headers": {
+        "Host": "yoga-suggesting-recording-calls.trycloudflare.com"
+      },
+      "path": "/3aa71202-a099-49c1-99fc-6662f3335369-vm"
+    },
+    "xudp": true,
+    "packet-encoding": "xudp",
+    "servername": "yoga-suggesting-recording-calls.trycloudflare.com",
+    "endpoint-id": "81773e4651c00829",
+    "_id": "81773e4651c00829",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "🇫🇷FR_542|606KB/s|A003-260618 01",
+    "network": "ws",
+    "password": "humanity",
+    "port": 2053,
+    "server": "185.114.72.31",
+    "skip-cert-verify": false,
+    "sni": "www.calmlunch.com",
+    "sub_tag": "A003-260618",
+    "type": "trojan",
+    "udp": true,
+    "ws-opts": {
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.112 Safari/537.36"
+      },
+      "path": "/assignment"
+    },
+    "endpoint-id": "0fe57824d9a93c3d",
+    "_id": "0fe57824d9a93c3d",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "encryption": "none",
+    "name": "🇧🇷BR_21|226KB/s|M002-260618 01",
+    "network": "ws",
+    "port": 2087,
+    "server": "189.74.97.43",
+    "sub_tag": "M002-260618",
+    "type": "vless",
+    "udp": true,
+    "uuid": "10f7eb2d-d96d-4778-9d36-aff11e9d6629",
+    "ws-opts": {
+      "headers": {
+        "Host": "",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36"
+      },
+      "path": "/73b6faea2d00"
+    },
+    "xudp": true,
+    "packet-encoding": "xudp",
+    "endpoint-id": "45ea61edd6eeac52",
+    "_id": "45ea61edd6eeac52",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "🇫🇷FR_837|325KB/s|F003-260618 01",
+    "network": "ws",
+    "port": 443,
+    "server": "81.95.4.189",
+    "sub_tag": "F003-260618",
+    "tls": true,
+    "type": "vless",
+    "udp": true,
+    "uuid": "b585dc5e-55bf-4a8b-913a-27c9ccac05c3",
+    "ws-opts": {
+      "headers": {
+        "Host": "bab-6.site",
+        "User-Agent": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.67 Safari/537.36"
+      },
+      "path": "/vws/"
+    },
+    "xudp": true,
+    "packet-encoding": "xudp",
+    "servername": "bab-6.site",
+    "endpoint-id": "1dfafde9831be334",
+    "_id": "1dfafde9831be334",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "🇫🇷FR_146|1.6MB/s|M003-260806 01",
+    "network": "ws",
+    "password": "humanity",
+    "port": 443,
+    "server": "193.239.160.134",
+    "skip-cert-verify": false,
+    "sni": "www.calmlunch.com",
+    "sub_tag": "M003-260806",
+    "type": "trojan",
+    "udp": true,
+    "ws-opts": {
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36"
+      },
+      "path": "/assignment"
+    },
+    "endpoint-id": "70ce24a5bc0344b5",
+    "_id": "70ce24a5bc0344b5",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "🇫🇷FR_1009|119KB/s|M003-260806 01",
+    "network": "ws",
+    "password": "humanity",
+    "port": 2053,
+    "server": "91.245.225.79",
+    "skip-cert-verify": false,
+    "sni": "www.calmlunch.com",
+    "sub_tag": "M003-260806",
+    "type": "trojan",
+    "udp": true,
+    "ws-opts": {
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36"
+      },
+      "path": "/assignment"
+    },
+    "endpoint-id": "1c311aa00cfd8417",
+    "_id": "1c311aa00cfd8417",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "alpn": [
+      ""
+    ],
+    "alterId": "0",
+    "cipher": "auto",
+    "name": "🇪🇸ES_19|406KB/s|B007-260618 01",
+    "network": "tcp",
+    "port": 22324,
+    "server": "85.90.217.42",
+    "skip-cert-verify": false,
+    "sub_tag": "B007-260618",
+    "tls": false,
+    "type": "vmess",
+    "udp": true,
+    "uuid": "04621bae-ab36-11ec-b909-0242ac120002",
+    "xudp": true,
+    "packet-encoding": "xudp",
+    "endpoint-id": "6707243d98557c26",
+    "_id": "6707243d98557c26",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "🇳🇱NL_248|1.7MB/s|M003-260806 01",
+    "network": "ws",
+    "password": "humanity",
+    "port": 443,
+    "server": "78.47.146.151",
+    "skip-cert-verify": false,
+    "sni": "www.pleadcourt.org",
+    "sub_tag": "M003-260806",
+    "type": "trojan",
+    "udp": true,
+    "ws-opts": {
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36"
+      },
+      "path": "/assignment"
+    },
+    "endpoint-id": "79c05b8b0abedaff",
+    "_id": "79c05b8b0abedaff",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "cipher": "aes-256-gcm",
+    "name": "🇨🇦CA_24|1.2MB/s|A004-260618 01",
+    "password": "zDNVedRFPQexG9v",
+    "port": 445,
+    "server": "51.222.12.127",
+    "sub_tag": "A004-260618",
+    "type": "ss",
+    "udp": true,
+    "endpoint-id": "5b7ad390e5511dd2",
+    "_id": "5b7ad390e5511dd2",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "alpn": [
+      "http/1.1"
+    ],
+    "client-fingerprint": "chrome",
+    "encryption": "none",
+    "name": "🇺🇸US_462|227KB/s|A001-260618 01",
+    "network": "ws",
+    "port": 443,
+    "server": "172.67.148.211",
+    "sub_tag": "A001-260618",
+    "tls": true,
+    "type": "vless",
+    "udp": true,
+    "uuid": "a90c264d-3853-4eef-9a3d-628b2d02d15e",
+    "ws-opts": {
+      "headers": {
+        "Host": "3-M19.SOUth-aFriCA-CHaNnel.CCWu.Cc",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
+      },
+      "path": "/CjBjB9sn5pCvaSwScc"
+    },
+    "xudp": true,
+    "packet-encoding": "xudp",
+    "servername": "3-M19.sOutH-AfRiCA-CHANNEL.ccwU.cc",
+    "endpoint-id": "c8381c6c25d01431",
+    "_id": "c8381c6c25d01431",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "🇺🇸US_343|586KB/s|F003-260618 01",
+    "network": "ws",
+    "port": 443,
+    "server": "104.21.91.76",
+    "sub_tag": "F003-260618",
+    "tls": true,
+    "type": "vless",
+    "udp": true,
+    "uuid": "a90c264d-3853-4eef-9a3d-628b2d02d15e",
+    "ws-opts": {
+      "headers": {
+        "Host": "3-m19.soUtH-afRICa-OnLiNe.cCWu.Cc",
+        "User-Agent": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36"
+      },
+      "path": "/CjBjB9sn5pCvaSwScc"
+    },
+    "xudp": true,
+    "packet-encoding": "xudp",
+    "servername": "3-M19.sOUTh-afRIca-OnlInE.CCwU.cC",
+    "endpoint-id": "b5ef3622653c5867",
+    "_id": "b5ef3622653c5867",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "🇫🇷FR_688|1.3MB/s|M003-260806 01",
+    "network": "ws",
+    "password": "humanity",
+    "port": 443,
+    "server": "191.96.94.226",
+    "skip-cert-verify": false,
+    "sni": "www.calmlunch.com",
+    "sub_tag": "M003-260806",
+    "type": "trojan",
+    "udp": true,
+    "ws-opts": {
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36"
+      },
+      "path": "/assignment"
+    },
+    "endpoint-id": "f11cc4bab2290e59",
+    "_id": "f11cc4bab2290e59",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "name": "🇰🇷 韩国_12GUFZ",
+    "server": "121.169.46.116",
+    "port": 1090,
+    "type": "socks5",
+    "udp": true,
+    "username": "VDJjbE0wUWxNMFE2Og==",
+    "password": "VDJjbE0wUWxNMFE2Og==",
+    "endpoint-id": "7ad53e612e908d10",
+    "_id": "7ad53e612e908d10",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashstair"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "🇯🇵JP_23|64KB/s|A004-260618 01",
+    "network": "ws",
+    "port": 443,
+    "server": "104.21.70.21",
+    "sub_tag": "A004-260618",
+    "tls": true,
+    "type": "vless",
+    "udp": true,
+    "uuid": "4e4f1f70-5e56-4a76-bb9d-db087f4690c4",
+    "ws-opts": {
+      "headers": {
+        "Host": "jp3.yohototo.top",
+        "User-Agent": "Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/534.7 (KHTML, like Gecko) Chrome/7.0.517.44 Safari/534.7"
+      },
+      "path": "/tyxyws"
+    },
+    "xudp": true,
+    "packet-encoding": "xudp",
+    "servername": "jp3.yohototo.top",
+    "endpoint-id": "122344364ee2c55c",
+    "_id": "122344364ee2c55c",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "name": "🇨🇦CA_35|92KB/s|R002-260618 01",
+    "port": 3118,
+    "server": "184.75.221.82",
+    "sub_tag": "R002-260618",
+    "type": "http",
+    "udp": true,
+    "endpoint-id": "ce19e9dd3456ade2",
+    "_id": "ce19e9dd3456ade2",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "🇺🇸US_436|422KB/s|F003-260618 01",
+    "network": "ws",
+    "port": 443,
+    "server": "172.67.173.191",
+    "sub_tag": "F003-260618",
+    "tls": true,
+    "type": "vless",
+    "udp": true,
+    "uuid": "7e26fd8f-d75a-473d-84ba-9f4e3f47d086",
+    "ws-opts": {
+      "headers": {
+        "Host": "3-m20.e00e.ccwu.cc",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36"
+      },
+      "path": "/8qMLgNapWf6SBxo8fhQlVPYO"
+    },
+    "xudp": true,
+    "packet-encoding": "xudp",
+    "servername": "3-m20.e00e.ccwu.cc",
+    "endpoint-id": "a3e453c7b47a28ab",
+    "_id": "a3e453c7b47a28ab",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "🇺🇸US_555|665KB/s|F003-260618 01",
+    "network": "ws",
+    "port": 443,
+    "server": "104.21.62.234",
+    "sub_tag": "F003-260618",
+    "tls": true,
+    "type": "vless",
+    "udp": true,
+    "uuid": "a90c264d-3853-4eef-9a3d-628b2d02d15e",
+    "ws-opts": {
+      "headers": {
+        "Host": "5-M19.sUdaN-PArK.ccWu.CC",
+        "User-Agent": "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.101 Safari/537.36"
+      },
+      "path": "/CjBjB9sn5pCvaSwScc"
+    },
+    "xudp": true,
+    "packet-encoding": "xudp",
+    "servername": "5-M19.sudaN-parK.ccwU.cC",
+    "endpoint-id": "10ce4ce93eeb5543",
+    "_id": "10ce4ce93eeb5543",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "🇺🇸US_689|241KB/s|F003-260618 01",
+    "network": "ws",
+    "port": 443,
+    "server": "172.67.176.60",
+    "sub_tag": "F003-260618",
+    "tls": true,
+    "type": "vless",
+    "udp": true,
+    "uuid": "a90c264d-3853-4eef-9a3d-628b2d02d15e",
+    "ws-opts": {
+      "headers": {
+        "Host": "2-M19.sOutH-aFrIca.CCwU.cC",
+        "User-Agent": "Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36"
+      },
+      "path": "/CjBjB9sn5pCvaSwScc"
+    },
+    "xudp": true,
+    "packet-encoding": "xudp",
+    "servername": "2-m19.SOUTh-AFrIcA.cCwU.cc",
+    "endpoint-id": "1c1c3cd1529fa5da",
+    "_id": "1c1c3cd1529fa5da",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "alpn": [
+      "http/1.1"
+    ],
+    "client-fingerprint": "chrome",
+    "encryption": "none",
+    "name": "🇺🇸US_368|293KB/s|A001-260618 01",
+    "network": "ws",
+    "port": 443,
+    "server": "104.21.12.3",
+    "sub_tag": "A001-260618",
+    "tls": true,
+    "type": "vless",
+    "udp": true,
+    "uuid": "a90c264d-3853-4eef-9a3d-628b2d02d15e",
+    "ws-opts": {
+      "headers": {
+        "Host": "6-m19.mExiCo-pOrT.cCwu.cc",
+        "User-Agent": "Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36"
+      },
+      "path": "/CjBjB9sn5pCvaSwScc"
+    },
+    "xudp": true,
+    "packet-encoding": "xudp",
+    "servername": "6-m19.MexiCO-PoRt.CcWU.Cc",
+    "endpoint-id": "a1e524d17d8ab30d",
+    "_id": "a1e524d17d8ab30d",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "cipher": "aes-256-cfb",
+    "name": "🇮🇹IT_6|1.5MB/s|A004-260618 01",
+    "password": "qYEN5HX4JKeVCdEC",
+    "port": 9039,
+    "server": "91.201.65.122",
+    "sub_tag": "A004-260618",
+    "type": "ss",
+    "udp": true,
+    "endpoint-id": "8adf380e05aa7e8f",
+    "_id": "8adf380e05aa7e8f",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "cipher": "chacha20-ietf-poly1305",
+    "name": "🇳🇴NO_2|840KB/s|A004-260618 01",
+    "password": "ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=",
+    "port": 990,
+    "server": "185.213.23.63",
+    "sub_tag": "A004-260618",
+    "type": "ss",
+    "udp": true,
+    "endpoint-id": "ed4db0e99d8f7985",
+    "_id": "ed4db0e99d8f7985",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "🇺🇸US_655|264KB/s|F003-260618 01",
+    "network": "ws",
+    "port": 443,
+    "server": "172.67.178.166",
+    "sub_tag": "F003-260618",
+    "tls": true,
+    "type": "vless",
+    "udp": true,
+    "uuid": "7700ff6d-cefb-4768-a806-ec4f63fe3b38",
+    "ws-opts": {
+      "headers": {
+        "Host": "9-m13.2243867c-5fEe-4B94-803f-85790942D471.kdNS.FR",
+        "User-Agent": "Mozilla/5.0 (Linux; Android 6.0.1; vivo 1603 Build/MMB29M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.83 Mobile Safari/537.36"
+      },
+      "path": "/ED3ZQPu7lqyeDGD58KabZ"
+    },
+    "xudp": true,
+    "packet-encoding": "xudp",
+    "servername": "9-m13.2243867C-5fee-4B94-803F-85790942d471.KdNs.fR",
+    "endpoint-id": "6e5ab2bc92debe3b",
+    "_id": "6e5ab2bc92debe3b",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "encryption": "none",
+    "name": "🇺🇸US_560|703KB/s|A001-260618 01",
+    "network": "ws",
+    "port": 443,
+    "server": "172.67.155.252",
+    "sub_tag": "A001-260618",
+    "tls": true,
+    "type": "vless",
+    "udp": true,
+    "uuid": "1aa96574-c28b-4ee9-855d-ebdbbf1f7e90",
+    "ws-opts": {
+      "headers": {
+        "Host": "2-m13.0ee25773-D3d3-479D-a8ff-3F51d1D20031.kDnS.Fr",
+        "User-Agent": "Mozilla/5.0 (Linux; Android 6.0; vivo 1610 Build/MMB29M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.124 Mobile Safari/537.36"
+      },
+      "path": "/ED3ZQPu7lqyeDGD58KabZ"
+    },
+    "xudp": true,
+    "packet-encoding": "xudp",
+    "servername": "2-m13.0ee25773-D3D3-479D-a8fF-3F51D1D20031.kDNs.fR",
+    "endpoint-id": "3c1015f21381465c",
+    "_id": "3c1015f21381465c",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "🇺🇸US_753|241KB/s|F003-260618 01",
+    "network": "ws",
+    "port": 443,
+    "server": "104.21.39.176",
+    "sub_tag": "F003-260618",
+    "tls": true,
+    "type": "vless",
+    "udp": true,
+    "uuid": "1aa96574-c28b-4ee9-855d-ebdbbf1f7e90",
+    "ws-opts": {
+      "headers": {
+        "Host": "4-M13.AYUtTHAya.KdNS.fr",
+        "User-Agent": "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36"
+      },
+      "path": "/ED3ZQPu7lqyeDGD58KabZ"
+    },
+    "xudp": true,
+    "packet-encoding": "xudp",
+    "servername": "4-M13.aYuttHAYa.KDns.fr",
+    "endpoint-id": "a7213da85490b674",
+    "_id": "a7213da85490b674",
+    "_poolOnly": true,
+    "_source": null,
+    "_sources": [
+      "FreeNodes-clashmeta"
+    ]
+  },
+  {
     "name": "🇿🇦ZA_3|208KB/s|R002-260618 01",
     "password": "aa",
     "port": 89,
@@ -65590,35 +67139,6 @@
     "udp": true,
     "endpoint-id": "435bccc5ef8fa2ff",
     "_id": "435bccc5ef8fa2ff",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "name": "🇺🇸US_690|547KB/s|F003-260618 01",
-    "network": "ws",
-    "port": 443,
-    "server": "172.67.176.60",
-    "sub_tag": "F003-260618",
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "a90c264d-3853-4eef-9a3d-628b2d02d15e",
-    "ws-opts": {
-      "headers": {
-        "Host": "1-m19.sOuTH-AfriCa.ccwu.cC",
-        "User-Agent": "Mozilla/5.0 (Linux; Android 6.0.1; SM-J700M Build/MMB29K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36"
-      },
-      "path": "/CjBjB9sn5pCvaSwScc"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "servername": "1-M19.SoUth-AFRicA.ccwu.CC",
-    "endpoint-id": "d6f4b6f75e1e06a7",
-    "_id": "d6f4b6f75e1e06a7",
     "_poolOnly": true,
     "_source": null,
     "_sources": [
@@ -66351,350 +67871,6 @@
     ]
   },
   {
-    "client-fingerprint": "chrome",
-    "name": "🇫🇷FR_970|2.3MB/s|M003-260806 01",
-    "network": "ws",
-    "password": "humanity",
-    "port": 2053,
-    "server": "82.117.245.125",
-    "skip-cert-verify": false,
-    "sni": "www.calmlunch.com",
-    "sub_tag": "M003-260806",
-    "type": "trojan",
-    "udp": true,
-    "ws-opts": {
-      "headers": {
-        "User-Agent": "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.112 Safari/537.36"
-      },
-      "path": "/assignment"
-    },
-    "endpoint-id": "1f39f41efee0755b",
-    "_id": "1f39f41efee0755b",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "name": "🇭🇰 香港 12",
-    "password": "admin",
-    "port": 8899,
-    "server": "47.242.19.215",
-    "skip-cert-verify": true,
-    "sub_tag": "R002-260618",
-    "type": "socks5",
-    "username": "admin",
-    "udp": true,
-    "endpoint-id": "b7e74aa6e43d409a",
-    "_id": "b7e74aa6e43d409a",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "name": "🇫🇷FR_90|1.3MB/s|T001-260618 01",
-    "network": "ws",
-    "password": "humanity",
-    "port": 8443,
-    "server": "77.221.138.199",
-    "skip-cert-verify": false,
-    "sni": "www.calmlunch.com",
-    "sub_tag": "T001-260618",
-    "type": "trojan",
-    "udp": true,
-    "ws-opts": {
-      "headers": {
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36"
-      },
-      "path": "/assignment"
-    },
-    "endpoint-id": "5d8c4b4fd10f5965",
-    "_id": "5d8c4b4fd10f5965",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "name": "🇫🇷FR_704|1.5MB/s|M003-260806 01",
-    "network": "ws",
-    "password": "humanity",
-    "port": 443,
-    "server": "88.99.189.60",
-    "skip-cert-verify": false,
-    "sni": "www.calmlunch.com",
-    "sub_tag": "M003-260806",
-    "type": "trojan",
-    "udp": true,
-    "ws-opts": {
-      "headers": {
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36"
-      },
-      "path": "/assignment"
-    },
-    "endpoint-id": "da0d3828fc5c0993",
-    "_id": "da0d3828fc5c0993",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "name": "🇫🇷FR_1159|470KB/s|V002-260618 01",
-    "network": "ws",
-    "password": "humanity",
-    "port": 8443,
-    "server": "5.78.92.27",
-    "skip-cert-verify": false,
-    "sni": "www.calmlunch.com",
-    "sub_tag": "V002-260618",
-    "type": "trojan",
-    "udp": true,
-    "ws-opts": {
-      "headers": {
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.109 Safari/537.36"
-      },
-      "path": "/assignment"
-    },
-    "endpoint-id": "ed8a4d88539d33bf",
-    "_id": "ed8a4d88539d33bf",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "encryption": "none",
-    "name": "🇫🇷FR_112|168KB/s|M002-260618 01",
-    "network": "ws",
-    "port": 443,
-    "server": "bab-6.site",
-    "sub_tag": "M002-260618",
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "b585dc5e-55bf-4a8b-913a-27c9ccac05c3",
-    "ws-opts": {
-      "headers": {
-        "Host": "",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.75 Safari/537.36"
-      },
-      "path": "/vws/"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "servername": "bab-6.site",
-    "endpoint-id": "c49fbcd65f8c1519",
-    "_id": "c49fbcd65f8c1519",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "cipher": "aes-256-cfb",
-    "name": "🇱🇹LT_8|1.7MB/s|A004-260618 01",
-    "password": "y9VURyNzJWNRYEGQ",
-    "port": 9008,
-    "server": "195.238.126.20",
-    "sub_tag": "A004-260618",
-    "type": "ss",
-    "udp": true,
-    "endpoint-id": "8efcac690a9a8aaf",
-    "_id": "8efcac690a9a8aaf",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "name": "🇫🇷FR_911|383KB/s|V002-260618 01",
-    "network": "ws",
-    "password": "humanity",
-    "port": 8443,
-    "server": "193.233.87.41",
-    "skip-cert-verify": false,
-    "sni": "www.calmlunch.com",
-    "sub_tag": "V002-260618",
-    "type": "trojan",
-    "udp": true,
-    "ws-opts": {
-      "headers": {
-        "User-Agent": "Mozilla/5.0 (Linux; Android 8.0.0; FIG-LX3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.80 Mobile Safari/537.36"
-      },
-      "path": "/assignment"
-    },
-    "endpoint-id": "5a7d67714389159c",
-    "_id": "5a7d67714389159c",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "name": "🇫🇷FR_969|867KB/s|M003-260806 01",
-    "network": "ws",
-    "password": "humanity",
-    "port": 443,
-    "server": "195.181.244.216",
-    "skip-cert-verify": false,
-    "sni": "www.calmlunch.com",
-    "sub_tag": "M003-260806",
-    "type": "trojan",
-    "udp": true,
-    "ws-opts": {
-      "headers": {
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.57 Safari/537.36"
-      },
-      "path": "/assignment"
-    },
-    "endpoint-id": "67f898f8bd1b73e9",
-    "_id": "67f898f8bd1b73e9",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "name": "🇫🇷FR_1158|1.8MB/s|V002-260618 01",
-    "network": "ws",
-    "password": "humanity",
-    "port": 8443,
-    "server": "212.227.144.37",
-    "skip-cert-verify": false,
-    "sni": "www.calmlunch.com",
-    "sub_tag": "V002-260618",
-    "type": "trojan",
-    "udp": true,
-    "ws-opts": {
-      "headers": {
-        "User-Agent": "Mozilla/5.0 (Linux; Android 6.0.1; SM-G532M Build/MMB29T) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.91 Mobile Safari/537.36"
-      },
-      "path": "/assignment"
-    },
-    "endpoint-id": "c683b48a79923d5b",
-    "_id": "c683b48a79923d5b",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "name": "🇺🇸US_500|154KB/s|R002-260618 01",
-    "password": "e4b72b531a2d10900519",
-    "port": 443,
-    "server": "107.151.238.27",
-    "sni": "6b97ee1b.acsnet.co",
-    "sub_tag": "R002-260618",
-    "tls": true,
-    "type": "http",
-    "username": "testuser1",
-    "udp": true,
-    "endpoint-id": "dd95a5924866d039",
-    "_id": "dd95a5924866d039",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "name": "🇮🇩ID_1|131KB/s|M003-260806 01",
-    "network": "ws",
-    "password": "018b8e7b-7813-4dcb-84a5-3c98f1521e00",
-    "port": 443,
-    "server": "172.67.176.157",
-    "skip-cert-verify": true,
-    "sni": "id1.nathaya.web.id",
-    "sub_tag": "M003-260806",
-    "type": "trojan",
-    "udp": true,
-    "ws-opts": {
-      "headers": {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36"
-      },
-      "path": "/trojan"
-    },
-    "endpoint-id": "dc5db4adc8d96dee",
-    "_id": "dc5db4adc8d96dee",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "name": "🇮🇩ID_3|107KB/s|B007-260618 01",
-    "network": "ws",
-    "password": "018b8e7b-7813-4dcb-84a5-3c98f1521e00",
-    "port": 443,
-    "server": "edu.ruangguru.com",
-    "skip-cert-verify": true,
-    "sni": "id1.nathaya.web.id",
-    "sub_tag": "B007-260618",
-    "type": "trojan",
-    "udp": true,
-    "ws-opts": {
-      "headers": {
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36"
-      },
-      "path": "/trojan"
-    },
-    "endpoint-id": "614d97a033e64c15",
-    "_id": "614d97a033e64c15",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "unsafe",
-    "name": "🇮🇩ID_4|230KB/s|M002-260618 01",
-    "network": "ws",
-    "password": "018b8e7b-7813-4dcb-84a5-3c98f1521e00",
-    "port": 443,
-    "server": "104.21.33.59",
-    "skip-cert-verify": false,
-    "sni": "id1.nathaya.web.id",
-    "sub_tag": "M002-260618",
-    "type": "trojan",
-    "udp": true,
-    "ws-opts": {
-      "headers": {
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.1805 Safari/537.36 MVisionPlayer/1.0.0.0"
-      },
-      "path": "/trojan"
-    },
-    "endpoint-id": "7820f6c88bd1a045",
-    "_id": "7820f6c88bd1a045",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
     "alpn": [
       "h2"
     ],
@@ -66727,188 +67903,6 @@
   },
   {
     "client-fingerprint": "chrome",
-    "name": "🇫🇷FR_80|1.0MB/s|T001-260618 01",
-    "network": "ws",
-    "password": "humanity",
-    "port": 443,
-    "server": "185.255.179.166",
-    "skip-cert-verify": false,
-    "sni": "www.calmlunch.com",
-    "sub_tag": "T001-260618",
-    "type": "trojan",
-    "udp": true,
-    "ws-opts": {
-      "headers": {
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36"
-      },
-      "path": "/assignment"
-    },
-    "endpoint-id": "da52e7267f6851d2",
-    "_id": "da52e7267f6851d2",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "cipher": "aes-256-gcm",
-    "name": "🇨🇦CA_37|153KB/s|B007-260618 01",
-    "password": "kDWvXYZoTBcGkC4",
-    "port": 8882,
-    "server": "51.222.136.236",
-    "sub_tag": "B007-260618",
-    "type": "ss",
-    "udp": true,
-    "endpoint-id": "b64cd82a041471b6",
-    "_id": "b64cd82a041471b6",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "name": "🇫🇷FR_468|852KB/s|T001-260618 01",
-    "network": "ws",
-    "password": "humanity",
-    "port": 443,
-    "server": "45.87.41.18",
-    "skip-cert-verify": false,
-    "sni": "www.calmlunch.com",
-    "sub_tag": "T001-260618",
-    "type": "trojan",
-    "udp": true,
-    "ws-opts": {
-      "headers": {
-        "User-Agent": "Mozilla/5.0 (Linux; Android 7.0; SM-J710F Build/NRD90M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.84 Mobile Safari/537.36"
-      },
-      "path": "/assignment"
-    },
-    "endpoint-id": "0d02858d7cb2a2e6",
-    "_id": "0d02858d7cb2a2e6",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "name": "🇫🇷FR_689|351KB/s|M003-260806 01",
-    "network": "ws",
-    "password": "humanity",
-    "port": 443,
-    "server": "80.77.25.142",
-    "skip-cert-verify": false,
-    "sni": "www.calmlunch.com",
-    "sub_tag": "M003-260806",
-    "type": "trojan",
-    "udp": true,
-    "ws-opts": {
-      "headers": {
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36"
-      },
-      "path": "/assignment"
-    },
-    "endpoint-id": "9d9267c615b93cfd",
-    "_id": "9d9267c615b93cfd",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "name": "🇫🇷FR_208|1.4MB/s|M003-260806 01",
-    "network": "ws",
-    "password": "humanity",
-    "port": 443,
-    "server": "185.36.141.81",
-    "skip-cert-verify": false,
-    "sni": "www.calmlunch.com",
-    "sub_tag": "M003-260806",
-    "type": "trojan",
-    "udp": true,
-    "ws-opts": {
-      "headers": {
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36"
-      },
-      "path": "/assignment"
-    },
-    "endpoint-id": "4a1f059649845450",
-    "_id": "4a1f059649845450",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "encryption": "none",
-    "name": "🇫🇷FR_33|118KB/s 01",
-    "network": "ws",
-    "port": 443,
-    "server": "bab-6.site",
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "b585dc5e-55bf-4a8b-913a-27c9ccac05c3",
-    "ws-opts": {
-      "headers": {
-        "Host": "bab-6.site",
-        "User-Agent": "Mozilla/5.0 (Linux; Android 7.1.1; CPH1723 Build/N6F26Q) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.98 Mobile Safari/537.36"
-      },
-      "path": "/vws/"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "servername": "bab-6.site",
-    "endpoint-id": "088f7c7e0bebed02",
-    "_id": "088f7c7e0bebed02",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "encryption": "none",
-    "name": "🇫🇷FR_1152|581KB/s|B007-260618 01",
-    "network": "ws",
-    "port": 443,
-    "server": "cf.008500.xyz",
-    "sub_tag": "B007-260618",
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "5dc15e15-f285-4a9d-959b-0e4fbdd77b63",
-    "ws-opts": {
-      "headers": {
-        "Host": "powered-by-surena.configfarsi695fd01a94fe7.workers.dev",
-        "User-Agent": "Mozilla/5.0 (Linux; Android 4.4.2; de-de; SAMSUNG GT-I9195 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Version/1.5 Chrome/28.0.1500.94 Mobile Safari/537.36"
-      },
-      "path": "/",
-      "early-data-header-name": "Sec-WebSocket-Protocol",
-      "max-early-data": 2560
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "servername": "powered-by-surena.configfarsi695fd01a94fe7.workers.dev",
-    "endpoint-id": "532aa6f17ce34824",
-    "_id": "532aa6f17ce34824",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
     "name": "🇺🇸US_450|468KB/s|F003-260618 01",
     "network": "ws",
     "port": 443,
@@ -66930,228 +67924,6 @@
     "servername": "4-m13.18f6A5d8-1d18-4649-9D3D-97C46E3aA3eC.KDNS.fr",
     "endpoint-id": "db73ed0bfd130ef7",
     "_id": "db73ed0bfd130ef7",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "name": "🇫🇷FR_1140|957KB/s|A003-260618 01",
-    "network": "ws",
-    "password": "humanity",
-    "port": 443,
-    "server": "185.225.68.232",
-    "skip-cert-verify": false,
-    "sni": "www.calmlunch.com",
-    "sub_tag": "A003-260618",
-    "type": "trojan",
-    "udp": true,
-    "ws-opts": {
-      "headers": {
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36"
-      },
-      "path": "/assignment"
-    },
-    "endpoint-id": "3d0c05bcb7027710",
-    "_id": "3d0c05bcb7027710",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "name": "🇭🇰_HK_中国香港_1",
-    "type": "vmess",
-    "server": "47.244.120.197",
-    "port": 44867,
-    "uuid": "845e6b08-2919-4290-ade0-5dc7dcea59ca",
-    "alterId": 0,
-    "cipher": "auto",
-    "tls": false,
-    "skip-cert-verify": true,
-    "network": "ws",
-    "ws-opts": {
-      "path": "/arki?ed=2048"
-    },
-    "udp": true,
-    "endpoint-id": "0426c64eb4fe6e7d",
-    "_id": "0426c64eb4fe6e7d",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-oneclash"
-    ]
-  },
-  {
-    "name": "🇩🇪_DE_德国_2",
-    "type": "hysteria2",
-    "server": "95.85.252.47",
-    "port": 9443,
-    "password": "e3c3b722-1264-4cdc-a97c-b0a1bb73cd67",
-    "sni": "onecloudstream.com",
-    "skip-cert-verify": true,
-    "udp": true,
-    "endpoint-id": "7f2d496e357cf993",
-    "_id": "7f2d496e357cf993",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-cfmem"
-    ]
-  },
-  {
-    "alterId": "0",
-    "cipher": "auto",
-    "name": "🇸🇬SG_6|893KB/s|C002-260622 01",
-    "network": "raw",
-    "port": 18000,
-    "server": "149.88.23.207",
-    "skip-cert-verify": false,
-    "sub_tag": "C002-260622",
-    "tls": false,
-    "type": "vmess",
-    "udp": true,
-    "uuid": "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe",
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "endpoint-id": "7b3a12470181acf5",
-    "_id": "7b3a12470181acf5",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "name": "🇫🇷FR_120|264KB/s 01",
-    "network": "ws",
-    "password": "humanity",
-    "port": 443,
-    "server": "104.18.152.77",
-    "skip-cert-verify": false,
-    "sni": "www.ignitelimit.com",
-    "type": "trojan",
-    "udp": true,
-    "ws-opts": {
-      "headers": {
-        "User-Agent": "Mozilla/5.0 (Linux; Android 7.0; SM-J710F Build/NRD90M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.84 Mobile Safari/537.36"
-      },
-      "path": "/assignment"
-    },
-    "endpoint-id": "186e8c4842c0ecef",
-    "_id": "186e8c4842c0ecef",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "cipher": "chacha20-ietf-poly1305",
-    "name": "🇳🇱NL_65|2.4MB/s|B007-260618 01",
-    "password": "k1dBOmOB4oqi7Ump37a1bQ",
-    "port": 8080,
-    "server": "193.29.139.132",
-    "sub_tag": "B007-260618",
-    "type": "ss",
-    "udp": true,
-    "endpoint-id": "3bac20308359d733",
-    "_id": "3bac20308359d733",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "cipher": "chacha20-ietf-poly1305",
-    "name": "❓Other_10|288KB/s 01",
-    "password": "k1dBOmOB4oqi7Ump37a1bQ",
-    "port": 8080,
-    "server": "82.38.31.219",
-    "type": "ss",
-    "udp": true,
-    "endpoint-id": "5b63d2226bb6392d",
-    "_id": "5b63d2226bb6392d",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "alterId": "0",
-    "cipher": "auto",
-    "name": "🇨🇦CA_9|1.1MB/s|C002-260622 01",
-    "network": "raw",
-    "port": 18000,
-    "server": "23.162.200.198",
-    "skip-cert-verify": false,
-    "sub_tag": "C002-260622",
-    "tls": false,
-    "type": "vmess",
-    "udp": true,
-    "uuid": "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe",
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "endpoint-id": "1f81fd8359b56a6d",
-    "_id": "1f81fd8359b56a6d",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "name": "🇫🇷FR_458|817KB/s|M003-260806 01",
-    "network": "ws",
-    "password": "humanity",
-    "port": 443,
-    "server": "104.16.174.109",
-    "skip-cert-verify": false,
-    "sni": "www.ignitelimit.com",
-    "sub_tag": "M003-260806",
-    "type": "trojan",
-    "udp": true,
-    "ws-opts": {
-      "headers": {
-        "User-Agent": "Mozilla/5.0 (Linux; Android 7.0; SM-J730GM Build/NRD90M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.111 Mobile Safari/537.36"
-      },
-      "path": "/assignment"
-    },
-    "endpoint-id": "8a37df03f0e6959e",
-    "_id": "8a37df03f0e6959e",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "name": "🇫🇷FR_520|245KB/s|A001-260618 01",
-    "network": "ws",
-    "password": "humanity",
-    "port": 443,
-    "server": "104.18.152.161",
-    "skip-cert-verify": false,
-    "sni": "www.ignitelimit.com",
-    "sub_tag": "A001-260618",
-    "type": "trojan",
-    "udp": true,
-    "ws-opts": {
-      "headers": {
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36"
-      },
-      "path": "/assignment"
-    },
-    "endpoint-id": "021f31345a1f47ec",
-    "_id": "021f31345a1f47ec",
     "_poolOnly": true,
     "_source": null,
     "_sources": [
@@ -67215,179 +67987,6 @@
     ]
   },
   {
-    "name": "🇺🇸US_770|738KB/s|R002-260618 01",
-    "password": "null",
-    "port": 443,
-    "server": "jgwynphotoarts.pro",
-    "skip-cert-verify": true,
-    "sub_tag": "R002-260618",
-    "tls": true,
-    "type": "http",
-    "username": "null",
-    "udp": true,
-    "sni": "jgwynphotoarts.pro",
-    "endpoint-id": "0f142c87e8a8c6c3",
-    "_id": "0f142c87e8a8c6c3",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "name": "🇧🇷BR_23|418KB/s|R002-260618 01",
-    "port": 8666,
-    "server": "45.228.89.114",
-    "sub_tag": "R002-260618",
-    "type": "http",
-    "udp": true,
-    "endpoint-id": "38b77bdfa5563032",
-    "_id": "38b77bdfa5563032",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "name": "🇺🇸US_506|481KB/s|S001-260618 01",
-    "network": "ws",
-    "port": 443,
-    "server": "172.67.204.201",
-    "sub_tag": "S001-260618",
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "ef5c5d5c-08c6-4549-b05e-d1ff29ecc8ba",
-    "ws-opts": {
-      "headers": {
-        "Host": "7-m16.CHiaN-MAi-8.KDNS.Fr",
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.120 Safari/537.36"
-      },
-      "path": "/JRr6VGcSLFc034DC6sDbwyWJLbB"
-    },
-    "servername": "7-m16.CHiaN-MAi-8.KDNs.FR",
-    "endpoint-id": "1977b94291310fdb",
-    "_id": "1977b94291310fdb",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "name": "🇫🇷FR_74|640KB/s|C002-260622 01",
-    "network": "ws",
-    "password": "humanity",
-    "port": 443,
-    "server": "104.16.174.46",
-    "skip-cert-verify": false,
-    "sni": "www.ignitelimit.com",
-    "sub_tag": "C002-260622",
-    "type": "trojan",
-    "udp": true,
-    "ws-opts": {
-      "headers": {
-        "User-Agent": "Mozilla/5.0 (Linux; Android 6.0; CAM-L03 Build/HUAWEICAM-L03) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36"
-      },
-      "path": "/assignment"
-    },
-    "endpoint-id": "65073d3f84b235c0",
-    "_id": "65073d3f84b235c0",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "name": "🇫🇷 法国_KHRAR9",
-    "server": "176.123.162.100",
-    "port": 9880,
-    "type": "vless",
-    "uuid": "5d16ac22-6eea-426f-b778-6f4c2961faef",
-    "tls": true,
-    "tfo": false,
-    "skip-cert-verify": false,
-    "reality-opts": {
-      "public-key": "bnRIb3Er1i-K6NGGByCO9UbGfOvu43ZoiK7ulPd1SzU",
-      "short-id": "aabb"
-    },
-    "servername": "dl.google.com",
-    "client-fingerprint": "firefox",
-    "network": "grpc",
-    "grpc-opts": {
-      "grpc-service-name": "grpc-tunnel"
-    },
-    "udp": true,
-    "endpoint-id": "ecbf10b65561efff",
-    "_id": "ecbf10b65561efff",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashstair"
-    ]
-  },
-  {
-    "alpn": [
-      "h3",
-      "h2",
-      "http/1.1"
-    ],
-    "client-fingerprint": "ios",
-    "name": "🇫🇷FR_1133|417KB/s|B007-260618 01",
-    "network": "ws",
-    "password": "humanity",
-    "port": 443,
-    "server": "45.130.125.158",
-    "skip-cert-verify": false,
-    "sni": "www.ignitelimit.com",
-    "sub_tag": "B007-260618",
-    "type": "trojan",
-    "udp": true,
-    "ws-opts": {
-      "headers": {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36"
-      },
-      "path": "/assignment"
-    },
-    "endpoint-id": "ab7772b557c0c8d6",
-    "_id": "ab7772b557c0c8d6",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "name": "🇫🇷FR_310|245KB/s|B007-260618 01",
-    "network": "ws",
-    "password": "humanity",
-    "port": 443,
-    "server": "render.com",
-    "skip-cert-verify": false,
-    "sni": "www.ignitelimit.com",
-    "sub_tag": "B007-260618",
-    "type": "trojan",
-    "udp": true,
-    "ws-opts": {
-      "headers": {
-        "User-Agent": "Mozilla/5.0 (Linux; Android 7.0; SM-G610M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.80 Mobile Safari/537.36"
-      },
-      "path": "/assignment"
-    },
-    "endpoint-id": "9a652c16555ed539",
-    "_id": "9a652c16555ed539",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
     "client-fingerprint": "chrome",
     "name": "🇺🇸US_442|535KB/s|F003-260618 01",
     "network": "ws",
@@ -67439,35 +68038,6 @@
     "servername": "1-StATiC-iMg-m13.xdc.CcWu.Cc",
     "endpoint-id": "ecb9e83980c7c81b",
     "_id": "ecb9e83980c7c81b",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "name": "🇺🇸US_456|765KB/s|F003-260618 01",
-    "network": "ws",
-    "port": 443,
-    "server": "104.21.69.218",
-    "sub_tag": "F003-260618",
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "7e26fd8f-d75a-473d-84ba-9f4e3f47d086",
-    "ws-opts": {
-      "headers": {
-        "Host": "8-m20.cd6b506e-5a88-4c5d-9e11-906f39613c04.kdns.fr",
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36"
-      },
-      "path": "/8qMLgNapWf6SBxo8fhQlVPYO"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "servername": "8-m20.cd6b506e-5a88-4c5d-9e11-906f39613c04.kdns.fr",
-    "endpoint-id": "e3068171dc3bbade",
-    "_id": "e3068171dc3bbade",
     "_poolOnly": true,
     "_source": null,
     "_sources": [
@@ -67913,64 +68483,6 @@
   },
   {
     "client-fingerprint": "chrome",
-    "name": "🇺🇸US_486|706KB/s|F003-260618 01",
-    "network": "ws",
-    "port": 443,
-    "server": "172.67.140.11",
-    "sub_tag": "F003-260618",
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "a90c264d-3853-4eef-9a3d-628b2d02d15e",
-    "ws-opts": {
-      "headers": {
-        "Host": "7-m19.sUDAN-pArk.CCwu.CC",
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36"
-      },
-      "path": "/CjBjB9sn5pCvaSwScc"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "servername": "7-m19.suDan-pARK.CcwU.cc",
-    "endpoint-id": "76b6d1aff946ba74",
-    "_id": "76b6d1aff946ba74",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "name": "🇺🇸US_553|453KB/s|F003-260618 01",
-    "network": "ws",
-    "port": 443,
-    "server": "104.21.53.73",
-    "sub_tag": "F003-260618",
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "a90c264d-3853-4eef-9a3d-628b2d02d15e",
-    "ws-opts": {
-      "headers": {
-        "Host": "9-M19.SOUtH-aFrica-LINE.CCwu.Cc",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36"
-      },
-      "path": "/CjBjB9sn5pCvaSwScc"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "servername": "9-M19.SOUtH-aFrICA-LINe.Ccwu.cC",
-    "endpoint-id": "cbc012824d2c24e5",
-    "_id": "cbc012824d2c24e5",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
     "name": "🇺🇸US_734|468KB/s|F003-260618 01",
     "network": "ws",
     "port": 443,
@@ -68030,84 +68542,6 @@
   },
   {
     "client-fingerprint": "chrome",
-    "name": "🇺🇸US_543|1.1MB/s|F003-260618 01",
-    "network": "ws",
-    "port": 443,
-    "server": "172.67.212.14",
-    "sub_tag": "F003-260618",
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "a90c264d-3853-4eef-9a3d-628b2d02d15e",
-    "ws-opts": {
-      "headers": {
-        "Host": "0-M19.SoUtH-afrICA-ONline.CcWu.CC",
-        "User-Agent": "Mozilla/5.0 (Linux; Android 7.0; TRT-LX3 Build/HUAWEITRT-LX3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36"
-      },
-      "path": "/CjBjB9sn5pCvaSwScc"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "servername": "0-m19.souTH-AFRiCA-oNlInE.Ccwu.cc",
-    "endpoint-id": "777fe75d38c2d686",
-    "_id": "777fe75d38c2d686",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "name": "🇺🇸US_620|740KB/s|F003-260618 01",
-    "network": "ws",
-    "port": 443,
-    "server": "104.21.39.137",
-    "sub_tag": "F003-260618",
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "a90c264d-3853-4eef-9a3d-628b2d02d15e",
-    "ws-opts": {
-      "headers": {
-        "Host": "5-M19.IKL.cCWU.cc",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.67 Safari/537.36"
-      },
-      "path": "/CjBjB9sn5pCvaSwScc"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "servername": "5-M19.ikL.Ccwu.cc",
-    "endpoint-id": "fe36c0fa42575781",
-    "_id": "fe36c0fa42575781",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "name": "🇭🇰 香港 04-f60ec6cb9f71d37f",
-    "network": "tcp",
-    "password": "BxceQaOe",
-    "port": 443,
-    "server": "119.246.1.143",
-    "skip-cert-verify": true,
-    "sni": "t.me%2fripaojiedian",
-    "sub_tag": "A004-260618",
-    "type": "trojan",
-    "udp": true,
-    "endpoint-id": "f60ec6cb9f71d37f",
-    "_id": "f60ec6cb9f71d37f",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
     "name": "🇺🇸US_505|76KB/s|F003-260618 01",
     "network": "ws",
     "port": 443,
@@ -68129,21 +68563,6 @@
     "servername": "1-M16.AyUtTHAYA2030.KdNS.fR",
     "endpoint-id": "9c28e6f6e93cc78b",
     "_id": "9c28e6f6e93cc78b",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "name": "🇹🇭TH_4|657KB/s|R002-260618 01",
-    "port": 8888,
-    "server": "47.81.56.193",
-    "sub_tag": "R002-260618",
-    "type": "http",
-    "udp": true,
-    "endpoint-id": "8693a4223a37c17b",
-    "_id": "8693a4223a37c17b",
     "_poolOnly": true,
     "_source": null,
     "_sources": [
@@ -68207,2006 +68626,20 @@
     ]
   },
   {
-    "client-fingerprint": "chrome",
-    "name": "🇮🇳IN_8|658KB/s|A004-260618 01",
-    "network": "tcp",
-    "password": "M7v%w11Se*",
-    "port": 443,
-    "server": "hyfuuf6.wsone.icu",
-    "skip-cert-verify": false,
-    "sub_tag": "A004-260618",
-    "type": "trojan",
-    "udp": true,
-    "sni": "hyfuuf6.wsone.icu",
-    "endpoint-id": "8628f18113407a00",
-    "_id": "8628f18113407a00",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "name": "🇳🇱NL_205|2.2MB/s|R002-260618 01",
-    "port": 443,
-    "server": "157.22.183.72",
-    "sub_tag": "R002-260618",
-    "tls": true,
-    "type": "http",
-    "udp": true,
-    "endpoint-id": "8e6eb65d2c1a985e",
-    "_id": "8e6eb65d2c1a985e",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "alterId": 0,
-    "cipher": "auto",
-    "name": "🇭🇰 香港 11",
-    "network": "ws",
-    "port": 443,
-    "server": "www.shopify.com",
-    "skip-cert-verify": false,
-    "sub_tag": "F003-260618",
-    "tls": true,
-    "type": "vmess",
-    "udp": true,
-    "uuid": "3aa71202-a099-49c1-99fc-6662f3335369",
-    "ws-opts": {
-      "headers": {
-        "Host": "yoga-suggesting-recording-calls.trycloudflare.com"
-      },
-      "path": "/3aa71202-a099-49c1-99fc-6662f3335369-vm"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "servername": "yoga-suggesting-recording-calls.trycloudflare.com",
-    "endpoint-id": "81773e4651c00829",
-    "_id": "81773e4651c00829",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "name": "🇫🇷FR_542|606KB/s|A003-260618 01",
-    "network": "ws",
-    "password": "humanity",
-    "port": 2053,
-    "server": "185.114.72.31",
-    "skip-cert-verify": false,
-    "sni": "www.calmlunch.com",
-    "sub_tag": "A003-260618",
-    "type": "trojan",
-    "udp": true,
-    "ws-opts": {
-      "headers": {
-        "User-Agent": "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.112 Safari/537.36"
-      },
-      "path": "/assignment"
-    },
-    "endpoint-id": "0fe57824d9a93c3d",
-    "_id": "0fe57824d9a93c3d",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "encryption": "none",
-    "name": "🇧🇷BR_21|226KB/s|M002-260618 01",
-    "network": "ws",
-    "port": 2087,
-    "server": "189.74.97.43",
-    "sub_tag": "M002-260618",
-    "type": "vless",
-    "udp": true,
-    "uuid": "10f7eb2d-d96d-4778-9d36-aff11e9d6629",
-    "ws-opts": {
-      "headers": {
-        "Host": "",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36"
-      },
-      "path": "/73b6faea2d00"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "endpoint-id": "45ea61edd6eeac52",
-    "_id": "45ea61edd6eeac52",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "name": "🇫🇷FR_837|325KB/s|F003-260618 01",
-    "network": "ws",
-    "port": 443,
-    "server": "81.95.4.189",
-    "sub_tag": "F003-260618",
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "b585dc5e-55bf-4a8b-913a-27c9ccac05c3",
-    "ws-opts": {
-      "headers": {
-        "Host": "bab-6.site",
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.67 Safari/537.36"
-      },
-      "path": "/vws/"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "servername": "bab-6.site",
-    "endpoint-id": "1dfafde9831be334",
-    "_id": "1dfafde9831be334",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "name": "🇫🇷FR_146|1.6MB/s|M003-260806 01",
-    "network": "ws",
-    "password": "humanity",
-    "port": 443,
-    "server": "193.239.160.134",
-    "skip-cert-verify": false,
-    "sni": "www.calmlunch.com",
-    "sub_tag": "M003-260806",
-    "type": "trojan",
-    "udp": true,
-    "ws-opts": {
-      "headers": {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36"
-      },
-      "path": "/assignment"
-    },
-    "endpoint-id": "70ce24a5bc0344b5",
-    "_id": "70ce24a5bc0344b5",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "name": "🇫🇷FR_1009|119KB/s|M003-260806 01",
-    "network": "ws",
-    "password": "humanity",
-    "port": 2053,
-    "server": "91.245.225.79",
-    "skip-cert-verify": false,
-    "sni": "www.calmlunch.com",
-    "sub_tag": "M003-260806",
-    "type": "trojan",
-    "udp": true,
-    "ws-opts": {
-      "headers": {
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36"
-      },
-      "path": "/assignment"
-    },
-    "endpoint-id": "1c311aa00cfd8417",
-    "_id": "1c311aa00cfd8417",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "alpn": [
-      ""
-    ],
-    "alterId": "0",
-    "cipher": "auto",
-    "name": "🇪🇸ES_19|406KB/s|B007-260618 01",
-    "network": "tcp",
-    "port": 22324,
-    "server": "85.90.217.42",
-    "skip-cert-verify": false,
-    "sub_tag": "B007-260618",
-    "tls": false,
-    "type": "vmess",
-    "udp": true,
-    "uuid": "04621bae-ab36-11ec-b909-0242ac120002",
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "endpoint-id": "6707243d98557c26",
-    "_id": "6707243d98557c26",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "name": "🇳🇱NL_248|1.7MB/s|M003-260806 01",
-    "network": "ws",
-    "password": "humanity",
-    "port": 443,
-    "server": "78.47.146.151",
-    "skip-cert-verify": false,
-    "sni": "www.pleadcourt.org",
-    "sub_tag": "M003-260806",
-    "type": "trojan",
-    "udp": true,
-    "ws-opts": {
-      "headers": {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36"
-      },
-      "path": "/assignment"
-    },
-    "endpoint-id": "79c05b8b0abedaff",
-    "_id": "79c05b8b0abedaff",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "cipher": "aes-256-gcm",
-    "name": "🇨🇦CA_24|1.2MB/s|A004-260618 01",
-    "password": "zDNVedRFPQexG9v",
-    "port": 445,
-    "server": "51.222.12.127",
-    "sub_tag": "A004-260618",
-    "type": "ss",
-    "udp": true,
-    "endpoint-id": "5b7ad390e5511dd2",
-    "_id": "5b7ad390e5511dd2",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "name": "🇫🇷FR_1763|808KB/s|R002-260618 01",
-    "network": "ws",
-    "password": "trojan",
-    "port": 8443,
-    "server": "104.18.12.229",
-    "sni": "longwanghen.pages.dev",
-    "sub_tag": "R002-260618",
-    "type": "trojan",
-    "ws-opts": {
-      "headers": {
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36"
-      },
-      "path": "/"
-    },
-    "udp": true,
-    "endpoint-id": "5ededbaa33b83313",
-    "_id": "5ededbaa33b83313",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "alpn": [
-      "http/1.1"
-    ],
-    "client-fingerprint": "chrome",
-    "encryption": "none",
-    "name": "🇺🇸US_462|227KB/s|A001-260618 01",
-    "network": "ws",
-    "port": 443,
-    "server": "172.67.148.211",
-    "sub_tag": "A001-260618",
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "a90c264d-3853-4eef-9a3d-628b2d02d15e",
-    "ws-opts": {
-      "headers": {
-        "Host": "3-M19.SOUth-aFriCA-CHaNnel.CCWu.Cc",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
-      },
-      "path": "/CjBjB9sn5pCvaSwScc"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "servername": "3-M19.sOutH-AfRiCA-CHANNEL.ccwU.cc",
-    "endpoint-id": "c8381c6c25d01431",
-    "_id": "c8381c6c25d01431",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "name": "🇺🇸US_736|357KB/s|F003-260618 01",
-    "network": "ws",
-    "port": 443,
-    "server": "104.21.16.74",
-    "sub_tag": "F003-260618",
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "7700ff6d-cefb-4768-a806-ec4f63fe3b38",
-    "ws-opts": {
-      "headers": {
-        "Host": "0-m13.378Bb7ff-11CF-4dAD-B89E-72538AC75e29.KDNS.Fr",
-        "User-Agent": "Mozilla/5.0 (Windows NT 5.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36"
-      },
-      "path": "/ED3ZQPu7lqyeDGD58KabZ"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "servername": "0-m13.378Bb7Ff-11cf-4daD-b89E-72538aC75e29.Kdns.fr",
-    "endpoint-id": "5b78e9ec1c64cfa8",
-    "_id": "5b78e9ec1c64cfa8",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "encryption": "none",
-    "name": "🇯🇵JP_15|673KB/s|C002-260622 01",
-    "network": "tcp",
-    "port": 47878,
-    "server": "152.69.195.67",
-    "sub_tag": "C002-260622",
-    "type": "vless",
-    "udp": true,
-    "uuid": "eb8613e3-8393-4cff-a3ad-6501fd4adc63",
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "servername": "152.69.195.67",
-    "endpoint-id": "80fd228b26dd48d3",
-    "_id": "80fd228b26dd48d3",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "name": "🇺🇸US_343|586KB/s|F003-260618 01",
-    "network": "ws",
-    "port": 443,
-    "server": "104.21.91.76",
-    "sub_tag": "F003-260618",
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "a90c264d-3853-4eef-9a3d-628b2d02d15e",
-    "ws-opts": {
-      "headers": {
-        "Host": "3-m19.soUtH-afRICa-OnLiNe.cCWu.Cc",
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36"
-      },
-      "path": "/CjBjB9sn5pCvaSwScc"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "servername": "3-M19.sOUTh-afRIca-OnlInE.CCwU.cC",
-    "endpoint-id": "b5ef3622653c5867",
-    "_id": "b5ef3622653c5867",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "name": "🇫🇷FR_688|1.3MB/s|M003-260806 01",
-    "network": "ws",
-    "password": "humanity",
-    "port": 443,
-    "server": "191.96.94.226",
-    "skip-cert-verify": false,
-    "sni": "www.calmlunch.com",
-    "sub_tag": "M003-260806",
-    "type": "trojan",
-    "udp": true,
-    "ws-opts": {
-      "headers": {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36"
-      },
-      "path": "/assignment"
-    },
-    "endpoint-id": "f11cc4bab2290e59",
-    "_id": "f11cc4bab2290e59",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "encryption": "none",
-    "name": "🇫🇷FR_197|207KB/s|C002-260622 01",
-    "network": "ws",
-    "port": 8880,
-    "server": "log.bpminecraft.com",
-    "sub_tag": "C002-260622",
-    "type": "vless",
-    "udp": true,
-    "uuid": "d702b5e4-412d-4859-a528-3fc0b91f6fc0",
-    "ws-opts": {
-      "headers": {
-        "Host": "wild-math-3ef2.439.workers.dev",
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36"
-      },
-      "path": "/pyip=ProxyIP.SG.CMLiussss.net"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "endpoint-id": "f2ea33a72ed9129e",
-    "_id": "f2ea33a72ed9129e",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "name": "🇫🇷FR_202|426KB/s|C002-260622 01",
-    "network": "ws",
-    "port": 8880,
-    "server": "172.64.88.251",
-    "sub_tag": "C002-260622",
-    "type": "vless",
-    "udp": true,
-    "uuid": "d702b5e4-412d-4859-a528-3fc0b91f6fc0",
-    "ws-opts": {
-      "headers": {
-        "Host": "wild-math-3ef2.439.workers.dev",
-        "User-Agent": "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.112 Safari/537.36"
-      },
-      "path": "/pyip=ProxyIP.SG.CMLiussss.net"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "endpoint-id": "a656485cbca7d84a",
-    "_id": "a656485cbca7d84a",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "encryption": "none",
-    "name": "🇫🇷FR_322|486KB/s|M003-260806 01",
-    "network": "ws",
-    "port": 443,
-    "server": "172.64.156.60",
-    "sub_tag": "M003-260806",
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "5dc15e15-f285-4a9d-959b-0e4fbdd77b63",
-    "ws-opts": {
-      "headers": {
-        "Host": "powered-by-surena.configfarsi6982dd6e0355e.workers.dev",
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36"
-      },
-      "path": "/"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "servername": "powered-by-surena.configfarsi6982dd6e0355e.workers.dev",
-    "endpoint-id": "02a9085df2c78c3b",
-    "_id": "02a9085df2c78c3b",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "unsafe",
-    "encryption": "none",
-    "name": "🇫🇷FR_652|340KB/s|M003-260806 01",
-    "network": "ws",
-    "port": 443,
-    "server": "188.114.97.6",
-    "sub_tag": "M003-260806",
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "d702b5e4-412d-4859-a528-3fc0b91f6fc0",
-    "ws-opts": {
-      "headers": {
-        "Host": "wild-math-3ef2.439.workers.dev",
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36"
-      },
-      "path": "/pyip=ProxyIP.SG.CMLiussss.net"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "servername": "wild-math-3ef2.439.workers.dev",
-    "endpoint-id": "854e38cc31414c95",
-    "_id": "854e38cc31414c95",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "alpn": [
-      "http/1.1"
-    ],
-    "client-fingerprint": "chrome",
-    "name": "🇫🇷FR_674|1.1MB/s|M003-260806 01",
-    "network": "ws",
-    "password": "letiranbreath-x@^f",
-    "port": 2096,
-    "server": "0xs3ced9.zzzqwdbwq.workers.dev",
-    "skip-cert-verify": false,
-    "sni": "0XS3Ced9.zZzqwdBWq.wOrKErS.DEv",
-    "sub_tag": "M003-260806",
-    "type": "trojan",
-    "udp": true,
-    "ws-opts": {
-      "headers": {
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36"
-      },
-      "path": "/eyJqdW5rIjoiYmx1NXI3dml6NjB3NW9nZyIsInByb3RvY29sIjoidHIiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjEwNC4yOC4yNTUuNzQiXX0=",
-      "early-data-header-name": "Sec-WebSocket-Protocol",
-      "max-early-data": 2560
-    },
-    "endpoint-id": "31efe570a1a2531e",
-    "_id": "31efe570a1a2531e",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "alpn": [
-      "http/1.1"
-    ],
-    "client-fingerprint": "chrome",
-    "name": "🇫🇷FR_690|512KB/s|M003-260806 01",
-    "network": "ws",
-    "password": "letiranbreath-x@^f",
-    "port": 2053,
-    "server": "0xs3ced9.zzzqwdbwq.workers.dev",
-    "skip-cert-verify": false,
-    "sni": "0XS3Ced9.zZzqwdBWq.wOrKErS.DEv",
-    "sub_tag": "M003-260806",
-    "type": "trojan",
-    "udp": true,
-    "ws-opts": {
-      "headers": {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36"
-      },
-      "path": "/eyJqdW5rIjoiYmx1NXI3dml6NjB3NW9nZyIsInByb3RvY29sIjoidHIiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjEwNC4yOC4yNTUuNzQiXX0=",
-      "early-data-header-name": "Sec-WebSocket-Protocol",
-      "max-early-data": 2560
-    },
-    "endpoint-id": "df3bac903df7910c",
-    "_id": "df3bac903df7910c",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "encryption": "none",
-    "name": "🇫🇷FR_1080|379KB/s|M003-260806 01",
-    "network": "ws",
-    "port": 8880,
-    "server": "104.21.12.116",
-    "sub_tag": "M003-260806",
-    "type": "vless",
-    "udp": true,
-    "uuid": "d702b5e4-412d-4859-a528-3fc0b91f6fc0",
-    "ws-opts": {
-      "headers": {
-        "Host": "wild-math-3ef2.439.workers.dev",
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36"
-      },
-      "path": "/pyip=ProxyIP.SG.CMLiussss.net"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "endpoint-id": "1143c9df1b09ec77",
-    "_id": "1143c9df1b09ec77",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "alpn": [
-      "http/1.1"
-    ],
-    "client-fingerprint": "chrome",
-    "name": "🇫🇷FR_1145|417KB/s|M003-260806 01",
-    "network": "ws",
-    "password": "letiranbreath-x@^f",
-    "port": 443,
-    "server": "0xs3ced9.zzzqwdbwq.workers.dev",
-    "skip-cert-verify": false,
-    "sni": "0XS3Ced9.zZzqwdBWq.wOrKErS.DEv",
-    "sub_tag": "M003-260806",
-    "type": "trojan",
-    "udp": true,
-    "ws-opts": {
-      "headers": {
-        "User-Agent": "Mozilla/5.0 (Linux; Android 5.1.1; SM-J111M Build/LMY47V) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36"
-      },
-      "path": "/eyJqdW5rIjoiYmx1NXI3dml6NjB3NW9nZyIsInByb3RvY29sIjoidHIiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjEwNC4yOC4yNTUuNzQiXX0=",
-      "early-data-header-name": "Sec-WebSocket-Protocol",
-      "max-early-data": 2560
-    },
-    "endpoint-id": "ecd779d71c8ac5f1",
-    "_id": "ecd779d71c8ac5f1",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "encryption": "none",
-    "name": "🇫🇷FR_1|601KB/s|C002-260622 01",
-    "network": "ws",
-    "port": 8880,
-    "server": "104.16.107.139",
-    "sub_tag": "C002-260622",
-    "type": "vless",
-    "udp": true,
-    "uuid": "486ebf01-0b45-4c38-9ef6-198aa0f9d2c3",
-    "ws-opts": {
-      "headers": {
-        "Host": "quiet-feather-19f3.410-a69.workers.dev",
-        "User-Agent": "Mozilla/5.0 (Linux; Android 7.0; Redmi Note 4 Build/NRD90M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.111 Mobile Safari/537.36"
-      },
-      "path": "/pyip=ProxyIP.SG.CMLiussss.net"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "endpoint-id": "79eeb8efa5156613",
-    "_id": "79eeb8efa5156613",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "encryption": "none",
-    "name": "🇫🇷FR_45|513KB/s 01",
-    "network": "ws",
-    "port": 8880,
-    "server": "log.bpminecraft.com",
-    "type": "vless",
-    "udp": true,
-    "uuid": "d25ba473-5b05-48bb-b048-e82844e2ae39",
-    "ws-opts": {
-      "headers": {
-        "Host": "misty-recipe-be74.271.workers.dev",
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36"
-      },
-      "path": "/pyip=ProxyIP.JP.CMLiussss.net"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "endpoint-id": "94dd6302ac50d07a",
-    "_id": "94dd6302ac50d07a",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "encryption": "none",
-    "name": "🇫🇷FR_99|550KB/s|C002-260622 01",
-    "network": "ws",
-    "port": 8880,
-    "server": "www.baipiao.eu.org",
-    "sub_tag": "C002-260622",
-    "type": "vless",
-    "udp": true,
-    "uuid": "ea29d6f1-3567-4d45-b8c2-e42f162caef4",
-    "ws-opts": {
-      "headers": {
-        "Host": "mute-dawn-f27b.375.workers.dev",
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36"
-      },
-      "path": "/pyip=ProxyIP.JP.CMLiussss.net"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "endpoint-id": "280fa61e247ff26c",
-    "_id": "280fa61e247ff26c",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "encryption": "none",
-    "name": "🇫🇷FR_147|414KB/s 01",
-    "network": "ws",
-    "port": 80,
-    "server": "104.25.118.238",
-    "type": "vless",
-    "udp": true,
-    "uuid": "6cd78ec7-b715-471c-92b4-0c3842caea4b",
-    "ws-opts": {
-      "early-data-header-name": "Sec-WebSocket-Protocol",
-      "headers": {
-        "Host": "billowing-cloud-d339.sospanel.workers.dev",
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36"
-      },
-      "max-early-data": 2560,
-      "path": "/eyJqdW5rIjoiOFRwTjlPWHgiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByZWZpeCIsInBhbmVsSVBzIjpbIlsyNjAyOmZjNTk6YjA6NjQ6Ol0iXX0="
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "endpoint-id": "ec237e4359e4bd08",
-    "_id": "ec237e4359e4bd08",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "name": "🇫🇷FR_149|799KB/s 01",
-    "network": "ws",
-    "port": 80,
-    "server": "104.18.109.147",
-    "type": "vless",
-    "udp": true,
-    "uuid": "c29d39bd-92a4-45db-bb61-56013998617c",
-    "ws-opts": {
-      "headers": {
-        "Host": "www.speedtest.net.www.1google.com.bing.com.visa.com.tls.xv98.ip-ddns.com",
-        "User-Agent": "Mozilla/5.0 (Linux; Android 6.0; CAM-L21 Build/HUAWEICAM-L21; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/62.0.3202.84 Mobile Safari/537.36"
-      },
-      "path": "/Telegram-XV2ry2",
-      "early-data-header-name": "Sec-WebSocket-Protocol",
-      "max-early-data": 2048
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "endpoint-id": "059ece6a17d74c1f",
-    "_id": "059ece6a17d74c1f",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "encryption": "none",
-    "name": "🇫🇷FR_150|874KB/s 01",
-    "network": "ws",
-    "port": 443,
-    "server": "104.18.0.1",
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "3ccba794-1c6d-48a8-acf2-f5caf0e69d86",
-    "ws-opts": {
-      "headers": {
-        "Host": "all.speedtest03.ccwu.cc",
-        "User-Agent": "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) AppleWebKit/533.4 (KHTML, like Gecko) Chrome/5.0.375.99 Safari/533.4"
-      },
-      "path": "/"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "servername": "all.speedtest03.ccwu.cc",
-    "endpoint-id": "cfa6cd67bc07e17a",
-    "_id": "cfa6cd67bc07e17a",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "encryption": "none",
-    "name": "🇫🇷FR_168|421KB/s|B007-260618 01",
-    "network": "ws",
-    "port": 8880,
-    "server": "104.16.107.139",
-    "sub_tag": "B007-260618",
-    "type": "vless",
-    "udp": true,
-    "uuid": "56eba3f8-94f8-48f2-920b-d79bb042d0bb",
-    "ws-opts": {
-      "headers": {
-        "Host": "lingering-glade-21ce.61-b6f.workers.dev",
-        "User-Agent": "Mozilla/5.0 (Linux; Android 6.0; MYA-L22 Build/HUAWEIMYA-L22) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.84 Mobile Safari/537.36"
-      },
-      "path": "/pyip=ProxyIP.SG.CMLiussss.net"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "endpoint-id": "4ee81ec319440434",
-    "_id": "4ee81ec319440434",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "encryption": "none",
-    "name": "🇫🇷FR_208|1.0MB/s|X001-260618 01",
-    "network": "ws",
-    "port": 80,
-    "server": "104.25.122.72",
-    "sub_tag": "X001-260618",
-    "type": "vless",
-    "udp": true,
-    "uuid": "6cd78ec7-b715-471c-92b4-0c3842caea4b",
-    "ws-opts": {
-      "early-data-header-name": "Sec-WebSocket-Protocol",
-      "headers": {
-        "Host": "billowing-cloud-d339.sospanel.workers.dev",
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36"
-      },
-      "max-early-data": 2560,
-      "path": "/eyJqdW5rIjoiVXRIT2UwaDUiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByZWZpeCIsInBhbmVsSVBzIjpbIlsyNjAyOmZjNTk6YjA6NjQ6Ol0iXX0="
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "endpoint-id": "874daca33ca02eb2",
-    "_id": "874daca33ca02eb2",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "encryption": "none",
-    "name": "🇫🇷FR_469|321KB/s 01",
-    "network": "ws",
-    "port": 8880,
-    "server": "skk.moe",
-    "type": "vless",
-    "udp": true,
-    "uuid": "a8985e6a-f338-4b44-9a41-f94495603a96",
-    "ws-opts": {
-      "headers": {
-        "Host": "dawn-cell-346f.238-df6.workers.dev",
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36"
-      },
-      "path": "/pyip=ProxyIP.JP.CMLiussss.net"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "endpoint-id": "7481018759c89283",
-    "_id": "7481018759c89283",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "name": "🇫🇷FR_551|432KB/s|C002-260622 01",
-    "network": "ws",
-    "port": 8880,
-    "server": "www.baipiao.eu.org",
-    "sub_tag": "C002-260622",
-    "type": "vless",
-    "udp": true,
-    "uuid": "37fce9ce-9fec-4f30-89a0-fbb1f6f33b3c",
-    "ws-opts": {
-      "headers": {
-        "Host": "white-night-afee.419-acc.workers.dev",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.167 Safari/537.36"
-      },
-      "path": "/pyip=ProxyIP.US.CMLiussss.net"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "endpoint-id": "875efbe6cc9cf685",
-    "_id": "875efbe6cc9cf685",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "name": "🇫🇷FR_558|1.2MB/s|C002-260622 01",
-    "network": "ws",
-    "port": 8880,
-    "server": "104.16.107.139",
-    "sub_tag": "C002-260622",
-    "type": "vless",
-    "udp": true,
-    "uuid": "37fce9ce-9fec-4f30-89a0-fbb1f6f33b3c",
-    "ws-opts": {
-      "headers": {
-        "Host": "white-night-afee.419-acc.workers.dev",
-        "User-Agent": "Mozilla/5.0 (Linux; Android 7.0; SM-J730GM Build/NRD90M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.111 Mobile Safari/537.36"
-      },
-      "path": "/pyip=ProxyIP.US.CMLiussss.net"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "endpoint-id": "6e30d32813eaf29e",
-    "_id": "6e30d32813eaf29e",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "name": "🇫🇷FR_563|555KB/s 01",
-    "network": "ws",
-    "port": 443,
-    "server": "208.103.161.5",
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "d042a74a-c305-4eec-a89f-39a348022c92",
-    "ws-opts": {
-      "headers": {
-        "Host": "dry-butterfly-8eb9.tmpgnacio83.workers.dev",
-        "User-Agent": "Mozilla/5.0 (Linux; Android 4.4.2; SM-G7102 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.84 Mobile Safari/537.36"
-      },
-      "path": "/"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "servername": "dry-butterfly-8eb9.tmpgnacio83.workers.dev",
-    "endpoint-id": "00698ad8c3891967",
-    "_id": "00698ad8c3891967",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "name": "🇫🇷FR_568|721KB/s|C002-260622 01",
-    "network": "ws",
-    "port": 8880,
-    "server": "172.64.94.251",
-    "sub_tag": "C002-260622",
-    "type": "vless",
-    "udp": true,
-    "uuid": "f3a30870-eb2e-4ad7-85cb-c0e65d061d5b",
-    "ws-opts": {
-      "headers": {
-        "Host": "shrill-mouse-dacd.391.workers.dev",
-        "User-Agent": "Mozilla/5.0 (Linux; Android 5.1; A37f Build/LMY47V) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.93 Mobile Safari/537.36"
-      },
-      "path": "/pyip=ProxyIP.US.CMLiussss.net"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "endpoint-id": "7a63981129c47c6a",
-    "_id": "7a63981129c47c6a",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "encryption": "none",
-    "name": "🇫🇷FR_571|332KB/s|C002-260622 01",
-    "network": "ws",
-    "port": 8880,
-    "server": "104.24.152.211",
-    "sub_tag": "C002-260622",
-    "type": "vless",
-    "udp": true,
-    "uuid": "34ce8760-24ed-41e7-a1f5-aa6c2660a53c",
-    "ws-opts": {
-      "headers": {
-        "Host": "quiet-frost-ac61.333-07d.workers.dev",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36"
-      },
-      "path": "/pyip=ProxyIP.SG.CMLiussss.net"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "endpoint-id": "9744a88aa04eef9f",
-    "_id": "9744a88aa04eef9f",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "name": "🇫🇷FR_575|687KB/s|A001-260618 01",
-    "network": "ws",
-    "port": 8880,
-    "server": "104.16.8.66",
-    "sub_tag": "A001-260618",
-    "type": "vless",
-    "udp": true,
-    "uuid": "2145ee90-d933-4975-b4fe-8fa5365937f0",
-    "ws-opts": {
-      "headers": {
-        "Host": "long-breeze-5552.250-271.workers.dev",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36"
-      },
-      "path": "/pyip=ProxyIP.US.CMLiussss.net"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "endpoint-id": "252dac781a126c79",
-    "_id": "252dac781a126c79",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "name": "🇫🇷FR_580|406KB/s|V006-260618 01",
-    "network": "ws",
-    "port": 8880,
-    "server": "www.gov.ua",
-    "sub_tag": "V006-260618",
-    "type": "vless",
-    "udp": true,
-    "uuid": "34ce8760-24ed-41e7-a1f5-aa6c2660a53c",
-    "ws-opts": {
-      "headers": {
-        "Host": "quiet-frost-ac61.333-07d.workers.dev",
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.89 Safari/537.36"
-      },
-      "path": "/pyip=ProxyIP.SG.CMLiussss.net"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "servername": "www.gov.ua",
-    "endpoint-id": "3d6bfa5fb97819e2",
-    "_id": "3d6bfa5fb97819e2",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "name": "🇫🇷FR_588|437KB/s|T001-260618 01",
-    "network": "ws",
-    "port": 443,
-    "server": "cf-socks.caoyuwu.eu.org",
-    "sub_tag": "T001-260618",
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "9cdcbaf0-d244-4f37-b227-90166e43f5b5",
-    "ws-opts": {
-      "headers": {
-        "Host": "cf-socks.caoyuwu.eu.org",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36"
-      },
-      "path": "/"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "servername": "cf-socks.caoyuwu.eu.org",
-    "endpoint-id": "58b9c4765055a725",
-    "_id": "58b9c4765055a725",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "name": "🇫🇷FR_599|510KB/s|C002-260622 01",
-    "network": "ws",
-    "port": 8880,
-    "server": "162.159.156.214",
-    "sub_tag": "C002-260622",
-    "type": "vless",
-    "udp": true,
-    "uuid": "d9c01a13-cb60-4c48-9fbc-ba1d3a8b5bfb",
-    "ws-opts": {
-      "headers": {
-        "Host": "little-silence-1ee8.449.workers.dev",
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36"
-      },
-      "path": "/pyip=ProxyIP.JP.CMLiussss.net"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "endpoint-id": "d53390df106590f9",
-    "_id": "d53390df106590f9",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "name": "🇫🇷FR_602|304KB/s|C002-260622 01",
-    "network": "ws",
-    "port": 8880,
-    "server": "162.159.156.214",
-    "sub_tag": "C002-260622",
-    "type": "vless",
-    "udp": true,
-    "uuid": "4f74ff26-25af-41d6-9d39-be46fe8ff1a8",
-    "ws-opts": {
-      "headers": {
-        "Host": "steep-resonance-1ffb.274.workers.dev",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36"
-      },
-      "path": "/pyip=ProxyIP.US.CMLiussss.net"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "endpoint-id": "e0b0a4a95b2a5545",
-    "_id": "e0b0a4a95b2a5545",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "name": "🇫🇷FR_622|456KB/s|B007-260618 01",
-    "network": "ws",
-    "port": 8880,
-    "server": "104.21.88.129",
-    "sub_tag": "B007-260618",
-    "type": "vless",
-    "udp": true,
-    "uuid": "ea29d6f1-3567-4d45-b8c2-e42f162caef4",
-    "ws-opts": {
-      "headers": {
-        "Host": "mute-dawn-f27b.375.workers.dev",
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36"
-      },
-      "path": "/pyip=ProxyIP.JP.CMLiussss.net"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "endpoint-id": "92333bfac0b31aa3",
-    "_id": "92333bfac0b31aa3",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "unsafe",
-    "encryption": "none",
-    "name": "🇫🇷FR_633|1.1MB/s|M003-260806 01",
-    "network": "ws",
-    "port": 443,
-    "server": "188.114.97.6",
-    "sub_tag": "M003-260806",
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "3ccba794-1c6d-48a8-acf2-f5caf0e69d86",
-    "ws-opts": {
-      "headers": {
-        "Host": "all.speedtest03.ccwu.cc",
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36"
-      },
-      "path": "/"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "servername": "all.speedtest03.ccwu.cc",
-    "endpoint-id": "14ce58b0feff04dd",
-    "_id": "14ce58b0feff04dd",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "encryption": "none",
-    "name": "🇫🇷FR_671|575KB/s|B007-260618 01",
-    "network": "ws",
-    "port": 8880,
-    "server": "104.21.56.202",
-    "sub_tag": "B007-260618",
-    "type": "vless",
-    "udp": true,
-    "uuid": "a8985e6a-f338-4b44-9a41-f94495603a96",
-    "ws-opts": {
-      "headers": {
-        "Host": "dawn-cell-346f.238-df6.workers.dev",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36"
-      },
-      "path": "/pyip=ProxyIP.JP.CMLiussss.net"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "endpoint-id": "457f36e03ba9a791",
-    "_id": "457f36e03ba9a791",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "encryption": "none",
-    "name": "🇫🇷FR_795|710KB/s|M003-260806 01",
-    "network": "ws",
-    "port": 8880,
-    "server": "104.16.107.139",
-    "sub_tag": "M003-260806",
-    "type": "vless",
-    "udp": true,
-    "uuid": "8dd8af16-cae0-4431-b04c-a637b4d7645b",
-    "ws-opts": {
-      "headers": {
-        "Host": "wild-frog-c709.403-6ff.workers.dev",
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.1805 Safari/537.36 MVisionPlayer/1.0.0.0"
-      },
-      "path": "/pyip=proxyip.us.cmliussss.net"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "endpoint-id": "ef160d4843b13209",
-    "_id": "ef160d4843b13209",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "name": "🇫🇷FR_863|424KB/s|A001-260618 01",
-    "network": "ws",
-    "port": 8880,
-    "server": "www.gov.ua",
-    "sub_tag": "A001-260618",
-    "type": "vless",
-    "udp": true,
-    "uuid": "767c5a66-bd28-440a-90c8-7ae1101a0172",
-    "ws-opts": {
-      "headers": {
-        "Host": "still-voice-1adc.135-275.workers.dev",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36"
-      },
-      "path": "/pyip=ProxyIP.US.CMLiussss.net"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "endpoint-id": "c522c72c8bdc3a06",
-    "_id": "c522c72c8bdc3a06",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "name": "🇫🇷FR_954|404KB/s|P002-260618 01",
-    "network": "ws",
-    "port": 8880,
-    "server": "172.64.144.180",
-    "sub_tag": "P002-260618",
-    "type": "vless",
-    "udp": true,
-    "uuid": "e9d9f06f-d5dd-460a-998f-52efc4732636",
-    "ws-opts": {
-      "headers": {
-        "Host": "bitter-meadow-1d60.313-0f9.workers.dev",
-        "User-Agent": "Mozilla/5.0 (Linux; Android 6.0.1; SM-G532M Build/MMB29T) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.91 Mobile Safari/537.36"
-      },
-      "path": "/pyip=ProxyIP.SG.CMLiussss.net"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "endpoint-id": "13074d12343dff61",
-    "_id": "13074d12343dff61",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "encryption": "none",
-    "name": "🇫🇷FR_1178|414KB/s|B007-260618 01",
-    "network": "ws",
-    "port": 8443,
-    "server": "188.114.97.8",
-    "sub_tag": "B007-260618",
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "9c63fd59-f9ee-446e-97ec-0bf2de21ed7b",
-    "ws-opts": {
-      "headers": {
-        "Host": "dry-glitter-ef10.gfryubcdryujvrth.workers.dev",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.112 Safari/537.36"
-      },
-      "path": "/eyJqdW5rIjoiVVhGU1pOZ1oxaTFUUldyVCIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=",
-      "early-data-header-name": "Sec-WebSocket-Protocol",
-      "max-early-data": 2560
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "servername": "dRy-GLITTer-ef10.gFRYubCdrYujVRtH.WorkErS.DEV",
-    "endpoint-id": "999822453fac6baa",
-    "_id": "999822453fac6baa",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "name": "🇫🇷FR_1182|598KB/s|C002-260622 01",
-    "network": "ws",
-    "port": 8880,
-    "server": "themeforest.net",
-    "sub_tag": "C002-260622",
-    "type": "vless",
-    "udp": true,
-    "uuid": "a429499b-6237-44b2-ae4d-0d53d14cf46a",
-    "ws-opts": {
-      "headers": {
-        "Host": "small-wave-9851.441-57f.workers.dev",
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36"
-      },
-      "path": "/pyip=ProxyIP.JP.CMLiussss.net"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "endpoint-id": "64e568002fd1511d",
-    "_id": "64e568002fd1511d",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "name": "🇫🇷FR_1217|664KB/s 01",
-    "network": "ws",
-    "port": 8880,
-    "server": "deepl.com",
-    "type": "vless",
-    "udp": true,
-    "uuid": "f15a5586-23f6-453f-97f5-c301b949e699",
-    "ws-opts": {
-      "headers": {
-        "Host": "mute-sunset-0849.40-aeb.workers.dev",
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36"
-      },
-      "path": "/pyip=ProxyIP.KR.CMLiussss.net"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "endpoint-id": "1504b6671cae9a94",
-    "_id": "1504b6671cae9a94",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "encryption": "none",
-    "name": "🇫🇷FR_1457|605KB/s|S001-260618 01",
-    "network": "ws",
-    "port": 80,
-    "server": "162.159.81.177",
-    "sub_tag": "S001-260618",
-    "type": "vless",
-    "udp": true,
-    "uuid": "4b00d726-e072-429b-997e-f07affea3b7f",
-    "ws-opts": {
-      "headers": {
-        "Host": "icy-darkness-8ff1.farzambia12mo.workers.dev",
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36"
-      },
-      "path": "/eyJqdW5rIjoibHFUM0pwRHZXIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcmVmaXgiLCJwYW5lbElQcyI6WyJbMjYwMjpmYzU5OmIwOjY0OjpdIl19"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "endpoint-id": "c4702444d7b1d306",
-    "_id": "c4702444d7b1d306",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "encryption": "none",
-    "name": "🇫🇷FR_1571|350KB/s|B007-260618 01",
-    "network": "ws",
-    "port": 8080,
-    "server": "188.114.97.6",
-    "sub_tag": "B007-260618",
-    "type": "vless",
-    "udp": true,
-    "uuid": "a429499b-6237-44b2-ae4d-0d53d14cf46a",
-    "ws-opts": {
-      "headers": {
-        "Host": "small-wave-9851.441-57f.workers.dev",
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36"
-      },
-      "path": "/pyip=ProxyIP.JP.CMLiussss.net"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "endpoint-id": "db9461db18a2a045",
-    "_id": "db9461db18a2a045",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "unsafe",
-    "encryption": "none",
-    "name": "🇫🇷FR_1579|415KB/s|M003-260806 01",
-    "network": "ws",
-    "port": 443,
-    "server": "188.114.97.6",
-    "sub_tag": "M003-260806",
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "7db9bcc1-78f1-455d-944b-3363b867e670",
-    "ws-opts": {
-      "headers": {
-        "Host": "long-wildflower-3df6.341-165.workers.dev",
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131 Safari/537.36"
-      },
-      "path": "/pyip=ProxyIP.SG.CMLiussss.net"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "servername": "long-wildflower-3df6.341-165.workers.dev",
-    "endpoint-id": "593a18c57119ceab",
-    "_id": "593a18c57119ceab",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "name": "🇫🇷FR_1732|411KB/s|C002-260622 01",
-    "network": "ws",
-    "port": 8880,
-    "server": "anydesk.com",
-    "sub_tag": "C002-260622",
-    "type": "vless",
-    "udp": true,
-    "uuid": "2f142ede-d555-4ceb-b005-7df31b484be3",
-    "ws-opts": {
-      "headers": {
-        "Host": "bitter-pine-001c.450-e0e.workers.dev",
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36"
-      },
-      "path": "/pyip=ProxyIP.KR.CMLiussss.net"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "endpoint-id": "6d40250c6f95892c",
-    "_id": "6d40250c6f95892c",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "name": "🇫🇷FR_1734|1.6MB/s|A004-260618 01",
-    "network": "ws",
-    "port": 2083,
-    "server": "91.193.59.32",
-    "sub_tag": "A004-260618",
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "a1de0630-5786-48a0-84f6-dc6f2de10d6d",
-    "ws-opts": {
-      "headers": {
-        "Host": "vlsovip.1d.mom",
-        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36"
-      },
-      "path": "/socks5=888:888@hkip.1d.mom:1080"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "servername": "vlsovip.1d.mom",
-    "endpoint-id": "3f8632b4291a3f59",
-    "_id": "3f8632b4291a3f59",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "name": "🇺🇸_US_美国->🇯🇵_JP_日本-8652100d2f1e4250",
-    "type": "vless",
-    "server": "cf-socks.caoyuwu.eu.org",
-    "port": 443,
-    "uuid": "9cdcbaf0-d244-4f37-b227-90166e43f5b5",
-    "network": "ws",
-    "tls": true,
+    "name": "🇩🇪_DE_德国_2",
+    "type": "hysteria2",
+    "server": "95.85.252.47",
+    "port": 9443,
+    "password": "e3c3b722-1264-4cdc-a97c-b0a1bb73cd67",
+    "sni": "onecloudstream.com",
     "skip-cert-verify": true,
     "udp": true,
-    "endpoint-id": "8652100d2f1e4250",
-    "_id": "8652100d2f1e4250",
+    "endpoint-id": "7f2d496e357cf993",
+    "_id": "7f2d496e357cf993",
     "_poolOnly": true,
     "_source": null,
     "_sources": [
       "FreeNodes-cfmem"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "encryption": "none",
-    "name": "🇫🇷FR_27|130KB/s 01",
-    "network": "ws",
-    "port": 443,
-    "server": "149.202.58.99",
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "b585dc5e-55bf-4a8b-913a-27c9ccac05c3",
-    "ws-opts": {
-      "headers": {
-        "Host": "bab-6.site",
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36"
-      },
-      "path": "/vws/"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "servername": "bab-6.site",
-    "endpoint-id": "f7fdfb1a86c65abc",
-    "_id": "f7fdfb1a86c65abc",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "name": "🇨🇦 加拿大_XMCZ03",
-    "server": "104.16.8.66",
-    "port": 8880,
-    "type": "vless",
-    "uuid": "1560c0b2-3cb8-45a3-988b-7103b031a815",
-    "tls": false,
-    "tfo": false,
-    "skip-cert-verify": false,
-    "network": "ws",
-    "ws-opts": {
-      "path": "/pyip=ProxyIP.JP.CMLiussss.net",
-      "headers": {
-        "Host": "delicate-wood-49a8.214-451.workers.dev"
-      }
-    },
-    "udp": true,
-    "endpoint-id": "c813a48a2058c46b",
-    "_id": "c813a48a2058c46b",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashstair"
-    ]
-  },
-  {
-    "name": "英国(yudou789.top 玉豆分享)_3",
-    "type": "vless",
-    "server": "188.114.96.1",
-    "port": 8080,
-    "uuid": "0fbe0c5e-b479-4d91-8b42-f194f781b6bb",
-    "network": "ws",
-    "tls": false,
-    "ws-opts": {
-      "path": "/vl/BzwF7raXrOtxHuyMFleIwRW4wCWBg35?ed",
-      "headers": {
-        "Host": "z0ndd1onnp04unxjemim9lf8.abaravi51.workers.dev"
-      }
-    },
-    "skip-cert-verify": true,
-    "udp": true,
-    "endpoint-id": "ac660cd8467ef406",
-    "_id": "ac660cd8467ef406",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-yudou"
-    ]
-  },
-  {
-    "name": "🇩🇪DE_32|2.1MB/s|P002-260618 01",
-    "password": "None",
-    "port": 443,
-    "server": "138.201.56.241",
-    "skip-cert-verify": true,
-    "sub_tag": "P002-260618",
-    "tls": true,
-    "type": "http",
-    "udp": true,
-    "endpoint-id": "e774a4ce15b22e57",
-    "_id": "e774a4ce15b22e57",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "encryption": "none",
-    "name": "🇧🇬BG_10|976KB/s|V009-260618 01",
-    "network": "ws",
-    "port": 443,
-    "server": "192.145.31.5",
-    "sub_tag": "V009-260618",
-    "type": "vless",
-    "udp": true,
-    "uuid": "9f73cf9a-c68f-4e6d-90f0-e66b64f52f8a",
-    "ws-opts": {
-      "headers": {
-        "Host": "",
-        "User-Agent": "Mozilla/5.0 (Linux; Android 5.1.1; A37fw Build/LMY47V) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.84 Mobile Safari/537.36"
-      },
-      "path": "/"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "endpoint-id": "13bf638206cc119e",
-    "_id": "13bf638206cc119e",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "name": "🇦🇺AU_9|448KB/s|A004-260618 01",
-    "network": "ws",
-    "port": 2087,
-    "server": "103.75.119.126",
-    "sub_tag": "A004-260618",
-    "type": "vless",
-    "udp": true,
-    "uuid": "731f177e-00aa-480c-b935-661456139a32",
-    "ws-opts": {
-      "headers": {
-        "Host": "",
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36"
-      },
-      "path": "/7586c69d3dc9"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "endpoint-id": "0680d7ad89fe17f1",
-    "_id": "0680d7ad89fe17f1",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "cipher": "aes-256-gcm",
-    "name": "🇺🇸US_641|416KB/s|B007-260618 01",
-    "password": "XKFKl2rULjIp74",
-    "port": 8008,
-    "server": "15.204.247.175",
-    "sub_tag": "B007-260618",
-    "type": "ss",
-    "udp": true,
-    "endpoint-id": "bb8e458db6132ab6",
-    "_id": "bb8e458db6132ab6",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "name": "🇧🇬BG_15|2.9MB/s|M003-260806 01",
-    "network": "ws",
-    "port": 443,
-    "server": "neth9.lunariai.ru",
-    "sub_tag": "M003-260806",
-    "type": "vless",
-    "udp": true,
-    "uuid": "9f73cf9a-c68f-4e6d-90f0-e66b64f52f8a",
-    "ws-opts": {
-      "headers": {
-        "Host": "neth9.lunariai.ru",
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.67 Safari/537.36"
-      },
-      "path": "/"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "endpoint-id": "5c76229061145b21",
-    "_id": "5c76229061145b21",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "alpn": [
-      "h2",
-      "http/1.1"
-    ],
-    "client-fingerprint": "chrome",
-    "encryption": "none",
-    "name": "🇧🇬BG_17|5.1MB/s|M003-260806 01",
-    "network": "tcp",
-    "port": 8443,
-    "server": "192.145.31.5",
-    "sub_tag": "M003-260806",
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "9f73cf9a-c68f-4e6d-90f0-e66b64f52f8a",
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "servername": "neth9.lunariai.ru",
-    "endpoint-id": "f9a0905d31efda77",
-    "_id": "f9a0905d31efda77",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "cipher": "aes-256-cfb",
-    "name": "🇮🇹IT_14|1.1MB/s|A004-260618 01",
-    "password": "bf7v334KKDV3YDhH",
-    "port": 9070,
-    "server": "91.201.65.122",
-    "sub_tag": "A004-260618",
-    "type": "ss",
-    "udp": true,
-    "endpoint-id": "ed6ab0c844730430",
-    "_id": "ed6ab0c844730430",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "name": "🇻🇪VE_1|572KB/s|R002-260618 01",
-    "port": 999,
-    "server": "181.233.89.128",
-    "sub_tag": "R002-260618",
-    "type": "http",
-    "udp": true,
-    "endpoint-id": "c2b8adde120c24ed",
-    "_id": "c2b8adde120c24ed",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "name": "🇫🇷FR_315|559KB/s|B007-260618 01",
-    "network": "ws",
-    "password": "humanity",
-    "port": 443,
-    "server": "104.18.152.159",
-    "skip-cert-verify": false,
-    "sni": "www.ignitelimit.com",
-    "sub_tag": "B007-260618",
-    "type": "trojan",
-    "udp": true,
-    "ws-opts": {
-      "headers": {
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.67 Safari/537.36"
-      },
-      "path": "/assignment"
-    },
-    "endpoint-id": "cde85156c8637f3f",
-    "_id": "cde85156c8637f3f",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "name": "🇺🇸US_443|971KB/s|F003-260618 01",
-    "network": "ws",
-    "port": 443,
-    "server": "104.21.16.74",
-    "sub_tag": "F003-260618",
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "7700ff6d-cefb-4768-a806-ec4f63fe3b38",
-    "ws-opts": {
-      "headers": {
-        "Host": "1-M13.378bb7ff-11cf-4dAd-B89e-72538aC75e29.KDNs.fR",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36"
-      },
-      "path": "/ED3ZQPu7lqyeDGD58KabZ"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "servername": "1-M13.378Bb7FF-11cF-4DaD-B89E-72538aC75e29.kDnS.Fr",
-    "endpoint-id": "cc87b919041a6d71",
-    "_id": "cc87b919041a6d71",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "encryption": "none",
-    "name": "🇺🇸US_471|295KB/s|X001-260618 01",
-    "network": "ws",
-    "port": 443,
-    "server": "172.67.132.194",
-    "sub_tag": "X001-260618",
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "1aa96574-c28b-4ee9-855d-ebdbbf1f7e90",
-    "ws-opts": {
-      "headers": {
-        "Host": "1-m13.aYUTThAya-8.KDNs.fR",
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.65 Safari/537.36"
-      },
-      "path": "/ED3ZQPu7lqyeDGD58KabZ"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "servername": "1-m13.AyutTHAYa-8.kDnS.FR",
-    "endpoint-id": "9e17f90d68ac4755",
-    "_id": "9e17f90d68ac4755",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "name": "🇺🇸US_633|374KB/s|F003-260618 01",
-    "network": "ws",
-    "port": 443,
-    "server": "172.67.134.13",
-    "sub_tag": "F003-260618",
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "1aa96574-c28b-4ee9-855d-ebdbbf1f7e90",
-    "ws-opts": {
-      "headers": {
-        "Host": "2-m13-STaTiC-csS.xcV.cCwu.CC",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36"
-      },
-      "path": "/ED3ZQPu7lqyeDGD58KabZ"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "servername": "2-m13-StATiC-csS.XcV.CcwU.Cc",
-    "endpoint-id": "beb7f3fe8ce47555",
-    "_id": "beb7f3fe8ce47555",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "name": "🇺🇸US_488|624KB/s|F003-260618 01",
-    "network": "ws",
-    "port": 443,
-    "server": "104.21.90.161",
-    "sub_tag": "F003-260618",
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "a90c264d-3853-4eef-9a3d-628b2d02d15e",
-    "ws-opts": {
-      "headers": {
-        "Host": "4-m19.pERU-LIne.CCwu.CC",
-        "User-Agent": "Mozilla/5.0 (Linux; Android 4.4.2; de-de; SAMSUNG GT-I9195 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Version/1.5 Chrome/28.0.1500.94 Mobile Safari/537.36"
-      },
-      "path": "/CjBjB9sn5pCvaSwScc"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "servername": "4-m19.pErU-Line.cCwU.cc",
-    "endpoint-id": "9cf53344ad7ee956",
-    "_id": "9cf53344ad7ee956",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
-    ]
-  },
-  {
-    "client-fingerprint": "chrome",
-    "name": "🇺🇸US_550|355KB/s|F003-260618 01",
-    "network": "ws",
-    "port": 443,
-    "server": "104.21.90.161",
-    "sub_tag": "F003-260618",
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "a90c264d-3853-4eef-9a3d-628b2d02d15e",
-    "ws-opts": {
-      "headers": {
-        "Host": "5-m19.peRu-linE.CcWu.cC",
-        "User-Agent": "Mozilla/5.0 (Linux; Android 6.0.1; Redmi 4A Build/MMB29M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/60.0.3112.116 Mobile Safari/537.36"
-      },
-      "path": "/CjBjB9sn5pCvaSwScc"
-    },
-    "xudp": true,
-    "packet-encoding": "xudp",
-    "servername": "5-M19.PeRu-linE.Ccwu.CC",
-    "endpoint-id": "a2ee1257b13612f1",
-    "_id": "a2ee1257b13612f1",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashmeta"
     ]
   },
   {
@@ -70229,58 +68662,6 @@
     "udp": true,
     "endpoint-id": "b133d953c9da755c",
     "_id": "b133d953c9da755c",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-clashstair"
-    ]
-  },
-  {
-    "name": "🇺🇸_US_美国_2-2e5e1940301f6dd1",
-    "type": "vless",
-    "server": "104.17.29.89",
-    "port": 443,
-    "uuid": "33e6d4f8-5bd2-4b9c-8123-3c9d9d94514d",
-    "network": "ws",
-    "servername": "6q7uR2WCmgu9hYMh-xzQG140tdP86.PAGES.deV",
-    "tls": true,
-    "client-fingerprint": "chrome",
-    "ws-opts": {
-      "path": "/vl/Oo7KuQEty2wqQDXCPlgaK8RdPqZflNY?ed=2560",
-      "headers": {
-        "Host": "6q7ur2wcmgu9hymh-xzqg140tdp86.pages.dev"
-      }
-    },
-    "skip-cert-verify": true,
-    "udp": true,
-    "endpoint-id": "2e5e1940301f6dd1",
-    "_id": "2e5e1940301f6dd1",
-    "_poolOnly": true,
-    "_source": null,
-    "_sources": [
-      "FreeNodes-cfmem"
-    ]
-  },
-  {
-    "name": "🇳🇱 荷兰_23KTEB",
-    "server": "hhhorp.plus-hit.ru",
-    "port": 443,
-    "type": "vless",
-    "uuid": "84a794a5-2420-4ca7-8e08-8d21571f36f3",
-    "tls": true,
-    "tfo": false,
-    "flow": "xtls-rprx-vision",
-    "skip-cert-verify": false,
-    "reality-opts": {
-      "public-key": "N4UtYAhibzkb0n_U2Qmqze5-lZMQqDozqg7OCqvufGA",
-      "short-id": "7c8e3d4a9b1f26d3"
-    },
-    "servername": "hhhorp.plus-hit.ru",
-    "client-fingerprint": "chrome",
-    "network": "tcp",
-    "udp": true,
-    "endpoint-id": "255d75d9b79b4877",
-    "_id": "255d75d9b79b4877",
     "_poolOnly": true,
     "_source": null,
     "_sources": [
