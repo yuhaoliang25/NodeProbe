@@ -1,77 +1,77 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-20T04:52:46.159Z",
+  "updatedAt": "2026-09-20T13:02:30.921Z",
   "channels": {
     "updated::free proxy nodes clash": {
-      "page": 10,
-      "runs": 9,
-      "lastRun": "2026-09-20T04:52:01.650Z",
+      "page": 1,
+      "runs": 10,
+      "lastRun": "2026-09-20T13:02:22.997Z",
       "lastCount": 0
     },
     "updated::free v2ray nodes": {
-      "page": 10,
-      "runs": 9,
-      "lastRun": "2026-09-20T04:52:01.815Z",
+      "page": 1,
+      "runs": 10,
+      "lastRun": "2026-09-20T13:02:23.197Z",
       "lastCount": 0
     },
     "updated::free proxy subscription": {
-      "page": 10,
-      "runs": 9,
-      "lastRun": "2026-09-20T04:52:02.164Z",
-      "lastCount": 8
+      "page": 1,
+      "runs": 10,
+      "lastRun": "2026-09-20T13:02:24.457Z",
+      "lastCount": 2
     },
     "updated::clash subscription nodes": {
-      "page": 10,
-      "runs": 9,
-      "lastRun": "2026-09-20T04:52:02.386Z",
+      "page": 1,
+      "runs": 10,
+      "lastRun": "2026-09-20T13:02:24.651Z",
       "lastCount": 0
     },
     "created::free proxy nodes clash": {
-      "page": 10,
-      "runs": 9,
-      "lastRun": "2026-09-20T04:52:02.571Z",
+      "page": 1,
+      "runs": 10,
+      "lastRun": "2026-09-20T13:02:24.851Z",
       "lastCount": 0
     },
     "created::free v2ray nodes": {
-      "page": 10,
-      "runs": 9,
-      "lastRun": "2026-09-20T04:52:02.740Z",
+      "page": 1,
+      "runs": 10,
+      "lastRun": "2026-09-20T13:02:25.043Z",
       "lastCount": 0
     },
     "created::free proxy subscription": {
-      "page": 10,
-      "runs": 9,
-      "lastRun": "2026-09-20T04:52:03.102Z",
-      "lastCount": 8
+      "page": 1,
+      "runs": 10,
+      "lastRun": "2026-09-20T13:02:25.271Z",
+      "lastCount": 2
     },
     "created::clash subscription nodes": {
-      "page": 10,
-      "runs": 9,
-      "lastRun": "2026-09-20T04:52:03.283Z",
+      "page": 1,
+      "runs": 10,
+      "lastRun": "2026-09-20T13:02:25.474Z",
       "lastCount": 0
     },
     "stars::free proxy nodes clash": {
-      "page": 10,
-      "runs": 9,
-      "lastRun": "2026-09-20T04:52:03.424Z",
+      "page": 1,
+      "runs": 10,
+      "lastRun": "2026-09-20T13:02:25.695Z",
       "lastCount": 0
     },
     "stars::free v2ray nodes": {
-      "page": 10,
-      "runs": 9,
-      "lastRun": "2026-09-20T04:52:03.585Z",
+      "page": 1,
+      "runs": 10,
+      "lastRun": "2026-09-20T13:02:25.888Z",
       "lastCount": 0
     },
     "stars::free proxy subscription": {
-      "page": 10,
-      "runs": 9,
-      "lastRun": "2026-09-20T04:52:03.953Z",
-      "lastCount": 8
+      "page": 1,
+      "runs": 10,
+      "lastRun": "2026-09-20T13:02:26.176Z",
+      "lastCount": 2
     },
     "stars::clash subscription nodes": {
-      "page": 10,
-      "runs": 9,
-      "lastRun": "2026-09-20T04:52:04.154Z",
+      "page": 1,
+      "runs": 10,
+      "lastRun": "2026-09-20T13:02:26.386Z",
       "lastCount": 0
     }
   },
@@ -373,10 +373,10 @@
       "lastExpandedAt": "2026-09-18T08:59:52.733Z"
     },
     "S-V-J/myclaude": {
-      "timesSeen": 2,
-      "lastSeenAt": "2026-09-18T16:23:09.532Z",
+      "timesSeen": 3,
+      "lastSeenAt": "2026-09-20T13:02:26.567Z",
       "stars": 0,
-      "pushedAt": "2026-09-18T05:43:52Z",
+      "pushedAt": "2026-09-18T23:22:21Z",
       "createdAt": "2026-09-14T02:44:28Z",
       "lastExpandedAt": "2026-09-18T08:59:55.292Z"
     },
@@ -621,8 +621,8 @@
       "lastExpandedAt": "2026-09-18T22:34:20.330Z"
     },
     "oosmajid/mohajer": {
-      "timesSeen": 2,
-      "lastSeenAt": "2026-09-19T22:19:22.571Z",
+      "timesSeen": 3,
+      "lastSeenAt": "2026-09-20T13:02:26.567Z",
       "stars": 0,
       "pushedAt": "2026-09-11T20:53:33Z",
       "createdAt": "2026-06-24T19:07:39Z",
@@ -813,8 +813,8 @@
       "lastExpandedAt": "2026-09-18T22:35:33.013Z"
     },
     "Lhagawajaw/11-36-00-PM-Build-ready-to-start-11-36-02-PM-build-image-version-72a309a113b53ef075815b1299536178": {
-      "timesSeen": 2,
-      "lastSeenAt": "2026-09-20T04:52:04.701Z",
+      "timesSeen": 3,
+      "lastSeenAt": "2026-09-20T13:02:26.567Z",
       "stars": 10,
       "pushedAt": "2024-05-16T18:46:50Z",
       "createdAt": "2022-06-27T16:41:29Z",
@@ -989,8 +989,8 @@
       "lastExpandedAt": "2026-09-19T04:36:31.555Z"
     },
     "llIlIIlIlI/MMFNSS": {
-      "timesSeen": 3,
-      "lastSeenAt": "2026-09-19T22:19:18.324Z",
+      "timesSeen": 4,
+      "lastSeenAt": "2026-09-20T13:02:26.386Z",
       "stars": 2,
       "pushedAt": "2022-05-05T08:06:31Z",
       "createdAt": "2022-03-30T06:12:04Z",
@@ -1363,6 +1363,14 @@
       "pushedAt": "2023-04-02T09:11:05Z",
       "createdAt": "2023-01-12T03:24:25Z",
       "lastExpandedAt": "2026-09-20T04:52:04.701Z"
+    },
+    "ygoseo/VPN-Proxy-Master-Pro-Free-Fast-Connect-Unlimited-VPN-Proxy": {
+      "timesSeen": 1,
+      "lastSeenAt": "2026-09-20T13:02:26.387Z",
+      "stars": 38,
+      "pushedAt": "2021-07-12T11:00:22Z",
+      "createdAt": "2021-07-12T11:00:21Z",
+      "lastExpandedAt": "2026-09-20T13:02:26.387Z"
     }
   },
   "sources": {
@@ -1697,6 +1705,86 @@
     "dynamic-7c1c251c35ee": {
       "timesExpanded": 1,
       "lastExpandedAt": "2026-09-20T04:52:46.126Z"
+    },
+    "dynamic-c8514b977e3d": {
+      "timesExpanded": 1,
+      "lastExpandedAt": "2026-09-20T13:02:26.568Z"
+    },
+    "dynamic-cb1db5a4e5d9": {
+      "timesExpanded": 1,
+      "lastExpandedAt": "2026-09-20T13:02:26.775Z"
+    },
+    "dynamic-e2d5e1ff5882": {
+      "timesExpanded": 1,
+      "lastExpandedAt": "2026-09-20T13:02:26.894Z"
+    },
+    "dynamic-26af28f86132": {
+      "timesExpanded": 1,
+      "lastExpandedAt": "2026-09-20T13:02:27.191Z"
+    },
+    "dynamic-c5ca46e269c3": {
+      "timesExpanded": 1,
+      "lastExpandedAt": "2026-09-20T13:02:27.400Z"
+    },
+    "dynamic-a78545488ef5": {
+      "timesExpanded": 1,
+      "lastExpandedAt": "2026-09-20T13:02:27.516Z"
+    },
+    "dynamic-b7034e1a0a93": {
+      "timesExpanded": 1,
+      "lastExpandedAt": "2026-09-20T13:02:27.769Z"
+    },
+    "dynamic-2273f0868faa": {
+      "timesExpanded": 1,
+      "lastExpandedAt": "2026-09-20T13:02:27.847Z"
+    },
+    "dynamic-bbbafa6f96f4": {
+      "timesExpanded": 1,
+      "lastExpandedAt": "2026-09-20T13:02:27.951Z"
+    },
+    "dynamic-4127ef5c7a2a": {
+      "timesExpanded": 1,
+      "lastExpandedAt": "2026-09-20T13:02:28.171Z"
+    },
+    "dynamic-268d38029a76": {
+      "timesExpanded": 1,
+      "lastExpandedAt": "2026-09-20T13:02:28.240Z"
+    },
+    "dynamic-b453f206af7a": {
+      "timesExpanded": 1,
+      "lastExpandedAt": "2026-09-20T13:02:28.498Z"
+    },
+    "dynamic-55442d6b2dac": {
+      "timesExpanded": 1,
+      "lastExpandedAt": "2026-09-20T13:02:28.565Z"
+    },
+    "dynamic-a3caa828c690": {
+      "timesExpanded": 1,
+      "lastExpandedAt": "2026-09-20T13:02:28.642Z"
+    },
+    "dynamic-1012b99bd418": {
+      "timesExpanded": 1,
+      "lastExpandedAt": "2026-09-20T13:02:29.063Z"
+    },
+    "dynamic-95012c18431c": {
+      "timesExpanded": 1,
+      "lastExpandedAt": "2026-09-20T13:02:29.345Z"
+    },
+    "dynamic-3b2bb49f98d1": {
+      "timesExpanded": 1,
+      "lastExpandedAt": "2026-09-20T13:02:29.716Z"
+    },
+    "dynamic-8bc03cee019e": {
+      "timesExpanded": 1,
+      "lastExpandedAt": "2026-09-20T13:02:30.191Z"
+    },
+    "dynamic-bc3fe7749151": {
+      "timesExpanded": 1,
+      "lastExpandedAt": "2026-09-20T13:02:30.311Z"
+    },
+    "dynamic-309ba5941cc0": {
+      "timesExpanded": 1,
+      "lastExpandedAt": "2026-09-20T13:02:30.691Z"
     }
   }
 }
