@@ -4,249 +4,73 @@ mode: 'rule'
 log-level: 'warning'
 ipv6: false
 proxies:
-  - alterId: 0
-    cipher: 'auto'
-    name: '🇺🇸US_8|482KB/s|M002-260618 01'
-    network: 'tcp'
-    port: 180
-    server: '82.198.246.37'
+  - name: '🇩🇪DE德国丨yoyapai.com_13'
+    type: 'vless'
+    server: '169.40.42.229'
+    port: 443
+    uuid: 'd65cc14c-f53f-4fe2-b262-97856601319c'
+    servername: 'yahoo.com'
+    tls: true
+    flow: 'xtls-rprx-vision'
+    client-fingerprint: 'ios'
+    reality-opts:
+      public-key: 'e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg'
+      short-id: 'c39cc7310a'
     skip-cert-verify: false
-    sub_tag: 'M002-260618'
-    tls: false
-    type: 'vmess'
     udp: true
-    uuid: 'd13fc2f5-3e05-4795-81eb-44143a09e552'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'fra33.chasem2026sud.com'
-  - alterId: 0
-    cipher: 'auto'
-    name: '🇺🇸US_9|660KB/s|M002-260618 01'
-    network: 'tcp'
-    port: 180
-    server: '82.198.246.97'
-    skip-cert-verify: false
-    sub_tag: 'M002-260618'
-    tls: false
-    type: 'vmess'
-    udp: true
-    uuid: 'd13fc2f5-3e05-4795-81eb-44143a09e552'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'yespaintstudio.rav-kraski.ru'
-  - alterId: 0
-    cipher: 'auto'
-    name: '🇺🇸US_10|541KB/s|M002-260618 01'
-    network: 'tcp'
-    port: 180
-    server: '82.198.246.250'
-    skip-cert-verify: false
-    sub_tag: 'M002-260618'
-    tls: false
-    type: 'vmess'
-    udp: true
-    uuid: 'd13fc2f5-3e05-4795-81eb-44143a09e552'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'HL-FREEDOM-1.UNDEF.NETWORK'
-  - name: '🇺🇸US_21|351KB/s|R002-260618 01'
-    port: 9002
-    server: '138.199.35.198'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-  - name: '🇺🇸US_26|717KB/s|P002-260618 01'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.212'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-  - name: '🇺🇸US_27|212KB/s|R002-260618 01'
-    password: 'null'
-    port: 9002
-    server: '138.199.35.214'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-  - name: '❓Other_59|127KB/s|R002-260618 01'
-    password: ''
-    port: 9002
-    server: '138.199.35.201'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    username: ''
-  - name: '❓Other_61|265KB/s|R002-260618 01'
-    port: 9002
-    server: '138.199.35.204'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-  - name: '🇺🇸US_39|206KB/s|P002-260618 01'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.213'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
+  - cipher: 'aes-128-gcm'
+    name: '🇺🇸US_3|313KB/s|A004-260618 01'
+    password: 'shadowsocks'
+    port: 443
+    server: '37.19.198.244'
+    sub_tag: 'A004-260618'
+    type: 'ss'
     udp: true
   - alterId: '0'
-    cipher: 'auto'
-    name: '🇺🇸US_40|88KB/s|C002-260622 01'
-    network: 'raw'
-    port: 180
-    server: '82.198.246.250'
+    cipher: 'aes-128-gcm'
+    name: '🇺🇸US_15|205KB/s|C002-260622 01'
+    network: 'tcp'
+    port: 18000
+    server: '67.220.85.46'
     skip-cert-verify: false
     sub_tag: 'C002-260622'
     tls: false
     type: 'vmess'
     udp: true
-    uuid: 'd13fc2f5-3e05-4795-81eb-44143a09e552'
+    uuid: 'f8c8dc3d-0d37-46b0-8b34-a7232882fcfe'
     xudp: true
     packet-encoding: 'xudp'
-  - name: '🇺🇸US_60|322KB/s|P002-260618 01'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.198'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-  - name: '❓Other_126|613KB/s|P002-260618 01'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.218'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-  - name: '❓Other_144|218KB/s|R002-260618 01'
-    port: 9002
-    server: '138.199.35.215'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-  - name: '🇺🇸US_84|231KB/s|R002-260618 01'
-    password: 'null'
-    port: 9002
-    server: '138.199.35.212'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-  - name: '❓Other_183|363KB/s|P002-260618 01'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.216'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-  - name: '🇺🇸US_94|360KB/s|R002-260618 01'
-    port: 9002
-    server: '138.199.35.207'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-  - name: '🇺🇸US_96|444KB/s 01'
-    password: ''
-    port: 9002
-    server: '138.199.35.217'
-    skip-cert-verify: true
-    tls: true
-    type: 'http'
-    username: ''
-    udp: true
-  - name: '❓Other_202|359KB/s|R002-260618 01'
-    port: 9002
-    server: '138.199.35.200'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-  - name: '🇺🇸US_120|81KB/s|R002-260618 01'
-    port: 9002
-    server: '138.199.35.212'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-  - client-fingerprint: 'chrome'
-    name: '🇫🇷FR_359|321KB/s|M003-260806 01'
-    network: 'ws'
-    password: '87d1bfd4-574e-4c96-ad42-0426f27461ff'
+  - cipher: 'aes-128-gcm'
+    name: '❓Other_184|308KB/s 01'
+    password: 'shadowsocks'
     port: 443
-    server: '172.64.152.241'
-    skip-cert-verify: false
-    sni: '_acme-challenge.sb.cloudns.biz'
-    sub_tag: 'M003-260806'
-    type: 'trojan'
+    server: '37.19.198.160'
+    type: 'ss'
     udp: true
-    ws-opts:
-      headers:
-        User-Agent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'
-      path: '/'
-  - name: '🇺🇸US_140|387KB/s|P002-260618 01'
-    password: 'null'
-    port: 9002
-    server: '138.199.35.215'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
+  - cipher: 'aes-128-gcm'
+    name: '🇺🇸US_92|427KB/s|A004-260618 01'
+    password: 'shadowsocks'
+    port: 443
+    server: '37.19.198.236'
+    sub_tag: 'A004-260618'
+    type: 'ss'
     udp: true
-  - name: '❓Other_290|258KB/s|R002-260618 01'
-    password: 'null'
-    port: 9002
-    server: '138.199.35.197'
-    skip-cert-verify: true
+  - name: '🇺🇸US_98|497KB/s|R002-260618 01'
+    password: 'e4b72b531a2d10900519'
+    port: 443
+    server: '147.182.216.4'
+    sni: '93b6d804.acsnet.co'
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
-    username: 'null'
-    udp: true
-  - name: '❓Other_340|206KB/s|R002-260618 01'
-    password: 'null'
-    port: 9002
-    server: '138.199.35.198'
-    skip-cert-verify: true
-    sni: '138.199.35.198'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
+    username: 'testuser1'
     udp: true
   - alterId: 0
     cipher: 'auto'
-    name: '🇺🇸US_198|321KB/s|A004-260618 01'
+    name: '🇺🇸US_121|343KB/s|A004-260618 01'
     network: 'raw'
     port: 22324
-    server: '67.220.72.237'
+    server: '216.106.183.35'
     skip-cert-verify: false
     sub_tag: 'A004-260618'
     tls: false
@@ -255,62 +79,24 @@ proxies:
     uuid: '04621bae-ab36-11ec-b909-0242ac120002'
     xudp: true
     packet-encoding: 'xudp'
-  - client-fingerprint: 'unsafe'
-    encryption: 'none'
-    name: '❓Other_389|70KB/s|B007-260618 01'
-    network: 'ws'
+  - name: '🇺🇸US_132|328KB/s|K001-260618 01'
+    password: 'e4b72b531a2d10900519'
     port: 443
-    server: '104.16.10.199'
-    sub_tag: 'B007-260618'
+    server: '147.182.216.4'
+    skip-cert-verify: true
+    sub_tag: 'K001-260618'
     tls: true
-    type: 'vless'
+    type: 'http'
+    username: 'testuser1'
     udp: true
-    uuid: '44eae030-290b-4083-8102-6f8bab05701b'
-    ws-opts:
-      headers:
-        Host: 'cfvvv-ev1.pages.dev'
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.101 Safari/537.36'
-      path: '/'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'cfvvv-ev1.pages.dev'
-  - client-fingerprint: 'chrome'
-    name: '❓Other_400|184KB/s|A004-260618 01'
-    network: 'ws'
-    port: 443
-    server: '104.16.10.2'
+  - cipher: 'aes-256-gcm'
+    name: '🇺🇸US_182|502KB/s|A004-260618 01'
+    password: 'pKEW8JPByTVTLtM'
+    port: 4444
+    server: '15.204.247.206'
     sub_tag: 'A004-260618'
-    tls: true
-    type: 'vless'
+    type: 'ss'
     udp: true
-    uuid: 'b2593749-691c-428c-9481-14979cba3446'
-    ws-opts:
-      headers:
-        Host: 'xi.tbv.ccwu.cc'
-        User-Agent: 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'
-      path: '/proxyip=us.xiabibi.cf'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'xi.tbv.ccwu.cc'
-  - client-fingerprint: 'unsafe'
-    encryption: 'none'
-    name: '🇫🇷FR_580|263KB/s|B007-260618 01'
-    network: 'ws'
-    port: 443
-    server: '104.17.117.137'
-    sub_tag: 'B007-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '44eae030-290b-4083-8102-6f8bab05701b'
-    ws-opts:
-      headers:
-        Host: 'cfvvv-ev1.pages.dev'
-        User-Agent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36'
-      path: '/'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'cfvvv-ev1.pages.dev'
   - client-fingerprint: 'chrome'
     name: '🇫🇷FR_581|269KB/s|A004-260618 01'
     network: 'ws'
@@ -330,10 +116,10 @@ proxies:
     packet-encoding: 'xudp'
     servername: 'vip.868068.xyz'
   - client-fingerprint: 'chrome'
-    name: '🇫🇷FR_592|398KB/s|B007-260618 01'
+    name: '🇫🇷FR_594|319KB/s|B007-260618 01'
     network: 'ws'
     port: 443
-    server: '195.26.229.32'
+    server: '216.205.52.108'
     sub_tag: 'B007-260618'
     tls: true
     type: 'vless'
@@ -342,565 +128,106 @@ proxies:
     ws-opts:
       headers:
         Host: 'xi.tbv.ccwu.cc'
-        User-Agent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36'
+        User-Agent: 'Mozilla/5.0 (Linux; Android 8.0.0; ANE-LX3 Build/HUAWEIANE-LX3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36'
       path: '/'
     xudp: true
     packet-encoding: 'xudp'
     servername: 'xi.tbv.ccwu.cc'
-  - name: '🇺🇸_US_美国_4-06e8a4fcb94d582b'
-    type: 'vless'
-    server: '172.66.0.236'
-    port: 2083
-    uuid: '44eae030-290b-4083-8102-6f8bab05701b'
+  - client-fingerprint: 'unsafe'
+    name: '🇫🇷FR_600|294KB/s|T001-260618 01'
     network: 'ws'
-    servername: 'cfvvv-ev1.pages.dev'
+    port: 443
+    server: '104.16.10.191'
+    sub_tag: 'T001-260618'
     tls: true
-    client-fingerprint: 'chrome'
+    type: 'vless'
+    udp: true
+    uuid: '44eae030-290b-4083-8102-6f8bab05701b'
     ws-opts:
-      path: '/'
       headers:
         Host: 'cfvvv-ev1.pages.dev'
-    skip-cert-verify: true
-    udp: true
-  - name: '🇺🇸_US_美国_5-6da33b50ce782248'
-    type: 'vless'
-    server: '104.16.10.233'
-    port: 443
-    uuid: '44eae030-290b-4083-8102-6f8bab05701b'
-    network: 'ws'
-    servername: 'cfvvv-ev1.pages.dev'
-    tls: true
-    client-fingerprint: 'unsafe'
-    ws-opts:
+        User-Agent: 'Mozilla/5.0 (Linux; Android 4.4.2; de-de; SAMSUNG GT-I9195 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Version/1.5 Chrome/28.0.1500.94 Mobile Safari/537.36'
       path: '/'
-      headers:
-        Host: 'cfvvv-ev1.pages.dev'
-    skip-cert-verify: true
-    udp: true
-  - name: '🇺🇸US_8|433KB/s 01'
-    password: ''
-    port: 9002
-    server: '138.199.35.205'
-    skip-cert-verify: true
-    tls: true
-    type: 'http'
-    username: ''
-    udp: true
-    _poolOnly: true
-  - alterId: 0
-    cipher: 'auto'
-    name: '🇺🇸US_42|719KB/s|M002-260618 01'
-    network: 'ws'
-    port: 39495
-    server: '129.146.77.248'
-    skip-cert-verify: false
-    sub_tag: 'M002-260618'
-    tls: false
-    type: 'vmess'
-    udp: true
-    uuid: 'f836c736-87fc-4fde-aabc-00857ecdff3e'
-    ws-opts:
-      headers:
-        Host: '129.146.77.248'
-      path: '/cctv13.m3u8'
     xudp: true
     packet-encoding: 'xudp'
-    servername: '129.146.77.248'
-    _poolOnly: true
-  - name: '🇺🇸US_74|723KB/s 01'
-    password: ''
-    port: 9002
-    server: '138.199.35.219'
-    skip-cert-verify: true
-    tls: true
-    type: 'http'
-    username: ''
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_77|602KB/s 01'
-    password: ''
-    port: 9002
-    server: '138.199.35.199'
-    skip-cert-verify: true
-    tls: true
-    type: 'http'
-    username: ''
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_81|762KB/s 01'
-    password: ''
-    port: 9002
-    server: '138.199.35.208'
-    skip-cert-verify: true
-    tls: true
-    type: 'http'
-    username: ''
-    udp: true
-    _poolOnly: true
-  - cipher: 'aes-128-gcm'
-    name: '🇺🇸US_85|1000KB/s 01'
-    password: 'shadowsocks'
-    port: 443
-    server: '173.244.56.6'
-    type: 'ss'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_92|737KB/s 01'
-    password: ''
-    port: 9002
-    server: '138.199.35.218'
-    skip-cert-verify: true
-    tls: true
-    type: 'http'
-    username: ''
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_102|682KB/s 01'
-    password: ''
-    port: 9002
-    server: '138.199.35.196'
-    skip-cert-verify: true
-    tls: true
-    type: 'http'
-    username: ''
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_109|798KB/s|R002-260618 01'
-    port: 9002
-    server: '138.199.35.220'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_131|714KB/s 01'
-    password: 'null'
-    port: 9002
-    server: '138.199.35.200'
-    skip-cert-verify: true
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_135|655KB/s|P002-260618 01'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.219'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_136|744KB/s|P002-260618 01'
-    password: 'null'
-    port: 9002
-    server: '138.199.35.207'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_141|766KB/s|P002-260618 01'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.204'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_142|697KB/s|P002-260618 01'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.197'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_143|779KB/s|P002-260618 01'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.196'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_144|732KB/s|P002-260618 01'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.215'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_149|657KB/s|P002-260618 01'
-    password: 'null'
-    port: 9002
-    server: '138.199.35.206'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_150|733KB/s 01'
-    password: 'null'
-    port: 9002
-    server: '138.199.35.213'
-    skip-cert-verify: true
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_151|619KB/s|P002-260618 01'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.220'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_161|714KB/s 01'
-    password: ''
-    port: 9002
-    server: '138.199.35.203'
-    skip-cert-verify: true
-    tls: true
-    type: 'http'
-    username: ''
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_166|681KB/s|R002-260618 01'
-    password: 'null'
-    port: 9002
-    server: '138.199.35.205'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_174|671KB/s|R002-260618 01'
-    port: 9002
-    server: '138.199.35.211'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - alterId: '0'
+    servername: 'cfvvv-ev1.pages.dev'
+  - alpn:
+      - ''
+    alterId: '0'
     cipher: 'auto'
-    name: '🇺🇸US_176|968KB/s|C002-260622 01'
-    network: 'raw'
-    port: 180
-    server: '82.198.246.97'
-    skip-cert-verify: false
-    sub_tag: 'C002-260622'
-    tls: false
-    type: 'vmess'
-    udp: true
-    uuid: 'd13fc2f5-3e05-4795-81eb-44143a09e552'
-    xudp: true
-    packet-encoding: 'xudp'
-    _poolOnly: true
-  - name: '🇺🇸US_187|727KB/s|R002-260618 01'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.200'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - cipher: 'rc4-md5'
-    name: '🇺🇸US_195|865KB/s|A004-260618 01'
-    password: '14fFPrbezE3HDZzsMOr6'
-    port: 8080
-    server: '107.151.182.197'
-    sub_tag: 'A004-260618'
-    type: 'ss'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_225|738KB/s|R002-260618 01'
-    port: 9002
-    server: '138.199.35.202'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_292|716KB/s|P002-260618 01'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.205'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_293|717KB/s|R002-260618 01'
-    port: 9002
-    server: '138.199.35.195'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_294|642KB/s|R002-260618 01'
-    port: 9002
-    server: '138.199.35.213'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_295|721KB/s|R002-260618 01'
-    password: 'null'
-    port: 9002
-    server: '138.199.35.216'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_296|750KB/s|P002-260618 01'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.202'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_297|798KB/s|R002-260618 01'
-    port: 9002
-    server: '138.199.35.197'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_317|736KB/s|P002-260618 01'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.217'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_322|716KB/s|P002-260618 01'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.207'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_336|651KB/s|P002-260618 01'
-    password: 'null'
-    port: 9002
-    server: '138.199.35.202'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_375|763KB/s|R002-260618 01'
-    password: 'null'
-    port: 9002
-    server: '138.199.35.199'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_379|754KB/s|R002-260618 01'
-    port: 9002
-    server: '138.199.35.214'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_388|684KB/s|P002-260618 01'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.210'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_399|772KB/s|P002-260618 01'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.208'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_404|662KB/s|P002-260618 01'
-    password: 'null'
-    port: 9002
-    server: '138.199.35.195'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_405|670KB/s|P002-260618 01'
-    password: 'null'
-    port: 9002
-    server: '138.199.35.211'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_407|703KB/s|R002-260618 01'
-    port: 9002
-    server: '138.199.35.216'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_408|690KB/s|P002-260618 01'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.206'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - alterId: 0
-    cipher: 'auto'
-    name: '🇺🇸US_414|173KB/s|A004-260618 01'
+    name: '🇺🇸US_217|690KB/s|T001-260618 01'
     network: 'tcp'
     port: 22324
-    server: '67.220.72.237'
+    server: '216.106.183.35'
     skip-cert-verify: false
-    sub_tag: 'A004-260618'
+    sub_tag: 'T001-260618'
     tls: false
     type: 'vmess'
     udp: true
     uuid: '04621bae-ab36-11ec-b909-0242ac120002'
     xudp: true
     packet-encoding: 'xudp'
-    servername: '67.220.72.237'
     _poolOnly: true
-  - name: '🇺🇸US_418|677KB/s|P002-260618 01'
-    password: 'null'
-    port: 9002
-    server: '138.199.35.219'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_449|524KB/s|R002-260618 01'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.195'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - alterId: 0
-    cipher: 'auto'
-    name: '🇺🇸US_510|750KB/s|B007-260618 01'
-    network: 'ws'
-    port: 39495
-    server: '129.146.77.248'
-    skip-cert-verify: false
+  - cipher: 'chacha20-ietf-poly1305'
+    name: '🇺🇸US_241|1.6MB/s|B007-260618 01'
+    password: 'YHtesZ0qvgtg'
+    port: 8388
+    server: '38.180.135.156'
     sub_tag: 'B007-260618'
-    tls: false
-    type: 'vmess'
-    udp: true
-    uuid: 'f836c736-87fc-4fde-aabc-00857ecdff3e'
-    ws-opts:
-      headers: {}
-      path: '/cctv13.m3u8'
-    xudp: true
-    packet-encoding: 'xudp'
-    _poolOnly: true
-  - name: '🇺🇸US_512|715KB/s|P002-260618 01'
-    password: 'null'
-    port: 9002
-    server: '138.199.35.217'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
+    type: 'ss'
     udp: true
     _poolOnly: true
-  - name: '🇺🇸US_536|743KB/s|R002-260618 01'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.201'
+  - name: '🇺🇸US_280|1.4MB/s|R002-260618 01'
+    port: 443
+    server: '52.55.81.168'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
     _poolOnly: true
-  - client-fingerprint: 'unsafe'
+  - name: '🇺🇸US_412|671KB/s|R002-260618 01'
+    port: 442
+    server: '54.235.192.64'
+    sub_tag: 'R002-260618'
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_420|1.1MB/s|P002-260618 01'
+    password: 'None'
+    port: 443
+    server: '52.55.81.168'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_787|1.2MB/s 01'
+    password: 'null'
+    port: 443
+    server: '52.55.81.168'
+    skip-cert-verify: true
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_709|120KB/s|R002-260618 01'
+    port: 7615
+    server: '47.90.206.169'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - client-fingerprint: 'chrome'
     encryption: 'none'
-    name: '🇫🇷FR_1980|655KB/s|B007-260618 01'
+    name: '🇫🇷FR_286|1.1MB/s|B007-260618 01'
     network: 'ws'
     port: 443
-    server: '104.21.33.59'
+    server: '104.16.10.185'
     sub_tag: 'B007-260618'
     tls: true
     type: 'vless'
@@ -909,193 +236,36 @@ proxies:
     ws-opts:
       headers:
         Host: 'cfvvv-ev1.pages.dev'
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.118 Safari/537.36'
+        User-Agent: 'Mozilla/5.0 (Windows NT 6.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36'
       path: '/'
     xudp: true
     packet-encoding: 'xudp'
     servername: 'cfvvv-ev1.pages.dev'
-    _poolOnly: true
-  - name: '🇺🇸US_773|733KB/s|P002-260618 01'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.199'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇫🇷FR_224|1.1MB/s|M001-260618 01'
-    network: 'ws'
-    password: '87d1bfd4-574e-4c96-ad42-0426f27461ff'
-    port: 443
-    server: '104.18.35.15'
-    skip-cert-verify: false
-    sni: '_acme-challenge.sb.cloudns.biz'
-    sub_tag: 'M001-260618'
-    type: 'trojan'
-    ws-opts:
-      headers:
-        Host: '_acme-challenge.sb.cloudns.biz'
-      path: '/'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_685|757KB/s|P002-260618 01'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.214'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_51|313KB/s|P002-260618 01'
-    password: ''
-    port: 9002
-    server: '138.199.35.210'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    username: ''
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_125|740KB/s|P002-260618 01'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.211'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_137|721KB/s|P002-260618 01'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.209'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_145|825KB/s|R002-260618 01'
-    password: 'null'
-    port: 9002
-    server: '138.199.35.210'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_804|749KB/s|P002-260618 01'
-    password: 'null'
-    port: 9002
-    server: '138.199.35.198'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
     _poolOnly: true
 proxy-groups:
   - name: 'PROXY'
     type: 'select'
     proxies:
       - 'DIRECT'
-      - '🇺🇸US_8|482KB/s|M002-260618 01'
-      - '🇺🇸US_9|660KB/s|M002-260618 01'
-      - '🇺🇸US_10|541KB/s|M002-260618 01'
-      - '🇺🇸US_21|351KB/s|R002-260618 01'
-      - '🇺🇸US_26|717KB/s|P002-260618 01'
-      - '🇺🇸US_27|212KB/s|R002-260618 01'
-      - '❓Other_59|127KB/s|R002-260618 01'
-      - '❓Other_61|265KB/s|R002-260618 01'
-      - '🇺🇸US_39|206KB/s|P002-260618 01'
-      - '🇺🇸US_40|88KB/s|C002-260622 01'
-      - '🇺🇸US_60|322KB/s|P002-260618 01'
-      - '❓Other_126|613KB/s|P002-260618 01'
-      - '❓Other_144|218KB/s|R002-260618 01'
-      - '🇺🇸US_84|231KB/s|R002-260618 01'
-      - '❓Other_183|363KB/s|P002-260618 01'
-      - '🇺🇸US_94|360KB/s|R002-260618 01'
-      - '🇺🇸US_96|444KB/s 01'
-      - '❓Other_202|359KB/s|R002-260618 01'
-      - '🇺🇸US_120|81KB/s|R002-260618 01'
-      - '🇫🇷FR_359|321KB/s|M003-260806 01'
-      - '🇺🇸US_140|387KB/s|P002-260618 01'
-      - '❓Other_290|258KB/s|R002-260618 01'
-      - '❓Other_340|206KB/s|R002-260618 01'
-      - '🇺🇸US_198|321KB/s|A004-260618 01'
-      - '❓Other_389|70KB/s|B007-260618 01'
-      - '❓Other_400|184KB/s|A004-260618 01'
-      - '🇫🇷FR_580|263KB/s|B007-260618 01'
+      - '🇩🇪DE德国丨yoyapai.com_13'
+      - '🇺🇸US_3|313KB/s|A004-260618 01'
+      - '🇺🇸US_15|205KB/s|C002-260622 01'
+      - '❓Other_184|308KB/s 01'
+      - '🇺🇸US_92|427KB/s|A004-260618 01'
+      - '🇺🇸US_98|497KB/s|R002-260618 01'
+      - '🇺🇸US_121|343KB/s|A004-260618 01'
+      - '🇺🇸US_132|328KB/s|K001-260618 01'
+      - '🇺🇸US_182|502KB/s|A004-260618 01'
       - '🇫🇷FR_581|269KB/s|A004-260618 01'
-      - '🇫🇷FR_592|398KB/s|B007-260618 01'
-      - '🇺🇸_US_美国_4-06e8a4fcb94d582b'
-      - '🇺🇸_US_美国_5-6da33b50ce782248'
-      - '🇺🇸US_8|433KB/s 01'
-      - '🇺🇸US_42|719KB/s|M002-260618 01'
-      - '🇺🇸US_74|723KB/s 01'
-      - '🇺🇸US_77|602KB/s 01'
-      - '🇺🇸US_81|762KB/s 01'
-      - '🇺🇸US_85|1000KB/s 01'
-      - '🇺🇸US_92|737KB/s 01'
-      - '🇺🇸US_102|682KB/s 01'
-      - '🇺🇸US_109|798KB/s|R002-260618 01'
-      - '🇺🇸US_131|714KB/s 01'
-      - '🇺🇸US_135|655KB/s|P002-260618 01'
-      - '🇺🇸US_136|744KB/s|P002-260618 01'
-      - '🇺🇸US_141|766KB/s|P002-260618 01'
-      - '🇺🇸US_142|697KB/s|P002-260618 01'
-      - '🇺🇸US_143|779KB/s|P002-260618 01'
-      - '🇺🇸US_144|732KB/s|P002-260618 01'
-      - '🇺🇸US_149|657KB/s|P002-260618 01'
-      - '🇺🇸US_150|733KB/s 01'
-      - '🇺🇸US_151|619KB/s|P002-260618 01'
-      - '🇺🇸US_161|714KB/s 01'
-      - '🇺🇸US_166|681KB/s|R002-260618 01'
-      - '🇺🇸US_174|671KB/s|R002-260618 01'
-      - '🇺🇸US_176|968KB/s|C002-260622 01'
-      - '🇺🇸US_187|727KB/s|R002-260618 01'
-      - '🇺🇸US_195|865KB/s|A004-260618 01'
-      - '🇺🇸US_225|738KB/s|R002-260618 01'
-      - '🇺🇸US_292|716KB/s|P002-260618 01'
-      - '🇺🇸US_293|717KB/s|R002-260618 01'
-      - '🇺🇸US_294|642KB/s|R002-260618 01'
-      - '🇺🇸US_295|721KB/s|R002-260618 01'
-      - '🇺🇸US_296|750KB/s|P002-260618 01'
-      - '🇺🇸US_297|798KB/s|R002-260618 01'
-      - '🇺🇸US_317|736KB/s|P002-260618 01'
-      - '🇺🇸US_322|716KB/s|P002-260618 01'
-      - '🇺🇸US_336|651KB/s|P002-260618 01'
-      - '🇺🇸US_375|763KB/s|R002-260618 01'
-      - '🇺🇸US_379|754KB/s|R002-260618 01'
-      - '🇺🇸US_388|684KB/s|P002-260618 01'
-      - '🇺🇸US_399|772KB/s|P002-260618 01'
-      - '🇺🇸US_404|662KB/s|P002-260618 01'
-      - '🇺🇸US_405|670KB/s|P002-260618 01'
-      - '🇺🇸US_407|703KB/s|R002-260618 01'
-      - '🇺🇸US_408|690KB/s|P002-260618 01'
-      - '🇺🇸US_414|173KB/s|A004-260618 01'
-      - '🇺🇸US_418|677KB/s|P002-260618 01'
-      - '🇺🇸US_449|524KB/s|R002-260618 01'
-      - '🇺🇸US_510|750KB/s|B007-260618 01'
-      - '🇺🇸US_512|715KB/s|P002-260618 01'
-      - '🇺🇸US_536|743KB/s|R002-260618 01'
-      - '🇫🇷FR_1980|655KB/s|B007-260618 01'
-      - '🇺🇸US_773|733KB/s|P002-260618 01'
-      - '🇫🇷FR_224|1.1MB/s|M001-260618 01'
-      - '🇺🇸US_685|757KB/s|P002-260618 01'
-      - '🇺🇸US_51|313KB/s|P002-260618 01'
-      - '🇺🇸US_125|740KB/s|P002-260618 01'
-      - '🇺🇸US_137|721KB/s|P002-260618 01'
-      - '🇺🇸US_145|825KB/s|R002-260618 01'
-      - '🇺🇸US_804|749KB/s|P002-260618 01'
+      - '🇫🇷FR_594|319KB/s|B007-260618 01'
+      - '🇫🇷FR_600|294KB/s|T001-260618 01'
+      - '🇺🇸US_217|690KB/s|T001-260618 01'
+      - '🇺🇸US_241|1.6MB/s|B007-260618 01'
+      - '🇺🇸US_280|1.4MB/s|R002-260618 01'
+      - '🇺🇸US_412|671KB/s|R002-260618 01'
+      - '🇺🇸US_420|1.1MB/s|P002-260618 01'
+      - '🇺🇸US_787|1.2MB/s 01'
+      - '🇺🇸US_709|120KB/s|R002-260618 01'
+      - '🇫🇷FR_286|1.1MB/s|B007-260618 01'
 rules:
   - 'MATCH,PROXY'

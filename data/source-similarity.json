@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-19T22:19:26.038Z",
+  "generatedAt": "2026-09-20T04:52:50.740Z",
   "method": {
     "description": "Endpoint-overlap graph for source similarity; similarity is an independence signal, not a source-quality penalty.",
     "minSourceNodes": 5,
@@ -8,30 +8,11 @@
     "strongSimilarityThreshold": 0.3
   },
   "summary": {
-    "candidates": 3805,
+    "candidates": 2592,
     "eligibleSources": 12,
     "relatedPairs": 6
   },
   "sources": {
-    "FreeNodes-clashmeta": {
-      "nodes": 1452,
-      "similarSources": [
-        {
-          "source": "FreeNodes-freeclashnode",
-          "intersection": 206,
-          "union": 1613,
-          "jaccard": 0.1277
-        },
-        {
-          "source": "FreeNodes-nodev2ray",
-          "intersection": 153,
-          "union": 1474,
-          "jaccard": 0.1038
-        }
-      ],
-      "strongSimilarityCount": 0,
-      "independenceWeight": 1
-    },
     "FreeNodes-clashnode": {
       "nodes": 1432,
       "similarSources": [
@@ -51,9 +32,22 @@
       "strongSimilarityCount": 0,
       "independenceWeight": 1
     },
-    "mfuu-FreeProxies": {
-      "nodes": 691,
-      "similarSources": [],
+    "FreeNodes-clashmeta": {
+      "nodes": 866,
+      "similarSources": [
+        {
+          "source": "FreeNodes-freeclashnode",
+          "intersection": 206,
+          "union": 1027,
+          "jaccard": 0.2006
+        },
+        {
+          "source": "FreeNodes-nodev2ray",
+          "intersection": 153,
+          "union": 888,
+          "jaccard": 0.1723
+        }
+      ],
       "strongSimilarityCount": 0,
       "independenceWeight": 1
     },
@@ -73,16 +67,16 @@
           "jaccard": 0.3933
         },
         {
+          "source": "FreeNodes-clashmeta",
+          "intersection": 206,
+          "union": 1027,
+          "jaccard": 0.2006
+        },
+        {
           "source": "FreeNodes-clashnode",
           "intersection": 204,
           "union": 1595,
           "jaccard": 0.1279
-        },
-        {
-          "source": "FreeNodes-clashmeta",
-          "intersection": 206,
-          "union": 1613,
-          "jaccard": 0.1277
         }
       ],
       "strongSimilarityCount": 2,
@@ -111,16 +105,16 @@
           "jaccard": 0.3933
         },
         {
+          "source": "FreeNodes-clashmeta",
+          "intersection": 153,
+          "union": 888,
+          "jaccard": 0.1723
+        },
+        {
           "source": "FreeNodes-clashnode",
           "intersection": 153,
           "union": 1454,
           "jaccard": 0.1052
-        },
-        {
-          "source": "FreeNodes-clashmeta",
-          "intersection": 153,
-          "union": 1474,
-          "jaccard": 0.1038
         }
       ],
       "strongSimilarityCount": 1,
@@ -140,6 +134,12 @@
     },
     "FreeNodes-cfmem": {
       "nodes": 38,
+      "similarSources": [],
+      "strongSimilarityCount": 0,
+      "independenceWeight": 1
+    },
+    "mfuu-FreeProxies": {
+      "nodes": 29,
       "similarSources": [],
       "strongSimilarityCount": 0,
       "independenceWeight": 1
@@ -179,6 +179,20 @@
       "jaccard": 0.3933
     },
     {
+      "a": "FreeNodes-clashmeta",
+      "b": "FreeNodes-freeclashnode",
+      "intersection": 206,
+      "union": 1027,
+      "jaccard": 0.2006
+    },
+    {
+      "a": "FreeNodes-clashmeta",
+      "b": "FreeNodes-nodev2ray",
+      "intersection": 153,
+      "union": 888,
+      "jaccard": 0.1723
+    },
+    {
       "a": "FreeNodes-clashnode",
       "b": "FreeNodes-freeclashnode",
       "intersection": 204,
@@ -186,25 +200,11 @@
       "jaccard": 0.1279
     },
     {
-      "a": "FreeNodes-clashmeta",
-      "b": "FreeNodes-freeclashnode",
-      "intersection": 206,
-      "union": 1613,
-      "jaccard": 0.1277
-    },
-    {
       "a": "FreeNodes-clashnode",
       "b": "FreeNodes-nodev2ray",
       "intersection": 153,
       "union": 1454,
       "jaccard": 0.1052
-    },
-    {
-      "a": "FreeNodes-clashmeta",
-      "b": "FreeNodes-nodev2ray",
-      "intersection": 153,
-      "union": 1474,
-      "jaccard": 0.1038
     }
   ]
 }
