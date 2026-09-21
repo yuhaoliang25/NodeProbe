@@ -12,7 +12,6 @@ jobs:
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.B2_APPLICATION_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.B2_APPLICATION_KEY }}
-      AWS_DEFAULT_REGION: us-east-005
       B2_ENDPOINT: https://s3.us-east-005.backblazeb2.com
       B2_BUCKET: nodeprobe
       AWS_EC2_METADATA_DISABLED: "true"
@@ -26,24 +25,38 @@ jobs:
       - name: Configure AWS CLI for B2
         run: |
           set -euo pipefail
+          # Backblaze's AWS CLI guidance leaves the default AWS region blank.
+          # This lets the AWS CLI use its normal SigV4 signing scope instead
+          # of incorrectly signing requests with the B2 endpoint region.
           aws configure set default.s3.signature_version s3v4
           aws --version
-          aws s3api list-buckets             --endpoint-url "$B2_ENDPOINT"             --region "$AWS_DEFAULT_REGION"
+          aws configure list
 
       - name: Upload to B2
         run: |
           set -euo pipefail
-          aws s3api put-object             --bucket "$B2_BUCKET"             --key storage-test/hello.txt             --body hello.txt             --endpoint-url "$B2_ENDPOINT"             --region "$AWS_DEFAULT_REGION"
+          aws s3api put-object \
+            --bucket "$B2_BUCKET" \
+            --key storage-test/hello.txt \
+            --body hello.txt \
+            --endpoint-url "$B2_ENDPOINT"
 
       - name: Check object metadata
         run: |
           set -euo pipefail
-          aws s3api head-object             --bucket "$B2_BUCKET"             --key storage-test/hello.txt             --endpoint-url "$B2_ENDPOINT"             --region "$AWS_DEFAULT_REGION"
+          aws s3api head-object \
+            --bucket "$B2_BUCKET" \
+            --key storage-test/hello.txt \
+            --endpoint-url "$B2_ENDPOINT"
 
       - name: Download from B2
         run: |
           set -euo pipefail
-          aws s3api get-object             --bucket "$B2_BUCKET"             --key storage-test/hello.txt             downloaded.txt             --endpoint-url "$B2_ENDPOINT"             --region "$AWS_DEFAULT_REGION"
+          aws s3api get-object \
+            --bucket "$B2_BUCKET" \
+            --key storage-test/hello.txt \
+            downloaded.txt \
+            --endpoint-url "$B2_ENDPOINT"
 
       - name: Verify downloaded file
         run: |
@@ -54,4 +67,7 @@ jobs:
       - name: Clean up test object
         if: always()
         run: |
-          aws s3api delete-object             --bucket "$B2_BUCKET"             --key storage-test/hello.txt             --endpoint-url "$B2_ENDPOINT"             --region "$AWS_DEFAULT_REGION"
+          aws s3api delete-object \
+            --bucket "$B2_BUCKET" \
+            --key storage-test/hello.txt \
+            --endpoint-url "$B2_ENDPOINT"
