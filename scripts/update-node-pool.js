@@ -53,6 +53,18 @@ function main(){
     const currentSources=[...new Set(Array.isArray(p._sources)?p._sources.filter(Boolean):[])];
     const knownSources=[...new Set([...(prev?.knownSources||[]),...currentSources])];
     const firstSeen=prev?.firstSeen||now;
+    // Preserve source provenance separately from the endpoint fingerprint.
+    // Provenance is metadata only and must never participate in endpoint-id.
+    const firstSeenSource=prev?.firstSeenSource||currentSources[0]||null;
+    const previousObservations=Array.isArray(prev?.sourceObservations)?prev.sourceObservations:[];
+    const observationMap=new Map(previousObservations.filter(x=>x&&x.source).map(x=>[x.source,{...x}]));
+    for(const source of currentSources){
+      const x=observationMap.get(source)||{source,firstSeenAt:now,lastSeenAt:now};
+      x.lastSeenAt=now;
+      observationMap.set(source,x);
+    }
+    const sourceObservations=[...observationMap.values()].sort((a,b)=>String(a.firstSeenAt).localeCompare(String(b.firstSeenAt)));
+    const observedSources=sourceObservations.map(x=>x.source);
     const currentHealthy=healthy(r);
     const healthyRuns=currentHealthy?(Number(prev?.healthyRuns||0)+1):0;
     const failedRuns=currentHealthy?0:(Number(prev?.failedRuns||0)+1);
@@ -78,6 +90,9 @@ function main(){
       status,
       everStable:Boolean(prev?.everStable||status==='stable'),
       firstSeen,
+      firstSeenSource,
+      observedSources,
+      sourceObservations,
       lastSeen:currentHealthy?now:(prev?.lastSeen||firstSeen),
       lastObservedAt:now,
       lifetimeDays:Number(lifetimeDays.toFixed(3)),
