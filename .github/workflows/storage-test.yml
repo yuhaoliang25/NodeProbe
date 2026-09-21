@@ -1,0 +1,51 @@
+name: B2 Storage Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-b2:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.B2_APPLICATION_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.B2_APPLICATION_KEY }}
+      AWS_DEFAULT_REGION: us-east-005
+      B2_ENDPOINT: https://s3.us-east-005.backblazeb2.com
+      B2_BUCKET: nodeprobe
+
+    steps:
+      - name: Create test file
+        run: |
+          set -euo pipefail
+          printf 'NodeProbe B2 connectivity test\n' > hello.txt
+
+      - name: Upload to B2
+        run: |
+          set -euo pipefail
+          aws s3 cp hello.txt \
+            "s3://${B2_BUCKET}/storage-test/hello.txt" \
+            --endpoint-url "${B2_ENDPOINT}"
+
+      - name: Download from B2
+        run: |
+          set -euo pipefail
+          aws s3 cp \
+            "s3://${B2_BUCKET}/storage-test/hello.txt" \
+            downloaded.txt \
+            --endpoint-url "${B2_ENDPOINT}"
+
+      - name: Verify downloaded file
+        run: |
+          set -euo pipefail
+          cmp hello.txt downloaded.txt
+          echo "B2 upload/download test passed."
+
+      - name: Clean up test object
+        if: always()
+        run: |
+          aws s3 rm \
+            "s3://${B2_BUCKET}/storage-test/hello.txt" \
+            --endpoint-url "${B2_ENDPOINT}"
