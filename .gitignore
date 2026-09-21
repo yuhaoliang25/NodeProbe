@@ -1,0 +1,2 @@
+# Runtime state is persisted in Backblaze B2.
+data/*.json
