@@ -1,123 +1,5 @@
 [
   {
-    "generatedAt": "2026-09-18T04:45:48.480Z",
-    "sources": {
-      "FreeNodes-clashmeta": {
-        "nodes": 1472,
-        "successful": 1090,
-        "totalTests": 2758,
-        "totalSuccesses": 2367,
-        "successRate": 0.8582306018854242,
-        "nodeSuccessRate": 0.7404891304347826,
-        "avgLatency": 62
-      },
-      "vxiaov-free-proxies": {
-        "nodes": 28,
-        "successful": 0,
-        "totalTests": 28,
-        "totalSuccesses": 0,
-        "successRate": 0,
-        "nodeSuccessRate": 0,
-        "avgLatency": null
-      }
-    }
-  },
-  {
-    "generatedAt": "2026-09-18T04:51:15.279Z",
-    "sources": {
-      "FreeNodes-clashmeta": {
-        "nodes": 3899,
-        "successful": 3017,
-        "totalTests": 7016,
-        "totalSuccesses": 6031,
-        "successRate": 0.8596066134549601,
-        "nodeSuccessRate": 0.7737881508078994,
-        "avgLatency": 67
-      },
-      "FreeNodes-jichangx": {
-        "nodes": 17,
-        "successful": 4,
-        "totalTests": 21,
-        "totalSuccesses": 8,
-        "successRate": 0.38095238095238093,
-        "nodeSuccessRate": 0.23529411764705882,
-        "avgLatency": 38
-      },
-      "FreeNodes-cfmem": {
-        "nodes": 17,
-        "successful": 6,
-        "totalTests": 23,
-        "totalSuccesses": 11,
-        "successRate": 0.4782608695652174,
-        "nodeSuccessRate": 0.35294117647058826,
-        "avgLatency": 85
-      },
-      "FreeNodes-yudou": {
-        "nodes": 30,
-        "successful": 3,
-        "totalTests": 33,
-        "totalSuccesses": 6,
-        "successRate": 0.18181818181818182,
-        "nodeSuccessRate": 0.1,
-        "avgLatency": 91
-      },
-      "FreeNodes-clashstair": {
-        "nodes": 17,
-        "successful": 3,
-        "totalTests": 20,
-        "totalSuccesses": 6,
-        "successRate": 0.3,
-        "nodeSuccessRate": 0.17647058823529413,
-        "avgLatency": 180
-      },
-      "FreeNodes-freeclashnode": {
-        "nodes": 17,
-        "successful": 2,
-        "totalTests": 19,
-        "totalSuccesses": 4,
-        "successRate": 0.21052631578947367,
-        "nodeSuccessRate": 0.11764705882352941,
-        "avgLatency": 243
-      },
-      "vxiaov-free-proxies": {
-        "nodes": 28,
-        "successful": 0,
-        "totalTests": 28,
-        "totalSuccesses": 0,
-        "successRate": 0,
-        "nodeSuccessRate": 0,
-        "avgLatency": null
-      },
-      "FreeNodes-nodev2ray": {
-        "nodes": 21,
-        "successful": 0,
-        "totalTests": 21,
-        "totalSuccesses": 0,
-        "successRate": 0,
-        "nodeSuccessRate": 0,
-        "avgLatency": null
-      },
-      "FreeNodes-oneclash": {
-        "nodes": 54,
-        "successful": 0,
-        "totalTests": 54,
-        "totalSuccesses": 0,
-        "successRate": 0,
-        "nodeSuccessRate": 0,
-        "avgLatency": null
-      },
-      "FreeNodes-datiya": {
-        "nodes": 13,
-        "successful": 0,
-        "totalTests": 13,
-        "totalSuccesses": 0,
-        "successRate": 0,
-        "nodeSuccessRate": 0,
-        "avgLatency": null
-      }
-    }
-  },
-  {
     "generatedAt": "2026-09-18T05:58:01.639Z",
     "sources": {
       "FreeNodes-clashmeta": {
@@ -3166,6 +3048,232 @@
         "nodes": 175,
         "successful": 0,
         "totalTests": 350,
+        "totalSuccesses": 0,
+        "successRate": 0,
+        "nodeSuccessRate": 0,
+        "avgLatency": null
+      }
+    }
+  },
+  {
+    "generatedAt": "2026-09-21T04:53:54.151Z",
+    "sources": {
+      "FreeNodes-clashmeta": {
+        "nodes": 849,
+        "successful": 572,
+        "totalTests": 1731,
+        "totalSuccesses": 1125,
+        "successRate": 0.6499133448873483,
+        "nodeSuccessRate": 0.673733804475854,
+        "avgLatency": 107
+      },
+      "FreeNodes-clashnode": {
+        "nodes": 1430,
+        "successful": 373,
+        "totalTests": 2909,
+        "totalSuccesses": 752,
+        "successRate": 0.25850807837744927,
+        "nodeSuccessRate": 0.26083916083916087,
+        "avgLatency": 108
+      },
+      "mfuu-FreeProxies": {
+        "nodes": 695,
+        "successful": 41,
+        "totalTests": 1391,
+        "totalSuccesses": 83,
+        "successRate": 0.05966930265995687,
+        "nodeSuccessRate": 0.058992805755395686,
+        "avgLatency": 105
+      },
+      "FreeNodes-jichangx": {
+        "nodes": 37,
+        "successful": 6,
+        "totalTests": 79,
+        "totalSuccesses": 17,
+        "successRate": 0.21518987341772153,
+        "nodeSuccessRate": 0.16216216216216217,
+        "avgLatency": 15
+      },
+      "FreeNodes-cfmem": {
+        "nodes": 50,
+        "successful": 28,
+        "totalTests": 106,
+        "totalSuccesses": 59,
+        "successRate": 0.5566037735849056,
+        "nodeSuccessRate": 0.56,
+        "avgLatency": 225
+      },
+      "FreeNodes-oneclash": {
+        "nodes": 40,
+        "successful": 2,
+        "totalTests": 80,
+        "totalSuccesses": 4,
+        "successRate": 0.05,
+        "nodeSuccessRate": 0.05,
+        "avgLatency": 119
+      },
+      "FreeNodes-clashstair": {
+        "nodes": 42,
+        "successful": 19,
+        "totalTests": 86,
+        "totalSuccesses": 38,
+        "successRate": 0.4418604651162791,
+        "nodeSuccessRate": 0.4523809523809524,
+        "avgLatency": 178
+      },
+      "FreeNodes-yudou": {
+        "nodes": 256,
+        "successful": 8,
+        "totalTests": 512,
+        "totalSuccesses": 16,
+        "successRate": 0.03125,
+        "nodeSuccessRate": 0.03125,
+        "avgLatency": 149
+      },
+      "FreeNodes-datiya": {
+        "nodes": 14,
+        "successful": 1,
+        "totalTests": 28,
+        "totalSuccesses": 2,
+        "successRate": 0.07142857142857142,
+        "nodeSuccessRate": 0.07142857142857142,
+        "avgLatency": 74
+      },
+      "FreeNodes-freeclashnode": {
+        "nodes": 201,
+        "successful": 6,
+        "totalTests": 402,
+        "totalSuccesses": 12,
+        "successRate": 0.029850746268656716,
+        "nodeSuccessRate": 0.029850746268656716,
+        "avgLatency": 170
+      },
+      "vxiaov-free-proxies": {
+        "nodes": 26,
+        "successful": 0,
+        "totalTests": 52,
+        "totalSuccesses": 0,
+        "successRate": 0,
+        "nodeSuccessRate": 0,
+        "avgLatency": null
+      },
+      "FreeNodes-nodev2ray": {
+        "nodes": 175,
+        "successful": 0,
+        "totalTests": 350,
+        "totalSuccesses": 0,
+        "successRate": 0,
+        "nodeSuccessRate": 0,
+        "avgLatency": null
+      }
+    }
+  },
+  {
+    "generatedAt": "2026-09-21T05:00:02.541Z",
+    "sources": {
+      "FreeNodes-clashnode": {
+        "nodes": 1430,
+        "successful": 1141,
+        "totalTests": 2891,
+        "totalSuccesses": 2277,
+        "successRate": 0.787616741611899,
+        "nodeSuccessRate": 0.7979020979020979,
+        "avgLatency": 54
+      },
+      "FreeNodes-clashmeta": {
+        "nodes": 793,
+        "successful": 587,
+        "totalTests": 1618,
+        "totalSuccesses": 1190,
+        "successRate": 0.7354758961681088,
+        "nodeSuccessRate": 0.7402269861286255,
+        "avgLatency": 130
+      },
+      "FreeNodes-datiya": {
+        "nodes": 14,
+        "successful": 1,
+        "totalTests": 29,
+        "totalSuccesses": 3,
+        "successRate": 0.10344827586206896,
+        "nodeSuccessRate": 0.07142857142857142,
+        "avgLatency": 3
+      },
+      "FreeNodes-nodev2ray": {
+        "nodes": 175,
+        "successful": 20,
+        "totalTests": 351,
+        "totalSuccesses": 39,
+        "successRate": 0.1111111111111111,
+        "nodeSuccessRate": 0.11428571428571428,
+        "avgLatency": 14
+      },
+      "FreeNodes-cfmem": {
+        "nodes": 48,
+        "successful": 22,
+        "totalTests": 102,
+        "totalSuccesses": 43,
+        "successRate": 0.4215686274509804,
+        "nodeSuccessRate": 0.4583333333333333,
+        "avgLatency": 175
+      },
+      "FreeNodes-jichangx": {
+        "nodes": 37,
+        "successful": 6,
+        "totalTests": 74,
+        "totalSuccesses": 12,
+        "successRate": 0.16216216216216217,
+        "nodeSuccessRate": 0.16216216216216217,
+        "avgLatency": 5
+      },
+      "FreeNodes-clashstair": {
+        "nodes": 40,
+        "successful": 22,
+        "totalTests": 80,
+        "totalSuccesses": 41,
+        "successRate": 0.5125,
+        "nodeSuccessRate": 0.55,
+        "avgLatency": 135
+      },
+      "FreeNodes-yudou": {
+        "nodes": 255,
+        "successful": 8,
+        "totalTests": 510,
+        "totalSuccesses": 16,
+        "successRate": 0.03137254901960784,
+        "nodeSuccessRate": 0.03137254901960784,
+        "avgLatency": 132
+      },
+      "FreeNodes-oneclash": {
+        "nodes": 40,
+        "successful": 2,
+        "totalTests": 81,
+        "totalSuccesses": 4,
+        "successRate": 0.04938271604938271,
+        "nodeSuccessRate": 0.05,
+        "avgLatency": 98
+      },
+      "FreeNodes-freeclashnode": {
+        "nodes": 201,
+        "successful": 6,
+        "totalTests": 403,
+        "totalSuccesses": 12,
+        "successRate": 0.02977667493796526,
+        "nodeSuccessRate": 0.029850746268656716,
+        "avgLatency": 164
+      },
+      "mfuu-FreeProxies": {
+        "nodes": 34,
+        "successful": 22,
+        "totalTests": 68,
+        "totalSuccesses": 44,
+        "successRate": 0.6470588235294118,
+        "nodeSuccessRate": 0.6470588235294118,
+        "avgLatency": 180
+      },
+      "vxiaov-free-proxies": {
+        "nodes": 26,
+        "successful": 0,
+        "totalTests": 52,
         "totalSuccesses": 0,
         "successRate": 0,
         "nodeSuccessRate": 0,

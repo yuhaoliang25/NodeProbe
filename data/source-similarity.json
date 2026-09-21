@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-20T22:26:43.954Z",
+  "generatedAt": "2026-09-21T04:53:54.879Z",
   "method": {
     "description": "Endpoint-overlap graph for source similarity; similarity is an independence signal, not a source-quality penalty.",
     "minSourceNodes": 5,
@@ -8,7 +8,7 @@
     "strongSimilarityThreshold": 0.3
   },
   "summary": {
-    "candidates": 3192,
+    "candidates": 2505,
     "eligibleSources": 12,
     "relatedPairs": 4
   },
@@ -27,48 +27,42 @@
       "independenceWeight": 1
     },
     "FreeNodes-clashmeta": {
-      "nodes": 849,
+      "nodes": 793,
       "similarSources": [
         {
           "source": "FreeNodes-freeclashnode",
           "intersection": 200,
-          "union": 850,
-          "jaccard": 0.2353
+          "union": 794,
+          "jaccard": 0.2519
         },
         {
           "source": "FreeNodes-yudou",
           "intersection": 189,
-          "union": 916,
-          "jaccard": 0.2063
+          "union": 859,
+          "jaccard": 0.22
         }
       ],
-      "strongSimilarityCount": 0,
-      "independenceWeight": 1
-    },
-    "mfuu-FreeProxies": {
-      "nodes": 695,
-      "similarSources": [],
       "strongSimilarityCount": 0,
       "independenceWeight": 1
     },
     "FreeNodes-yudou": {
-      "nodes": 256,
+      "nodes": 255,
       "similarSources": [
         {
           "source": "FreeNodes-freeclashnode",
           "intersection": 189,
-          "union": 268,
-          "jaccard": 0.7052
+          "union": 267,
+          "jaccard": 0.7079
         },
         {
           "source": "FreeNodes-clashmeta",
           "intersection": 189,
-          "union": 916,
-          "jaccard": 0.2063
+          "union": 859,
+          "jaccard": 0.22
         }
       ],
       "strongSimilarityCount": 1,
-      "independenceWeight": 0.7116
+      "independenceWeight": 0.7103
     },
     "FreeNodes-freeclashnode": {
       "nodes": 201,
@@ -76,18 +70,18 @@
         {
           "source": "FreeNodes-yudou",
           "intersection": 189,
-          "union": 268,
-          "jaccard": 0.7052
+          "union": 267,
+          "jaccard": 0.7079
         },
         {
           "source": "FreeNodes-clashmeta",
           "intersection": 200,
-          "union": 850,
-          "jaccard": 0.2353
+          "union": 794,
+          "jaccard": 0.2519
         }
       ],
       "strongSimilarityCount": 1,
-      "independenceWeight": 0.7116
+      "independenceWeight": 0.7103
     },
     "FreeNodes-nodev2ray": {
       "nodes": 175,
@@ -103,13 +97,13 @@
       "independenceWeight": 1
     },
     "FreeNodes-cfmem": {
-      "nodes": 50,
+      "nodes": 48,
       "similarSources": [],
       "strongSimilarityCount": 0,
       "independenceWeight": 1
     },
     "FreeNodes-clashstair": {
-      "nodes": 42,
+      "nodes": 40,
       "similarSources": [],
       "strongSimilarityCount": 0,
       "independenceWeight": 1
@@ -122,6 +116,12 @@
     },
     "FreeNodes-jichangx": {
       "nodes": 37,
+      "similarSources": [],
+      "strongSimilarityCount": 0,
+      "independenceWeight": 1
+    },
+    "mfuu-FreeProxies": {
+      "nodes": 34,
       "similarSources": [],
       "strongSimilarityCount": 0,
       "independenceWeight": 1
@@ -144,22 +144,22 @@
       "a": "FreeNodes-freeclashnode",
       "b": "FreeNodes-yudou",
       "intersection": 189,
-      "union": 268,
-      "jaccard": 0.7052
+      "union": 267,
+      "jaccard": 0.7079
     },
     {
       "a": "FreeNodes-clashmeta",
       "b": "FreeNodes-freeclashnode",
       "intersection": 200,
-      "union": 850,
-      "jaccard": 0.2353
+      "union": 794,
+      "jaccard": 0.2519
     },
     {
       "a": "FreeNodes-clashmeta",
       "b": "FreeNodes-yudou",
       "intersection": 189,
-      "union": 916,
-      "jaccard": 0.2063
+      "union": 859,
+      "jaccard": 0.22
     },
     {
       "a": "FreeNodes-clashnode",

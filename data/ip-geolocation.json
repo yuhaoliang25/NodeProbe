@@ -3,7 +3,7 @@
     "host": "547.rtxconfigz.shop",
     "ip": null,
     "node_count": 1,
-    "checked_at": "2026-09-20T22:36:52.168Z",
+    "checked_at": "2026-09-21T04:59:56.741Z",
     "error": "dns_failed"
   },
   "15.235.41.200": {
@@ -205,7 +205,7 @@
     "host": "v2ray.codefyinc.com",
     "ip": null,
     "node_count": 1,
-    "checked_at": "2026-09-20T22:36:52.270Z",
+    "checked_at": "2026-09-21T04:59:56.745Z",
     "error": "dns_failed"
   },
   "209.126.84.189": {
@@ -1174,7 +1174,7 @@
     "host": "chengbai02.ascwt179.com",
     "ip": null,
     "node_count": 1,
-    "checked_at": "2026-09-20T22:36:52.449Z",
+    "checked_at": "2026-09-21T04:59:56.746Z",
     "error": "dns_failed"
   },
   "154.197.88.253": {
@@ -1558,7 +1558,7 @@
     "host": "ad-013.pixel9xdmq.info",
     "ip": null,
     "node_count": 1,
-    "checked_at": "2026-09-20T13:10:30.562Z",
+    "checked_at": "2026-09-21T04:59:56.746Z",
     "error": "dns_failed"
   },
   "104.171.136.112": {
@@ -1643,7 +1643,7 @@
     "host": "ad-010.pixel9xdmq.info",
     "ip": null,
     "node_count": 1,
-    "checked_at": "2026-09-20T13:10:30.565Z",
+    "checked_at": "2026-09-21T04:59:56.746Z",
     "error": "dns_failed"
   },
   "161.104.32.106": {
