@@ -25,9 +25,7 @@ jobs:
       - name: Configure AWS CLI for B2
         run: |
           set -euo pipefail
-          # Backblaze's AWS CLI guidance leaves the default AWS region blank.
-          # This lets the AWS CLI use its normal SigV4 signing scope instead
-          # of incorrectly signing requests with the B2 endpoint region.
+          # Backblaze requires SigV4 and recommends leaving the AWS region blank.
           aws configure set default.s3.signature_version s3v4
           aws --version
           aws configure list
@@ -35,26 +33,15 @@ jobs:
       - name: Upload to B2
         run: |
           set -euo pipefail
-          aws s3api put-object \
-            --bucket "$B2_BUCKET" \
-            --key storage-test/hello.txt \
-            --body hello.txt \
-            --endpoint-url "$B2_ENDPOINT"
-
-      - name: Check object metadata
-        run: |
-          set -euo pipefail
-          aws s3api head-object \
-            --bucket "$B2_BUCKET" \
-            --key storage-test/hello.txt \
+          aws s3 cp hello.txt \
+            "s3://$B2_BUCKET/storage-test/hello.txt" \
             --endpoint-url "$B2_ENDPOINT"
 
       - name: Download from B2
         run: |
           set -euo pipefail
-          aws s3api get-object \
-            --bucket "$B2_BUCKET" \
-            --key storage-test/hello.txt \
+          aws s3 cp \
+            "s3://$B2_BUCKET/storage-test/hello.txt" \
             downloaded.txt \
             --endpoint-url "$B2_ENDPOINT"
 
@@ -67,7 +54,6 @@ jobs:
       - name: Clean up test object
         if: always()
         run: |
-          aws s3api delete-object \
-            --bucket "$B2_BUCKET" \
-            --key storage-test/hello.txt \
+          aws s3 rm \
+            "s3://$B2_BUCKET/storage-test/hello.txt" \
             --endpoint-url "$B2_ENDPOINT"
