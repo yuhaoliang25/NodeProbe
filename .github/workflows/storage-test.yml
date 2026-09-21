@@ -10,55 +10,125 @@ jobs:
       contents: read
 
     env:
-      AWS_ACCESS_KEY_ID: ${{ secrets.B2_APPLICATION_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.B2_APPLICATION_KEY }}
-      B2_ENDPOINT: https://s3.us-east-005.backblazeb2.com
+      B2_KEY_ID: ${{ secrets.B2_APPLICATION_KEY_ID }}
+      B2_APPLICATION_KEY: ${{ secrets.B2_APPLICATION_KEY }}
       B2_BUCKET: nodeprobe
-      AWS_EC2_METADATA_DISABLED: "true"
+      B2_API: https://api.backblazeb2.com
 
     steps:
       - name: Create test file
         run: |
           set -euo pipefail
-          printf 'NodeProbe B2 connectivity test\n' > hello.txt
+          printf 'NodeProbe B2 native API test\n' > hello.txt
 
-      - name: Configure AWS CLI for B2
+      - name: Authorize with B2 Native API
         run: |
           set -euo pipefail
-          aws configure set default.s3.signature_version s3v4
-          aws --version
-          aws configure list
+          auth="$(printf '%s:%s' "$B2_KEY_ID" "$B2_APPLICATION_KEY" | base64 -w0)"
+          curl --fail --silent --show-error \
+            -H "Authorization: Basic $auth" \
+            "$B2_API/b2api/v4/b2_authorize_account" > auth.json
+          python3 - <<'PY'
+          import json
+          d=json.load(open("auth.json"))
+          assert d["accountId"]
+          assert d["authorizationToken"]
+          assert d["apiInfo"]["storageApi"]["apiUrl"]
+          print("B2 native authorization succeeded.")
+          PY
 
-      - name: Upload to B2
+      - name: Find bucket
         run: |
           set -euo pipefail
-          aws s3api put-object \
-            --bucket "$B2_BUCKET" \
-            --key storage-test/hello.txt \
-            --body hello.txt \
-            --endpoint-url "$B2_ENDPOINT"
+          python3 - <<'PY'
+          import json, os
+          d=json.load(open("auth.json"))
+          print(d["accountId"])
+          print(d["authorizationToken"])
+          print(d["apiInfo"]["storageApi"]["apiUrl"])
+          PY > auth.env
+          {
+            read ACCOUNT_ID
+            read AUTH_TOKEN
+            read API_URL
+            echo "ACCOUNT_ID=$ACCOUNT_ID"
+            echo "AUTH_TOKEN=$AUTH_TOKEN"
+            echo "API_URL=$API_URL"
+          } < auth.env >> "$GITHUB_ENV"
+          curl --fail --silent --show-error \
+            -H "Authorization: $AUTH_TOKEN" \
+            -H "Content-Type: application/json" \
+            --data "{\"accountId\":\"$ACCOUNT_ID\"}" \
+            "$API_URL/b2api/v4/b2_list_buckets" > buckets.json
+          python3 - <<'PY'
+          import json
+          d=json.load(open("buckets.json"))
+          matches=[b for b in d["buckets"] if b["bucketName"]=="nodeprobe"]
+          assert len(matches)==1, f"nodeprobe bucket count={len(matches)}"
+          print("Found nodeprobe bucket.")
+          print(matches[0]["bucketId"])
+          PY
 
-      - name: Download via presigned GET
+      - name: Upload through B2 Native API
         run: |
           set -euo pipefail
-          url="$(aws s3 presign "s3://$B2_BUCKET/storage-test/hello.txt" \
-            --expires-in 300 \
-            --endpoint-url "$B2_ENDPOINT")"
-          test -n "$url"
-          echo "Presigned URL generated."
-          curl --fail --silent --show-error "$url" --output downloaded.txt
+          bucket_id="$(python3 - <<'PY'
+          import json
+          d=json.load(open("buckets.json"))
+          print(next(b["bucketId"] for b in d["buckets"] if b["bucketName"]=="nodeprobe"))
+          PY
+          )"
+          curl --fail --silent --show-error \
+            -H "Authorization: $AUTH_TOKEN" \
+            -H "Content-Type: application/json" \
+            --data "{\"bucketId\":\"$bucket_id\"}" \
+            "$API_URL/b2api/v4/b2_get_upload_url" > upload.json
+          upload_url="$(python3 -c 'import json; print(json.load(open("upload.json"))["uploadUrl"])')"
+          upload_token="$(python3 -c 'import json; print(json.load(open("upload.json"))["authorizationToken"])')"
+          sha1="$(sha1sum hello.txt | awk '{print $1}')"
+          curl --fail --silent --show-error \
+            -X POST "$upload_url" \
+            -H "Authorization: $upload_token" \
+            -H "X-Bz-File-Name: storage-test/hello.txt" \
+            -H "Content-Type: b2/x-auto" \
+            -H "X-Bz-Content-Sha1: $sha1" \
+            --data-binary @hello.txt > upload-result.json
+          echo "B2 native upload succeeded."
 
-      - name: Verify downloaded file
+      - name: Download through B2 Native API
+        run: |
+          set -euo pipefail
+          curl --fail --silent --show-error \
+            -H "Authorization: $AUTH_TOKEN" \
+            "$API_URL/b2api/v4/b2_download_file_by_name?bucketName=$B2_BUCKET&fileName=storage-test%2Fhello.txt" \
+            --output downloaded.txt
+
+      - name: Verify
         run: |
           set -euo pipefail
           cmp hello.txt downloaded.txt
-          echo "B2 upload/presigned-download test passed."
+          echo "B2 native API upload/download test passed."
 
-      - name: Clean up test object
+      - name: Clean up
         if: always()
         continue-on-error: true
         run: |
-          aws s3api delete-object \
-            --bucket "$B2_BUCKET" \
-            --key storage-test/hello.txt \
-            --endpoint-url "$B2_ENDPOINT"
+          if [ -n "${ACCOUNT_ID:-}" ] && [ -n "${AUTH_TOKEN:-}" ] && [ -n "${API_URL:-}" ]; then
+            bucket_id="$(python3 - <<'PY' 2>/dev/null || true
+          import json
+          print(next(b["bucketId"] for b in json.load(open("buckets.json"))["buckets"] if b["bucketName"]=="nodeprobe"))
+          PY
+            )"
+            file_id="$(python3 - <<'PY' 2>/dev/null || true
+          import json
+          print(json.load(open("upload-result.json"))["fileId"])
+          PY
+            )"
+            if [ -n "$file_id" ]; then
+              curl --fail --silent --show-error \
+                -H "Authorization: $AUTH_TOKEN" \
+                -H "Content-Type: application/json" \
+                --data "{\"fileId\":\"$file_id\"}" \
+                "$API_URL/b2api/v4/b2_delete_file_version" || true
+            fi
+          fi
