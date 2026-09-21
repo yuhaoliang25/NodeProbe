@@ -12,7 +12,6 @@ jobs:
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.B2_APPLICATION_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.B2_APPLICATION_KEY }}
-      AWS_DEFAULT_REGION: us-east-1
       B2_ENDPOINT: https://s3.us-east-005.backblazeb2.com
       B2_BUCKET: nodeprobe
       AWS_EC2_METADATA_DISABLED: "true"
@@ -39,20 +38,21 @@ jobs:
             --body hello.txt \
             --endpoint-url "$B2_ENDPOINT"
 
-      - name: Direct GET from B2
+      - name: Download via presigned GET
         run: |
           set -euo pipefail
-          aws s3api get-object \
-            --bucket "$B2_BUCKET" \
-            --key storage-test/hello.txt \
-            downloaded.txt \
-            --endpoint-url "$B2_ENDPOINT"
+          url="$(aws s3 presign "s3://$B2_BUCKET/storage-test/hello.txt" \
+            --expires-in 300 \
+            --endpoint-url "$B2_ENDPOINT")"
+          test -n "$url"
+          echo "Presigned URL generated."
+          curl --fail --silent --show-error "$url" --output downloaded.txt
 
       - name: Verify downloaded file
         run: |
           set -euo pipefail
           cmp hello.txt downloaded.txt
-          echo "B2 upload/direct-download test passed."
+          echo "B2 upload/presigned-download test passed."
 
       - name: Clean up test object
         if: always()
