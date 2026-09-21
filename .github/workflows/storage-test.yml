@@ -9,39 +9,91 @@ jobs:
     permissions:
       contents: read
 
+    env:
+      B2_KEY_ID: ${{ secrets.B2_APPLICATION_KEY_ID }}
+      B2_APPLICATION_KEY: ${{ secrets.B2_APPLICATION_KEY }}
+      B2_BUCKET: nodeprobe
+
     steps:
-      - name: Create test file
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Create test state
         run: |
           set -euo pipefail
-          printf 'NodeProbe B2 official action test\n' > hello.txt
+          mkdir -p /tmp/nodeprobe-state
+          printf '{"version":1,"counter":1,"message":"restore-save-test"}\n' > /tmp/nodeprobe-state/state.json
+          cat /tmp/nodeprobe-state/state.json
 
-      - name: Upload with Backblaze official action
+      - name: Upload state with official B2 action
         uses: backblaze-labs/b2-action@v1
         with:
           action: upload
           application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
           application-key: ${{ secrets.B2_APPLICATION_KEY }}
           bucket: nodeprobe
-          source: ./hello.txt
-          destination: storage-test/hello.txt
+          source: /tmp/nodeprobe-state/state.json
+          destination: nodeprobe-test/state.json
 
-      - name: Download with Backblaze official action
+      - name: Download state with official B2 action
         uses: backblaze-labs/b2-action@v1
         with:
           action: download
           application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
           application-key: ${{ secrets.B2_APPLICATION_KEY }}
           bucket: nodeprobe
-          source: storage-test/hello.txt
-          destination: ./downloaded.txt
+          source: nodeprobe-test/state.json
+          destination: /tmp/nodeprobe-state/restored.json
 
-      - name: Verify
+      - name: Verify restore
         run: |
           set -euo pipefail
-          cmp hello.txt downloaded.txt
-          echo "B2 official action upload/download test passed."
+          cmp /tmp/nodeprobe-state/state.json /tmp/nodeprobe-state/restored.json
+          echo "State restore verified."
 
-      - name: Delete test object
+      - name: Modify restored state
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          p="/tmp/nodeprobe-state/restored.json"
+          d=json.load(open(p))
+          d["counter"] += 1
+          d["message"] = "modified-and-saved"
+          with open(p,"w") as f:
+              json.dump(d,f,separators=(",",":"))
+              f.write("\n")
+          PY
+          cat /tmp/nodeprobe-state/restored.json
+
+      - name: Save modified state
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: upload
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: /tmp/nodeprobe-state/restored.json
+          destination: nodeprobe-test/state.json
+
+      - name: Download saved state again
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: download
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: nodeprobe-test/state.json
+          destination: /tmp/nodeprobe-state/final.json
+
+      - name: Verify round trip
+        run: |
+          set -euo pipefail
+          test "$(python3 -c 'import json; print(json.load(open("/tmp/nodeprobe-state/final.json"))["counter"])')" = "2"
+          test "$(python3 -c 'import json; print(json.load(open("/tmp/nodeprobe-state/final.json"))["message"])')" = "modified-and-saved"
+          echo "B2 state round-trip verified."
+
+      - name: Cleanup test object
         if: always()
         uses: backblaze-labs/b2-action@v1
         with:
@@ -49,4 +101,4 @@ jobs:
           application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
           application-key: ${{ secrets.B2_APPLICATION_KEY }}
           bucket: nodeprobe
-          source: storage-test/hello.txt
+          source: nodeprobe-test/state.json
