@@ -175,3 +175,25 @@ Repository 设置了有限 revisit interval，近期已经展开过的 repo 不�
 - 不把 NodeProbe 变成无限制的通用互联网爬虫。
 
 下一步应先观察实际 Workflow 数据，再决定是否需要更复杂的时间窗口、topic/owner/fork 关联发现等机制。
+
+
+## 本阶段新增：节点时间语义
+
+需要特别避免把“Source 文件时间”解释成“节点发布时间”。
+
+NodeProbe 能确认的是自己的观察时间，而不是节点在互联网中的真实首次发布时间：
+- firstObservedAt：NodeProbe 第一次观察到节点的时间；
+- firstObservedSource：NodeProbe 第一次观察到节点时对应的 Source；
+- sourceObservations：NodeProbe 从各 Source 观察到该节点的历史。
+
+不能通过 Source 文件的修改/生成时间准确估计节点发布时间。一个节点可能已经作为长活节点存在很久，只是随着 Source 重新生成订阅文件而出现在一个较新的文件中。因此“文件时间较晚”不等于“节点发布较晚”。
+
+详细说明见：
+- worklog/node-time-semantics.md
+
+后续任何涉及“节点年龄”“发布时间”的逻辑，都必须先区分：
+- NodeProbe observation time
+- Source file update time
+- actual publication time
+
+默认不推断无法由证据支持的 actual publication time。
