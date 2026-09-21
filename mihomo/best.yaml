@@ -4,161 +4,277 @@ mode: 'rule'
 log-level: 'warning'
 ipv6: false
 proxies:
-  - name: '🇺🇸US_45|389KB/s|R002-260618 01'
+  - name: '🇩🇪DE德国丨yoyapai.com_12'
+    type: 'vless'
+    server: '169.40.42.229'
     port: 443
-    server: 'purecambogiasl.live'
-    skip-cert-verify: true
-    sni: 'purecambogiasl.live'
-    sub_tag: 'R002-260618'
+    uuid: 'd65cc14c-f53f-4fe2-b262-97856601319c'
+    servername: 'yahoo.com'
     tls: true
-    type: 'http'
-    udp: true
-  - name: '❓Other_84|319KB/s|R002-260618 01'
-    port: 443
-    server: 'purposebydesig.club'
-    sni: 'purposebydesig.club'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-  - name: '❓Other_90|329KB/s|R002-260618 01'
-    port: 443
-    server: 'voteshirleysew.club'
-    sni: 'voteshirleysew.club'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-  - name: '🇺🇸US_49|83KB/s|R002-260618 01'
-    port: 443
-    server: 'efr-marktplatz.club'
-    sni: 'efr-marktplatz.club'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-  - name: '🇺🇸US_65|230KB/s|R002-260618 01'
-    port: 443
-    server: 'jewelscollecti.icu'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    sni: 'jewelscollecti.icu'
-  - name: '❓Other_111|86KB/s|R002-260618 01'
-    port: 443
-    server: 'kimberlymilano.icu'
+    flow: 'xtls-rprx-vision'
+    client-fingerprint: 'ios'
+    reality-opts:
+      public-key: 'e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg'
+      short-id: 'c39cc7310a'
     skip-cert-verify: false
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
     udp: true
-    sni: 'kimberlymilano.icu'
-  - name: '🇺🇸US_75|364KB/s|P002-260618 01'
-    password: 'None'
+  - cipher: 'aes-128-gcm'
+    name: '🇺🇸US_13|402KB/s|A004-260618 01'
+    password: 'shadowsocks'
     port: 443
-    server: 'kimberlymilano.icu'
+    server: '37.19.198.236'
+    sub_tag: 'A004-260618'
+    type: 'ss'
+    udp: true
+  - cipher: 'aes-128-gcm'
+    name: '🇺🇸US_16|892KB/s 01'
+    password: 'shadowsocks'
+    port: 443
+    server: '37.19.198.160'
+    type: 'ss'
+    udp: true
+  - alpn:
+      - ''
+    alterId: '0'
+    cipher: 'auto'
+    name: '🇺🇸US_28|591KB/s|T001-260618 01'
+    network: 'tcp'
+    port: 22324
+    server: '216.106.183.35'
     skip-cert-verify: false
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
+    sub_tag: 'T001-260618'
+    tls: false
+    type: 'vmess'
     udp: true
-    sni: 'kimberlymilano.icu'
-  - name: '🇺🇸US_76|422KB/s|R002-260618 01'
-    password: 'None'
-    port: 443
-    server: 'jgwynphotoarts.pro'
+    uuid: '04621bae-ab36-11ec-b909-0242ac120002'
+    xudp: true
+    packet-encoding: 'xudp'
+  - alterId: '0'
+    cipher: 'aes-128-gcm'
+    name: '🇺🇸US_70|1.3MB/s|C002-260622 01'
+    network: 'raw'
+    port: 18000
+    server: '67.220.85.46'
     skip-cert-verify: false
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
+    sub_tag: 'C002-260622'
+    tls: false
+    type: 'vmess'
     udp: true
-    sni: 'jgwynphotoarts.pro'
-  - name: '🇺🇸US_105|467KB/s|P002-260618 01'
-    password: 'None'
+    uuid: 'f8c8dc3d-0d37-46b0-8b34-a7232882fcfe'
+    xudp: true
+    packet-encoding: 'xudp'
+  - alterId: 0
+    cipher: 'auto'
+    name: '🇺🇸US_90|1.1MB/s|A004-260618 01'
+    network: 'tcp'
+    port: 18000
+    server: '67.220.85.46'
+    skip-cert-verify: false
+    sub_tag: 'A004-260618'
+    tls: false
+    type: 'vmess'
+    udp: true
+    uuid: 'f8c8dc3d-0d37-46b0-8b34-a7232882fcfe'
+    xudp: true
+    packet-encoding: 'xudp'
+    servername: '67.220.85.46'
+  - cipher: 'chacha20-ietf-poly1305'
+    name: '🇺🇸US_119|1.5MB/s|B007-260618 01'
+    password: 'YHtesZ0qvgtg'
+    port: 8388
+    server: '38.180.135.156'
+    sub_tag: 'B007-260618'
+    type: 'ss'
+    udp: true
+  - cipher: 'aes-256-gcm'
+    name: '🇺🇸US_150|567KB/s|A004-260618 01'
+    password: 'FoOiGlkAA9yPEGP'
+    port: 7307
+    server: '15.204.246.132'
+    sub_tag: 'A004-260618'
+    type: 'ss'
+    udp: true
+  - alterId: 0
+    cipher: 'auto'
+    name: '🇺🇸US_157|878KB/s|A004-260618 01'
+    network: 'raw'
+    port: 22324
+    server: '216.106.183.35'
+    skip-cert-verify: false
+    sub_tag: 'A004-260618'
+    tls: false
+    type: 'vmess'
+    udp: true
+    uuid: '04621bae-ab36-11ec-b909-0242ac120002'
+    xudp: true
+    packet-encoding: 'xudp'
+  - name: '🇺🇸US_174|1.1MB/s|R002-260618 01'
     port: 443
-    server: 'goedkoopgeluid.icu'
+    server: '52.55.81.168'
     skip-cert-verify: true
-    sub_tag: 'P002-260618'
+    sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
-    sni: 'goedkoopgeluid.icu'
-  - name: '🇺🇸US_124|233KB/s|K001-260618 01'
-    password: ''
+  - name: '🇺🇸US_325|1.2MB/s|R002-260618 01'
+    password: 'e4b72b531a2d10900519'
     port: 443
-    server: 'carolinafreigh.fun'
+    server: '147.182.216.4'
+    sni: '93b6d804.acsnet.co'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'testuser1'
+    udp: true
+  - cipher: 'aes-128-gcm'
+    name: '🇺🇸US_412|1013KB/s|A004-260618 01'
+    password: 'shadowsocks'
+    port: 443
+    server: '37.19.198.244'
+    sub_tag: 'A004-260618'
+    type: 'ss'
+    udp: true
+  - cipher: 'chacha20-ietf-poly1305'
+    name: '🇺🇸US_424|1.9MB/s 01'
+    password: 'eDfN7SODQceIOmIAbtJJtK'
+    port: 443
+    server: '198.98.53.130'
+    type: 'ss'
+    udp: true
+  - cipher: 'aes-128-gcm'
+    name: '🇺🇸US_466|979KB/s 01'
+    password: 'shadowsocks'
+    port: 443
+    server: '37.19.198.243'
+    type: 'ss'
+    udp: true
+  - name: '🇺🇸US_471|1.0MB/s|K001-260618 01'
+    password: 'e4b72b531a2d10900519'
+    port: 443
+    server: '147.182.216.4'
     skip-cert-verify: true
     sub_tag: 'K001-260618'
     tls: true
     type: 'http'
-    username: ''
+    username: 'testuser1'
     udp: true
-    sni: 'carolinafreigh.fun'
-  - name: '🇺🇸US_129|228KB/s|K001-260618 01'
-    password: ''
-    port: 443
-    server: 'zebpay.site'
-    skip-cert-verify: true
-    sub_tag: 'K001-260618'
-    tls: true
-    type: 'http'
-    username: ''
-    udp: true
-    sni: 'zebpay.site'
-  - name: '🇺🇸US_133|292KB/s|P002-260618 01'
+  - name: '🇺🇸US_473|1.4MB/s|P002-260618 01'
     password: 'None'
     port: 443
-    server: 'webdrone.club'
-    skip-cert-verify: false
+    server: '52.55.81.168'
+    skip-cert-verify: true
     sub_tag: 'P002-260618'
     tls: true
     type: 'http'
     udp: true
-    sni: 'webdrone.club'
-  - name: '🇺🇸US_180|449KB/s|R002-260618 01'
+  - name: '🇫🇷FR_162|623KB/s|A004-260618 01'
+    network: 'ws'
+    port: 8080
+    server: '104.21.70.21'
+    sub_tag: 'A004-260618'
+    type: 'vless'
+    udp: true
+    uuid: 'e5cc16a6-ea42-46b2-82ae-ad2157e1641b'
+    ws-opts:
+      headers:
+        Host: 'hhlfy.twiladaphne.ndjp.net'
+        User-Agent: 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.67 Safari/537.36'
+      path: '/fp'
+    xudp: true
+    packet-encoding: 'xudp'
+  - name: '🇺🇸US_566|735KB/s|R002-260618 01'
+    port: 442
+    server: '54.235.192.64'
+    sub_tag: 'R002-260618'
+    type: 'http'
+    udp: true
+  - name: '🇫🇷FR_218|1.3MB/s|M001-260618 01'
+    network: 'ws'
+    password: '87d1bfd4-574e-4c96-ad42-0426f27461ff'
+    port: 443
+    server: '104.18.35.15'
+    skip-cert-verify: false
+    sni: '_acme-challenge.sb.cloudns.biz'
+    sub_tag: 'M001-260618'
+    type: 'trojan'
+    ws-opts:
+      headers:
+        Host: '_acme-challenge.sb.cloudns.biz'
+      path: '/'
+    udp: true
+  - name: '🇺🇸US_624|1.4MB/s 01'
     password: 'null'
     port: 443
-    server: 'goedkoopgeluid.icu'
+    server: '52.55.81.168'
     skip-cert-verify: true
-    sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     username: 'null'
     udp: true
-    sni: 'goedkoopgeluid.icu'
-  - client-fingerprint: 'unsafe'
-    encryption: 'none'
-    name: '❓Other_389|70KB/s|B007-260618 01'
+  - client-fingerprint: 'chrome'
+    name: '🇺🇸US_674|1.0MB/s|F003-260618 01'
     network: 'ws'
     port: 443
-    server: '104.16.10.199'
-    sub_tag: 'B007-260618'
+    server: '172.67.212.14'
+    sub_tag: 'F003-260618'
     tls: true
     type: 'vless'
     udp: true
-    uuid: '44eae030-290b-4083-8102-6f8bab05701b'
+    uuid: 'a90c264d-3853-4eef-9a3d-628b2d02d15e'
     ws-opts:
       headers:
-        Host: 'cfvvv-ev1.pages.dev'
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.101 Safari/537.36'
-      path: '/'
+        Host: '0-M19.SoUtH-afrICA-ONline.CcWu.CC'
+        User-Agent: 'Mozilla/5.0 (Linux; Android 7.0; TRT-LX3 Build/HUAWEITRT-LX3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36'
+      path: '/CjBjB9sn5pCvaSwScc'
     xudp: true
     packet-encoding: 'xudp'
-    servername: 'cfvvv-ev1.pages.dev'
-  - name: '🇺🇸US_211|319KB/s|R002-260618 01'
-    password: 'null'
-    port: 443
-    server: 'zebpay.site'
+    servername: '0-m19.souTH-AFRiCA-oNlInE.Ccwu.cc'
+  - name: '🇺🇸US_691|124KB/s|R002-260618 01'
+    port: 7615
+    server: '47.90.206.169'
+    skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
-    username: 'null'
     udp: true
-    sni: 'zebpay.site'
   - client-fingerprint: 'chrome'
-    name: '🇫🇷FR_592|398KB/s|B007-260618 01'
+    name: '🇫🇷FR_337|599KB/s|A004-260618 01'
+    network: 'ws'
+    port: 443
+    server: '188.114.97.6'
+    sub_tag: 'A004-260618'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '8102891d-7b37-4dc5-8261-9474b59b5c63'
+    ws-opts:
+      headers:
+        Host: 'vip.868068.xyz'
+        User-Agent: 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36'
+      path: '/proxyip=us.xiabibi.cf'
+    xudp: true
+    packet-encoding: 'xudp'
+    servername: 'vip.868068.xyz'
+  - client-fingerprint: 'chrome'
+    name: '🇫🇷FR_341|1.5MB/s|A004-260618 01'
+    network: 'ws'
+    port: 443
+    server: '104.21.34.106'
+    sub_tag: 'A004-260618'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '8102891d-7b37-4dc5-8261-9474b59b5c63'
+    ws-opts:
+      headers:
+        Host: 'vip.868068.xyz'
+        User-Agent: 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36'
+      path: '/proxyip=us.xiabibi.cf'
+    xudp: true
+    packet-encoding: 'xudp'
+    servername: 'vip.868068.xyz'
+  - client-fingerprint: 'chrome'
+    name: '🇫🇷FR_353|836KB/s|B007-260618 01'
     network: 'ws'
     port: 443
     server: '195.26.229.32'
@@ -175,338 +291,68 @@ proxies:
     xudp: true
     packet-encoding: 'xudp'
     servername: 'xi.tbv.ccwu.cc'
-  - client-fingerprint: 'chrome'
-    name: '🇫🇷FR_594|319KB/s|B007-260618 01'
-    network: 'ws'
+  - type: 'vless'
+    name: '美国+CloudFlare节点-3467fe599d055525'
+    server: 'teddy.automizely.com'
     port: 443
-    server: '216.205.52.108'
-    sub_tag: 'B007-260618'
     tls: true
-    type: 'vless'
-    udp: true
     uuid: 'b2593749-691c-428c-9481-14979cba3446'
+    network: 'ws'
+    sni: 'xi.tbv.ccwu.cc'
     ws-opts:
+      path: '/proxyip=us.xiabibi.cf'
       headers:
         Host: 'xi.tbv.ccwu.cc'
-        User-Agent: 'Mozilla/5.0 (Linux; Android 8.0.0; ANE-LX3 Build/HUAWEIANE-LX3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36'
-      path: '/'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'xi.tbv.ccwu.cc'
-  - client-fingerprint: 'unsafe'
-    name: '🇫🇷FR_598|640KB/s|M003-260806 01'
+  - client-fingerprint: 'chrome'
+    name: '🇺🇸US_156|412KB/s|A001-260618 01'
     network: 'ws'
     port: 443
-    server: '104.18.242.3'
-    sub_tag: 'M003-260806'
+    server: '172.67.223.223'
+    sub_tag: 'A001-260618'
     tls: true
     type: 'vless'
     udp: true
-    uuid: '44eae030-290b-4083-8102-6f8bab05701b'
+    uuid: '7e26fd8f-d75a-473d-84ba-9f4e3f47d086'
     ws-opts:
       headers:
-        Host: 'cfvvv-ev1.pages.dev'
-        User-Agent: 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'
-      path: '/'
+        Host: '8-m20.d3b454d2-cba8-4b62-8d16-189d13194e3a.kdns.fr'
+        User-Agent: 'Mozilla/5.0 (Windows NT 6.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.112 Safari/537.36'
+      path: '/8qMLgNapWf6SBxo8fhQlVPYO'
     xudp: true
     packet-encoding: 'xudp'
-    servername: 'cfvvv-ev1.pages.dev'
-  - client-fingerprint: 'unsafe'
-    name: '🇫🇷FR_600|294KB/s|T001-260618 01'
-    network: 'ws'
-    port: 443
-    server: '104.16.10.191'
-    sub_tag: 'T001-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '44eae030-290b-4083-8102-6f8bab05701b'
-    ws-opts:
-      headers:
-        Host: 'cfvvv-ev1.pages.dev'
-        User-Agent: 'Mozilla/5.0 (Linux; Android 4.4.2; de-de; SAMSUNG GT-I9195 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Version/1.5 Chrome/28.0.1500.94 Mobile Safari/537.36'
-      path: '/'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'cfvvv-ev1.pages.dev'
-  - name: '🇺🇸 美国3'
-    server: '100.42.228.109'
-    port: 443
-    type: 'trojan'
-    password: 'BxceQaOe'
-    sni: 't.me%2Fripaojiedian'
-    skip-cert-verify: true
-  - name: '🇺🇸US_183|412KB/s|R002-260618 01'
-    password: 'e4b72b531a2d10900519'
-    port: 443
-    server: '162.243.146.243'
-    sni: 'a2f392f3.acsnet.co'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'testuser1'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_198|734KB/s|R002-260618 01'
-    port: 443
-    server: 'mmgr.club'
-    skip-cert-verify: true
-    sni: 'mmgr.club'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_200|739KB/s|P002-260618 01'
-    password: 'None'
-    port: 443
-    server: 'jewelscollecti.icu'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    sni: 'jewelscollecti.icu'
-    _poolOnly: true
-  - name: '🇺🇸US_207|687KB/s|R002-260618 01'
-    port: 443
-    server: 'goedkoopgeluid.icu'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    sni: 'goedkoopgeluid.icu'
-    _poolOnly: true
-  - name: '🇺🇸US_251|296KB/s|P002-260618 01'
-    password: 'None'
-    port: 443
-    server: 'purecambogiasl.live'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    sni: 'purecambogiasl.live'
-    _poolOnly: true
-  - name: '🇺🇸US_257|794KB/s|R002-260618 01'
-    port: 443
-    server: 'jgwynphotoarts.pro'
-    skip-cert-verify: false
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    sni: 'jgwynphotoarts.pro'
-    _poolOnly: true
-  - name: '🇺🇸US_266|755KB/s|R002-260618 01'
-    password: 'None'
-    port: 443
-    server: 'purposebydesig.club'
-    skip-cert-verify: false
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    sni: 'purposebydesig.club'
-    _poolOnly: true
-  - name: '🇺🇸US_272|698KB/s|R002-260618 01'
-    port: 443
-    server: 'webdrone.club'
-    sni: 'webdrone.club'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_273|764KB/s|P002-260618 01'
-    password: 'None'
-    port: 443
-    server: 'fullmanfirm.icu'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    sni: 'fullmanfirm.icu'
-    _poolOnly: true
-  - name: '🇺🇸US_282|799KB/s|P002-260618 01'
-    password: 'None'
-    port: 443
-    server: 'crosscards.site'
-    skip-cert-verify: false
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    sni: 'crosscards.site'
-    _poolOnly: true
-  - name: '🇺🇸US_311|687KB/s|R002-260618 01'
-    port: 443
-    server: 'tzoa.fun'
-    sni: 'tzoa.fun'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_406|761KB/s|P002-260618 01'
-    password: 'None'
-    port: 443
-    server: 'mmgr.club'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    sni: 'mmgr.club'
-    _poolOnly: true
-  - name: '🇺🇸US_434|784KB/s|P002-260618 01'
-    password: 'None'
-    port: 443
-    server: 'zebpay.site'
-    skip-cert-verify: false
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    sni: 'zebpay.site'
-    _poolOnly: true
-  - name: '🇺🇸US_435|728KB/s|R002-260618 01'
-    password: 'null'
-    port: 443
-    server: 'efr-marktplatz.club'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    sni: 'efr-marktplatz.club'
-    _poolOnly: true
-  - name: '🇺🇸US_440|760KB/s|P002-260618 01'
-    password: 'None'
-    port: 443
-    server: 'tzoa.fun'
-    skip-cert-verify: false
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    sni: 'tzoa.fun'
-    _poolOnly: true
-  - name: '🇺🇸US_537|765KB/s|P002-260618 01'
-    password: 'None'
-    port: 443
-    server: 'berniesbodybla.fun'
-    skip-cert-verify: false
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    sni: 'berniesbodybla.fun'
-    _poolOnly: true
-  - name: '🇺🇸US_777|708KB/s|K001-260618 01'
-    password: 'null'
-    port: 443
-    server: 'jewelscollecti.icu'
-    skip-cert-verify: true
-    sub_tag: 'K001-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    sni: 'jewelscollecti.icu'
-    _poolOnly: true
-  - name: '🇺🇸US_266|834KB/s|R002-260618 01'
-    password: 'null'
-    port: 443
-    server: 'purecambogiasl.live'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    sni: 'purecambogiasl.live'
-    _poolOnly: true
-  - name: '🇺🇸US_327|776KB/s|K001-260618 01'
-    password: 'null'
-    port: 443
-    server: 'kimberlymilano.icu'
-    skip-cert-verify: true
-    sub_tag: 'K001-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    sni: 'kimberlymilano.icu'
-    _poolOnly: true
-  - name: '🇺🇸US_708|343KB/s|R002-260618 01'
-    password: 'null'
-    port: 443
-    server: 'fan.365747.xyz'
-    skip-cert-verify: true
-    sni: 'fan.365747.xyz'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_147|157KB/s|R002-260618 01'
-    port: 443
-    server: 'fan.365747.xyz'
-    skip-cert-verify: true
-    sni: 'fan.365747.xyz'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
+    servername: '8-m20.d3b454d2-cba8-4b62-8d16-189d13194e3a.kdns.fr'
     _poolOnly: true
 proxy-groups:
   - name: 'PROXY'
     type: 'select'
     proxies:
       - 'DIRECT'
-      - '🇺🇸US_45|389KB/s|R002-260618 01'
-      - '❓Other_84|319KB/s|R002-260618 01'
-      - '❓Other_90|329KB/s|R002-260618 01'
-      - '🇺🇸US_49|83KB/s|R002-260618 01'
-      - '🇺🇸US_65|230KB/s|R002-260618 01'
-      - '❓Other_111|86KB/s|R002-260618 01'
-      - '🇺🇸US_75|364KB/s|P002-260618 01'
-      - '🇺🇸US_76|422KB/s|R002-260618 01'
-      - '🇺🇸US_105|467KB/s|P002-260618 01'
-      - '🇺🇸US_124|233KB/s|K001-260618 01'
-      - '🇺🇸US_129|228KB/s|K001-260618 01'
-      - '🇺🇸US_133|292KB/s|P002-260618 01'
-      - '🇺🇸US_180|449KB/s|R002-260618 01'
-      - '❓Other_389|70KB/s|B007-260618 01'
-      - '🇺🇸US_211|319KB/s|R002-260618 01'
-      - '🇫🇷FR_592|398KB/s|B007-260618 01'
-      - '🇫🇷FR_594|319KB/s|B007-260618 01'
-      - '🇫🇷FR_598|640KB/s|M003-260806 01'
-      - '🇫🇷FR_600|294KB/s|T001-260618 01'
-      - '🇺🇸 美国3'
-      - '🇺🇸US_183|412KB/s|R002-260618 01'
-      - '🇺🇸US_198|734KB/s|R002-260618 01'
-      - '🇺🇸US_200|739KB/s|P002-260618 01'
-      - '🇺🇸US_207|687KB/s|R002-260618 01'
-      - '🇺🇸US_251|296KB/s|P002-260618 01'
-      - '🇺🇸US_257|794KB/s|R002-260618 01'
-      - '🇺🇸US_266|755KB/s|R002-260618 01'
-      - '🇺🇸US_272|698KB/s|R002-260618 01'
-      - '🇺🇸US_273|764KB/s|P002-260618 01'
-      - '🇺🇸US_282|799KB/s|P002-260618 01'
-      - '🇺🇸US_311|687KB/s|R002-260618 01'
-      - '🇺🇸US_406|761KB/s|P002-260618 01'
-      - '🇺🇸US_434|784KB/s|P002-260618 01'
-      - '🇺🇸US_435|728KB/s|R002-260618 01'
-      - '🇺🇸US_440|760KB/s|P002-260618 01'
-      - '🇺🇸US_537|765KB/s|P002-260618 01'
-      - '🇺🇸US_777|708KB/s|K001-260618 01'
-      - '🇺🇸US_266|834KB/s|R002-260618 01'
-      - '🇺🇸US_327|776KB/s|K001-260618 01'
-      - '🇺🇸US_708|343KB/s|R002-260618 01'
-      - '🇺🇸US_147|157KB/s|R002-260618 01'
+      - '🇩🇪DE德国丨yoyapai.com_12'
+      - '🇺🇸US_13|402KB/s|A004-260618 01'
+      - '🇺🇸US_16|892KB/s 01'
+      - '🇺🇸US_28|591KB/s|T001-260618 01'
+      - '🇺🇸US_70|1.3MB/s|C002-260622 01'
+      - '🇺🇸US_90|1.1MB/s|A004-260618 01'
+      - '🇺🇸US_119|1.5MB/s|B007-260618 01'
+      - '🇺🇸US_150|567KB/s|A004-260618 01'
+      - '🇺🇸US_157|878KB/s|A004-260618 01'
+      - '🇺🇸US_174|1.1MB/s|R002-260618 01'
+      - '🇺🇸US_325|1.2MB/s|R002-260618 01'
+      - '🇺🇸US_412|1013KB/s|A004-260618 01'
+      - '🇺🇸US_424|1.9MB/s 01'
+      - '🇺🇸US_466|979KB/s 01'
+      - '🇺🇸US_471|1.0MB/s|K001-260618 01'
+      - '🇺🇸US_473|1.4MB/s|P002-260618 01'
+      - '🇫🇷FR_162|623KB/s|A004-260618 01'
+      - '🇺🇸US_566|735KB/s|R002-260618 01'
+      - '🇫🇷FR_218|1.3MB/s|M001-260618 01'
+      - '🇺🇸US_624|1.4MB/s 01'
+      - '🇺🇸US_674|1.0MB/s|F003-260618 01'
+      - '🇺🇸US_691|124KB/s|R002-260618 01'
+      - '🇫🇷FR_337|599KB/s|A004-260618 01'
+      - '🇫🇷FR_341|1.5MB/s|A004-260618 01'
+      - '🇫🇷FR_353|836KB/s|B007-260618 01'
+      - '美国+CloudFlare节点-3467fe599d055525'
+      - '🇺🇸US_156|412KB/s|A001-260618 01'
 rules:
   - 'MATCH,PROXY'
