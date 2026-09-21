@@ -52,18 +52,21 @@ function main(){
     const prev=oldMap.get(id);
     const currentSources=[...new Set(Array.isArray(p._sources)?p._sources.filter(Boolean):[])];
     const knownSources=[...new Set([...(prev?.knownSources||[]),...currentSources])];
-    const firstSeen=prev?.firstSeen||now;
+    // These timestamps mean when NodeProbe observed the node, not when the source published it.
+    // A source file's timestamp is not reliable publication evidence: long-lived nodes can remain
+    // in a subscription for a long time and appear in a much newer file without being newly published.
+    const firstObservedAt=prev?.firstObservedAt||prev?.firstSeen||now;
     // Preserve source provenance separately from the endpoint fingerprint.
     // Provenance is metadata only and must never participate in endpoint-id.
-    const firstSeenSource=prev?.firstSeenSource||currentSources[0]||null;
+    const firstObservedSource=prev?.firstObservedSource||prev?.firstSeenSource||currentSources[0]||null;
     const previousObservations=Array.isArray(prev?.sourceObservations)?prev.sourceObservations:[];
     const observationMap=new Map(previousObservations.filter(x=>x&&x.source).map(x=>[x.source,{...x}]));
     for(const source of currentSources){
-      const x=observationMap.get(source)||{source,firstSeenAt:now,lastSeenAt:now};
-      x.lastSeenAt=now;
+      const x=observationMap.get(source)||{source,firstObservedAt:now,lastObservedAt:now};
+      x.lastObservedAt=now;
       observationMap.set(source,x);
     }
-    const sourceObservations=[...observationMap.values()].sort((a,b)=>String(a.firstSeenAt).localeCompare(String(b.firstSeenAt)));
+    const sourceObservations=[...observationMap.values()].sort((a,b)=>String(a.firstObservedAt).localeCompare(String(b.firstObservedAt)));
     const observedSources=sourceObservations.map(x=>x.source);
     const currentHealthy=healthy(r);
     const healthyRuns=currentHealthy?(Number(prev?.healthyRuns||0)+1):0;
@@ -82,15 +85,15 @@ function main(){
     }
 
     const proxy=cleanProxy(p);
-    const lifetimeDays=Math.max(0,(Date.now()-Date.parse(firstSeen))/86400000);
+    const lifetimeDays=Math.max(0,(Date.now()-Date.parse(firstObservedAt))/86400000);
     const entry={
       fingerprint:id,
       name:proxy.name,
       proxy,
       status,
       everStable:Boolean(prev?.everStable||status==='stable'),
-      firstSeen,
-      firstSeenSource,
+      firstObservedAt,
+      firstObservedSource,
       observedSources,
       sourceObservations,
       lastSeen:currentHealthy?now:(prev?.lastSeen||firstSeen),
