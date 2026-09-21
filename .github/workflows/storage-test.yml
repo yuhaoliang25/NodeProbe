@@ -12,7 +12,7 @@ jobs:
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.B2_APPLICATION_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.B2_APPLICATION_KEY }}
-      AWS_DEFAULT_REGION: us-east-005
+      AWS_DEFAULT_REGION: us-east-1
       B2_ENDPOINT: https://s3.us-east-005.backblazeb2.com
       B2_BUCKET: nodeprobe
       AWS_EC2_METADATA_DISABLED: "true"
