@@ -25,7 +25,6 @@ jobs:
       - name: Configure AWS CLI for B2
         run: |
           set -euo pipefail
-          # Backblaze requires SigV4 and recommends leaving the AWS region blank.
           aws configure set default.s3.signature_version s3v4
           aws --version
           aws configure list
@@ -33,15 +32,18 @@ jobs:
       - name: Upload to B2
         run: |
           set -euo pipefail
-          aws s3 cp hello.txt \
-            "s3://$B2_BUCKET/storage-test/hello.txt" \
+          aws s3api put-object \
+            --bucket "$B2_BUCKET" \
+            --key storage-test/hello.txt \
+            --body hello.txt \
             --endpoint-url "$B2_ENDPOINT"
 
-      - name: Download from B2
+      - name: Direct GET from B2
         run: |
           set -euo pipefail
-          aws s3 cp \
-            "s3://$B2_BUCKET/storage-test/hello.txt" \
+          aws s3api get-object \
+            --bucket "$B2_BUCKET" \
+            --key storage-test/hello.txt \
             downloaded.txt \
             --endpoint-url "$B2_ENDPOINT"
 
@@ -49,11 +51,12 @@ jobs:
         run: |
           set -euo pipefail
           cmp hello.txt downloaded.txt
-          echo "B2 upload/download test passed."
+          echo "B2 upload/direct-download test passed."
 
       - name: Clean up test object
         if: always()
         run: |
-          aws s3 rm \
-            "s3://$B2_BUCKET/storage-test/hello.txt" \
+          aws s3api delete-object \
+            --bucket "$B2_BUCKET" \
+            --key storage-test/hello.txt \
             --endpoint-url "$B2_ENDPOINT"
