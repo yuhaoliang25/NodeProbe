@@ -18,6 +18,119 @@ jobs:
         with:
           node-version: 22
       - run: npm install
+      - name: Restore persistent state from B2
+        run: mkdir -p data
+
+      - name: Restore sources.json from B2
+        continue-on-error: true
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: download
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: nodeprobe-state/sources.json
+          destination: data/sources.json
+
+      - name: Restore discovery-state.json from B2
+        continue-on-error: true
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: download
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: nodeprobe-state/discovery-state.json
+          destination: data/discovery-state.json
+
+      - name: Restore source-evolution.json from B2
+        continue-on-error: true
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: download
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: nodeprobe-state/source-evolution.json
+          destination: data/source-evolution.json
+
+      - name: Restore source-history.json from B2
+        continue-on-error: true
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: download
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: nodeprobe-state/source-history.json
+          destination: data/source-history.json
+
+      - name: Restore source-reputation.json from B2
+        continue-on-error: true
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: download
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: nodeprobe-state/source-reputation.json
+          destination: data/source-reputation.json
+
+      - name: Restore node-pool.json from B2
+        continue-on-error: true
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: download
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: nodeprobe-state/node-pool.json
+          destination: data/node-pool.json
+
+      - name: Restore history.json from B2
+        continue-on-error: true
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: download
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: nodeprobe-state/history.json
+          destination: data/history.json
+
+      - name: Restore reputation.json from B2
+        continue-on-error: true
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: download
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: nodeprobe-state/reputation.json
+          destination: data/reputation.json
+
+      - name: Restore ip-geolocation.json from B2
+        continue-on-error: true
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: download
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: nodeprobe-state/ip-geolocation.json
+          destination: data/ip-geolocation.json
+
+      - name: Restore country-pool.json from B2
+        continue-on-error: true
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: download
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: nodeprobe-state/country-pool.json
+          destination: data/country-pool.json
+
       - name: Discover public sources
         env:
           GITHUB_TOKEN: ${{ github.token }}
@@ -113,6 +226,116 @@ jobs:
         run: node scripts/build-subscriptions.js
       - name: Convert final subscriptions to importable Mihomo configs
         run: node scripts/convert-subscriptions.js
+      - name: Save sources.json to B2
+        if: success()
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: upload
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: data/sources.json
+          destination: nodeprobe-state/sources.json
+
+      - name: Save discovery-state.json to B2
+        if: success()
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: upload
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: data/discovery-state.json
+          destination: nodeprobe-state/discovery-state.json
+
+      - name: Save source-evolution.json to B2
+        if: success()
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: upload
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: data/source-evolution.json
+          destination: nodeprobe-state/source-evolution.json
+
+      - name: Save source-history.json to B2
+        if: success()
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: upload
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: data/source-history.json
+          destination: nodeprobe-state/source-history.json
+
+      - name: Save source-reputation.json to B2
+        if: success()
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: upload
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: data/source-reputation.json
+          destination: nodeprobe-state/source-reputation.json
+
+      - name: Save node-pool.json to B2
+        if: success()
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: upload
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: data/node-pool.json
+          destination: nodeprobe-state/node-pool.json
+
+      - name: Save history.json to B2
+        if: success()
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: upload
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: data/history.json
+          destination: nodeprobe-state/history.json
+
+      - name: Save reputation.json to B2
+        if: success()
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: upload
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: data/reputation.json
+          destination: nodeprobe-state/reputation.json
+
+      - name: Save ip-geolocation.json to B2
+        if: success()
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: upload
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: data/ip-geolocation.json
+          destination: nodeprobe-state/ip-geolocation.json
+
+      - name: Save country-pool.json to B2
+        if: success()
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: upload
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: data/country-pool.json
+          destination: nodeprobe-state/country-pool.json
+
       - name: Commit generated subscriptions
         run: |
           git config user.name 'github-actions[bot]'
