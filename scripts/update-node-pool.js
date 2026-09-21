@@ -96,7 +96,7 @@ function main(){
       firstObservedSource,
       observedSources,
       sourceObservations,
-      lastSeen:currentHealthy?now:(prev?.lastSeen||firstSeen),
+      lastSeen:currentHealthy?now:(prev?.lastSeen||firstObservedAt),
       lastObservedAt:now,
       lifetimeDays:Number(lifetimeDays.toFixed(3)),
       observedRuns,
