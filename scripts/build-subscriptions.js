@@ -158,9 +158,9 @@ try{
    return m.recentTests>=6&&m.weightedRate>=0.8;
  }
  function bestEligible(r){
-   const m=historyMetric(r.fingerprint),repNode=reputation.nodes?.[r.fingerprint],st=currentStability.get(r.fingerprint)||currentStability.get(r.name);
+   const m=historyMetric(r.fingerprint),st=currentStability.get(r.fingerprint)||currentStability.get(r.name);
    const currentOk=r.rounds>=3&&currentRate(r)>=0.9&&currentLatency(r)<=2500&&Number(r.p95Latency||Infinity)<=5000;
-   if(!currentOk||repNode?.status==='quarantine'||repNode?.status==='degraded')return false;
+   if(!currentOk)return false;
    // When the current run has a stability confirmation, Best requires it. The
    // first build of a run happens before confirmation and therefore keeps the
    // provisional set; the final rebuild after confirmation applies this gate.
@@ -170,8 +170,6 @@ try{
  }
  const google=new Set(h.results.filter(r=>currentRate(r)>0).map(r=>r.name));
  const stable=new Set(h.results.filter(stableEligible).map(r=>r.name));
- let reputation={nodes:{}};
- try{reputation=JSON.parse(fs.readFileSync('data/reputation.json','utf8'))}catch{}
  const best=new Set(h.results.filter(bestEligible).map(r=>r.name));
  function qualityScore(r,m){
   const success=Math.max(0,Math.min(1,r.successRate||0)),long=Math.max(0,Math.min(1,m?.weightedRate??m?.longRate??0));
