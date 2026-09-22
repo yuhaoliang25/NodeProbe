@@ -154,6 +154,41 @@ async function main(){
       if(!deep.length)break;
     }
 
+    // Stage attempts are detailed evidence. Only one final observation per node
+    // is applied to the China asset, so several stages in one probe run do not
+    // artificially inflate observedRuns or China trust.
+    const finalObservations=selected.map(p=>{
+      const id=endpointId(p);
+      const trace=traces.get(id)||[];
+      const last=trace[trace.length-1];
+      return {
+        endpointId:id,
+        at:trace[0]?.at||now(),
+        success:Boolean(last?.success),
+        latencyMs:last?.latencyMs??null,
+        error:last?.error||null,
+        timeout:Boolean(last?.timeout),
+        probeEnvironment:CONFIG.environment,
+        stage:last?.stage||null,
+        successfulStages:trace.filter(x=>x.success).map(x=>x.stage),
+        failedStages:trace.filter(x=>!x.success).map(x=>x.stage),
+        attemptCount:trace.length,
+      };
+    });
+
+    const probeRunId=now();
+    const payload={
+      version:3,
+      generatedAt:probeRunId,
+      probeRunId,
+      probeEnvironment:CONFIG.environment,
+      target:CONFIG.target,
+      expected:CONFIG.expected,
+      stages:{stage1Timeout:CONFIG.fastTimeout,deepRounds:CONFIG.deepRounds},
+      observations:finalObservations,
+      attempts:observations,
+    };
+
     console.log(JSON.stringify({
       candidates:selected.length,
       stage1Pass:firstPass.length,
@@ -161,22 +196,22 @@ async function main(){
       stage2Pass:stage2.filter(x=>x.success).length,
       deepPass:deep.length,
       attempts:observations.length,
+      finalObservations:finalObservations.length,
       target:CONFIG.target,
       environment:CONFIG.environment,
     },null,2));
 
-
     fs.mkdirSync(path.dirname(CONFIG.observationFile),{recursive:true});
-    fs.writeFileSync(CONFIG.observationFile,JSON.stringify({version:2,generatedAt:now(),probeEnvironment:CONFIG.environment,target:CONFIG.target,expected:CONFIG.expected,observations},null,2)+'\n');
+    fs.writeFileSync(CONFIG.observationFile,JSON.stringify(payload,null,2)+'\n');
     fs.mkdirSync(CONFIG.observationDir,{recursive:true});
     const safeEnv=CONFIG.environment.replace(/[^A-Za-z0-9._-]+/g,'_');
     const batchFile=path.join(CONFIG.observationDir,`${new Date().toISOString().replace(/[:.]/g,'-')}-${safeEnv}.json`);
-    fs.writeFileSync(batchFile,JSON.stringify({version:2,generatedAt:now(),probeEnvironment:CONFIG.environment,target:CONFIG.target,expected:CONFIG.expected,stages:{stage1Timeout:CONFIG.fastTimeout,deepRounds:CONFIG.deepRounds},observations},null,2)+'\n');
+    fs.writeFileSync(batchFile,JSON.stringify(payload,null,2)+'\n');
 
     console.log(JSON.stringify({
       candidates:selected.length,
-      successes:observations.filter(x=>x.success).length,
-      failures:observations.filter(x=>!x.success).length,
+      successes:finalObservations.filter(x=>x.success).length,
+      failures:finalObservations.filter(x=>!x.success).length,
       target:CONFIG.target,
       environment:CONFIG.environment,
       observationFile:CONFIG.observationFile,
