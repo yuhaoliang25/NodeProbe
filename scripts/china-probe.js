@@ -6,6 +6,7 @@ const os=require('os');
 const path=require('path');
 const {spawn}=require('child_process');
 const yaml=require('js-yaml');
+const {runConcurrent,probeDelay}=require('./lib/probe-runner');
 
 const CONFIG={
   candidateFile:process.env.CHINA_CANDIDATE_FILE||'data/china-probe-candidates.json',
@@ -20,6 +21,8 @@ const CONFIG={
   expected:process.env.CHINA_PROBE_EXPECTED||'204',
   timeout:Number(process.env.CHINA_PROBE_TIMEOUT||8000),
   concurrency:Number(process.env.CHINA_PROBE_CONCURRENCY||8),
+  fastTimeout:Number(process.env.CHINA_STAGE1_TIMEOUT||5000),
+  deepRounds:Number(process.env.CHINA_DEEP_ROUNDS||2),
   environment:process.env.CHINA_PROBE_ENV||os.hostname(),
 };
 
@@ -100,54 +103,75 @@ async function main(){
 
   try{
     await waitApi();
-    const observations=new Array(selected.length);
-    let nextIndex=0;
-    async function probeOne(index){
-      const p=selected[index];
-      const at=now();
-      try{
-        const q=new URLSearchParams({
-          url:CONFIG.target,
-          timeout:String(CONFIG.timeout),
+    const observations=[];
+    const traces=new Map(selected.map(p=>[endpointId(p),[]]));
+
+    async function runStage(proxies,timeout,stage){
+      const rows=await runConcurrent(proxies,async p=>{
+        const result=await probeDelay({
+          api:CONFIG.api,
+          name:p.name,
+          target:CONFIG.target,
           expected:CONFIG.expected,
+          timeout,
         });
-        const result=await apiJson(CONFIG.api+'/proxies/'+encodeURIComponent(p.name)+'/delay?'+q);
-        const latencyMs=Number(result.delay);
-        observations[index]={
+        const observation={
           endpointId:endpointId(p),
-          at,
-          success:Number.isFinite(latencyMs)&&latencyMs>0,
-          latencyMs:Number.isFinite(latencyMs)&&latencyMs>0?latencyMs:null,
-          error:null,
+          at:result.startedAt,
+          success:result.success,
+          latencyMs:result.delayMs,
+          error:result.error,
+          timeout:result.timeout,
           probeEnvironment:CONFIG.environment,
+          stage,
+          finishedAt:result.finishedAt,
         };
-      }catch(e){
-        observations[index]={
-          endpointId:endpointId(p),
-          at,
-          success:false,
-          latencyMs:null,
-          error:String(e&&e.message||e).slice(0,300),
-          probeEnvironment:CONFIG.environment,
-        };
-      }
+        traces.get(observation.endpointId).push(observation);
+        return observation;
+      },CONFIG.concurrency);
+      observations.push(...rows);
+      return rows;
     }
-    async function worker(){
-      while(true){
-        const index=nextIndex++;
-        if(index>=selected.length)return;
-        await probeOne(index);
-      }
+
+    // Stage 1: fast screening for every selected candidate.
+    const stage1=await runStage(selected,CONFIG.fastTimeout,'stage1-fast');
+    const firstPass=selected.filter((p,i)=>stage1[i].success);
+    const firstFail=selected.filter((p,i)=>!stage1[i].success);
+
+    // A single timeout/transport failure is not enough to discard a candidate.
+    const retry=await runStage(firstFail,CONFIG.timeout,'stage1-retry');
+    const retryPass=new Set(retry.filter(x=>x.success).map(x=>x.endpointId));
+    const survivors=[...firstPass,...firstFail.filter(p=>retryPass.has(endpointId(p)))];
+
+    // Stage 2: normal-timeout confirmation for Stage-1 survivors.
+    const stage2=await runStage(survivors,CONFIG.timeout,'stage2');
+    let deep=survivors.filter((p,i)=>stage2[i].success);
+
+    // Deep rounds provide repeated evidence rather than changing China trust directly.
+    for(let round=1;round<=CONFIG.deepRounds;round++){
+      const result=await runStage(deep,CONFIG.timeout,'deep-round-'+round);
+      deep=deep.filter((p,i)=>result[i].success);
+      if(!deep.length)break;
     }
-    const workerCount=Math.min(Math.max(1,CONFIG.concurrency),selected.length);
-    await Promise.all(Array.from({length:workerCount},()=>worker()));
+
+    console.log(JSON.stringify({
+      candidates:selected.length,
+      stage1Pass:firstPass.length,
+      stage1RetryPass:retryPass.size,
+      stage2Pass:stage2.filter(x=>x.success).length,
+      deepPass:deep.length,
+      attempts:observations.length,
+      target:CONFIG.target,
+      environment:CONFIG.environment,
+    },null,2));
+
 
     fs.mkdirSync(path.dirname(CONFIG.observationFile),{recursive:true});
-    fs.writeFileSync(CONFIG.observationFile,JSON.stringify(observations,null,2)+'\n');
+    fs.writeFileSync(CONFIG.observationFile,JSON.stringify({version:2,generatedAt:now(),probeEnvironment:CONFIG.environment,target:CONFIG.target,expected:CONFIG.expected,observations},null,2)+'\n');
     fs.mkdirSync(CONFIG.observationDir,{recursive:true});
     const safeEnv=CONFIG.environment.replace(/[^A-Za-z0-9._-]+/g,'_');
     const batchFile=path.join(CONFIG.observationDir,`${new Date().toISOString().replace(/[:.]/g,'-')}-${safeEnv}.json`);
-    fs.writeFileSync(batchFile,JSON.stringify({version:1,generatedAt:now(),probeEnvironment:CONFIG.environment,target:CONFIG.target,expected:CONFIG.expected,observations},null,2)+'\n');
+    fs.writeFileSync(batchFile,JSON.stringify({version:2,generatedAt:now(),probeEnvironment:CONFIG.environment,target:CONFIG.target,expected:CONFIG.expected,stages:{stage1Timeout:CONFIG.fastTimeout,deepRounds:CONFIG.deepRounds},observations},null,2)+'\n');
 
     console.log(JSON.stringify({
       candidates:selected.length,
