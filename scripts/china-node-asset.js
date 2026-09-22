@@ -255,7 +255,7 @@ function scoreCandidate(node, category, atMs) {
   let score = 0;
 
   if (category === 'new') score += 1000;
-  if (category === 'relay') score += 800;
+  if (category === 'trusted-recheck') score += 800;
   if (category === 'veteran') score += 700;
   if (category === 'failed') score += 600;
   if (category === 'forgotten') score += 500;
@@ -292,7 +292,7 @@ function buildCandidates(stable, state, atMs) {
     let category = 'new';
 
     if (old.state === 'TRUSTED') {
-      category = old.observedRuns >= 10 ? 'veteran' : 'relay';
+      category = old.observedRuns >= 10 ? 'veteran' : 'trusted-recheck';
     } else if (old.state === 'DEGRADED' || old.state === 'UNTRUSTED') {
       category = 'failed';
     } else if (old.state === 'FORGOTTEN') {
