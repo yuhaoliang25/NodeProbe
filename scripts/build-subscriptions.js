@@ -137,7 +137,8 @@ try{
    return [id,{longRate:x.tests?x.successes/x.tests:0,avg:s.length?Math.round(s.reduce((a,b)=>a+b,0)/s.length):null,p95:p(.95),tests:x.tests}];
  }));
  const stability=(()=>{try{return JSON.parse(fs.readFileSync('data/stability.json','utf8'))}catch{return null}})();
- const currentStability=new Map((stability?.healthGeneratedAt===h.generatedAt?(stability.results||[]):[]).map(x=>[x.fingerprint||x.name,x]));
+ const currentStability=new Map();
+ for(const x of (stability?.healthGeneratedAt===h.generatedAt?(stability.results||[]):[])){ if(x.fingerprint)currentStability.set(x.fingerprint,x); if(x.name)currentStability.set(x.name,x); }
  const sourceQuality=new Map(Object.entries(h.sourceStats||{}).map(([name,x])=>[name,x])); const sourceReputation=(()=>{try{return JSON.parse(fs.readFileSync('data/source-reputation.json','utf8'))}catch{return {sources:{}}}})();
  const histStats=new Map(Object.entries(hist).map(([id,x])=>{
    const observations=[];
