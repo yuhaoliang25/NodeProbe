@@ -714,3 +714,117 @@ GitHub Actions Artifact
 The detailed trace must never be added to the normal Git commit or B2 persistence list.
 
 **Best-selection audit revision:** 2026-09-22
+
+
+## 22. Best Stability Confirmation
+
+Best is intentionally a **small, high-confidence pool**, not a quota. The number of Best nodes is an outcome, not an optimization target. An empty Best pool is therefore a valid state; the system must not automatically relax its criteria merely to produce nodes.
+
+The selection flow is now:
+
+```
+ordinary health
+    ↓
+provisional Best
+    ↓
+high-resource Stability Confirmation
+    ↓
+final Best
+```
+
+### Stability Confirmation design
+
+Only nodes that would enter Best under the ordinary eligibility rules are tested again. The confirmation currently uses:
+
+- 5 rounds;
+- 10 attempts per target in total;
+- 3 independent HTTP targets;
+- 30 attempts per node in total;
+- randomized target order between rounds;
+- controlled concurrency;
+- short pauses between rounds.
+
+Current targets:
+
+- Google `generate_204`, expected 204;
+- Cloudflare `/cdn-cgi/trace`, expected 200;
+- GitHub home page, expected 200.
+
+The purpose is not to measure website quality. The targets provide several independent destinations so that a target-specific failure is distinguishable from a broader node-connectivity problem. Cloudflare documents `/cdn-cgi/trace` as a managed Cloudflare endpoint, while HTTP 200/204 are successful HTTP response classes. 
+
+### Evidence recorded
+
+For every provisional Best node, the confirmation records:
+
+- total attempts;
+- successes / failures;
+- timeout count;
+- overall success rate;
+- per-target success rate;
+- per-round success rate;
+- maximum consecutive failures;
+- maximum consecutive timeouts;
+- p50 / p95 / p99 latency;
+- maximum latency.
+
+Detailed attempt traces are stored as a temporary GitHub Actions artifact under `reports/stability/`. They are not committed to Git.
+
+A compact `data/stability.json` result and `data/stability-history.json` history are persisted through B2. Stability evidence is tied to the exact `health.generatedAt` of the run that produced the provisional Best set, preventing stale evidence from affecting a later run.
+
+### Initial gate
+
+The initial experimental gate is intentionally strict:
+
+- overall success rate >= 95%;
+- each target success rate >= 80%;
+- each round success rate >= 2/3;
+- maximum consecutive failures <= 1;
+- maximum consecutive timeouts <= 1;
+- p95 latency <= 5000 ms.
+
+These are **experimental parameters**, not permanent architectural truths. They exist to establish a conservative first Best pool. Future changes should be based on accumulated temporal evidence rather than the desired number of nodes.
+
+The system must never implement an automatic rule such as:
+
+```
+if Best is empty:
+    relax threshold
+```
+
+If the pool becomes empty, that is a valid observation that the current evidence does not justify any node as Best.
+
+### Why stability is separate from ordinary health
+
+Ordinary health answers:
+
+> Can NodeProbe use this node now?
+
+Stability confirmation asks:
+
+> Does this node continue to succeed under repeated, multi-target, multi-round observation?
+
+Historical node reputation answers:
+
+> Has this node demonstrated reliability across previous NodeProbe runs?
+
+These are different evidence layers and should remain separately observable.
+
+### Threshold research
+
+The first implementation intentionally collects rich evidence before further tuning. After enough runs, stability measurements can be compared with subsequent NodeProbe observations to determine which indicators predict future reliability.
+
+The preferred validation method is temporal rather than random splitting:
+
+```
+past runs
+   ↓
+derive candidate thresholds
+   ↓
+future runs
+   ↓
+validate whether Best remains reliable
+```
+
+The objective is high confidence in the Best pool, not a target Best count.
+
+**Best stability confirmation revision:** 2026-09-22
