@@ -19,7 +19,8 @@ async function main(){
  const sourceByName=new Map(candidates.map(x=>[x.name,Array.isArray(x._sources)&&x._sources.length?x._sources:[x._source||'unknown']]));
  const ids=new Map(candidates.map(x=>[x.name,x['endpoint-id']||x._id]));
  const rep=(()=>{try{return JSON.parse(fs.readFileSync('data/reputation.json','utf8')).nodes||{}}catch{return {}}})();
- const nodePool=(()=>{try{return JSON.parse(fs.readFileSync('data/node-pool.json','utf8')).nodes||{}}catch{return {}}})();
+ const nodePool=(()=>{try{return JSON.parse(fs.readFileSync('data/node-pool.json','utf8')).nodes||[]}catch{return []}})();
+ const poolById=new Map(nodePool.filter(x=>x&&x.fingerprint).map(x=>[x.fingerprint,x]));
  function trustOf(p){
   const id=p['endpoint-id']||p._id;
   return rep[id]?.trust||'untrusted';
@@ -125,7 +126,7 @@ async function main(){
    const id=row.fingerprint;
    if(!id)continue;
    const prev=rep[id]||{};
-   const pool=poolNodes[id]||{};
+   const pool=poolById.get(id)||{};
    const outcomes=(Array.isArray(prev.recentOutcomes)?prev.recentOutcomes:[]).concat(
      row.delays.map(delay=>({at:new Date().toISOString(),success:Number(delay)>0}))
    ).slice(-12);
