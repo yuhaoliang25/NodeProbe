@@ -150,3 +150,33 @@ Node reputation asks: How much evidence should NodeProbe require before changing
 Node Pool asks: Which Nodes does NodeProbe currently own as persistent assets?
 
 These questions should not be collapsed into one score.
+
+## 23. Probe-Specific Trust, Cross-Probe Test-Fact Reuse
+
+Google Probe and China Probe maintain independent Node asset pools and independent trust/reputation tables. Reputation is not a global property of an endpoint: the same endpoint may have different trust under different probing objectives.
+
+A Probe may nevertheless reuse a concrete test fact produced by another Probe when that fact has a clear, narrower semantic meaning. In particular, China Probe may reuse the result that a Node has passed the Google Probe `stable` test to reduce redundant testing cost.
+
+This is evidence reuse, not trust propagation:
+
+```text
+Google stable test result
+        ↓
+  reduce China test burden
+        ↓
+China-specific observations
+        ↓
+China reputation
+```
+
+Do not implement:
+
+```text
+Google trusted → China trusted
+Google success rate → China trust
+Google reputation → China reputation
+```
+
+The working assumption is that failure to satisfy the `stable` baseline means the endpoint is not useful as a relay candidate even if it happens to be reachable from China. Therefore re-testing that already-disqualified baseline property in China would usually add cost without useful information. China Probe still independently establishes China-specific reachability and stability.
+
+This reuse is deliberately one-way and fact-specific. If the definition of `stable` changes, the reused result must be interpreted according to the corresponding test version/semantics rather than treated as permanent cross-Probe trust.
