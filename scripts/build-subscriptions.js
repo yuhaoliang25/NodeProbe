@@ -286,8 +286,18 @@ try{
    const wilsonLower=posteriorN>0?Math.max(0,(phat+(z*z/(2*posteriorN))-z*Math.sqrt((phat*(1-phat)/posteriorN)+(z*z/(4*posteriorN*posteriorN))))/denom):0;
    const usable=recent.filter(x=>x.avgLatency!=null),avgLatency=usable.length?Math.round(usable.reduce((s,x)=>s+x.avgLatency,0)/usable.length):null,last=recent.at(-1);
    const lastObservedAt=last?.at||registryById.get(source)?.lastSeen||null;
-   const stalenessDays=lastObservedAt?Math.max(0,(Date.now()-Date.parse(lastObservedAt))/86400000):Infinity;
-   const evolutionRuns=(sourceEvolution.runs||[]).map(run=>run.sources?.[source]).filter(Boolean).slice(-12);
+   // Fetching a source is not the same as the source publishing new nodes.
+   // For forgetting, freshness means meaningful node-set change. A source that
+   // is fetched every run but returns the same nodes remains stale.
+   const evolutionAll=(sourceEvolution.runs||[]).filter(run=>run.sources?.[source]);
+   const lastChangedRun=[...evolutionAll].reverse().find(run=>{
+     const x=run.sources[source];
+     return x.addedCount>0||x.removedCount>0;
+   });
+   const firstObservedRun=evolutionAll[0];
+   const lastChangedAt=(lastChangedRun||firstObservedRun)?.generatedAt||lastObservedAt||null;
+   const stalenessDays=lastChangedAt?Math.max(0,(Date.now()-Date.parse(lastChangedAt))/86400000):Infinity;
+   const evolutionRuns=evolutionAll.slice(-12);
    const churn=evolutionRuns.filter(x=>x.replacementRate!=null).map(x=>Number(x.replacementRate));
    const avgReplacementRate=churn.length?churn.reduce((a,b)=>a+b,0)/churn.length:null;
    const qualityTrend=evolutionRuns.length>=2?Number((Number(evolutionRuns.at(-1).quality||0)-Number(evolutionRuns[0].quality||0)).toFixed(4)):null;
