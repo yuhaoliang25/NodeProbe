@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       targets:
-        description: "Optional node names, one per line. If empty, use debug/targets.txt."
+        description: "Optional node names or partial labels, one per line. Exact or fuzzy matches are resolved from best.yaml; empty uses debug/targets.txt."
         required: false
         type: string
         default: ""
