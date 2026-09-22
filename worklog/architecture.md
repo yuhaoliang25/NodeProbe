@@ -87,7 +87,8 @@ A node has its own history:
 - success/failure history;
 - lifetime;
 - current and historical sources;
-- lifecycle status.
+- lifecycle status;
+- historical trust evidence.
 
 A node's quality must primarily be determined by evidence about that node itself.
 
@@ -128,17 +129,20 @@ Source reputation should **not** directly punish an individual node merely becau
 
 Node reputation answers:
 
-> "How good and healthy is this specific node?"
+> "What level of trust should NodeProbe place in the current health evidence for this specific node?"
 
 It is based on NodeProbe's own evidence:
 - current health;
 - historical health;
 - success rate;
 - latency;
+- persistence / lifetime;
 - recent failures;
-- persistence / lifetime.
+- prior lifecycle / trust state.
 
 A good node from a weak source can still be a good node.
+
+However, **historical reputation is not merely a score or a testing-budget hint**. It also changes how current evidence is interpreted.
 
 ## 4. Source Evolution
 
@@ -170,7 +174,9 @@ These are different dimensions.
 
 ## 5. Node Lifecycle
 
-The intended lifecycle is:
+The lifecycle is evidence-based.
+
+The broad lifecycle remains:
 
 ```
 NEW
@@ -186,18 +192,17 @@ STALE
 DEAD
 ```
 
-The lifecycle is evidence-based.
+The lifecycle and historical trust model are related but not identical.
 
-Current implementation uses health observations and persistence signals. In particular:
+In particular:
 
-- newly observed healthy nodes start in PROBATION;
-- repeated healthy observations move nodes toward ACTIVE;
-- sufficiently persistent healthy nodes become STABLE;
-- temporary absence or failures do not immediately mean DEAD;
-- repeated failure evidence can move a node toward STALE / DEAD;
-- historical STABLE nodes should be treated as valuable assets.
+- **STABLE** means the node has accumulated strong positive evidence over time.
+- **DEAD** means the accumulated evidence currently gives NodeProbe insufficient reason to trust the node.
+- A lifecycle state is not simply a permanent label attached to the node.
+- A previously stable node can temporarily fail and enter revalidation without being treated as immediately equivalent to a historically bad node.
+- A dead node may be given a recovery opportunity, but a successful observation alone does not restore trust.
 
-The exact thresholds are implementation parameters, not the architecture itself.
+The exact lifecycle thresholds remain implementation parameters.
 
 ## 6. Source Absence Is Not Node Death
 
@@ -250,7 +255,7 @@ Current NodeProbe Inventory
 
 This means NodeProbe is not rebuilt from zero every run.
 
-Historical non-dead nodes can return to the candidate set and be tested again.
+Historical nodes can return to the candidate set and be tested again. Their historical trust state must influence how the new observation is interpreted.
 
 ## 8. Health Validation
 
@@ -273,7 +278,199 @@ External source metadata is therefore evidence for discovery, not unquestionable
 
 Repeated observations are more important than a single successful or failed run.
 
-## 9. Source Scheduling
+### Historical trust changes the interpretation of evidence
+
+A current observation does **not** have the same semantic meaning for every node.
+
+For a node with strong historical evidence:
+
+> A current success is consistent with the established trust and may be sufficient for current acceptance.
+
+For a node with poor or failed historical evidence:
+
+> A current success is only evidence that recovery may be possible. It is not sufficient to restore trust.
+
+This is a deliberate asymmetry.
+
+The system is therefore not trying to make every node pass through an identical number of tests. It is trying to make the **amount of evidence required for acceptance depend on prior trust**.
+
+## 9. Historical Trust and Revalidation
+
+Historical reputation is a **trust prior**, not merely a numeric score.
+
+The central rule is:
+
+> **Historical good nodes receive the benefit of established evidence; historical bad nodes must overcome established negative evidence.**
+
+This creates two different verification modes.
+
+### 9.1 Trusted / historically good node
+
+A node with strong positive historical evidence is treated optimistically during revalidation.
+
+Conceptually:
+
+```
+historically good
+      ↓
+current test
+      │
+      ├── success → accept / continue normally
+      │
+      └── failure → revalidation, do not immediately kill
+                         ↓
+                    give additional chances
+                         ↓
+                    evaluate the sequence of evidence
+```
+
+The important point is that a single current failure does not erase substantial historical evidence.
+
+This does **not** mean that a historical Best/Stable node receives permanent immunity. It must still be tested again. Historical trust determines the interpretation of failure, not exemption from testing.
+
+### 9.2 Distrusted / historically bad node
+
+A node with sufficiently negative historical evidence is treated pessimistically during recovery.
+
+Conceptually:
+
+```
+historically bad
+      ↓
+current test
+      │
+      ├── success → recovery evidence only; do not accept yet
+      │
+      └── failure → remains / becomes DEAD
+```
+
+A bad node must accumulate a defined sequence of successful observations before it can regain trust.
+
+During this recovery sequence:
+
+> **Any new failure breaks the recovery attempt and returns the node to the untrusted/dead side.**
+
+Thus the evidential burden is asymmetric:
+
+```
+Good history:
+    "one failure is not enough to overturn trust."
+
+Bad history:
+    "one success is not enough to overturn distrust."
+```
+
+This is the intended meaning of historical reputation.
+
+### 9.3 Why test count is not the trust model
+
+The number of tests assigned to a node is an implementation resource.
+
+It must not be confused with the trust rule.
+
+For example:
+
+```
+Node A: historically good
+    test 1 → success
+    ⇒ can be accepted immediately
+
+Node B: historically good
+    test 1 → failure
+    ⇒ receive additional evidence
+
+Node C: historically bad
+    test 1 → success
+    ⇒ still not accepted
+
+Node C:
+    success → success → success → ...
+    ⇒ only after the recovery criterion is satisfied may trust be restored
+
+Node C:
+    success → failure
+    ⇒ recovery attempt fails; remain untrusted/dead
+```
+
+The important quantity is therefore not:
+
+```
+"How many tests did we give it?"
+```
+
+but:
+
+```
+"What evidence is required to change our trust in it?"
+```
+
+Testing budget, scheduling priority, and trust/acceptance semantics are separate concerns.
+
+### 9.4 Trust should be stateful, not reconstructed from a single score
+
+The architecture should preserve enough history to distinguish:
+
+- historically trusted;
+- currently healthy;
+- temporarily failing;
+- historically distrusted;
+- currently recovering;
+- recovered.
+
+A single scalar reputation score is useful for ranking or scheduling, but it is not sufficient to express these semantics.
+
+At minimum, the persistent node record should eventually be able to represent:
+
+```
+historicalTrust
+verificationState
+successStreak
+failureStreak
+lastVerificationAt
+```
+
+The exact field names are implementation details.
+
+The architecture should not, however, introduce a large independent state machine unless real workflow evidence requires it. Prefer the smallest state representation that can express the asymmetric trust rule.
+
+### 9.5 Recovery is not resurrection by one success
+
+A dead/untrusted node may be observed again because:
+
+- its source publishes it again;
+- discovery finds it again;
+- the node itself becomes usable again;
+- network conditions change.
+
+That observation is valuable, but it does not automatically erase historical distrust.
+
+Recovery should therefore be treated as **evidence accumulation**:
+
+```
+DEAD / UNTRUSTED
+       ↓
+successful observation
+       ↓
+RECOVERING
+       ↓
+more consecutive successes
+       ↓
+trusted lifecycle state
+```
+
+If a failure occurs before the recovery criterion is satisfied:
+
+```
+RECOVERING
+       ↓
+failure
+       ↓
+DEAD / UNTRUSTED
+```
+
+The recovery threshold is an implementation parameter and should be tuned only after observing real temporal data.
+
+## 10. Source Scheduling
 
 Source reputation and registry state influence how frequently sources are probed.
 
@@ -292,7 +489,7 @@ The exact intervals are implementation details and may change after observing re
 
 A source that becomes fetchable again may be given another opportunity; recovery should then be evaluated using actual source evidence.
 
-## 10. Subscription Generation
+## 11. Subscription Generation
 
 The final YAML subscriptions are outputs of NodeProbe's own selection process.
 
@@ -310,7 +507,7 @@ The important invariant is:
 
 > The subscription is a view of NodeProbe's own node inventory, not a copy of a source.
 
-## 11. Geographic Detection
+## 12. Geographic Detection
 
 NodeProbe can detect the apparent geographic location of a node's server IP.
 
@@ -334,7 +531,7 @@ Declared source country and detected IP country are separate pieces of informati
 
 Geographic detection is supporting metadata. It must not override direct health evidence about the node.
 
-## 12. Data Model Responsibilities
+## 13. Data Model Responsibilities
 
 Important persistent data:
 
@@ -342,8 +539,8 @@ Important persistent data:
 |---|---|
 | `data/candidates.json` | Current discovered candidate set |
 | `data/history.json` | Multi-round health history |
-| `data/reputation.json` | Node health/reputation history |
-| `data/node-pool.json` | Persistent NodeProbe-owned node inventory |
+| `data/reputation.json` | Node health/reputation history and trust evidence |
+| `data/node-pool.json` | Persistent NodeProbe-owned node inventory and lifecycle |
 | `data/source-history.json` | Historical source observations |
 | `data/source-reputation.json` | Source-level reputation |
 | `data/source-evolution.json` | Source node-set evolution |
@@ -353,7 +550,7 @@ Important persistent data:
 
 Do not casually merge these responsibilities. They exist at different abstraction levels.
 
-## 13. Decision Boundaries
+## 14. Decision Boundaries
 
 When changing the system, preserve these boundaries:
 
@@ -374,7 +571,8 @@ Use:
 - historical health;
 - latency;
 - persistence;
-- failure history.
+- failure history;
+- historical trust state.
 
 Do not automatically inherit a source's reputation.
 
@@ -389,7 +587,19 @@ Use:
 
 The pool is the final product layer.
 
-## 14. What AI Maintainers Must Not Assume
+### Verification decisions
+
+Separate:
+
+1. **Scheduling** — which nodes receive test capacity;
+2. **Testing budget** — how much probing capacity is spent;
+3. **Evidence interpretation** — what a success/failure means given history;
+4. **Acceptance** — whether the current evidence is sufficient for a node to enter a pool;
+5. **Lifecycle** — what long-term state is stored.
+
+A change to one layer must not silently redefine another.
+
+## 15. What AI Maintainers Must Not Assume
 
 An AI agent modifying NodeProbe must not assume:
 
@@ -403,6 +613,10 @@ An AI agent modifying NodeProbe must not assume:
 8. Current implementation thresholds are permanent design decisions.
 9. More scoring mechanisms automatically make the system better.
 10. A mechanism should be added merely because it can be measured.
+11. Equal test counts imply equal trust treatment.
+12. A historical Best/Stable node should bypass health testing.
+13. One successful test is enough to restore a historically bad/dead node.
+14. A single current failure is enough to erase strong positive historical evidence.
 
 Before changing an architectural rule, inspect:
 - `worklog/architecture.md`;
@@ -410,7 +624,7 @@ Before changing an architectural rule, inspect:
 - the relevant scripts;
 - actual generated data from recent workflow runs.
 
-## 15. Current Implementation Map
+## 16. Current Implementation Map
 
 Major responsibilities currently include:
 
@@ -431,7 +645,7 @@ Major responsibilities currently include:
 
 The GitHub Actions workflow orchestrates these stages.
 
-## 16. Current Architecture in One Diagram
+## 17. Current Architecture in One Diagram
 
 ```
                     ┌──────────────────┐
@@ -452,10 +666,13 @@ The GitHub Actions workflow orchestrates these stages.
      Source Reputation                Health Testing
               │                             │
               │                             ▼
-              │                     Node Reputation
+              │                     Historical Trust
               │                             │
-              └──────────────┐              │
-                             ▼              ▼
+              │                             ▼
+              │                    Evidence Interpretation
+              │                             │
+              └──────────────┐              ▼
+                             ▼       Persistent Node Pool
                        ┌────────────────────────┐
                        │ Persistent Node Pool   │
                        └────────────┬───────────┘
@@ -467,11 +684,11 @@ The GitHub Actions workflow orchestrates these stages.
                          NodeProbe Subscriptions
 ```
 
-## 17. Discovery Strategy
+## 18. Discovery Strategy
 
 Discovery should evolve as an exploration problem rather than a static ranking query. The preferred order is:
 
-```text
+```
 GitHub / existing sources
         ↓
 Discovery Memory
@@ -485,11 +702,11 @@ Source Registry
 Source Evolution / Reputation
 ```
 
-Discovery memory answers **where NodeProbe has already looked**. Source reputation answers **whether a discovered source is useful**. Node reputation answers **whether an individual node is useful**. These three questions must remain separate.
+Discovery memory answers **where NodeProbe has already looked**. Source reputation answers **whether a discovered source is useful**. Node reputation answers **whether an individual node is useful**. Historical trust answers **how much current evidence is required to change that judgment**. These questions must remain separate.
 
 The current mechanism is intentionally conservative: bounded pages, bounded repository expansion, and bounded source-link expansion. The crawler should not become a general-purpose web spider.
 
-## 18. Future Direction
+## 19. Future Direction
 
 The long-term direction is:
 
@@ -523,7 +740,7 @@ Eventually allow source probing, node testing, and pool construction to adapt to
 
 The order is intentional: **memory first, then interpretation, then optimization**.
 
-## 19. Engineering Philosophy
+## 20. Engineering Philosophy
 
 NodeProbe should favor:
 
@@ -537,7 +754,13 @@ NodeProbe should favor:
 
 When uncertain, preserve historical information and collect evidence before making an irreversible decision.
 
-## 20. AI Diagnostic Query Interface
+For historical trust specifically:
+
+> **Trust should determine the burden of evidence, not eliminate the need for observation.**
+
+A historically good node is not permanently trusted. A historically bad node is not permanently unrecoverable.
+
+## 21. AI Diagnostic Query Interface
 
 > **AI MAINTAINER NOTICE — READ THIS BEFORE ANSWERING NODE-SPECIFIC QUESTIONS**
 >
@@ -558,517 +781,522 @@ When uncertain, preserve historical information and collect evidence before maki
 >     Answer from observed evidence
 >
 > The diagnostic index is a **query interface for AI maintainers**, not a new source of truth. It is generated from the runtime state restored from B2 during the workflow and is published as a GitHub Actions artifact rather than committed to Git.
-
-### What the diagnostic index is for
-
-It should make questions such as these directly answerable without asking the user to manually download B2 state:
-
-- What is this node's current status?
-- When did NodeProbe first observe it?
-- Which sources have observed it?
-- How many runs has it survived / passed?
-- What are its recent health results and latency?
-- What does node reputation currently say?
-- Has it ever reached STABLE?
-
-### Query rules for AI agents
-
-1. **Do not treat the current source list as the node's complete history.** Query the diagnostic index / persistent history first.
-2. **Do not confuse `firstObservedAt` with publication time.** It is the first time NodeProbe observed the node.
-3. **Do not infer node death from source disappearance.** Check node-pool status and health history.
-4. **Do not expose or reproduce secret credential fields** when reporting node diagnostics. Use the safe identifying fields included by the diagnostic generator.
-5. **Prefer recent workflow evidence for current health**, and historical node-pool/reputation evidence for persistence questions.
-6. If the requested node cannot be found in the diagnostic artifact, say that the available diagnostic window does not contain it; do not invent historical data.
-7. The artifact is diagnostic and temporary. Its retention period may limit how far back an AI agent can retrieve the detailed diagnostic index.
-
-### Diagnostic index layout
-
-The index is sharded by the first two hexadecimal characters of the SHA-256 hash of the normalized node name. This avoids creating one excessively large diagnostic file while keeping lookup deterministic.
-
-    reports/node-index/
-      00.json ... ff.json
-
-The generated record combines the relevant node-pool, health-history, and reputation fields into one node-centric view. It is deliberately smaller and safer than exposing the complete runtime state.
-
-### Storage boundary
-
-    Git
-    ├── code / architecture / worklog
-    └── published subscriptions
-
-    B2
-    └── authoritative persistent runtime state
-
-    GitHub Actions Artifact
-    └── temporary AI diagnostic index
-
-**Important:** adding a diagnostic field or changing the query format must not cause `reports/` to be added to the normal Git commit. The diagnostic index exists specifically to preserve repository size while keeping runtime state queryable by AI maintainers.
-
----
-
-**Last architectural revision:** 2026-09-22
-
-Discovery memory revision: stateful multi-channel GitHub exploration added.
-Diagnostic query design revision: 2026-09-22
-
-## 21. Best Selection Audit Artifacts
-
-> **AI MAINTAINER NOTICE — USE THIS FOR INVESTIGATING WHETHER NODEPROBE'S FILTERING IS WRONG**
 >
-> The primary diagnostic question is not whether a node that is bad today can still connect. The important question is whether NodeProbe correctly evaluated the node **at the exact run in which it entered `best`**.
+> ### What the diagnostic index is for
 >
-> Therefore the main workflow records detailed per-attempt health evidence during the normal selection run and publishes a temporary audit artifact for nodes that actually enter `best`.
-
-### Design
-
-The normal health test remains the authoritative selection process.
-
-During `test-google.js`, every individual test attempt is recorded in an artifact-only trace:
-
-```text
-candidate
-  ↓
-stage1-fast
-  ↓
-stage1-retry (only if needed)
-  ↓
-stage2
-  ↓
-deep-round-3
-  ↓
-deep-round-4
-  ↓
-...
-```
-
-Each attempt records the stage, timestamp, timeout, delay, success/failure, and error when applicable.
-
-The detailed trace is written under `reports/health-test/` during the workflow only. It is **not written to B2**.
-
-The normal persistent `data/health.json` / `history.json` intentionally keep their existing compact runtime representation. They are still persisted to B2 as before.
-
-### Best-only audit
-
-After `build-subscriptions.js` constructs `subscriptions/best.yaml`, `generate-best-audit.js` selects exactly those nodes that entered `best` and creates:
-
-```text
-reports/best-audit/
-├── best-audit.json
-└── best-audit.md
-```
-
-The report contains, for every selected node:
-
-- actual current-run health result;
-- complete individual test-attempt trace;
-- stage progression;
-- timeout and delay for every attempt;
-- current success rate / average latency / p95;
-- exact selection score;
-- every `bestEligible` condition;
-- historical health evidence used by the eligibility rule;
-- node reputation;
-- node-pool persistence information.
-
-The artifact is retained by GitHub Actions for 30 days. It is not committed to Git and is not uploaded to B2.
-
-### Why this is the preferred diagnostic path
-
-If a node later times out during actual use, the audit artifact lets an AI maintainer answer:
-
-1. Did the node actually pass the normal health tests at selection time?
-2. Which stages did it pass?
-3. How many individual attempts passed?
-4. What delays did NodeProbe observe?
-5. Did the historical eligibility condition also pass?
-6. What exact evidence produced its `best` inclusion?
-
-This separates:
-
-```text
-selection-time filtering error
-        vs.
-node degradation after selection
-        vs.
-intermittent behavior
-        vs.
-health-target mismatch
-```
-
-A current manual retest of an already-selected node is therefore **not the primary debugging mechanism**. It may be useful for other investigations, but it cannot establish whether the original `best` decision was correct.
-
-### Storage boundary
-
-```text
-Git
-├── code / architecture / worklog
-└── published subscriptions
-
-B2
-└── compact persistent runtime state
-
-GitHub Actions Artifact
-└── detailed selection-time evidence for best nodes
-```
-
-The detailed trace must never be added to the normal Git commit or B2 persistence list.
-
-**Best-selection audit revision:** 2026-09-22
-
-
-## 22. Best Stability Confirmation
-
-Best is intentionally a **small, high-confidence pool**, not a quota. The number of Best nodes is an outcome, not an optimization target. An empty Best pool is therefore a valid state; the system must not automatically relax its criteria merely to produce nodes.
-
-The selection flow is now:
-
-```
-ordinary health
-    ↓
-provisional Best
-    ↓
-high-resource Stability Confirmation
-    ↓
-final Best
-```
-
-### Stability Confirmation design
-
-Only nodes that would enter Best under the ordinary eligibility rules are tested again. The confirmation currently uses:
-
-- 5 rounds;
-- 10 attempts per target in total;
-- 3 independent HTTP targets;
-- 30 attempts per node in total;
-- randomized target order between rounds;
-- controlled concurrency;
-- short pauses between rounds.
-
-Current targets:
-
-- Google `generate_204`, expected 204;
-- Cloudflare `/cdn-cgi/trace`, expected 200;
-- GitHub home page, expected 200.
-
-The purpose is not to measure website quality. The targets provide several independent destinations so that a target-specific failure is distinguishable from a broader node-connectivity problem. Cloudflare documents `/cdn-cgi/trace` as a managed Cloudflare endpoint, while HTTP 200/204 are successful HTTP response classes. 
-
-### Evidence recorded
-
-For every provisional Best node, the confirmation records:
-
-- total attempts;
-- successes / failures;
-- timeout count;
-- overall success rate;
-- per-target success rate;
-- per-round success rate;
-- maximum consecutive failures;
-- maximum consecutive timeouts;
-- p50 / p95 / p99 latency;
-- maximum latency.
-
-Detailed attempt traces are stored as a temporary GitHub Actions artifact under `reports/stability/`. They are not committed to Git.
-
-A compact `data/stability.json` result and `data/stability-history.json` history are persisted through B2. Stability evidence is tied to the exact `health.generatedAt` of the run that produced the provisional Best set, preventing stale evidence from affecting a later run.
-
-### Initial gate
-
-The initial experimental gate is intentionally strict:
-
-- overall success rate >= 95%;
-- each target success rate >= 80%;
-- each round success rate >= 2/3;
-- maximum consecutive failures <= 1;
-- maximum consecutive timeouts <= 1;
-- p95 latency <= 5000 ms.
-
-These are **experimental parameters**, not permanent architectural truths. They exist to establish a conservative first Best pool. Future changes should be based on accumulated temporal evidence rather than the desired number of nodes.
-
-The system must never implement an automatic rule such as:
-
-```
-if Best is empty:
-    relax threshold
-```
-
-If the pool becomes empty, that is a valid observation that the current evidence does not justify any node as Best.
-
-### Why stability is separate from ordinary health
-
-Ordinary health answers:
-
-> Can NodeProbe use this node now?
-
-Stability confirmation asks:
-
-> Does this node continue to succeed under repeated, multi-target, multi-round observation?
-
-Historical node reputation answers:
-
-> Has this node demonstrated reliability across previous NodeProbe runs?
-
-These are different evidence layers and should remain separately observable.
-
-### Threshold research
-
-The first implementation intentionally collects rich evidence before further tuning. After enough runs, stability measurements can be compared with subsequent NodeProbe observations to determine which indicators predict future reliability.
-
-The preferred validation method is temporal rather than random splitting:
-
-```
-past runs
-   ↓
-derive candidate thresholds
-   ↓
-future runs
-   ↓
-validate whether Best remains reliable
-```
-
-The objective is high confidence in the Best pool, not a target Best count.
-
-**Best stability confirmation revision:** 2026-09-22
-
-## 23. Relay Pool and Landing Pool
-
-NodeProbe now distinguishes two downstream views of the Best pool:
-
-```
-                         Best
-                           │
-                  China reachability
-                       observation
-                           │
-             ┌─────────────┴─────────────┐
-             ▼                           ▼
-        Relay Pool                 Landing Pool
-   Best ∩ China Reachable     Best \ China Reachable
-```
-
-This is intentionally a dimensionality reduction, not a second full proxy-quality evaluation.
-
-### Core assumption
-
-Best has already passed NodeProbe's ordinary health validation and high-resource stability confirmation. Therefore, for the first implementation:
-
-- Best nodes are treated as having sufficiently strong outbound / landing quality;
-- the additional China-side probe only answers whether the node is reachable from the user's China-side network;
-- a node does not need to be retested as China → Node → Internet for every possible landing target.
-
-The resulting roles are:
-
-- Relay Pool: Best nodes that have recently demonstrated reachability from the China-side probe.
-- Landing Pool: the remaining Best nodes. They are not classified as China-reachable, but remain eligible as outbound/landing nodes because they already belong to Best.
-
-This intentionally avoids an N×M test of every China-reachable relay against every landing node.
-
-### Relay Pool is a role, not a permanent node state
-
-A node can move between the two views as China-side reachability changes.
-
-```
-Best node
-   ↓
-China probe succeeds repeatedly
-   ↓
-Relay candidate
-   ↓
-China reachability degrades
-   ↓
-removed from Relay Pool
-   ↓
-may remain in Landing Pool
-```
-
-A temporary failure must not immediately erase a historically reliable relay. The China-side observer therefore needs its own persistent history and lifecycle/evolution layer.
-
-### China Reachability History
-
-The China-side observation is separate from ordinary NodeProbe health.
-
-It should record at least:
-
-- firstObservedAt — first time the China probe observed the node;
-- lastObservedAt — most recent China-side observation;
-- observedRuns;
-- successful observations;
-- failed observations;
-- recent success rate;
-- consecutive failures;
-- current reachability state;
-- historical stable/reliable state;
-- observation environment identifier.
-
-The same semantic rule used elsewhere applies:
-
-> These timestamps describe Probe observations, not the node's actual publication or creation time.
-
-### Reachability Evolution
-
-The Relay Pool should be maintained incrementally rather than rebuilt from only the latest probe result.
-
-```
-Current Best
-    +
-Historical China Reachability Pool
-    ↓
-China Probe Candidate Set
-    ↓
-Current Reachability Observation
-    ↓
-Reachability Evolution
-    ↓
-Relay Pool
-    +
-Landing Pool
-```
-
-A node that was previously a reliable relay should remain in historical state when it temporarily disappears from the current reachable set.
-
-This allows the system to distinguish:
-
-- temporary China-side routing failure;
-- intermittent reachability;
-- persistent loss of reachability;
-- newly reachable nodes;
-- long-term reliable relays.
-
-### Regularly retest the veterans
-
-Long-lived reliable relays must not be permanently exempt from testing.
-
-This is especially important because the China-side network path is not stationary. A node that has been reachable for months can become unreachable later as routing conditions and filtering change.
-
-Therefore the probe scheduler should deliberately sample historical high-confidence relays again.
-
-The principle is:
-
-```
-current candidates
-      +
-historical reliable relays
-      +
-newly promoted Best nodes
-      ↓
-China reachability probe
-```
-
-A veteran is evidence for priority, not a permanent pass.
-
-The first implementation should therefore use a mixed sampling strategy:
-
-1. New / unknown Best nodes — test promptly.
-2. Currently reachable relays — periodically retest.
-3. Historically stable relays — periodically force a recheck even if they remain healthy in history.
-4. Recently failed relays — retry after a cooldown to distinguish transient failure from persistent loss.
-5. Long-dead reachability records — probe infrequently, preserving the possibility of recovery.
-
-The exact intervals are implementation parameters and should be tuned from observations rather than from a desired relay count.
-
-### Probe location and execution model
-
-The China-side reachability observer should run as a local service on the user's China machine, rather than depending on GitHub Actions to remotely trigger an inbound job.
-
-Preferred architecture:
-
-```
-GitHub / NodeProbe
-        │
-        │ publishes Best
-        ▼
-China-side Probe Agent
-        │
-        ├── pulls latest Best
-        ├── tests China → Node reachability
-        ├── maintains local observation state
-        └── uploads observations
-                 │
-                 ▼
-          NodeProbe state
-                 │
-          ┌──────┴──────┐
-          ▼             ▼
-      Relay Pool    Landing Pool
-```
-
-The probe should be autonomous. A systemd service/timer is preferred for the first implementation because the machine initiating the observation is the machine whose network path is being measured.
-
-GitHub should not need inbound connectivity to the China machine.
-
-The preferred control pattern is therefore:
-
-- GitHub publishes candidates.
-- China machine pulls candidates.
-- China machine performs observations.
-- China machine pushes observations.
-- GitHub consumes persisted observations when constructing the next pool/subscription.
-
-This removes an unnecessary remote-trigger dependency and makes the observation clock independent of GitHub Actions queueing or availability.
-
-### What reachable means initially
-
-The first implementation should measure the China → Node leg rather than immediately measuring China → Node → Google.
-
-The reason is attribution.
-
-A failed end-to-end test can be caused by either:
-
-- China → Node;
-- Node → target;
-- target-specific routing;
-- target-side behavior.
-
-A direct node-side connectivity test isolates the new dimension more cleanly.
-
-The first implementation should therefore establish a simple, repeatable node reachability signal and retain latency/failure evidence for later analysis.
-
-### Separation from Best
-
-Best remains the global NodeProbe quality gate.
-
-The China-side observer does not redefine Best.
-
-```
-Best
-= NodeProbe's high-confidence node set
-
-Relay Pool
-= Best + China-side reachability evidence
-
-Landing Pool
-= Best nodes not currently selected as relays
-```
-
-This preserves the meaning of the existing Best audit/stability evidence while adding a user-network-specific view.
-
-### Important limitation
-
-A China-side probe on one machine represents that machine's network environment, not every Chinese ISP, city, or device.
-
-Therefore the correct semantic name is China-side reachability observation or user-side reachability, not universal China reachability.
-
-Future probes could be distinguished by environment:
-
-```
-China-Mobile
-China-Unicom
-China-Telecom
-home-broadband
-other user-side environments
-```
-
-The system should retain the observation environment so that multiple probe perspectives can coexist without being conflated.
-
-### Architectural invariant
-
-The system must not use a single successful China-side observation as a permanent classification.
-
-The important object is the time series:
-
-```
-Node × Probe Environment × Time
-```
-
-and the Relay Pool is a current view derived from that history.
-
-**Relay/Landing architecture revision:** 2026-09-22
+> It should make questions such as these directly answerable without asking the user to manually download B2 state:
+>
+> - What is this node's current status?
+> - When did NodeProbe first observe it?
+> - Which sources have observed it?
+> - How many runs has it survived / passed?
+> - What are its recent health results and latency?
+> - What does node reputation currently say?
+> - Has it ever reached STABLE?
+> - Is it currently trusted, being revalidated, or recovering from historical distrust?
+>
+> ### Query rules for AI agents
+>
+> 1. **Do not treat the current source list as the node's complete history.** Query the diagnostic index / persistent history first.
+> 2. **Do not confuse `firstObservedAt` with publication time.** It is the first time NodeProbe observed the node.
+> 3. **Do not infer node death from source disappearance.** Check node-pool status and health history.
+> 4. **Do not expose or reproduce secret credential fields** when reporting node diagnostics. Use the safe identifying fields included by the diagnostic generator.
+> 5. **Prefer recent workflow evidence for current health**, and historical node-pool/reputation evidence for persistence and trust questions.
+> 6. If the requested node cannot be found in the diagnostic artifact, say that the available diagnostic window does not contain it; do not invent historical data.
+> 7. The artifact is diagnostic and temporary. Its retention period may limit how far back an AI agent can retrieve the detailed diagnostic index.
+>
+> ### Diagnostic index layout
+>
+> The index is sharded by the first two hexadecimal characters of the SHA-256 hash of the normalized node name. This avoids creating one excessively large diagnostic file while keeping lookup deterministic.
+>
+>     reports/node-index/
+>       00.json ... ff.json
+>
+> The generated record combines the relevant node-pool, health-history, and reputation fields into one node-centric view. It is deliberately smaller and safer than exposing the complete runtime state.
+>
+> ### Storage boundary
+>
+>     Git
+>     ├── code / architecture / worklog
+>     └── published subscriptions
+>
+>     B2
+>     └── authoritative persistent runtime state
+>
+>     GitHub Actions Artifact
+>     └── temporary AI diagnostic index
+>
+> **Important:** adding a diagnostic field or changing the query format must not cause `reports/` to be added to the normal Git commit. The diagnostic index exists specifically to preserve repository size while keeping runtime state queryable by AI maintainers.
+>
+> ---
+>
+> **Last architectural revision:** 2026-09-22
+>
+> Discovery memory revision: stateful multi-channel GitHub exploration added.
+> Diagnostic query design revision: 2026-09-22
+> Historical trust interpretation revision: 2026-09-22
+>
+> ## 22. Best Selection Audit Artifacts
+>
+> > **AI MAINTAINER NOTICE — USE THIS FOR INVESTIGATING WHETHER NODEPROBE'S FILTERING IS WRONG**
+> >
+> > The primary diagnostic question is not whether a node that is bad today can still connect. The important question is whether NodeProbe correctly evaluated the node **at the exact run in which it entered `best`**.
+> >
+> > Therefore the main workflow records detailed per-attempt health evidence during the normal selection run and publishes a temporary audit artifact for nodes that actually enter `best`.
+>
+> ### Design
+>
+> The normal health test remains the authoritative selection process.
+>
+> During `test-google.js`, every individual test attempt is recorded in an artifact-only trace:
+>
+> ```
+> candidate
+>   ↓
+> stage1-fast
+>   ↓
+> stage1-retry (only if needed)
+>   ↓
+> stage2
+>   ↓
+> deep-round-3
+>   ↓
+> deep-round-4
+>   ↓
+> ...
+> ```
+>
+> Each attempt records the stage, timestamp, timeout, delay, success/failure, and error when applicable.
+>
+> The detailed trace is written under `reports/health-test/` during the workflow only. It is **not written to B2**.
+>
+> The normal persistent `data/health.json` / `history.json` intentionally keep their existing compact runtime representation. They are still persisted to B2 as before.
+>
+> ### Best-only audit
+>
+> After `build-subscriptions.js` constructs `subscriptions/best.yaml`, `generate-best-audit.js` selects exactly those nodes that entered `best` and creates:
+>
+> ```
+> reports/best-audit/
+> ├── best-audit.json
+> └── best-audit.md
+> ```
+>
+> The report contains, for every selected node:
+>
+> - actual current-run health result;
+> - complete individual test-attempt trace;
+> - stage progression;
+> - timeout and delay for every attempt;
+> - current success rate / average latency / p95;
+> - exact selection score;
+> - every `bestEligible` condition;
+> - historical health evidence used by the eligibility rule;
+> - node reputation;
+> - node-pool persistence information.
+>
+> The artifact is retained by GitHub Actions for 30 days. It is not committed to Git and is not uploaded to B2.
+>
+> ### Why this is the preferred diagnostic path
+>
+> If a node later times out during actual use, the audit artifact lets an AI maintainer answer:
+>
+> 1. Did the node actually pass the normal health tests at selection time?
+> 2. Which stages did it pass?
+> 3. How many individual attempts passed?
+> 4. What delays did NodeProbe observe?
+> 5. Did the historical eligibility condition also pass?
+> 6. What exact evidence produced its `best` inclusion?
+>
+> This separates:
+>
+> ```
+> selection-time filtering error
+>         vs.
+> node degradation after selection
+>         vs.
+> intermittent behavior
+>         vs.
+> health-target mismatch
+> ```
+>
+> A current manual retest of an already-selected node is therefore **not the primary debugging mechanism**. It may be useful for other investigations, but it cannot establish whether the original `best` decision was correct.
+>
+> ### Storage boundary
+>
+> ```
+> Git
+> ├── code / architecture / worklog
+> └── published subscriptions
+>
+> B2
+> └── compact persistent runtime state
+>
+> GitHub Actions Artifact
+> └── detailed selection-time evidence for best nodes
+> ```
+>
+> The detailed trace must never be added to the normal Git commit or B2 persistence list.
+>
+> **Best-selection audit revision:** 2026-09-22
+>
+> ## 23. Best Stability Confirmation
+>
+> Best is intentionally a **small, high-confidence pool**, not a quota. The number of Best nodes is an outcome, not an optimization target. An empty Best pool is therefore a valid state; the system must not automatically relax its criteria merely to produce nodes.
+>
+> The selection flow is now:
+>
+> ```
+> ordinary health
+>     ↓
+> provisional Best
+>     ↓
+> high-resource Stability Confirmation
+>     ↓
+> final Best
+> ```
+>
+> ### Stability Confirmation design
+>
+> Only nodes that would enter Best under the ordinary eligibility rules are tested again. The confirmation currently uses:
+>
+> - 5 rounds;
+> - 10 attempts per target in total;
+> - 3 independent HTTP targets;
+> - 30 attempts per node in total;
+> - randomized target order between rounds;
+> - controlled concurrency;
+> - short pauses between rounds.
+>
+> Current targets:
+>
+> - Google `generate_204`, expected 204;
+> - Cloudflare `/cdn-cgi/trace`, expected 200;
+> - GitHub home page, expected 200.
+>
+> The purpose is not to measure website quality. The targets provide several independent destinations so that a target-specific failure is distinguishable from a broader node-connectivity problem. Cloudflare documents `/cdn-cgi/trace` as a managed Cloudflare endpoint, while HTTP 200/204 are successful HTTP response classes.
+>
+> ### Evidence recorded
+>
+> For every provisional Best node, the confirmation records:
+>
+> - total attempts;
+> - successes / failures;
+> - timeout count;
+> - overall success rate;
+> - per-target success rate;
+> - per-round success rate;
+> - maximum consecutive failures;
+> - maximum consecutive timeouts;
+> - p50 / p95 / p99 latency;
+> - maximum latency.
+>
+> Detailed attempt traces are stored as a temporary GitHub Actions artifact under `reports/stability/`. They are not committed to Git.
+>
+> A compact `data/stability.json` result and `data/stability-history.json` history are persisted through B2. Stability evidence is tied to the exact `health.generatedAt` of the run that produced the provisional Best set, preventing stale evidence from affecting a later run.
+>
+> ### Initial gate
+>
+> The initial experimental gate is intentionally strict:
+>
+> - overall success rate >= 95%;
+> - each target success rate >= 80%;
+> - each round success rate >= 2/3;
+> - maximum consecutive failures <= 1;
+> - maximum consecutive timeouts <= 1;
+> - p95 latency <= 5000 ms.
+>
+> These are **experimental parameters**, not permanent architectural truths. They exist to establish a conservative first Best pool. Future changes should be based on accumulated temporal evidence rather than the desired number of nodes.
+>
+> The system must never implement an automatic rule such as:
+>
+> ```
+> if Best is empty:
+>     relax threshold
+> ```
+>
+> If the pool becomes empty, that is a valid observation that the current evidence does not justify any node as Best.
+>
+> ### Why stability is separate from ordinary health
+>
+> Ordinary health answers:
+>
+> > Can NodeProbe use this node now?
+>
+> Stability confirmation asks:
+>
+> > Does this node continue to succeed under repeated, multi-target, multi-round observation?
+>
+> Historical node reputation answers:
+>
+> > Has this node demonstrated reliability across previous NodeProbe runs?
+>
+> Historical trust additionally answers:
+>
+> > How much new evidence is required before NodeProbe changes its prior belief about this node?
+>
+> These are different evidence layers and should remain separately observable.
+>
+> ### Threshold research
+>
+> The first implementation intentionally collects rich evidence before further tuning. After enough runs, stability measurements can be compared with subsequent NodeProbe observations to determine which indicators predict future reliability.
+>
+> The preferred validation method is temporal rather than random splitting:
+>
+> ```
+> past runs
+>    ↓
+> derive candidate thresholds
+>    ↓
+> future runs
+>    ↓
+> validate whether Best remains reliable
+> ```
+>
+> The objective is high confidence in the Best pool, not a target Best count.
+>
+> **Best stability confirmation revision:** 2026-09-22
+>
+> ## 24. Relay Pool and Landing Pool
+>
+> NodeProbe now distinguishes two downstream views of the Best pool:
+>
+> ```
+>                          Best
+>                            │
+>                   China reachability
+>                        observation
+>                            │
+>              ┌─────────────┴─────────────┐
+>              ▼                           ▼
+>         Relay Pool                 Landing Pool
+>    Best ∩ China Reachable     Best \\ China Reachable
+> ```
+>
+> This is intentionally a dimensionality reduction, not a second full proxy-quality evaluation.
+>
+> ### Core assumption
+>
+> Best has already passed NodeProbe's ordinary health validation and high-resource stability confirmation. Therefore, for the first implementation:
+>
+> - Best nodes are treated as having sufficiently strong outbound / landing quality;
+> - the additional China-side probe only answers whether the node is reachable from the user's China-side network;
+> - a node does not need to be retested as China → Node → Internet for every possible landing target.
+>
+> The resulting roles are:
+>
+> - Relay Pool: Best nodes that have recently demonstrated reachability from the China-side probe.
+> - Landing Pool: the remaining Best nodes. They are not classified as China-reachable, but remain eligible as outbound/landing nodes because they already belong to Best.
+>
+> This intentionally avoids an N×M test of every China-reachable relay against every landing node.
+>
+> ### Relay Pool is a role, not a permanent node state
+>
+> A node can move between the two views as China-side reachability changes.
+>
+> ```
+> Best node
+>    ↓
+> China probe succeeds repeatedly
+>    ↓
+> Relay candidate
+>    ↓
+> China reachability degrades
+>    ↓
+> removed from Relay Pool
+>    ↓
+> may remain in Landing Pool
+> ```
+>
+> A temporary failure must not immediately erase a historically reliable relay. The China-side observer therefore needs its own persistent history and lifecycle/evolution layer.
+>
+> ### China Reachability History
+>
+> The China-side observation is separate from ordinary NodeProbe health.
+>
+> It should record at least:
+>
+> - firstObservedAt — first time the China probe observed the node;
+> - lastObservedAt — most recent China-side observation;
+> - observedRuns;
+> - successful observations;
+> - failed observations;
+> - recent success rate;
+> - consecutive failures;
+> - current reachability state;
+> - historical stable/reliable state;
+> - observation environment identifier.
+>
+> The same semantic rule used elsewhere applies:
+>
+> > These timestamps describe Probe observations, not the node's actual publication or creation time.
+>
+> ### Reachability Evolution
+>
+> The Relay Pool should be maintained incrementally rather than rebuilt from only the latest probe result.
+>
+> ```
+> Current Best
+>     +
+> Historical China Reachability Pool
+>     ↓
+> China Probe Candidate Set
+>     ↓
+> Current Reachability Observation
+>     ↓
+> Reachability Evolution
+>     ↓
+> Relay Pool
+>     +
+> Landing Pool
+> ```
+>
+> A node that was previously a reliable relay should remain in historical state when it temporarily disappears from the current reachable set.
+>
+> This allows the system to distinguish:
+>
+> - temporary China-side routing failure;
+> - intermittent reachability;
+> - persistent loss of reachability;
+> - newly reachable nodes;
+> - long-term reliable relays.
+>
+> ### Regularly retest the veterans
+>
+> Long-lived reliable relays must not be permanently exempt from testing.
+>
+> This is especially important because the China-side network path is not stationary. A node that has been reachable for months can become unreachable later as routing conditions and filtering change.
+>
+> Therefore the probe scheduler should deliberately sample historical high-confidence relays again.
+>
+> The principle is:
+>
+> ```
+> current candidates
+>       +
+> historical reliable relays
+>       +
+> newly promoted Best nodes
+>       ↓
+> China reachability probe
+> ```
+>
+> A veteran is evidence for priority, not a permanent pass.
+>
+> The first implementation should therefore use a mixed sampling strategy:
+>
+> 1. New / unknown Best nodes — test promptly.
+> 2. Currently reachable relays — periodically retest.
+> 3. Historically stable relays — periodically force a recheck even if they remain healthy in history.
+> 4. Recently failed relays — retry after a cooldown to distinguish transient failure from persistent loss.
+> 5. Long-dead reachability records — probe infrequently, preserving the possibility of recovery.
+>
+> The exact intervals are implementation parameters and should be tuned from observations rather than from a desired relay count.
+>
+> ### Probe location and execution model
+>
+> The China-side reachability observer should run as a local service on the user's China machine, rather than depending on GitHub Actions to remotely trigger an inbound job.
+>
+> Preferred architecture:
+>
+> ```
+> GitHub / NodeProbe
+>         │
+>         │ publishes Best
+>         ▼
+> China-side Probe Agent
+>         │
+>         ├── pulls latest Best
+>         ├── tests China → Node reachability
+>         ├── maintains local observation state
+>         └── uploads observations
+>                  │
+>                  ▼
+>           NodeProbe state
+>                  │
+>           ┌──────┴──────┐
+>           ▼             ▼
+>       Relay Pool    Landing Pool
+> ```
+>
+> The probe should be autonomous. A systemd service/timer is preferred for the first implementation because the machine initiating the observation is the machine whose network path is being measured.
+>
+> GitHub should not need inbound connectivity to the China machine.
+>
+> The preferred control pattern is therefore:
+>
+> - GitHub publishes candidates.
+> - China machine pulls candidates.
+> - China machine performs observations.
+> - China machine pushes observations.
+> - GitHub consumes persisted observations when constructing the next pool/subscription.
+>
+> This removes an unnecessary remote-trigger dependency and makes the observation clock independent of GitHub Actions queueing or availability.
+>
+> ### What reachable means initially
+>
+> The first implementation should measure the China → Node leg rather than immediately measuring China → Node → Google.
+>
+> The reason is attribution.
+>
+> A failed end-to-end test can be caused by either:
+>
+> - China → Node;
+> - Node → target;
+> - target-specific routing;
+> - target-side behavior.
+>
+> A direct node-side connectivity test isolates the new dimension more cleanly.
+>
+> The first implementation should therefore establish a simple, repeatable node reachability signal and retain latency/failure evidence for later analysis.
+>
+> ### Separation from Best
+>
+> Best remains the global NodeProbe quality gate.
+>
+> The China-side observer does not redefine Best.
+>
+> ```
+> Best
+> = NodeProbe's high-confidence node set
+>
+> Relay Pool
+> = Best + China-side reachability evidence
+>
+> Landing Pool
+> = Best nodes not currently selected as relays
+> ```
+>
+> This preserves the meaning of the existing Best audit/stability evidence while adding a user-network-specific view.
+>
+> ### Important limitation
+>
+> A China-side probe on one machine represents that machine's network environment, not every Chinese ISP, city, or device.
+>
+> Therefore the correct semantic name is China-side reachability observation or user-side reachability, not universal China reachability.
+>
+> Future probes could be distinguished by environment:
+>
+> ```
+> China-Mobile
+> China-Unicom
+> China-Telecom
+> home-broadband
+> other user-side environments
+> ```
+>
+> The system should retain the observation environment so that multiple probe perspectives can coexist without being conflated.
+>
+> ### Architectural invariant
+>
+> The system must not use a single successful China-side observation as a permanent classification.
+>
+> The important object is the time series:
+>
+> ```
+> Node × Probe Environment × Time
+> ```
+>
+> and the Relay Pool is a current view derived from that history.
+>
+> **Relay/Landing architecture revision:** 2026-09-22
