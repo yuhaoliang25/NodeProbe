@@ -45,7 +45,6 @@ The persistent China asset contains, per endpoint:
 - `deadSince` when applicable
 - `nextProbeAt`
 - `recheckLevel`
-- `globalStableObservedAt`
 
 The last field records why the endpoint was admitted to the China candidate set. It is not China trust.
 
@@ -118,9 +117,10 @@ Each probe run uses a bounded budget.
 Candidate classes:
 
 1. NEW / unknown;
-2. current RELAY candidates;
+2. trusted nodes that have not yet reached veteran evidence;
 3. trusted veterans due for retest;
-4. recently failed nodes due for retry.
+4. recently failed nodes due for retry;
+5. forgotten nodes on long-interval recovery recheck.
 
 Priority is dynamic rather than a permanent percentage split.
 
