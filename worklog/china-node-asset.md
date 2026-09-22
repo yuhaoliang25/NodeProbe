@@ -324,3 +324,180 @@ The probe itself uses bounded concurrency (CHINA_PROBE_CONCURRENCY, default 8) i
 The probe remains bounded by the China candidate budget (CHINA_MAX_NODES, default 30). Parallelism is an execution optimization only; it does not change China trust rules, candidate scoring, or lifecycle transitions.
 
 The deployment uses the existing B2 credentials supplied through /etc/nodeprobe/china.env. No credential is committed to the repository.
+
+
+## 18. China Probe Machine Deployment Guide
+
+### 18.1 Prerequisites
+
+The China-side machine needs:
+
+- Node.js 22 or newer;
+- npm;
+- a working Mihomo binary available as `mihomo`, or `MIHOMO_BIN` pointing to it;
+- the `b2v4` command;
+- network access to Backblaze B2;
+- the NodeProbe repository checked out from `main`.
+
+The machine does not need to accept inbound connections from GitHub. Communication is asynchronous through B2.
+
+### 18.2 B2 credentials
+
+Create `/etc/nodeprobe/china.env` and keep it readable only by root:
+
+```ini
+B2_APPLICATION_KEY_ID=YOUR_EXISTING_KEY_ID
+B2_APPLICATION_KEY=YOUR_EXISTING_KEY
+CHINA_B2_BUCKET=nodeprobe
+CHINA_B2_PREFIX=nodeprobe-state/china
+CHINA_PROBE_ENV=china-home
+CHINA_MAX_NODES=30
+CHINA_PROBE_CONCURRENCY=8
+CHINA_PROBE_TIMEOUT=8000
+```
+
+The existing NodeProbe B2 credentials may be reused for the user's own machine. Credentials must never be committed to the repository.
+
+```bash
+sudo mkdir -p /etc/nodeprobe
+sudo chmod 700 /etc/nodeprobe
+sudo chmod 600 /etc/nodeprobe/china.env
+```
+
+### 18.3 First manual test
+
+Before enabling systemd, run one complete cycle manually:
+
+```bash
+cd ~/NodeProbe
+set -a
+source /etc/nodeprobe/china.env
+set +a
+npm install
+npm run china-sync -- pull-candidates
+npm run china-probe
+npm run china-sync -- push-observations
+```
+
+Verify that `data/china-probe-candidates.json` was downloaded, the probe generated an observation file and an immutable batch under `data/china-probe-observations/`, and the batch appeared under the B2 China observation prefix.
+
+### 18.4 systemd installation
+
+The repository provides:
+
+- `systemd/nodeprobe-china.service`
+- `systemd/nodeprobe-china.timer`
+- `scripts/china-cycle.sh`
+
+Install them:
+
+```bash
+sudo cp ~/NodeProbe/systemd/nodeprobe-china.service /etc/systemd/system/
+sudo cp ~/NodeProbe/systemd/nodeprobe-china.timer /etc/systemd/system/
+sudo systemctl daemon-reload
+```
+
+Run the service once before enabling the timer:
+
+```bash
+sudo systemctl start nodeprobe-china.service
+systemctl status nodeprobe-china.service
+journalctl -u nodeprobe-china.service -n 100 --no-pager
+```
+
+After a successful manual service run:
+
+```bash
+sudo systemctl enable --now nodeprobe-china.timer
+systemctl status nodeprobe-china.timer
+systemctl list-timers | grep nodeprobe-china
+```
+
+The timer runs approximately every 30 minutes, with a small randomized delay. `Persistent=true` allows a missed run to be triggered after the machine returns online.
+
+### 18.5 Runtime flow
+
+Each cycle is:
+
+```text
+B2 candidates
+    ↓
+pull-candidates
+    ↓
+China Probe / Mihomo
+    ↓
+immutable observation batch
+    ↓
+push-observations
+    ↓
+B2 observation inbox
+    ↓
+GitHub Actions
+    ↓
+China Asset evolution
+```
+
+The China machine never pushes directly into the Git repository and never needs an inbound endpoint.
+
+### 18.6 Performance configuration
+
+The probe is bounded to `CHINA_MAX_NODES` candidates per cycle and uses bounded parallelism through `CHINA_PROBE_CONCURRENCY`. The default is 30 nodes and 8 concurrent probes.
+
+A higher concurrency can reduce wall-clock time but may increase local bandwidth, connection pressure or target-side rate limiting. Adjust it only after observing real runtime behavior.
+
+### 18.7 Troubleshooting
+
+Check timer:
+
+```bash
+systemctl status nodeprobe-china.timer
+systemctl list-timers | grep nodeprobe-china
+```
+
+Check the latest service run:
+
+```bash
+systemctl status nodeprobe-china.service
+journalctl -u nodeprobe-china.service -n 200 --no-pager
+```
+
+Check B2 credentials:
+
+```bash
+b2v4 account authorize
+```
+
+Check candidate feed:
+
+```bash
+cat data/china-probe-candidates.json
+```
+
+Check probe results:
+
+```bash
+cat data/china-probe-observations.json
+ls -lh data/china-probe-observations/
+```
+
+If candidates cannot be pulled, investigate B2 credentials, bucket/prefix configuration and network access before changing China trust logic.
+
+If Mihomo fails, run `mihomo -v` and verify `MIHOMO_BIN`.
+
+If the probe is slow, inspect `CHINA_PROBE_CONCURRENCY` and `CHINA_PROBE_TIMEOUT` before changing candidate selection.
+
+### 18.8 Upgrade procedure
+
+Stop the timer before upgrading the checkout:
+
+```bash
+sudo systemctl stop nodeprobe-china.timer
+cd ~/NodeProbe
+git pull --ff-only origin main
+npm install
+sudo systemctl daemon-reload
+sudo systemctl start nodeprobe-china.service
+sudo systemctl enable --now nodeprobe-china.timer
+```
+
+Do not remove `data/china-node-assets.json` on the NodeProbe/GitHub side merely because the China machine is upgraded; China historical trust is persistent state and is intentionally independent of the machine's local runtime files.
