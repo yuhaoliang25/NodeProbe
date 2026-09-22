@@ -189,3 +189,35 @@ The client is responsible for current-path selection.
 6. Historical trust is retained until China evidence changes it.
 7. Detailed China history must eventually have bounded retention.
 8. Relay/Landing roles are derived views, not permanent identities.
+
+## 12. Observation Apply Boundary
+
+The China asset updater consumes observations produced by the China-side probe environment. It does not perform network tests itself and does not consult Global reputation.
+
+The observation boundary is:
+
+```
+China Probe Agent
+  ↓
+China observations
+  ↓
+apply-china-observations
+  ↓
+China Node Asset
+```
+
+An observation contains an endpoint identity, observation time, success/failure, optional latency, optional error category, and probe-environment identifier.
+
+The updater applies observations only to the China asset history. It never modifies Global node reputation.
+
+This separation allows the probe implementation to evolve independently from the asset state machine and makes replay/testing of observations possible.
+
+## 13. Current Implementation Boundary
+
+The first implementation intentionally has three independent steps:
+
+1. read the current Global Stable pool and select China candidates;
+2. run a China-side probe and produce observations;
+3. apply observations to the persistent China asset.
+
+Network probing is not simulated by the GitHub-side asset updater. A future China-side agent should own the actual China-to-node measurement.
