@@ -250,3 +250,23 @@ These are views derived from current state. They do not mutate China trust and d
 The derivation is implemented by scripts/build-china-pools.js and exposed as npm run china-pools.
 
 The client configuration layer consumes these three pools. It is intentionally separate from China asset evolution so that pool policy can change without rewriting historical China observations.
+
+
+## 15. China Probe Transport
+
+China Probe transport uses Backblaze B2 as an asynchronous inbox/outbox rather than a mutable observation file.
+
+The NodeProbe side publishes the candidate feed under `nodeprobe-state/china/candidates.json`.
+
+The China-side agent pulls that feed, probes the selected endpoints, and writes immutable observation batches under `nodeprobe-state/china/observations/<environment>/...`.
+
+A batch is never overwritten by a later probe run. `apply-china-observations` is idempotent, so replaying an already consumed batch does not duplicate evidence.
+
+The repository includes `scripts/china-b2-sync.js` for the local China machine:
+
+- `npm run china-sync -- pull-candidates`
+- `npm run china-sync -- push-observations`
+
+The transport helper uses the Backblaze B2 CLI (`b2v4`) and credentials supplied through environment variables; credentials are not stored in the repository.
+
+This transport is intentionally asynchronous. GitHub does not initiate inbound connections to the China machine, and the China machine does not need to expose a public service.
