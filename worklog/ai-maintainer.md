@@ -33,6 +33,15 @@ GitHub's workflow-run API supports listing recent runs and retrieving workflow/j
 
 Important: run #37 demonstrates that the previous stability-matching fix worked: the final Best set was 17 rather than being incorrectly reduced to zero. The remaining failure was diagnostic/audit-only and occurred after subscription generation.
 
+## Fast preflight checks
+
+Every workflow run now performs two lightweight JavaScript checks immediately after `npm install`:
+
+- `npm run check`: Node's built-in parser check for every `scripts/*.js` file. This catches syntax/parse errors without executing the scripts.
+- `npm run lint`: ESLint's `no-undef` rule. This catches basic undeclared-variable errors such as the `st is not defined` bug from run #37.
+
+The distinction matters: `node --check` alone cannot catch `ReferenceError` cases caused by a syntactically valid but undeclared variable. The lint check is therefore included as the second layer. These checks run before discovery, network probing, Mihomo installation, and other expensive work.
+
 ## Operating principle
 
 A recent workflow failure should be treated as runtime evidence. Do not diagnose from source code alone when a recent run is available. Always check the latest run logs, especially when the user reports simply that a run "failed".
