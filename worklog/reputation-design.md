@@ -95,13 +95,13 @@ Responsibilities remain separate: candidate selection chooses due DEAD Nodes; he
 
 update-node-pool.js must not initiate the recheck it records because it runs after health testing.
 
-## 20. Forgetting and Rediscovery
+## 20. Source Forgetting and Node Rediscovery
 
-Forgetting removes detailed Node-specific memory; it does not mean the Node never existed.
+Source forgetting removes Source-specific historical evidence only. It does not delete Nodes previously observed through that Source.
 
-After forgetting, a later source observation starts a new admission. Old trust is not silently restored.
+A forgotten Source can later be rediscovered and begins rebuilding Source reputation from current observations.
 
-If a rediscovered endpoint fails, repeated publication by a Source should not recreate an indefinitely retained DEAD record merely because the Source keeps publishing it. If it passes current validation, it can be admitted as a new Node epoch and rebuild trust from current evidence.
+For Nodes, there is currently no forgetting boundary. A rediscovered endpoint uses the same fingerprint and therefore can reconnect to its retained Node Pool history. This includes the historical `everStable` fact; it does not bypass current health testing.
 
 ## 21. Source and Node Reputation Must Not Become a Mutual Scoring System
 
