@@ -158,7 +158,7 @@ try{
    return m.recentTests>=6&&m.weightedRate>=0.8;
  }
  function bestEligible(r){
-   const m=historyMetric(r.fingerprint),repNode=reputation.nodes?.[r.fingerprint],st=currentStability.get(r.fingerprint||r.name);
+   const m=historyMetric(r.fingerprint),repNode=reputation.nodes?.[r.fingerprint],st=currentStability.get(r.fingerprint)||currentStability.get(r.name);
    const currentOk=r.rounds>=3&&currentRate(r)>=0.9&&currentLatency(r)<=2500&&Number(r.p95Latency||Infinity)<=5000;
    if(!currentOk||repNode?.status==='quarantine'||repNode?.status==='degraded')return false;
    // When the current run has a stability confirmation, Best requires it. The
