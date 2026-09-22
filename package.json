@@ -19,7 +19,8 @@
     "china-assets": "node scripts/china-node-asset.js",
     "china-apply": "node scripts/apply-china-observations.js",
     "china-probe": "node scripts/china-probe.js",
-    "china-pools": "node scripts/build-china-pools.js"
+    "china-pools": "node scripts/build-china-pools.js",
+    "china-sync": "node scripts/china-b2-sync.js"
   },
   "dependencies": {
     "js-yaml": "^4.1.0"
