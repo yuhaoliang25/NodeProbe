@@ -828,3 +828,247 @@ validate whether Best remains reliable
 The objective is high confidence in the Best pool, not a target Best count.
 
 **Best stability confirmation revision:** 2026-09-22
+
+## 23. Relay Pool and Landing Pool
+
+NodeProbe now distinguishes two downstream views of the Best pool:
+
+```
+                         Best
+                           │
+                  China reachability
+                       observation
+                           │
+             ┌─────────────┴─────────────┐
+             ▼                           ▼
+        Relay Pool                 Landing Pool
+   Best ∩ China Reachable     Best \ China Reachable
+```
+
+This is intentionally a dimensionality reduction, not a second full proxy-quality evaluation.
+
+### Core assumption
+
+Best has already passed NodeProbe's ordinary health validation and high-resource stability confirmation. Therefore, for the first implementation:
+
+- Best nodes are treated as having sufficiently strong outbound / landing quality;
+- the additional China-side probe only answers whether the node is reachable from the user's China-side network;
+- a node does not need to be retested as China → Node → Internet for every possible landing target.
+
+The resulting roles are:
+
+- Relay Pool: Best nodes that have recently demonstrated reachability from the China-side probe.
+- Landing Pool: the remaining Best nodes. They are not classified as China-reachable, but remain eligible as outbound/landing nodes because they already belong to Best.
+
+This intentionally avoids an N×M test of every China-reachable relay against every landing node.
+
+### Relay Pool is a role, not a permanent node state
+
+A node can move between the two views as China-side reachability changes.
+
+```
+Best node
+   ↓
+China probe succeeds repeatedly
+   ↓
+Relay candidate
+   ↓
+China reachability degrades
+   ↓
+removed from Relay Pool
+   ↓
+may remain in Landing Pool
+```
+
+A temporary failure must not immediately erase a historically reliable relay. The China-side observer therefore needs its own persistent history and lifecycle/evolution layer.
+
+### China Reachability History
+
+The China-side observation is separate from ordinary NodeProbe health.
+
+It should record at least:
+
+- firstObservedAt — first time the China probe observed the node;
+- lastObservedAt — most recent China-side observation;
+- observedRuns;
+- successful observations;
+- failed observations;
+- recent success rate;
+- consecutive failures;
+- current reachability state;
+- historical stable/reliable state;
+- observation environment identifier.
+
+The same semantic rule used elsewhere applies:
+
+> These timestamps describe Probe observations, not the node's actual publication or creation time.
+
+### Reachability Evolution
+
+The Relay Pool should be maintained incrementally rather than rebuilt from only the latest probe result.
+
+```
+Current Best
+    +
+Historical China Reachability Pool
+    ↓
+China Probe Candidate Set
+    ↓
+Current Reachability Observation
+    ↓
+Reachability Evolution
+    ↓
+Relay Pool
+    +
+Landing Pool
+```
+
+A node that was previously a reliable relay should remain in historical state when it temporarily disappears from the current reachable set.
+
+This allows the system to distinguish:
+
+- temporary China-side routing failure;
+- intermittent reachability;
+- persistent loss of reachability;
+- newly reachable nodes;
+- long-term reliable relays.
+
+### Regularly retest the veterans
+
+Long-lived reliable relays must not be permanently exempt from testing.
+
+This is especially important because the China-side network path is not stationary. A node that has been reachable for months can become unreachable later as routing conditions and filtering change.
+
+Therefore the probe scheduler should deliberately sample historical high-confidence relays again.
+
+The principle is:
+
+```
+current candidates
+      +
+historical reliable relays
+      +
+newly promoted Best nodes
+      ↓
+China reachability probe
+```
+
+A veteran is evidence for priority, not a permanent pass.
+
+The first implementation should therefore use a mixed sampling strategy:
+
+1. New / unknown Best nodes — test promptly.
+2. Currently reachable relays — periodically retest.
+3. Historically stable relays — periodically force a recheck even if they remain healthy in history.
+4. Recently failed relays — retry after a cooldown to distinguish transient failure from persistent loss.
+5. Long-dead reachability records — probe infrequently, preserving the possibility of recovery.
+
+The exact intervals are implementation parameters and should be tuned from observations rather than from a desired relay count.
+
+### Probe location and execution model
+
+The China-side reachability observer should run as a local service on the user's China machine, rather than depending on GitHub Actions to remotely trigger an inbound job.
+
+Preferred architecture:
+
+```
+GitHub / NodeProbe
+        │
+        │ publishes Best
+        ▼
+China-side Probe Agent
+        │
+        ├── pulls latest Best
+        ├── tests China → Node reachability
+        ├── maintains local observation state
+        └── uploads observations
+                 │
+                 ▼
+          NodeProbe state
+                 │
+          ┌──────┴──────┐
+          ▼             ▼
+      Relay Pool    Landing Pool
+```
+
+The probe should be autonomous. A systemd service/timer is preferred for the first implementation because the machine initiating the observation is the machine whose network path is being measured.
+
+GitHub should not need inbound connectivity to the China machine.
+
+The preferred control pattern is therefore:
+
+- GitHub publishes candidates.
+- China machine pulls candidates.
+- China machine performs observations.
+- China machine pushes observations.
+- GitHub consumes persisted observations when constructing the next pool/subscription.
+
+This removes an unnecessary remote-trigger dependency and makes the observation clock independent of GitHub Actions queueing or availability.
+
+### What reachable means initially
+
+The first implementation should measure the China → Node leg rather than immediately measuring China → Node → Google.
+
+The reason is attribution.
+
+A failed end-to-end test can be caused by either:
+
+- China → Node;
+- Node → target;
+- target-specific routing;
+- target-side behavior.
+
+A direct node-side connectivity test isolates the new dimension more cleanly.
+
+The first implementation should therefore establish a simple, repeatable node reachability signal and retain latency/failure evidence for later analysis.
+
+### Separation from Best
+
+Best remains the global NodeProbe quality gate.
+
+The China-side observer does not redefine Best.
+
+```
+Best
+= NodeProbe's high-confidence node set
+
+Relay Pool
+= Best + China-side reachability evidence
+
+Landing Pool
+= Best nodes not currently selected as relays
+```
+
+This preserves the meaning of the existing Best audit/stability evidence while adding a user-network-specific view.
+
+### Important limitation
+
+A China-side probe on one machine represents that machine's network environment, not every Chinese ISP, city, or device.
+
+Therefore the correct semantic name is China-side reachability observation or user-side reachability, not universal China reachability.
+
+Future probes could be distinguished by environment:
+
+```
+China-Mobile
+China-Unicom
+China-Telecom
+home-broadband
+other user-side environments
+```
+
+The system should retain the observation environment so that multiple probe perspectives can coexist without being conflated.
+
+### Architectural invariant
+
+The system must not use a single successful China-side observation as a permanent classification.
+
+The important object is the time series:
+
+```
+Node × Probe Environment × Time
+```
+
+and the Relay Pool is a current view derived from that history.
+
+**Relay/Landing architecture revision:** 2026-09-22
