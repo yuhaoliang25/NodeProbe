@@ -537,8 +537,76 @@ NodeProbe should favor:
 
 When uncertain, preserve historical information and collect evidence before making an irreversible decision.
 
+## 20. AI Diagnostic Query Interface
+
+> **AI MAINTAINER NOTICE — READ THIS BEFORE ANSWERING NODE-SPECIFIC QUESTIONS**
+>
+> Runtime state is intentionally stored outside Git. Do **not** assume that `data/*.json` exists in the repository or conclude that node history is unavailable merely because it is absent from the Git tree.
+>
+> When an AI agent is asked a question about a specific node, the intended path is:
+>
+>     User gives node name / identifying endpoint
+>              ↓
+>     Node diagnostic index (GitHub Actions artifact)
+>              ↓
+>     Locate node by fingerprint/shard
+>              ↓
+>     Read node-level observation/history summary
+>              ↓
+>     If needed, inspect the corresponding workflow run / artifact
+>              ↓
+>     Answer from observed evidence
+>
+> The diagnostic index is a **query interface for AI maintainers**, not a new source of truth. It is generated from the runtime state restored from B2 during the workflow and is published as a GitHub Actions artifact rather than committed to Git.
+
+### What the diagnostic index is for
+
+It should make questions such as these directly answerable without asking the user to manually download B2 state:
+
+- What is this node's current status?
+- When did NodeProbe first observe it?
+- Which sources have observed it?
+- How many runs has it survived / passed?
+- What are its recent health results and latency?
+- What does node reputation currently say?
+- Has it ever reached STABLE?
+
+### Query rules for AI agents
+
+1. **Do not treat the current source list as the node's complete history.** Query the diagnostic index / persistent history first.
+2. **Do not confuse `firstObservedAt` with publication time.** It is the first time NodeProbe observed the node.
+3. **Do not infer node death from source disappearance.** Check node-pool status and health history.
+4. **Do not expose or reproduce secret credential fields** when reporting node diagnostics. Use the safe identifying fields included by the diagnostic generator.
+5. **Prefer recent workflow evidence for current health**, and historical node-pool/reputation evidence for persistence questions.
+6. If the requested node cannot be found in the diagnostic artifact, say that the available diagnostic window does not contain it; do not invent historical data.
+7. The artifact is diagnostic and temporary. Its retention period may limit how far back an AI agent can retrieve the detailed diagnostic index.
+
+### Diagnostic index layout
+
+The index is sharded by the first two hexadecimal characters of the SHA-256 hash of the normalized node name. This avoids creating one excessively large diagnostic file while keeping lookup deterministic.
+
+    reports/node-index/
+      00.json ... ff.json
+
+The generated record combines the relevant node-pool, health-history, and reputation fields into one node-centric view. It is deliberately smaller and safer than exposing the complete runtime state.
+
+### Storage boundary
+
+    Git
+    ├── code / architecture / worklog
+    └── published subscriptions
+
+    B2
+    └── authoritative persistent runtime state
+
+    GitHub Actions Artifact
+    └── temporary AI diagnostic index
+
+**Important:** adding a diagnostic field or changing the query format must not cause `reports/` to be added to the normal Git commit. The diagnostic index exists specifically to preserve repository size while keeping runtime state queryable by AI maintainers.
+
 ---
 
-**Last architectural revision:** 2026-09-18
+**Last architectural revision:** 2026-09-22
 
 Discovery memory revision: stateful multi-channel GitHub exploration added.
+Diagnostic query design revision: 2026-09-22
