@@ -16,7 +16,8 @@
     "check": "node --check scripts/*.js",
     "lint": "npx --yes eslint@8 --no-eslintrc --env node --env es6 --parser-options '{\"ecmaVersion\":2022}' --rule 'no-undef:error' scripts/*.js",
     "client-config": "node scripts/generate-client-config.js",
-    "china-assets": "node scripts/china-node-asset.js"
+    "china-assets": "node scripts/china-node-asset.js",
+    "china-apply": "node scripts/apply-china-observations.js"
   },
   "dependencies": {
     "js-yaml": "^4.1.0"
