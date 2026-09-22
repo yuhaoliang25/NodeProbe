@@ -452,15 +452,15 @@ A higher concurrency can reduce wall-clock time but may increase local bandwidth
 Check timer:
 
 ```bash
-systemctl status nodeprobe-china.timer
-systemctl list-timers | grep nodeprobe-china
+systemctl --user status nodeprobe-china.timer
+systemctl --user list-timers | grep nodeprobe-china
 ```
 
 Check the latest service run:
 
 ```bash
-systemctl status nodeprobe-china.service
-journalctl -u nodeprobe-china.service -n 200 --no-pager
+systemctl --user status nodeprobe-china.service
+journalctl --user -u nodeprobe-china.service -n 200 --no-pager
 ```
 
 Check B2 credentials:
@@ -503,6 +503,48 @@ systemctl --user enable --now nodeprobe-china.timer
 ```
 
 Do not remove `data/china-node-assets.json` on the NodeProbe/GitHub side merely because the China machine is upgraded; China historical trust is persistent state and is intentionally independent of the machine's local runtime files.
+
+
+## 20. Staged China Detection
+
+China Probe now follows a staged detection pipeline instead of treating one delay request as the complete China test.
+
+```text
+Global Stable
+    ↓
+China candidate selection
+    ↓
+China Stage 1 — fast screening
+    ↓
+Stage 1 retry — failed/timeout recovery
+    ↓
+China Stage 2 — normal-timeout confirmation
+    ↓
+China Deep — repeated rounds
+    ↓
+one final observation per node/run
+    ↓
+China Asset
+```
+
+The stages are **detection evidence**, not separate China trust states.
+
+Stage attempts are retained in the immutable observation batch for diagnosis, while only one final observation per node per probe run is applied to the persistent China asset. This is important: five stages in one run must not artificially count as five independent historical China observations.
+
+The reusable execution primitives live in `scripts/lib/probe-runner.js`. They provide common bounded-concurrency execution and Mihomo delay probing. This is the first step toward sharing mature Global detection mechanisms without sharing Global reputation.
+
+Current China-specific controls include:
+
+- `CHINA_STAGE1_TIMEOUT` (default 5000 ms);
+- `CHINA_PROBE_TIMEOUT` (default 8000 ms);
+- `CHINA_DEEP_ROUNDS` (default 2);
+- `CHINA_PROBE_CONCURRENCY` (default 8).
+
+The stage structure is intentionally configurable. Future work can add multi-target stability confirmation using the same reusable detection primitives and the methodology already used by Global `confirm-stability.js`.
+
+The architectural rule remains:
+
+> Reuse detection mechanisms; isolate evidence and conclusions.
 
 
 ## 19. Detection Mechanism Reuse Across Global and China
