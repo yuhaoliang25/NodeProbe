@@ -341,6 +341,7 @@ try{
  fs.writeFileSync('data/source-reputation.json',JSON.stringify(sourceReputationOut,null,2));
  try{
    const registry=JSON.parse(fs.readFileSync('data/sources.json','utf8')),fetched=new Set(raw.map(x=>x.name));
+   registry.sources=(registry.sources||[]).filter(s=>!forgottenSources.has(s.name||s.url));
    for(const s of registry.sources||[]){
      const id=s.name||s.url,rep=sourceReputationOut.sources?.[id];
      if(rep){
