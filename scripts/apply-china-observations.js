@@ -9,6 +9,7 @@ const {loadState,saveState,updateNode}=require('./china-node-asset');
 const CONFIG={
   candidateFile:process.env.CHINA_CANDIDATE_FILE||'data/china-probe-candidates.json',
   observationFile:process.env.CHINA_OBSERVATION_FILE||'data/china-probe-observations.json',
+  observationDir:process.env.CHINA_OBSERVATION_DIR||'data/china-probe-observations',
   assetFile:process.env.CHINA_ASSET_FILE||'data/china-node-assets.json',
   environment:process.env.CHINA_PROBE_ENV||'china-default',
   appliedRetention:Number(process.env.CHINA_APPLIED_OBSERVATION_RETENTION||5000),
@@ -28,10 +29,22 @@ function loadCandidates(){
 }
 
 function loadObservations(){
+  const out=[];
   try{
     const d=JSON.parse(fs.readFileSync(CONFIG.observationFile,'utf8'));
-    return Array.isArray(d)?d:[];
-  }catch{return []}
+    if(Array.isArray(d))out.push(...d);
+    else if(Array.isArray(d?.observations))out.push(...d.observations);
+  }catch{}
+  try{
+    for(const file of fs.readdirSync(CONFIG.observationDir).filter(x=>x.endsWith('.json')).sort()){
+      try{
+        const d=JSON.parse(fs.readFileSync(path.join(CONFIG.observationDir,file),'utf8'));
+        if(Array.isArray(d))out.push(...d);
+        else if(Array.isArray(d?.observations))out.push(...d.observations);
+      }catch{}
+    }
+  }catch{}
+  return out;
 }
 
 /*
