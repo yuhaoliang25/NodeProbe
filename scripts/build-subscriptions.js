@@ -318,7 +318,26 @@ try{
      status
    };
  }
-fs.writeFileSync('data/source-history.json',JSON.stringify(sourceRuns,null,2));
+// Forget sources that are both long-term stale and strongly evidenced as poor.
+ // Forgetting removes Source memory only; Node assets remain untouched. A later
+ // rediscovery therefore starts with a fresh Source history instead of reviving
+ // stale reputation evidence.
+ const forgottenSources=new Set(
+   Object.entries(sourceReputationOut.sources)
+     .filter(([,rep])=>Number(rep.stalenessDays)>30&&Number(rep.lowerBound90)<0.35)
+     .map(([source])=>source)
+ );
+ if(forgottenSources.size){
+   for(const run of sourceRuns){
+     for(const source of forgottenSources)delete run.sources?.[source];
+   }
+   for(const source of forgottenSources)delete sourceReputationOut.sources[source];
+   for(const run of sourceEvolution.runs||[]){
+     for(const source of forgottenSources)delete run.sources?.[source];
+   }
+ }
+ const persistedSourceRuns=sourceRuns.slice(-30);
+ fs.writeFileSync('data/source-history.json',JSON.stringify(persistedSourceRuns,null,2));
  fs.writeFileSync('data/source-reputation.json',JSON.stringify(sourceReputationOut,null,2));
  try{
    const registry=JSON.parse(fs.readFileSync('data/sources.json','utf8')),fetched=new Set(raw.map(x=>x.name));
