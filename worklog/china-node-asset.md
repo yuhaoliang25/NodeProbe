@@ -227,3 +227,26 @@ The first implementation intentionally has three independent steps:
 3. apply observations to the persistent China asset.
 
 Network probing is not simulated by the GitHub-side asset updater. A future China-side agent should own the actual China-to-node measurement.
+
+
+## 14. Pool Derivation Implementation
+
+The first pool derivation uses the persistent China asset state and current Global Stable/Best pools.
+
+Let:
+
+- S = current Global Stable;
+- B = current Global Best;
+- R = China assets currently in TRUSTED state.
+
+The generated pools are:
+
+- direct.yaml = B ∩ R;
+- relay.yaml = S ∩ R - B;
+- landing.yaml = B - R.
+
+These are views derived from current state. They do not mutate China trust and do not create Relay/Landing lifecycle states.
+
+The derivation is implemented by scripts/build-china-pools.js and exposed as npm run china-pools.
+
+The client configuration layer consumes these three pools. It is intentionally separate from China asset evolution so that pool policy can change without rewriting historical China observations.
