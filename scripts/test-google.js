@@ -19,24 +19,16 @@ async function main(){
  const sourceByName=new Map(candidates.map(x=>[x.name,Array.isArray(x._sources)&&x._sources.length?x._sources:[x._source||'unknown']]));
  const ids=new Map(candidates.map(x=>[x.name,x['endpoint-id']||x._id]));
  const rep=(()=>{try{return JSON.parse(fs.readFileSync('data/reputation.json','utf8')).nodes||{}}catch{return {}}})();
- const now=Date.now();
- function score(p){
-  const r=rep[p._id];
-  if(!r)return 50;
-  const rate=Math.max(0,Math.min(1,Number(r.longTermSuccessRate||0)));
-  const recent=Math.max(0,Math.min(1,1-(Number(r.recentFailures||0)/6)));
-  const age=Math.max(0,now-Date.parse(r.lastSeen||0));
-  const freshness=age<=86400000?1:age<=604800000?.7:.4;
-  if(r.status==='quarantine')return -100;
-  if(r.status==='degraded')return 15+rate*25+recent*10;
-  return 40+rate*35+recent*15+freshness*10;
+ const nodePool=(()=>{try{return JSON.parse(fs.readFileSync('data/node-pool.json','utf8')).nodes||{}}catch{return {}}})();
+ function trustOf(p){
+  const id=p['endpoint-id']||p._id;
+  return rep[id]?.trust||'untrusted';
  }
  function budget(p){
-  const s=score(p);
-  if(s<0)return 0;
-  if(s<35)return 1;
-  if(s<65)return 2;
-  return 3;
+  const trust=trustOf(p);
+  if(trust==='trusted')return 3;
+  if(trust==='normal')return 2;
+  return 1;
  }
  // Every candidate gets a mandatory Stage 1 test. Historical reputation only
  // influences which Stage-1 survivors receive deeper testing later.
@@ -87,15 +79,7 @@ async function main(){
  const survivors2=Object.entries(r2).filter(([,d])=>Number(d)>0).sort((a,b)=>Number(a[1])-Number(b[1])).slice(0,STAGE2_LIMIT).map(([n])=>n);
  console.log('stage2:',survivors1.length,'->',survivors2.length);
 
- const budgets=new Map(candidates.map(p=>{
-  const id=p['endpoint-id']||p._id, r=rep[id];
-  if(!r)return [p.name,3];
-  const rate=Number(r.longTermSuccessRate||0);
-  const recentFailures=Number(r.recentFailures||0);
-  if(r.status==='quarantine')return [p.name,0];
-  if(r.status==='degraded')return [p.name,1];
-  return [p.name,rate>=0.9?3:2];
- }));
+ const budgets=new Map(candidates.map(p=>[p.name,budget(p)]));
  const deepCandidates=survivors2.slice(0,STAGE3_LIMIT);
  for(let round=3;round<=ROUNDS;round++){
   const eligible=deepCandidates.filter(name=>(budgets.get(name)||0)>=round);
@@ -135,27 +119,46 @@ async function main(){
  let history=[]; try{history=JSON.parse(fs.readFileSync('data/history.json','utf8'))}catch{}
  history.push(persistedReport); history=history.slice(-30);
  fs.writeFileSync('data/history.json',JSON.stringify(history,null,2));
- const reputation={generatedAt:new Date().toISOString(),nodes:{}};
- for(const [id,r] of new Map(rows.filter(x=>x.fingerprint).map(x=>[x.fingerprint,x]))){
-   const past=history.flatMap(b=>b.results||[]).filter(x=>x.fingerprint===id);
-   const observations=past.flatMap(x=>Array.isArray(x.delays)?x.delays:[]);
-   const tests=observations.length, successes=observations.filter(x=>Number(x)>0).length;
-   const failures=tests-successes;
-   // Keep total counters for auditability, but base reputation on a recency-weighted
-   // window so an old healthy period cannot hide a current outage.
-   const recent=observations.slice(-12);
-   const weights=recent.map((_,i)=>i+1);
-   const weightTotal=weights.reduce((a,b)=>a+b,0);
-   const weightedSuccessRate=weightTotal?recent.reduce((s,x,i)=>s+(Number(x)>0?weights[i]:0),0)/weightTotal:0;
-   const recent6=observations.slice(-6);
-   const recentFailures=recent6.filter(x=>!(Number(x)>0)).length;
-   const recentSuccesses=recent6.filter(x=>Number(x)>0).length;
-   const status=recent6.length>=6&&recentFailures===6?'quarantine':
-     (recentFailures>=3||weightedSuccessRate<0.6?'degraded':
-     (recent6.length>=3&&recentFailures>0&&recentSuccesses>=2?'flaky':'active'));
-   reputation.nodes[id]={name:r.name,longTermSuccessRate:weightedSuccessRate,totalTests:tests,totalFailures:failures,recentFailures,recentSuccesses,status,lastSeen:new Date().toISOString()};
+ const reputation={version:2,generatedAt:new Date().toISOString(),nodes:{...rep}};
+ const poolNodes=nodePool;
+ for(const row of rows){
+   const id=row.fingerprint;
+   if(!id)continue;
+   const prev=rep[id]||{};
+   const pool=poolNodes[id]||{};
+   const outcomes=(Array.isArray(prev.recentOutcomes)?prev.recentOutcomes:[]).concat(
+     row.delays.map(delay=>({at:new Date().toISOString(),success:Number(delay)>0}))
+   ).slice(-12);
+   const successes=Number(prev.successes||0)+row.successes;
+   const failures=Number(prev.failures||0)+(row.rounds-row.successes);
+   const tests=successes+failures;
+   const recent6=outcomes.slice(-6);
+   const recentSuccesses=recent6.filter(x=>x.success).length;
+   const recentFailures=recent6.length-recentSuccesses;
+   const everStable=Boolean(prev.everStable||pool.everStable||pool.status==='stable');
+   let trust=prev.trust||'untrusted';
+   const cumulativeRate=tests?successes/tests:0;
+   const recentRate=recent6.length?recentSuccesses/recent6.length:0;
+   if(trust==='untrusted'&&tests>=3&&cumulativeRate>=2/3)trust='normal';
+   if(trust==='normal'&&recent6.length>=6&&recentRate>=0.8&&everStable)trust='trusted';
+   else if(trust==='trusted'&&recent6.length>=6&&recentRate<0.5)trust='normal';
+   else if(trust==='normal'&&recent6.length>=6&&recentRate<1/3)trust='untrusted';
+   const successAt=outcomes.filter(x=>x.success).at(-1)?.at||prev.lastSuccessAt||null;
+   const failureAt=outcomes.filter(x=>!x.success).at(-1)?.at||prev.lastFailureAt||null;
+   reputation.nodes[id]={
+     successes,
+     failures,
+     recentSuccesses,
+     recentFailures,
+     recentOutcomes:outcomes,
+     lastTestAt:outcomes.at(-1)?.at||prev.lastTestAt||null,
+     lastSuccessAt:successAt,
+     lastFailureAt:failureAt,
+     everStable,
+     trust
+   };
  }
- fs.writeFileSync('data/reputation.json',JSON.stringify(reputation,null,2));
+
  console.log('tested:',rows.length,'current>=80%:',rows.filter(x=>x.successRate>=.8).length,'current>=90%+latency:',rows.filter(x=>x.successRate>=.9&&x.p95Latency<=5000&&x.avgLatency<=2500).length,'stage1-flaky:',rows.filter(x=>x.stage1Flaky).length);
 }
 main().catch(e=>{console.error(e);process.exit(1)});
