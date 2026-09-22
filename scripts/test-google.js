@@ -18,7 +18,31 @@ async function main(){
  const candidates=JSON.parse(fs.readFileSync('data/candidates.json','utf8'));
  const sourceByName=new Map(candidates.map(x=>[x.name,Array.isArray(x._sources)&&x._sources.length?x._sources:[x._source||'unknown']]));
  const ids=new Map(candidates.map(x=>[x.name,x['endpoint-id']||x._id]));
- const rep=(()=>{try{return JSON.parse(fs.readFileSync('data/reputation.json','utf8')).nodes||{}}catch{return {}}})();
+ function loadReputation(){
+  try{
+   const raw=JSON.parse(fs.readFileSync('data/reputation.json','utf8'));
+   const nodes=raw&&raw.nodes&&typeof raw.nodes==='object'?raw.nodes:{};
+   const allowedTrust=new Set(['untrusted','normal','trusted']);
+   const normalized={};
+   for(const [id,r] of Object.entries(nodes)){
+    if(!r||typeof r!=='object')continue;
+    normalized[id]={
+     successes:Number.isFinite(Number(r.successes))?Number(r.successes):0,
+     failures:Number.isFinite(Number(r.failures))?Number(r.failures):0,
+     recentSuccesses:Number.isFinite(Number(r.recentSuccesses))?Number(r.recentSuccesses):0,
+     recentFailures:Number.isFinite(Number(r.recentFailures))?Number(r.recentFailures):0,
+     recentOutcomes:Array.isArray(r.recentOutcomes)?r.recentOutcomes.slice(-12).filter(x=>x&&typeof x==='object'&&typeof x.success==='boolean'):[],
+     lastTestAt:r.lastTestAt||null,
+     lastSuccessAt:r.lastSuccessAt||null,
+     lastFailureAt:r.lastFailureAt||null,
+     everStable:Boolean(r.everStable),
+     trust:allowedTrust.has(r.trust)?r.trust:'untrusted'
+    };
+   }
+   return normalized;
+  }catch{return {}}
+ }
+ const rep=loadReputation();
  const nodePool=(()=>{try{return JSON.parse(fs.readFileSync('data/node-pool.json','utf8')).nodes||[]}catch{return []}})();
  const poolById=new Map(nodePool.filter(x=>x&&x.fingerprint).map(x=>[x.fingerprint,x]));
  function trustOf(p){
