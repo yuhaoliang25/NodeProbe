@@ -320,10 +320,9 @@ function selectCandidates() {
   const at = now();
   const atMs = Date.parse(at);
 
-  // Admit every currently Stable endpoint into the China asset inventory.
-  // This is candidate admission only; it is not China trust.
-  for (const item of stable) admitOrGet(state, item, at);
-
+  // Stable membership only creates a candidate. It does NOT create a China asset
+  // or a China observation. The asset begins when the China probe actually observes
+  // the endpoint.
   const candidates = buildCandidates(stable, state, atMs);
 
   state.generatedAt = at;
