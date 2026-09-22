@@ -156,21 +156,8 @@ function createAsset(endpointId, at) {
     deadSince: null,
     recheckLevel: 0,
     nextProbeAt: at,
-    globalStableObservedAt: at,
     observations: [],
   };
-}
-
-function admitOrGet(state, item, at) {
-  const old = state.nodes[item.endpointId];
-  if (old) {
-    old.globalStableObservedAt = at;
-    return old;
-  }
-
-  const node = createAsset(item.endpointId, at);
-  state.nodes[item.endpointId] = node;
-  return node;
 }
 
 function updateNode(node, observation) {
