@@ -1,2 +1,2 @@
-# Put exact node names from subscriptions/best.yaml here, one per line.
-# Lines beginning with # are ignored.
+# Node debug target
+DE德国 | yoyapai
