@@ -244,9 +244,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: best-selection-audit
-          path: |
-            reports/best-audit/
-            reports/health-test/detailed.json
+          path: reports/best-audit/
           retention-days: 30
 
       - name: Generate node diagnostic index
