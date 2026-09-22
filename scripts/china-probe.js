@@ -19,6 +19,7 @@ const CONFIG={
   target:process.env.CHINA_PROBE_TARGET||'https://www.google.com/generate_204',
   expected:process.env.CHINA_PROBE_EXPECTED||'204',
   timeout:Number(process.env.CHINA_PROBE_TIMEOUT||8000),
+  concurrency:Number(process.env.CHINA_PROBE_CONCURRENCY||8),
   environment:process.env.CHINA_PROBE_ENV||os.hostname(),
 };
 
@@ -99,8 +100,10 @@ async function main(){
 
   try{
     await waitApi();
-    const observations=[];
-    for(const p of selected){
+    const observations=new Array(selected.length);
+    let nextIndex=0;
+    async function probeOne(index){
+      const p=selected[index];
       const at=now();
       try{
         const q=new URLSearchParams({
@@ -110,25 +113,34 @@ async function main(){
         });
         const result=await apiJson(CONFIG.api+'/proxies/'+encodeURIComponent(p.name)+'/delay?'+q);
         const latencyMs=Number(result.delay);
-        observations.push({
+        observations[index]={
           endpointId:endpointId(p),
           at,
           success:Number.isFinite(latencyMs)&&latencyMs>0,
           latencyMs:Number.isFinite(latencyMs)&&latencyMs>0?latencyMs:null,
           error:null,
           probeEnvironment:CONFIG.environment,
-        });
+        };
       }catch(e){
-        observations.push({
+        observations[index]={
           endpointId:endpointId(p),
           at,
           success:false,
           latencyMs:null,
           error:String(e&&e.message||e).slice(0,300),
           probeEnvironment:CONFIG.environment,
-        });
+        };
       }
     }
+    async function worker(){
+      while(true){
+        const index=nextIndex++;
+        if(index>=selected.length)return;
+        await probeOne(index);
+      }
+    }
+    const workerCount=Math.min(Math.max(1,CONFIG.concurrency),selected.length);
+    await Promise.all(Array.from({length:workerCount},()=>worker()));
 
     fs.mkdirSync(path.dirname(CONFIG.observationFile),{recursive:true});
     fs.writeFileSync(CONFIG.observationFile,JSON.stringify(observations,null,2)+'\n');
