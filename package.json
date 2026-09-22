@@ -10,7 +10,8 @@
     "geo": "node scripts/detect-ip-country.js",
     "source-graph": "node scripts/analyze-source-graph.js",
     "node-pool": "node scripts/update-node-pool.js",
-    "node-index": "node scripts/generate-node-index.js"
+    "node-index": "node scripts/generate-node-index.js",
+    "best-audit": "node scripts/generate-best-audit.js"
   },
   "dependencies": {
     "js-yaml": "^4.1.0"
