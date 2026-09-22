@@ -237,6 +237,18 @@ jobs:
         run: node scripts/build-subscriptions.js
       - name: Convert final subscriptions to importable Mihomo configs
         run: node scripts/convert-subscriptions.js
+      - name: Generate best-node selection audit
+        run: npm run best-audit
+
+      - name: Upload best-node selection audit
+        uses: actions/upload-artifact@v4
+        with:
+          name: best-selection-audit
+          path: |
+            reports/best-audit/
+            reports/health-test/detailed.json
+          retention-days: 30
+
       - name: Generate node diagnostic index
         run: npm run node-index
 
