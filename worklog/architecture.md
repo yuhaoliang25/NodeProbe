@@ -204,6 +204,156 @@ In particular:
 
 The exact lifecycle thresholds remain implementation parameters.
 
+## 6. Node Retention, Recheck, and Forgetting
+
+Node history must have both **entry and exit**. Persistent memory is useful only if it remains bounded and semantically meaningful.
+
+The node lifecycle therefore extends beyond DEAD:
+
+```
+NEW
+ ↓
+PROBATION
+ ↓
+ACTIVE
+ ↓
+STABLE
+ ↓
+STALE
+ ↓
+DEAD
+ ↓
+periodic recheck
+ ↓
+FORGOTTEN
+```
+
+### Dead is not permanent
+
+A DEAD node is a historical judgment, not a permanent blacklist.
+
+A dead node should remain in a low-priority recheck set for a while so that NodeProbe can distinguish:
+
+- temporary failure;
+- prolonged failure;
+- genuine long-term disappearance.
+
+Recheck frequency may decrease as the dead period grows. The exact backoff is an implementation parameter.
+
+Conceptually:
+
+```
+DEAD
+ │
+ ├── recheck succeeds
+ │       ↓
+ │   recovery / re-admission evidence
+ │
+ └── recheck keeps failing
+         ↓
+    long-term DEAD
+         ↓
+      FORGOTTEN
+```
+
+A forgotten node is removed from the persistent per-node inventory. This prevents the node pool from growing forever merely because NodeProbe once observed an endpoint.
+
+### Forgetting is a lifecycle event, not a denial of history
+
+FORGOTTEN means:
+
+> NodeProbe no longer keeps detailed per-node history for this endpoint.
+
+It does **not** mean:
+
+> This node never existed.
+
+Long-term aggregate source evidence may remain even after the detailed node record is forgotten.
+
+This creates an intentional asymmetry:
+
+```
+Node-level memory
+    bounded / expiring
+
+Source-level reputation
+    longer-lived / aggregated
+```
+
+Source evaluation must therefore not depend on retaining every historical node identity forever.
+
+### Forgetting criterion
+
+Forgetting should require sustained evidence, not merely age.
+
+A node should normally reach FORGOTTEN only after:
+
+1. it has been classified DEAD;
+2. it has remained unhealthy or otherwise unproductive for a sufficiently long period;
+3. scheduled low-frequency rechecks have failed or produced no meaningful recovery evidence;
+4. the retention policy says that further detailed per-node memory is no longer worth its storage and complexity cost.
+
+The exact retention period and recheck schedule are implementation parameters.
+
+### Rediscovery after forgetting
+
+If a forgotten node later appears in a source again, NodeProbe must **not silently restore its old trust state**.
+
+Instead, the observation starts a new admission epoch:
+
+```
+FORGOTTEN
+   +
+new source observation
+   ↓
+NEW / re-admission
+   ↓
+normal validation
+```
+
+There are two important cases.
+
+**The rediscovered node is still dead**
+
+The failed observation is useful source evidence. The source that supplied the dead endpoint can receive negative evidence from this observation.
+
+However, NodeProbe should not recreate an indefinitely retained DEAD record merely because a source keeps rediscovering the same failed endpoint.
+
+**The rediscovered node has actually recovered**
+
+If the node passes current validation, it is treated as a **new admission**, not as an automatic restoration of its former trust.
+
+This deliberately avoids carrying an obsolete negative trust debt forever while still preventing one stale source from turning a forgotten endpoint into a trusted historical node.
+
+### Why this is desirable
+
+The system should model the practical world rather than become an archive of every endpoint it has ever encountered.
+
+A node that has been dead for a very long time is increasingly likely to be irrelevant to current source ecosystems. Retaining every such identity only to preserve source-evaluation evidence creates unbounded state.
+
+Therefore:
+
+> **Detailed node history is temporary memory; source reputation is the longer-lived statistical memory.**
+
+The loss of some node-specific source evidence after forgetting is acceptable if the remaining source-level metrics still characterize source quality sufficiently well.
+
+### Architectural invariant
+
+Forgetting must never mean:
+
+```
+delete all evidence
+```
+
+It means:
+
+```
+expire detailed node identity/history
+while retaining the source-level evidence that remains useful
+```
+
+The architecture should prefer bounded node memory over indefinite accumulation.
+
 ## 6. Source Absence Is Not Node Death
 
 This is one of the most important rules.
@@ -608,7 +758,10 @@ An AI agent modifying NodeProbe must not assume:
 3. A node disappearing from a source means the node is dead.
 4. A source's reputation should directly lower every node from that source.
 5. A single workflow run is enough evidence to change an architectural threshold.
-6. Historical node data can safely be deleted just because it is absent from the current source snapshot.
+6. Historical node data is permanent. Node history has an explicit forgetting/retention lifecycle.
+7. A node absent from the Node Pool after FORGOTTEN never existed.
+8. A forgotten node rediscovered by a source should automatically inherit its old trust state.
+9. Source reputation must retain every node identity forever in order to evaluate sources.
 7. Generated YAML is the source of truth for the architecture.
 8. Current implementation thresholds are permanent design decisions.
 9. More scoring mechanisms automatically make the system better.
