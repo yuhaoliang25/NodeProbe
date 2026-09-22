@@ -109,6 +109,17 @@ jobs:
           source: nodeprobe-state/scores.json
           destination: data/scores.json
 
+      - name: Restore stability-history.json from B2
+        continue-on-error: true
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: download
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: nodeprobe-state/stability-history.json
+          destination: data/stability-history.json
+
       - name: Restore reputation.json from B2
         continue-on-error: true
         uses: backblaze-labs/b2-action@v1
@@ -233,10 +244,33 @@ jobs:
         run: npm run geo
       - name: Update persistent NodeProbe node pool
         run: npm run node-pool
-      - name: Rebuild filtered subscriptions
+      - name: Rebuild filtered subscriptions (provisional Best)
+        run: node scripts/build-subscriptions.js
+      - name: Confirm provisional Best stability
+        env:
+          STABILITY_ROUNDS: '5'
+          STABILITY_ATTEMPTS_PER_TARGET: '10'
+          STABILITY_TIMEOUT: '5000'
+          STABILITY_CONCURRENCY: '12'
+          STABILITY_ROUND_PAUSE_MS: '15000'
+          STABILITY_MAX_NODES: '100'
+          STABILITY_MIN_SUCCESS_RATE: '0.95'
+          STABILITY_MIN_TARGET_SUCCESS_RATE: '0.8'
+          STABILITY_MIN_ROUND_SUCCESS_RATE: '0.6666666667'
+          STABILITY_MAX_CONSECUTIVE_FAILURES: '1'
+          STABILITY_MAX_CONSECUTIVE_TIMEOUTS: '1'
+          STABILITY_P95_LIMIT: '5000'
+        run: npm run stability
+      - name: Rebuild filtered subscriptions (final Best)
         run: node scripts/build-subscriptions.js
       - name: Convert final subscriptions to importable Mihomo configs
         run: node scripts/convert-subscriptions.js
+      - name: Upload stability confirmation artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: best-stability-confirmation
+          path: reports/stability/
+          retention-days: 30
       - name: Generate best-node selection audit
         run: npm run best-audit
 
@@ -355,6 +389,17 @@ jobs:
           bucket: nodeprobe
           source: data/reputation.json
           destination: nodeprobe-state/reputation.json
+
+      - name: Save stability-history.json to B2
+        if: success()
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: upload
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: data/stability-history.json
+          destination: nodeprobe-state/stability-history.json
 
       - name: Save ip-geolocation.json to B2
         if: success()
