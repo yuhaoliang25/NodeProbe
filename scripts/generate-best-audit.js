@@ -30,8 +30,9 @@ function eligibility(r){
  const weights=hist.map((_,i)=>i+1),total=weights.reduce((a,b)=>a+b,0);
  const wr=total?hist.reduce((s,v,i)=>s+(Number(v)>0?weights[i]:0),0)/total:0;
  const historical=hist.length===0?Number(r.successes||0)>=3:(hist.length>=9&&wr>=.9);
- const rep=reputation.nodes?.[r.fingerprint];
- return {current,historicalRule:historical,notQuarantine:!rep||rep.status!=='quarantine',notDegraded:!rep||rep.status!=='degraded',historicalRecentTests:hist.length,historicalWeightedSuccessRate:wr,final:Object.values(current).every(Boolean)&&historical&&(!rep||rep.status!=='quarantine')&&(!rep||rep.status!=='degraded')};
+ const rep=reputation.nodes?.[r.fingerprint]||null;
+ const currentAndHistorical=Object.values(current).every(Boolean)&&historical;
+ return {current,historicalRule:historical,reputationTrust:rep?.trust||'untrusted',historicalRecentTests:hist.length,historicalWeightedSuccessRate:wr,final:currentAndHistorical};
 }
 const results=[];
 for(const p of best.proxies||[]){
@@ -43,8 +44,8 @@ fs.writeFileSync(OUT+'/best-audit.json',JSON.stringify(report,null,2));
 const md=['# NodeProbe best selection audit','Generated: '+report.generatedAt,'Health run: '+(health.generatedAt||'unknown'),'Nodes in best: '+results.length,'','This artifact records the current-run evidence for every node that entered best. Runtime state is not committed and this report is not uploaded to B2.',''];
 for(const r of results){
  const h=r.currentRun.health,s=r.selection,e=s.eligibility,st=s.stability;
- md.push('## '+r.name,'','- Fingerprint: '+(r.fingerprint||'unknown'),'- Type: '+(r.proxy.type||'?')+' | '+(r.proxy.server||'?')+':'+(r.proxy.port||'?'),'- Selection score: '+(s.qualityScore==null?'N/A':s.qualityScore),'- Current result: '+(h?(h.successes+'/'+h.rounds+' = '+(h.successRate*100).toFixed(1)+'%, avg '+(h.avgLatency??'N/A')+' ms, p95 '+(h.p95Latency??'N/A')+' ms'):'MISSING'),'- Reputation: '+(s.reputation?.status||'N/A'),'','### Why it entered best');
- if(e){for(const [k,v] of Object.entries(e.current))md.push('- '+k+': '+(v?'PASS':'FAIL'));md.push('- historicalRule: '+(e.historicalRule?'PASS':'FAIL'),'- notQuarantine: '+(e.notQuarantine?'PASS':'FAIL'),'- notDegraded: '+(e.notDegraded?'PASS':'FAIL'),'- final: '+(e.final?'PASS':'FAIL'),'- historical recent tests: '+e.historicalRecentTests,'- historical weighted success rate: '+e.historicalWeightedSuccessRate.toFixed(4));}
+ md.push('## '+r.name,'','- Fingerprint: '+(r.fingerprint||'unknown'),'- Type: '+(r.proxy.type||'?')+' | '+(r.proxy.server||'?')+':'+(r.proxy.port||'?'),'- Selection score: '+(s.qualityScore==null?'N/A':s.qualityScore),'- Current result: '+(h?(h.successes+'/'+h.rounds+' = '+(h.successRate*100).toFixed(1)+'%, avg '+(h.avgLatency??'N/A')+' ms, p95 '+(h.p95Latency??'N/A')+' ms'):'MISSING'),'- Reputation trust: '+(s.reputation?.trust||'untrusted'),'','### Why it entered best');
+ if(e){for(const [k,v] of Object.entries(e.current))md.push('- '+k+': '+(v?'PASS':'FAIL'));md.push('- historicalRule: '+(e.historicalRule?'PASS':'FAIL'),'- reputation trust (informational): '+e.reputationTrust,'- final: '+(e.final?'PASS':'FAIL'),'- historical recent tests: '+e.historicalRecentTests,'- historical weighted success rate: '+e.historicalWeightedSuccessRate.toFixed(4));}
  md.push('','### Stability confirmation');
  if(st)md.push('- Attempts: '+st.attempts,'- Success rate: '+(st.successRate*100).toFixed(1)+'%','- Timeout rate: '+(st.timeoutRate*100).toFixed(1)+'%','- Max consecutive failures: '+st.maxConsecutiveFailures,'- Max consecutive timeouts: '+st.maxConsecutiveTimeouts,'- p95 latency: '+(st.p95Latency??'N/A')+' ms','- Stability gate: '+(st.eligible?'PASS':'FAIL')); else md.push('- no stability confirmation record for this run');
  md.push('','### Full current-run test process','| # | Stage | Time | Timeout | Result | Delay | Error |','|---:|---|---|---:|---|---:|---|');
