@@ -270,3 +270,32 @@ The repository includes `scripts/china-b2-sync.js` for the local China machine:
 The transport helper uses the Backblaze B2 CLI (`b2v4`) and credentials supplied through environment variables; credentials are not stored in the repository.
 
 This transport is intentionally asynchronous. GitHub does not initiate inbound connections to the China machine, and the China machine does not need to expose a public service.
+
+
+## 16. China Observation Inbox Consumer
+
+The NodeProbe workflow now consumes the China observation inbox before deriving the next China candidate set.
+
+Flow:
+
+```
+B2 observation inbox
+  ↓
+GitHub workflow download
+  ↓
+apply-china-observations
+  ↓
+China asset evolution
+  ↓
+next candidate selection
+```
+
+Observation batches are immutable. The China asset state records a bounded list of processed batch names in `processedObservationBatches`, while individual observations are also deduplicated by deterministic observation ID. Therefore a workflow retry or repeated inbox download does not duplicate China evidence.
+
+The workflow deliberately applies observations **before** saving the updated China asset state. This keeps the persistent B2 asset and the candidate feed consistent with the observations consumed by that run.
+
+The same existing B2 application key is used for the China transport. No separate credential is introduced at this stage. On the user's own China machine, the key is supplied through the environment and never committed to the repository.
+
+The China-side upload helper deletes a local observation batch only after the upload command succeeds. The immutable copy in B2 remains the transport record.
+
+This is an asynchronous pull/push protocol: the China machine never needs an inbound service, and GitHub never needs to initiate a connection to it.
