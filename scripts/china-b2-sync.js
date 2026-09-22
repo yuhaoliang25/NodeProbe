@@ -29,6 +29,7 @@ if(mode==='pull-candidates'){
   const files=fs.readdirSync(OBS_DIR).filter(x=>x.endsWith('.json')).sort();
   for(const file of files){
     run(['file','upload',BUCKET,path.join(OBS_DIR,file),OBS_REMOTE+'/'+file]);
+    fs.unlinkSync(path.join(OBS_DIR,file));
   }
 }else{
   usage();
