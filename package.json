@@ -11,7 +11,8 @@
     "source-graph": "node scripts/analyze-source-graph.js",
     "node-pool": "node scripts/update-node-pool.js",
     "node-index": "node scripts/generate-node-index.js",
-    "best-audit": "node scripts/generate-best-audit.js"
+    "best-audit": "node scripts/generate-best-audit.js",
+    "stability": "node scripts/confirm-stability.js"
   },
   "dependencies": {
     "js-yaml": "^4.1.0"
