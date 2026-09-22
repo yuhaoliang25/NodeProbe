@@ -13,6 +13,7 @@ const CONFIG={
   assetFile:process.env.CHINA_ASSET_FILE||'data/china-node-assets.json',
   environment:process.env.CHINA_PROBE_ENV||'china-default',
   appliedRetention:Number(process.env.CHINA_APPLIED_OBSERVATION_RETENTION||5000),
+  batchRetention:Number(process.env.CHINA_APPLIED_BATCH_RETENTION||1000),
 };
 
 function now(){return new Date().toISOString()}
@@ -32,15 +33,19 @@ function loadObservations(){
   const out=[];
   try{
     const d=JSON.parse(fs.readFileSync(CONFIG.observationFile,'utf8'));
-    if(Array.isArray(d))out.push(...d);
-    else if(Array.isArray(d?.observations))out.push(...d.observations);
+    if(Array.isArray(d))out.push(...d.map(observation=>({observation,batchName:null})));
+    else if(Array.isArray(d?.observations)){
+      out.push(...d.observations.map(observation=>({observation,batchName:null})));
+    }
   }catch{}
   try{
     for(const file of fs.readdirSync(CONFIG.observationDir).filter(x=>x.endsWith('.json')).sort()){
       try{
         const d=JSON.parse(fs.readFileSync(path.join(CONFIG.observationDir,file),'utf8'));
-        if(Array.isArray(d))out.push(...d);
-        else if(Array.isArray(d?.observations))out.push(...d.observations);
+        const observations=Array.isArray(d)?d:d?.observations;
+        if(Array.isArray(observations)){
+          out.push(...observations.map(observation=>({observation,batchName:file})));
+        }
       }catch{}
     }
   }catch{}
@@ -57,11 +62,15 @@ function apply(){
   const state=loadState();
   const candidateIds=new Set(loadCandidates().map(x=>x.endpointId));
   const appliedIds=new Set(Array.isArray(state.appliedObservationIds)?state.appliedObservationIds:[]);
+  const processedBatches=new Set(Array.isArray(state.processedObservationBatches)?state.processedObservationBatches:[]);
   const at=now();
 
   let applied=0;
-  for(const o of observations){
+  const batchesSeen=new Set();
+  for(const item of observations){
+    const o=item.observation;
     if(!o||!o.endpointId||typeof o.success!=='boolean')continue;
+    if(item.batchName)batchesSeen.add(item.batchName);
     const id=observationId(o);
     if(appliedIds.has(id))continue;
     // Accept observations for currently selected candidates, or for assets that
@@ -102,7 +111,9 @@ function apply(){
     appliedIds.add(id);
   }
 
+  for(const batchName of batchesSeen)processedBatches.add(batchName);
   state.appliedObservationIds=[...appliedIds].slice(-CONFIG.appliedRetention);
+  state.processedObservationBatches=[...processedBatches].slice(-CONFIG.batchRetention);
   state.lastObservationApplyAt=at;
   state.lastObservationCount=applied;
   saveState(state);
@@ -110,6 +121,7 @@ function apply(){
   console.log(JSON.stringify({
     observations:observations.length,
     applied,
+    processedBatches:[...batchesSeen],
     assetFile:CONFIG.assetFile,
   },null,2));
 }
