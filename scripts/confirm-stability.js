@@ -64,7 +64,7 @@ async function main(){
    results.push({name:n.name,fingerprint:n.fingerprint,attempts:a.length,successes:ok.length,failures:a.length-ok.length,timeouts:to.length,successRate:sr,timeoutRate:to.length/a.length,
      maxConsecutiveFailures:maxRun(a,x=>!x.success),maxConsecutiveTimeouts:maxRun(a,x=>x.timeout),p50Latency:pct(a,.5),p95Latency:p95,p99Latency:pct(a,.99),maxLatency:ok.length?Math.max(...ok.map(x=>x.delayMs)):null,targetStats:targets,roundStats:rounds,eligible})
  }
- const report={generatedAt:new Date().toISOString(),version:'stability-v1',config,provisionalBestCount:nodes.length,stabilityPassCount:results.filter(x=>x.eligible).length,results};
+ const report={generatedAt:new Date().toISOString(),healthGeneratedAt:read('data/health.json',{generatedAt:null}).generatedAt||null,version:'stability-v1',config,provisionalBestCount:nodes.length,stabilityPassCount:results.filter(x=>x.eligible).length,results};
  fs.writeFileSync('data/stability.json',JSON.stringify(report,null,2));
  let hist=read('data/stability-history.json',[]);if(!Array.isArray(hist))hist=[];
  hist.push({generatedAt:report.generatedAt,config,provisionalBestCount:report.provisionalBestCount,stabilityPassCount:report.stabilityPassCount,results});fs.writeFileSync('data/stability-history.json',JSON.stringify(hist.slice(-30),null,2));
