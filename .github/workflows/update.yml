@@ -449,9 +449,30 @@ jobs:
 
       - name: Commit generated subscriptions
         run: |
+          set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+
           git add subscriptions mihomo/*.yaml
           git diff --cached --quiet && exit 0
           git commit -m "chore: refresh node candidates"
-          git push
+
+          # The workflow may run while main is being updated manually.
+          # Rebase the generated commit onto the latest main before pushing.
+          # This keeps unrelated manual commits and avoids a stale-checkout push race.
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git rebase origin/main
+
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+
+            if [ "$attempt" -lt 3 ]; then
+              echo "Push raced with a newer main commit; retrying..."
+              sleep 3
+            fi
+          done
+
+          echo "Failed to push generated subscriptions after 3 attempts."
+          exit 1
