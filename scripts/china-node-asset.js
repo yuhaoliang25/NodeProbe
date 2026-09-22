@@ -134,6 +134,9 @@ function nextProbeAt(node, atMs) {
   if (node.state === 'DEGRADED' || node.state === 'UNTRUSTED') {
     return new Date(atMs + CONFIG.failedRetryMs).toISOString();
   }
+  if (node.state === 'FORGOTTEN') {
+    return new Date(atMs + CONFIG.forgottenRetryMs).toISOString();
+  }
   return new Date(atMs).toISOString();
 }
 
