@@ -8,6 +8,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: nodeprobe-publish-main
+  cancel-in-progress: false
+
 jobs:
   china:
     runs-on: ubuntu-latest
@@ -40,15 +44,7 @@ jobs:
           bucket: nodeprobe
           source: nodeprobe-state/china-probe-candidates.json
           destination: data/china-probe-candidates.json
-      - name: Restore Global Stable subscription
-        uses: backblaze-labs/b2-action@v1
-        with:
-          action: download
-          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
-          application-key: ${{ secrets.B2_APPLICATION_KEY }}
-          bucket: nodeprobe
-          source: nodeprobe-state/stable.yaml
-          destination: subscriptions/stable.yaml
+
       - name: Pull China observation inbox from B2
         uses: backblaze-labs/b2-action@v1
         with:
@@ -96,3 +92,31 @@ jobs:
           bucket: nodeprobe
           source: data/china-probe-candidates.json
           destination: nodeprobe-state/china-probe-candidates.json
+
+      - name: Commit published China subscriptions
+        if: success()
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+
+          git add subscriptions/direct.yaml subscriptions/relay.yaml subscriptions/landing.yaml mihomo/client.yaml
+          git diff --cached --quiet && exit 0
+          git commit -m "chore: refresh China subscriptions"
+
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git rebase origin/main
+
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+
+            if [ "$attempt" -lt 3 ]; then
+              echo "Push raced with a newer main commit; retrying..."
+              sleep 3
+            fi
+          done
+
+          echo "Failed to push China subscriptions after 3 attempts."
+          exit 1
