@@ -110,6 +110,8 @@ async function main(){
  }).sort((a,b)=>(b.successRate-a.successRate)||(a.avgLatency??1e9)-(b.avgLatency??1e9));
  const report={generatedAt:new Date().toISOString(),identity:'endpoint-id-v1',target:TARGET,rounds:ROUNDS,timeout:TIMEOUT,expectedStatus:EXPECTED,staging:{stage1:'all',stage1Retry:'failed-once',stage2:STAGE2_LIMIT,stage3:STAGE3_LIMIT,fastTimeout:FAST_TIMEOUT},results:rows};
  fs.mkdirSync('data',{recursive:true});
+ fs.mkdirSync('reports/health-test', {recursive:true});
+ fs.writeFileSync('reports/health-test/detailed.json',JSON.stringify(report,null,2));
  report.sourceStats={};
  for(const r of rows){
    for(const source of r.sources||[r.source||'unknown']){
@@ -127,9 +129,11 @@ async function main(){
    s.avgLatency=s.latencies.length?Math.round(s.latencies.reduce((a,b)=>a+b,0)/s.latencies.length):null;
    delete s.latencies;
  }
- fs.writeFileSync('data/health.json',JSON.stringify(report,null,2));
+ const persistedResults=rows.map(({attempts,...r})=>r);
+ const persistedReport={...report,results:persistedResults};
+ fs.writeFileSync('data/health.json',JSON.stringify(persistedReport,null,2));
  let history=[]; try{history=JSON.parse(fs.readFileSync('data/history.json','utf8'))}catch{}
- history.push(report); history=history.slice(-30);
+ history.push(persistedReport); history=history.slice(-30);
  fs.writeFileSync('data/history.json',JSON.stringify(history,null,2));
  const reputation={generatedAt:new Date().toISOString(),nodes:{}};
  for(const [id,r] of new Map(rows.filter(x=>x.fingerprint).map(x=>[x.fingerprint,x]))){
