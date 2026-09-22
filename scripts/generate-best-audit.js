@@ -35,7 +35,7 @@ function eligibility(r){
 }
 const results=[];
 for(const p of best.proxies||[]){
- const fp=p['endpoint-id']||null,h=healthBy.get(fp)||healthBy.get(p.name)||null,d=detailedBy.get(fp)||detailedBy.get(p.name)||null,score=scoreBy.get(fp)||null,pe=poolBy.get(fp)||null;
+ const fp=p['endpoint-id']||null,h=healthBy.get(fp)||healthBy.get(p.name)||null,d=detailedBy.get(fp)||detailedBy.get(p.name)||null,score=scoreBy.get(fp)||null,pe=poolBy.get(fp)||null,st=stabilityBy.get(fp)||stabilityBy.get(p.name)||null;
  results.push({name:p.name,fingerprint:fp,proxy:{name:p.name,type:p.type,server:p.server,port:p.port,network:p.network,tls:p.tls,sni:p.sni,flow:p.flow},selection:{qualityScore:score?.qualityScore??null,scoreRecord:score,eligibility:eligibility(h),reputation:fp?reputation.nodes?.[fp]||null:null,stability:st},currentRun:{generatedAt:health.generatedAt,target:health.target,roundsConfigured:health.rounds,timeoutMs:health.timeout,expectedStatus:health.expectedStatus,health:h,attempts:d?.attempts||[]},historical:histBy.get(fp)||[],nodePool:pe?{status:pe.status,everStable:pe.everStable,firstObservedAt:pe.firstObservedAt,firstObservedSource:pe.firstObservedSource,lastObservedAt:pe.lastObservedAt,lastHealthyAt:pe.lastHealthyAt,observedRuns:pe.observedRuns,healthyRuns:pe.healthyRuns,failedRuns:pe.failedRuns,currentSources:pe.currentSources,knownSources:pe.knownSources}:null});
 }
 const report={generatedAt:new Date().toISOString(),runGeneratedAt:health.generatedAt||null,count:results.length,nodes:results};
