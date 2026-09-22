@@ -1154,3 +1154,11 @@ A historically good node is not permanently trusted. A historically bad node is 
 > ### Storage boundary
 >
 > ```
+
+## 23. China Node Asset and Independent Trust System
+
+The China-side system is a separate node-asset and trust system. The same endpoint may have different identities, histories, and trust states in Global NodeProbe and China. Only endpoint identity may correspond across the systems. Global reputation must never directly update China trust, and China observations must never update Global reputation.
+
+Global Stable is used only as a computational capability filter: it provides evidence that an endpoint has demonstrated basic proxy functionality under the Global probe environment. It does not confer China trust. China builds its own persistent asset, observation history, lifecycle, and trust from China-side observations.
+
+See worklog/china-node-asset.md for the detailed model, evolution rules, veteran retesting, pool derivation, and invariants.
