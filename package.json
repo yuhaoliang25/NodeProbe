@@ -12,7 +12,9 @@
     "node-pool": "node scripts/update-node-pool.js",
     "node-index": "node scripts/generate-node-index.js",
     "best-audit": "node scripts/generate-best-audit.js",
-    "stability": "node scripts/confirm-stability.js"
+    "stability": "node scripts/confirm-stability.js",
+    "check": "node --check scripts/*.js",
+    "lint": "npx --yes eslint@8 --no-eslintrc --env node --rule 'no-undef:error' scripts/*.js"
   },
   "dependencies": {
     "js-yaml": "^4.1.0"
