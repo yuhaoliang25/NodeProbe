@@ -14,7 +14,14 @@
     "best-audit": "node scripts/generate-best-audit.js",
     "stability": "node scripts/confirm-stability.js",
     "check": "node --check scripts/*.js",
-    "lint": "npx --yes eslint@8 --no-eslintrc --env node --env es6 --parser-options '{\"ecmaVersion\":2022}' --rule 'no-undef:error' scripts/*.js"
+    "lint": "npx --yes eslint@8 --no-eslintrc --env node --env es6 --parser-options '{\"ecmaVersion\":2022}' --rule 'no-undef:error' scripts/*.js",
+    "client-config": "node scripts/generate-client-config.js",
+    "china-assets": "node scripts/china-node-asset.js",
+    "china-apply": "node scripts/apply-china-observations.js",
+    "china-probe": "node scripts/china-probe.js",
+    "china-pools": "node scripts/build-china-pools.js",
+    "china-sync": "node scripts/china-b2-sync.js",
+    "china-pull-observations": "node scripts/pull-china-observations.js pull-observations"
   },
   "dependencies": {
     "js-yaml": "^4.1.0"
