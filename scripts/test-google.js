@@ -41,7 +41,7 @@ async function main(){
  // Every candidate gets a mandatory Stage 1 test. Historical reputation only
  // influences which Stage-1 survivors receive deeper testing later.
  const names=candidates.map(p=>p.name);
- async function testGroup(selected,timeout){
+ async function testGroup(selected,timeout,stage){
   if(!selected.length)return {};
   const merged={};
   for(let i=0;i<selected.length;i+=BATCH_SIZE){
@@ -58,11 +58,11 @@ async function main(){
       const d=Number(result.delay);
       merged[name]=Number.isFinite(d)&&d>0?d:0;
       (all[name]??=[]).push(merged[name]);
-      record(name, timeout===FAST_TIMEOUT?'stage1-fast':timeout===TIMEOUT?'stage-test':'test', timeout, merged[name]);
+      record(name, stage, timeout, merged[name]);
      }catch(e){
       merged[name]=0;
       (all[name]??=[]).push(0);
-      record(name, timeout===FAST_TIMEOUT?'stage1-fast':timeout===TIMEOUT?'stage-test':'test', timeout, 0, String(e&&e.message||e));
+      record(name, stage, timeout, 0, String(e&&e.message||e));
      }
     }
    }
@@ -72,18 +72,18 @@ async function main(){
   }
   return merged;
  }
- const r1=await testGroup(names,FAST_TIMEOUT);
+ const r1=await testGroup(names,FAST_TIMEOUT,'stage1-fast');
  const firstPass=new Set(Object.entries(r1).filter(([,d])=>Number(d)>0).map(([n])=>n));
  const firstFailures=names.filter(n=>!firstPass.has(n));
  // A single timeout/transport error is not enough to discard a node.
  // Retry Stage-1 failures once with the normal timeout.
- const retry1=await testGroup(firstFailures,TIMEOUT);
+ const retry1=await testGroup(firstFailures,TIMEOUT,'stage1-retry');
  const retryPass=new Set(Object.entries(retry1).filter(([,d])=>Number(d)>0).map(([n])=>n));
  const survivors1=[...new Set([...firstPass,...retryPass])];
  const flakyStage1=[...retryPass].filter(n=>!firstPass.has(n));
  console.log('stage1:',names.length,'->',survivors1.length,'first-pass',firstPass.size,'retry-recovered',flakyStage1.length,'final-fail',names.length-survivors1.length);
 
- const r2=await testGroup(survivors1,TIMEOUT);
+ const r2=await testGroup(survivors1,TIMEOUT,'stage2');
  const survivors2=Object.entries(r2).filter(([,d])=>Number(d)>0).sort((a,b)=>Number(a[1])-Number(b[1])).slice(0,STAGE2_LIMIT).map(([n])=>n);
  console.log('stage2:',survivors1.length,'->',survivors2.length);
 
@@ -99,12 +99,7 @@ async function main(){
  const deepCandidates=survivors2.slice(0,STAGE3_LIMIT);
  for(let round=3;round<=ROUNDS;round++){
   const eligible=deepCandidates.filter(name=>(budgets.get(name)||0)>=round);
-  const result=await testGroup(eligible,TIMEOUT);
-  for(const name of eligible){
-    const recent=attempts[name]||[];
-    const last=recent.at(-1);
-    if(last)last.stage='deep-round-'+round;
-  }
+  const result=await testGroup(eligible,TIMEOUT,'deep-round-'+round);
   console.log('deep round',round,'tested',Object.keys(result).length);
   if(round<ROUNDS)await new Promise(r=>setTimeout(r,1500));
  }
