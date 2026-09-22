@@ -100,11 +100,16 @@ async function main(){
  const flakyStage1=[...retryPass].filter(n=>!firstPass.has(n));
  console.log('stage1:',names.length,'->',survivors1.length,'first-pass',firstPass.size,'retry-recovered',flakyStage1.length,'final-fail',names.length-survivors1.length);
 
- const r2=await testGroup(survivors1,TIMEOUT,'stage2');
- const survivors2=Object.entries(r2).filter(([,d])=>Number(d)>0).sort((a,b)=>Number(a[1])-Number(b[1])).slice(0,STAGE2_LIMIT).map(([n])=>n);
- console.log('stage2:',survivors1.length,'->',survivors2.length);
-
  const budgets=new Map(candidates.map(p=>[p.name,budget(p)]));
+ // The budget is the maximum number of rounds allowed for a node.
+ // Stage 1 is mandatory; Stage 2 requires budget >= 2; Stage 3 requires >= 3.
+ // This keeps the trust model as a testing-cost control rather than an
+ // admission gate.
+ const stage2Candidates=survivors1.filter(name=>(budgets.get(name)||1)>=2);
+ const r2=await testGroup(stage2Candidates,TIMEOUT,'stage2');
+ const survivors2=Object.entries(r2).filter(([,d])=>Number(d)>0).sort((a,b)=>Number(a[1])-Number(b[1])).slice(0,STAGE2_LIMIT).map(([n])=>n);
+ console.log('stage2:',stage2Candidates.length,'->',survivors2.length);
+
  const deepCandidates=survivors2.slice(0,STAGE3_LIMIT);
  for(let round=3;round<=ROUNDS;round++){
   const eligible=deepCandidates.filter(name=>(budgets.get(name)||0)>=round);
