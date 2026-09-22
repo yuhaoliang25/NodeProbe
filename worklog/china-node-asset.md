@@ -661,3 +661,30 @@ This avoids two opposite mistakes:
 
 1. duplicating mature detection code merely because the probe environments differ;
 2. incorrectly transferring Global test results into China trust merely because the same node passed Global tests.
+
+## 21. China Stability Confirmation
+
+China now also reuses the common stability engine after the China Deep rounds. The current flow is:
+
+```text
+Stage 1
+  ↓
+Stage 2
+  ↓
+Deep rounds
+  ↓
+China Stability Confirmation
+  ├─ Google 204
+  ├─ Cloudflare trace
+  └─ GitHub
+  ↓
+one final China observation per node/run
+```
+
+The stability mechanism is shared with Global through `scripts/lib/probe-stability.js`, but the execution remains on the China machine and the result is stored only as China evidence.
+
+Current default China stability configuration is intentionally conservative but provisional: 3 rounds, 6 attempts per target in total, 5 s stability timeout, at least 90% overall success, at least 67% per-target and per-round success, p95 <= 5 s, and at most one consecutive failure or timeout. These values are configuration, not a claim that Global and China should have identical thresholds.
+
+A node that reaches Deep but fails China Stability Confirmation produces a failed final China observation for that probe run. Its detailed stability attempts remain in the immutable observation batch, allowing later threshold analysis without treating the node as permanently dead.
+
+Most importantly, this is still not Global Best/Stable logic copied into China. The same measurement engine is reused; the China environment, observations, history and asset state remain independent.
