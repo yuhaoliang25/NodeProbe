@@ -1,0 +1,15 @@
+[Unit]
+Description=NodeProbe China probe cycle
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/NodeProbe
+EnvironmentFile=-/etc/nodeprobe/china.env
+ExecStart=%h/NodeProbe/scripts/china-cycle.sh
+TimeoutStartSec=15min
+Nice=5
+
+[Install]
+WantedBy=multi-user.target
