@@ -103,10 +103,7 @@ function deriveState(node) {
   const rate = recentRate(node);
 
   if (node.successes === 0) return 'NEW';
-  if (node.state === 'FORGOTTEN') {
-    if (node.success) return 'PROBATION';
-    return 'FORGOTTEN';
-  }
+  if (node.state === 'FORGOTTEN') return 'FORGOTTEN';
   if (node.failureStreak >= 6) return 'UNTRUSTED';
 
   if (
@@ -211,11 +208,16 @@ function updateNode(node, observation) {
   node.recentSuccesses = recent.filter(x => x.success).length;
   node.recentFailures = recent.filter(x => !x.success).length;
 
-  node.state = deriveState(node);
+  const wasForgotten = node.state === 'FORGOTTEN';
+  if (wasForgotten && observation.success) {
+    node.state = 'PROBATION';
+  } else {
+    node.state = deriveState(node);
+  }
 
   if (node.state === 'UNTRUSTED') {
     node.deadSince ||= at;
-    node.recheckLevel = Math.max(1, Number(node.recheckLevel || 0));
+    node.recheckLevel = Math.max(1, node.failureStreak - 5);
     if (node.recheckLevel >= CONFIG.forgottenAfterFailures) {
       node.state = 'FORGOTTEN';
     }
