@@ -503,3 +503,119 @@ systemctl --user enable --now nodeprobe-china.timer
 ```
 
 Do not remove `data/china-node-assets.json` on the NodeProbe/GitHub side merely because the China machine is upgraded; China historical trust is persistent state and is intentionally independent of the machine's local runtime files.
+
+
+## 19. Detection Mechanism Reuse Across Global and China
+
+Global and China must keep their **evidence, asset state, reputation, and conclusions independent**, but they should not duplicate detection engineering unnecessarily.
+
+The separation is therefore:
+
+```text
+Detection mechanism
+        │
+   ┌────┴────┐
+   │         │
+Global    China
+probe     probe
+   │         │
+Global    China
+evidence  evidence
+   │         │
+Global    China
+reputation/asset
+```
+
+### 19.1 What may be reused
+
+Detection mechanisms are reusable when their semantics do not depend on the probe location. Examples include:
+
+- bounded concurrency;
+- request timeout and retry handling;
+- multi-round testing;
+- target randomization;
+- success/failure accounting;
+- latency and p95 calculation;
+- consecutive failure/timeout tracking;
+- stability confirmation;
+- per-attempt traces;
+- run-level summaries;
+- deterministic result ordering;
+- bounded probe budgets.
+
+Global's later-stage testing, including the general ideas used by Stage 2, deep rounds, and stability confirmation, should therefore be treated as reusable **detection methodology**, not as Global reputation logic.
+
+### 19.2 What must remain independent
+
+The following must never be copied from Global into China merely because the detection mechanism is reused:
+
+- Global node reputation;
+- Global health history;
+- Global stability result;
+- Global Best membership;
+- Global lifecycle state;
+- Global trust thresholds as an automatic China trust decision.
+
+A Global observation is evidence about the Global probe environment. A China observation is evidence about the China probe environment.
+
+Thus:
+
+```text
+Global stability = evidence of stability from Global environment
+China stability  = evidence of stability from China environment
+```
+
+The same algorithm may calculate both, but the observations and conclusions belong to different assets.
+
+### 19.3 Probe environment is a first-class dimension
+
+The meaningful abstraction is:
+
+```text
+Node × Probe Environment × Time → Observation
+```
+
+The probe environment includes at least the execution location/environment, probe version, test targets and relevant configuration.
+
+This prevents the system from treating a successful Global test as universal reachability. A node may be stable from GitHub's environment while unstable or unreachable from a China machine, and the reverse can also occur.
+
+### 19.4 China should evolve beyond single-shot probing
+
+The current China probe is intentionally simple. It should not become permanently defined as:
+
+```text
+Stable candidate → one delay request → China trust
+```
+
+A future China detection pipeline may progressively adopt the same staged structure used by Global:
+
+```text
+Global Stable candidate
+        ↓
+China Stage 1
+        ↓
+China Stage 2
+        ↓
+China Deep / multi-round testing
+        ↓
+China Stability Confirmation
+        ↓
+China observation evidence
+        ↓
+China asset / trust state
+```
+
+The exact stages, targets, budgets and thresholds should be tuned from China-side observations rather than copied blindly from Global.
+
+### 19.5 Architecture principle
+
+The long-term design principle is:
+
+> **Reuse detection mechanisms; isolate evidence and conclusions.**
+
+Global and China should share engineering primitives and testing methodology where semantics permit, while maintaining independent observation histories, trust models, lifecycle states and output pools.
+
+This avoids two opposite mistakes:
+
+1. duplicating mature detection code merely because the probe environments differ;
+2. incorrectly transferring Global test results into China trust merely because the same node passed Global tests.
