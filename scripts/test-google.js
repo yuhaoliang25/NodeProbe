@@ -13,6 +13,8 @@ const CONCURRENCY=Math.max(1,Number(process.env.TEST_CONCURRENCY||24));
 async function json(url){const r=await fetch(url);const t=await r.text();if(!r.ok)throw new Error('HTTP '+r.status+' '+t.slice(0,300));return JSON.parse(t)}
 async function main(){
  const all={};
+ const attempts={};
+ function record(name,stage,timeout,delay,error=''){(attempts[name]??=[]).push({stage,timestamp:new Date().toISOString(),timeoutMs:timeout,delayMs:Number(delay)>0?Number(delay):null,success:Number(delay)>0,error:error||null});}
  const candidates=JSON.parse(fs.readFileSync('data/candidates.json','utf8'));
  const sourceByName=new Map(candidates.map(x=>[x.name,Array.isArray(x._sources)&&x._sources.length?x._sources:[x._source||'unknown']]));
  const ids=new Map(candidates.map(x=>[x.name,x['endpoint-id']||x._id]));
@@ -56,9 +58,11 @@ async function main(){
       const d=Number(result.delay);
       merged[name]=Number.isFinite(d)&&d>0?d:0;
       (all[name]??=[]).push(merged[name]);
+      record(name, timeout===FAST_TIMEOUT?'stage1-fast':timeout===TIMEOUT?'stage-test':'test', timeout, merged[name]);
      }catch(e){
       merged[name]=0;
       (all[name]??=[]).push(0);
+      record(name, timeout===FAST_TIMEOUT?'stage1-fast':timeout===TIMEOUT?'stage-test':'test', timeout, 0, String(e&&e.message||e));
      }
     }
    }
@@ -96,13 +100,18 @@ async function main(){
  for(let round=3;round<=ROUNDS;round++){
   const eligible=deepCandidates.filter(name=>(budgets.get(name)||0)>=round);
   const result=await testGroup(eligible,TIMEOUT);
+  for(const name of eligible){
+    const recent=attempts[name]||[];
+    const last=recent.at(-1);
+    if(last)last.stage='deep-round-'+round;
+  }
   console.log('deep round',round,'tested',Object.keys(result).length);
   if(round<ROUNDS)await new Promise(r=>setTimeout(r,1500));
  }
  // Stage-1/2 failures are intentionally retained in the report with fewer rounds.
  const rows=Object.entries(all).map(([name,delays])=>{
   const ok=delays.filter(x=>x>0),sorted=[...ok].sort((a,b)=>a-b),pct=p=>ok.length?sorted[Math.min(sorted.length-1,Math.ceil(sorted.length*p)-1)]:null;
-  return {name,fingerprint:ids.get(name)||null,source:sourceByName.get(name)||['unknown'],sources:sourceByName.get(name)||['unknown'],rounds:delays.length,successes:ok.length,successRate:ok.length/delays.length,avgLatency:ok.length?Math.round(ok.reduce((a,b)=>a+b,0)/ok.length):null,p50Latency:pct(.5),p95Latency:pct(.95),maxLatency:ok.length?Math.max(...ok):null,stage1Flaky:flakyStage1.includes(name),delays};
+  return {name,fingerprint:ids.get(name)||null,source:sourceByName.get(name)||['unknown'],sources:sourceByName.get(name)||['unknown'],rounds:delays.length,successes:ok.length,successRate:ok.length/delays.length,avgLatency:ok.length?Math.round(ok.reduce((a,b)=>a+b,0)/ok.length):null,p50Latency:pct(.5),p95Latency:pct(.95),maxLatency:ok.length?Math.max(...ok):null,stage1Flaky:flakyStage1.includes(name),delays,attempts:attempts[name]||[]};
  }).sort((a,b)=>(b.successRate-a.successRate)||(a.avgLatency??1e9)-(b.avgLatency??1e9));
  const report={generatedAt:new Date().toISOString(),identity:'endpoint-id-v1',target:TARGET,rounds:ROUNDS,timeout:TIMEOUT,expectedStatus:EXPECTED,staging:{stage1:'all',stage1Retry:'failed-once',stage2:STAGE2_LIMIT,stage3:STAGE3_LIMIT,fastTimeout:FAST_TIMEOUT},results:rows};
  fs.mkdirSync('data',{recursive:true});
