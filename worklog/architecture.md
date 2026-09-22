@@ -611,110 +611,106 @@ The generated record combines the relevant node-pool, health-history, and reputa
 Discovery memory revision: stateful multi-channel GitHub exploration added.
 Diagnostic query design revision: 2026-09-22
 
-## 21. Targeted Node Debugging
+## 21. Best Selection Audit Artifacts
 
-> **AI MAINTAINER NOTICE — USE THIS FOR NODE-SPECIFIC FAILURE INVESTIGATION**
+> **AI MAINTAINER NOTICE — USE THIS FOR INVESTIGATING WHETHER NODEPROBE'S FILTERING IS WRONG**
 >
-> When a user reports that a node selected into `best` frequently times out in real use, do not immediately change selection thresholds. First run the targeted-node diagnostic workflow against the exact node(s). The purpose is to distinguish real node instability from a NodeProbe evaluation/selection bug.
+> The primary diagnostic question is not whether a node that is bad today can still connect. The important question is whether NodeProbe correctly evaluated the node **at the exact run in which it entered `best`**.
+>
+> Therefore the main workflow records detailed per-attempt health evidence during the normal selection run and publishes a temporary audit artifact for nodes that actually enter `best`.
 
-### Input
+### Design
 
-Target nodes can be supplied in either of two ways:
+The normal health test remains the authoritative selection process.
 
-- `debug/targets.txt`: one exact `best.yaml` node name per line;
-- manual `workflow_dispatch` input: multiline node names, which overrides the file for that run.
-
-The target list is intentionally narrow: this workflow must not retest the whole pool.
-
-### Test layers
-
-Each selected node is tested independently through a fresh Mihomo instance:
+During `test-google.js`, every individual test attempt is recorded in an artifact-only trace:
 
 ```text
-selected node
-    ↓
-Mihomo config validation
-    ↓
-Mihomo startup
-    ↓
-direct /proxies/<node>/delay tests
-    ↓
-multiple URLs × multiple rounds
-    ↓
-timeout-sensitivity tests
-    ↓
-live Mihomo state + debug logs
+candidate
+  ↓
+stage1-fast
+  ↓
+stage1-retry (only if needed)
+  ↓
+stage2
+  ↓
+deep-round-3
+  ↓
+deep-round-4
+  ↓
+...
 ```
 
-The connectivity test is an end-to-end HTTP test through the selected proxy. It is not merely a DNS lookup or a TCP port check. A successful result means Mihomo could use that node to reach the target URL and receive the expected HTTP status.
+Each attempt records the stage, timestamp, timeout, delay, success/failure, and error when applicable.
 
-Current connectivity matrix:
+The detailed trace is written under `reports/health-test/` during the workflow only. It is **not written to B2**.
 
-- Google `generate_204`, expected 204;
-- Google static `generate_204`, expected 204;
-- Cloudflare, expected 2xx;
-- GitHub, expected 2xx–3xx;
-- 5 rounds per URL;
-- timeout sensitivity at 3000 / 5000 / 8000 ms, two attempts each.
+The normal persistent `data/health.json` / `history.json` intentionally keep their existing compact runtime representation. They are still persisted to B2 as before.
 
-Every individual attempt is retained with timestamp, URL, expected status, timeout, API status, success/failure, measured delay, wall time, and error text.
+### Best-only audit
 
-### Selection-cause investigation
-
-The report must not only say whether the node is currently usable. It must also explain why NodeProbe previously selected it into `best`.
-
-For each target, report:
-
-- exact `best` selection score;
-- the current health row that fed selection;
-- every `bestEligible` condition and PASS/FAIL result;
-- node reputation status and counters;
-- node-pool lifecycle and persistence information;
-- historical source observations;
-- source reputation for observed sources;
-- historical health evidence and latency;
-- the live Mihomo state after testing.
-
-The targeted report therefore answers two independent questions:
-
-1. **Was the node actually healthy when NodeProbe selected it?**
-2. **Is the node healthy now under repeated independent testing?**
-
-### Interpretation
-
-Do not treat a current timeout as proof that the original selection was a bug. Possible outcomes include:
-
-- the node has degraded since selection;
-- the node is intermittent and the normal health test happened to catch successful samples;
-- the external target used by the normal health check differs from the user's actual destination;
-- the node passed NodeProbe's rules but has poor real-world reliability;
-- a bug exists in candidate construction, identity, health measurement, history, or `bestEligible` logic.
-
-Compare the targeted results against the exact historical selection evidence before changing any threshold.
-
-### Storage and privacy boundary
-
-Targeted reports are **GitHub Actions artifacts**, not committed files. They have a finite retention period and must not be added to the normal repository commit.
-
-The report may contain proxy server identity and detailed failure diagnostics. Do not expose authentication secrets in the report. The debug runner deliberately emits only safe proxy metadata and does not reproduce UUID/password/Reality private-key material.
-
-### Required AI workflow
+After `build-subscriptions.js` constructs `subscriptions/best.yaml`, `generate-best-audit.js` selects exactly those nodes that entered `best` and creates:
 
 ```text
-User reports timeout
-      ↓
-Identify exact node
-      ↓
-Run targeted node-debug workflow
-      ↓
-Read artifact report
-      ↓
-Compare current connectivity with historical selection evidence
-      ↓
-Only then decide whether the problem is:
-  node degradation / intermittent node / test-target mismatch / NodeProbe bug
+reports/best-audit/
+├── best-audit.json
+└── best-audit.md
 ```
 
-Do not modify `best` thresholds merely because a single selected node timed out in real use.
+The report contains, for every selected node:
 
-**Targeted node debugging revision:** 2026-09-22
+- actual current-run health result;
+- complete individual test-attempt trace;
+- stage progression;
+- timeout and delay for every attempt;
+- current success rate / average latency / p95;
+- exact selection score;
+- every `bestEligible` condition;
+- historical health evidence used by the eligibility rule;
+- node reputation;
+- node-pool persistence information.
+
+The artifact is retained by GitHub Actions for 30 days. It is not committed to Git and is not uploaded to B2.
+
+### Why this is the preferred diagnostic path
+
+If a node later times out during actual use, the audit artifact lets an AI maintainer answer:
+
+1. Did the node actually pass the normal health tests at selection time?
+2. Which stages did it pass?
+3. How many individual attempts passed?
+4. What delays did NodeProbe observe?
+5. Did the historical eligibility condition also pass?
+6. What exact evidence produced its `best` inclusion?
+
+This separates:
+
+```text
+selection-time filtering error
+        vs.
+node degradation after selection
+        vs.
+intermittent behavior
+        vs.
+health-target mismatch
+```
+
+A current manual retest of an already-selected node is therefore **not the primary debugging mechanism**. It may be useful for other investigations, but it cannot establish whether the original `best` decision was correct.
+
+### Storage boundary
+
+```text
+Git
+├── code / architecture / worklog
+└── published subscriptions
+
+B2
+└── compact persistent runtime state
+
+GitHub Actions Artifact
+└── detailed selection-time evidence for best nodes
+```
+
+The detailed trace must never be added to the normal Git commit or B2 persistence list.
+
+**Best-selection audit revision:** 2026-09-22
