@@ -18,6 +18,8 @@ jobs:
         with:
           node-version: 22
       - run: npm install
+      - name: Fast JavaScript checks
+        run: npm run check && npm run lint
       - name: Restore persistent state from B2
         run: mkdir -p data
 
