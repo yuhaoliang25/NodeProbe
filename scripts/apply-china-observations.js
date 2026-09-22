@@ -3,6 +3,7 @@
 
 const fs=require('fs');
 const path=require('path');
+const crypto=require('crypto');
 const {loadState,saveState,updateNode}=require('./china-node-asset');
 
 const CONFIG={
@@ -10,9 +11,16 @@ const CONFIG={
   observationFile:process.env.CHINA_OBSERVATION_FILE||'data/china-probe-observations.json',
   assetFile:process.env.CHINA_ASSET_FILE||'data/china-node-assets.json',
   environment:process.env.CHINA_PROBE_ENV||'china-default',
+  appliedRetention:Number(process.env.CHINA_APPLIED_OBSERVATION_RETENTION||5000),
 };
 
 function now(){return new Date().toISOString()}
+function observationId(o){
+  return crypto.createHash('sha256').update(JSON.stringify([
+    o.endpointId,o.at,o.probeEnvironment||CONFIG.environment,
+    Boolean(o.success),o.latencyMs==null?null:Number(o.latencyMs),o.error||null,
+  ])).digest('hex');
+}
 
 function loadCandidates(){
   const d=JSON.parse(fs.readFileSync(CONFIG.candidateFile,'utf8'));
@@ -34,11 +42,18 @@ function loadObservations(){
 function apply(){
   const observations=loadObservations();
   const state=loadState();
+  const candidateIds=new Set(loadCandidates().map(x=>x.endpointId));
+  const appliedIds=new Set(Array.isArray(state.appliedObservationIds)?state.appliedObservationIds:[]);
   const at=now();
 
   let applied=0;
   for(const o of observations){
     if(!o||!o.endpointId||typeof o.success!=='boolean')continue;
+    const id=observationId(o);
+    if(appliedIds.has(id))continue;
+    // Accept observations for currently selected candidates, or for assets that
+    // already exist. Do not create arbitrary China assets from an unknown endpoint.
+    if(!candidateIds.has(o.endpointId) && !state.nodes[o.endpointId])continue;
     let node=state.nodes[o.endpointId];
     if(!node){
       node={
@@ -59,7 +74,6 @@ function apply(){
         deadSince:null,
         recheckLevel:0,
         nextProbeAt:at,
-        globalStableObservedAt:null,
         observations:[],
       };
       state.nodes[o.endpointId]=node;
@@ -72,8 +86,10 @@ function apply(){
       probeEnvironment:o.probeEnvironment||CONFIG.environment,
     });
     applied++;
+    appliedIds.add(id);
   }
 
+  state.appliedObservationIds=[...appliedIds].slice(-CONFIG.appliedRetention);
   state.lastObservationApplyAt=at;
   state.lastObservationCount=applied;
   saveState(state);
