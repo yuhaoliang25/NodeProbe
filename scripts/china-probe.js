@@ -12,6 +12,7 @@ const CONFIG={
   stableFile:process.env.CHINA_STABLE_FILE||'subscriptions/stable.yaml',
   stableUrl:process.env.CHINA_STABLE_URL||'',
   observationFile:process.env.CHINA_OBSERVATION_FILE||'data/china-probe-observations.json',
+  observationDir:process.env.CHINA_OBSERVATION_DIR||'data/china-probe-observations',
   mihomoBin:process.env.MIHOMO_BIN||'mihomo',
   api:process.env.MIHOMO_API||'http://127.0.0.1:19090',
   mixedPort:Number(process.env.CHINA_PROBE_PORT||17890),
@@ -35,10 +36,9 @@ async function loadStable(){
 
 function endpointId(p){
   if(p['endpoint-id'])return p['endpoint-id'];
-  // Fallback only for pools generated without endpoint-id.
   const crypto=require('crypto');
-  const t=String(p.type).toLowerCase();
-  const auth=t==='ss'?[p.cipher||'',p.password||'']:t==='vmess'||t==='vless'?[p.uuid||'']:[p.password||''];
+  const t=String(p.type||'').toLowerCase();
+  const auth=t==='shadowsocks'?[p.cipher||'',p.password||'']:t==='vmess'||t==='vless'?[p.uuid||'']:[p.password||''];
   const ws=p['ws-opts']||{},grpc=p['grpc-opts']||{},r=p['reality-opts']||{};
   return crypto.createHash('sha256').update(JSON.stringify([
     t,String(p.server).toLowerCase(),Number(p.port),auth,p.network||'tcp',
@@ -80,11 +80,13 @@ async function main(){
   try{
     candidates=JSON.parse(fs.readFileSync(CONFIG.candidateFile,'utf8')).candidates;
   }catch{}
-  const wanted=new Set(Array.isArray(candidates)?candidates.map(x=>x.endpointId):[]);
+  if(!Array.isArray(candidates))throw new Error('China candidate file missing or invalid; refusing to probe all Stable nodes');
+  const wanted=new Set(candidates.map(x=>x.endpointId).filter(Boolean));
+  if(!wanted.size)throw new Error('China candidate file contains no endpoint IDs');
   for(const p of stable){
-    if(!wanted.size||wanted.has(endpointId(p)))selected.push(p);
+    if(wanted.has(endpointId(p)))selected.push(p);
   }
-  if(!selected.length)throw new Error('no China probe candidates');
+  if(!selected.length)throw new Error('candidate IDs do not match current Stable pool');
 
   const dir=fs.mkdtempSync(path.join(os.tmpdir(),'nodeprobe-china-'));
   const configPath=path.join(dir,'config.yaml');
@@ -130,6 +132,10 @@ async function main(){
 
     fs.mkdirSync(path.dirname(CONFIG.observationFile),{recursive:true});
     fs.writeFileSync(CONFIG.observationFile,JSON.stringify(observations,null,2)+'\n');
+    fs.mkdirSync(CONFIG.observationDir,{recursive:true});
+    const safeEnv=CONFIG.environment.replace(/[^A-Za-z0-9._-]+/g,'_');
+    const batchFile=path.join(CONFIG.observationDir,`${new Date().toISOString().replace(/[:.]/g,'-')}-${safeEnv}.json`);
+    fs.writeFileSync(batchFile,JSON.stringify({version:1,generatedAt:now(),probeEnvironment:CONFIG.environment,target:CONFIG.target,expected:CONFIG.expected,observations},null,2)+'\n');
 
     console.log(JSON.stringify({
       candidates:selected.length,
@@ -138,6 +144,7 @@ async function main(){
       target:CONFIG.target,
       environment:CONFIG.environment,
       observationFile:CONFIG.observationFile,
+      batchFile,
     },null,2));
   } finally {
     child.kill('SIGTERM');
