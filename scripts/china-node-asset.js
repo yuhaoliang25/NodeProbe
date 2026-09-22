@@ -15,6 +15,8 @@ const CONFIG = {
   failedRetryMs: 2 * 60 * 60 * 1000,
   recentWindow: 10,
   observationRetention: 50,
+  forgottenAfterFailures: 3,
+  forgottenRetryMs: 7 * 24 * 60 * 60 * 1000,
 };
 
 function now() {
@@ -101,6 +103,10 @@ function deriveState(node) {
   const rate = recentRate(node);
 
   if (node.successes === 0) return 'NEW';
+  if (node.state === 'FORGOTTEN') {
+    if (node.success) return 'PROBATION';
+    return 'FORGOTTEN';
+  }
   if (node.failureStreak >= 6) return 'UNTRUSTED';
 
   if (
@@ -210,6 +216,9 @@ function updateNode(node, observation) {
   if (node.state === 'UNTRUSTED') {
     node.deadSince ||= at;
     node.recheckLevel = Math.max(1, Number(node.recheckLevel || 0));
+    if (node.recheckLevel >= CONFIG.forgottenAfterFailures) {
+      node.state = 'FORGOTTEN';
+    }
   } else if (node.state === 'TRUSTED' || node.state === 'PROBATION') {
     node.deadSince = null;
     node.recheckLevel = 0;
@@ -233,6 +242,10 @@ function isDue(node, atMs) {
     return atMs - last >= CONFIG.failedRetryMs;
   }
 
+  if (node.state === 'FORGOTTEN') {
+    return atMs - last >= CONFIG.forgottenRetryMs;
+  }
+
   return true;
 }
 
@@ -243,6 +256,7 @@ function scoreCandidate(node, category, atMs) {
   if (category === 'relay') score += 800;
   if (category === 'veteran') score += 700;
   if (category === 'failed') score += 600;
+  if (category === 'forgotten') score += 500;
 
   if (node.lastProbeAt) {
     const ageHours = Math.max(
@@ -279,6 +293,8 @@ function buildCandidates(stable, state, atMs) {
       category = old.observedRuns >= 10 ? 'veteran' : 'relay';
     } else if (old.state === 'DEGRADED' || old.state === 'UNTRUSTED') {
       category = 'failed';
+    } else if (old.state === 'FORGOTTEN') {
+      category = 'forgotten';
     }
 
     candidates.push({
