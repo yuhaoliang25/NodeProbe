@@ -6,6 +6,7 @@ const read=(f,d)=>{try{return JSON.parse(fs.readFileSync(f,'utf8'))}catch{return
 fs.mkdirSync(OUT,{recursive:true});
 const best=yaml.load(fs.readFileSync('subscriptions/best.yaml','utf8'));
 const health=read('data/health.json',{results:[]});
+const detailed=read('reports/health-test/detailed.json',{results:[]});
 const history=read('data/history.json',[]);
 const scores=read('data/scores.json',{results:[]});
 const reputation=read('data/reputation.json',{nodes:{}});
@@ -13,6 +14,7 @@ const pool=read('data/node-pool.json',{nodes:[]});
 const scoreBy=new Map((scores.results||[]).filter(x=>x.fingerprint).map(x=>[x.fingerprint,x]));
 const poolBy=new Map((pool.nodes||[]).map(x=>[x.fingerprint,x]));
 const healthBy=new Map((health.results||[]).map(x=>[x.fingerprint||x.name,x]));
+const detailedBy=new Map((detailed.results||[]).map(x=>[x.fingerprint||x.name,x]));
 const histBy=new Map();
 for(const batch of history) for(const r of batch.results||[]) if(r.fingerprint){
   if(!histBy.has(r.fingerprint))histBy.set(r.fingerprint,[]);
@@ -30,8 +32,8 @@ function eligibility(r){
 }
 const results=[];
 for(const p of best.proxies||[]){
- const fp=p['endpoint-id']||null,h=healthBy.get(fp)||healthBy.get(p.name)||null,score=scoreBy.get(fp)||null,pe=poolBy.get(fp)||null;
- results.push({name:p.name,fingerprint:fp,proxy:{name:p.name,type:p.type,server:p.server,port:p.port,network:p.network,tls:p.tls,sni:p.sni,flow:p.flow},selection:{qualityScore:score?.qualityScore??null,scoreRecord:score,eligibility:eligibility(h),reputation:fp?reputation.nodes?.[fp]||null:null},currentRun:{generatedAt:health.generatedAt,target:health.target,roundsConfigured:health.rounds,timeoutMs:health.timeout,expectedStatus:health.expectedStatus,health:h,attempts:h?.attempts||[]},historical:histBy.get(fp)||[],nodePool:pe?{status:pe.status,everStable:pe.everStable,firstObservedAt:pe.firstObservedAt,firstObservedSource:pe.firstObservedSource,lastObservedAt:pe.lastObservedAt,lastHealthyAt:pe.lastHealthyAt,observedRuns:pe.observedRuns,healthyRuns:pe.healthyRuns,failedRuns:pe.failedRuns,currentSources:pe.currentSources,knownSources:pe.knownSources}:null});
+ const fp=p['endpoint-id']||null,h=healthBy.get(fp)||healthBy.get(p.name)||null,d=detailedBy.get(fp)||detailedBy.get(p.name)||null,score=scoreBy.get(fp)||null,pe=poolBy.get(fp)||null;
+ results.push({name:p.name,fingerprint:fp,proxy:{name:p.name,type:p.type,server:p.server,port:p.port,network:p.network,tls:p.tls,sni:p.sni,flow:p.flow},selection:{qualityScore:score?.qualityScore??null,scoreRecord:score,eligibility:eligibility(h),reputation:fp?reputation.nodes?.[fp]||null:null},currentRun:{generatedAt:health.generatedAt,target:health.target,roundsConfigured:health.rounds,timeoutMs:health.timeout,expectedStatus:health.expectedStatus,health:h,attempts:d?.attempts||[]},historical:histBy.get(fp)||[],nodePool:pe?{status:pe.status,everStable:pe.everStable,firstObservedAt:pe.firstObservedAt,firstObservedSource:pe.firstObservedSource,lastObservedAt:pe.lastObservedAt,lastHealthyAt:pe.lastHealthyAt,observedRuns:pe.observedRuns,healthyRuns:pe.healthyRuns,failedRuns:pe.failedRuns,currentSources:pe.currentSources,knownSources:pe.knownSources}:null});
 }
 const report={generatedAt:new Date().toISOString(),runGeneratedAt:health.generatedAt||null,count:results.length,nodes:results};
 fs.writeFileSync(OUT+'/best-audit.json',JSON.stringify(report,null,2));
