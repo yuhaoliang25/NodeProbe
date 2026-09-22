@@ -25,7 +25,7 @@ if(mode==='pull-candidates'){
   fs.mkdirSync(path.dirname(CANDIDATE_LOCAL),{recursive:true});
   run(['file','download','b2://'+BUCKET+'/'+CANDIDATE_REMOTE,CANDIDATE_LOCAL]);
 }else if(mode==='push-observations'){
-  if(!fs.existsSync(OBS_DIR))return console.log('no observation batches');
+  if(!fs.existsSync(OBS_DIR)){ console.log('no observation batches'); process.exit(0); }
   const files=fs.readdirSync(OBS_DIR).filter(x=>x.endsWith('.json')).sort();
   for(const file of files){
     run(['file','upload',BUCKET,path.join(OBS_DIR,file),OBS_REMOTE+'/'+file]);
