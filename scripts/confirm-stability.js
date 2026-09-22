@@ -37,9 +37,6 @@ async function main(){
    const result=await probeDelay({api:API,name:n.name,target:t.url,expected:t.expected,timeout:TIMEOUT});
    return {node:n.name,fingerprint:n['endpoint-id']||null,target:t.id,round,attempt,timestamp:result.startedAt,finishedAt:result.finishedAt,timeoutMs:TIMEOUT,delayMs:result.delayMs,success:result.success,timeout:result.timeout,error:result.error};
  } for(let round=1;round<=ROUNDS;round++){
-   const jobs=[];const perRound=ATTEMPTS_PER_TARGET/ROUNDS;
-   if(!Number.isInteger(perRound))throw Error('STABILITY_ATTEMPTS_PER_TARGET must divide evenly by STABILITY_ROUNDS');
-   for(const n of nodes)for(const t of [...TARGETS].sort(()=>Math.random()-.5))for(let a=1;a<=perRound;a++)jobs.push({n,t,a});
    const jobs=[];
    const perRound=ATTEMPTS_PER_TARGET/ROUNDS;
    if(!Number.isInteger(perRound))throw Error('STABILITY_ATTEMPTS_PER_TARGET must divide evenly by STABILITY_ROUNDS');
