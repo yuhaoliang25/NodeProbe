@@ -121,7 +121,6 @@ async function main(){
  history.push(persistedReport); history=history.slice(-30);
  fs.writeFileSync('data/history.json',JSON.stringify(history,null,2));
  const reputation={version:2,generatedAt:new Date().toISOString(),nodes:{...rep}};
- const poolNodes=nodePool;
  for(const row of rows){
    const id=row.fingerprint;
    if(!id)continue;
@@ -159,6 +158,7 @@ async function main(){
      trust
    };
  }
+ fs.writeFileSync('data/reputation.json',JSON.stringify(reputation,null,2));
 
  console.log('tested:',rows.length,'current>=80%:',rows.filter(x=>x.successRate>=.8).length,'current>=90%+latency:',rows.filter(x=>x.successRate>=.9&&x.p95Latency<=5000&&x.avgLatency<=2500).length,'stage1-flaky:',rows.filter(x=>x.stage1Flaky).length);
 }
