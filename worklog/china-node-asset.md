@@ -299,3 +299,28 @@ The same existing B2 application key is used for the China transport. No separat
 The China-side upload helper deletes a local observation batch only after the upload command succeeds. The immutable copy in B2 remains the transport record.
 
 This is an asynchronous pull/push protocol: the China machine never needs an inbound service, and GitHub never needs to initiate a connection to it.
+
+
+## 17. China Probe Deployment and Parallelism
+
+The China-side probe is intended to run as a local systemd timer rather than as an inbound service.
+
+Deployment files:
+
+- systemd/nodeprobe-china.service
+- systemd/nodeprobe-china.timer
+- scripts/china-cycle.sh
+
+One cycle performs:
+
+1. pull the latest candidate feed;
+2. run the China probe;
+3. push immutable observation batches.
+
+The timer runs approximately every 30 minutes, with a small randomized delay. A persistent timer ensures a missed scheduled run can be triggered after the machine returns online.
+
+The probe itself uses bounded concurrency (CHINA_PROBE_CONCURRENCY, default 8) instead of serially waiting for every node. Results are stored by candidate index so concurrency does not alter candidate identity or observation semantics. The concurrency value is intentionally configurable because the local network and machine may have different practical limits.
+
+The probe remains bounded by the China candidate budget (CHINA_MAX_NODES, default 30). Parallelism is an execution optimization only; it does not change China trust rules, candidate scoring, or lifecycle transitions.
+
+The deployment uses the existing B2 credentials supplied through /etc/nodeprobe/china.env. No credential is committed to the repository.
