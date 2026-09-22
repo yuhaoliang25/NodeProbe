@@ -131,6 +131,7 @@ The first implementation uses:
 - max 30 nodes per run;
 - veteran retest interval: 24h;
 - failed retry cooldown: 2h;
+- forgotten recovery retry interval: 7d;
 - newly admitted nodes get priority for early evidence.
 
 The exact numbers are tunable later from observation data.
@@ -143,10 +144,15 @@ A failure moves it into revalidation/degraded handling according to its failure 
 
 An untrusted node does not recover from one success. It must accumulate successful observations again.
 
+After repeated failed rechecks, an endpoint may enter `FORGOTTEN`. Forgotten assets are retained in persistent state but leave the normal frequent probe loop. They are eligible for a long-interval recovery recheck while they remain in the Stable candidate pool.
+
+A successful forgotten-node recheck returns it to `PROBATION`; historical counters are retained rather than reset.
+
 This prevents both:
 
 - one transient failure from destroying a veteran;
-- one lucky success from promoting a historically unreliable endpoint.
+- one lucky success from promoting a historically unreliable endpoint;
+- permanently consuming probe budget on endpoints with persistent failure.
 
 ## 9. Roles
 
