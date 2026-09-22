@@ -136,6 +136,8 @@ try{
    const s=[...x.latencies].sort((a,b)=>a-b), p=q=>s.length?s[Math.min(s.length-1,Math.ceil(s.length*q)-1)]:null;
    return [id,{longRate:x.tests?x.successes/x.tests:0,avg:s.length?Math.round(s.reduce((a,b)=>a+b,0)/s.length):null,p95:p(.95),tests:x.tests}];
  }));
+ const stability=(()=>{try{return JSON.parse(fs.readFileSync('data/stability.json','utf8'))}catch{return null}})();
+ const currentStability=new Map((stability?.healthGeneratedAt===h.generatedAt?(stability.results||[]):[]).map(x=>[x.fingerprint||x.name,x]));
  const sourceQuality=new Map(Object.entries(h.sourceStats||{}).map(([name,x])=>[name,x])); const sourceReputation=(()=>{try{return JSON.parse(fs.readFileSync('data/source-reputation.json','utf8'))}catch{return {sources:{}}}})();
  const histStats=new Map(Object.entries(hist).map(([id,x])=>{
    const observations=[];
@@ -155,9 +157,13 @@ try{
    return m.recentTests>=6&&m.weightedRate>=0.8;
  }
  function bestEligible(r){
-   const m=historyMetric(r.fingerprint),repNode=reputation.nodes?.[r.fingerprint];
+   const m=historyMetric(r.fingerprint),repNode=reputation.nodes?.[r.fingerprint],st=currentStability.get(r.fingerprint||r.name);
    const currentOk=r.rounds>=3&&currentRate(r)>=0.9&&currentLatency(r)<=2500&&Number(r.p95Latency||Infinity)<=5000;
    if(!currentOk||repNode?.status==='quarantine'||repNode?.status==='degraded')return false;
+   // When the current run has a stability confirmation, Best requires it. The
+   // first build of a run happens before confirmation and therefore keeps the
+   // provisional set; the final rebuild after confirmation applies this gate.
+   if(stability?.healthGeneratedAt===h.generatedAt && (!st || !st.eligible))return false;
    if(m.tests===0)return r.successes>=3;
    return m.recentTests>=9&&m.weightedRate>=0.9;
  }
