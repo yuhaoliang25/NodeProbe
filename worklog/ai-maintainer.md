@@ -45,3 +45,20 @@ The distinction matters: `node --check` alone cannot catch `ReferenceError` case
 ## Operating principle
 
 A recent workflow failure should be treated as runtime evidence. Do not diagnose from source code alone when a recent run is available. Always check the latest run logs, especially when the user reports simply that a run "failed".
+
+## 2026-09-22 — Relay / Landing pool architecture
+
+NodeProbe now has a planned second-stage view derived only from Best:
+
+- Relay Pool = Best ∩ China-side reachable
+- Landing Pool = the remaining Best nodes
+
+The design intentionally reduces the problem dimension. Best already supplies the outbound/landing-quality assumption; the China-side probe adds only the missing user-network reachability dimension.
+
+China-side reachability must have its own persistent history and evolution. A node that temporarily disappears from the current reachable set must not immediately lose its historical relay status.
+
+Historical reliable relays are not permanently trusted. They must be deliberately sampled again because the China-side network path can change over time. Sampling should mix new/unknown Best nodes, current relays, historical stable relays, and recently failed relays.
+
+The observation agent should run locally on the user's China machine, preferably as a systemd service/timer. The preferred control flow is pull Best → probe locally → persist/submit observations. GitHub should not depend on inbound remote triggering of the China machine.
+
+The first probe should measure China → Node reachability rather than China → Node → Internet, so failures remain attributable to the new reachability dimension.
