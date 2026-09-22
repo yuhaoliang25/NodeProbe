@@ -155,6 +155,28 @@ jobs:
           source: nodeprobe-state/ip-geolocation.json
           destination: data/ip-geolocation.json
 
+      - name: Restore china-node-assets.json from B2
+        continue-on-error: true
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: download
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: nodeprobe-state/china-node-assets.json
+          destination: data/china-node-assets.json
+
+      - name: Restore china-probe-candidates.json from B2
+        continue-on-error: true
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: download
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: nodeprobe-state/china-probe-candidates.json
+          destination: data/china-probe-candidates.json
+
       - name: Restore country-pool.json from B2
         continue-on-error: true
         uses: backblaze-labs/b2-action@v1
