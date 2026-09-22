@@ -20,7 +20,8 @@
     "china-apply": "node scripts/apply-china-observations.js",
     "china-probe": "node scripts/china-probe.js",
     "china-pools": "node scripts/build-china-pools.js",
-    "china-sync": "node scripts/china-b2-sync.js"
+    "china-sync": "node scripts/china-b2-sync.js",
+    "china-pull-observations": "node scripts/pull-china-observations.js pull-observations"
   },
   "dependencies": {
     "js-yaml": "^4.1.0"
