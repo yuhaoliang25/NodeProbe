@@ -7,6 +7,7 @@ const path=require('path');
 const {spawn}=require('child_process');
 const yaml=require('js-yaml');
 const {runConcurrent,probeDelay}=require('./lib/probe-runner');
+const {summarizeAttempts}=require('./lib/probe-stability');
 
 const CONFIG={
   candidateFile:process.env.CHINA_CANDIDATE_FILE||'data/china-probe-candidates.json',
@@ -23,6 +24,16 @@ const CONFIG={
   concurrency:Number(process.env.CHINA_PROBE_CONCURRENCY||8),
   fastTimeout:Number(process.env.CHINA_STAGE1_TIMEOUT||5000),
   deepRounds:Number(process.env.CHINA_DEEP_ROUNDS||2),
+  stabilityRounds:Number(process.env.CHINA_STABILITY_ROUNDS||3),
+  stabilityAttempts:Number(process.env.CHINA_STABILITY_ATTEMPTS||6),
+  stabilityTimeout:Number(process.env.CHINA_STABILITY_TIMEOUT||5000),
+  stabilityConcurrency:Number(process.env.CHINA_STABILITY_CONCURRENCY||8),
+  stabilityMinSuccessRate:Number(process.env.CHINA_STABILITY_MIN_SUCCESS_RATE||0.9),
+  stabilityMinTargetSuccessRate:Number(process.env.CHINA_STABILITY_MIN_TARGET_SUCCESS_RATE||0.67),
+  stabilityMinRoundSuccessRate:Number(process.env.CHINA_STABILITY_MIN_ROUND_SUCCESS_RATE||0.67),
+  stabilityP95:Number(process.env.CHINA_STABILITY_P95_LIMIT||5000),
+  stabilityMaxConsecutiveFailures:Number(process.env.CHINA_STABILITY_MAX_CONSECUTIVE_FAILURES||1),
+  stabilityMaxConsecutiveTimeouts:Number(process.env.CHINA_STABILITY_MAX_CONSECUTIVE_TIMEOUTS||1),
   environment:process.env.CHINA_PROBE_ENV||os.hostname(),
 };
 
@@ -154,6 +165,40 @@ async function main(){
       if(!deep.length)break;
     }
 
+    // Stability confirmation reuses the same multi-round metrics as Global, but
+    // runs from the China environment and produces China-only evidence.
+    const stabilityTargets=[
+      {id:'google',url:'https://www.google.com/generate_204',expected:'204'},
+      {id:'cloudflare',url:'https://www.cloudflare.com/cdn-cgi/trace',expected:'200'},
+      {id:'github',url:'https://github.com/',expected:'200'},
+    ];
+    const stabilityAttempts=[];
+    const stabilityCandidates=deep.slice();
+    const perRound=CONFIG.stabilityAttempts/CONFIG.stabilityRounds;
+    if(!Number.isInteger(perRound))throw new Error('CHINA_STABILITY_ATTEMPTS must divide evenly by CHINA_STABILITY_ROUNDS');
+    for(let round=1;round<=CONFIG.stabilityRounds;round++){
+      const jobs=[];
+      for(const p of stabilityCandidates){
+        for(const target of [...stabilityTargets].sort(()=>Math.random()-.5)){
+          for(let attempt=1;attempt<=perRound;attempt++)jobs.push({p,target,attempt});
+        }
+      }
+      const rows=await runConcurrent(jobs,async j=>{
+        const result=await probeDelay({api:CONFIG.api,name:j.p.name,target:j.target.url,expected:j.target.expected,timeout:CONFIG.stabilityTimeout});
+        const row={endpointId:endpointId(j.p),at:result.startedAt,success:result.success,latencyMs:result.delayMs,error:result.error,timeout:result.timeout,probeEnvironment:CONFIG.environment,stage:'stability-round-'+round,target:j.target.id,round,finishedAt:result.finishedAt};
+        traces.get(row.endpointId).push(row);
+        return row;
+      },CONFIG.stabilityConcurrency);
+      stabilityAttempts.push(...rows);
+    }
+    const stabilityById=new Map(stabilityCandidates.map(p=>[endpointId(p),[]]));
+    for(const x of stabilityAttempts)stabilityById.get(x.endpointId)?.push(x);
+    const stabilityResults=stabilityCandidates.map(p=>{
+      const id=endpointId(p);
+      return {endpointId:id,...summarizeAttempts(stabilityById.get(id)||[],stabilityTargets,CONFIG.stabilityRounds,{minSuccessRate:CONFIG.stabilityMinSuccessRate,minTargetSuccessRate:CONFIG.stabilityMinTargetSuccessRate,minRoundSuccessRate:CONFIG.stabilityMinRoundSuccessRate,maxConsecutiveFailures:CONFIG.stabilityMaxConsecutiveFailures,maxConsecutiveTimeouts:CONFIG.stabilityMaxConsecutiveTimeouts,p95Latency:CONFIG.stabilityP95})};
+    });
+    const stableIds=new Set(stabilityResults.filter(x=>x.eligible).map(x=>x.endpointId));
+
     // Stage attempts are detailed evidence. Only one final observation per node
     // is applied to the China asset, so several stages in one probe run do not
     // artificially inflate observedRuns or China trust.
@@ -164,7 +209,7 @@ async function main(){
       return {
         endpointId:id,
         at:trace[0]?.at||now(),
-        success:Boolean(last?.success),
+        success:Boolean(last?.success)&&(!stabilityById.has(id)||stableIds.has(id)),
         latencyMs:last?.latencyMs??null,
         error:last?.error||null,
         timeout:Boolean(last?.timeout),
@@ -173,6 +218,7 @@ async function main(){
         successfulStages:trace.filter(x=>x.success).map(x=>x.stage),
         failedStages:trace.filter(x=>!x.success).map(x=>x.stage),
         attemptCount:trace.length,
+        stability:stabilityById.has(id)?stabilityResults.find(x=>x.endpointId===id)||null:null,
       };
     });
 
@@ -184,9 +230,10 @@ async function main(){
       probeEnvironment:CONFIG.environment,
       target:CONFIG.target,
       expected:CONFIG.expected,
-      stages:{stage1Timeout:CONFIG.fastTimeout,deepRounds:CONFIG.deepRounds},
+      stages:{stage1Timeout:CONFIG.fastTimeout,deepRounds:CONFIG.deepRounds,stabilityRounds:CONFIG.stabilityRounds,stabilityAttempts:CONFIG.stabilityAttempts},
       observations:finalObservations,
       attempts:observations,
+      stabilityResults,
     };
 
     console.log(JSON.stringify({
