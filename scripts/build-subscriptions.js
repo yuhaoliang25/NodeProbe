@@ -158,9 +158,9 @@ try{
    return m.recentTests>=6&&m.weightedRate>=0.8;
  }
  function bestEligible(r){
-   const m=historyMetric(r.fingerprint),repNode=reputation.nodes?.[r.fingerprint],st=currentStability.get(r.fingerprint)||currentStability.get(r.name);
+   const m=historyMetric(r.fingerprint),st=currentStability.get(r.fingerprint)||currentStability.get(r.name);
    const currentOk=r.rounds>=3&&currentRate(r)>=0.9&&currentLatency(r)<=2500&&Number(r.p95Latency||Infinity)<=5000;
-   if(!currentOk||repNode?.status==='quarantine'||repNode?.status==='degraded')return false;
+   if(!currentOk)return false;
    // When the current run has a stability confirmation, Best requires it. The
    // first build of a run happens before confirmation and therefore keeps the
    // provisional set; the final rebuild after confirmation applies this gate.
@@ -170,8 +170,6 @@ try{
  }
  const google=new Set(h.results.filter(r=>currentRate(r)>0).map(r=>r.name));
  const stable=new Set(h.results.filter(stableEligible).map(r=>r.name));
- let reputation={nodes:{}};
- try{reputation=JSON.parse(fs.readFileSync('data/reputation.json','utf8'))}catch{}
  const best=new Set(h.results.filter(bestEligible).map(r=>r.name));
  function qualityScore(r,m){
   const success=Math.max(0,Math.min(1,r.successRate||0)),long=Math.max(0,Math.min(1,m?.weightedRate??m?.longRate??0));
@@ -288,8 +286,18 @@ try{
    const wilsonLower=posteriorN>0?Math.max(0,(phat+(z*z/(2*posteriorN))-z*Math.sqrt((phat*(1-phat)/posteriorN)+(z*z/(4*posteriorN*posteriorN))))/denom):0;
    const usable=recent.filter(x=>x.avgLatency!=null),avgLatency=usable.length?Math.round(usable.reduce((s,x)=>s+x.avgLatency,0)/usable.length):null,last=recent.at(-1);
    const lastObservedAt=last?.at||registryById.get(source)?.lastSeen||null;
-   const stalenessDays=lastObservedAt?Math.max(0,(Date.now()-Date.parse(lastObservedAt))/86400000):Infinity;
-   const evolutionRuns=(sourceEvolution.runs||[]).map(run=>run.sources?.[source]).filter(Boolean).slice(-12);
+   // Fetching a source is not the same as the source publishing new nodes.
+   // For forgetting, freshness means meaningful node-set change. A source that
+   // is fetched every run but returns the same nodes remains stale.
+   const evolutionAll=(sourceEvolution.runs||[]).filter(run=>run.sources?.[source]);
+   const lastChangedRun=[...evolutionAll].reverse().find(run=>{
+     const x=run.sources[source];
+     return x.addedCount>0||x.removedCount>0;
+   });
+   const firstObservedRun=evolutionAll[0];
+   const lastChangedAt=(lastChangedRun||firstObservedRun)?.generatedAt||lastObservedAt||null;
+   const stalenessDays=lastChangedAt?Math.max(0,(Date.now()-Date.parse(lastChangedAt))/86400000):Infinity;
+   const evolutionRuns=evolutionAll.slice(-12);
    const churn=evolutionRuns.filter(x=>x.replacementRate!=null).map(x=>Number(x.replacementRate));
    const avgReplacementRate=churn.length?churn.reduce((a,b)=>a+b,0)/churn.length:null;
    const qualityTrend=evolutionRuns.length>=2?Number((Number(evolutionRuns.at(-1).quality||0)-Number(evolutionRuns[0].quality||0)).toFixed(4)):null;
@@ -320,10 +328,30 @@ try{
      status
    };
  }
-fs.writeFileSync('data/source-history.json',JSON.stringify(sourceRuns,null,2));
+// Forget sources that are both long-term stale and strongly evidenced as poor.
+ // Forgetting removes Source memory only; Node assets remain untouched. A later
+ // rediscovery therefore starts with a fresh Source history instead of reviving
+ // stale reputation evidence.
+ const forgottenSources=new Set(
+   Object.entries(sourceReputationOut.sources)
+     .filter(([,rep])=>Number(rep.stalenessDays)>30&&Number(rep.lowerBound90)<0.35)
+     .map(([source])=>source)
+ );
+ if(forgottenSources.size){
+   for(const run of sourceRuns){
+     for(const source of forgottenSources)delete run.sources?.[source];
+   }
+   for(const source of forgottenSources)delete sourceReputationOut.sources[source];
+   for(const run of sourceEvolution.runs||[]){
+     for(const source of forgottenSources)delete run.sources?.[source];
+   }
+ }
+ const persistedSourceRuns=sourceRuns.slice(-30);
+ fs.writeFileSync('data/source-history.json',JSON.stringify(persistedSourceRuns,null,2));
  fs.writeFileSync('data/source-reputation.json',JSON.stringify(sourceReputationOut,null,2));
  try{
    const registry=JSON.parse(fs.readFileSync('data/sources.json','utf8')),fetched=new Set(raw.map(x=>x.name));
+   registry.sources=(registry.sources||[]).filter(s=>!forgottenSources.has(s.name||s.url));
    for(const s of registry.sources||[]){
      const id=s.name||s.url,rep=sourceReputationOut.sources?.[id];
      if(rep){

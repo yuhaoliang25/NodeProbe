@@ -34,7 +34,7 @@ for(const n of nodes){
     knownSources:n.knownSources||[],
     sourceObservations:n.sourceObservations||[],
     health:{rounds:h.rounds??null,successes:h.successes??null,successRate:h.successRate??null,avgLatency:h.avgLatency??null,p95Latency:h.p95Latency??null},
-    reputation:{status:r.status||null,longTermSuccessRate:r.longTermSuccessRate??null,totalTests:r.totalTests??0,totalFailures:r.totalFailures??0,recentFailures:r.recentFailures??0,recentSuccesses:r.recentSuccesses??0,lastSeen:r.lastSeen||null}
+    reputation:{trust:r.trust||'untrusted',successes:r.successes??0,failures:r.failures??0,recentSuccesses:r.recentSuccesses??0,recentFailures:r.recentFailures??0,lastTestAt:r.lastTestAt||null,lastSuccessAt:r.lastSuccessAt||null,lastFailureAt:r.lastFailureAt||null,everStable:Boolean(r.everStable)}
   };
   const s=shard(n.name||n.fingerprint); if(!groups.has(s))groups.set(s,{});
   groups.get(s)[n.fingerprint]=item;
