@@ -323,7 +323,7 @@ The probe itself uses bounded concurrency (CHINA_PROBE_CONCURRENCY, default 8) i
 
 The probe remains bounded by the China candidate budget (CHINA_MAX_NODES, default 30). Parallelism is an execution optimization only; it does not change China trust rules, candidate scoring, or lifecycle transitions.
 
-The deployment uses the existing B2 credentials supplied through /etc/nodeprobe/china.env. No credential is committed to the repository.
+The deployment uses the existing B2 credentials supplied through ~/.config/nodeprobe/china.env. No credential is committed to the repository.
 
 
 ## 18. China Probe Machine Deployment Guide
@@ -343,7 +343,7 @@ The machine does not need to accept inbound connections from GitHub. Communicati
 
 ### 18.2 B2 credentials
 
-Create `/etc/nodeprobe/china.env` and keep it readable only by root:
+Create `~/.config/nodeprobe/china.env` and keep it readable only by the local user:
 
 ```ini
 B2_APPLICATION_KEY_ID=YOUR_EXISTING_KEY_ID
@@ -359,9 +359,9 @@ CHINA_PROBE_TIMEOUT=8000
 The existing NodeProbe B2 credentials may be reused for the user's own machine. Credentials must never be committed to the repository.
 
 ```bash
-sudo mkdir -p /etc/nodeprobe
-sudo chmod 700 /etc/nodeprobe
-sudo chmod 600 /etc/nodeprobe/china.env
+mkdir -p ~/.config/nodeprobe
+chmod 700 ~/.config/nodeprobe
+chmod 600 ~/.config/nodeprobe/china.env
 ```
 
 ### 18.3 First manual test
@@ -371,7 +371,7 @@ Before enabling systemd, run one complete cycle manually:
 ```bash
 cd ~/NodeProbe
 set -a
-source /etc/nodeprobe/china.env
+source ~/.config/nodeprobe/china.env
 set +a
 npm install
 npm run china-sync -- pull-candidates
@@ -392,25 +392,27 @@ The repository provides:
 Install them:
 
 ```bash
-sudo cp ~/NodeProbe/systemd/nodeprobe-china.service /etc/systemd/system/
-sudo cp ~/NodeProbe/systemd/nodeprobe-china.timer /etc/systemd/system/
-sudo systemctl daemon-reload
+mkdir -p ~/.config/systemd/user
+cp ~/NodeProbe/systemd/nodeprobe-china.service ~/.config/systemd/user/
+cp ~/NodeProbe/systemd/nodeprobe-china.timer ~/.config/systemd/user/
+systemctl --user daemon-reload
 ```
 
 Run the service once before enabling the timer:
 
 ```bash
-sudo systemctl start nodeprobe-china.service
-systemctl status nodeprobe-china.service
-journalctl -u nodeprobe-china.service -n 100 --no-pager
+systemctl --user start nodeprobe-china.service
+systemctl --user status nodeprobe-china.service
+journalctl --user -u nodeprobe-china.service -n 100 --no-pager
 ```
 
 After a successful manual service run:
 
 ```bash
-sudo systemctl enable --now nodeprobe-china.timer
-systemctl status nodeprobe-china.timer
-systemctl list-timers | grep nodeprobe-china
+systemctl --user enable --now nodeprobe-china.timer
+systemctl --user status nodeprobe-china.timer
+systemctl --user list-timers | grep nodeprobe-china
+loginctl enable-linger "$USER"
 ```
 
 The timer runs approximately every 30 minutes, with a small randomized delay. `Persistent=true` allows a missed run to be triggered after the machine returns online.
@@ -491,13 +493,13 @@ If the probe is slow, inspect `CHINA_PROBE_CONCURRENCY` and `CHINA_PROBE_TIMEOUT
 Stop the timer before upgrading the checkout:
 
 ```bash
-sudo systemctl stop nodeprobe-china.timer
+systemctl --user stop nodeprobe-china.timer
 cd ~/NodeProbe
 git pull --ff-only origin main
 npm install
-sudo systemctl daemon-reload
-sudo systemctl start nodeprobe-china.service
-sudo systemctl enable --now nodeprobe-china.timer
+systemctl --user daemon-reload
+systemctl --user start nodeprobe-china.service
+systemctl --user enable --now nodeprobe-china.timer
 ```
 
 Do not remove `data/china-node-assets.json` on the NodeProbe/GitHub side merely because the China machine is upgraded; China historical trust is persistent state and is intentionally independent of the machine's local runtime files.
