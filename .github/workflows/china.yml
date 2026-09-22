@@ -1,0 +1,98 @@
+name: Update China state
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '47 */4 * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  china:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install
+      - name: Fast JavaScript checks
+        run: npm run check && npm run lint
+      - name: Restore China node assets
+        continue-on-error: true
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: download
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: nodeprobe-state/china-node-assets.json
+          destination: data/china-node-assets.json
+      - name: Restore China probe candidates
+        continue-on-error: true
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: download
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: nodeprobe-state/china-probe-candidates.json
+          destination: data/china-probe-candidates.json
+      - name: Restore Global Stable subscription
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: download
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: nodeprobe-state/stable.yaml
+          destination: subscriptions/stable.yaml
+      - name: Pull China observation inbox from B2
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: download
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: nodeprobe-state/china/observations/
+          destination: data/china-probe-observations/
+      - name: Apply China probe observations
+        run: npm run china-apply
+      - name: Select China probe candidates
+        run: npm run china-assets
+      - name: Derive China direct relay and landing pools
+        run: npm run china-pools
+      - name: Generate client Mihomo config
+        run: npm run client-config
+      - name: Save China node assets
+        if: success()
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: upload
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: data/china-node-assets.json
+          destination: nodeprobe-state/china-node-assets.json
+      - name: Publish China probe candidates
+        if: success()
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: upload
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: data/china-probe-candidates.json
+          destination: nodeprobe-state/china/candidates.json
+      - name: Save China probe candidates
+        if: success()
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: upload
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: data/china-probe-candidates.json
+          destination: nodeprobe-state/china-probe-candidates.json
