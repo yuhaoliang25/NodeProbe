@@ -89,8 +89,10 @@ for(const p of proxies){
   p._sources=[...new Set(list)];
 }
 const poolFile='data/node-pool.json';
+let poolState={version:1,nodes:[],updatedAt:null,updatedRunId:null};
 try{
  const pool=JSON.parse(fs.readFileSync(poolFile,'utf8'));
+ poolState=pool;
  for(const entry of pool.nodes||[]){
    if(entry.status==='dead')continue;
    const id=entry.fingerprint||entry.proxy?.['endpoint-id'];
@@ -111,7 +113,55 @@ try{
  console.log('persistent node pool merged:',(pool.nodes||[]).filter(x=>x.status!=='dead').length,'entries');
 }catch(e){console.log('persistent node pool unavailable:',e.message)}
 
-const clean=proxies.map(({_source,_sources,_id,...p})=>{delete p['endpoint-id'];return p;});
+// Complete inventory is kept for all.yaml; only selected work is written to candidates.json.
+const candidateLimit=Math.max(1,Number(process.env.NODE_CANDIDATE_LIMIT||1500));
+const nowMs=Date.now();
+const poolById=new Map((poolState.nodes||[]).map(x=>[x.fingerprint,x]));
+const currentRunId=process.env.GITHUB_RUN_ID||null;
+let currentRunObserved=new Set();
+if(currentRunId&&poolState.updatedRunId===currentRunId){
+ try{
+   const currentHealth=JSON.parse(fs.readFileSync('data/health.json','utf8'));
+   currentRunObserved=new Set((currentHealth.results||[]).map(r=>r.fingerprint).filter(Boolean));
+ }catch{}
+}
+const inventoryById=new Map(proxies.map(p=>[p['endpoint-id']||p._id,p]));
+const maintenance=[];
+for(const [id,entry] of poolById){
+ if(entry.status==='dead')continue;
+ const p=inventoryById.get(id);
+ if(!p)continue;
+ const dueAt=entry.nextProbeAt?Date.parse(entry.nextProbeAt):NaN;
+ if(!Number.isFinite(dueAt)||dueAt<=nowMs){
+   maintenance.push({id,proxy:p,overdueMs:Number.isFinite(dueAt)?Math.max(0,nowMs-dueAt):Number.MAX_SAFE_INTEGER});
+ }
+}
+maintenance.sort((a,b)=>b.overdueMs-a.overdueMs||a.id.localeCompare(b.id));
+const exploration=proxies.filter(p=>{
+ const id=p['endpoint-id']||p._id;
+ const entry=poolById.get(id);
+ return !entry&&!p._poolOnly;
+});
+const selectedIds=new Set(),selected=[];
+for(const item of maintenance){
+ if(selected.length>=candidateLimit)break;
+ selected.push(item.proxy); selectedIds.add(item.id);
+}
+for(const p of exploration){
+ if(selected.length>=candidateLimit)break;
+ const id=p['endpoint-id']||p._id;
+ if(selectedIds.has(id))continue;
+ selected.push(p); selectedIds.add(id);
+}
+// Nodes observed in this workflow are retained for the later Best/Stable builds.
+for(const id of currentRunObserved){
+ if(selectedIds.has(id))continue;
+ const p=inventoryById.get(id);
+ if(!p)continue;
+ selected.push(p); selectedIds.add(id);
+}
+const clean=selected.map(({_source,_sources,_id,...p})=>{delete p['endpoint-id'];return p;});
+const fullClean=proxies.map(({_source,_sources,_id,...p})=>{delete p['endpoint-id'];return p;});
 fs.mkdirSync('subscriptions',{recursive:true});
 
 // Keep generated subscriptions maximally compatible with stricter YAML parsers.
@@ -123,7 +173,7 @@ const yamlOptions={lineWidth:-1,noRefs:true,forceQuotes:true,quotingType:"'"};
 function dumpSubscription(set){
   return yaml.dump({proxies:set},{...yamlOptions});
 }
-fs.writeFileSync('subscriptions/all.yaml',dumpSubscription(clean));
+fs.writeFileSync('subscriptions/all.yaml',dumpSubscription(fullClean));
 try{
  const h=JSON.parse(fs.readFileSync('data/health.json','utf8'));
  const history=JSON.parse(fs.readFileSync('data/history.json','utf8'));
@@ -349,4 +399,4 @@ fs.writeFileSync('data/source-history.json',JSON.stringify(sourceRuns,null,2));
  console.log('google/stable/best:',google.size,stable.size,best.size);
 }catch(e){console.log('health data unavailable; only all.yaml generated:',e.message)}
 fs.writeFileSync('data/candidates.json',JSON.stringify(proxies,null,2));
-console.log('candidate nodes:',clean.length);
+console.log('candidate nodes:',clean.length,'maintenance due:',maintenance.length,'exploration available:',exploration.length,'retained current-run:',currentRunObserved.size,'capacity:',candidateLimit);
