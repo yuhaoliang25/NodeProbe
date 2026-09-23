@@ -4,7 +4,7 @@
     "direct": 0
   },
   "definitions": {
-    "direct": "Global Stable ∩ China Trusted",
+    "direct": "China Trusted assets with stored proxy definitions",
     "relay": "experimental only; not part of the production China pool",
     "landing": "experimental only; not part of the production China pool"
   }
