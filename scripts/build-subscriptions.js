@@ -157,7 +157,7 @@ for(const entry of poolState.nodes||[]){
   const dueAt=entry.nextProbeAt?Date.parse(entry.nextProbeAt):NaN;
   if(Number.isFinite(dueAt)&&dueAt>nowMs)continue;
   const p=entry.proxy?{...entry.proxy}:null;
-  if(!p?.server||!p?.port||inventoryById.has(id))continue;
+  if(!p?.server||!p?.port)continue;
   p['endpoint-id']=id;
   p._id=id;
   p._poolOnly=true;
