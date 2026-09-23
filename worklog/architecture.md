@@ -297,19 +297,19 @@ The exact retention period and recheck schedule are implementation parameters.
 
 ### Initial retention policy for the 4-hour workflow
 
-The current GitHub Actions workflow runs approximately every four hours. The first implementation should therefore use a simple time-based backoff rather than introducing a separate scheduler.
+The current GitHub Actions workflow runs hourly. The implementation therefore uses a simple time-based backoff rather than introducing a separate scheduler.
 
 The initial policy is:
 
 | Dead age | Action |
 |---|---|
-| ~4h | recheck |
+| ~1h | recheck |
+| ~3h | recheck |
+| ~6h | recheck |
 | ~12h | recheck |
 | ~1d | recheck |
 | ~3d | recheck |
-| ~7d | recheck |
-| ~14d | recheck |
-| ~30d | forget if no meaningful recovery evidence |
+| ~7d | forget if no meaningful recovery evidence |
 
 These are workflow-level eligibility points, not promises of exact wall-clock execution. A run checks which DEAD nodes have reached their next due point.
 
