@@ -593,7 +593,6 @@ Global's later-stage testing, including the general ideas used by Stage 2, deep 
 
 The following must never be copied from Global into China merely because the detection mechanism is reused:
 
-- Global node reputation;
 - Global health history;
 - Global stability result;
 - Global Best membership;
