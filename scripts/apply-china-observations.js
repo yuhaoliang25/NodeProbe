@@ -29,16 +29,15 @@ function loadObservations(){
   // Only batch files are persistent observation inbox entries. The single
   // observationFile is a local latest-run snapshot and must not be re-applied
   // by the state updater on every workflow run.
-  try{
-    for(const file of fs.readdirSync(CONFIG.observationDir).filter(x=>x.endsWith('.json')).sort()){
-      const d=JSON.parse(fs.readFileSync(path.join(CONFIG.observationDir,file),'utf8'));
-      const observations=Array.isArray(d)?d:d?.observations;
-      if(!Array.isArray(observations)){
-        throw new Error('invalid China observation batch: '+file);
-      }
-      out.push(...observations.map(observation=>({observation,batchName:file})));
+  if(!fs.existsSync(CONFIG.observationDir)) return out;
+  for(const file of fs.readdirSync(CONFIG.observationDir).filter(x=>x.endsWith('.json')).sort()){
+    const d=JSON.parse(fs.readFileSync(path.join(CONFIG.observationDir,file),'utf8'));
+    const observations=Array.isArray(d)?d:d?.observations;
+    if(!Array.isArray(observations)){
+      throw new Error('invalid China observation batch: '+file);
     }
-  }catch{}
+    out.push(...observations.map(observation=>({observation,batchName:file})));
+  }
   return out;
 }
 
