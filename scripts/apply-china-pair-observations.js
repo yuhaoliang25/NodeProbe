@@ -48,7 +48,7 @@ function apply(){
       const key=pairKey(x);
       const cfg=pairConfigs.get(x.pairId)||{};
       const p=state.pairs[key]||{pairId:key,relayEndpointId:x.relayEndpointId,landingEndpointId:x.landingEndpointId,relay:cfg.relay||null,landing:cfg.landing||null,observations:[]};
-      p.relay=p.relay||cfg.relay||null;p.landing=p.landing||cfg.landing||null;
+      p.relay=cfg.relay||p.relay||null;p.landing=cfg.landing||p.landing||null;
       p.lastObservedAt=x.at||d.generatedAt||now();
       p.lastScreenLatencyMs=x.latencyMs??null;
       p.lastBaselineLatencyMs=x.baselineLatencyMs??null;
