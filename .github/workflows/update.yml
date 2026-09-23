@@ -409,6 +409,17 @@ jobs:
           source: data/country-pool.json
           destination: nodeprobe-state/country-pool.json
 
+      - name: Publish Global Stable to B2 for China
+        if: success()
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: upload
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: subscriptions/stable.yaml
+          destination: nodeprobe-state/china/stable.yaml
+
       - name: Commit generated subscriptions
         run: |
           set -euo pipefail
