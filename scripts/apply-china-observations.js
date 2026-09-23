@@ -102,6 +102,10 @@ function apply(){
       latencyMs:o.latencyMs,
       error:o.error,
       probeEnvironment:o.probeEnvironment||CONFIG.environment,
+      reachabilitySuccess:o.reachabilitySuccess,
+      reachabilityLatencyMs:o.reachabilityLatencyMs,
+      directSuccess:o.directSuccess,
+      stabilityEligible:o.stabilityEligible,
     });
     applied++;
     appliedIds.add(id);
