@@ -41,7 +41,7 @@ const trusted=new Set(Object.entries(assets)
 const direct=[];
 for(const [endpointId,node] of Object.entries(assets)){
   if(node?.state!=='TRUSTED')continue;
-  const p=bestMap.get(endpointId);
+  const p=stableMap.get(endpointId);
   if(p)direct.push(p);
 }
 const unique=xs=>{const m=new Map();for(const p of xs)m.set(id(p),p);return [...m.values()]};
@@ -52,7 +52,7 @@ fs.writeFileSync(path.join(OUTPUT_DIR,'china-pools.json'),JSON.stringify({
   generatedAt:new Date().toISOString(),
   counts:{direct:pools.direct.length},
   definitions:{
-    direct:'Global Best ∩ China Trusted',
+    direct:'Global Stable ∩ China Trusted',
     relay:'experimental only; not part of the production China pool',
     landing:'experimental only; not part of the production China pool'
   }
