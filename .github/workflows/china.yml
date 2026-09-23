@@ -136,7 +136,7 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
 
-          git add subscriptions/direct.yaml subscriptions/pairs.yaml subscriptions/china-pair-pool.json subscriptions/relay.yaml subscriptions/landing.yaml mihomo/client.yaml
+          git add subscriptions/direct.yaml subscriptions/pairs.yaml subscriptions/china-pools.json subscriptions/china-pair-pool.json mihomo/client.yaml
           git diff --cached --quiet && exit 0
           git commit -m "chore: refresh China subscriptions"
 
