@@ -765,8 +765,8 @@ Important persistent data:
 |---|---|
 | `data/candidates.json` | Current discovered candidate set |
 | `data/history.json` | Multi-round health history |
-| `data/reputation.json` | Node health/reputation history and trust evidence |
-| `data/node-pool.json` | Persistent NodeProbe-owned node inventory and lifecycle |
+| `data/node-pool.json` | Persistent NodeProbe-owned node inventory, lifecycle, and maintenance schedule |
+| `data/node-pool.json` | Persistent NodeProbe-owned node inventory, lifecycle, and maintenance schedule |
 | `data/source-history.json` | Historical source observations |
 | `data/source-reputation.json` | Source-level reputation |
 | `data/source-evolution.json` | Source node-set evolution |
