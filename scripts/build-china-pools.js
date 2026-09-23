@@ -6,7 +6,6 @@ const path=require('path');
 const yaml=require('js-yaml');
 
 const STABLE_FILE=process.env.CHINA_STABLE_FILE||'subscriptions/stable.yaml';
-const BEST_FILE=process.env.CHINA_BEST_FILE||'subscriptions/best.yaml';
 const ASSET_FILE=process.env.CHINA_ASSET_FILE||'data/china-node-assets.json';
 const OUTPUT_DIR=path.resolve(process.env.CHINA_POOL_DIR||'subscriptions');
 
@@ -29,10 +28,8 @@ function id(p){
 function dump(proxies){return yaml.dump({proxies},{lineWidth:-1,noRefs:true,forceQuotes:true,quotingType:"'"})}
 
 const stable=loadYaml(STABLE_FILE);
-const best=loadYaml(BEST_FILE);
 const assets=loadAssets();
 const stableMap=new Map(stable.map(p=>[id(p),p]));
-const bestMap=new Map(best.map(p=>[id(p),p]));
 
 const trusted=new Set(Object.entries(assets)
   .filter(([,n])=>n&&n.state==='TRUSTED')
@@ -59,7 +56,6 @@ fs.writeFileSync(path.join(OUTPUT_DIR,'china-pools.json'),JSON.stringify({
 },null,2)+'\n');
 console.log(JSON.stringify({
   stable:stable.length,
-  best:best.length,
   trusted:[...trusted].length,
   direct:pools.direct.length,
   relay:0,
