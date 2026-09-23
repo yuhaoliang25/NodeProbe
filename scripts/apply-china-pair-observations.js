@@ -10,6 +10,7 @@ const C={
   stateFile:process.env.CHINA_PAIR_KNOWLEDGE_FILE||'data/china-pair-knowledge.json',
   retention:Number(process.env.CHINA_PAIR_OBSERVATION_RETENTION||30),
   batchRetention:Number(process.env.CHINA_PAIR_BATCH_RETENTION||1000),
+  appliedObservationRetention:Number(process.env.CHINA_PAIR_APPLIED_OBSERVATION_RETENTION||5000),
 };
 function now(){return new Date().toISOString()}
 function loadState(){try{return JSON.parse(fs.readFileSync(C.stateFile,'utf8'))}catch{return {version:1,pairs:{},processedBatches:[]}}}
@@ -26,8 +27,14 @@ function loadBatches(){
   return out;
 }
 function pairKey(x){return x.pairId||crypto.createHash('sha256').update(String(x.relayEndpointId)+'|'+String(x.landingEndpointId)).digest('hex').slice(0,16)}
+function observationId(x,batchName){
+  return crypto.createHash('sha256').update(JSON.stringify([
+    batchName||null,x.pairId||null,x.relayEndpointId||null,x.landingEndpointId||null,
+    x.at||null,Boolean(x.success),x.latencyMs??null,x.baselineLatencyMs??null,Boolean(x.improved),
+  ])).digest('hex');
+}
 function apply(){
-  const state=loadState();const seen=new Set(state.processedBatches||[]);let applied=0;
+  const state=loadState();const seen=new Set(state.processedBatches||[]);const appliedIds=new Set(state.appliedObservationIds||[]);let applied=0;
   for(const b of loadBatches()){
     if(b.name&&seen.has(b.name))continue;
     const d=b.data||{};
@@ -36,6 +43,8 @@ function apply(){
     const acceptedMap=new Map(accepted.map(x=>[x.pairId,x]));
     const pairConfigs=new Map((Array.isArray(d.pairs)?d.pairs:[]).map(x=>[x.pairId,x]));
     for(const x of screen){
+      const id=observationId(x,b.name);
+      if(appliedIds.has(id))continue;
       const key=pairKey(x);
       const cfg=pairConfigs.get(x.pairId)||{};
       const p=state.pairs[key]||{pairId:key,relayEndpointId:x.relayEndpointId,landingEndpointId:x.landingEndpointId,relay:cfg.relay||null,landing:cfg.landing||null,observations:[]};
@@ -59,11 +68,12 @@ function apply(){
       p.observations=p.observations.slice(-C.retention);
       if(x.success&&x.improved){p.successes=(p.successes||0)+1;p.lastSuccessAt=p.lastObservedAt;}
       p.lastScreenSuccess=Boolean(x.success);p.lastImproved=Boolean(x.improved);
-      state.pairs[key]=p;applied++;
+      state.pairs[key]=p;applied++;appliedIds.add(id);
     }
     if(b.name)seen.add(b.name);
   }
   state.version=1;state.generatedAt=now();state.processedBatches=[...seen].slice(-C.batchRetention);
+  state.appliedObservationIds=[...appliedIds].slice(-C.appliedObservationRetention);
   fs.mkdirSync(path.dirname(C.stateFile),{recursive:true});fs.writeFileSync(C.stateFile,JSON.stringify(state,null,2)+'\n');
   console.log(JSON.stringify({applied,pairs:Object.keys(state.pairs).length,stateFile:C.stateFile},null,2));
 }
