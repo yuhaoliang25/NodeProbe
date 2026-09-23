@@ -127,7 +127,7 @@ Candidate classes:
 4. recently failed nodes due for retry;
 5. forgotten nodes on long-interval recovery recheck.
 
-Priority is dynamic rather than a permanent percentage split.
+Priority is dynamic rather than a permanent percentage split. Due maintenance assets are selected before newly discovered Stable entries, so a large or rapidly changing Stable feed cannot starve the persistent China pool.
 
 A veteran is never exempt from testing. It receives priority when its maximum retest interval expires.
 
