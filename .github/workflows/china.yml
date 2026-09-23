@@ -45,6 +45,16 @@ jobs:
           source: nodeprobe-state/china-pair-knowledge.json
           destination: data/china-pair-knowledge.json
 
+      - name: Pull current Global Stable discovery feed
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: download
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: nodeprobe-state/china/stable.yaml
+          destination: subscriptions/stable.yaml
+
       - name: Pull China observation inbox from B2
         uses: backblaze-labs/b2-action@v1
         with:
