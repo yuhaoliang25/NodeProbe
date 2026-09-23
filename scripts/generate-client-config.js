@@ -65,7 +65,7 @@ const config = {
       type: 'select',
       proxies: ['DIRECT-AUTO', 'DIRECT']
     }
-  ]
+  ],
 
   rules: ['MATCH,PROXY']
 };
