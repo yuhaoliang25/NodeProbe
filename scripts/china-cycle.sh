@@ -24,8 +24,10 @@ fi
 npm run china-probe
 npm run china-sync -- push-observations
 if npm run china-sync -- pull-pair-candidates; then
-  npm run china-relay-probe
-  npm run china-sync -- push-pair-observations
+  echo 'Using China relay pair candidate feed from B2.'
 else
-  echo 'No China relay pair candidate feed yet; skipping pair experiment.'
+  echo 'No usable China relay pair candidate feed; generating a local bootstrap pair set.'
+  npm run china-relay-candidates
 fi
+npm run china-relay-probe
+npm run china-sync -- push-pair-observations
