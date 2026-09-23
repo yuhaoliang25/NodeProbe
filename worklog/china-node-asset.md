@@ -121,11 +121,10 @@ Each probe run uses a bounded budget.
 
 Candidate classes:
 
-1. NEW / unknown;
-2. trusted nodes that have not yet reached veteran evidence;
-3. trusted veterans due for retest;
-4. recently failed nodes due for retry;
-5. forgotten nodes on long-interval recovery recheck.
+1. due trusted/probation maintenance;
+2. recently failed nodes due for retry, within the bounded recovery budget;
+3. forgotten nodes on long-interval recovery recheck, within the bounded recovery budget;
+4. NEW / unknown exploration from the current Stable feed.
 
 Priority is dynamic rather than a permanent percentage split. Due maintenance assets are selected before newly discovered Stable entries, so a large or rapidly changing Stable feed cannot starve the persistent China pool.
 
@@ -138,7 +137,7 @@ The first implementation uses:
 - veteran retest interval: 24h;
 - failed retry cooldown: 2h;
 - forgotten recovery retry interval: 7d;
-- newly admitted nodes get priority for early evidence.
+- newly admitted nodes receive the remaining exploration budget and get priority among exploration candidates.
 
 The exact numbers are tunable later from observation data.
 
