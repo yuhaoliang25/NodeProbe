@@ -931,7 +931,7 @@ Source Registry
 Source Evolution / Reputation
 ```
 
-Discovery memory answers **where NodeProbe has already looked**. Source reputation answers **whether a discovered source is useful**. Node reputation answers **whether an individual node is useful**. Historical trust answers **how much current evidence is required to change that judgment**. These questions must remain separate.
+Discovery memory answers **where NodeProbe has already looked**. Source reputation answers **whether a discovered source is useful**. Node lifecycle answers **what persistent state follows from an individual node's observations**. These questions must remain separate.
 
 The current mechanism is intentionally conservative: bounded pages, bounded repository expansion, and bounded source-link expansion. The crawler should not become a general-purpose web spider.
 
