@@ -156,7 +156,6 @@ data/discovery-state.json
 | data/source-history.json | Source 长期质量与健康时间序列 |
 | data/source-evolution.json | Source 节点集合变化历史 |
 | data/discovery-state.json | Discovery 的探索进度与去重记忆 |
-| data/reputation.json | 节点近期/长期信誉状态 |
 
 这些数据丢失会明显改变 NodeProbe 的行为。
 
@@ -199,8 +198,7 @@ Private NodeProbe-State
         ├── source-history.json
         ├── source-evolution.json
         ├── discovery-state.json
-        ├── reputation.json
-        └── ip-geolocation.json
+             └── ip-geolocation.json
 `
 
 NodeProbe 主仓库只保存：
