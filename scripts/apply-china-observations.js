@@ -74,6 +74,7 @@ function apply(){
     if(!node){
       node={
         endpointId:o.endpointId,
+        proxy:o.proxy||null,
         firstObservedAt:o.at||at,
         lastObservedAt:null,
         observedRuns:0,
@@ -96,6 +97,7 @@ function apply(){
     }
     updateNode(node,{
       at:o.at||at,
+      proxy:o.proxy||null,
       success:o.success,
       latencyMs:o.latencyMs,
       error:o.error,
