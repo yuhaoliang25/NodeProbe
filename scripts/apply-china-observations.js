@@ -31,13 +31,12 @@ function loadObservations(){
   // by the state updater on every workflow run.
   try{
     for(const file of fs.readdirSync(CONFIG.observationDir).filter(x=>x.endsWith('.json')).sort()){
-      try{
-        const d=JSON.parse(fs.readFileSync(path.join(CONFIG.observationDir,file),'utf8'));
-        const observations=Array.isArray(d)?d:d?.observations;
-        if(Array.isArray(observations)){
-          out.push(...observations.map(observation=>({observation,batchName:file})));
-        }
-      }catch{}
+      const d=JSON.parse(fs.readFileSync(path.join(CONFIG.observationDir,file),'utf8'));
+      const observations=Array.isArray(d)?d:d?.observations;
+      if(!Array.isArray(observations)){
+        throw new Error('invalid China observation batch: '+file);
+      }
+      out.push(...observations.map(observation=>({observation,batchName:file})));
     }
   }catch{}
   return out;
