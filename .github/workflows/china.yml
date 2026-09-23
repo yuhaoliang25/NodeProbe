@@ -3,7 +3,7 @@ name: Update China state
 on:
   workflow_dispatch:
   schedule:
-    - cron: '47 */4 * * *'
+    - cron: '47 * * * *'
 
 permissions:
   contents: write
