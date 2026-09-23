@@ -100,7 +100,7 @@ It must survive source rotation.
 
 A node disappearing from a source does not automatically mean that the node has died.
 
-## 3. Source Reputation vs Node Reputation
+## 3. Source Reputation vs Node Lifecycle
 
 This separation is fundamental.
 
@@ -125,11 +125,11 @@ It is used mainly for:
 
 Source reputation should **not** directly punish an individual node merely because the node came from a disliked source.
 
-### Node Reputation
+### Node Lifecycle Evidence
 
-Node reputation answers:
+Node lifecycle evidence answers:
 
-> "What level of trust should NodeProbe place in the current health evidence for this specific node?"
+> "What lifecycle state and maintenance treatment should NodeProbe assign to this specific node?"
 
 It is based on NodeProbe's own evidence:
 - current health;
@@ -142,7 +142,7 @@ It is based on NodeProbe's own evidence:
 
 A good node from a weak source can still be a good node.
 
-However, **historical reputation is not merely a score or a testing-budget hint**. It also changes how current evidence is interpreted.
+Node lifecycle is derived from the node's own observations. Source reputation does not directly add or subtract node trust or node score.
 
 ## 4. Source Evolution
 
@@ -192,14 +192,14 @@ STALE
 DEAD
 ```
 
-The lifecycle and historical trust model are related but not identical.
+The lifecycle is the persistent interpretation of node-level evidence.
 
 In particular:
 
 - **STABLE** means the node has accumulated strong positive evidence over time.
 - **DEAD** means the accumulated evidence currently gives NodeProbe insufficient reason to trust the node.
 - A lifecycle state is not simply a permanent label attached to the node.
-- A previously stable node can temporarily fail and enter revalidation without being treated as immediately equivalent to a historically bad node.
+- A previously stable node can temporarily fail and enter revalidation through the lifecycle rules without inheriting source-level judgments.
 - A dead node may be given a recovery opportunity, but a successful observation alone does not restore trust.
 
 The exact lifecycle thresholds remain implementation parameters.
@@ -352,7 +352,7 @@ The implementation should keep these responsibilities separate:
 
 A DEAD node is intentionally retained for low-priority observation, but it must not consume the same testing budget as newly discovered or trusted nodes. Scheduled DEAD rechecks are therefore supplemental candidates and should be bounded so that a large graveyard cannot crowd out current discovery.
 
-If a DEAD node produces a successful current observation, that observation is recovery evidence. It must be interpreted according to historical trust rather than blindly restoring the previous lifecycle state.
+If a DEAD node produces a successful current observation, that observation is recovery evidence. One successful observation does not immediately restore the node; the recovery rule requires repeated healthy observations.
 
 If the node fails its scheduled recheck, it remains DEAD and its next recheck moves farther into the future.
 
@@ -798,7 +798,7 @@ Use:
 - latency;
 - persistence;
 - failure history;
-- historical trust state.
+- lifecycle state and recovery history.
 
 Do not automatically inherit a source's reputation.
 
@@ -832,7 +832,7 @@ An AI agent modifying NodeProbe must not assume:
 1. The best source is the final objective.
 2. A source with many rotating nodes is necessarily bad.
 3. A node disappearing from a source means the node is dead.
-4. A source's reputation should directly lower every node from that source.
+4. A source's reputation should directly change an individual node's lifecycle or score.
 5. A single workflow run is enough evidence to change an architectural threshold.
 6. Historical node data is permanent. Node history has an explicit forgetting/retention lifecycle.
 7. A node absent from the Node Pool after FORGOTTEN never existed.
@@ -844,7 +844,7 @@ An AI agent modifying NodeProbe must not assume:
 10. A mechanism should be added merely because it can be measured.
 11. Equal test counts imply equal trust treatment.
 12. A historical Best/Stable node should bypass health testing.
-13. One successful test is enough to restore a historically bad/dead node.
+13. One successful test is enough to restore a DEAD node.
 14. A single current failure is enough to erase strong positive historical evidence.
 
 Before changing an architectural rule, inspect:
@@ -864,7 +864,7 @@ Major responsibilities currently include:
 - `scripts/build-subscriptions.js`
   - candidate aggregation, source statistics, node scoring and subscription construction;
 - `scripts/test-google.js`
-  - multi-round health validation and reputation/history generation;
+  - multi-round health validation and health-history generation;
 - `scripts/update-node-pool.js`
   - persistent node lifecycle and source evolution updates;
 - `scripts/detect-ip-country.js`
@@ -987,7 +987,7 @@ For historical trust specifically:
 
 > **Trust should determine the burden of evidence, not eliminate the need for observation.**
 
-A historically good node is not permanently trusted. A historically bad node is not permanently unrecoverable.
+A previously stable node is not permanently healthy. A DEAD node is not permanently unrecoverable.
 
 ## 21. AI Diagnostic Query Interface
 
@@ -1020,9 +1020,9 @@ A historically good node is not permanently trusted. A historically bad node is 
 > - Which sources have observed it?
 > - How many runs has it survived / passed?
 > - What are its recent health results and latency?
-> - What does node reputation currently say?
+> - What is the node's current lifecycle state and maintenance schedule?
 > - Has it ever reached STABLE?
-> - Is it currently trusted, being revalidated, or recovering from historical distrust?
+> - Is it currently active/stable, stale, DEAD, or in recovery?
 >
 > ### Query rules for AI agents
 >
@@ -1030,7 +1030,7 @@ A historically good node is not permanently trusted. A historically bad node is 
 > 2. **Do not confuse `firstObservedAt` with publication time.** It is the first time NodeProbe observed the node.
 > 3. **Do not infer node death from source disappearance.** Check node-pool status and health history.
 > 4. **Do not expose or reproduce secret credential fields** when reporting node diagnostics. Use the safe identifying fields included by the diagnostic generator.
-> 5. **Prefer recent workflow evidence for current health**, and historical node-pool/reputation evidence for persistence and trust questions.
+> 5. **Prefer recent workflow evidence for current health**, and node-pool and health-history evidence for persistence and lifecycle questions.
 > 6. If the requested node cannot be found in the diagnostic artifact, say that the available diagnostic window does not contain it; do not invent historical data.
 > 7. The artifact is diagnostic and temporary. Its retention period may limit how far back an AI agent can retrieve the detailed diagnostic index.
 >
@@ -1041,7 +1041,7 @@ A historically good node is not permanently trusted. A historically bad node is 
 >     reports/node-index/
 >       00.json ... ff.json
 >
-> The generated record combines the relevant node-pool, health-history, and reputation fields into one node-centric view. It is deliberately smaller and safer than exposing the complete runtime state.
+> The generated record combines the relevant node-pool and health-history fields into one node-centric view. It is deliberately smaller and safer than exposing the complete runtime state.
 >
 > ### Storage boundary
 >
@@ -1063,7 +1063,7 @@ A historically good node is not permanently trusted. A historically bad node is 
 >
 > Discovery memory revision: stateful multi-channel GitHub exploration added.
 > Diagnostic query design revision: 2026-09-22
-> Historical trust interpretation revision: 2026-09-22
+> Node lifecycle/recovery revision: 2026-09-22
 >
 > ## 22. Best Selection Audit Artifacts
 >
@@ -1121,7 +1121,7 @@ A historically good node is not permanently trusted. A historically bad node is 
 > - exact selection score;
 > - every `bestEligible` condition;
 > - historical health evidence used by the eligibility rule;
-> - node reputation;
+> - node-pool lifecycle and maintenance information;
 > - node-pool persistence information.
 >
 > The artifact is retained by GitHub Actions for 30 days. It is not committed to Git and is not uploaded to B2.
