@@ -4,7 +4,7 @@
 
 China-side node state is an independent asset and trust system.
 
-Its only production input in the first implementation is the current `subscriptions/stable.yaml` candidate pool.
+Its discovery input is the current `subscriptions/stable.yaml` feed. The persistent China asset pool is independent and remains the authority for China maintenance.
 
 It must not read or inherit:
 
@@ -16,7 +16,7 @@ It must not read or inherit:
 
 It may consume only the published `subscriptions/stable.yaml` feed as a baseline/discovery input. Stable membership is an input boundary, not transferred China trust.
 
-The Global Stable pool is treated as a capability filter, not as China trust.
+Global Stable is an exploration/discovery feed, not a China asset-membership filter and not China trust.
 
 ## 2. Identity
 
@@ -101,11 +101,12 @@ China state survives changes in the current Stable pool.
 If an endpoint disappears from Stable:
 
 - do not delete its China asset;
-- do not reset its China trust;
-- simply exclude it from the next candidate set unless policy later permits historical recovery probing.
+- do not reset its China lifecycle;
+- continue maintenance according to the persistent China asset's own schedule, using its stored proxy definition.
 
 If it returns to Stable:
 
+- refresh the stored proxy definition when the endpoint identity matches;
 - reuse the existing China asset;
 - continue its China lifecycle;
 - do not treat it as a new node.
@@ -224,9 +225,10 @@ This separation allows the probe implementation to evolve independently from the
 
 The first implementation intentionally has three independent steps:
 
-1. read the current Global Stable pool and select China candidates;
-2. run a China-side probe and produce observations;
-3. apply observations to the persistent China asset.
+1. read the current Global Stable feed to discover new endpoints and refresh known endpoint definitions;
+2. select due maintenance assets plus newly discovered endpoints into the bounded China candidate feed;
+3. run a China-side probe and produce observations;
+4. apply observations to the persistent China asset.
 
 Network probing is not simulated by the GitHub-side asset updater. A future China-side agent should own the actual China-to-node measurement.
 
@@ -260,7 +262,7 @@ China Probe transport uses Backblaze B2 as an asynchronous inbox/outbox rather t
 
 The NodeProbe side publishes the current Global Stable pool under `nodeprobe-state/china/stable.yaml` and the bounded China candidate feed under `nodeprobe-state/china/candidates.json`.
 
-The China-side agent pulls `stable.yaml` from B2 as its authoritative Global Stable input for the probe cycle, then pulls the bounded candidate feed to decide which Stable endpoints to test. It writes immutable observation batches under `nodeprobe-state/china/observations/<environment>/...`.
+The GitHub-side China workflow pulls `stable.yaml` from B2 as the discovery feed before building the next bounded candidate set. The China-side agent then pulls only the candidate feed and probes exactly those candidate assets; the probe does not consult Stable. It writes immutable observation batches under `nodeprobe-state/china/observations/<environment>/...`.
 
 A batch is never overwritten by a later probe run. `apply-china-observations` is idempotent, so replaying an already consumed batch does not duplicate evidence.
 
@@ -1042,8 +1044,7 @@ This means the China machine normally probes using the latest candidate feed pro
 The information crossing the China boundary is deliberately asymmetric:
 
 **GitHub → China**
-- `stable.yaml`: current Global Stable endpoint definitions;
-- `candidates.json`: bounded candidate selection for the current Stable pool;
+- `candidates.json`: bounded selection containing both maintenance assets and newly discovered endpoint definitions;
 - Pair experiment definitions.
 
 **China → GitHub**
@@ -1087,7 +1088,7 @@ Pair evidence never directly changes China node trust. A successful pair does no
 
 ### 24.7 Deployment invariants
 
-1. Global Stable is the production China candidate/admission boundary.
+1. Global Stable is the China exploration/discovery feed; the persistent China asset pool is the production maintenance boundary.
 2. Global Best is used only for experimental landing selection.
 3. `direct.yaml` is the production direct pool.
 4. `pairs.yaml` is the validated experimental-path pool exposed to the client.
@@ -1132,7 +1133,7 @@ The production systemd timer invokes `scripts/china-cycle.sh`, so these individu
 A China probe machine may start before the Global/China candidate feed exists in B2. The cycle therefore treats the candidate feed as a scheduling artifact rather than a hard prerequisite:
 
 - If `nodeprobe-state/china/candidates.json` is available, the machine pulls and uses it normally.
-- If the candidate feed cannot be pulled, `china-cycle.sh` runs `npm run china-assets` locally to derive a bounded candidate set from the current `subscriptions/stable.yaml`.
+- If the candidate feed cannot be pulled, `china-cycle.sh` can use the pulled Stable feed only as a cold-start discovery source; normal maintenance remains based on the persistent China asset state.
 - On a truly cold machine with no `data/china-node-assets.json`, this creates at most `CHINA_MAX_NODES` initial candidates from Stable and does not create China trust or observations by itself.
 - The subsequent `china-probe` run creates the actual China observations; those are pushed to B2 and applied by the China workflow, which then publishes the next candidate feed.
 
