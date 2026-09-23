@@ -141,6 +141,7 @@ for(const [id,entry] of poolById){
  }
 }
 maintenance.sort((a,b)=>b.overdueMs-a.overdueMs||a.id.localeCompare(b.id));
+deadRechecks.sort((a,b)=>b.overdueMs-a.overdueMs||a.id.localeCompare(b.id));
 const exploration=proxies.filter(p=>{
  const id=p['endpoint-id']||p._id;
  const entry=poolById.get(id);
@@ -401,4 +402,4 @@ fs.writeFileSync('data/source-history.json',JSON.stringify(sourceRuns,null,2));
  console.log('google/stable/best:',google.size,stable.size,best.size);
 }catch(e){console.log('health data unavailable; only all.yaml generated:',e.message)}
 fs.writeFileSync('data/candidates.json',JSON.stringify(selected,null,2));
-console.log('candidate nodes:',clean.length,'maintenance due:',maintenance.length,'exploration available:',exploration.length,'retained current-run:',currentRunObserved.size,'capacity:',candidateLimit);
+console.log('candidate nodes:',clean.length,'maintenance due:',maintenance.length,'exploration available:',exploration.length,'dead rechecks due:',deadRechecks.length,'retained current-run:',currentRunObserved.size,'capacity:',candidateLimit,'dead recheck cap:',deadRecheckLimit);
