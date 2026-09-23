@@ -261,7 +261,7 @@ try{
  const google=new Set(h.results.filter(r=>currentRate(r)>0).map(r=>r.name));
  const stable=new Set(h.results.filter(stableEligible).map(r=>r.name));
  const best=new Set(h.results.filter(bestEligible).map(r=>r.name));
- function qualityScore(r,m){
+ function selectionScore(r,m){
   const success=Math.max(0,Math.min(1,r.successRate||0)),long=Math.max(0,Math.min(1,m?.weightedRate??m?.longRate??0));
   const latency=m?.avg?Math.max(0,1-Math.min(1,m.avg/5000)):0,p95=m?.p95?Math.max(0,1-Math.min(1,m.p95/10000)):0;
   const sourceList=Array.isArray(r.sources)?r.sources:[r.source].filter(Boolean);
@@ -310,7 +310,7 @@ try{
    const usable=r.rounds>=2&&currentRate(r)>=0.8&&currentLatency(r)<=5000;
    if(!usable)continue;
    countryBuckets.get(code).push({
-     proxy:p,result:r,score:qualityScore(r,m),
+     proxy:p,result:r,score:selectionScore(r,m),
      detectedCountry:detected,declaredCountry:declared,
      countrySource:detected?'ip':'declared'
    });
@@ -346,7 +346,7 @@ try{
  fs.writeFileSync('subscriptions/google.yaml',dumpSubscription(pick(google)));
  fs.writeFileSync('subscriptions/stable.yaml',dumpSubscription(pick(stable)));
  fs.writeFileSync('subscriptions/best.yaml',dumpSubscription(pick(best)));
- const scored=h.results.map(r=>{const m=metrics.get(r.fingerprint)||{};return {...r,qualityScore:qualityScore(r,m)}}).sort((a,b)=>b.qualityScore-a.qualityScore);
+ const scored=h.results.map(r=>{const m=metrics.get(r.fingerprint)||{};return {...r,selectionScore:selectionScore(r,m)}}).sort((a,b)=>b.selectionScore-a.selectionScore);
  fs.writeFileSync('data/scores.json',JSON.stringify({generatedAt:new Date().toISOString(),results:scored,sourceQuality:Object.fromEntries(sourceQuality)},null,2));
  const sourceHistory=[];
  try{sourceHistory.push(...JSON.parse(fs.readFileSync('data/source-history.json','utf8')))}catch{}
