@@ -1,8 +1,7 @@
 #!/usr/bin/env node
 'use strict';
-const fs=require('fs'); const os=require('os'); const path=require('path'); const {spawn}=require('child_process'); const yaml=require('js-yaml');
+const fs=require('fs'); const os=require('os'); const path=require('path'); const {spawn,execFileSync}=require('child_process'); const yaml=require('js-yaml');
 const {runConcurrent,probeDelay}=require('./lib/probe-runner');
-const {execFileSync}=require('child_process');
 const C={candidateFile:process.env.CHINA_RELAY_CANDIDATE_FILE||'data/china-relay-pair-candidates.json',observationFile:process.env.CHINA_PAIR_OBSERVATION_FILE||'data/china-pair-observations.json',observationDir:process.env.CHINA_PAIR_OBSERVATION_DIR||'data/china-pair-observations',mihomoBin:process.env.MIHOMO_BIN||'mihomo',api:process.env.MIHOMO_API||'http://127.0.0.1:19090',mixedPort:Number(process.env.CHINA_PAIR_PORT||17891),screenTarget:'https://www.google.com/generate_204',screenExpected:'204',screenTimeout:Number(process.env.CHINA_PAIR_SCREEN_TIMEOUT||8000),confirmTimeout:Number(process.env.CHINA_PAIR_CONFIRM_TIMEOUT||8000),concurrency:Number(process.env.CHINA_PAIR_CONCURRENCY||16),confirmConcurrency:Number(process.env.CHINA_PAIR_CONFIRM_CONCURRENCY||8),confirmTopK:Number(process.env.CHINA_PAIR_CONFIRM_TOP_K||20),confirmRounds:Number(process.env.CHINA_PAIR_CONFIRM_ROUNDS||3),improvement:Number(process.env.CHINA_PAIR_MIN_IMPROVEMENT||0.15),environment:process.env.CHINA_PROBE_ENV||os.hostname()};
 function now(){return new Date().toISOString()} async function sleep(ms){return new Promise(r=>setTimeout(r,ms))}
 async function apiJson(url,opts){const r=await fetch(url,opts);const t=await r.text();if(!r.ok)throw new Error('API '+r.status+' '+t.slice(0,200));return JSON.parse(t)}
