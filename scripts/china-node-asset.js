@@ -140,9 +140,10 @@ function nextProbeAt(node, atMs) {
   return new Date(atMs).toISOString();
 }
 
-function createAsset(endpointId, at) {
+function createAsset(endpointId, at, proxy = null) {
   return {
     endpointId,
+    proxy,
     firstObservedAt: at,
     lastObservedAt: null,
     observedRuns: 0,
@@ -165,6 +166,10 @@ function createAsset(endpointId, at) {
 
 function updateNode(node, observation) {
   const at = observation.at || now();
+
+  if (observation.proxy) {
+    node.proxy = observation.proxy;
+  }
 
   node.lastObservedAt = at;
   node.lastProbeAt = at;
@@ -267,24 +272,25 @@ function scoreCandidate(node, category, atMs) {
 
 function buildCandidates(stable, state, atMs) {
   const candidates = [];
+  const stableById = new Map(stable.map(item => [item.endpointId, item]));
 
+  // Stable is an exploration feed: it can introduce new endpoints and refresh
+  // the current proxy definition for known endpoints. It is not the authority
+  // for China asset membership or maintenance scheduling.
   for (const item of stable) {
     const old = state.nodes[item.endpointId];
-
-    if (!old) {
-      candidates.push({
-        endpointId: item.endpointId,
-        proxy: item.proxy,
-        category: 'new',
-        score: 1000,
-      });
-      continue;
+    if (old) {
+      old.proxy = item.proxy;
     }
+  }
 
-    if (!isDue(old, atMs)) continue;
+  // Maintenance is driven entirely by the persistent China asset pool.
+  // A known node remains eligible for re-probing even when it disappears from
+  // the latest Global Stable feed.
+  for (const old of Object.values(state.nodes || {})) {
+    if (!old?.endpointId || !old?.proxy || !isDue(old, atMs)) continue;
 
     let category = 'new';
-
     if (old.state === 'TRUSTED') {
       category = old.observedRuns >= 10 ? 'veteran' : 'trusted-recheck';
     } else if (old.state === 'DEGRADED' || old.state === 'UNTRUSTED') {
@@ -294,17 +300,36 @@ function buildCandidates(stable, state, atMs) {
     }
 
     candidates.push({
-      endpointId: item.endpointId,
-      proxy: item.proxy,
+      endpointId: old.endpointId,
+      proxy: old.proxy,
       category,
       score: scoreCandidate(old, category, atMs),
     });
   }
 
-  candidates.sort((a, b) => b.score - a.score);
-  return candidates.slice(0, CONFIG.maxNodesPerRun);
-}
+  // Exploration is the only part that depends on the current Stable feed.
+  for (const item of stable) {
+    if (state.nodes[item.endpointId]) continue;
+    candidates.push({
+      endpointId: item.endpointId,
+      proxy: item.proxy,
+      category: 'new',
+      score: 1000,
+    });
+  }
 
+  const deduped = new Map();
+  for (const candidate of candidates) {
+    const existing = deduped.get(candidate.endpointId);
+    if (!existing || candidate.score > existing.score) {
+      deduped.set(candidate.endpointId, candidate);
+    }
+  }
+
+  return [...deduped.values()]
+    .sort((a, b) => b.score - a.score)
+    .slice(0, CONFIG.maxNodesPerRun);
+}
 function saveState(state) {
   fs.mkdirSync(path.dirname(CONFIG.stateFile), { recursive: true });
   fs.writeFileSync(CONFIG.stateFile, JSON.stringify(state, null, 2) + '\n');
@@ -332,9 +357,8 @@ function selectCandidates() {
   const at = now();
   const atMs = Date.parse(at);
 
-  // Stable membership only creates a candidate. It does NOT create a China asset
-  // or a China observation. The asset begins when the China probe actually observes
-  // the endpoint.
+  // Stable is only the discovery feed. Known China assets are maintained from
+  // persistent China state even when they are absent from the current Stable feed.
   const candidates = buildCandidates(stable, state, atMs);
 
   state.generatedAt = at;
