@@ -5,6 +5,7 @@ const fs=require('fs');
 const os=require('os');
 const path=require('path');
 const {spawn}=require('child_process');
+const net=require('net');
 const yaml=require('js-yaml');
 const {runConcurrent,probeDelay}=require('./lib/probe-runner');
 const {summarizeAttempts}=require('./lib/probe-stability');
@@ -22,6 +23,7 @@ const CONFIG={
   expected:process.env.CHINA_PROBE_EXPECTED||'204',
   timeout:Number(process.env.CHINA_PROBE_TIMEOUT||8000),
   concurrency:Number(process.env.CHINA_PROBE_CONCURRENCY||8),
+  reachabilityTimeout:Number(process.env.CHINA_REACHABILITY_TIMEOUT||3000),
   fastTimeout:Number(process.env.CHINA_STAGE1_TIMEOUT||5000),
   deepRounds:Number(process.env.CHINA_DEEP_ROUNDS||2),
   stabilityRounds:Number(process.env.CHINA_STABILITY_ROUNDS||3),
@@ -41,6 +43,23 @@ function now(){return new Date().toISOString()}
 async function sleep(ms){return new Promise(r=>setTimeout(r,ms))}
 async function fetchText(url){const r=await fetch(url);if(!r.ok)throw new Error('HTTP '+r.status);return r.text()}
 async function apiJson(url,opts){const r=await fetch(url,opts);const t=await r.text();if(!r.ok)throw new Error('API '+r.status+' '+t.slice(0,200));return JSON.parse(t)}
+
+function tcpReachability(proxy,timeout){
+  return new Promise(resolve=>{
+    const started=Date.now();
+    const socket=net.createConnection({host:String(proxy.server),port:Number(proxy.port)});
+    let settled=false;
+    const finish=(success,error=null)=>{
+      if(settled)return;
+      settled=true;
+      socket.destroy();
+      resolve({success,latencyMs:success?Date.now()-started:null,error,timeout:error==='timeout'});
+    };
+    socket.setTimeout(timeout,()=>finish(false,'timeout'));
+    socket.once('connect',()=>finish(true));
+    socket.once('error',e=>finish(false,String(e.message||e).slice(0,300)));
+  });
+}
 
 async function loadStable(){
   const text=CONFIG.stableUrl?await fetchText(CONFIG.stableUrl):fs.readFileSync(CONFIG.stableFile,'utf8');
@@ -117,6 +136,28 @@ async function main(){
     const observations=[];
     const traces=new Map(selected.map(p=>[endpointId(p),[]]));
 
+    // Stage 0 measures China -> endpoint reachability only. It deliberately does
+    // not use Mihomo or an Internet target, so the result is not contaminated by
+    // endpoint -> target performance.
+    const reachability=await runConcurrent(selected,async p=>{
+      const result=await tcpReachability(p,CONFIG.reachabilityTimeout);
+      const row={
+        endpointId:endpointId(p),
+        at:now(),
+        success:result.success,
+        latencyMs:result.latencyMs,
+        error:result.error,
+        timeout:result.timeout,
+        probeEnvironment:CONFIG.environment,
+        stage:'reachability',
+        finishedAt:now(),
+      };
+      traces.get(row.endpointId).push(row);
+      observations.push(row);
+      return row;
+    },CONFIG.concurrency);
+    const reachable=new Set(reachability.filter(x=>x.success).map(x=>x.endpointId));
+
     async function runStage(proxies,timeout,stage){
       const rows=await runConcurrent(proxies,async p=>{
         const result=await probeDelay({
@@ -144,10 +185,12 @@ async function main(){
       return rows;
     }
 
-    // Stage 1: fast screening for every selected candidate.
-    const stage1=await runStage(selected,CONFIG.fastTimeout,'stage1-fast');
-    const firstPass=selected.filter((p,i)=>stage1[i].success);
-    const firstFail=selected.filter((p,i)=>!stage1[i].success);
+    // Stage 1 measures the actual direct proxy path: China -> node -> target.
+    // This is intentionally separate from Stage 0 reachability.
+    const reachableProxies=selected.filter(p=>reachable.has(endpointId(p)));
+    const stage1=await runStage(reachableProxies,CONFIG.fastTimeout,'direct-stage1-fast');
+    const firstPass=reachableProxies.filter((p,i)=>stage1[i].success);
+    const firstFail=reachableProxies.filter((p,i)=>!stage1[i].success);
 
     // A single timeout/transport failure is not enough to discard a candidate.
     const retry=await runStage(firstFail,CONFIG.timeout,'stage1-retry');
@@ -230,7 +273,7 @@ async function main(){
       probeEnvironment:CONFIG.environment,
       target:CONFIG.target,
       expected:CONFIG.expected,
-      stages:{stage1Timeout:CONFIG.fastTimeout,deepRounds:CONFIG.deepRounds,stabilityRounds:CONFIG.stabilityRounds,stabilityAttempts:CONFIG.stabilityAttempts},
+      stages:{reachabilityTimeout:CONFIG.reachabilityTimeout,stage1Timeout:CONFIG.fastTimeout,deepRounds:CONFIG.deepRounds,stabilityRounds:CONFIG.stabilityRounds,stabilityAttempts:CONFIG.stabilityAttempts},
       observations:finalObservations,
       attempts:observations,
       stabilityResults,
@@ -238,6 +281,8 @@ async function main(){
 
     console.log(JSON.stringify({
       candidates:selected.length,
+      reachable:reachable.size,
+      directCandidates:reachableProxies.length,
       stage1Pass:firstPass.length,
       stage1RetryPass:retryPass.size,
       stage2Pass:stage2.filter(x=>x.success).length,
