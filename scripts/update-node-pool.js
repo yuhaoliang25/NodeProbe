@@ -55,6 +55,30 @@ function main(){
     nodes.set(entry.fingerprint,{...entry});
   }
 
+  // Source membership is refreshed independently of health maintenance. This
+  // lets a node remain a persistent asset even when it is not due for probing,
+  // while still recording that a source stopped publishing it.
+  const currentSourceMembership=readJson('data/current-node-sources.json',null);
+  if(currentSourceMembership&&typeof currentSourceMembership==='object'){
+    for(const [id,entry] of nodes){
+      const currentSources=Array.isArray(currentSourceMembership[id])
+        ? [...new Set(currentSourceMembership[id].filter(Boolean))]
+        : [];
+      const knownSources=[...new Set([...(entry.knownSources||[]),...currentSources])];
+      const previousObservations=Array.isArray(entry.sourceObservations)?entry.sourceObservations:[];
+      const observationMap=new Map(previousObservations.filter(x=>x&&x.source).map(x=>[x.source,{...x}]));
+      for(const source of currentSources){
+        const x=observationMap.get(source)||{source,firstObservedAt:now,lastObservedAt:now};
+        x.lastObservedAt=now;
+        observationMap.set(source,x);
+      }
+      entry.currentSources=currentSources;
+      entry.knownSources=knownSources;
+      entry.observedSources=[...observationMap.values()].map(x=>x.source);
+      entry.sourceObservations=[...observationMap.values()].sort((a,b)=>String(a.firstObservedAt).localeCompare(String(b.firstObservedAt)));
+    }
+  }
+
   for(const p of candidates){
     const id=p['endpoint-id']||p._id;
     if(!id)continue;
