@@ -227,7 +227,7 @@ async function main(){
       const id=endpointId(p);
       return {endpointId:id,...summarizeAttempts(stabilityById.get(id)||[],stabilityTargets,CONFIG.stabilityRounds,{minSuccessRate:CONFIG.stabilityMinSuccessRate,minTargetSuccessRate:CONFIG.stabilityMinTargetSuccessRate,minRoundSuccessRate:CONFIG.stabilityMinRoundSuccessRate,maxConsecutiveFailures:CONFIG.stabilityMaxConsecutiveFailures,maxConsecutiveTimeouts:CONFIG.stabilityMaxConsecutiveTimeouts,p95Latency:CONFIG.stabilityP95})};
     });
-    const stableIds=new Set(stabilityResults.filter(x=>x.eligible).map(x=>x.endpointId));
+    const stabilityEligibleIds=new Set(stabilityResults.filter(x=>x.eligible).map(x=>x.endpointId));
 
     // Stage attempts are detailed evidence. Only one final observation per node
     // is applied to the China asset, so several stages in one probe run do not
@@ -244,7 +244,7 @@ async function main(){
         endpointId:id,
         proxy:p,
         at:trace[0]?.at||now(),
-        success:Boolean(last?.success)&&(!stabilityById.has(id)||stableIds.has(id)),
+        success:Boolean(last?.success)&&(!stabilityById.has(id)||stabilityEligibleIds.has(id)),
         reachabilitySuccess:Boolean(reachabilityAttempt?.success),
         reachabilityLatencyMs:reachabilityAttempt?.latencyMs??null,
         directSuccess,
