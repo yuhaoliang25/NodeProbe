@@ -26,13 +26,9 @@ function observationId(o){
 
 function loadObservations(){
   const out=[];
-  try{
-    const d=JSON.parse(fs.readFileSync(CONFIG.observationFile,'utf8'));
-    if(Array.isArray(d))out.push(...d.map(observation=>({observation,batchName:null})));
-    else if(Array.isArray(d?.observations)){
-      out.push(...d.observations.map(observation=>({observation,batchName:null})));
-    }
-  }catch{}
+  // Only batch files are persistent observation inbox entries. The single
+  // observationFile is a local latest-run snapshot and must not be re-applied
+  // by the state updater on every workflow run.
   try{
     for(const file of fs.readdirSync(CONFIG.observationDir).filter(x=>x.endsWith('.json')).sort()){
       try{
