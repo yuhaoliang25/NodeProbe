@@ -15,8 +15,14 @@ function now(){return new Date().toISOString()}
 function loadState(){try{return JSON.parse(fs.readFileSync(C.stateFile,'utf8'))}catch{return {version:1,pairs:{},processedBatches:[]}}}
 function loadBatches(){
   const out=[];
-  try{const d=JSON.parse(fs.readFileSync(C.observationFile,'utf8'));if(d?.accepted)out.push({name:null,data:d})}catch{}
-  try{for(const f of fs.readdirSync(C.observationDir).filter(x=>x.endsWith('.json')).sort()){try{out.push({name:f,data:JSON.parse(fs.readFileSync(path.join(C.observationDir,f),'utf8'))})}catch{}}}catch{}
+  // Only batch files are persistent observation inbox entries. The single
+  // observationFile is a local latest-run snapshot and must not be re-applied
+  // by the state updater on every workflow run.
+  try{
+    for(const f of fs.readdirSync(C.observationDir).filter(x=>x.endsWith('.json')).sort()){
+      try{out.push({name:f,data:JSON.parse(fs.readFileSync(path.join(C.observationDir,f),'utf8'))})}catch{}
+    }
+  }catch{}
   return out;
 }
 function pairKey(x){return x.pairId||crypto.createHash('sha256').update(String(x.relayEndpointId)+'|'+String(x.landingEndpointId)).digest('hex').slice(0,16)}
