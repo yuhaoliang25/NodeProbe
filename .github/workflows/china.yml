@@ -45,17 +45,6 @@ jobs:
           source: nodeprobe-state/china-pair-knowledge.json
           destination: data/china-pair-knowledge.json
 
-      - name: Restore China probe candidates
-        continue-on-error: true
-        uses: backblaze-labs/b2-action@v1
-        with:
-          action: download
-          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
-          application-key: ${{ secrets.B2_APPLICATION_KEY }}
-          bucket: nodeprobe
-          source: nodeprobe-state/china-probe-candidates.json
-          destination: data/china-probe-candidates.json
-
       - name: Pull China observation inbox from B2
         uses: backblaze-labs/b2-action@v1
         with:
