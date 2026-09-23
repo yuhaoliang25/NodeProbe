@@ -104,17 +104,6 @@ jobs:
           source: nodeprobe-state/history.json
           destination: data/history.json
 
-      - name: Restore scores.json from B2
-        continue-on-error: true
-        uses: backblaze-labs/b2-action@v1
-        with:
-          action: download
-          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
-          application-key: ${{ secrets.B2_APPLICATION_KEY }}
-          bucket: nodeprobe
-          source: nodeprobe-state/scores.json
-          destination: data/scores.json
-
       - name: Restore stability.json from B2
         continue-on-error: true
         uses: backblaze-labs/b2-action@v1
@@ -374,17 +363,6 @@ jobs:
           bucket: nodeprobe
           source: data/history.json
           destination: nodeprobe-state/history.json
-
-      - name: Save scores.json to B2
-        if: success()
-        uses: backblaze-labs/b2-action@v1
-        with:
-          action: upload
-          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
-          application-key: ${{ secrets.B2_APPLICATION_KEY }}
-          bucket: nodeprobe
-          source: data/scores.json
-          destination: nodeprobe-state/scores.json
 
       - name: Save stability.json to B2
         if: success()
