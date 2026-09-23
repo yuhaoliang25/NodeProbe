@@ -481,7 +481,7 @@ Current NodeProbe Inventory
 
 This means NodeProbe is not rebuilt from zero every run.
 
-Historical nodes can return to the candidate set and be tested again. Their historical trust state must influence how the new observation is interpreted.
+Historical nodes can return to the candidate set and be tested again. Their accumulated observation history may affect **eligibility requirements**, but it is not converted into a separate trust or reputation score.
 
 ## 8. Health Validation
 
@@ -494,31 +494,35 @@ Discovery says:
     "This node exists."
 
 Health testing says:
-    "NodeProbe can currently use this node."
+    "What can NodeProbe observe about this node right now?"
 
 Node history says:
-    "How trustworthy has this node been over time?"
+    "What health evidence has NodeProbe accumulated for this node?"
 ```
 
-External source metadata is therefore evidence for discovery, not unquestionable truth.
+External source metadata is therefore evidence for discovery and provenance, not unquestionable truth.
 
-Repeated observations are more important than a single successful or failed run.
+Repeated observations are important because Stable and Best are not intended to be admitted from an isolated observation when the node already has a relevant history.
 
-### Historical trust changes the interpretation of evidence
+### Current evidence and historical evidence
 
-A current observation does **not** have the same semantic meaning for every node.
+Historical health data is used directly as selection evidence where the current eligibility rules require it. For example, an existing node may need a minimum amount of recent historical evidence and a minimum historical success rate before it can enter Stable or Best.
 
-For a node with strong historical evidence:
+This does **not** mean that the node has a hidden trust score.
 
-> A current success is consistent with the established trust and may be sufficient for current acceptance.
+The distinction is:
 
-For a node with poor or failed historical evidence:
+```
+current health evidence
+        +
+historical health evidence
+        +
+stability confirmation
+        ↓
+Stable / Best eligibility
+```
 
-> A current success is only evidence that recovery may be possible. It is not sufficient to restore trust.
-
-This is a deliberate asymmetry.
-
-The system is therefore not trying to make every node pass through an identical number of tests. It is trying to make the **amount of evidence required for acceptance depend on prior trust**.
+The persistent Node Pool separately records lifecycle state and maintenance scheduling. Lifecycle state determines when an asset is due for observation and how much current-run testing budget it receives; it is not a reputation score.
 
 ## 9. Node Lifecycle and Revalidation
 
