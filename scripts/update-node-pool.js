@@ -21,6 +21,16 @@ function healthy(r){
   const rounds=Number(r.rounds||0), successes=Number(r.successes||0);
   return rounds>=2 && successes>=Math.ceil(rounds*0.67);
 }
+function nextProbeAt(status,atMs){
+  const intervals={
+    stable:24*3600000,
+    active:12*3600000,
+    probation:6*3600000,
+    stale:4*3600000
+  };
+  const ms=intervals[status];
+  return ms?new Date(atMs+ms).toISOString():null;
+}
 function sourceQuality(rows){
   if(!rows.length)return 0;
   const q=rows.map(r=>{
@@ -68,20 +78,31 @@ function main(){
     }
     const sourceObservations=[...observationMap.values()].sort((a,b)=>String(a.firstObservedAt).localeCompare(String(b.firstObservedAt)));
     const observedSources=sourceObservations.map(x=>x.source);
-    const currentHealthy=healthy(r);
-    const healthyRuns=currentHealthy?(Number(prev?.healthyRuns||0)+1):0;
-    const failedRuns=currentHealthy?0:(Number(prev?.failedRuns||0)+1);
-    const observedRuns=Number(prev?.observedRuns||0)+1;
+    const hasObservation=Boolean(r);
+    const currentHealthy=hasObservation&&healthy(r);
+    // A candidate without a health result was not actually observed. Do not
+    // turn an untested/skipped candidate into a failure or advance its schedule.
+    const healthyRuns=hasObservation
+      ? (currentHealthy?(Number(prev?.healthyRuns||0)+1):0)
+      : Number(prev?.healthyRuns||0);
+    const failedRuns=hasObservation
+      ? (currentHealthy?0:(Number(prev?.failedRuns||0)+1))
+      : Number(prev?.failedRuns||0);
+    const observedRuns=hasObservation
+      ? Number(prev?.observedRuns||0)+1
+      : Number(prev?.observedRuns||0);
 
     let status=prev?.status||'new';
-    if(currentHealthy){
-      if(healthyRuns>=6 || prev?.everStable)status='stable';
-      else if(healthyRuns>=2)status='active';
-      else status='probation';
-    }else if(failedRuns>=3){
-      status='dead';
-    }else{
-      status=prev?.everStable?'stale':(failedRuns>=2?'stale':'probation');
+    if(hasObservation){
+      if(currentHealthy){
+        if(healthyRuns>=6 || prev?.everStable)status='stable';
+        else if(healthyRuns>=2)status='active';
+        else status='probation';
+      }else if(failedRuns>=3){
+        status='dead';
+      }else{
+        status=prev?.everStable?'stale':(failedRuns>=2?'stale':'probation');
+      }
     }
 
     const proxy=cleanProxy(p);
@@ -96,21 +117,22 @@ function main(){
       firstObservedSource,
       observedSources,
       sourceObservations,
-      lastSeen:currentHealthy?now:(prev?.lastSeen||firstObservedAt),
-      lastObservedAt:now,
+      lastSeen:hasObservation&&currentHealthy?now:(prev?.lastSeen||firstObservedAt),
+      lastObservedAt:hasObservation?now:(prev?.lastObservedAt||firstObservedAt),
       lifetimeDays:Number(lifetimeDays.toFixed(3)),
       observedRuns,
       healthyRuns,
       failedRuns,
       currentSources,
       knownSources,
-      lastHealth:r?{
+      nextProbeAt:hasObservation?nextProbeAt(status,Date.now()):(prev?.nextProbeAt||null),
+      lastHealth:hasObservation?{
         rounds:r.rounds,
         successes:r.successes,
         successRate:r.successRate,
         avgLatency:r.avgLatency,
         p95Latency:r.p95Latency
-      }:null
+      }:(prev?.lastHealth||null)
     };
     nodes.set(id,entry);
   }
@@ -125,6 +147,7 @@ function main(){
     version:1,
     generatedAt:now,
     updatedAt:now,
+    updatedRunId:process.env.GITHUB_RUN_ID||null,
     activeCount:ordered.filter(x=>x.status!=='dead').length,
     stableCount:ordered.filter(x=>x.status==='stable').length,
     staleCount:ordered.filter(x=>x.status==='stale').length,
