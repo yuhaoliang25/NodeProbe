@@ -176,6 +176,10 @@ function updateNode(node, observation) {
     latencyMs: observation.latencyMs == null ? null : Number(observation.latencyMs),
     error: observation.error || null,
     probeEnvironment: observation.probeEnvironment || 'china-default',
+    reachabilitySuccess: observation.reachabilitySuccess == null ? null : Boolean(observation.reachabilitySuccess),
+    reachabilityLatencyMs: observation.reachabilityLatencyMs == null ? null : Number(observation.reachabilityLatencyMs),
+    directSuccess: observation.directSuccess == null ? null : Boolean(observation.directSuccess),
+    stabilityEligible: observation.stabilityEligible == null ? null : Boolean(observation.stabilityEligible),
   });
 
   if (node.observations.length > CONFIG.observationRetention) {
