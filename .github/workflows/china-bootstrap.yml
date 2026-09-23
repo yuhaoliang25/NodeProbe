@@ -106,7 +106,7 @@ jobs:
           };
 
           fs.mkdirSync('data', { recursive: true });
-          fs.writeFileSync('data/china-probe-candidates.json', JSON.stringify(output, null, 2) + '\\n');
+          fs.writeFileSync('data/china-probe-candidates.json', JSON.stringify(output, null, 2) + '\n');
           console.log(JSON.stringify({
             sourceStatuses: ['stable', 'active', 'probation'],
             candidates: output.candidates.length,
