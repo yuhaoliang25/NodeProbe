@@ -265,8 +265,8 @@ try{
   const success=Math.max(0,Math.min(1,r.successRate||0)),long=Math.max(0,Math.min(1,m?.weightedRate??m?.longRate??0));
   const latency=m?.avg?Math.max(0,1-Math.min(1,m.avg/5000)):0,p95=m?.p95?Math.max(0,1-Math.min(1,m.p95/10000)):0;
   const sourceList=Array.isArray(r.sources)?r.sources:[r.source].filter(Boolean);
-  const sourceRates=sourceList.map(s=>{const historical=sourceReputation.sources?.[s]?.weightedNodeSuccessRate;return Number.isFinite(Number(historical))?Number(historical):Number(sourceQuality.get(s)?.nodeSuccessRate)});
-  const validSourceRates=sourceRates.filter(Number.isFinite),sourceQualityScore=validSourceRates.length?validSourceRates.reduce((a,b)=>a+b,0)/validSourceRates.length:0;
+  // Source reputation is deliberately not folded into node quality scoring.
+  // Provenance is descriptive metadata only; node score comes from node evidence.
   const provenance=Math.min(1,Math.max(0,(sourceList.length-1)/3));
   return Math.round(100*(0.38*success+0.35*long+0.15*latency+0.09*p95+0.03*provenance));
  }
