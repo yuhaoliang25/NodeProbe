@@ -630,13 +630,13 @@ This prevents the system from treating a successful Global test as universal rea
 The current China probe is intentionally simple. It should not become permanently defined as:
 
 ```text
-Stable candidate → one delay request → China trust
+China asset candidate → bounded staged probe → China observation → lifecycle update
 ```
 
 A future China detection pipeline may progressively adopt the same staged structure used by Global:
 
 ```text
-Global Stable candidate
+China asset candidate
         ↓
 China Stage 1
         ↓
@@ -801,22 +801,18 @@ Independent:
 
 The architecture therefore favors reusable measurement primitives rather than a single universal probe meaning.
 
-### 22.5 Direct admission is Global Stable, not Global Best
+### 22.5 Direct admission is China Trusted assets
 
-The production direct pool uses:
+The production direct pool uses the persistent China assets that are currently `TRUSTED` and have a stored proxy definition.
 
-```text
-Global Stable ∩ China Trusted
-```
-
-Global Best is not required for China direct admission. Stable is already the Global capability/admission boundary; China then independently determines whether the node is usable from the China environment.
+Global Best is not required for China direct admission. Global Stable only supplies discovery information; China independently determines usability and lifecycle from China-side evidence.
 
 This keeps the responsibilities separate:
 
 ```text
-Global Stable → candidate/admission evidence
-China Probe   → China-side direct usability evidence
-China Asset   → China trust and lifecycle
+Global Stable → discovery / endpoint-definition evidence
+China Probe   → China-side usability evidence
+China Asset   → China lifecycle and persistent maintenance
 ```
 
 A node therefore does not need to be Global Best merely to become a China direct node.
@@ -835,7 +831,7 @@ China → A → B → Internet
 
 Here:
 
-- A (relay) is selected from the Global Stable population;
+- A (relay) is selected from the persistent China asset population;
 - A must have recent China reachability evidence but must currently fail the China direct admission result;
 - only the top CHINA_RELAY_TOP_K relay candidates are used;
 - B (landing) is selected from Global Best;
@@ -901,7 +897,7 @@ That would spend most of the budget testing pairs whose two endpoints already be
 Instead:
 
 ```text
-Relay A = Stable ∩ China-reachable ∩ Direct-weak
+Relay A = China asset ∩ China-reachable ∩ Direct-weak
 Landing B = Best - China Direct-capable
 ```
 
@@ -916,7 +912,7 @@ This section is the current deployment contract. It supersedes earlier descripti
 ### 24.1 Production and experimental boundaries
 
 Production China output is:
-- `subscriptions/direct.yaml` = Global Stable ∩ China Trusted.
+- `subscriptions/direct.yaml` = China Trusted assets with stored proxy definitions.
 - `subscriptions/pairs.yaml` = validated two-hop paths from the separate Pair experiment.
 - `mihomo/client.yaml` = client configuration that can compare Direct and validated Pair paths.
 
