@@ -44,6 +44,7 @@ for(const [endpointId,node] of Object.entries(assets)){
 const unique=xs=>{const m=new Map();for(const p of xs)m.set(id(p),p);return [...m.values()]};
 const pools={direct:unique(direct)};
 fs.mkdirSync(OUTPUT_DIR,{recursive:true});
+for(const obsolete of ['relay.yaml','landing.yaml'])fs.rmSync(path.join(OUTPUT_DIR,obsolete),{force:true});
 for(const [name,p] of Object.entries(pools))fs.writeFileSync(path.join(OUTPUT_DIR,name+'.yaml'),dump(p));
 fs.writeFileSync(path.join(OUTPUT_DIR,'china-pools.json'),JSON.stringify({
   generatedAt:new Date().toISOString(),
