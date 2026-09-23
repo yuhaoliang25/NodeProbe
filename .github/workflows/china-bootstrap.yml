@@ -1,0 +1,125 @@
+name: Bootstrap China feed from Global assets
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: nodeprobe-china-bootstrap
+  cancel-in-progress: false
+
+jobs:
+  bootstrap:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Restore Global Node Asset pool
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: download
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: nodeprobe-state/node-pool.json
+          destination: data/node-pool.json
+
+      - name: Build one-time China bootstrap feed
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const crypto = require('crypto');
+
+          const state = JSON.parse(fs.readFileSync('data/node-pool.json', 'utf8'));
+          const allowed = new Set(['stable', 'active', 'probation']);
+
+          function endpointId(proxy) {
+            const t = String(proxy.type || '').toLowerCase();
+            const auth = t === 'shadowsocks'
+              ? [proxy.cipher || '', proxy.password || '']
+              : t === 'vmess' || t === 'vless'
+                ? [proxy.uuid || '']
+                : [proxy.password || ''];
+            const ws = proxy['ws-opts'] || {};
+            const grpc = proxy['grpc-opts'] || {};
+            const reality = proxy['reality-opts'] || {};
+            return crypto.createHash('sha256').update(JSON.stringify([
+              t,
+              String(proxy.server).toLowerCase(),
+              Number(proxy.port),
+              auth,
+              proxy.network || 'tcp',
+              {
+                wsPath: ws.path || '',
+                wsHost: ws.headers?.Host || '',
+                grpcService: grpc['grpc-service-name'] || '',
+              },
+              proxy.tls ? 'tls' : 'plain',
+              proxy.sni || '',
+              proxy.flow || '',
+              reality['public-key'] || '',
+              reality['short-id'] || '',
+            ])).digest('hex').slice(0, 16);
+          }
+
+          function cleanProxy(proxy) {
+            const out = {};
+            for (const [key, value] of Object.entries(proxy || {})) {
+              if (key.startsWith('_')) continue;
+              if (key === 'endpoint-id' || key === 'source' || key === 'sources') continue;
+              out[key] = value;
+            }
+            return out;
+          }
+
+          const candidates = [];
+          for (const node of Object.values(state.nodes || {})) {
+            if (!node || !allowed.has(node.status) || !node.proxy) continue;
+            const proxy = cleanProxy(node.proxy);
+            if (!proxy.server || !proxy.port || !proxy.type) continue;
+            const id = String(node.fingerprint || endpointId(proxy));
+            proxy.name = proxy.name || ('GLOBAL-BOOTSTRAP-' + id);
+            candidates.push({
+              endpointId: id,
+              category: 'new',
+              score: 1000,
+              proxy,
+            });
+          }
+
+          const deduped = new Map();
+          for (const candidate of candidates) {
+            if (!deduped.has(candidate.endpointId)) deduped.set(candidate.endpointId, candidate);
+          }
+
+          const output = {
+            version: 1,
+            generatedAt: new Date().toISOString(),
+            purpose: 'one-time Global asset bootstrap for independent China assets',
+            candidates: [...deduped.values()],
+          };
+
+          fs.mkdirSync('data', { recursive: true });
+          fs.writeFileSync('data/china-probe-candidates.json', JSON.stringify(output, null, 2) + '\\n');
+          console.log(JSON.stringify({
+            sourceStatuses: ['stable', 'active', 'probation'],
+            candidates: output.candidates.length,
+            output: 'data/china-probe-candidates.json',
+          }, null, 2));
+          NODE
+
+      - name: Publish one-time China bootstrap feed
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: upload
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: data/china-probe-candidates.json
+          destination: nodeprobe-state/china/candidates.json
