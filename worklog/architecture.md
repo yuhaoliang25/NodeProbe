@@ -520,181 +520,78 @@ This is a deliberate asymmetry.
 
 The system is therefore not trying to make every node pass through an identical number of tests. It is trying to make the **amount of evidence required for acceptance depend on prior trust**.
 
-## 9. Historical Trust and Revalidation
+## 9. Node Lifecycle and Revalidation
 
-Historical reputation is a **trust prior**, not merely a numeric score.
+NodeProbe no longer maintains a separate Node Reputation state layer.
 
-The central rule is:
+Historical node evidence is represented directly by the persistent Node Pool and its lifecycle fields. The relevant distinction is between:
 
-> **Historical good nodes receive the benefit of established evidence; historical bad nodes must overcome established negative evidence.**
+- current health evidence;
+- accumulated historical observations;
+- the node's current lifecycle state;
+- scheduled maintenance/revalidation.
 
-This creates two different verification modes.
+A current observation therefore changes the Node Pool lifecycle according to the existing state machine rather than updating an independent reputation score.
 
-### 9.1 Trusted / historically good node
+### 9.1 Existing healthy nodes
 
-A node with strong positive historical evidence is treated optimistically during revalidation.
+A node with established positive history can remain in active/stable lifecycle states while being periodically re-tested.
 
-Conceptually:
+A single current failure does not erase its historical observations. Instead, the lifecycle records the failure and schedules the appropriate follow-up/revalidation according to the current maintenance policy.
 
-```
-historically good
-      ↓
-current test
-      │
-      ├── success → accept / continue normally
-      │
-      └── failure → revalidation, do not immediately kill
-                         ↓
-                    give additional chances
-                         ↓
-                    evaluate the sequence of evidence
-```
+Historical stability is therefore evidence for lifecycle interpretation, not a permanent exemption from testing.
 
-The important point is that a single current failure does not erase substantial historical evidence.
+### 9.2 DEAD nodes and recovery
 
-This does **not** mean that a historical Best/Stable node receives permanent immunity. It must still be tested again. Historical trust determines the interpretation of failure, not exemption from testing.
+A DEAD node is not necessarily forgotten immediately.
 
-### 9.2 Distrusted / historically bad node
+The Node Pool schedules bounded recovery rechecks. A successful recheck contributes recovery evidence; repeated successful observations can move the node back into an active/stable lifecycle state. A failed recheck keeps it DEAD and advances its recheck level. After the configured recovery sequence is exhausted, the persistent asset may be forgotten.
 
-A node with sufficiently negative historical evidence is treated pessimistically during recovery.
-
-Conceptually:
+The current implementation represents this with lifecycle fields such as:
 
 ```
-historically bad
-      ↓
-current test
-      │
-      ├── success → recovery evidence only; do not accept yet
-      │
-      └── failure → remains / becomes DEAD
+status
+everStable
+observedRuns
+healthyRuns
+failedRuns
+recoveryRuns
+deadSince
+recheckLevel
+nextProbeAt
 ```
 
-A bad node must accumulate a defined sequence of successful observations before it can regain trust.
+These fields are lifecycle and observation state. They are not a separate Node Reputation model.
 
-During this recovery sequence:
+### 9.3 Testing budget is separate from lifecycle semantics
 
-> **Any new failure breaks the recovery attempt and returns the node to the untrusted/dead side.**
+The number of rounds assigned by `test-google.js` is an evidence-collection budget.
 
-Thus the evidential burden is asymmetric:
-
-```
-Good history:
-    "one failure is not enough to overturn trust."
-
-Bad history:
-    "one success is not enough to overturn distrust."
-```
-
-This is the intended meaning of historical reputation.
-
-### 9.3 Why test count is not the trust model
-
-The number of tests assigned to a node is an implementation resource.
-
-It must not be confused with the trust rule.
-
-For example:
+It must not be confused with the Node Pool lifecycle itself:
 
 ```
-Node A: historically good
-    test 1 → success
-    ⇒ can be accepted immediately
+build-subscriptions
+    → decides which nodes need observation
 
-Node B: historically good
-    test 1 → failure
-    ⇒ receive additional evidence
+test-google
+    → decides how much current-run evidence to collect
 
-Node C: historically bad
-    test 1 → success
-    ⇒ still not accepted
+update-node-pool
+    → applies evidence to Node lifecycle and maintenance schedule
 
-Node C:
-    success → success → success → ...
-    ⇒ only after the recovery criterion is satisfied may trust be restored
-
-Node C:
-    success → failure
-    ⇒ recovery attempt fails; remain untrusted/dead
+build-subscriptions / selection
+    → derives Stable and Best from current evidence plus lifecycle history
 ```
 
-The important quantity is therefore not:
+The architecture should prefer these explicit lifecycle and observation fields over introducing another scalar Node Reputation score.
 
-```
-"How many tests did we give it?"
-```
+### 9.4 Separation from Source Reputation
 
-but:
+Source Reputation remains a separate Source-level mechanism.
 
-```
-"What evidence is required to change our trust in it?"
-```
+It may influence source scheduling and source lifecycle, but it must not directly add or subtract Node lifecycle state, node quality, or node health evidence.
 
-Testing budget, scheduling priority, and trust/acceptance semantics are separate concerns.
-
-### 9.4 Trust should be stateful, not reconstructed from a single score
-
-The architecture should preserve enough history to distinguish:
-
-- historically trusted;
-- currently healthy;
-- temporarily failing;
-- historically distrusted;
-- currently recovering;
-- recovered.
-
-A single scalar reputation score is useful for ranking or scheduling, but it is not sufficient to express these semantics.
-
-At minimum, the persistent node record should eventually be able to represent:
-
-```
-historicalTrust
-verificationState
-successStreak
-failureStreak
-lastVerificationAt
-```
-
-The exact field names are implementation details.
-
-The architecture should not, however, introduce a large independent state machine unless real workflow evidence requires it. Prefer the smallest state representation that can express the asymmetric trust rule.
-
-### 9.5 Recovery is not resurrection by one success
-
-A dead/untrusted node may be observed again because:
-
-- its source publishes it again;
-- discovery finds it again;
-- the node itself becomes usable again;
-- network conditions change.
-
-That observation is valuable, but it does not automatically erase historical distrust.
-
-Recovery should therefore be treated as **evidence accumulation**:
-
-```
-DEAD / UNTRUSTED
-       ↓
-successful observation
-       ↓
-RECOVERING
-       ↓
-more consecutive successes
-       ↓
-trusted lifecycle state
-```
-
-If a failure occurs before the recovery criterion is satisfied:
-
-```
-RECOVERING
-       ↓
-failure
-       ↓
-DEAD / UNTRUSTED
-```
-
-The recovery threshold is an implementation parameter and should be tuned only after observing real temporal data.
+A node's lifecycle is determined by evidence about that node.
 
 ## 10. Source Scheduling
 
