@@ -8,7 +8,6 @@ function readJson(file,fallback){try{return JSON.parse(fs.readFileSync(file,'utf
 function shard(name){return crypto.createHash('sha256').update(String(name||'').trim().toLowerCase()).digest('hex').slice(0,2)}
 function safeProxy(p){if(!p)return null;return {name:p.name||null,type:p.type||null,server:p.server||null,port:p.port||null,network:p.network||null,tls:Boolean(p.tls),sni:p.sni||null,flow:p.flow||null}}
 const pool=readJson('data/node-pool.json',{nodes:[]});
-const rep=readJson('data/reputation.json',{nodes:{}});
 const nodes=pool.nodes||[];
 const out='reports/node-index';
 fs.mkdirSync(out,{recursive:true});
