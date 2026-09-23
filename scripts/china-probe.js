@@ -249,10 +249,18 @@ async function main(){
       const id=endpointId(p);
       const trace=traces.get(id)||[];
       const last=trace[trace.length-1];
+      const reachabilityAttempt=trace.find(x=>x.stage==='reachability');
+      const directAttempts=trace.filter(x=>/^direct-stage1-fast|stage1-retry|stage2|deep-round-/.test(x.stage));
+      const directSuccess=directAttempts.some(x=>x.success);
+      const stability=stabilityById.has(id)?stabilityResults.find(x=>x.endpointId===id)||null:null;
       return {
         endpointId:id,
         at:trace[0]?.at||now(),
         success:Boolean(last?.success)&&(!stabilityById.has(id)||stableIds.has(id)),
+        reachabilitySuccess:Boolean(reachabilityAttempt?.success),
+        reachabilityLatencyMs:reachabilityAttempt?.latencyMs??null,
+        directSuccess,
+        stabilityEligible:stability?.eligible??null,
         latencyMs:last?.latencyMs??null,
         error:last?.error||null,
         timeout:Boolean(last?.timeout),
@@ -261,7 +269,7 @@ async function main(){
         successfulStages:trace.filter(x=>x.success).map(x=>x.stage),
         failedStages:trace.filter(x=>!x.success).map(x=>x.stage),
         attemptCount:trace.length,
-        stability:stabilityById.has(id)?stabilityResults.find(x=>x.endpointId===id)||null:null,
+        stability,
       };
     });
 
