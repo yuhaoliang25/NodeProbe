@@ -8,11 +8,13 @@ Its only production input in the first implementation is the current `subscripti
 
 It must not read or inherit:
 
-- `data/reputation.json`;
-- Global node reputation;
+- Global Node Pool state;
 - Global node lifecycle;
 - Global Best membership;
-- Global success-rate or latency scores.
+- Global node health history or scores;
+- any Global Node trust/lifecycle conclusion.
+
+It may consume only the published `subscriptions/stable.yaml` feed as a baseline/discovery input. Stable membership is an input boundary, not transferred China trust.
 
 The Global Stable pool is treated as a capability filter, not as China trust.
 
@@ -198,7 +200,7 @@ The client is responsible for current-path selection.
 
 ## 12. Observation Apply Boundary
 
-The China asset updater consumes observations produced by the China-side probe environment. It does not perform network tests itself and does not consult Global reputation.
+The China asset updater consumes observations produced by the China-side probe environment. It does not perform network tests itself and does not consult Global Node Pool state or Global Node lifecycle state.
 
 The observation boundary is:
 
@@ -214,7 +216,7 @@ China Node Asset
 
 An observation contains an endpoint identity, observation time, success/failure, optional latency, optional error category, and probe-environment identifier.
 
-The updater applies observations only to the China asset history. It never modifies Global node reputation.
+The updater applies observations only to the China asset history. It never modifies Global Node Pool state or Global Node lifecycle.
 
 This separation allows the probe implementation to evolve independently from the asset state machine and makes replay/testing of observations possible.
 
