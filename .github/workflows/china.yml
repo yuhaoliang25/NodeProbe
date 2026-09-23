@@ -98,6 +98,12 @@ jobs:
           bucket: nodeprobe
           source: data/china-node-assets.json
           destination: nodeprobe-state/china-node-assets.json
+      - name: Purge consumed China observation batches
+        if: success()
+        run: npm run china-sync -- purge-observations
+      - name: Purge consumed China pair observation batches
+        if: success()
+        run: npm run china-sync -- purge-pair-observations
       - name: Save China relay pair knowledge
         if: success()
         uses: backblaze-labs/b2-action@v1
