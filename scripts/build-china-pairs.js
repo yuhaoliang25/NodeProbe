@@ -12,7 +12,14 @@ const C={
   maxPairs:Number(process.env.CHINA_PAIR_MAX_OUTPUT||20),
 };
 function dump(proxies){return yaml.dump({proxies},{lineWidth:-1,noRefs:true,forceQuotes:true,quotingType:"'"})}
-function load(){try{return JSON.parse(fs.readFileSync(C.stateFile,'utf8'))}catch{return {pairs:{}}}}
+function load(){
+  if(!fs.existsSync(C.stateFile))throw new Error('China pair knowledge state missing: '+C.stateFile);
+  const state=JSON.parse(fs.readFileSync(C.stateFile,'utf8'));
+  if(!state||typeof state!=='object'||!state.pairs||typeof state.pairs!=='object'){
+    throw new Error('China pair knowledge state is invalid: '+C.stateFile);
+  }
+  return state;
+}
 const state=load();const cutoff=Date.now()-C.maxAgeMs;const candidates=[];
 for(const [pairId,p] of Object.entries(state.pairs||{})){
   const last=Date.parse(p.lastObservedAt||'');
