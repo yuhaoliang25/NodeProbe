@@ -3,7 +3,7 @@ name: Update free nodes
 on:
   workflow_dispatch:
   schedule:
-    - cron: '17 */4 * * *'
+    - cron: '17 * * * *'
 
 permissions:
   contents: write
