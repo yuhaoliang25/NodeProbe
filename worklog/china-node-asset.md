@@ -48,6 +48,8 @@ The persistent China asset contains, per endpoint:
 - `nextProbeAt`
 - `recheckLevel`
 
+`nextProbeAt` is the persisted maintenance schedule and is the primary due-time field. The candidate builder uses it directly when valid; it falls back to the legacy `lastProbeAt`-based interval calculation only for older state files that do not yet contain a valid schedule.
+
 The last field records why the endpoint was admitted to the China candidate set. It is not China trust.
 
 ## 4. Observation Semantics
