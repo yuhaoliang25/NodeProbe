@@ -134,6 +134,7 @@ A veteran is never exempt from testing. It receives priority when its maximum re
 The first implementation uses:
 
 - max 30 nodes per run;
+- recovery retries (`DEGRADED` / `UNTRUSTED` and `FORGOTTEN`) are bounded to at most one third of the run budget;
 - veteran retest interval: 24h;
 - failed retry cooldown: 2h;
 - forgotten recovery retry interval: 7d;
