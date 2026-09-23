@@ -58,11 +58,11 @@ function purgeDownloaded(prefix,localDir){
   }
   console.log(JSON.stringify({downloaded:downloaded.size,deleted},null,2));
 }
-function validateCandidateFile(){
+function validateCandidateFile(file, key){
   try{
-    const value=JSON.parse(fs.readFileSync(CANDIDATE_LOCAL,'utf8'));
-    if(!Array.isArray(value?.candidates)) return false;
-    return value.candidates.some(x=>x && x.endpointId);
+    const value=JSON.parse(fs.readFileSync(file,'utf8'));
+    if(!Array.isArray(value?.[key])) return false;
+    return value[key].some(x=>x && (x.endpointId || x.pairId));
   }catch{
     return false;
   }
@@ -74,14 +74,19 @@ if(mode==='pull-stable'){
 }else if(mode==='pull-candidates'){
   fs.mkdirSync(path.dirname(CANDIDATE_LOCAL),{recursive:true});
   run(['file','download','b2://'+BUCKET+'/'+CANDIDATE_REMOTE,CANDIDATE_LOCAL]);
-  if(!validateCandidateFile()){
+  if(!validateCandidateFile(CANDIDATE_LOCAL,'candidates')){
     try{fs.unlinkSync(CANDIDATE_LOCAL)}catch{}
     console.error('B2 China candidate feed is missing or invalid.');
     process.exit(1);
   }
-}else if(mode==='pull-pair-candidates'){
+ }else if(mode==='pull-pair-candidates'){
   fs.mkdirSync(path.dirname(PAIR_CANDIDATE_LOCAL),{recursive:true});
   run(['file','download','b2://'+BUCKET+'/'+PAIR_CANDIDATE_REMOTE,PAIR_CANDIDATE_LOCAL]);
+  if(!validateCandidateFile(PAIR_CANDIDATE_LOCAL,'pairs')){
+    try{fs.unlinkSync(PAIR_CANDIDATE_LOCAL)}catch{}
+    console.error('B2 China pair candidate feed is missing or invalid.');
+    process.exit(1);
+  }
 }else if(mode==='push-observations'){
   if(!fs.existsSync(OBS_DIR)){ console.log('no observation batches'); process.exit(0); }
   const files=fs.readdirSync(OBS_DIR).filter(x=>x.endsWith('.json')).sort();
