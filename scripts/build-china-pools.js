@@ -38,41 +38,30 @@ const trusted=new Set(Object.entries(assets)
   .filter(([,n])=>n&&n.state==='TRUSTED')
   .map(([k])=>k));
 
-const relay=[],landing=[],direct=[];
+const direct=[];
 for(const [endpointId,node] of Object.entries(assets)){
-  if(!trusted.has(endpointId))continue;
-  const p=stableMap.get(endpointId);
-  if(!p)continue;
-  if(bestMap.has(endpointId)){
-    direct.push(bestMap.get(endpointId));
-  }else{
-    relay.push(p);
-  }
+  if(node?.state!=='TRUSTED')continue;
+  const p=bestMap.get(endpointId);
+  if(p)direct.push(p);
 }
-for(const [endpointId,p] of bestMap){
-  if(!trusted.has(endpointId))landing.push(p);
-  else if(!direct.some(x=>id(x)===endpointId))direct.push(p);
-}
-
 const unique=xs=>{const m=new Map();for(const p of xs)m.set(id(p),p);return [...m.values()]};
-const pools={direct:unique(direct),relay:unique(relay),landing:unique(landing)};
+const pools={direct:unique(direct)};
 fs.mkdirSync(OUTPUT_DIR,{recursive:true});
 for(const [name,p] of Object.entries(pools))fs.writeFileSync(path.join(OUTPUT_DIR,name+'.yaml'),dump(p));
 fs.writeFileSync(path.join(OUTPUT_DIR,'china-pools.json'),JSON.stringify({
   generatedAt:new Date().toISOString(),
-  counts:Object.fromEntries(Object.entries(pools).map(([k,v])=>[k,v.length])),
+  counts:{direct:pools.direct.length},
   definitions:{
-    direct:'Best ∩ China Trusted',
-    relay:'Stable ∩ China Trusted - Best',
-    landing:'Best - China Trusted'
+    direct:'Global Best ∩ China Trusted',
+    relay:'experimental only; not part of the production China pool',
+    landing:'experimental only; not part of the production China pool'
   }
 },null,2)+'\n');
-
 console.log(JSON.stringify({
   stable:stable.length,
   best:best.length,
   trusted:[...trusted].length,
   direct:pools.direct.length,
-  relay:pools.relay.length,
-  landing:pools.landing.length
+  relay:0,
+  landing:0
 },null,2));
