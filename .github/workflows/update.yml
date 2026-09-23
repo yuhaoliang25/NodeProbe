@@ -227,12 +227,6 @@ jobs:
           TEST_EXPECTED: '204'
           GOOGLE_TEST_URL: https://www.google.com/generate_204
         run: node scripts/test-google.js
-      - name: Diagnose failed nodes
-        env:
-          DIAG_LIMIT: '100'
-          DIAG_TIMEOUT: '8000'
-          GOOGLE_TEST_URL: https://www.google.com/generate_204
-        run: node scripts/diagnose-failures.js
       - name: Detect node countries from server IPs
         env:
           GEO_MAX_NODES: '1000'
