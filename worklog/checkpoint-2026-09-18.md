@@ -77,7 +77,7 @@ Source 可能主动淘汰旧节点、寻找更好的节点。
 ## 当前已有数据
 
 - data/history.json：多轮健康检测历史
-- data/reputation.json：当时存在的历史节点信誉状态；该旧 Node Reputation 后续已移除。
+- data/reputation.json：历史上曾使用的节点信誉状态文件；已移除，现由 `data/node-pool.json` 负责节点资产与生命周期。
 - data/source-history.json：来源历史观测
 - data/source-reputation.json：来源信誉
 - data/source-similarity.json：来源重叠分析
@@ -133,7 +133,7 @@ Source 可能主动淘汰旧节点、寻找更好的节点。
 - 来源信誉仍然用于 Source lifecycle / probe frequency，避免来源长期不更新却一直按正常来源处理。
 
 当前状态：
-- 当时的 Node Reputation：评价节点本身；该独立节点信誉体系后续已移除。
+- 历史上的 Node Reputation：评价节点本身；该独立节点信誉体系后续已移除，当前不再作为独立状态层。
 - Node Pool：维护 NodeProbe 自有节点资产及生命周期。
 - Source Reputation：评价来源渠道。
 - Source Evolution：观察来源的节点集合变化，暂不直接惩罚来源。
@@ -166,7 +166,7 @@ Repository 设置了有限 revisit interval，近期已经展开过的 repo 不�
 - Search ranking：GitHub 当前如何排序；
 - Discovery progress：NodeProbe 已经探索到哪里。
 
-这层 discovery memory 不参与 Source Reputation，也不参与 Node Reputation。
+这层 discovery memory 不参与 Source Reputation，也不参与当前 Node Pool 生命周期判断。
 
 当前设计仍保持 bounded crawler：
 - GitHub 每个 channel 每次只推进有限页；
