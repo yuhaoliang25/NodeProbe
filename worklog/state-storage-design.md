@@ -256,7 +256,7 @@ NodeProbe-State/
 │   ├── source-history.json
 │   ├── source-evolution.json
 │   ├── discovery-state.json
-│   ├── reputation.json
+│   ├── source-reputation.json
 │   └── ip-geolocation.json
 └── manifest.json
 `
