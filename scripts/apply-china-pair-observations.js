@@ -25,9 +25,11 @@ function apply(){
   for(const b of loadBatches()){
     if(b.name&&seen.has(b.name))continue;
     const d=b.data||{};
+    const screen=Array.isArray(d.screen)?d.screen:[];
     const accepted=Array.isArray(d.accepted)?d.accepted:[];
+    const acceptedMap=new Map(accepted.map(x=>[x.pairId,x]));
     const pairConfigs=new Map((Array.isArray(d.pairs)?d.pairs:[]).map(x=>[x.pairId,x]));
-    for(const x of accepted){
+    for(const x of screen){
       const key=pairKey(x);
       const cfg=pairConfigs.get(x.pairId)||{};
       const p=state.pairs[key]||{pairId:key,relayEndpointId:x.relayEndpointId,landingEndpointId:x.landingEndpointId,relay:cfg.relay||null,landing:cfg.landing||null,observations:[]};
@@ -38,17 +40,18 @@ function apply(){
       p.lastImprovement=Boolean(x.improved);
       p.observations.push({
         at:x.at||d.generatedAt||now(),
-        success:true,
+        success:Boolean(x.success),
         screenLatencyMs:x.latencyMs??null,
         baselineLatencyMs:x.baselineLatencyMs??null,
-        improvement:x.improved?((x.baselineLatencyMs&&x.latencyMs)?1-x.latencyMs/x.baselineLatencyMs:null):null,
-        confirmationSuccessRate:x.confirmationSuccessRate??null,
-        confirmationAttempts:x.confirmationAttempts??0,
+        improvement:x.improved&&x.baselineLatencyMs&&x.latencyMs?1-x.latencyMs/x.baselineLatencyMs:null,
+        improved:Boolean(x.improved),
+        confirmationSuccessRate:acceptedMap.get(x.pairId)?.confirmationSuccessRate??null,
+        confirmationAttempts:acceptedMap.get(x.pairId)?.confirmationAttempts??0,
         environment:d.probeEnvironment||'china-default'
       });
       p.observations=p.observations.slice(-C.retention);
-      p.successes=(p.successes||0)+1;
-      p.lastSuccessAt=p.lastObservedAt;
+      if(x.success&&x.improved){p.successes=(p.successes||0)+1;p.lastSuccessAt=p.lastObservedAt;}
+      p.lastScreenSuccess=Boolean(x.success);p.lastImproved=Boolean(x.improved);
       state.pairs[key]=p;applied++;
     }
     if(b.name)seen.add(b.name);
