@@ -9,8 +9,12 @@ const ASSET_FILE=process.env.CHINA_ASSET_FILE||'data/china-node-assets.json';
 const OUTPUT_DIR=path.resolve(process.env.CHINA_POOL_DIR||'subscriptions');
 
 function loadAssets(){
-  try{return JSON.parse(fs.readFileSync(ASSET_FILE,'utf8')).nodes||{}}
-  catch{return {}}
+  if(!fs.existsSync(ASSET_FILE))throw new Error('China asset state missing: '+ASSET_FILE);
+  const state=JSON.parse(fs.readFileSync(ASSET_FILE,'utf8'));
+  if(!state||typeof state!=='object'||!state.nodes||typeof state.nodes!=='object'){
+    throw new Error('China asset state is invalid: '+ASSET_FILE);
+  }
+  return state.nodes;
 }
 function id(p){
   if(p['endpoint-id'])return p['endpoint-id'];
