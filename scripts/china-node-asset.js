@@ -212,7 +212,11 @@ function updateNode(node, observation) {
   node.recentFailures = recent.filter(x => !x.success).length;
 
   const wasForgotten = node.state === 'FORGOTTEN';
-  if (wasForgotten && observation.success) {
+  const wasUntrusted = node.state === 'UNTRUSTED';
+  if ((wasForgotten || wasUntrusted) && observation.success) {
+    // Recovery from a failed state must rebuild evidence. One successful
+    // recheck must not immediately inherit enough historical rate to become
+    // TRUSTED.
     node.state = 'PROBATION';
   } else {
     node.state = deriveState(node);
