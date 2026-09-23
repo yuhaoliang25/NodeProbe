@@ -234,6 +234,17 @@ function updateNode(node, observation) {
 }
 
 function isDue(node, atMs) {
+  // nextProbeAt is the persisted scheduling decision. Do not reconstruct the
+  // schedule from lastProbeAt here, because lifecycle transitions may change
+  // the next interval independently of the previous observation time.
+  if (node.nextProbeAt) {
+    const next = Date.parse(node.nextProbeAt);
+    if (Number.isFinite(next)) return atMs >= next;
+  }
+
+  // Backward-compatible fallback for older state files that predate
+  // nextProbeAt. Once such a node is updated, updateNode() writes the
+  // persisted schedule again.
   if (!node.lastProbeAt) return true;
 
   const last = Date.parse(node.lastProbeAt);
