@@ -24,11 +24,6 @@ function observationId(o){
   ])).digest('hex');
 }
 
-function loadCandidates(){
-  const d=JSON.parse(fs.readFileSync(CONFIG.candidateFile,'utf8'));
-  return Array.isArray(d?.candidates)?d.candidates:[];
-}
-
 function loadObservations(){
   const out=[];
   try{
@@ -60,7 +55,6 @@ function loadObservations(){
 function apply(){
   const observations=loadObservations();
   const state=loadState();
-  const candidateIds=new Set(loadCandidates().map(x=>x.endpointId));
   const appliedIds=new Set(Array.isArray(state.appliedObservationIds)?state.appliedObservationIds:[]);
   const processedBatches=new Set(Array.isArray(state.processedObservationBatches)?state.processedObservationBatches:[]);
   const at=now();
@@ -73,9 +67,9 @@ function apply(){
     if(item.batchName)batchesSeen.add(item.batchName);
     const id=observationId(o);
     if(appliedIds.has(id))continue;
-    // Accept observations for currently selected candidates, or for assets that
-    // already exist. Do not create arbitrary China assets from an unknown endpoint.
-    if(!candidateIds.has(o.endpointId) && !state.nodes[o.endpointId])continue;
+    // Observations are authoritative evidence from the China probe agent.
+    // Candidate files are scheduling artifacts and may be absent or stale on cold start;
+    // do not make lifecycle application depend on the next candidate feed.
     let node=state.nodes[o.endpointId];
     if(!node){
       node={
