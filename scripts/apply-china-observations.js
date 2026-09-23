@@ -55,7 +55,7 @@ function loadObservations(){
 /*
  * Observation application is intentionally separate from network probing.
  * A China-side agent can produce the observation file and then call this
- * updater. No Global reputation is consulted here.
+ * updater. No Global Node Pool or Global Node lifecycle state is consulted here.
  */
 function apply(){
   const observations=loadObservations();
