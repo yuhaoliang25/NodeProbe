@@ -7,6 +7,8 @@ Wants=network-online.target
 Type=oneshot
 WorkingDirectory=%h/NodeProbe
 EnvironmentFile=%h/.config/nodeprobe/china.env
+# User-installed CLI tools (including b2v4) are commonly under ~/.local/bin.
+Environment=PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin
 ExecStart=%h/NodeProbe/scripts/china-cycle.sh
 TimeoutStartSec=15min
 Nice=5
