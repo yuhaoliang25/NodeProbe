@@ -688,3 +688,111 @@ Current default China stability configuration is intentionally conservative but 
 A node that reaches Deep but fails China Stability Confirmation produces a failed final China observation for that probe run. Its detailed stability attempts remain in the immutable observation batch, allowing later threshold analysis without treating the node as permanently dead.
 
 Most importantly, this is still not Global Best/Stable logic copied into China. The same measurement engine is reused; the China environment, observations, history and asset state remain independent.
+
+
+## 22. Direct-first China Probe Architecture
+
+The China design was revised after separating the question of **China-side reachability** from the question of **end-to-end proxy performance**.
+
+The production objective is now:
+
+> Find nodes that can be directly used from the China probe environment. Relay combinations are an experimental fallback, not the definition of the China pool.
+
+### 22.1 Two different measurements
+
+A China probe must distinguish:
+
+```text
+China → Node
+```
+
+from:
+
+```text
+China → Node → Internet target
+```
+
+The first measures **China-side endpoint reachability**. It should not use a proxy to access Google. The current Stage 0 therefore performs a direct TCP connection to the node endpoint.
+
+The second measures **actual direct proxy usability**. Mihomo is appropriate here because the desired measurement is the real path:
+
+```text
+China → Node → Target
+```
+
+The current China pipeline therefore starts with endpoint reachability and then applies the Mihomo-based direct proxy stages only to reachable candidates.
+
+### 22.2 Production pool
+
+The production China pool is now:
+
+```text
+Global Best ∩ China Trusted
+```
+
+and is published as `subscriptions/direct.yaml`.
+
+The previous Stable ∩ Trusted relay pool and Best - Trusted landing pool are no longer treated as production China roles. They remain a possible future experimental branch.
+
+This prevents the architecture from assuming that an additional relay hop is beneficial.
+
+### 22.3 Why relay remains an experiment
+
+For a relay A and landing B, a relay path can only outperform A's direct Internet path when, in simplified terms:
+
+```text
+cost(A → B) + cost(B → target)
+    <
+cost(A → target)
+```
+
+This is possible because Internet routing is destination- and path-dependent. A may have a poor path to a target while having an unusually good path to B, and B may have excellent connectivity to that target.
+
+But this is a hypothesis to test, not an assumption to encode into the primary architecture.
+
+A full relay search also introduces a combinatorial A×B problem. Therefore the production system should not pay that complexity unless direct China exits prove insufficient.
+
+A future relay experiment may use a bounded heuristic:
+
+```text
+1. measure China-side direct reachability;
+2. rank a small number of good relay candidates;
+3. for each selected relay, test a bounded set of landing candidates;
+4. compare China → A → B → target against China → A → target;
+5. retain a relay only when the measured end-to-end result demonstrates a meaningful and repeatable gain.
+```
+
+This is an experiment, not an optimal-route solver.
+
+### 22.4 Reuse boundary
+
+Global detection modules can still be reused for **end-to-end proxy testing and generic measurement mechanics**.
+
+They must not be reused as the semantic definition of China reachability.
+
+The correct abstraction boundary is:
+
+```text
+Reusable:
+- concurrency
+- timeout
+- retries
+- attempt tracing
+- multi-round execution
+- latency statistics
+- stability metrics
+
+Environment-specific:
+- China → Node reachability
+- China → Node → target performance
+- Global → Node → target performance
+
+Independent:
+- observations
+- reputation
+- asset state
+- trust
+- production pools
+```
+
+The architecture therefore favors reusable measurement primitives rather than a single universal probe meaning.
