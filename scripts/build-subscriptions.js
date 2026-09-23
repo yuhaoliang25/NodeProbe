@@ -91,6 +91,11 @@ for(const p of proxies){
 // Snapshot only current Source discovery membership before historical Node Pool
 // entries are merged; pool-only nodes must never reintroduce stale sources.
 const currentSourceMembership=new Map([...sourcesById].map(([id,list])=>[id,[...new Set(list||[])]]));
+// The source-derived inventory is the broad discovery feed for China. It is
+// intentionally captured before historical Node Pool entries are merged, so
+// this feed carries fresh source information without inheriting Global Stable
+// eligibility rules or turning the Global pool into China's membership list.
+const chinaDiscoveryProxies=proxies.map(p=>({...p}));
 const poolFile='data/node-pool.json';
 let poolState={version:1,nodes:[],updatedAt:null,updatedRunId:null};
 try{
@@ -214,6 +219,7 @@ function dumpSubscription(set){
   return yaml.dump({proxies:set},{...yamlOptions});
 }
 fs.writeFileSync('subscriptions/all.yaml',dumpSubscription(fullClean));
+fs.writeFileSync('subscriptions/china-discovery.yaml',dumpSubscription(chinaDiscoveryProxies.map(({_source,_sources,_id,...p})=>{delete p['endpoint-id'];return p;})));
 try{
  const h=JSON.parse(fs.readFileSync('data/health.json','utf8'));
  const history=JSON.parse(fs.readFileSync('data/history.json','utf8'));
