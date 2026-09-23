@@ -90,7 +90,7 @@ Initial transition policy:
 - NEW: no successful observation yet.
 - PROBATION: at least one successful observation, but insufficient evidence for trust.
 - TRUSTED: at least 5 observations and recent success rate >= 0.90, with no current failure streak.
-- DEGRADED: a previously trusted node has accumulated 2 consecutive failures, or recent success rate falls below 0.70.
+- DEGRADED: a previously trusted node has accumulated 2 consecutive failures, or recent success rate falls below 0.70. It remains DEGRADED until it records 3 consecutive successful observations, then returns to PROBATION for further evidence.
 - UNTRUSTED: 6 consecutive failures.
 - FORGOTTEN: UNTRUSTED retention expires after scheduled rechecks fail to produce recovery evidence.
 
