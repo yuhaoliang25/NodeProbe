@@ -402,5 +402,5 @@ fs.writeFileSync('data/source-history.json',JSON.stringify(sourceRuns,null,2));
  }catch(e){console.log('source registry update skipped:',e.message)}
  console.log('google/stable/best:',google.size,stable.size,best.size);
 }catch(e){console.log('health data unavailable; only all.yaml generated:',e.message)}
-fs.writeFileSync('data/candidates.json',JSON.stringify(proxies,null,2));
+fs.writeFileSync('data/candidates.json',JSON.stringify(selected,null,2));
 console.log('candidate nodes:',clean.length,'maintenance due:',maintenance.length,'exploration available:',exploration.length,'retained current-run:',currentRunObserved.size,'capacity:',candidateLimit);
