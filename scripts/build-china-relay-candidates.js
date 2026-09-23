@@ -31,8 +31,12 @@ function loadYaml(file){
   return Array.isArray(d?.proxies)?d.proxies.filter(p=>p&&p.name&&p.server&&p.port&&p.type):[];
 }
 function loadAssets(){
-  try{return JSON.parse(fs.readFileSync(CONFIG.assetFile,'utf8')).nodes||{}}
-  catch{return {}}
+  if(!fs.existsSync(CONFIG.assetFile))throw new Error('China asset state missing: '+CONFIG.assetFile);
+  const state=JSON.parse(fs.readFileSync(CONFIG.assetFile,'utf8'));
+  if(!state||typeof state!=='object'||!state.nodes||typeof state.nodes!=='object'){
+    throw new Error('China asset state is invalid: '+CONFIG.assetFile);
+  }
+  return state.nodes;
 }
 function latest(node){
   const xs=Array.isArray(node?.observations)?node.observations:[];
