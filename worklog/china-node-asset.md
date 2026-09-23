@@ -258,14 +258,15 @@ The client configuration layer consumes these three pools. It is intentionally s
 
 China Probe transport uses Backblaze B2 as an asynchronous inbox/outbox rather than a mutable observation file.
 
-The NodeProbe side publishes the candidate feed under `nodeprobe-state/china/candidates.json`.
+The NodeProbe side publishes the current Global Stable pool under `nodeprobe-state/china/stable.yaml` and the bounded China candidate feed under `nodeprobe-state/china/candidates.json`.
 
-The China-side agent pulls that feed, probes the selected endpoints, and writes immutable observation batches under `nodeprobe-state/china/observations/<environment>/...`.
+The China-side agent pulls `stable.yaml` from B2 as its authoritative Global Stable input for the probe cycle, then pulls the bounded candidate feed to decide which Stable endpoints to test. It writes immutable observation batches under `nodeprobe-state/china/observations/<environment>/...`.
 
 A batch is never overwritten by a later probe run. `apply-china-observations` is idempotent, so replaying an already consumed batch does not duplicate evidence.
 
 The repository includes `scripts/china-b2-sync.js` for the local China machine:
 
+- `npm run china-sync -- pull-stable`
 - `npm run china-sync -- pull-candidates`
 - `npm run china-sync -- push-observations`
 
@@ -983,6 +984,8 @@ B2 is transport, not authoritative trust state. The authoritative persistent sta
 `scripts/china-cycle.sh` is the local entry point:
 
 ```text
+pull-stable
+    ↓
 pull-candidates
     ↓
 china-probe
@@ -1002,7 +1005,7 @@ try pull-pair-candidates
        skip Pair only
 ```
 
-The systemd timer runs this cycle approximately every 30 minutes. The China machine requires no inbound service from GitHub; it only needs outbound access to B2 and the tested endpoints.
+The systemd timer runs this cycle approximately every 30 minutes. The China machine requires no inbound service from GitHub; it only needs outbound access to B2 and the tested endpoints. The B2 credentials are supplied through the machine environment and are not stored in the repository.
 
 ### 24.4 GitHub China workflow cycle
 
@@ -1039,8 +1042,8 @@ This means the China machine normally probes using the latest candidate feed pro
 The information crossing the China boundary is deliberately asymmetric:
 
 **GitHub → China**
-- candidate endpoint definitions;
-- bounded candidate selection;
+- `stable.yaml`: current Global Stable endpoint definitions;
+- `candidates.json`: bounded candidate selection for the current Stable pool;
 - Pair experiment definitions.
 
 **China → GitHub**
