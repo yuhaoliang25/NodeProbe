@@ -26,9 +26,12 @@ function apply(){
     if(b.name&&seen.has(b.name))continue;
     const d=b.data||{};
     const accepted=Array.isArray(d.accepted)?d.accepted:[];
+    const pairConfigs=new Map((Array.isArray(d.pairs)?d.pairs:[]).map(x=>[x.pairId,x]));
     for(const x of accepted){
       const key=pairKey(x);
-      const p=state.pairs[key]||{pairId:key,relayEndpointId:x.relayEndpointId,landingEndpointId:x.landingEndpointId,observations:[]};
+      const cfg=pairConfigs.get(x.pairId)||{};
+      const p=state.pairs[key]||{pairId:key,relayEndpointId:x.relayEndpointId,landingEndpointId:x.landingEndpointId,relay:cfg.relay||null,landing:cfg.landing||null,observations:[]};
+      p.relay=p.relay||cfg.relay||null;p.landing=p.landing||cfg.landing||null;
       p.lastObservedAt=x.at||d.generatedAt||now();
       p.lastScreenLatencyMs=x.latencyMs??null;
       p.lastBaselineLatencyMs=x.baselineLatencyMs??null;
