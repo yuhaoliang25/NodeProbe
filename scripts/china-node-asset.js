@@ -272,8 +272,6 @@ function scoreCandidate(node, category, atMs) {
 
 function buildCandidates(stable, state, atMs) {
   const candidates = [];
-  const stableById = new Map(stable.map(item => [item.endpointId, item]));
-
   // Stable is an exploration feed: it can introduce new endpoints and refresh
   // the current proxy definition for known endpoints. It is not the authority
   // for China asset membership or maintenance scheduling.
