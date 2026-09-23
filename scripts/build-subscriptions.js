@@ -224,8 +224,6 @@ try{
  }
  const google=new Set(h.results.filter(r=>currentRate(r)>0).map(r=>r.name));
  const stable=new Set(h.results.filter(stableEligible).map(r=>r.name));
- let reputation={nodes:{}};
- try{reputation=JSON.parse(fs.readFileSync('data/reputation.json','utf8'))}catch{}
  const best=new Set(h.results.filter(bestEligible).map(r=>r.name));
  function qualityScore(r,m){
   const success=Math.max(0,Math.min(1,r.successRate||0)),long=Math.max(0,Math.min(1,m?.weightedRate??m?.longRate??0));
