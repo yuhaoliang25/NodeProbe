@@ -15,7 +15,7 @@ for(const f of fs.readdirSync(out))if(f.endsWith('.json'))fs.unlinkSync(path.joi
 const generatedAt=new Date().toISOString(), groups=new Map();
 for(const n of nodes){
   if(!n.fingerprint)continue;
-  const r=rep.nodes?.[n.fingerprint]||{}, h=n.lastHealth||{};
+  const h=n.lastHealth||{};
   const item={
     fingerprint:n.fingerprint,
     node:safeProxy(n.proxy),
