@@ -40,7 +40,7 @@ const direct = loadPool('direct.yaml');
 const pairs = loadPool('pairs.yaml');
 
 const directNames = direct.map(p => p.name);
-const pairNames = pairs.filter(p => String(p.name).startsWith('PAIR-')).map(p => p.name);
+const pairNames = pairs.filter(p => String(p.name).startsWith('PAIR-') && !String(p.name).startsWith('PAIR-RELAY-')).map(p => p.name);
 const proxies = uniqueProxies([...direct, ...pairs]);
 const config = {
   'mixed-port': 7890,
