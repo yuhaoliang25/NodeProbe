@@ -65,7 +65,6 @@ jobs:
           source: nodeprobe-state/china/observations/
           destination: data/china-probe-observations/
       - name: Pull China pair observation inbox from B2
-        continue-on-error: true
         uses: backblaze-labs/b2-action@v1
         with:
           action: download
