@@ -125,7 +125,14 @@ function deriveState(node) {
     return 'TRUSTED';
   }
 
-  if (node.state === 'DEGRADED') return 'DEGRADED';
+  if (node.state === 'DEGRADED') {
+    // Degraded nodes need a short fresh recovery streak before they re-enter
+    // probation. This prevents one success from erasing degraded status while
+    // still allowing sustained recovery.
+    if (node.successStreak >= 3) return 'PROBATION';
+    return 'DEGRADED';
+  }
+
   if (node.successStreak >= 1) return 'PROBATION';
 
   return 'PROBATION';
