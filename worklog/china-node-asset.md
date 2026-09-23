@@ -89,7 +89,7 @@ Initial transition policy:
 - PROBATION: at least one successful observation, but insufficient evidence for trust.
 - TRUSTED: at least 5 observations and recent success rate >= 0.90, with no current failure streak.
 - DEGRADED: a previously trusted node has accumulated 2 consecutive failures, or recent success rate falls below 0.70.
-- UNTRUSTED: 6 consecutive failures, or a degraded/probation node has persistent recent failure.
+- UNTRUSTED: 6 consecutive failures.
 - FORGOTTEN: UNTRUSTED retention expires after scheduled rechecks fail to produce recovery evidence.
 
 These thresholds are initial operational parameters, not claims that they are optimal.
@@ -161,19 +161,16 @@ This prevents both:
 
 China trust produces a reachability set `R`.
 
-With:
+The production direct pool is derived from China assets only:
 
-- `S` = current Global Stable set;
-- `B` = current Global Best set;
-- `R` = China trusted/reliably reachable set;
+- Direct = China assets in `TRUSTED` state with a stored proxy definition.
 
-derived roles are:
+The relay/landing pair experiment is separate:
 
-- Relay-only = `S ∩ R - B`
-- Landing = `B - R`
-- Direct = `B ∩ R`
+- Relay candidates = China assets whose latest China reachability is good and whose direct exit is weak.
+- Landing candidates = Global Best nodes that are not already China Trusted/direct-capable.
 
-Relay is a derived role, not a permanent China lifecycle state.
+These are derived experimental roles, not permanent China lifecycle states.
 
 ## 10. Non-goals
 
@@ -235,25 +232,21 @@ Network probing is not simulated by the GitHub-side asset updater. A future Chin
 
 ## 14. Pool Derivation Implementation
 
-The first pool derivation uses the persistent China asset state and current Global Stable/Best pools.
+The production direct pool is derived entirely from the persistent China asset state.
 
 Let:
 
-- S = current Global Stable;
-- B = current Global Best;
-- R = China assets currently in TRUSTED state.
+- R = China assets currently in TRUSTED state and carrying a stored proxy definition.
 
-The generated pools are:
+The generated production pool is:
 
-- direct.yaml = B ∩ R;
-- relay.yaml = S ∩ R - B;
-- landing.yaml = B - R.
+- direct.yaml = R.
 
-These are views derived from current state. They do not mutate China trust and do not create Relay/Landing lifecycle states.
+Relay/landing are experimental pair-candidate views and are not generated as production China pools.
 
 The derivation is implemented by scripts/build-china-pools.js and exposed as npm run china-pools.
 
-The client configuration layer consumes these three pools. It is intentionally separate from China asset evolution so that pool policy can change without rewriting historical China observations.
+The client configuration layer consumes the resulting production and experimental outputs separately. Pool policy can therefore change without rewriting historical China observations.
 
 
 ## 15. China Probe Transport
