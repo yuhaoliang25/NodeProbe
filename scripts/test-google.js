@@ -118,27 +118,6 @@ async function main(){
  let history=[]; try{history=JSON.parse(fs.readFileSync('data/history.json','utf8'))}catch{}
  history.push(persistedReport); history=history.slice(-30);
  fs.writeFileSync('data/history.json',JSON.stringify(history,null,2));
- const reputation={generatedAt:new Date().toISOString(),nodes:{}};
- for(const [id,r] of new Map(rows.filter(x=>x.fingerprint).map(x=>[x.fingerprint,x]))){
-   const past=history.flatMap(b=>b.results||[]).filter(x=>x.fingerprint===id);
-   const observations=past.flatMap(x=>Array.isArray(x.delays)?x.delays:[]);
-   const tests=observations.length, successes=observations.filter(x=>Number(x)>0).length;
-   const failures=tests-successes;
-   // Keep total counters for auditability, but base reputation on a recency-weighted
-   // window so an old healthy period cannot hide a current outage.
-   const recent=observations.slice(-12);
-   const weights=recent.map((_,i)=>i+1);
-   const weightTotal=weights.reduce((a,b)=>a+b,0);
-   const weightedSuccessRate=weightTotal?recent.reduce((s,x,i)=>s+(Number(x)>0?weights[i]:0),0)/weightTotal:0;
-   const recent6=observations.slice(-6);
-   const recentFailures=recent6.filter(x=>!(Number(x)>0)).length;
-   const recentSuccesses=recent6.filter(x=>Number(x)>0).length;
-   const status=recent6.length>=6&&recentFailures===6?'quarantine':
-     (recentFailures>=3||weightedSuccessRate<0.6?'degraded':
-     (recent6.length>=3&&recentFailures>0&&recentSuccesses>=2?'flaky':'active'));
-   reputation.nodes[id]={name:r.name,longTermSuccessRate:weightedSuccessRate,totalTests:tests,totalFailures:failures,recentFailures,recentSuccesses,status,lastSeen:new Date().toISOString()};
- }
- fs.writeFileSync('data/reputation.json',JSON.stringify(reputation,null,2));
  console.log('tested:',rows.length,'current>=80%:',rows.filter(x=>x.successRate>=.8).length,'current>=90%+latency:',rows.filter(x=>x.successRate>=.9&&x.p95Latency<=5000&&x.avgLatency<=2500).length,'stage1-flaky:',rows.filter(x=>x.stage1Flaky).length);
 }
 main().catch(e=>{console.error(e);process.exit(1)});
