@@ -147,7 +147,7 @@ A trusted node does not lose all historical value after one failure.
 
 A failure moves it into revalidation/degraded handling according to its failure streak.
 
-An untrusted node does not recover from one success. It must accumulate successful observations again.
+An untrusted or forgotten node does not recover directly from one success. The first successful recovery observation returns it to PROBATION, so its recent historical rate cannot immediately promote it to TRUSTED. It must accumulate fresh successful observations again.
 
 After repeated failed rechecks, an endpoint may enter `FORGOTTEN`. Forgotten assets are retained in persistent state but leave the normal frequent probe loop. They are eligible for a long-interval recovery recheck from the persistent China asset pool.
 
