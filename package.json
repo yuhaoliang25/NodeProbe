@@ -21,7 +21,11 @@
     "china-probe": "node scripts/china-probe.js",
     "china-pools": "node scripts/build-china-pools.js",
     "china-sync": "node scripts/china-b2-sync.js",
-    "china-pull-observations": "node scripts/pull-china-observations.js pull-observations"
+    "china-pull-observations": "node scripts/pull-china-observations.js pull-observations",
+    "china-relay-candidates": "node scripts/build-china-relay-candidates.js",
+    "china-relay-probe": "node scripts/china-relay-probe.js",
+    "china-pair-apply": "node scripts/apply-china-pair-observations.js",
+    "china-pairs": "node scripts/build-china-pairs.js"
   },
   "dependencies": {
     "js-yaml": "^4.1.0"
