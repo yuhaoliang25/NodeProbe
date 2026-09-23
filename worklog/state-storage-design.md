@@ -166,7 +166,7 @@ data/discovery-state.json
 | data/ip-geolocation.json | 持久化，但可视为 cache；丢失后可重新查询 |
 | data/history.json | 保存健康观测历史；由 Node lifecycle / selection 使用 |
 | data/candidates.json | 通常不需要长期保存，可由 Source + NodePool 重建 |
-| data/scores.json | 若完全由当前输入计算，应视为 derived |
+| data/scores.json | 当前运行由 health/history 计算出的派生选择信息；不作为持久化 State |
 | data/health.json | 若 Node lifecycle / history 已保存完整信息，可考虑减少重复存储 |
 | data/raw-sources.json | 通常是当前运行中间产物，不宜作为核心长期状态 |
 
