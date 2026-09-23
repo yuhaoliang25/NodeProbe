@@ -796,3 +796,23 @@ Independent:
 ```
 
 The architecture therefore favors reusable measurement primitives rather than a single universal probe meaning.
+
+### 22.5 Direct admission is Global Stable, not Global Best
+
+The production direct pool uses:
+
+```text
+Global Stable ∩ China Trusted
+```
+
+Global Best is not required for China direct admission. Stable is already the Global capability/admission boundary; China then independently determines whether the node is usable from the China environment.
+
+This keeps the responsibilities separate:
+
+```text
+Global Stable → candidate/admission evidence
+China Probe   → China-side direct usability evidence
+China Asset   → China trust and lifecycle
+```
+
+A node therefore does not need to be Global Best merely to become a China direct node.
