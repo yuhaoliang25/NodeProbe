@@ -81,15 +81,14 @@ function loadStable() {
 }
 
 function loadState() {
-  try {
-    return JSON.parse(fs.readFileSync(CONFIG.stateFile, 'utf8'));
-  } catch {
-    return {
-      version: 1,
-      generatedAt: null,
-      nodes: {},
-    };
+  if (!fs.existsSync(CONFIG.stateFile)) {
+    return { version: 1, generatedAt: null, nodes: {} };
   }
+  const state = JSON.parse(fs.readFileSync(CONFIG.stateFile, 'utf8'));
+  if (!state || typeof state !== 'object' || !state.nodes || typeof state.nodes !== 'object') {
+    throw new Error('China asset state is invalid: '+CONFIG.stateFile);
+  }
+  return state;
 }
 
 function recentRate(node) {
