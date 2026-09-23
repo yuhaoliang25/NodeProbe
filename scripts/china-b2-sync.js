@@ -26,6 +26,15 @@ function run(args){
 function usage(){
   console.log('usage: node scripts/china-b2-sync.js pull-stable | pull-candidates | push-observations | pull-pair-candidates | push-pair-observations');
 }
+function validateCandidateFile(){
+  try{
+    const value=JSON.parse(fs.readFileSync(CANDIDATE_LOCAL,'utf8'));
+    if(!Array.isArray(value?.candidates)) return false;
+    return value.candidates.some(x=>x && x.endpointId);
+  }catch{
+    return false;
+  }
+}
 const mode=process.argv[2];
 if(mode==='pull-stable'){
   fs.mkdirSync(path.dirname(STABLE_LOCAL),{recursive:true});
@@ -33,6 +42,11 @@ if(mode==='pull-stable'){
 }else if(mode==='pull-candidates'){
   fs.mkdirSync(path.dirname(CANDIDATE_LOCAL),{recursive:true});
   run(['file','download','b2://'+BUCKET+'/'+CANDIDATE_REMOTE,CANDIDATE_LOCAL]);
+  if(!validateCandidateFile()){
+    try{fs.unlinkSync(CANDIDATE_LOCAL)}catch{}
+    console.error('B2 China candidate feed is missing or invalid.');
+    process.exit(1);
+  }
 }else if(mode==='pull-pair-candidates'){
   fs.mkdirSync(path.dirname(PAIR_CANDIDATE_LOCAL),{recursive:true});
   run(['file','download','b2://'+BUCKET+'/'+PAIR_CANDIDATE_REMOTE,PAIR_CANDIDATE_LOCAL]);
