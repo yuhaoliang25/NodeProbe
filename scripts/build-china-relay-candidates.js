@@ -73,6 +73,8 @@ for(const [id,node] of Object.entries(assets)){
     proxy:p,
     score:relayScore(node),
     reason:'reachable-but-direct-weak',
+    lastDirectSuccess:x.directSuccess===true,
+    lastProbeSuccess:x.success===true,
     recentReachabilityRate:reachRate(node),
     lastReachabilityLatencyMs:x.reachabilityLatencyMs??null,
     observedRuns:Number(node.observedRuns||0),
