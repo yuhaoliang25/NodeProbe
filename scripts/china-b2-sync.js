@@ -24,7 +24,37 @@ function run(args){
   if(r.status!==0)process.exit(r.status||1);
 }
 function usage(){
-  console.log('usage: node scripts/china-b2-sync.js pull-stable | pull-candidates | push-observations | pull-pair-candidates | push-pair-observations');
+  console.log('usage: node scripts/china-b2-sync.js pull-stable | pull-candidates | push-observations | pull-pair-candidates | push-pair-observations | purge-observations | purge-pair-observations');
+}
+function processedBatches(stateFile, field){
+  try{
+    const state=JSON.parse(fs.readFileSync(stateFile,'utf8'));
+    return new Set(Array.isArray(state?.[field])?state[field]:[]);
+  }catch{
+    return new Set();
+  }
+}
+function listRemote(prefix){
+  const r=spawnSync(process.env.B2_BIN||'b2v4',['ls','b2://'+BUCKET+'/'+prefix],{encoding:'utf8',env:process.env});
+  if(r.error)throw r.error;
+  if(r.status!==0){
+    process.stderr.write(r.stderr||'');
+    process.exit(r.status||1);
+  }
+  return (r.stdout||'').split(/\r?\n/).map(x=>x.trim()).filter(Boolean)
+    .filter(x=>x.endsWith('.json'))
+    .map(x=>x.includes('/')?x.slice(x.lastIndexOf('/')+1):x);
+}
+function purgeProcessed(prefix,stateFile,field){
+  const processed=processedBatches(stateFile,field);
+  if(!processed.size){
+    console.log('no processed batches to purge');
+    return;
+  }
+  for(const file of listRemote(prefix)){
+    if(!processed.has(file))continue;
+    run(['file','delete','b2://'+BUCKET+'/'+prefix+'/'+file]);
+  }
 }
 function validateCandidateFile(){
   try{
@@ -57,6 +87,10 @@ if(mode==='pull-stable'){
     run(['file','upload',BUCKET,path.join(OBS_DIR,file),OBS_REMOTE+'/'+file]);
     fs.unlinkSync(path.join(OBS_DIR,file));
   }
+}else if(mode==='purge-observations'){
+  purgeProcessed(OBS_REMOTE,'data/china-node-assets.json','processedObservationBatches');
+}else if(mode==='purge-pair-observations'){
+  purgeProcessed(PAIR_OBS_REMOTE,'data/china-pair-knowledge.json','processedBatches');
 }else if(mode==='push-pair-observations'){
   if(!fs.existsSync(PAIR_OBS_DIR)){ console.log('no pair observation batches'); process.exit(0); }
   const files=fs.readdirSync(PAIR_OBS_DIR).filter(x=>x.endsWith('.json')).sort();
