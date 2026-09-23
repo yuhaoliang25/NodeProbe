@@ -34,6 +34,17 @@ jobs:
           bucket: nodeprobe
           source: nodeprobe-state/china-node-assets.json
           destination: data/china-node-assets.json
+      - name: Restore China pair knowledge
+        continue-on-error: true
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: download
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: nodeprobe-state/china-pair-knowledge.json
+          destination: data/china-pair-knowledge.json
+
       - name: Restore China probe candidates
         continue-on-error: true
         uses: backblaze-labs/b2-action@v1
@@ -54,11 +65,26 @@ jobs:
           bucket: nodeprobe
           source: nodeprobe-state/china/observations/
           destination: data/china-probe-observations/
+      - name: Pull China pair observation inbox from B2
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: download
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: nodeprobe-state/china/pair-observations/
+          destination: data/china-pair-observations/
       - name: Apply China probe observations
         run: npm run china-apply
+      - name: Apply China relay pair observations
+        run: npm run china-pair-apply
       - name: Select China probe candidates
         run: npm run china-assets
-      - name: Derive China direct relay and landing pools
+      - name: Build China relay pair candidates
+        run: npm run china-relay-candidates
+      - name: Build validated China pair pool
+        run: npm run china-pairs
+      - name: Derive China direct pool
         run: npm run china-pools
       - name: Generate client Mihomo config
         run: npm run client-config
@@ -72,6 +98,26 @@ jobs:
           bucket: nodeprobe
           source: data/china-node-assets.json
           destination: nodeprobe-state/china-node-assets.json
+      - name: Save China relay pair knowledge
+        if: success()
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: upload
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: data/china-pair-knowledge.json
+          destination: nodeprobe-state/china-pair-knowledge.json
+      - name: Publish China relay pair candidates
+        if: success()
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: upload
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: data/china-relay-pair-candidates.json
+          destination: nodeprobe-state/china/pair-candidates.json
       - name: Publish China probe candidates
         if: success()
         uses: backblaze-labs/b2-action@v1
@@ -100,7 +146,7 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
 
-          git add subscriptions/direct.yaml subscriptions/relay.yaml subscriptions/landing.yaml mihomo/client.yaml
+          git add subscriptions/direct.yaml subscriptions/pairs.yaml subscriptions/china-pair-pool.json subscriptions/relay.yaml subscriptions/landing.yaml mihomo/client.yaml
           git diff --cached --quiet && exit 0
           git commit -m "chore: refresh China subscriptions"
 
