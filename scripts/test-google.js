@@ -29,8 +29,8 @@ async function main(){
   if(state==='stale')return Math.min(ROUNDS,1);
   return ROUNDS;
  }
- // Every candidate gets a mandatory Stage 1 test. Historical reputation only
- // influences which Stage-1 survivors receive deeper testing later.
+ // Every candidate gets a mandatory Stage 1 test. Node lifecycle state only
+ // controls the depth of repeated evidence for selected candidates.
  const names=candidates.map(p=>p.name);
  async function testGroup(selected,timeout,stage){
   if(!selected.length)return {};
