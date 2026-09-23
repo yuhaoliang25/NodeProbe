@@ -19,6 +19,7 @@ for(const [pairId,p] of Object.entries(state.pairs||{})){
   if(!Number.isFinite(last)||last<cutoff||!p.relay||!p.landing)continue;
   const obs=Array.isArray(p.observations)?p.observations.slice(-10):[];
   const rate=obs.length?obs.filter(x=>x.success&&x.improved).length/obs.length:0;
+  if(!obs.some(x=>x.confirmed))continue;
   if(rate<C.minSuccessRate)continue;
   const relayName='PAIR-RELAY-'+p.relayEndpointId;
   const pairName='PAIR-'+pairId;
