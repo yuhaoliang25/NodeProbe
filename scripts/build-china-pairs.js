@@ -24,7 +24,7 @@ for(const [pairId,p] of Object.entries(state.pairs||{})){
   const pairName='PAIR-'+pairId;
   const relay={...p.relay,name:relayName};
   const landing={...p.landing,name:pairName,'dialer-proxy':relayName};
-  candidates.push({pairId,lastObservedAt:p.lastObservedAt,rate,relay,pair:landing});
+  candidates.push({pairId,lastObservedAt:p.lastObservedAt,rate,relayEndpointId:p.relayEndpointId,landingEndpointId:p.landingEndpointId,relay,pair:landing});
 }
 candidates.sort((a,b)=>b.rate-a.rate||Date.parse(b.lastObservedAt)-Date.parse(a.lastObservedAt));
 const selected=candidates.slice(0,C.maxPairs);
@@ -36,6 +36,6 @@ fs.writeFileSync(path.join(path.dirname(C.outputFile),'china-pair-pool.json'),JS
   generatedAt:new Date().toISOString(),
   count:selected.length,
   definitions:{pair:'China → relay → landing → target; experimental evidence only'},
-  pairs:selected.map(x=>({pairId:x.pairId,lastObservedAt:x.lastObservedAt,recentSuccessRate:x.rate,relayEndpointId:x.relay?.['endpoint-id']||null}))
+  pairs:selected.map(x=>({pairId:x.pairId,lastObservedAt:x.lastObservedAt,recentSuccessRate:x.rate,relayEndpointId:x.relayEndpointId||null}))
 },null,2)+'\n');
 console.log(JSON.stringify({knownPairs:Object.keys(state.pairs||{}).length,selected:selected.length,proxies:proxies.length},null,2));
