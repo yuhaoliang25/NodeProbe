@@ -350,8 +350,18 @@ function buildCandidates(stable, state, atMs) {
     }
   }
 
-  return [...deduped.values()]
-    .sort((a, b) => b.score - a.score)
+  const unique = [...deduped.values()];
+  const maintenance = unique
+    .filter(candidate => candidate.category !== 'new')
+    .sort((a, b) => b.score - a.score);
+  const exploration = unique
+    .filter(candidate => candidate.category === 'new')
+    .sort((a, b) => b.score - a.score);
+
+  // Maintenance has priority over exploration. A large or fast-changing
+  // Stable feed must not starve known China assets that are due for recheck.
+  return maintenance
+    .concat(exploration)
     .slice(0, CONFIG.maxNodesPerRun);
 }
 function saveState(state) {
