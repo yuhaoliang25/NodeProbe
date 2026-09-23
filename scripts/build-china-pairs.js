@@ -36,6 +36,6 @@ fs.writeFileSync(path.join(path.dirname(C.outputFile),'china-pair-pool.json'),JS
   generatedAt:new Date().toISOString(),
   count:selected.length,
   definitions:{pair:'China → relay → landing → target; experimental evidence only'},
-  pairs:selected.map(x=>({pairId:x.pairId,lastObservedAt:x.lastObservedAt,recentSuccessRate:x.rate,relayEndpointId:x.relayEndpointId||null}))
+  pairs:selected.map(x=>({pairId:x.pairId,lastObservedAt:x.lastObservedAt,recentSuccessRate:x.rate,relayEndpointId:x.relay?.['endpoint-id']||null}))
 },null,2)+'\n');
 console.log(JSON.stringify({knownPairs:Object.keys(state.pairs||{}).length,selected:selected.length,proxies:proxies.length},null,2));
