@@ -21,7 +21,7 @@ function healthy(r){
   const rounds=Number(r.rounds||0), successes=Number(r.successes||0);
   return rounds>=2 && successes>=Math.ceil(rounds*0.67);
 }
-const DEAD_RECHECK_MS=[4,12,24,72,168,336,720].map(h=>h*3600000);
+const DEAD_RECHECK_MS=[1,3,6,12,24,72,168].map(h=>h*3600000);
 function nextProbeAt(status,atMs,recheckLevel=0){
   const intervals={
     stable:24*3600000,
