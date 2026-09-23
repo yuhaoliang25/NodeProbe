@@ -104,6 +104,9 @@ function deriveState(node) {
 
   if (node.successes === 0) return 'NEW';
   if (node.state === 'FORGOTTEN') return 'FORGOTTEN';
+
+  // Persistent China evidence drives lifecycle. A trusted node should not
+  // fall back to PROBATION after a single transient failure.
   if (node.failureStreak >= 6) return 'UNTRUSTED';
 
   if (
@@ -122,9 +125,10 @@ function deriveState(node) {
     return 'TRUSTED';
   }
 
+  if (node.state === 'DEGRADED') return 'DEGRADED';
   if (node.successStreak >= 1) return 'PROBATION';
 
-  return node.state === 'DEGRADED' ? 'DEGRADED' : 'PROBATION';
+  return 'PROBATION';
 }
 
 function nextProbeAt(node, atMs) {
