@@ -1,0 +1,11 @@
+{
+  "generatedAt": "2026-09-23T11:46:46.543Z",
+  "counts": {
+    "direct": 0
+  },
+  "definitions": {
+    "direct": "Global Stable ∩ China Trusted",
+    "relay": "experimental only; not part of the production China pool",
+    "landing": "experimental only; not part of the production China pool"
+  }
+}
