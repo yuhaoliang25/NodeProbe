@@ -904,3 +904,221 @@ Landing B = Best - China Direct-capable
 This makes the experiment specifically target the hypothesis that a China-reachable but poor exit can gain a special path to a strong global exit.
 
 The experiment does not assume that relaying is beneficial. A large number of failed pairs is itself useful evidence. The persistent pair history is intended to answer whether useful A/B path affinity repeatedly appears in this node population over time.
+
+## 24. Current Deployment and Information-Flow Contract
+
+This section is the current deployment contract. It supersedes earlier descriptions in §§9, 14, 17 and 18 where those sections still describe production Relay/Landing pools or a China cycle without the Pair experiment.
+
+### 24.1 Production and experimental boundaries
+
+Production China output is:
+- `subscriptions/direct.yaml` = Global Stable ∩ China Trusted.
+- `subscriptions/pairs.yaml` = validated two-hop paths from the separate Pair experiment.
+- `mihomo/client.yaml` = client configuration that can compare Direct and validated Pair paths.
+
+`relay.yaml` and `landing.yaml` are no longer production pools.
+
+The Pair experiment is optional. If no Pair candidate feed exists, the China machine continues normal direct probing and the cycle succeeds without Pair testing.
+
+### 24.2 B2 information exchange
+
+```text
+                         GitHub Actions
+                              │
+               ┌──────────────┴──────────────┐
+               │                             │
+      Global Stable / Best          China assets / pair knowledge
+               │                             │
+               └──────────────┬──────────────┘
+                              │
+                              ↓
+                         Backblaze B2
+                    nodeprobe-state/china/
+                              │
+             ┌────────────────┴────────────────┐
+             │                                 │
+       candidates.json                  pair-candidates.json
+             │                                 │
+             ↓                                 ↓
+                         China machine
+             │                                 │
+        china-probe                    china-relay-probe
+             │                                 │
+             ↓                                 ↓
+       observations/                    pair-observations/
+             │                                 │
+             └────────────────┬────────────────┘
+                              ↓
+                         B2 inbox
+                              ↓
+                       GitHub Actions
+                              │
+               ┌──────────────┴──────────────┐
+               ↓                             ↓
+      China asset evolution          Pair knowledge evolution
+               │                             │
+               └──────────────┬──────────────┘
+                              ↓
+                 direct.yaml + pairs.yaml
+                              ↓
+                         client.yaml
+```
+
+The four B2 transport objects are:
+
+| Direction | Object | Producer | Consumer | Meaning |
+|---|---|---|---|---|
+| GitHub → China | `nodeprobe-state/china/candidates.json` | China workflow | `china-cycle.sh` / `china-probe.js` | bounded China node candidate feed |
+| GitHub → China | `nodeprobe-state/china/pair-candidates.json` | China workflow | `china-cycle.sh` / `china-relay-probe.js` | bounded relay/landing experiment feed |
+| China → GitHub | `nodeprobe-state/china/observations/*` | `china-probe.js` | China workflow | immutable China node observations |
+| China → GitHub | `nodeprobe-state/china/pair-observations/*` | `china-relay-probe.js` | China workflow | immutable pair-path observations |
+
+B2 is transport, not authoritative trust state. The authoritative persistent state is rebuilt on the GitHub side in:
+- `data/china-node-assets.json`
+- `data/china-pair-knowledge.json`
+
+### 24.3 China machine cycle
+
+`scripts/china-cycle.sh` is the local entry point:
+
+```text
+pull-candidates
+    ↓
+china-probe
+    ↓
+push-observations
+    ↓
+try pull-pair-candidates
+    │
+    ├── feed exists
+    │      ↓
+    │  china-relay-probe
+    │      ↓
+    │  push-pair-observations
+    │
+    └── feed absent
+           ↓
+       skip Pair only
+```
+
+The systemd timer runs this cycle approximately every 30 minutes. The China machine requires no inbound service from GitHub; it only needs outbound access to B2 and the tested endpoints.
+
+### 24.4 GitHub China workflow cycle
+
+The GitHub-side order is:
+
+```text
+restore China state/inboxes
+    ↓
+apply China observations
+    ↓
+apply Pair observations
+    ↓
+select next China candidates
+    ↓
+build relay-pair candidates
+    ↓
+build validated Pair pool
+    ↓
+build production Direct pool
+    ↓
+generate client.yaml
+    ↓
+save persistent state to B2
+    ↓
+publish next candidate feeds to B2
+    ↓
+commit generated subscriptions/config
+```
+
+This means the China machine normally probes using the latest candidate feed produced by a previous GitHub cycle. GitHub consumes the resulting evidence in a later cycle. The system is intentionally asynchronous; one GitHub cycle does not correspond one-to-one with one China probe cycle.
+
+### 24.5 Data ownership
+
+The information crossing the China boundary is deliberately asymmetric:
+
+**GitHub → China**
+- candidate endpoint definitions;
+- bounded candidate selection;
+- Pair experiment definitions.
+
+**China → GitHub**
+- endpoint identity;
+- observation timestamp;
+- probe environment;
+- China-side reachability;
+- direct proxy results;
+- stability/attempt evidence;
+- Pair baseline, screen and confirmation evidence.
+
+The China machine does **not** send a trust decision. GitHub applies observations to the independent China asset.
+
+Likewise, GitHub does not send Global reputation to the China machine.
+
+### 24.6 Pair feedback loop
+
+```text
+Global Stable + China evidence + Global Best
+                 ↓
+     build-china-relay-candidates
+                 ↓
+       pair-candidates.json
+                 ↓
+           China machine
+                 ↓
+       pair-observations/*
+                 ↓
+     apply-china-pair-observations
+                 ↓
+      china-pair-knowledge.json
+                 ↓
+        build-china-pairs
+                 ↓
+          subscriptions/pairs.yaml
+                 ↓
+        next pair-candidates.json
+```
+
+Pair evidence never directly changes China node trust. A successful pair does not promote either endpoint, and a failed pair does not kill either endpoint.
+
+### 24.7 Deployment invariants
+
+1. Global Stable is the production China candidate/admission boundary.
+2. Global Best is used only for experimental landing selection.
+3. `direct.yaml` is the production direct pool.
+4. `pairs.yaml` is the validated experimental-path pool exposed to the client.
+5. `relay.yaml` and `landing.yaml` are not production outputs.
+6. B2 is asynchronous transport, not the source of truth for China trust.
+7. China observation batches are immutable and replay-safe.
+8. Pair observation batches are immutable and replay-safe.
+9. China node trust and Pair knowledge are independent state machines.
+10. Pair testing may be absent without blocking normal China probing.
+11. The China machine never writes the Git repository.
+12. GitHub never requires an inbound connection to the China machine.
+13. Multiple China probe runs may accumulate between GitHub workflow runs and be consumed together.
+14. Generated subscription/config files are outputs; persistent state remains in the corresponding state files.
+
+### 24.8 Current local deployment command
+
+After the repository is updated, the normal manual verification remains:
+
+```bash
+cd ~/NodeProbe
+set -a
+source ~/.config/nodeprobe/china.env
+set +a
+npm install
+npm run china-sync -- pull-candidates
+npm run china-probe
+npm run china-sync -- push-observations
+```
+
+Pair testing is optional and can be checked separately once `pair-candidates.json` exists:
+
+```bash
+npm run china-sync -- pull-pair-candidates
+npm run china-relay-probe
+npm run china-sync -- push-pair-observations
+```
+
+The production systemd timer invokes `scripts/china-cycle.sh`, so these individual commands are primarily for first deployment and troubleshooting.
