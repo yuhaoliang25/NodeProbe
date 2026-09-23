@@ -96,24 +96,47 @@ let poolState={version:1,nodes:[],updatedAt:null,updatedRunId:null};
 try{
  const pool=JSON.parse(fs.readFileSync(poolFile,'utf8'));
  poolState=pool;
- for(const entry of pool.nodes||[]){
-   if(entry.status==='dead')continue;
+
+ // The persistent Node Pool is authoritative for known assets. Source data is
+ // only an exploration feed: once an endpoint already exists in the pool, its
+ // source-side proxy definition is discarded for asset monitoring and the
+ // pool's own last-known proxy is used instead.
+ const poolEntries=(pool.nodes||[]).filter(entry=>entry.status!=='dead');
+ const poolIds=new Set(poolEntries.map(entry=>entry.fingerprint||entry.proxy?.['endpoint-id']).filter(Boolean));
+ const sourceProxies=proxies.filter(p=>!poolIds.has(p['endpoint-id']||p._id));
+
+ proxies.length=0;
+ seen.clear();
+ usedNames.clear();
+
+ for(const entry of poolEntries){
    const id=entry.fingerprint||entry.proxy?.['endpoint-id'];
-   const p=entry.proxy?{...entry.proxy}:{};
-   if(!id||!p.server||!p.port||seen.has(id))continue;
+   const p=entry.proxy?{...entry}:{};
+   if(!id||!p.server||!p.port)continue;
    p['endpoint-id']=id;
    p._id=id;
    p._poolOnly=true;
    p._source=null;
-   p._sources=Array.isArray(entry.currentSources)?entry.currentSources:[];
+   p._sources=[];
    seen.add(id);
-   sourcesById.set(id,[...p._sources]);
    let name=String(p.name||p.server).trim()||String(p.server);
    if(usedNames.has(name))name=name+'-pool-'+id;
    usedNames.add(name);
    proxies.push({...p,name});
  }
- console.log('persistent node pool merged:',(pool.nodes||[]).filter(x=>x.status!=='dead').length,'entries');
+
+ // Only endpoints absent from the Node Pool remain eligible for exploration.
+ // Their source metadata is kept solely for provenance/source evolution.
+ for(const p of sourceProxies){
+   const id=p['endpoint-id']||p._id;
+   if(!id||seen.has(id))continue;
+   seen.add(id);
+   let name=String(p.name||p.server).trim()||String(p.server);
+   if(usedNames.has(name))name=name+'-source-'+id;
+   usedNames.add(name);
+   proxies.push({...p,name});
+ }
+ console.log('persistent node pool merged:',poolEntries.length,'entries; source exploration:',sourceProxies.length,'new candidates');
 }catch(e){console.log('persistent node pool unavailable:',e.message)}
 fs.writeFileSync('data/current-node-sources.json',JSON.stringify(Object.fromEntries(currentSourceMembership),null,2));
 
