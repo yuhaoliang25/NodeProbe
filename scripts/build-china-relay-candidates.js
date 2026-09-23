@@ -60,6 +60,11 @@ for(const [id,node] of Object.entries(assets)){
   const p=node?.proxy;
   const x=latest(node);
   if(!p||!x)continue;
+  // Relay selection is an experimental production-adjacent role, so nodes
+  // already classified as unrecoverable must not re-enter it from one lucky
+  // reachability observation. DEGRADED remains eligible because reachability
+  // can still make it useful as a relay even when its direct exit is weak.
+  if(node.state==='UNTRUSTED'||node.state==='FORGOTTEN')continue;
   // A relay must first be reachable from China, but its direct exit must be weak.
   if(x.reachabilitySuccess!==true)continue;
   if(x.directSuccess===true)continue;
