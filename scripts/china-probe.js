@@ -12,8 +12,6 @@ const {summarizeAttempts}=require('./lib/probe-stability');
 
 const CONFIG={
   candidateFile:process.env.CHINA_CANDIDATE_FILE||'data/china-probe-candidates.json',
-  stableFile:process.env.CHINA_STABLE_FILE||'subscriptions/stable.yaml',
-  stableUrl:process.env.CHINA_STABLE_URL||'',
   observationFile:process.env.CHINA_OBSERVATION_FILE||'data/china-probe-observations.json',
   observationDir:process.env.CHINA_OBSERVATION_DIR||'data/china-probe-observations',
   mihomoBin:process.env.MIHOMO_BIN||'mihomo',
@@ -61,13 +59,6 @@ function tcpReachability(proxy,timeout){
   });
 }
 
-async function loadStable(){
-  const text=CONFIG.stableUrl?await fetchText(CONFIG.stableUrl):fs.readFileSync(CONFIG.stableFile,'utf8');
-  const d=yaml.load(text);
-  if(!Array.isArray(d?.proxies))throw new Error('stable pool has no proxies');
-  return d.proxies.filter(p=>p&&p.name&&p.server&&p.port&&p.type);
-}
-
 function endpointId(p){
   if(p['endpoint-id'])return p['endpoint-id'];
   const crypto=require('crypto');
@@ -108,19 +99,15 @@ async function waitApi(){
 }
 
 async function main(){
-  const stable=await loadStable();
-  const selected=[];
   let candidates=null;
   try{
     candidates=JSON.parse(fs.readFileSync(CONFIG.candidateFile,'utf8')).candidates;
   }catch{}
-  if(!Array.isArray(candidates))throw new Error('China candidate file missing or invalid; refusing to probe all Stable nodes');
-  const wanted=new Set(candidates.map(x=>x.endpointId).filter(Boolean));
-  if(!wanted.size)throw new Error('China candidate file contains no endpoint IDs');
-  for(const p of stable){
-    if(wanted.has(endpointId(p)))selected.push(p);
-  }
-  if(!selected.length)throw new Error('candidate IDs do not match current Stable pool');
+  if(!Array.isArray(candidates))throw new Error('China candidate file missing or invalid');
+  const selected=candidates
+    .filter(x=>x&&x.endpointId&&x.proxy&&x.proxy.name&&x.proxy.server&&x.proxy.port&&x.proxy.type)
+    .map(x=>x.proxy);
+  if(!selected.length)throw new Error('China candidate file contains no usable proxy candidates');
 
   const dir=fs.mkdtempSync(path.join(os.tmpdir(),'nodeprobe-china-'));
   const configPath=path.join(dir,'config.yaml');
@@ -255,6 +242,7 @@ async function main(){
       const stability=stabilityById.has(id)?stabilityResults.find(x=>x.endpointId===id)||null:null;
       return {
         endpointId:id,
+        proxy:p,
         at:trace[0]?.at||now(),
         success:Boolean(last?.success)&&(!stabilityById.has(id)||stableIds.has(id)),
         reachabilitySuccess:Boolean(reachabilityAttempt?.success),
