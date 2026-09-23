@@ -727,12 +727,12 @@ The current China pipeline therefore starts with endpoint reachability and then 
 The production China pool is now:
 
 ```text
-Global Best ∩ China Trusted
+Global Stable ∩ China Trusted
 ```
 
 and is published as `subscriptions/direct.yaml`.
 
-The previous Stable ∩ Trusted relay pool and Best - Trusted landing pool are no longer treated as production China roles. They remain a possible future experimental branch.
+The previous Stable ∩ Trusted relay pool and Best - Trusted landing pool are no longer treated as production China roles. Relay/landing are now used only by the bounded experimental pair search described below.
 
 This prevents the architecture from assuming that an additional relay hop is beneficial.
 
@@ -816,3 +816,91 @@ China Asset   → China trust and lifecycle
 ```
 
 A node therefore does not need to be Global Best merely to become a China direct node.
+
+## 23. Bounded Relay Pair Experiment
+
+Relay is now an explicit experiment rather than a production assumption.
+
+The experiment asks whether a China-reachable node whose direct exit is weak can become useful when its outbound connection is established through a stronger Global Best landing node:
+
+```text
+China → A → Internet
+versus
+China → A → B → Internet
+```
+
+Here:
+
+- A (relay) is selected from the Global Stable population;
+- A must have recent China reachability evidence but must currently fail the China direct admission result;
+- only the top CHINA_RELAY_TOP_K relay candidates are used;
+- B (landing) is selected from Global Best;
+- China Trusted/direct-capable nodes are excluded from the landing set;
+- the experiment is strictly two-hop; no A×B×C search is performed.
+
+The default search budget is therefore bounded at:
+
+```text
+Top 8 relays × Top 30 landings = at most 240 pairs
+```
+
+The China machine performs a cheap Google screen over the bounded pair set. A pair is shortlisted only when:
+
+1. the pair succeeds; and
+2. it improves the relay's direct baseline by at least 15%, or succeeds when the baseline fails.
+
+Only the best CHINA_PAIR_CONFIRM_TOP_K screen results are then confirmed against Google, Cloudflare and GitHub over multiple rounds. A pair enters the published experimental pool only after confirmation succeeds across the targets.
+
+Mihomo implements the chain with dialer-proxy: the landing proxy B is configured to establish its connection through relay A.
+
+### 23.1 Pair knowledge
+
+Pair results are persisted separately from China node trust:
+
+```text
+data/china-pair-knowledge.json
+        ↓
+pair history
+        ↓
+recent success / improvement evidence
+        ↓
+subscriptions/pairs.yaml
+```
+
+The pair record is evidence, not permanent truth. A pair can disappear from the published experimental list when its evidence becomes stale or its recent improvement rate falls below the configured threshold.
+
+This deliberately treats pair history as network-path evidence rather than an immutable property of the two endpoints. The endpoints can change even though their identities remain the same.
+
+### 23.2 Client role
+
+The generated client configuration places validated pair proxies and direct China proxies in the same URL-Test group.
+
+Thus the final choice remains adaptive:
+
+```text
+China Probe:
+    discover useful paths
+
+Client:
+    choose among Direct and validated Pair
+    using the user's current network
+```
+
+The client is not asked to perform the combinatorial search. It only compares the small set of paths already discovered by the China probe.
+
+### 23.3 Why this search is intentionally asymmetric
+
+The search does not test Stable × Stable.
+
+That would spend most of the budget testing pairs whose two endpoints already belong to the same candidate population.
+
+Instead:
+
+```text
+Relay A = Stable ∩ China-reachable ∩ Direct-weak
+Landing B = Best - China Direct-capable
+```
+
+This makes the experiment specifically target the hypothesis that a China-reachable but poor exit can gain a special path to a strong global exit.
+
+The experiment does not assume that relaying is beneficial. A large number of failed pairs is itself useful evidence. The persistent pair history is intended to answer whether useful A/B path affinity repeatedly appears in this node population over time.
