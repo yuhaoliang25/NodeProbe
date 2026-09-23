@@ -7,6 +7,8 @@ const {spawnSync}=require('child_process');
 
 const BUCKET=process.env.CHINA_B2_BUCKET||'nodeprobe';
 const PREFIX=process.env.CHINA_B2_PREFIX||'nodeprobe-state/china';
+const STABLE_REMOTE=process.env.CHINA_STABLE_REMOTE||'nodeprobe-state/china/stable.yaml';
+const STABLE_LOCAL=process.env.CHINA_STABLE_FILE||'subscriptions/stable.yaml';
 const CANDIDATE_REMOTE=PREFIX+'/candidates.json';
 const OBS_REMOTE=PREFIX+'/observations';
 const CANDIDATE_LOCAL=process.env.CHINA_CANDIDATE_FILE||'data/china-probe-candidates.json';
@@ -22,10 +24,13 @@ function run(args){
   if(r.status!==0)process.exit(r.status||1);
 }
 function usage(){
-  console.log('usage: node scripts/china-b2-sync.js pull-candidates | push-observations | pull-pair-candidates | push-pair-observations');
+  console.log('usage: node scripts/china-b2-sync.js pull-stable | pull-candidates | push-observations | pull-pair-candidates | push-pair-observations');
 }
 const mode=process.argv[2];
-if(mode==='pull-candidates'){
+if(mode==='pull-stable'){
+  fs.mkdirSync(path.dirname(STABLE_LOCAL),{recursive:true});
+  run(['file','download','b2://'+BUCKET+'/'+STABLE_REMOTE,STABLE_LOCAL]);
+}else if(mode==='pull-candidates'){
   fs.mkdirSync(path.dirname(CANDIDATE_LOCAL),{recursive:true});
   run(['file','download','b2://'+BUCKET+'/'+CANDIDATE_REMOTE,CANDIDATE_LOCAL]);
 }else if(mode==='pull-pair-candidates'){
