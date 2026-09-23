@@ -88,6 +88,9 @@ for(const p of proxies){
   const list=sourcesById.get(p._id)||[p._source];
   p._sources=[...new Set(list)];
 }
+// Snapshot only current Source discovery membership before historical Node Pool
+// entries are merged; pool-only nodes must never reintroduce stale sources.
+const currentSourceMembership=new Map([...sourcesById].map(([id,list])=>[id,[...new Set(list||[])]]));
 const poolFile='data/node-pool.json';
 let poolState={version:1,nodes:[],updatedAt:null,updatedRunId:null};
 try{
@@ -112,6 +115,7 @@ try{
  }
  console.log('persistent node pool merged:',(pool.nodes||[]).filter(x=>x.status!=='dead').length,'entries');
 }catch(e){console.log('persistent node pool unavailable:',e.message)}
+fs.writeFileSync('data/current-node-sources.json',JSON.stringify(Object.fromEntries(currentSourceMembership),null,2));
 
 // Complete inventory is kept for all.yaml; only selected work is written to candidates.json.
 const candidateLimit=Math.max(1,Number(process.env.NODE_CANDIDATE_LIMIT||1500));
