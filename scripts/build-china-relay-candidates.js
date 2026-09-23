@@ -67,7 +67,7 @@ for(const [id,node] of Object.entries(assets)){
   if(!p||!x)continue;
   // A relay must first be reachable from China, but its direct exit must be weak.
   if(x.reachabilitySuccess!==true)continue;
-  if(x.success===true)continue;
+  if(x.directSuccess===true)continue;
   relayCandidates.push({
     endpointId:id,
     proxy:p,
