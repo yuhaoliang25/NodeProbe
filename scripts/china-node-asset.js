@@ -7,7 +7,7 @@ const crypto = require('crypto');
 const yaml = require('js-yaml');
 
 const CONFIG = {
-  stableFile: process.env.CHINA_STABLE_FILE || 'subscriptions/stable.yaml',
+  discoveryFile: process.env.CHINA_DISCOVERY_FILE || 'subscriptions/china-discovery.yaml',
   stateFile: process.env.CHINA_ASSET_FILE || 'data/china-node-assets.json',
   candidateFile: process.env.CHINA_CANDIDATE_FILE || 'data/china-probe-candidates.json',
   maxNodesPerRun: Number(process.env.CHINA_MAX_NODES || 30),
@@ -61,10 +61,10 @@ function endpointIdentity(p) {
   ])).digest('hex').slice(0, 16);
 }
 
-function loadStable() {
-  const doc = yaml.load(fs.readFileSync(CONFIG.stableFile, 'utf8'));
+function loadDiscovery() {
+  const doc = yaml.load(fs.readFileSync(CONFIG.discoveryFile, 'utf8'));
   if (!Array.isArray(doc?.proxies)) {
-    throw new Error('stable.yaml has no proxies array');
+    throw new Error('china-discovery.yaml has no proxies array');
   }
 
   const byId = new Map();
@@ -295,12 +295,12 @@ function scoreCandidate(node, category, atMs) {
   return score;
 }
 
-function buildCandidates(stable, state, atMs) {
+function buildCandidates(discovery, state, atMs) {
   const candidates = [];
-  // Stable is an exploration feed: it can introduce new endpoints and refresh
-  // the current proxy definition for known endpoints. It is not the authority
-  // for China asset membership or maintenance scheduling.
-  for (const item of stable) {
+  // The Global-to-China discovery feed introduces new endpoints and refreshes
+  // proxy definitions for known endpoints. It is not the authority for China
+  // asset membership or maintenance scheduling.
+  for (const item of discovery) {
     const old = state.nodes[item.endpointId];
     if (old) {
       old.proxy = item.proxy;
@@ -330,8 +330,8 @@ function buildCandidates(stable, state, atMs) {
     });
   }
 
-  // Exploration is the only part that depends on the current Stable feed.
-  for (const item of stable) {
+  // Exploration depends on the current Global-to-China discovery feed.
+  for (const item of discovery) {
     if (state.nodes[item.endpointId]) continue;
     candidates.push({
       endpointId: item.endpointId,
@@ -396,26 +396,27 @@ function saveCandidates(candidates, at) {
 }
 
 function selectCandidates() {
-  const stable = loadStable();
+  const discovery = loadDiscovery();
   const state = loadState();
   const at = now();
   const atMs = Date.parse(at);
 
-  // Stable is only the discovery feed. Known China assets are maintained from
-  // persistent China state even when they are absent from the current Stable feed.
-  const candidates = buildCandidates(stable, state, atMs);
+  // The discovery feed only introduces/refreshed information. Known China
+  // assets are maintained from persistent China state even when absent from
+  // the latest discovery feed.
+  const candidates = buildCandidates(discovery, state, atMs);
 
   state.generatedAt = at;
   state.lastCandidateRunAt = at;
   state.lastCandidateCount = candidates.length;
-  state.currentStableCount = stable.length;
-  state.currentStableIds = stable.map(x => x.endpointId);
+  state.currentDiscoveryCount = discovery.length;
+  state.currentDiscoveryIds = discovery.map(x => x.endpointId);
 
   saveState(state);
   saveCandidates(candidates, at);
 
   console.log(JSON.stringify({
-    stable: stable.length,
+    discovery: discovery.length,
     candidates: candidates.length,
     categories: candidates.reduce((m, x) => {
       m[x.category] = (m[x.category] || 0) + 1;
@@ -432,7 +433,7 @@ if (require.main === module) {
 
 module.exports = {
   endpointIdentity,
-  loadStable,
+  loadDiscovery,
   loadState,
   saveState,
   recentRate,
