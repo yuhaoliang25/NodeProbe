@@ -1126,3 +1126,15 @@ npm run china-sync -- push-pair-observations
 ```
 
 The production systemd timer invokes `scripts/china-cycle.sh`, so these individual commands are primarily for first deployment and troubleshooting.
+
+### China cold-start candidate bootstrap
+
+A China probe machine may start before the Global/China candidate feed exists in B2. The cycle therefore treats the candidate feed as a scheduling artifact rather than a hard prerequisite:
+
+- If `nodeprobe-state/china/candidates.json` is available, the machine pulls and uses it normally.
+- If the candidate feed cannot be pulled, `china-cycle.sh` runs `npm run china-assets` locally to derive a bounded candidate set from the current `subscriptions/stable.yaml`.
+- On a truly cold machine with no `data/china-node-assets.json`, this creates at most `CHINA_MAX_NODES` initial candidates from Stable and does not create China trust or observations by itself.
+- The subsequent `china-probe` run creates the actual China observations; those are pushed to B2 and applied by the China workflow, which then publishes the next candidate feed.
+
+Thus a missing candidate feed is a normal bootstrap condition, not a probe failure, while the probe remains bounded and never falls back to probing the entire Stable pool.
+
