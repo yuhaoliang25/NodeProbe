@@ -17,6 +17,9 @@ export CHINA_PROBE_CONCURRENCY="${CHINA_PROBE_CONCURRENCY:-8}"
 npm run china-sync -- pull-candidates
 npm run china-probe
 npm run china-sync -- push-observations
-npm run china-sync -- pull-pair-candidates
-npm run china-relay-probe
-npm run china-sync -- push-pair-observations
+if npm run china-sync -- pull-pair-candidates; then
+  npm run china-relay-probe
+  npm run china-sync -- push-pair-observations
+else
+  echo 'No China relay pair candidate feed yet; skipping pair experiment.'
+fi
