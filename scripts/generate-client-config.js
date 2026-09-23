@@ -8,7 +8,7 @@ const yaml = require('js-yaml');
 const INPUT_DIR = path.resolve('subscriptions');
 const OUTPUT = path.resolve('mihomo/client.yaml');
 
-const POOLS = [{ file: 'direct.yaml', role: 'direct' }];
+const POOLS = [{ file: 'direct.yaml', role: 'direct' }, { file: 'pairs.yaml', role: 'pair' }];
 const TEST_URL = 'https://www.google.com/generate_204';
 
 function loadPool(file) {
@@ -37,9 +37,11 @@ function uniqueProxies(items) {
 }
 
 const direct = loadPool('direct.yaml');
+const pairs = loadPool('pairs.yaml');
 
 const directNames = direct.map(p => p.name);
-const proxies = uniqueProxies([...direct]);
+const pairNames = pairs.filter(p => String(p.name).startsWith('PAIR-')).map(p => p.name);
+const proxies = uniqueProxies([...direct, ...pairs]);
 const config = {
   'mixed-port': 7890,
   'allow-lan': false,
@@ -53,7 +55,7 @@ const config = {
     {
       name: 'DIRECT-AUTO',
       type: 'url-test',
-      proxies: directNames,
+      proxies: [...directNames, ...pairNames],
       url: TEST_URL,
       interval: 300,
       tolerance: 100,
@@ -83,6 +85,6 @@ fs.writeFileSync(
 );
 
 console.log(
-  `client.yaml: direct=${direct.length}`
+  `client.yaml: direct=${direct.length} pairs=${pairNames.length}`
 );
 console.log(`generated: ${OUTPUT}`);
