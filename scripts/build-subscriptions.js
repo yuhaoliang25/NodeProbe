@@ -119,6 +119,7 @@ fs.writeFileSync('data/current-node-sources.json',JSON.stringify(Object.fromEntr
 
 // Complete inventory is kept for all.yaml; only selected work is written to candidates.json.
 const candidateLimit=Math.max(1,Number(process.env.NODE_CANDIDATE_LIMIT||1500));
+const deadRecheckLimit=Math.max(0,Number(process.env.NODE_DEAD_RECHECK_LIMIT||50));
 const nowMs=Date.now();
 const poolById=new Map((poolState.nodes||[]).map(x=>[x.fingerprint,x]));
 const currentRunId=process.env.GITHUB_RUN_ID||null;
@@ -141,6 +142,33 @@ for(const [id,entry] of poolById){
  }
 }
 maintenance.sort((a,b)=>b.overdueMs-a.overdueMs||a.id.localeCompare(b.id));
+
+/*
+ * DEAD nodes are intentionally excluded from the normal inventory above:
+ * they are not part of all.yaml and must only re-enter through a bounded
+ * maintenance recheck. Reconstruct their last known proxy from the persistent
+ * Node Asset record. This is supplemental to the normal candidate capacity.
+ */
+const deadRechecks=[];
+for(const entry of poolState.nodes||[]){
+  if(entry.status!=='dead')continue;
+  const id=entry.fingerprint||entry.proxy?.['endpoint-id'];
+  if(!id)continue;
+  const dueAt=entry.nextProbeAt?Date.parse(entry.nextProbeAt):NaN;
+  if(Number.isFinite(dueAt)&&dueAt>nowMs)continue;
+  const p=entry.proxy?{...entry.proxy}:null;
+  if(!p?.server||!p?.port||inventoryById.has(id))continue;
+  p['endpoint-id']=id;
+  p._id=id;
+  p._poolOnly=true;
+  p._source=null;
+  p._sources=Array.isArray(entry.currentSources)?entry.currentSources:[];
+  deadRechecks.push({
+    id,
+    proxy:p,
+    overdueMs:Number.isFinite(dueAt)?Math.max(0,nowMs-dueAt):Number.MAX_SAFE_INTEGER
+  });
+}
 deadRechecks.sort((a,b)=>b.overdueMs-a.overdueMs||a.id.localeCompare(b.id));
 const exploration=proxies.filter(p=>{
  const id=p['endpoint-id']||p._id;
@@ -157,6 +185,13 @@ for(const p of exploration){
  const id=p['endpoint-id']||p._id;
  if(selectedIds.has(id))continue;
  selected.push(p); selectedIds.add(id);
+}
+// DEAD rechecks are a bounded supplemental workload: they never displace
+// normal maintenance or exploration candidates from candidateLimit.
+for(const item of deadRechecks.slice(0,deadRecheckLimit)){
+ if(selectedIds.has(item.id))continue;
+ selected.push(item.proxy);
+ selectedIds.add(item.id);
 }
 // Nodes observed in this workflow are retained for the later Best/Stable builds.
 for(const id of currentRunObserved){
