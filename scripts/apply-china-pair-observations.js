@@ -21,7 +21,11 @@ function loadBatches(){
   // by the state updater on every workflow run.
   try{
     for(const f of fs.readdirSync(C.observationDir).filter(x=>x.endsWith('.json')).sort()){
-      try{out.push({name:f,data:JSON.parse(fs.readFileSync(path.join(C.observationDir,f),'utf8'))})}catch{}
+      const data=JSON.parse(fs.readFileSync(path.join(C.observationDir,f),'utf8'));
+      if(!data || typeof data!=='object'){
+        throw new Error('invalid China pair observation batch: '+f);
+      }
+      out.push({name:f,data});
     }
   }catch{}
   return out;
