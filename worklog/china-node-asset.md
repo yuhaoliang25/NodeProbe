@@ -147,7 +147,7 @@ A failure moves it into revalidation/degraded handling according to its failure 
 
 An untrusted node does not recover from one success. It must accumulate successful observations again.
 
-After repeated failed rechecks, an endpoint may enter `FORGOTTEN`. Forgotten assets are retained in persistent state but leave the normal frequent probe loop. They are eligible for a long-interval recovery recheck while they remain in the Stable candidate pool.
+After repeated failed rechecks, an endpoint may enter `FORGOTTEN`. Forgotten assets are retained in persistent state but leave the normal frequent probe loop. They are eligible for a long-interval recovery recheck from the persistent China asset pool.
 
 A successful forgotten-node recheck returns it to `PROBATION`; historical counters are retained rather than reset.
 
@@ -731,7 +731,7 @@ The current China pipeline therefore starts with endpoint reachability and then 
 The production China pool is now:
 
 ```text
-Global Stable ∩ China Trusted
+China Trusted assets with stored proxy definitions
 ```
 
 and is published as `subscriptions/direct.yaml`.
@@ -918,7 +918,7 @@ Production China output is:
 
 `relay.yaml` and `landing.yaml` are no longer production pools.
 
-The Pair experiment is optional. If no Pair candidate feed exists, the China machine continues normal direct probing and the cycle succeeds without Pair testing.
+The Pair experiment is optional. If no Pair candidate feed exists, the China machine continues normal China-asset probing and the cycle succeeds without Pair testing.
 
 ### 24.2 B2 information exchange
 
