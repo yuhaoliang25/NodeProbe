@@ -21,13 +21,18 @@ function healthy(r){
   const rounds=Number(r.rounds||0), successes=Number(r.successes||0);
   return rounds>=2 && successes>=Math.ceil(rounds*0.67);
 }
-function nextProbeAt(status,atMs){
+const DEAD_RECHECK_MS=[4,12,24,72,168,336,720].map(h=>h*3600000);
+function nextProbeAt(status,atMs,recheckLevel=0){
   const intervals={
     stable:24*3600000,
     active:12*3600000,
     probation:6*3600000,
     stale:4*3600000
   };
+  if(status==='dead'){
+    const ms=DEAD_RECHECK_MS[Math.min(Math.max(0,recheckLevel),DEAD_RECHECK_MS.length-1)];
+    return new Date(atMs+ms).toISOString();
+  }
   const ms=intervals[status];
   return ms?new Date(atMs+ms).toISOString():null;
 }
@@ -104,6 +109,10 @@ function main(){
     const observedSources=sourceObservations.map(x=>x.source);
     const hasObservation=Boolean(r);
     const currentHealthy=hasObservation&&healthy(r);
+    const wasDead=prev?.status==='dead';
+    let deadSince=prev?.deadSince||null;
+    let recheckLevel=Number.isInteger(prev?.recheckLevel)?prev.recheckLevel:0;
+    let recoveryRuns=Number(prev?.recoveryRuns||0);
     // A candidate without a health result was not actually observed. Do not
     // turn an untested/skipped candidate into a failure or advance its schedule.
     const healthyRuns=hasObservation
@@ -117,19 +126,43 @@ function main(){
       : Number(prev?.observedRuns||0);
 
     let status=prev?.status||'new';
-    if(hasObservation){
+    let forgotten=false;
+    if(wasDead){
+      status='dead';
+      if(hasObservation){
+        if(currentHealthy){
+          recoveryRuns+=1;
+          if(recoveryRuns>=3){
+            status=prev?.everStable?'stable':'active';
+            deadSince=null;
+            recheckLevel=0;
+          }
+        }else{
+          recoveryRuns=0;
+          recheckLevel+=1;
+          if(recheckLevel>=DEAD_RECHECK_MS.length)forgotten=true;
+        }
+      }
+    }else if(hasObservation){
       if(currentHealthy){
         if(healthyRuns>=6 || prev?.everStable)status='stable';
         else if(healthyRuns>=2)status='active';
         else status='probation';
       }else if(failedRuns>=3){
         status='dead';
+        deadSince=now;
+        recheckLevel=0;
+        recoveryRuns=0;
       }else{
         status=prev?.everStable?'stale':(failedRuns>=2?'stale':'probation');
       }
     }
 
     const proxy=cleanProxy(p);
+    if(forgotten){
+      nodes.delete(id);
+      continue;
+    }
     const lifetimeDays=Math.max(0,(Date.now()-Date.parse(firstObservedAt))/86400000);
     const entry={
       fingerprint:id,
@@ -149,7 +182,12 @@ function main(){
       failedRuns,
       currentSources,
       knownSources,
-      nextProbeAt:hasObservation?nextProbeAt(status,Date.now()):(prev?.nextProbeAt||null),
+      deadSince:status==='dead'?(deadSince||now):null,
+      recheckLevel:status==='dead'?recheckLevel:0,
+      recoveryRuns:status==='dead'?recoveryRuns:0,
+      nextProbeAt:hasObservation
+        ? nextProbeAt(status,Date.now(),recheckLevel)
+        : (prev?.nextProbeAt||null),
       lastHealth:hasObservation?{
         rounds:r.rounds,
         successes:r.successes,
