@@ -15,7 +15,12 @@ export CHINA_MAX_NODES="${CHINA_MAX_NODES:-30}"
 export CHINA_PROBE_CONCURRENCY="${CHINA_PROBE_CONCURRENCY:-8}"
 
 npm run china-sync -- pull-stable
-npm run china-sync -- pull-candidates
+if npm run china-sync -- pull-candidates; then
+  echo 'Using China candidate feed from B2.'
+else
+  echo 'No usable China candidate feed; generating a local bootstrap candidate set from Stable.'
+  npm run china-assets
+fi
 npm run china-probe
 npm run china-sync -- push-observations
 if npm run china-sync -- pull-pair-candidates; then
