@@ -13,21 +13,27 @@ const C={
   appliedObservationRetention:Number(process.env.CHINA_PAIR_APPLIED_OBSERVATION_RETENTION||5000),
 };
 function now(){return new Date().toISOString()}
-function loadState(){try{return JSON.parse(fs.readFileSync(C.stateFile,'utf8'))}catch{return {version:1,pairs:{},processedBatches:[]}}}
+function loadState(){
+  if(!fs.existsSync(C.stateFile)) return {version:1,pairs:{},processedBatches:[]};
+  const state=JSON.parse(fs.readFileSync(C.stateFile,'utf8'));
+  if(!state||typeof state!=='object'||!state.pairs||typeof state.pairs!=='object'){
+    throw new Error('China pair knowledge state is invalid: '+C.stateFile);
+  }
+  return state;
+}
 function loadBatches(){
   const out=[];
   // Only batch files are persistent observation inbox entries. The single
   // observationFile is a local latest-run snapshot and must not be re-applied
   // by the state updater on every workflow run.
-  try{
-    for(const f of fs.readdirSync(C.observationDir).filter(x=>x.endsWith('.json')).sort()){
-      const data=JSON.parse(fs.readFileSync(path.join(C.observationDir,f),'utf8'));
-      if(!data || typeof data!=='object'){
-        throw new Error('invalid China pair observation batch: '+f);
-      }
-      out.push({name:f,data});
+  if(!fs.existsSync(C.observationDir)) return out;
+  for(const f of fs.readdirSync(C.observationDir).filter(x=>x.endsWith('.json')).sort()){
+    const data=JSON.parse(fs.readFileSync(path.join(C.observationDir,f),'utf8'));
+    if(!data || typeof data!=='object'){
+      throw new Error('invalid China pair observation batch: '+f);
     }
-  }catch{}
+    out.push({name:f,data});
+  }
   return out;
 }
 function pairKey(x){return x.pairId||crypto.createHash('sha256').update(String(x.relayEndpointId)+'|'+String(x.landingEndpointId)).digest('hex').slice(0,16)}
