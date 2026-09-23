@@ -1,0 +1,57 @@
+#!/usr/bin/env node
+'use strict';
+const fs=require('fs');
+const path=require('path');
+const crypto=require('crypto');
+
+const C={
+  observationFile:process.env.CHINA_PAIR_OBSERVATION_FILE||'data/china-pair-observations.json',
+  observationDir:process.env.CHINA_PAIR_OBSERVATION_DIR||'data/china-pair-observations',
+  stateFile:process.env.CHINA_PAIR_KNOWLEDGE_FILE||'data/china-pair-knowledge.json',
+  retention:Number(process.env.CHINA_PAIR_OBSERVATION_RETENTION||30),
+  batchRetention:Number(process.env.CHINA_PAIR_BATCH_RETENTION||1000),
+};
+function now(){return new Date().toISOString()}
+function loadState(){try{return JSON.parse(fs.readFileSync(C.stateFile,'utf8'))}catch{return {version:1,pairs:{},processedBatches:[]}}}
+function loadBatches(){
+  const out=[];
+  try{const d=JSON.parse(fs.readFileSync(C.observationFile,'utf8'));if(d?.accepted)out.push({name:null,data:d})}catch{}
+  try{for(const f of fs.readdirSync(C.observationDir).filter(x=>x.endsWith('.json')).sort()){try{out.push({name:f,data:JSON.parse(fs.readFileSync(path.join(C.observationDir,f),'utf8'))})}catch{}}}catch{}
+  return out;
+}
+function pairKey(x){return x.pairId||crypto.createHash('sha256').update(String(x.relayEndpointId)+'|'+String(x.landingEndpointId)).digest('hex').slice(0,16)}
+function apply(){
+  const state=loadState();const seen=new Set(state.processedBatches||[]);let applied=0;
+  for(const b of loadBatches()){
+    if(b.name&&seen.has(b.name))continue;
+    const d=b.data||{};
+    const accepted=Array.isArray(d.accepted)?d.accepted:[];
+    for(const x of accepted){
+      const key=pairKey(x);
+      const p=state.pairs[key]||{pairId:key,relayEndpointId:x.relayEndpointId,landingEndpointId:x.landingEndpointId,observations:[]};
+      p.lastObservedAt=x.at||d.generatedAt||now();
+      p.lastScreenLatencyMs=x.latencyMs??null;
+      p.lastBaselineLatencyMs=x.baselineLatencyMs??null;
+      p.lastImprovement=Boolean(x.improved);
+      p.observations.push({
+        at:x.at||d.generatedAt||now(),
+        success:true,
+        screenLatencyMs:x.latencyMs??null,
+        baselineLatencyMs:x.baselineLatencyMs??null,
+        improvement:x.improved?((x.baselineLatencyMs&&x.latencyMs)?1-x.latencyMs/x.baselineLatencyMs:null):null,
+        confirmationSuccessRate:x.confirmationSuccessRate??null,
+        confirmationAttempts:x.confirmationAttempts??0,
+        environment:d.probeEnvironment||'china-default'
+      });
+      p.observations=p.observations.slice(-C.retention);
+      p.successes=(p.successes||0)+1;
+      p.lastSuccessAt=p.lastObservedAt;
+      state.pairs[key]=p;applied++;
+    }
+    if(b.name)seen.add(b.name);
+  }
+  state.version=1;state.generatedAt=now();state.processedBatches=[...seen].slice(-C.batchRetention);
+  fs.mkdirSync(path.dirname(C.stateFile),{recursive:true});fs.writeFileSync(C.stateFile,JSON.stringify(state,null,2)+'\n');
+  console.log(JSON.stringify({applied,pairs:Object.keys(state.pairs).length,stateFile:C.stateFile},null,2));
+}
+apply();
