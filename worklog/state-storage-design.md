@@ -10,7 +10,7 @@ NodeProbe 已经从一次性“抓取 Source → 筛选节点”的脚本，演�
 - Source 历史与信誉；
 - Source Evolution；
 - Discovery Memory；
-- 节点健康历史与信誉；
+- 节点健康历史与生命周期；
 - IP 地理信息；
 - 其他用于跨 Workflow 运行保持连续性的状态。
 
@@ -164,7 +164,7 @@ data/discovery-state.json
 | 数据 | 当前建议 |
 |---|---|
 | data/ip-geolocation.json | 持久化，但可视为 cache；丢失后可重新查询 |
-| data/history.json | 需要进一步拆分；若 reputation 依赖它，则应保存原始历史或迁移为专用 history state |
+| data/history.json | 保存健康观测历史；由 Node lifecycle / selection 使用 |
 | data/candidates.json | 通常不需要长期保存，可由 Source + NodePool 重建 |
 | data/scores.json | 若完全由当前输入计算，应视为 derived |
 | data/health.json | 若 reputation/history 已保存完整信息，可考虑减少重复存储 |
@@ -311,7 +311,7 @@ node pool update
   ↓
 source evolution update
   ↓
-reputation update
+node/source lifecycle update
   ↓
 generate subscriptions
   ↓
@@ -640,7 +640,7 @@ NodeProbe
 ├── Fetch
 ├── Validation
 ├── Tracking
-├── Reputation
+├── Lifecycle / evidence
 ├── Selection
 └── Subscription Generation
 `
@@ -653,7 +653,7 @@ NodeProbe State
 ├── Source Memory
 ├── Discovery Memory
 ├── Evolution Memory
-├── Reputation Memory
+├── Lifecycle Memory
 └── Cache
 `
 
@@ -679,7 +679,7 @@ NodeProbe State
 
 最终原则：
 
-> **NodeProbe 的代码定义它“怎么思考”；Persistent State 记录它“记得什么”。**
+> **NodeProbe 的代码定义它“怎么运行”；Persistent State 记录它“记得什么”。**
 
 只有二者结合，NodeProbe 才真正是一个持续运行的系统，而不是每四小时重新运行一次的无状态脚本。
 
@@ -692,7 +692,7 @@ NodeProbe State
 - Source 不是最终产品；
 - Node 是长期资产；
 - Node Pool 是 NodeProbe 自有资产层；
-- Source Reputation 与 Node Reputation 分离；
+- Source Reputation 与 Node lifecycle 分离；
 - Source Evolution 只观察，不直接惩罚；
 - Discovery Memory 与 Source Reputation 分离；
 - firstObservedAt 是 NodeProbe observation time，而不是 publication time；
