@@ -4,474 +4,183 @@ mode: 'rule'
 log-level: 'warning'
 ipv6: false
 proxies:
-  - alterId: 0
-    cipher: 'auto'
-    name: '🇺🇸US_2|850KB/s|M002-260618 01'
-    network: 'tcp'
-    port: 180
-    server: '82.198.246.97'
-    skip-cert-verify: false
-    sub_tag: 'M002-260618'
-    tls: false
-    type: 'vmess'
-    udp: true
-    uuid: 'd13fc2f5-3e05-4795-81eb-44143a09e552'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'jp1.sstank.top'
   - client-fingerprint: 'chrome'
-    name: '🇫🇷FR_2177|254KB/s|F003-260618 01'
+    encryption: 'none'
+    name: '🇺🇸US_750|714KB/s|V003-260618 01'
     network: 'ws'
-    port: 8443
-    server: '104.194.84.188'
-    sub_tag: 'F003-260618'
+    port: 2096
+    server: '172.67.130.159'
+    sub_tag: 'V003-260618'
     tls: true
     type: 'vless'
     udp: true
-    uuid: 'c18b978e-1c4e-415c-8bea-07942b563a64'
+    uuid: '550d6eb0-1775-44a4-a464-9176e3d74b50'
     ws-opts:
       headers:
-        Host: 'shuma.ccwu.cc'
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36'
-      path: '/'
+        Host: 'cdn-us.skyvora.app'
+        User-Agent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36'
+      path: '/0i027asku'
     xudp: true
     packet-encoding: 'xudp'
-    servername: 'shuma.ccwu.cc'
-  - name: '🇺🇸US_691|124KB/s|R002-260618 01'
-    port: 7615
-    server: '47.90.206.169'
-    skip-cert-verify: true
+    servername: 'cdn-us.skyvora.app'
+  - cipher: 'aes-256-cfb'
+    name: '🇺🇸US_794|1.8MB/s|R002-260618 01'
+    password: 'amazonskr05'
+    port: 443
+    server: '18.213.0.46'
     sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-  - name: 'JP日本(mibei77.com 米贝节点分享)_5'
-    type: 'vless'
-    server: '31.57.218.99'
-    port: 443
-    uuid: 'c18b978e-1c4e-415c-8bea-07942b563a64'
-    network: 'ws'
-    servername: 'shuma.ccwu.cc'
-    tls: true
-    client-fingerprint: 'chrome'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'shuma.ccwu.cc'
-    skip-cert-verify: true
-    udp: true
-  - cipher: 'aes-128-gcm'
-    name: '🇯🇵JP_5|649KB/s|A004-260618 01'
-    password: 'shadowsocks'
-    port: 443
-    server: '149.22.87.204'
-    sub_tag: 'A004-260618'
     type: 'ss'
     udp: true
   - alterId: 0
     cipher: 'auto'
-    name: '🇯🇵JP_33|682KB/s|A004-260618 01'
-    network: 'tcp#🎡90@oneclickvpnkeys'
-    port: 4433
-    server: '45.32.57.118'
-    skip-cert-verify: false
-    sub_tag: 'A004-260618'
-    tls: false
-    type: 'vmess'
-    udp: true
-    uuid: '35b89832-0a7c-48dd-8d1c-a2891b522195'
-    xudp: true
-    packet-encoding: 'xudp'
-  - alterId: '0'
-    cipher: 'auto'
-    http-opts:
-      headers: {}
-      path:
-        - '/'
-    name: '🇰🇷KR_12|778KB/s|C002-260622 01'
-    network: 'http'
-    port: 80
-    server: '217.142.138.61'
-    skip-cert-verify: false
-    sub_tag: 'C002-260622'
-    tls: false
-    type: 'vmess'
-    udp: true
-    uuid: 'ac1b933d-afff-4487-93ef-f57130a55dff'
-    xudp: true
-    packet-encoding: 'xudp'
-  - name: 'KR韩国(mibei77.com 米贝节点分享)'
-    type: 'vless'
-    server: '123.111.169.70'
-    port: 2083
-    uuid: 'c18b978e-1c4e-415c-8bea-07942b563a64'
-    network: 'ws'
-    servername: 'shuma.ccwu.cc'
-    tls: true
-    client-fingerprint: 'chrome'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'shuma.ccwu.cc'
-    skip-cert-verify: true
-    udp: true
-  - client-fingerprint: 'chrome'
-    name: '🇰🇷KR_28|490KB/s|A004-260618 01'
+    name: '🇺🇸US_753|415KB/s|A004-260618 01'
     network: 'tcp'
-    password: 'p5jTPcffLgi4gaNOJd2KUTb9YEPBBD5B'
-    port: 56127
-    server: '154.90.62.70'
-    skip-cert-verify: true
-    sub_tag: 'A004-260618'
-    type: 'trojan'
-    udp: true
-  - client-fingerprint: 'chrome'
-    name: '🇸🇬SG_53|300KB/s|F003-260618 01'
-    network: 'ws'
-    port: 443
-    server: '103.195.188.206'
-    sub_tag: 'F003-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'c18b978e-1c4e-415c-8bea-07942b563a64'
-    ws-opts:
-      headers:
-        Host: 'shuma.ccwu.cc'
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36'
-      path: '/'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'shuma.ccwu.cc'
-  - alterId: '0'
-    cipher: 'auto'
-    name: '🇸🇬SG_5|1007KB/s|C002-260622 01'
-    network: 'raw'
-    port: 18000
-    server: '149.88.23.202'
+    port: 22324
+    server: '172.111.38.100'
     skip-cert-verify: false
-    sub_tag: 'C002-260622'
+    sub_tag: 'A004-260618'
     tls: false
     type: 'vmess'
     udp: true
-    uuid: 'f8c8dc3d-0d37-46b0-8b34-a7232882fcfe'
+    uuid: '04621bae-ab36-11ec-b909-0242ac120002'
     xudp: true
     packet-encoding: 'xudp'
-  - name: '🇸🇬SG_12|648KB/s|R002-260618 01'
-    password: 'e4b72b531a2d10900519'
+  - cipher: 'aes-256-cfb'
+    name: '🇯🇵JP_56|384KB/s|A004-260618 01'
+    password: 'amazonskr05'
     port: 443
-    server: '146.70.29.45'
-    sni: '92461d2d.acsnet.co'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'testuser1'
-    udp: true
-  - client-fingerprint: 'chrome'
-    name: '🇬🇧GB_69|472KB/s|F003-260618 01'
-    network: 'ws'
-    port: 443
-    server: '104.194.140.26'
-    sub_tag: 'F003-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'c18b978e-1c4e-415c-8bea-07942b563a64'
-    ws-opts:
-      headers:
-        Host: 'shuma.ccwu.cc'
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'
-      path: '/'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'shuma.ccwu.cc'
-  - cipher: 'chacha20-ietf-poly1305'
-    name: '🇬🇧GB_44|4.2MB/s|A004-260618 01'
-    password: 'zRZNBszYyWo5'
-    port: 8388
-    server: '51.77.225.200'
+    server: '18.179.111.96'
     sub_tag: 'A004-260618'
     type: 'ss'
     udp: true
-  - name: '🇬🇧GB_20|2.5MB/s|R002-260618 01'
-    port: 8443
-    server: '5.101.149.245'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-  - name: 'DE德国(mibei77.com 米贝节点分享)_3'
-    type: 'vless'
-    server: '45.95.96.236'
+  - cipher: 'aes-256-cfb'
+    name: '🇯🇵JP_58|402KB/s|A004-260618 01'
+    password: 'amazonskr05'
     port: 443
-    uuid: 'c5694dc5-39fd-4a92-8430-3837baa522a3'
-    servername: 'gesmankos.sadiepinki.com'
+    server: '3.112.209.209'
+    sub_tag: 'A004-260618'
+    type: 'ss'
+    udp: true
+  - cipher: 'aes-256-cfb'
+    name: '🇯🇵JP_66|579KB/s|R002-260618 01'
+    password: 'amazonskr05'
+    port: 443
+    server: '18.181.145.202'
+    sub_tag: 'R002-260618'
+    type: 'ss'
+    udp: true
+  - name: '🇩🇪_DE_德国-cc963da6d84f5a1b'
+    type: 'vless'
+    server: 'de777.lavivas.org'
+    port: 7444
+    uuid: '44e1105d-b46e-402f-933b-eaa136fcbb24'
     tls: true
     flow: 'xtls-rprx-vision'
-    client-fingerprint: 'firefox'
-    reality-opts:
-      public-key: 'rCkSHJ7goy7ZvSlau4LfXF-QLloOJMNeMxpeeQtwtVs'
-      short-id: '4fa44664f6a566d3'
     skip-cert-verify: true
     udp: true
-  - cipher: 'aes-256-gcm'
-    name: '🇩🇪DE_8|5.5MB/s 01'
-    password: 'XKFKl2rULjIp74'
-    port: 8008
-    server: '185.226.172.8'
-    type: 'ss'
+  - alterId: 0
+    cipher: 'auto'
+    name: '🇩🇪DE_183|535KB/s|A004-260618 01'
+    network: 'tcp'
+    port: 22324
+    server: '216.106.187.60'
+    skip-cert-verify: false
+    sub_tag: 'A004-260618'
+    tls: false
+    type: 'vmess'
     udp: true
-  - name: '🇩🇪DE_18|4.9MB/s|R002-260618 01'
-    port: 11111
-    server: '103.237.102.191'
-    sub_tag: 'R002-260618'
-    type: 'http'
-    udp: true
-  - client-fingerprint: 'chrome'
-    name: '🇫🇷FR_2156|361KB/s|F003-260618 01'
-    network: 'ws'
-    port: 443
-    server: '141.227.188.153'
-    sub_tag: 'F003-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'c18b978e-1c4e-415c-8bea-07942b563a64'
-    ws-opts:
-      headers:
-        Host: 'shuma.ccwu.cc'
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'
-      path: '/'
+    uuid: '04621bae-ab36-11ec-b909-0242ac120002'
     xudp: true
     packet-encoding: 'xudp'
-    servername: 'shuma.ccwu.cc'
-  - name: '🇫🇷FR_32|1.7MB/s|R002-260618 01'
-    port: 443
-    server: '103.82.101.44'
-    skip-cert-verify: true
-    sni: 'f3a61d8406d537345747f99f8a281007-3f754ed5da1bba09.apache-iv.com'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-  - cipher: 'chacha20-ietf-poly1305'
-    name: '🇫🇷FR_134|7.6MB/s|B007-260618 01'
-    password: 'BqnqToih0PbU'
-    port: 8388
-    server: '51.255.13.232'
-    sub_tag: 'B007-260618'
-    type: 'ss'
-    udp: true
-  - name: '🇳🇱NL_228|3.0MB/s|K001-260618 01'
-    password: 'e4b72b531a2d10900519'
-    port: 443
-    server: '82.196.9.7'
-    skip-cert-verify: true
-    sub_tag: 'K001-260618'
-    tls: true
-    type: 'http'
-    username: 'testuser1'
-    udp: true
-  - cipher: 'chacha20-ietf-poly1305'
-    name: '🇳🇱NL_208|7.0MB/s|A004-260618 01'
-    password: 'CJmTCCx7Ltud'
-    port: 8388
-    server: '108.181.126.122'
-    sub_tag: 'A004-260618'
-    type: 'ss'
-    udp: true
   - encryption: 'none'
-    name: '🇳🇱NL_216|1.1MB/s|M003-260806 01'
-    network: 'ws'
-    port: 443
-    server: '31.76.76.28'
-    sub_tag: 'M003-260806'
+    http-opts:
+      headers:
+        Host:
+          - 'play-apps-features.googleusercontent.com'
+      path:
+        - '/@Nap_v2ray---@Nap_v2ray@Nap_v2ray---@Nap_v2ray@Nap_v2ray---@Nap_v2ray@Nap_v2ray---@Nap_v2ray@Nap_v2ray---@Nap_v2ray@Nap_v2ray---@Nap_v2ray@Nap_v2ray---@Nap_v2ray@Nap_v2ray---@Nap_v2ray'
+    name: '🇩🇪DE_176|3.1MB/s|B007-260618 01'
+    network: 'http'
+    port: 26437
+    server: '91.107.144.22'
+    sub_tag: 'B007-260618'
     type: 'vless'
     udp: true
-    uuid: 'de5906f3-df38-4463-aa9d-2b01320cc6ea'
+    uuid: '0b05ddba-6e1f-4a77-ac5a-4a9f9d08d543'
+    xudp: true
+    packet-encoding: 'xudp'
+  - name: '🇳🇱NL_309|1.8MB/s|A004-260618 01'
+    network: 'ws'
+    port: 8081
+    server: '132.243.166.247'
+    sub_tag: 'A004-260618'
+    type: 'vless'
+    udp: true
+    uuid: '54ee5e59-55a3-4599-83ff-0c67b3f411b2'
     ws-opts:
       headers:
         Host: ''
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.101 Safari/537.36'
-      path: '/'
+        User-Agent: 'Mozilla/5.0 (Linux; Android 5.1.1; SM-J120M Build/LMY47X) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36'
+      path: '/vless-test'
     xudp: true
     packet-encoding: 'xudp'
-  - cipher: 'chacha20-ietf-poly1305'
-    name: '🇨🇦CA_9|1.4MB/s|A004-260618 01'
-    password: 'FD3rCuOsxOay'
-    port: 8388
-    server: '15.235.75.71'
+  - cipher: 'aes-256-gcm'
+    name: '🇨🇦CA_39|933KB/s|A004-260618 01'
+    password: 'eveaaTOb8ji8yntw2Z9yWUG0d6Ir8Ld8m3ymH8THdC5egiTH1mXCiBc0Skr7FibH'
+    port: 9443
+    server: '185.156.47.97'
     sub_tag: 'A004-260618'
     type: 'ss'
     udp: true
-  - alterId: '0'
+  - alpn:
+      - ''
+    alterId: '0'
     cipher: 'auto'
-    name: '🇨🇦CA_14|1.0MB/s|C002-260622 01'
-    network: 'raw'
-    port: 18000
-    server: '134.195.196.211'
+    name: '🇨🇦CA_43|824KB/s|B007-260618 01'
+    network: 'tcp'
+    port: 22324
+    server: '66.163.113.176'
     skip-cert-verify: false
-    sub_tag: 'C002-260622'
+    sub_tag: 'B007-260618'
     tls: false
     type: 'vmess'
     udp: true
-    uuid: 'f8c8dc3d-0d37-46b0-8b34-a7232882fcfe'
+    uuid: '04621bae-ab36-11ec-b909-0242ac120002'
     xudp: true
     packet-encoding: 'xudp'
-  - name: '🇨🇦CA_28|1.3MB/s|R002-260618 01'
-    port: 3118
-    server: '184.75.221.82'
-    sub_tag: 'R002-260618'
-    type: 'http'
-    udp: true
-  - name: 'AU澳大利亚(mibei77.com 米贝节点分享)'
-    type: 'vless'
-    server: '34.87.244.111'
-    port: 443
-    uuid: '325bc1be-0cb7-4cf7-bd35-a79ded91bbbd'
-    servername: 'www.cloudflare.com'
-    tls: true
-    client-fingerprint: 'chrome'
-    reality-opts:
-      public-key: 'fsdIMU2apN1C_NbkL7mHTsBKEfhwbDhgCRcB8ICf03E'
-      short-id: 'd725f0dd8cce210f'
-    skip-cert-verify: true
-    udp: true
-    _poolOnly: true
-  - name: '🇦🇺AU_2|373KB/s|R002-260618 01'
-    password: 'None'
-    port: 443
-    server: '159.13.44.228'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-  - name: '🇦🇺 澳大利亚_J2KUWM'
-    server: '51.161.204.244'
-    port: 443
-    type: 'vless'
-    uuid: '36e89875-9c53-482b-bc41-d3890e9da176'
-    tls: true
-    tfo: false
-    flow: 'xtls-rprx-vision'
-    skip-cert-verify: false
-    reality-opts:
-      public-key: 'gCAazs5uxNuMZIxfDdw8wPE0nwKY4QfBfBkQveKAkEk'
-      short-id: '0ad08b47f498efd2'
-    servername: 'www.cloudflare.com'
-    client-fingerprint: 'firefox'
-    network: 'tcp'
-    udp: true
-    _poolOnly: true
-  - name: 'IN印度(mibei77.com 米贝节点分享)'
-    type: 'vless'
-    server: '13.200.106.232'
-    port: 443
-    uuid: 'c18b978e-1c4e-415c-8bea-07942b563a64'
-    network: 'ws'
-    servername: 'shuma.ccwu.cc'
-    tls: true
-    client-fingerprint: 'chrome'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'shuma.ccwu.cc'
-    skip-cert-verify: true
-    udp: true
-  - client-fingerprint: 'chrome'
-    name: '🇮🇳IN_22|757KB/s|A004-260618 01'
-    network: 'tcp'
-    password: 'M7v%w11Se*'
-    port: 443
-    server: 'hyfuuf6.wsone.icu'
+  - alterId: 0
+    cipher: 'auto'
+    name: '🇨🇦CA_46|416KB/s|A004-260618 01'
+    network: 'raw'
+    port: 22324
+    server: '158.51.123.42'
     skip-cert-verify: false
     sub_tag: 'A004-260618'
-    type: 'trojan'
-    udp: true
-    sni: 'hyfuuf6.wsone.icu'
-  - name: '🇮🇳IN_18|281KB/s|K001-260618 01'
-    password: ''
-    port: 1088
-    server: '144.24.111.128'
-    skip-cert-verify: true
-    sub_tag: 'K001-260618'
-    type: 'socks5'
-    username: ''
-    udp: true
-  - name: 'TW台湾(mibei77.com 米贝节点分享)'
-    type: 'vless'
-    server: '140.235.39.19'
-    port: 443
-    uuid: 'c18b978e-1c4e-415c-8bea-07942b563a64'
-    network: 'ws'
-    servername: 'shuma.ccwu.cc'
-    tls: true
-    client-fingerprint: 'chrome'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'shuma.ccwu.cc'
-    skip-cert-verify: true
-    udp: true
-  - name: '🇹🇼TW_24|519KB/s 01'
-    password: 'exaxgqkKkd0TAMrCxeonWg=='
-    port: 1443
-    server: 'twmoon1-cdn-route.couldflare-cdn.com'
-    tls: true
-    type: 'http'
-    udp: true
-    username: 'mrwdfNTD8M79LCukCieldrqZWqs='
-    sni: 'twmoon1-cdn-route.couldflare-cdn.com'
-  - name: '🇹🇼TW_3|409KB/s|R002-260618 01'
-    network: 'ws'
-    port: 443
-    server: '60.248.219.78'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'c1c04450-bf71-4049-ad0c-9cf6d94d9f1f'
-    ws-opts:
-      headers:
-        Host: 'ty986gfazs.cainiaohub.xyz'
-      path: '/81574b6b-c9d7-44a0-b83d-dad56e8cb530'
-    servername: 'ty986gfazs.cainiaohub.xyz'
-  - name: 'HK香港(mibei77.com 米贝节点分享)_1'
-    type: 'vless'
-    server: '103.101.0.73'
-    port: 443
-    uuid: 'c18b978e-1c4e-415c-8bea-07942b563a64'
-    network: 'ws'
-    servername: 'shuma.ccwu.cc'
-    tls: true
-    client-fingerprint: 'chrome'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'shuma.ccwu.cc'
-    skip-cert-verify: true
-    udp: true
-  - name: '🇭🇰 香港 04'
-    port: 443
-    server: 'fan.240104.xyz'
-    skip-cert-verify: true
-    sni: 'fan.240104.xyz'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-  - name: '🇭🇰_HK_中国香港->🇯🇵_JP_日本'
-    type: 'vmess'
-    server: 'v6.hdacd.com'
-    port: 30806
-    uuid: 'cbb3f877-d1fb-344c-87a9-d153bffd5484'
-    alterId: 2
-    cipher: 'auto'
     tls: false
-    skip-cert-verify: true
+    type: 'vmess'
     udp: true
+    uuid: '04621bae-ab36-11ec-b909-0242ac120002'
+    xudp: true
+    packet-encoding: 'xudp'
+  - cipher: 'chacha20-ietf-poly1305'
+    name: '❓Other_110|85KB/s|A004-260618 01'
+    password: 'r6tptrwvddxap6al'
+    port: 1081
+    server: 'sth.free-outline.giize.com'
+    sub_tag: 'A004-260618'
+    type: 'ss'
+    udp: true
+  - name: '🇭🇰_HK_中国香港_1'
+    type: 'hysteria2'
+    server: '24.233.8.109'
+    port: 443
+    password: '8294f130408299df8cab08c80bf6f819'
+    sni: 'www.bing.com'
+    skip-cert-verify: true
+    obfs: 'salamander'
+    obfs-password: 'c8827ab99e316c5bd414e21afa915ddf'
+    udp: true
+    _poolOnly: true
 proxy-groups:
   - name: 'COUNTRY'
     type: 'select'
@@ -479,16 +188,9 @@ proxy-groups:
       - 'DIRECT'
       - 'US · United States'
       - 'JP · Japan'
-      - 'KR · South Korea'
-      - 'SG · Singapore'
-      - 'GB · United Kingdom'
       - 'DE · Germany'
-      - 'FR · France'
       - 'NL · Netherlands'
       - 'CA · Canada'
-      - 'AU · Australia'
-      - 'IN · India'
-      - 'TW · Taiwan'
       - 'HK · Hong Kong'
   - name: 'US · United States'
     type: 'url-test'
@@ -497,8 +199,9 @@ proxy-groups:
     tolerance: 100
     lazy: false
     proxies:
-      - '🇺🇸US_2|850KB/s|M002-260618 01'
-      - '🇺🇸US_691|124KB/s|R002-260618 01'
+      - '🇺🇸US_750|714KB/s|V003-260618 01'
+      - '🇺🇸US_794|1.8MB/s|R002-260618 01'
+      - '🇺🇸US_753|415KB/s|A004-260618 01'
   - name: 'JP · Japan'
     type: 'url-test'
     url: 'https://www.google.com/generate_204'
@@ -506,37 +209,9 @@ proxy-groups:
     tolerance: 100
     lazy: false
     proxies:
-      - '🇯🇵JP_5|649KB/s|A004-260618 01'
-      - '🇯🇵JP_33|682KB/s|A004-260618 01'
-  - name: 'KR · South Korea'
-    type: 'url-test'
-    url: 'https://www.google.com/generate_204'
-    interval: 300
-    tolerance: 100
-    lazy: false
-    proxies:
-      - '🇰🇷KR_12|778KB/s|C002-260622 01'
-      - '🇰🇷KR_28|490KB/s|A004-260618 01'
-  - name: 'SG · Singapore'
-    type: 'url-test'
-    url: 'https://www.google.com/generate_204'
-    interval: 300
-    tolerance: 100
-    lazy: false
-    proxies:
-      - '🇸🇬SG_53|300KB/s|F003-260618 01'
-      - '🇸🇬SG_5|1007KB/s|C002-260622 01'
-      - '🇸🇬SG_12|648KB/s|R002-260618 01'
-  - name: 'GB · United Kingdom'
-    type: 'url-test'
-    url: 'https://www.google.com/generate_204'
-    interval: 300
-    tolerance: 100
-    lazy: false
-    proxies:
-      - '🇬🇧GB_69|472KB/s|F003-260618 01'
-      - '🇬🇧GB_44|4.2MB/s|A004-260618 01'
-      - '🇬🇧GB_20|2.5MB/s|R002-260618 01'
+      - '🇯🇵JP_56|384KB/s|A004-260618 01'
+      - '🇯🇵JP_58|402KB/s|A004-260618 01'
+      - '🇯🇵JP_66|579KB/s|R002-260618 01'
   - name: 'DE · Germany'
     type: 'url-test'
     url: 'https://www.google.com/generate_204'
@@ -544,19 +219,9 @@ proxy-groups:
     tolerance: 100
     lazy: false
     proxies:
-      - '🇩🇪DE_8|5.5MB/s 01'
-      - '🇩🇪DE_18|4.9MB/s|R002-260618 01'
-  - name: 'FR · France'
-    type: 'url-test'
-    url: 'https://www.google.com/generate_204'
-    interval: 300
-    tolerance: 100
-    lazy: false
-    proxies:
-      - '🇫🇷FR_2177|254KB/s|F003-260618 01'
-      - '🇫🇷FR_2156|361KB/s|F003-260618 01'
-      - '🇫🇷FR_32|1.7MB/s|R002-260618 01'
-      - '🇫🇷FR_134|7.6MB/s|B007-260618 01'
+      - '🇩🇪_DE_德国-cc963da6d84f5a1b'
+      - '🇩🇪DE_183|535KB/s|A004-260618 01'
+      - '🇩🇪DE_176|3.1MB/s|B007-260618 01'
   - name: 'NL · Netherlands'
     type: 'url-test'
     url: 'https://www.google.com/generate_204'
@@ -564,9 +229,7 @@ proxy-groups:
     tolerance: 100
     lazy: false
     proxies:
-      - '🇳🇱NL_228|3.0MB/s|K001-260618 01'
-      - '🇳🇱NL_208|7.0MB/s|A004-260618 01'
-      - '🇳🇱NL_216|1.1MB/s|M003-260806 01'
+      - '🇳🇱NL_309|1.8MB/s|A004-260618 01'
   - name: 'CA · Canada'
     type: 'url-test'
     url: 'https://www.google.com/generate_204'
@@ -574,36 +237,9 @@ proxy-groups:
     tolerance: 100
     lazy: false
     proxies:
-      - '🇨🇦CA_9|1.4MB/s|A004-260618 01'
-      - '🇨🇦CA_14|1.0MB/s|C002-260622 01'
-      - '🇨🇦CA_28|1.3MB/s|R002-260618 01'
-  - name: 'AU · Australia'
-    type: 'url-test'
-    url: 'https://www.google.com/generate_204'
-    interval: 300
-    tolerance: 100
-    lazy: false
-    proxies:
-      - '🇦🇺AU_2|373KB/s|R002-260618 01'
-      - '🇦🇺 澳大利亚_J2KUWM'
-  - name: 'IN · India'
-    type: 'url-test'
-    url: 'https://www.google.com/generate_204'
-    interval: 300
-    tolerance: 100
-    lazy: false
-    proxies:
-      - '🇮🇳IN_22|757KB/s|A004-260618 01'
-      - '🇮🇳IN_18|281KB/s|K001-260618 01'
-  - name: 'TW · Taiwan'
-    type: 'url-test'
-    url: 'https://www.google.com/generate_204'
-    interval: 300
-    tolerance: 100
-    lazy: false
-    proxies:
-      - '🇹🇼TW_24|519KB/s 01'
-      - '🇹🇼TW_3|409KB/s|R002-260618 01'
+      - '🇨🇦CA_39|933KB/s|A004-260618 01'
+      - '🇨🇦CA_43|824KB/s|B007-260618 01'
+      - '🇨🇦CA_46|416KB/s|A004-260618 01'
   - name: 'HK · Hong Kong'
     type: 'url-test'
     url: 'https://www.google.com/generate_204'
@@ -611,7 +247,6 @@ proxy-groups:
     tolerance: 100
     lazy: false
     proxies:
-      - '🇭🇰 香港 04'
-      - '🇭🇰_HK_中国香港->🇯🇵_JP_日本'
+      - '🇭🇰_HK_中国香港_1'
 rules:
   - 'MATCH,COUNTRY'
