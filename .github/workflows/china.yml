@@ -25,7 +25,6 @@ jobs:
       - name: Fast JavaScript checks
         run: npm run check && npm run lint
       - name: Restore China node assets
-        continue-on-error: true
         uses: backblaze-labs/b2-action@v1
         with:
           action: download
@@ -35,7 +34,6 @@ jobs:
           source: nodeprobe-state/china-node-assets.json
           destination: data/china-node-assets.json
       - name: Restore China pair knowledge
-        continue-on-error: true
         uses: backblaze-labs/b2-action@v1
         with:
           action: download
