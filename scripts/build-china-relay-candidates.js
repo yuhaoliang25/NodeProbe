@@ -4,10 +4,7 @@
 const fs=require('fs');
 const path=require('path');
 const crypto=require('crypto');
-const yaml=require('js-yaml');
-
 const CONFIG={
-  stableFile:process.env.CHINA_STABLE_FILE||'subscriptions/stable.yaml',
   bestFile:process.env.CHINA_BEST_FILE||'subscriptions/best.yaml',
   assetFile:process.env.CHINA_ASSET_FILE||'data/china-node-assets.json',
   outputFile:process.env.CHINA_RELAY_CANDIDATE_FILE||'data/china-relay-pair-candidates.json',
@@ -30,7 +27,7 @@ function endpointId(p){
 
 function loadYaml(file){
   if(!fs.existsSync(file))return [];
-  const d=yaml.load(fs.readFileSync(file,'utf8'));
+  const d=require('js-yaml').load(fs.readFileSync(file,'utf8'));
   return Array.isArray(d?.proxies)?d.proxies.filter(p=>p&&p.name&&p.server&&p.port&&p.type):[];
 }
 function loadAssets(){
@@ -53,16 +50,14 @@ function relayScore(node){
   return rate*1000 + Math.min(500,Math.max(0,500-latency/2)) + Math.min(300,Number(node.observedRuns||0)*20);
 }
 
-const stable=loadYaml(CONFIG.stableFile);
 const best=loadYaml(CONFIG.bestFile);
 const assets=loadAssets();
-const stableMap=new Map(stable.map(p=>[endpointId(p),p]));
 const bestMap=new Map(best.map(p=>[endpointId(p),p]));
 const directTrusted=new Set(Object.entries(assets).filter(([,n])=>n?.state==='TRUSTED').map(([id])=>id));
 
 const relayCandidates=[];
 for(const [id,node] of Object.entries(assets)){
-  const p=stableMap.get(id);
+  const p=node?.proxy;
   const x=latest(node);
   if(!p||!x)continue;
   // A relay must first be reachable from China, but its direct exit must be weak.
@@ -112,7 +107,7 @@ const out={
   version:1,
   generatedAt:new Date().toISOString(),
   strategy:{
-    relay:'top-K reachable Stable nodes whose latest direct test is weak',
+    relay:'top-K China assets whose latest reachability test is good and direct exit test is weak',
     landing:'Best nodes excluding China Trusted/direct-capable nodes',
     maxRelayCandidates:CONFIG.relayLimit,
     maxLandingCandidates:CONFIG.landingLimit,
@@ -126,7 +121,6 @@ const out={
 fs.mkdirSync(path.dirname(CONFIG.outputFile),{recursive:true});
 fs.writeFileSync(CONFIG.outputFile,JSON.stringify(out,null,2)+'\n');
 console.log(JSON.stringify({
-  stable:stable.length,
   best:best.length,
   relayCandidates:relays.length,
   landingCandidates:selectedLandings.length,
