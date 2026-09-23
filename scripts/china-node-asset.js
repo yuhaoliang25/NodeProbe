@@ -358,9 +358,20 @@ function buildCandidates(stable, state, atMs) {
     .filter(candidate => candidate.category === 'new')
     .sort((a, b) => b.score - a.score);
 
-  // Maintenance has priority over exploration. A large or fast-changing
-  // Stable feed must not starve known China assets that are due for recheck.
-  return maintenance
+  // Maintenance has priority over exploration, but repeated failed recovery
+  // checks must not consume the entire run forever. Keep a bounded recovery
+  // budget so ordinary maintenance and new discovery retain probe capacity.
+  const recovery = maintenance.filter(
+    candidate => candidate.category === 'failed' || candidate.category === 'forgotten',
+  );
+  const ordinaryMaintenance = maintenance.filter(
+    candidate => candidate.category !== 'failed' && candidate.category !== 'forgotten',
+  );
+  const recoveryLimit = Math.max(1, Math.floor(CONFIG.maxNodesPerRun * 0.33));
+  const selectedRecovery = recovery.slice(0, recoveryLimit);
+
+  return ordinaryMaintenance
+    .concat(selectedRecovery)
     .concat(exploration)
     .slice(0, CONFIG.maxNodesPerRun);
 }
