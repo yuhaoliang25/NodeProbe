@@ -3,11 +3,39 @@ allow-lan: false
 mode: 'rule'
 log-level: 'warning'
 ipv6: false
-proxies: []
+proxies:
+  - name: '🇬🇧GB_19|505KB/s|R002-260618 01'
+    port: 443
+    server: '37.120.233.50'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+  - client-fingerprint: 'chrome'
+    name: '🇸🇬SG_49|583KB/s|M003-260806 01'
+    network: 'ws'
+    port: 2096
+    server: '91.193.58.31'
+    sub_tag: 'M003-260806'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '6e59d5c5-7aa3-4c36-a4c4-e3b899525ed2'
+    ws-opts:
+      headers:
+        Host: 'free-server.techsonic.dev'
+        User-Agent: 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.65 Safari/537.36'
+      path: '/free-server.techsonic.dev'
+    xudp: true
+    packet-encoding: 'xudp'
+    servername: 'free-server.techsonic.dev'
 proxy-groups:
   - name: 'PROXY'
     type: 'select'
     proxies:
       - 'DIRECT'
+      - '🇬🇧GB_19|505KB/s|R002-260618 01'
+      - '🇸🇬SG_49|583KB/s|M003-260806 01'
 rules:
   - 'MATCH,PROXY'
