@@ -29,15 +29,15 @@ jobs:
           source: nodeprobe-state/china/release.json
           destination: data/china-release.json
 
-      - name: Pull China direct pool
+      - name: Pull China exit pool
         uses: backblaze-labs/b2-action@v1
         with:
           action: download
           application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
           application-key: ${{ secrets.B2_APPLICATION_KEY }}
           bucket: nodeprobe
-          source: nodeprobe-state/china/direct.yaml
-          destination: subscriptions/direct.yaml
+          source: nodeprobe-state/china/exit.yaml
+          destination: subscriptions/exit.yaml
 
       - name: Pull China pair pool
         uses: backblaze-labs/b2-action@v1
@@ -85,7 +85,7 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
 
-          git add subscriptions/direct.yaml subscriptions/pairs.yaml subscriptions/china-pools.json subscriptions/china-pair-pool.json mihomo/client.yaml
+          git add subscriptions/exit.yaml subscriptions/pairs.yaml subscriptions/china-pools.json subscriptions/china-pair-pool.json mihomo/client.yaml
           git diff --cached --quiet && exit 0
           git commit -m "chore: publish China subscriptions"
 
