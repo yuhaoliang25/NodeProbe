@@ -118,6 +118,7 @@ Current migration commits:
 - `f7bba722a0bdfe92ae7bd5d74175d6e472b1ba4a` — China B2 publish/release mechanism
 - `ff2bf8930f7f42ff4632b124e2f01731aaa8276d` — local China state evolution
 - `e407560aebb81daae5dac8c1e0aefb2e9a51a35d` — China-only pair candidate inputs
+- `10e73378595fc3614b710fbe07a462d87d092c62` — remove obsolete Global Best helpers
 - `e2cfbfc7bf34de77073b47ccdf352b6b1437353c` — architecture documentation
 
 If the migration causes unexpected behavior, the cold-start feed can be regenerated/reinjected. Global Node Pool is independent and is not modified by this China migration.
