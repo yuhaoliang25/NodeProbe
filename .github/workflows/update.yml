@@ -156,6 +156,9 @@ jobs:
       - name: Fetch public sources
         run: npm run fetch
       - name: Build candidate subscription
+        env:
+          NODE_CANDIDATE_LIMIT: '1500'
+          NODE_DEAD_RECHECK_LIMIT: '200'
         run: npm run build
       - name: Analyze source similarity
         run: npm run source-graph
