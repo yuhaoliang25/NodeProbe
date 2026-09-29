@@ -104,7 +104,7 @@ if(mode==='pull-stable'){
     ['data/china-pair-knowledge.json','nodeprobe-state/china-pair-knowledge.json'],
     ['data/china-probe-candidates.json',CANDIDATE_REMOTE],
     ['data/china-relay-pair-candidates.json',PAIR_CANDIDATE_REMOTE],
-    ['subscriptions/direct.yaml',PREFIX+'/direct.yaml'],
+    ['subscriptions/exit.yaml',PREFIX+'/exit.yaml'],
     ['subscriptions/pairs.yaml',PREFIX+'/pairs.yaml'],
     ['subscriptions/china-pools.json',PREFIX+'/china-pools.json'],
     ['subscriptions/china-pair-pool.json',PREFIX+'/china-pair-pool.json'],
