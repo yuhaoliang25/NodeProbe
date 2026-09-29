@@ -104,7 +104,7 @@ async function main(){
     candidates=JSON.parse(fs.readFileSync(CONFIG.candidateFile,'utf8')).candidates;
   }catch{}
   if(!Array.isArray(candidates))throw new Error('China candidate file missing or invalid');
-  const maxCandidates=Math.max(1,Number(process.env.CHINA_MAX_NODES||30));
+  const maxCandidates=Math.max(1,Number(process.env.CHINA_MAX_NODES||300));
   const usable=candidates
     .filter(x=>x&&x.endpointId&&x.proxy&&x.proxy.name&&x.proxy.server&&x.proxy.port&&x.proxy.type);
   const selected=usable.slice(0,maxCandidates).map(x=>x.proxy);
