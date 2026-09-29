@@ -304,6 +304,9 @@ jobs:
           STABILITY_P95_LIMIT: '5000'
         run: npm run stability
       - name: Rebuild filtered subscriptions (final Best)
+        env:
+          NODE_CANDIDATE_LIMIT: '1500'
+          NODE_DEAD_RECHECK_LIMIT: '5000'
         run: node scripts/build-subscriptions.js
       - name: Convert final subscriptions to importable Mihomo configs
         run: node scripts/convert-subscriptions.js
