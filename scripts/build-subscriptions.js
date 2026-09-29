@@ -253,6 +253,18 @@ try{
  const currentStability=new Map();
  for(const x of (stability?.healthGeneratedAt===h.generatedAt?(stability.results||[]):[])){ if(x.fingerprint)currentStability.set(x.fingerprint,x); if(x.name)currentStability.set(x.name,x); }
  const sourceQuality=new Map(Object.entries(h.sourceStats||{}).map(([name,x])=>[name,x])); const sourceReputation=(()=>{try{return JSON.parse(fs.readFileSync('data/source-reputation.json','utf8'))}catch{return {sources:{}}}})();
+ // Stable/Best are persistent views of the Node Asset pool, not snapshots of
+ // whichever nodes happened to be probed in this workflow. A maintenance
+ // schedule deliberately leaves healthy assets untested between probe times.
+ const poolProxyById=new Map();
+ for(const entry of poolState.nodes||[]){
+   const id=entry.fingerprint||entry.proxy?.['endpoint-id'];
+   const p=entry.proxy?{...entry}:null;
+   if(id&&p?.server&&p?.port&&p?.type){
+     p['endpoint-id']=id;
+     poolProxyById.set(id,p);
+   }
+ }
  const histStats=new Map(Object.entries(hist).map(([id,x])=>{
    const observations=[];
    for(const batch of history) for(const r of batch.results||[])if(r.fingerprint===id&&Array.isArray(r.delays))observations.push(...r.delays);
@@ -282,8 +294,45 @@ try{
    return m.recentTests>=9&&m.weightedRate>=0.9;
  }
  const google=new Set(h.results.filter(r=>currentRate(r)>0).map(r=>r.name));
- const stable=new Set(h.results.filter(stableEligible).map(r=>r.name));
- const best=new Set(h.results.filter(bestEligible).map(r=>r.name));
+ // Node Pool lifecycle is authoritative for established Stable membership.
+ // A stable asset that is not due this run must remain in Stable; otherwise a
+ // normal maintenance interval would make the production feed disappear.
+ const persistentStableIds=new Set(
+   (poolState.nodes||[])
+     .filter(entry=>entry.status==='stable')
+     .map(entry=>entry.fingerprint||entry.proxy?.['endpoint-id'])
+     .filter(Boolean)
+ );
+ const stable=new Set(
+   [...persistentStableIds].map(id=>poolProxyById.get(id)?.name).filter(Boolean)
+ );
+ // Newly promoted nodes can enter Stable immediately from current evidence.
+ for(const r of h.results) if(stableEligible(r)) stable.add(r.name);
+
+ // Best is also a persistent selection view. When a node was not probed this
+ // run, use its recent historical evidence rather than requiring a nonexistent
+ // current result. Current-run evidence overrides that historical fallback.
+ function historicalBestEligible(entry){
+   const id=entry.fingerprint||entry.proxy?.['endpoint-id'];
+   if(entry.status!=='stable'||!id)return false;
+   const m=historyMetric(id);
+   return m.recentTests>=9&&m.weightedRate>=0.9&&m.avg!=null&&m.avg<=2500&&m.p95!=null&&m.p95<=5000;
+ }
+ const bestIds=new Set(
+   (poolState.nodes||[])
+     .filter(historicalBestEligible)
+     .map(entry=>entry.fingerprint||entry.proxy?.['endpoint-id'])
+     .filter(Boolean)
+ );
+ for(const r of h.results) if(bestEligible(r)) bestIds.add(r.fingerprint);
+ // A current run that actually observes a former Best node is authoritative:
+ // if it no longer meets Best criteria, remove the historical membership.
+ for(const r of h.results){
+   if(!r.fingerprint)continue;
+   const entry=poolById.get(r.fingerprint);
+   if(entry?.status==='stable'&&!bestEligible(r))bestIds.delete(r.fingerprint);
+ }
+ const best=new Set([...bestIds].map(id=>poolProxyById.get(id)?.name).filter(Boolean));
  function selectionScore(r,m){
   const success=Math.max(0,Math.min(1,r.successRate||0)),long=Math.max(0,Math.min(1,m?.weightedRate??m?.longRate??0));
   const latency=m?.avg?Math.max(0,1-Math.min(1,m.avg/5000)):0,p95=m?.p95?Math.max(0,1-Math.min(1,m.p95/10000)):0;
@@ -367,8 +416,15 @@ try{
  },null,2));
  console.log('country pool:',countrySelected.length,'nodes across',Object.values(Object.fromEntries([...countryBuckets].map(([k,v])=>[k,v.length]))).filter(x=>x>0).length,'countries');
  fs.writeFileSync('subscriptions/google.yaml',dumpSubscription(pick(google)));
- fs.writeFileSync('subscriptions/stable.yaml',dumpSubscription(pick(stable)));
- fs.writeFileSync('subscriptions/best.yaml',dumpSubscription(pick(best)));
+ const stableProxies=[...stable].map(name=>candidateByName?.get(name)).filter(Boolean);
+ // Persistent assets may not be in the current candidate set, so resolve
+ // their proxy directly from the Node Pool when necessary.
+ const stableOutput=[...persistentStableIds].map(id=>poolProxyById.get(id)).filter(Boolean);
+ for(const p of clean) if(stable.has(p.name)&&!stableOutput.some(x=>x.name===p.name))stableOutput.push(p);
+ fs.writeFileSync('subscriptions/stable.yaml',dumpSubscription(stableOutput));
+ const bestOutput=[...bestIds].map(id=>poolProxyById.get(id)).filter(Boolean);
+ for(const p of clean) if(best.has(p.name)&&!bestOutput.some(x=>x.name===p.name))bestOutput.push(p);
+ fs.writeFileSync('subscriptions/best.yaml',dumpSubscription(bestOutput));
  const scored=h.results.map(r=>{const m=metrics.get(r.fingerprint)||{};return {...r,selectionScore:selectionScore(r,m)}}).sort((a,b)=>b.selectionScore-a.selectionScore);
  fs.writeFileSync('data/scores.json',JSON.stringify({generatedAt:new Date().toISOString(),results:scored,sourceQuality:Object.fromEntries(sourceQuality)},null,2));
  const sourceHistory=[];
@@ -457,7 +513,7 @@ fs.writeFileSync('data/source-history.json',JSON.stringify(sourceRuns,null,2));
    registry.updatedAt=new Date().toISOString();
    fs.writeFileSync('data/sources.json',JSON.stringify(registry,null,2));
  }catch(e){console.log('source registry update skipped:',e.message)}
- console.log('google/stable/best:',google.size,stable.size,best.size);
+ console.log('google/stable/best:',google.size,stableOutput.length,bestOutput.length,'persistent stable:',persistentStableIds.size,'historical best:',bestIds.size);
 }catch(e){console.log('health data unavailable; only all.yaml generated:',e.message)}
 fs.writeFileSync('data/candidates.json',JSON.stringify(selected,null,2));
 console.log('candidate nodes:',clean.length,'maintenance due:',maintenance.length,'exploration available:',exploration.length,'dead rechecks due:',deadRechecks.length,'retained current-run:',currentRunObserved.size,'capacity:',candidateLimit,'dead recheck cap:',deadRecheckLimit);
