@@ -12820,6 +12820,12 @@ proxies:
     skip-cert-verify: true
     udp: true
     endpoint-id: '23aa41a75a407f62'
+  - name: '🇰🇷KR²_1|0.7MB/s|GPT|X|History 01'
+    port: 1090
+    server: '121.169.46.116'
+    tls: false
+    type: 'socks5'
+    username: 'T2clM0QlM0Q6'
 proxy-groups:
   - name: 'PROXY'
     type: 'select'
@@ -13808,5 +13814,6 @@ proxy-groups:
       - 'JP日本(mibei77.com 米贝节点分享)'
       - 'US美国(mibei77.com 米贝节点分享)_164'
       - 'DE德国(mibei77.com 米贝节点分享)'
+      - '🇰🇷KR²_1|0.7MB/s|GPT|X|History 01'
 rules:
   - 'MATCH,PROXY'

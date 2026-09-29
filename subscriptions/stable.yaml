@@ -12815,3 +12815,9 @@ proxies:
     skip-cert-verify: true
     udp: true
     endpoint-id: '23aa41a75a407f62'
+  - name: '🇰🇷KR²_1|0.7MB/s|GPT|X|History 01'
+    port: 1090
+    server: '121.169.46.116'
+    tls: false
+    type: 'socks5'
+    username: 'T2clM0QlM0Q6'
