@@ -193,7 +193,7 @@ function updateNode(node, observation) {
     probeEnvironment: observation.probeEnvironment || 'china-default',
     reachabilitySuccess: observation.reachabilitySuccess == null ? null : Boolean(observation.reachabilitySuccess),
     reachabilityLatencyMs: observation.reachabilityLatencyMs == null ? null : Number(observation.reachabilityLatencyMs),
-    directSuccess: observation.directSuccess == null ? null : Boolean(observation.directSuccess),
+    exitSuccess: observation.exitSuccess == null ? null : Boolean(observation.exitSuccess),
     stabilityEligible: observation.stabilityEligible == null ? null : Boolean(observation.stabilityEligible),
   });
 
