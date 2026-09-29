@@ -98,7 +98,7 @@ function apply(){
       probeEnvironment:o.probeEnvironment||CONFIG.environment,
       reachabilitySuccess:o.reachabilitySuccess,
       reachabilityLatencyMs:o.reachabilityLatencyMs,
-      directSuccess:o.directSuccess,
+      exitSuccess:o.exitSuccess,
       stabilityEligible:o.stabilityEligible,
     });
     applied++;
