@@ -43,7 +43,7 @@ for(const obsolete of ['relay.yaml','landing.yaml'])fs.rmSync(path.join(OUTPUT_D
 for(const [name,p] of Object.entries(pools))fs.writeFileSync(path.join(OUTPUT_DIR,name+'.yaml'),dump(p));
 fs.writeFileSync(path.join(OUTPUT_DIR,'china-pools.json'),JSON.stringify({
   generatedAt:new Date().toISOString(),
-  counts:{direct:pools.exit.length},
+  counts:{exit:pools.exit.length},
   definitions:{
     exit:'China Trusted assets',
     relay:'experimental only; not part of the production China pool',
@@ -52,7 +52,7 @@ fs.writeFileSync(path.join(OUTPUT_DIR,'china-pools.json'),JSON.stringify({
 },null,2)+'\n');
 console.log(JSON.stringify({
   trusted:[...trusted].length,
-  direct:pools.exit.length,
+  exit:pools.exit.length,
   relay:0,
   landing:0
 },null,2));
