@@ -119,13 +119,16 @@ async function main(){
   child.stdout.on('data',()=>{});
 
   try{
+    console.log('[china-probe] mihomo started; waiting for API '+CONFIG.api);
     await waitApi();
+    console.log('[china-probe] API ready; candidates='+selected.length+' concurrency='+CONFIG.concurrency);
     const observations=[];
     const traces=new Map(selected.map(p=>[endpointId(p),[]]));
 
     // Stage 0 measures China -> endpoint reachability only. It deliberately does
     // not use Mihomo or an Internet target, so the result is not contaminated by
     // endpoint -> target performance.
+    console.log('[china-probe] stage 0 reachability start: '+selected.length+' nodes');
     const reachability=await runConcurrent(selected,async p=>{
       const result=await tcpReachability(p,CONFIG.reachabilityTimeout);
       const row={
@@ -144,6 +147,7 @@ async function main(){
       return row;
     },CONFIG.concurrency);
     const reachable=new Set(reachability.filter(x=>x.success).map(x=>x.endpointId));
+    console.log('[china-probe] stage 0 reachability done: '+reachable.size+'/'+selected.length);
 
     async function runStage(proxies,timeout,stage){
       const rows=await runConcurrent(proxies,async p=>{
@@ -175,23 +179,31 @@ async function main(){
     // Stage 1 measures the actual direct proxy path: China -> node -> target.
     // This is intentionally separate from Stage 0 reachability.
     const reachableProxies=selected.filter(p=>reachable.has(endpointId(p)));
+    console.log('[china-probe] stage 1 direct fast start: '+reachableProxies.length+' nodes');
     const stage1=await runStage(reachableProxies,CONFIG.fastTimeout,'direct-stage1-fast');
+    console.log('[china-probe] stage 1 direct fast done: '+stage1.filter(x=>x.success).length+'/'+stage1.length);
     const firstPass=reachableProxies.filter((p,i)=>stage1[i].success);
     const firstFail=reachableProxies.filter((p,i)=>!stage1[i].success);
 
     // A single timeout/transport failure is not enough to discard a candidate.
+    console.log('[china-probe] stage 1 retry start: '+firstFail.length+' nodes');
     const retry=await runStage(firstFail,CONFIG.timeout,'stage1-retry');
+    console.log('[china-probe] stage 1 retry done: '+retry.filter(x=>x.success).length+'/'+retry.length);
     const retryPass=new Set(retry.filter(x=>x.success).map(x=>x.endpointId));
     const survivors=[...firstPass,...firstFail.filter(p=>retryPass.has(endpointId(p)))];
 
     // Stage 2: normal-timeout confirmation for Stage-1 survivors.
+    console.log('[china-probe] stage 2 start: '+survivors.length+' nodes');
     const stage2=await runStage(survivors,CONFIG.timeout,'stage2');
+    console.log('[china-probe] stage 2 done: '+stage2.filter(x=>x.success).length+'/'+stage2.length);
     let deep=survivors.filter((p,i)=>stage2[i].success);
 
     // Deep rounds provide repeated evidence rather than changing China trust directly.
     for(let round=1;round<=CONFIG.deepRounds;round++){
+      console.log('[china-probe] deep round '+round+' start: '+deep.length+' nodes');
       const result=await runStage(deep,CONFIG.timeout,'deep-round-'+round);
       deep=deep.filter((p,i)=>result[i].success);
+      console.log('[china-probe] deep round '+round+' done: '+deep.length+' nodes');
       if(!deep.length)break;
     }
 
@@ -207,6 +219,7 @@ async function main(){
     const perRound=CONFIG.stabilityAttempts/CONFIG.stabilityRounds;
     if(!Number.isInteger(perRound))throw new Error('CHINA_STABILITY_ATTEMPTS must divide evenly by CHINA_STABILITY_ROUNDS');
     for(let round=1;round<=CONFIG.stabilityRounds;round++){
+      console.log('[china-probe] stability round '+round+' start: '+stabilityCandidates.length+' nodes');
       const jobs=[];
       for(const p of stabilityCandidates){
         for(const target of [...stabilityTargets].sort(()=>Math.random()-.5)){
@@ -220,6 +233,7 @@ async function main(){
         return row;
       },CONFIG.stabilityConcurrency);
       stabilityAttempts.push(...rows);
+      console.log('[china-probe] stability round '+round+' done: '+rows.filter(x=>x.success).length+'/'+rows.length+' attempts');
     }
     const stabilityById=new Map(stabilityCandidates.map(p=>[endpointId(p),[]]));
     for(const x of stabilityAttempts)stabilityById.get(x.endpointId)?.push(x);
@@ -261,6 +275,7 @@ async function main(){
       };
     });
 
+    console.log('[china-probe] all probe stages completed');
     const probeRunId=now();
     const payload={
       version:3,
