@@ -11,7 +11,7 @@ if [ -f /etc/nodeprobe/china.env ]; then
   set +a
 fi
 
-export CHINA_MAX_NODES="${CHINA_MAX_NODES:-30}"
+export CHINA_MAX_NODES="${CHINA_MAX_NODES:-300}"
 export CHINA_PROBE_CONCURRENCY="${CHINA_PROBE_CONCURRENCY:-8}"
 
 CANDIDATE_RUN_FILE="${CHINA_CANDIDATE_RUN_FILE:-data/.china-candidate-run}"
