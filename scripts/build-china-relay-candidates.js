@@ -5,8 +5,7 @@ const fs=require('fs');
 const path=require('path');
 const crypto=require('crypto');
 const CONFIG={
-  bestFile:process.env.CHINA_BEST_FILE||'subscriptions/best.yaml',
-  assetFile:process.env.CHINA_ASSET_FILE||'data/china-node-assets.json',
+    assetFile:process.env.CHINA_ASSET_FILE||'data/china-node-assets.json',
   outputFile:process.env.CHINA_RELAY_CANDIDATE_FILE||'data/china-relay-pair-candidates.json',
   relayLimit:Number(process.env.CHINA_RELAY_TOP_K||8),
   landingLimit:Number(process.env.CHINA_RELAY_LANDING_LIMIT||30),
@@ -25,10 +24,8 @@ function endpointId(p){
   ])).digest('hex').slice(0,16);
 }
 
-function loadYaml(file){
-  if(!fs.existsSync(file))return [];
-  const d=require('js-yaml').load(fs.readFileSync(file,'utf8'));
-  return Array.isArray(d?.proxies)?d.proxies.filter(p=>p&&p.name&&p.server&&p.port&&p.type):[];
+function proxyFor(node){
+  return node?.proxy&&node.proxy.server&&node.proxy.port&&node.proxy.type?node.proxy:null;
 }
 function loadAssets(){
   if(!fs.existsSync(CONFIG.assetFile))throw new Error('China asset state missing: '+CONFIG.assetFile);
@@ -54,10 +51,8 @@ function relayScore(node){
   return rate*1000 + Math.min(500,Math.max(0,500-latency/2)) + Math.min(300,Number(node.observedRuns||0)*20);
 }
 
-const best=loadYaml(CONFIG.bestFile);
 const assets=loadAssets();
-const bestMap=new Map(best.map(p=>[endpointId(p),p]));
-const directTrusted=new Set(Object.entries(assets).filter(([,n])=>n?.state==='TRUSTED').map(([id])=>id));
+const directTrusted=new Set(Object.entries(assets).filter(([,n])=>n?.state==='TRUSTED'&&proxyFor(n)).map(([id])=>id));
 
 const relayCandidates=[];
 for(const [id,node] of Object.entries(assets)){
@@ -88,11 +83,32 @@ relayCandidates.sort((a,b)=>b.score-a.score||a.endpointId.localeCompare(b.endpoi
 const relays=relayCandidates.slice(0,CONFIG.relayLimit);
 
 const landings=[];
-for(const [id,p] of bestMap){
-  if(id===undefined||directTrusted.has(id))continue;
-  landings.push({endpointId:id,proxy:p});
+for(const [id,node] of Object.entries(assets)){
+  const p=proxyFor(node);
+  const x=latest(node);
+  if(!p||!x)continue;
+  if(id===undefined||id==='')continue;
+  if(node.state==='UNTRUSTED'||node.state==='FORGOTTEN')continue;
+  // Landing candidates are China-owned assets with a recent successful
+  // direct exit observation. No Global Best membership or score is consulted.
+  if(x.directSuccess!==true)continue;
+  landings.push({
+    endpointId:id,
+    proxy:p,
+    state:node.state,
+    observedRuns:Number(node.observedRuns||0),
+    recentSuccessRate:node.observations?.length
+      ? node.observations.slice(-10).filter(o=>o.success).length/Math.min(10,node.observations.length)
+      : 0,
+  });
 }
-landings.sort((a,b)=>a.endpointId.localeCompare(b.endpointId));
+landings.sort((a,b)=>{
+  const stateRank={TRUSTED:3,PROBATION:2,DEGRADED:1,NEW:0};
+  return (stateRank[b.state]||0)-(stateRank[a.state]||0)
+    || b.recentSuccessRate-a.recentSuccessRate
+    || b.observedRuns-a.observedRuns
+    || a.endpointId.localeCompare(b.endpointId);
+});
 const selectedLandings=landings.slice(0,CONFIG.landingLimit);
 
 const pairs=[];
@@ -117,7 +133,7 @@ const out={
   generatedAt:new Date().toISOString(),
   strategy:{
     relay:'top-K China assets whose latest reachability test is good and direct exit test is weak',
-    landing:'Best nodes excluding China Trusted/direct-capable nodes',
+    landing:'China-owned assets with a recent successful direct exit observation, excluding China Trusted relay/direct overlap',
     maxRelayCandidates:CONFIG.relayLimit,
     maxLandingCandidates:CONFIG.landingLimit,
     maxPairs:CONFIG.pairLimit,
@@ -130,7 +146,7 @@ const out={
 fs.mkdirSync(path.dirname(CONFIG.outputFile),{recursive:true});
 fs.writeFileSync(CONFIG.outputFile,JSON.stringify(out,null,2)+'\n');
 console.log(JSON.stringify({
-  best:best.length,
+  chinaAssets:Object.keys(assets).length,
   relayCandidates:relays.length,
   landingCandidates:selectedLandings.length,
   pairs:pairs.length,
