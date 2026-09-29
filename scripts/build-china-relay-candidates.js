@@ -48,17 +48,17 @@ for(const [id,node] of Object.entries(assets)){
   // Relay selection is an experimental production-adjacent role, so nodes
   // already classified as unrecoverable must not re-enter it from one lucky
   // reachability observation. DEGRADED remains eligible because reachability
-  // can still make it useful as a relay even when its direct exit is weak.
+  // can still make it useful as a relay even when its exit is weak.
   if(node.state==='UNTRUSTED'||node.state==='FORGOTTEN')continue;
-  // A relay must first be reachable from China, but its direct exit must be weak.
+  // A relay must first be reachable from China, but its exit must be weak.
   if(x.reachabilitySuccess!==true)continue;
-  if(x.directSuccess===true)continue;
+  if(x.exitSuccess===true)continue;
   relayCandidates.push({
     endpointId:id,
     proxy:p,
     score:relayScore(node),
     reason:'reachable-but-direct-weak',
-    lastDirectSuccess:x.directSuccess===true,
+    lastDirectSuccess:x.exitSuccess===true,
     lastProbeSuccess:x.success===true,
     recentReachabilityRate:reachRate(node),
     lastReachabilityLatencyMs:x.reachabilityLatencyMs??null,
@@ -76,8 +76,8 @@ for(const [id,node] of Object.entries(assets)){
   if(id===undefined||id==='')continue;
   if(node.state==='UNTRUSTED'||node.state==='FORGOTTEN')continue;
   // Landing candidates are China-owned assets with a recent successful
-  // direct exit observation. No Global Best membership or score is consulted.
-  if(x.directSuccess!==true)continue;
+  // exit observation. No Global Best membership or score is consulted.
+  if(x.exitSuccess!==true)continue;
   landings.push({
     endpointId:id,
     proxy:p,
@@ -118,8 +118,8 @@ const out={
   version:1,
   generatedAt:new Date().toISOString(),
   strategy:{
-    relay:'top-K China assets whose latest reachability test is good and direct exit test is weak',
-    landing:'China-owned assets with a recent successful direct exit observation, excluding China Trusted relay/direct overlap',
+    relay:'top-K China assets whose latest reachability test is good and exit test is weak',
+    landing:'China-owned assets with a recent successful exit observation, excluding China Trusted relay/direct overlap',
     maxRelayCandidates:CONFIG.relayLimit,
     maxLandingCandidates:CONFIG.landingLimit,
     maxPairs:CONFIG.pairLimit,
