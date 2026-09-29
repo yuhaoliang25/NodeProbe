@@ -31,28 +31,28 @@ const trusted=new Set(Object.entries(assets)
   .filter(([,n])=>n&&n.state==='TRUSTED'&&n.proxy)
   .map(([k])=>k));
 
-const direct=[];
+const exit=[];
 for(const [endpointId,node] of Object.entries(assets)){
   if(node?.state!=='TRUSTED'||!node.proxy)continue;
-  direct.push(node.proxy);
+  exit.push(node.proxy);
 }
 const unique=xs=>{const m=new Map();for(const p of xs)m.set(id(p),p);return [...m.values()]};
-const pools={direct:unique(direct)};
+const pools={exit:unique(exit)};
 fs.mkdirSync(OUTPUT_DIR,{recursive:true});
 for(const obsolete of ['relay.yaml','landing.yaml'])fs.rmSync(path.join(OUTPUT_DIR,obsolete),{force:true});
 for(const [name,p] of Object.entries(pools))fs.writeFileSync(path.join(OUTPUT_DIR,name+'.yaml'),dump(p));
 fs.writeFileSync(path.join(OUTPUT_DIR,'china-pools.json'),JSON.stringify({
   generatedAt:new Date().toISOString(),
-  counts:{direct:pools.direct.length},
+  counts:{direct:pools.exit.length},
   definitions:{
-    direct:'China Trusted assets',
+    exit:'China Trusted assets',
     relay:'experimental only; not part of the production China pool',
     landing:'experimental only; not part of the production China pool'
   }
 },null,2)+'\n');
 console.log(JSON.stringify({
   trusted:[...trusted].length,
-  direct:pools.direct.length,
+  direct:pools.exit.length,
   relay:0,
   landing:0
 },null,2));
