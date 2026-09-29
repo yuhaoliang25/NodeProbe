@@ -78,8 +78,8 @@ China pair generation no longer uses `subscriptions/best.yaml`.
 
 `scripts/build-china-relay-candidates.js` now derives both sides of pair candidates from China-owned assets:
 
-- relay: reachable from China, direct exit weak;
-- landing: China-owned asset with recent successful direct exit.
+- relay: reachable from China, exit weak;
+- landing: China-owned asset with recent successful exit.
 
 Global Best membership, score, or history is not used.
 
@@ -87,7 +87,7 @@ Global Stable remains only an external discovery/bootstrap input. The one-time G
 
 ## Why this change
 
-Global currently may produce empty Stable/Best outputs. China therefore needs to solve its own direct and pair evolution without depending on Global Best.
+Global currently may produce empty Stable/Best outputs. China therefore needs to solve its own exit and pair evolution without depending on Global Best.
 
 More importantly, the previous GitHub workflow could race with the China machine:
 
