@@ -85,6 +85,6 @@ fs.writeFileSync(
 );
 
 console.log(
-  `client.yaml: direct=${direct.length} pairs=${pairNames.length}`
+  `client.yaml: exit=${exit.length} pairs=${pairNames.length}`
 );
 console.log(`generated: ${OUTPUT}`);
