@@ -259,7 +259,7 @@ try{
  const poolProxyById=new Map();
  for(const entry of poolState.nodes||[]){
    const id=entry.fingerprint||entry.proxy?.['endpoint-id'];
-   const p=entry.proxy?{...entry}:null;
+   const p=entry.proxy?{...entry.proxy}:null;
    if(id&&p?.server&&p?.port&&p?.type){
      p['endpoint-id']=id;
      poolProxyById.set(id,p);
