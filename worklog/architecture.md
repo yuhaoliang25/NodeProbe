@@ -656,7 +656,7 @@ Country-aware selection
 
 Declared source country and detected IP country are separate pieces of information.
 
-Geographic detection is supporting metadata. It must not override direct health evidence about the node.
+Geographic detection is supporting metadata. It must not override observed health evidence about the node.
 
 ## 13. Data Model Responsibilities
 
