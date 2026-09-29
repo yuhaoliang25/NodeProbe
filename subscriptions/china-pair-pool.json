@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-29T14:06:01.790Z",
+  "generatedAt": "2026-09-29T19:17:07.072Z",
   "count": 20,
   "definitions": {
     "pair": "China → relay → landing → target; experimental evidence only"
@@ -7,115 +7,115 @@
   "pairs": [
     {
       "pairId": "520ab1b14821e8a7",
-      "lastObservedAt": "2026-09-29T14:04:58.952Z",
+      "lastObservedAt": "2026-09-29T14:37:47.219Z",
       "recentSuccessRate": 1,
       "relayEndpointId": "3ba6a661707f5b86"
     },
     {
       "pairId": "89418881a18a3802",
-      "lastObservedAt": "2026-09-29T14:04:58.929Z",
+      "lastObservedAt": "2026-09-29T14:37:47.188Z",
       "recentSuccessRate": 1,
       "relayEndpointId": "3ba6a661707f5b86"
     },
     {
       "pairId": "74350ce40fe0c6b6",
-      "lastObservedAt": "2026-09-29T14:04:58.799Z",
+      "lastObservedAt": "2026-09-29T14:37:47.127Z",
       "recentSuccessRate": 1,
       "relayEndpointId": "3ba6a661707f5b86"
     },
     {
       "pairId": "ec3207564097cc7a",
-      "lastObservedAt": "2026-09-29T14:04:58.643Z",
+      "lastObservedAt": "2026-09-29T14:37:47.072Z",
       "recentSuccessRate": 1,
       "relayEndpointId": "3ba6a661707f5b86"
     },
     {
       "pairId": "dccdec02fcd34156",
-      "lastObservedAt": "2026-09-29T14:04:57.792Z",
+      "lastObservedAt": "2026-09-29T14:37:45.289Z",
       "recentSuccessRate": 1,
       "relayEndpointId": "3ba6a661707f5b86"
     },
     {
       "pairId": "75a096f1c6fced57",
-      "lastObservedAt": "2026-09-29T14:04:57.371Z",
+      "lastObservedAt": "2026-09-29T14:37:45.288Z",
       "recentSuccessRate": 1,
       "relayEndpointId": "3ba6a661707f5b86"
     },
     {
       "pairId": "399e6634190d3a6b",
-      "lastObservedAt": "2026-09-29T14:04:57.108Z",
+      "lastObservedAt": "2026-09-29T14:37:45.235Z",
       "recentSuccessRate": 1,
       "relayEndpointId": "3ba6a661707f5b86"
     },
     {
       "pairId": "68b5d05029fff5fd",
-      "lastObservedAt": "2026-09-29T14:04:57.094Z",
+      "lastObservedAt": "2026-09-29T14:37:45.202Z",
       "recentSuccessRate": 1,
       "relayEndpointId": "3ba6a661707f5b86"
     },
     {
       "pairId": "2a4ad0f31a65a9fa",
-      "lastObservedAt": "2026-09-29T14:04:57.044Z",
+      "lastObservedAt": "2026-09-29T14:37:45.183Z",
       "recentSuccessRate": 1,
       "relayEndpointId": "3ba6a661707f5b86"
     },
     {
       "pairId": "b6980f28708bc7fe",
-      "lastObservedAt": "2026-09-29T14:04:56.994Z",
+      "lastObservedAt": "2026-09-29T14:37:45.166Z",
       "recentSuccessRate": 1,
       "relayEndpointId": "3ba6a661707f5b86"
     },
     {
       "pairId": "d9c43ba9472cab3a",
-      "lastObservedAt": "2026-09-29T14:04:56.921Z",
+      "lastObservedAt": "2026-09-29T14:37:45.153Z",
       "recentSuccessRate": 1,
       "relayEndpointId": "3ba6a661707f5b86"
     },
     {
       "pairId": "8818f8293f045bea",
-      "lastObservedAt": "2026-09-29T14:04:56.896Z",
+      "lastObservedAt": "2026-09-29T14:37:45.141Z",
       "recentSuccessRate": 1,
       "relayEndpointId": "3ba6a661707f5b86"
     },
     {
       "pairId": "3bb03752515baa7e",
-      "lastObservedAt": "2026-09-29T14:04:56.760Z",
+      "lastObservedAt": "2026-09-29T14:37:45.115Z",
       "recentSuccessRate": 1,
       "relayEndpointId": "3ba6a661707f5b86"
     },
     {
       "pairId": "5555d4a7fc594178",
-      "lastObservedAt": "2026-09-29T14:04:56.747Z",
+      "lastObservedAt": "2026-09-29T14:37:45.081Z",
       "recentSuccessRate": 1,
       "relayEndpointId": "3ba6a661707f5b86"
     },
     {
       "pairId": "d8dc453b234842ea",
-      "lastObservedAt": "2026-09-29T14:04:56.725Z",
+      "lastObservedAt": "2026-09-29T14:37:45.079Z",
       "recentSuccessRate": 1,
       "relayEndpointId": "3ba6a661707f5b86"
     },
     {
       "pairId": "3e594f3729742d46",
-      "lastObservedAt": "2026-09-29T14:04:56.716Z",
+      "lastObservedAt": "2026-09-29T14:37:45.058Z",
       "recentSuccessRate": 1,
       "relayEndpointId": "3ba6a661707f5b86"
     },
     {
       "pairId": "20fd441c7988f628",
-      "lastObservedAt": "2026-09-29T14:04:56.698Z",
+      "lastObservedAt": "2026-09-29T14:37:44.946Z",
       "recentSuccessRate": 1,
       "relayEndpointId": "3ba6a661707f5b86"
     },
     {
       "pairId": "6caf805c65b4421a",
-      "lastObservedAt": "2026-09-29T14:04:56.645Z",
+      "lastObservedAt": "2026-09-29T14:37:44.879Z",
       "recentSuccessRate": 1,
       "relayEndpointId": "3ba6a661707f5b86"
     },
     {
       "pairId": "d0c440bd23bfd084",
-      "lastObservedAt": "2026-09-29T14:04:56.626Z",
+      "lastObservedAt": "2026-09-29T14:37:44.434Z",
       "recentSuccessRate": 1,
       "relayEndpointId": "3ba6a661707f5b86"
     },
