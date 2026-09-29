@@ -202,7 +202,7 @@ async function main(){
     console.log('[china-probe] stage 2 done: '+stage2.filter(x=>x.success).length+'/'+stage2.length);
     let deep=survivors.filter((p,i)=>stage2[i].success);
 
-    // Deep rounds provide repeated evidence rather than changing China trust directly.
+    // Deep rounds provide repeated evidence rather than changing China trust immediately.
     for(let round=1;round<=CONFIG.deepRounds;round++){
       console.log('[china-probe] deep round '+round+' start: '+deep.length+' nodes');
       const result=await runStage(deep,CONFIG.timeout,'deep-round-'+round);
