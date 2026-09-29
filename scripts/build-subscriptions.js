@@ -416,7 +416,6 @@ try{
  },null,2));
  console.log('country pool:',countrySelected.length,'nodes across',Object.values(Object.fromEntries([...countryBuckets].map(([k,v])=>[k,v.length]))).filter(x=>x>0).length,'countries');
  fs.writeFileSync('subscriptions/google.yaml',dumpSubscription(pick(google)));
- const stableProxies=[...stable].map(name=>candidateByName?.get(name)).filter(Boolean);
  // Persistent assets may not be in the current candidate set, so resolve
  // their proxy directly from the Node Pool when necessary.
  const stableOutput=[...persistentStableIds].map(id=>poolProxyById.get(id)).filter(Boolean);
