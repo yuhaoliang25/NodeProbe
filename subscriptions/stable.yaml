@@ -12815,11 +12815,3 @@ proxies:
     skip-cert-verify: true
     udp: true
     endpoint-id: '23aa41a75a407f62'
-  - name: '🇪🇪爱沙尼亚丨yoyapai.com'
-    type: 'trojan'
-    server: '109.206.241.10'
-    port: 449
-    password: 'oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1'
-    sni: 'russiapower.accesscam.org'
-    skip-cert-verify: true
-    udp: true
