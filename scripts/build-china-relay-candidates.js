@@ -52,7 +52,7 @@ for(const [id,node] of Object.entries(assets)){
   if(node.state==='UNTRUSTED'||node.state==='FORGOTTEN')continue;
   // A relay must first be reachable from China, but its exit must be weak.
   if(x.reachabilitySuccess!==true)continue;
-  if(x.exitSuccess===true)continue;
+  if(x.exitSuccess!==false)continue;
   relayCandidates.push({
     endpointId:id,
     proxy:p,
