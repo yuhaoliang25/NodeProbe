@@ -233,7 +233,7 @@ proxies:
     endpoint-id: '2525753ed3d65e2e'
     dialer-proxy: 'PAIR-RELAY-3ba6a661707f5b86'
 proxy-groups:
-  - name: 'DIRECT-AUTO'
+  - name: 'EXIT-AUTO'
     type: 'url-test'
     proxies:
       - 'PAIR-75a096f1c6fced57'
@@ -264,7 +264,7 @@ proxy-groups:
   - name: 'PROXY'
     type: 'select'
     proxies:
-      - 'DIRECT-AUTO'
+      - 'EXIT-AUTO'
       - 'DIRECT'
 rules:
   - 'MATCH,PROXY'
