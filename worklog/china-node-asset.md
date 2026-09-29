@@ -165,7 +165,7 @@ China trust produces a reachability set `R`.
 
 The production exit pool is derived from China assets only:
 
-- Direct = China assets in `TRUSTED` state with a stored proxy definition.
+- Exit = China assets in `TRUSTED` state with a stored proxy definition.
 
 The relay/landing pair experiment is separate:
 
@@ -716,7 +716,7 @@ A node that reaches Deep but fails China Stability Confirmation produces a faile
 Most importantly, this is still not Global Best/Stable logic copied into China. The same measurement engine is reused; the China environment, observations, history and asset state remain independent.
 
 
-## 22. Direct-first China Probe Architecture
+## 22. Exit-first China Probe Architecture
 
 The China design was revised after separating the question of **China-side reachability** from the question of **end-to-end proxy performance**.
 
@@ -823,7 +823,7 @@ Independent:
 
 The architecture therefore favors reusable measurement primitives rather than a single universal probe meaning.
 
-### 22.5 Direct admission is China Trusted assets
+### 22.5 Exit admission is China Trusted assets
 
 The production exit pool uses the persistent China assets that are currently `TRUSTED` and have a stored proxy definition.
 
@@ -904,7 +904,7 @@ China Probe:
     discover useful paths
 
 Client:
-    choose among Direct and validated Pair
+    choose among Exit and validated Pair
     using the user's current network
 ```
 
@@ -919,8 +919,8 @@ That would spend most of the budget testing pairs whose two endpoints already be
 Instead:
 
 ```text
-Relay A = China asset ∩ China-reachable ∩ Direct-weak
-Landing B = Best - China Direct-capable
+Relay A = China asset ∩ China-reachable ∩ Exit-weak
+Landing B = Best - China Exit-capable
 ```
 
 This makes the experiment specifically target the hypothesis that a China-reachable but poor exit can gain a special path to a strong global exit.
@@ -936,7 +936,7 @@ This section is the current deployment contract. It supersedes earlier descripti
 Production China output is:
 - `subscriptions/exit.yaml` = China Trusted assets with stored proxy definitions.
 - `subscriptions/pairs.yaml` = validated two-hop paths from the separate Pair experiment.
-- `mihomo/client.yaml` = client configuration that can compare Direct and validated Pair paths.
+- `mihomo/client.yaml` = client configuration that can compare Exit and validated Pair paths.
 
 `relay.yaml` and `landing.yaml` are no longer production pools.
 
@@ -988,7 +988,7 @@ The Pair experiment is optional. If no Pair candidate feed exists, the China mac
 
 The four B2 transport objects are:
 
-| Direction | Object | Producer | Consumer | Meaning |
+| Exition | Object | Producer | Consumer | Meaning |
 |---|---|---|---|---|
 | GitHub → China | `nodeprobe-state/china/candidates.json` | China workflow | `china-cycle.sh` / `china-probe.js` | bounded China node candidate feed |
 | GitHub → China | `nodeprobe-state/china/pair-candidates.json` | China workflow | `china-cycle.sh` / `china-relay-probe.js` | bounded relay/landing experiment feed |
@@ -1044,7 +1044,7 @@ build relay-pair candidates
     ↓
 build validated Pair pool
     ↓
-build production Direct pool
+build production Exit pool
     ↓
 generate client.yaml
     ↓
