@@ -48,7 +48,7 @@ The persistent China asset contains, per endpoint:
 - `nextProbeAt`
 - `recheckLevel`
 
-`nextProbeAt` is the persisted maintenance schedule and is the primary due-time field. The candidate builder uses it directly when valid; it falls back to the legacy `lastProbeAt`-based interval calculation only for older state files that do not yet contain a valid schedule.
+`nextProbeAt` is the persisted maintenance schedule and is the primary due-time field. The candidate builder uses it exitly when valid; it falls back to the legacy `lastProbeAt`-based interval calculation only for older state files that do not yet contain a valid schedule.
 
 The last field records why the endpoint was admitted to the China candidate set. It is not China trust.
 
@@ -147,7 +147,7 @@ A trusted node does not lose all historical value after one failure.
 
 A failure moves it into revalidation/degraded handling according to its failure streak.
 
-An untrusted or forgotten node does not recover directly from one success. The first successful recovery observation returns it to PROBATION, so its recent historical rate cannot immediately promote it to TRUSTED. It must accumulate fresh successful observations again.
+An untrusted or forgotten node does not recover exitly from one success. The first successful recovery observation returns it to PROBATION, so its recent historical rate cannot immediately promote it to TRUSTED. It must accumulate fresh successful observations again.
 
 After repeated failed rechecks, an endpoint may enter `FORGOTTEN`. Forgotten assets are retained in persistent state but leave the normal frequent probe loop. They are eligible for a long-interval recovery recheck from the persistent China asset pool.
 
@@ -163,14 +163,14 @@ This prevents both:
 
 China trust produces a reachability set `R`.
 
-The production direct pool is derived from China assets only:
+The production exit pool is derived from China assets only:
 
 - Direct = China assets in `TRUSTED` state with a stored proxy definition.
 
 The relay/landing pair experiment is separate:
 
-- Relay candidates = China assets whose latest China reachability is good and whose direct exit is weak.
-- Landing candidates = China-owned assets with a recent successful direct-exit observation. Global Best is not a China dependency.
+- Relay candidates = China assets whose latest China reachability is good and whose exit is weak.
+- Landing candidates = China-owned assets with a recent successful exit observation. Global Best is not a China dependency.
 
 These are derived experimental roles, not permanent China lifecycle states.
 
@@ -235,7 +235,7 @@ Network probing is not simulated by the GitHub-side asset updater. A future Chin
 
 ## 14. Pool Derivation Implementation
 
-The production direct pool is derived entirely from the persistent China asset state.
+The production exit pool is derived entirely from the persistent China asset state.
 
 Let:
 
@@ -243,7 +243,7 @@ Let:
 
 The generated production pool is:
 
-- direct.yaml = R.
+- exit.yaml = R.
 
 Relay/landing are experimental pair-candidate views and are not generated as production China pools.
 
@@ -466,7 +466,7 @@ GitHub Actions
 China Asset evolution
 ```
 
-The China machine never pushes directly into the Git repository and never needs an inbound endpoint.
+The China machine never pushes exitly into the Git repository and never needs an inbound endpoint.
 
 ### 18.6 Performance configuration
 
@@ -722,7 +722,7 @@ The China design was revised after separating the question of **China-side reach
 
 The production objective is now:
 
-> Find nodes that can be directly used from the China probe environment. Relay combinations are an experimental fallback, not the definition of the China pool.
+> Find nodes that can be exitly used from the China probe environment. Relay combinations are an experimental fallback, not the definition of the China pool.
 
 ### 22.1 Two different measurements
 
@@ -738,15 +738,15 @@ from:
 China → Node → Internet target
 ```
 
-The first measures **China-side endpoint reachability**. It should not use a proxy to access Google. The current Stage 0 therefore performs a direct TCP connection to the node endpoint.
+The first measures **China-side endpoint reachability**. It should not use a proxy to access Google. The current Stage 0 therefore performs a exit TCP connection to the node endpoint.
 
-The second measures **actual direct proxy usability**. Mihomo is appropriate here because the desired measurement is the real path:
+The second measures **actual exit proxy usability**. Mihomo is appropriate here because the desired measurement is the real path:
 
 ```text
 China → Node → Target
 ```
 
-The current China pipeline therefore starts with endpoint reachability and then applies the Mihomo-based direct proxy stages only to reachable candidates.
+The current China pipeline therefore starts with endpoint reachability and then applies the Mihomo-based exit proxy stages only to reachable candidates.
 
 ### 22.2 Production pool
 
@@ -756,7 +756,7 @@ The production China pool is now:
 China Trusted assets with stored proxy definitions
 ```
 
-and is published as `subscriptions/direct.yaml`.
+and is published as `subscriptions/exit.yaml`.
 
 The previous Stable ∩ Trusted relay pool and Best - Trusted landing pool are no longer treated as production China roles. Relay/landing are now used only by the bounded experimental pair search described below.
 
@@ -764,7 +764,7 @@ This prevents the architecture from assuming that an additional relay hop is ben
 
 ### 22.3 Why relay remains an experiment
 
-For a relay A and landing B, a relay path can only outperform A's direct Internet path when, in simplified terms:
+For a relay A and landing B, a relay path can only outperform A's exit Internet path when, in simplified terms:
 
 ```text
 cost(A → B) + cost(B → target)
@@ -776,12 +776,12 @@ This is possible because Internet routing is destination- and path-dependent. A 
 
 But this is a hypothesis to test, not an assumption to encode into the primary architecture.
 
-A full relay search also introduces a combinatorial A×B problem. Therefore the production system should not pay that complexity unless direct China exits prove insufficient.
+A full relay search also introduces a combinatorial A×B problem. Therefore the production system should not pay that complexity unless exit China exits prove insufficient.
 
 A future relay experiment may use a bounded heuristic:
 
 ```text
-1. measure China-side direct reachability;
+1. measure China-side exit reachability;
 2. rank a small number of good relay candidates;
 3. for each selected relay, test a bounded set of landing candidates;
 4. compare China → A → B → target against China → A → target;
@@ -825,9 +825,9 @@ The architecture therefore favors reusable measurement primitives rather than a 
 
 ### 22.5 Direct admission is China Trusted assets
 
-The production direct pool uses the persistent China assets that are currently `TRUSTED` and have a stored proxy definition.
+The production exit pool uses the persistent China assets that are currently `TRUSTED` and have a stored proxy definition.
 
-Global Best is not required for China direct admission. Global Stable only supplies discovery information; China independently determines usability and lifecycle from China-side evidence.
+Global Best is not required for China exit admission. Global Stable only supplies discovery information; China independently determines usability and lifecycle from China-side evidence.
 
 This keeps the responsibilities separate:
 
@@ -837,13 +837,13 @@ China Probe   → China-side usability evidence
 China Asset   → China lifecycle and persistent maintenance
 ```
 
-A node therefore does not need to be Global Best merely to become a China direct node.
+A node therefore does not need to be Global Best merely to become a China exit node.
 
 ## 23. Bounded Relay Pair Experiment
 
 Relay is now an explicit experiment rather than a production assumption.
 
-The experiment asks whether a China-reachable node whose direct exit is weak can become useful when its outbound connection is established through a stronger Global Best landing node:
+The experiment asks whether a China-reachable node whose exit is weak can become useful when its outbound connection is established through a stronger Global Best landing node:
 
 ```text
 China → A → Internet
@@ -854,10 +854,10 @@ China → A → B → Internet
 Here:
 
 - A (relay) is selected from the persistent China asset population;
-- A must have recent China reachability evidence but must currently fail the China direct admission result;
+- A must have recent China reachability evidence but must currently fail the China exit admission result;
 - only the top CHINA_RELAY_TOP_K relay candidates are used;
 - B (landing) is selected from Global Best;
-- China Trusted/direct-capable nodes are excluded from the landing set;
+- China Trusted/exit-capable nodes are excluded from the landing set;
 - the experiment is strictly two-hop; no A×B×C search is performed.
 
 The default search budget is therefore bounded at:
@@ -869,7 +869,7 @@ Top 8 relays × Top 30 landings = at most 240 pairs
 The China machine performs a cheap Google screen over the bounded pair set. A pair is shortlisted only when:
 
 1. the pair succeeds; and
-2. it improves the relay's direct baseline by at least 15%, or succeeds when the baseline fails.
+2. it improves the relay's exit baseline by at least 15%, or succeeds when the baseline fails.
 
 Only the best CHINA_PAIR_CONFIRM_TOP_K screen results are then confirmed against Google, Cloudflare and GitHub over multiple rounds. A pair enters the published experimental pool only after confirmation succeeds across the targets.
 
@@ -895,7 +895,7 @@ This deliberately treats pair history as network-path evidence rather than an im
 
 ### 23.2 Client role
 
-The generated client configuration places validated pair proxies and direct China proxies in the same URL-Test group.
+The generated client configuration places validated pair proxies and exit China proxies in the same URL-Test group.
 
 Thus the final choice remains adaptive:
 
@@ -934,7 +934,7 @@ This section is the current deployment contract. It supersedes earlier descripti
 ### 24.1 Production and experimental boundaries
 
 Production China output is:
-- `subscriptions/direct.yaml` = China Trusted assets with stored proxy definitions.
+- `subscriptions/exit.yaml` = China Trusted assets with stored proxy definitions.
 - `subscriptions/pairs.yaml` = validated two-hop paths from the separate Pair experiment.
 - `mihomo/client.yaml` = client configuration that can compare Direct and validated Pair paths.
 
@@ -981,7 +981,7 @@ The Pair experiment is optional. If no Pair candidate feed exists, the China mac
                │                             │
                └──────────────┬──────────────┘
                               ↓
-                 direct.yaml + pairs.yaml
+                 exit.yaml + pairs.yaml
                               ↓
                          client.yaml
 ```
@@ -1070,7 +1070,7 @@ The information crossing the China boundary is deliberately asymmetric:
 - observation timestamp;
 - probe environment;
 - China-side reachability;
-- direct proxy results;
+- exit proxy results;
 - stability/attempt evidence;
 - Pair baseline, screen and confirmation evidence.
 
@@ -1102,13 +1102,13 @@ Global Stable + China evidence + Global Best
         next pair-candidates.json
 ```
 
-Pair evidence never directly changes China node trust. A successful pair does not promote either endpoint, and a failed pair does not kill either endpoint.
+Pair evidence never exitly changes China node trust. A successful pair does not promote either endpoint, and a failed pair does not kill either endpoint.
 
 ### 24.7 Deployment invariants
 
 1. Global Stable is the China exploration/discovery feed; the persistent China asset pool is the production maintenance boundary.
 2. Global Best is used only for experimental landing selection.
-3. `direct.yaml` is the production direct pool.
+3. `exit.yaml` is the production exit pool.
 4. `pairs.yaml` is the validated experimental-path pool exposed to the client.
 5. `relay.yaml` and `landing.yaml` are not production outputs.
 6. B2 is asynchronous transport, not the source of truth for China trust.
