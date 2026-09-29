@@ -132,7 +132,7 @@ A veteran is never exempt from testing. It receives priority when its maximum re
 
 The first implementation uses:
 
-- max 30 nodes per run;
+- max 300 nodes per run;
 - recovery retries (`DEGRADED` / `UNTRUSTED` and `FORGOTTEN`) are bounded to at most one third of the run budget;
 - veteran retest interval: 24h;
 - failed retry cooldown: 2h;
@@ -348,7 +348,7 @@ The timer runs approximately every 30 minutes, with a small randomized delay. A 
 
 The probe itself uses bounded concurrency (CHINA_PROBE_CONCURRENCY, default 8) instead of serially waiting for every node. Results are stored by candidate index so concurrency does not alter candidate identity or observation semantics. The concurrency value is intentionally configurable because the local network and machine may have different practical limits.
 
-The probe remains bounded by the China candidate budget (CHINA_MAX_NODES, default 30). Parallelism is an execution optimization only; it does not change China trust rules, candidate scoring, or lifecycle transitions.
+The probe remains bounded by the China candidate budget (CHINA_MAX_NODES, default 300). Parallelism is an execution optimization only; it does not change China trust rules, candidate scoring, or lifecycle transitions.
 
 The deployment uses the existing B2 credentials supplied through ~/.config/nodeprobe/china.env. No credential is committed to the repository.
 
@@ -378,7 +378,7 @@ B2_APPLICATION_KEY=YOUR_EXISTING_KEY
 CHINA_B2_BUCKET=nodeprobe
 CHINA_B2_PREFIX=nodeprobe-state/china
 CHINA_PROBE_ENV=china-home
-CHINA_MAX_NODES=30
+CHINA_MAX_NODES=300
 CHINA_PROBE_CONCURRENCY=8
 CHINA_PROBE_TIMEOUT=8000
 ```
@@ -470,7 +470,7 @@ The China machine never pushes directly into the Git repository and never needs 
 
 ### 18.6 Performance configuration
 
-The probe is bounded to `CHINA_MAX_NODES` candidates per cycle and uses bounded parallelism through `CHINA_PROBE_CONCURRENCY`. The default is 30 nodes and 8 concurrent probes.
+The probe is bounded to `CHINA_MAX_NODES` candidates per cycle and uses bounded parallelism through `CHINA_PROBE_CONCURRENCY`. The default is 300 nodes and 8 concurrent probes.
 
 A higher concurrency can reduce wall-clock time but may increase local bandwidth, connection pressure or target-side rate limiting. Adjust it only after observing real runtime behavior.
 
