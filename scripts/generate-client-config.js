@@ -8,7 +8,7 @@ const yaml = require('js-yaml');
 const INPUT_DIR = path.resolve('subscriptions');
 const OUTPUT = path.resolve('mihomo/client.yaml');
 
-const POOLS = [{ file: 'direct.yaml', role: 'direct' }, { file: 'pairs.yaml', role: 'pair' }];
+const POOLS = [{ file: 'exit.yaml', role: 'exit' }, { file: 'pairs.yaml', role: 'pair' }];
 const TEST_URL = 'https://www.google.com/generate_204';
 
 function loadPool(file) {
@@ -36,12 +36,12 @@ function uniqueProxies(items) {
   });
 }
 
-const direct = loadPool('direct.yaml');
+const exit = loadPool('exit.yaml');
 const pairs = loadPool('pairs.yaml');
 
-const directNames = direct.map(p => p.name);
+const exitNames = exit.map(p => p.name);
 const pairNames = pairs.filter(p => String(p.name).startsWith('PAIR-') && !String(p.name).startsWith('PAIR-RELAY-')).map(p => p.name);
-const proxies = uniqueProxies([...direct, ...pairs]);
+const proxies = uniqueProxies([...exit, ...pairs]);
 const config = {
   'mixed-port': 7890,
   'allow-lan': false,
@@ -53,9 +53,9 @@ const config = {
 
   'proxy-groups': [
     {
-      name: 'DIRECT-AUTO',
+      name: 'EXIT-AUTO',
       type: 'url-test',
-      proxies: [...directNames, ...pairNames],
+      proxies: [...exitNames, ...pairNames],
       url: TEST_URL,
       interval: 300,
       tolerance: 100,
@@ -65,7 +65,7 @@ const config = {
     {
       name: 'PROXY',
       type: 'select',
-      proxies: ['DIRECT-AUTO', 'DIRECT']
+      proxies: ['EXIT-AUTO', 'DIRECT']
     }
   ],
 
