@@ -3,11 +3,36 @@ allow-lan: false
 mode: 'rule'
 log-level: 'warning'
 ipv6: false
-proxies: []
+proxies:
+  - name: '🇰🇷KR²_1|0.7MB/s|GPT|X|History 01'
+    port: 1090
+    server: '121.169.46.116'
+    tls: false
+    type: 'socks5'
+    username: 'T2clM0QlM0Q6'
+  - encryption: 'none'
+    name: '🇫🇷FR_206|188KB/s 01'
+    network: 'ws'
+    port: 2086
+    server: '104.27.68.164'
+    type: 'vless'
+    udp: true
+    uuid: 'd028eaf5-c5ef-49a0-85c6-4f4816af8053'
+    ws-opts:
+      headers:
+        Host: 'misty-bread-fd96.salehinezhadali.workers.dev'
+        User-Agent: 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36'
+      path: '/eyJqdW5rIjoiZUJZR2pXVFByVyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjEwOS4xMjAuMTU4LjE0OSJdfQ=='
+      early-data-header-name: 'Sec-WebSocket-Protocol'
+      max-early-data: 2560
+    xudp: true
+    packet-encoding: 'xudp'
 proxy-groups:
   - name: 'PROXY'
     type: 'select'
     proxies:
       - 'DIRECT'
+      - '🇰🇷KR²_1|0.7MB/s|GPT|X|History 01'
+      - '🇫🇷FR_206|188KB/s 01'
 rules:
   - 'MATCH,PROXY'
