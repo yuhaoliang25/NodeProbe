@@ -332,6 +332,12 @@ try{
    const entry=poolById.get(r.fingerprint);
    if(entry?.status==='stable'&&!bestEligible(r))bestIds.delete(r.fingerprint);
  }
+ if(stability?.healthGeneratedAt===h.generatedAt){
+   for(const id of [...bestIds]){
+     const result=currentStability.get(id);
+     if(!result?.eligible)bestIds.delete(id);
+   }
+ }
  const best=new Set([...bestIds].map(id=>poolProxyById.get(id)?.name).filter(Boolean));
  function selectionScore(r,m){
   const success=Math.max(0,Math.min(1,r.successRate||0)),long=Math.max(0,Math.min(1,m?.weightedRate??m?.longRate??0));
