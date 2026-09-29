@@ -24,7 +24,7 @@ function run(args){
   if(r.status!==0)process.exit(r.status||1);
 }
 function usage(){
-  console.log('usage: node scripts/china-b2-sync.js pull-stable | pull-candidates | push-observations | pull-pair-candidates | push-pair-observations | purge-observations | purge-pair-observations');
+  console.log('usage: node scripts/china-b2-sync.js pull-stable | pull-candidates | push-observations | pull-pair-candidates | push-pair-observations | publish-results');
 }
 function localBatchNames(dir){
   try{
@@ -98,6 +98,35 @@ if(mode==='pull-stable'){
   purgeDownloaded(OBS_REMOTE,OBS_DIR);
 }else if(mode==='purge-pair-observations'){
   purgeDownloaded(PAIR_OBS_REMOTE,PAIR_OBS_DIR);
+}else if(mode==='publish-results'){
+  const outputs=[
+    ['data/china-node-assets.json','nodeprobe-state/china-node-assets.json'],
+    ['data/china-pair-knowledge.json','nodeprobe-state/china-pair-knowledge.json'],
+    ['data/china-probe-candidates.json',CANDIDATE_REMOTE],
+    ['data/china-relay-pair-candidates.json',PAIR_CANDIDATE_REMOTE],
+    ['subscriptions/direct.yaml',PREFIX+'/direct.yaml'],
+    ['subscriptions/pairs.yaml',PREFIX+'/pairs.yaml'],
+    ['subscriptions/china-pools.json',PREFIX+'/china-pools.json'],
+    ['subscriptions/china-pair-pool.json',PREFIX+'/china-pair-pool.json'],
+    ['mihomo/client.yaml',PREFIX+'/client.yaml'],
+  ];
+  for(const [local,remote] of outputs){
+    if(!fs.existsSync(local))throw new Error('China result missing: '+local);
+    run(['file','upload',BUCKET,local,remote]);
+  }
+  const manifest={
+    version:1,
+    generatedAt:new Date().toISOString(),
+    producer:'china-machine',
+    files:outputs.map(([,remote])=>remote),
+  };
+  const manifestFile=path.join(process.env.CHINA_RELEASE_TMP_DIR||'data','.china-release.json');
+  fs.mkdirSync(path.dirname(manifestFile),{recursive:true});
+  fs.writeFileSync(manifestFile,JSON.stringify(manifest,null,2)+'\\n');
+  // The manifest is published last. GitHub only needs to consume a release
+  // after this marker exists, so it never becomes the China state writer.
+  run(['file','upload',BUCKET,manifestFile,PREFIX+'/release.json']);
+  console.log(JSON.stringify(manifest,null,2));
 }else if(mode==='push-pair-observations'){
   if(!fs.existsSync(PAIR_OBS_DIR)){ console.log('no pair observation batches'); process.exit(0); }
   const files=fs.readdirSync(PAIR_OBS_DIR).filter(x=>x.endsWith('.json')).sort();
