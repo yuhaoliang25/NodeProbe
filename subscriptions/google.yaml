@@ -1,7 +1,16 @@
 proxies:
-  - name: '🇰🇷KR²_1|0.7MB/s|GPT|X|History 01'
-    port: 1090
-    server: '121.169.46.116'
-    tls: false
-    type: 'socks5'
-    username: 'T2clM0QlM0Q6'
+  - name: '🇪🇸_ES_西班牙-3319c2a0b15a9f76'
+    type: 'ss'
+    server: '5.188.181.201'
+    port: 9029
+    cipher: 'aes-256-cfb'
+    password: 'dU3DSNS8wYPXzEKw'
+    udp: true
+  - name: '🇪🇪爱沙尼亚丨yoyapai.com'
+    type: 'trojan'
+    server: '109.206.241.10'
+    port: 449
+    password: 'oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1'
+    sni: 'russiapower.accesscam.org'
+    skip-cert-verify: true
+    udp: true

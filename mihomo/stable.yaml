@@ -12820,12 +12820,14 @@ proxies:
     skip-cert-verify: true
     udp: true
     endpoint-id: '23aa41a75a407f62'
-  - name: '🇰🇷KR²_1|0.7MB/s|GPT|X|History 01'
-    port: 1090
-    server: '121.169.46.116'
-    tls: false
-    type: 'socks5'
-    username: 'T2clM0QlM0Q6'
+  - name: '🇪🇪爱沙尼亚丨yoyapai.com'
+    type: 'trojan'
+    server: '109.206.241.10'
+    port: 449
+    password: 'oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1'
+    sni: 'russiapower.accesscam.org'
+    skip-cert-verify: true
+    udp: true
 proxy-groups:
   - name: 'PROXY'
     type: 'select'
@@ -13814,6 +13816,6 @@ proxy-groups:
       - 'JP日本(mibei77.com 米贝节点分享)'
       - 'US美国(mibei77.com 米贝节点分享)_164'
       - 'DE德国(mibei77.com 米贝节点分享)'
-      - '🇰🇷KR²_1|0.7MB/s|GPT|X|History 01'
+      - '🇪🇪爱沙尼亚丨yoyapai.com'
 rules:
   - 'MATCH,PROXY'

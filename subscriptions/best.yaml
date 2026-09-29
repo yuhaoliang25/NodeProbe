@@ -1,1 +1,18 @@
-proxies: []
+proxies:
+  - name: '🇰🇷KR²_1|0.7MB/s|GPT|X|History 01'
+    port: 1090
+    server: '121.169.46.116'
+    tls: false
+    type: 'socks5'
+    username: 'T2clM0QlM0Q6'
+    endpoint-id: 'e6b727b6e8cc39c5'
+  - name: '🇪🇪爱沙尼亚丨yoyapai.com'
+    type: 'trojan'
+    server: '109.206.241.10'
+    port: 449
+    password: 'oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1'
+    sni: 'russiapower.accesscam.org'
+    skip-cert-verify: false
+    tls: true
+    udp: true
+    endpoint-id: 'f11a8be2e3cb07e7'

@@ -3,26 +3,11 @@ allow-lan: false
 mode: 'rule'
 log-level: 'warning'
 ipv6: false
-proxies:
-  - name: '🇰🇷KR²_1|0.7MB/s|GPT|X|History 01'
-    port: 1090
-    server: '121.169.46.116'
-    tls: false
-    type: 'socks5'
-    username: 'T2clM0QlM0Q6'
+proxies: []
 proxy-groups:
   - name: 'COUNTRY'
     type: 'select'
     proxies:
       - 'DIRECT'
-      - 'KR · South Korea'
-  - name: 'KR · South Korea'
-    type: 'url-test'
-    url: 'https://www.google.com/generate_204'
-    interval: 300
-    tolerance: 100
-    lazy: false
-    proxies:
-      - '🇰🇷KR²_1|0.7MB/s|GPT|X|History 01'
 rules:
   - 'MATCH,COUNTRY'
