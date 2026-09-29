@@ -4,7 +4,7 @@
 
 China-side node state is an independent asset and trust system.
 
-Its discovery input is the current `subscriptions/stable.yaml` feed. The persistent China asset pool is independent and remains the authority for China maintenance.
+Global Stable is only an external discovery/bootstrap input. The persistent China asset pool is independent and remains the authority for China maintenance.
 
 It must not read or inherit:
 
@@ -14,7 +14,7 @@ It must not read or inherit:
 - Global node health history or scores;
 - any Global Node trust/lifecycle conclusion.
 
-It may consume only the published `subscriptions/stable.yaml` feed as a baseline/discovery input. Stable membership is an input boundary, not transferred China trust.
+It may consume the published `subscriptions/stable.yaml` feed as discovery input, plus the one-time cold-start candidate feed. Stable membership is an input boundary, not transferred China trust.
 
 Global Stable is an exploration/discovery feed, not a China asset-membership filter and not China trust.
 
@@ -170,7 +170,7 @@ The production direct pool is derived from China assets only:
 The relay/landing pair experiment is separate:
 
 - Relay candidates = China assets whose latest China reachability is good and whose direct exit is weak.
-- Landing candidates = Global Best nodes that are not already China Trusted/direct-capable.
+- Landing candidates = China-owned assets with a recent successful direct-exit observation. Global Best is not a China dependency.
 
 These are derived experimental roles, not permanent China lifecycle states.
 
@@ -197,6 +197,7 @@ The client is responsible for current-path selection.
 6. Historical trust is retained until China evidence changes it.
 7. Detailed China history must eventually have bounded retention.
 8. Relay/Landing roles are derived views, not permanent identities.
+9. China state evolution runs on the China machine; GitHub only publishes completed B2 results.
 
 ## 12. Observation Apply Boundary
 
@@ -249,6 +250,32 @@ Relay/landing are experimental pair-candidate views and are not generated as pro
 The derivation is implemented by scripts/build-china-pools.js and exposed as npm run china-pools.
 
 The client configuration layer consumes the resulting production and experimental outputs separately. Pool policy can therefore change without rewriting historical China observations.
+
+## 15. Local China State Machine and B2 Publication
+
+The China machine is the sole writer of China lifecycle and pair knowledge. Its cycle is:
+
+```
+B2 candidate feeds / Global Stable discovery input
+        ↓
+China machine probe
+        ↓
+apply observations locally
+        ↓
+China asset + pair knowledge
+        ↓
+next candidates / pools / client config
+        ↓
+B2
+        ↓
+GitHub publish-only workflow
+```
+
+GitHub must not restore, apply, derive, or save China state. It only reads the completed release outputs from B2 and publishes the subscription/config files.
+
+`nodeprobe-state/china/release.json` is written last by the China machine as a completion marker. This prevents the publisher from treating a partially uploaded generation as current.
+
+This boundary is intentional: B2 is transport/storage, while the China machine owns the state transition.
 
 
 ## 15. China Probe Transport
