@@ -236,6 +236,55 @@ jobs:
         run: npm run node-pool
       - name: Rebuild filtered subscriptions (provisional Best)
         run: node scripts/build-subscriptions.js
+      - name: Diagnose Node Pool proxy integrity
+        run: |
+          node - <<'NODE'
+          const fs=require('fs'), yaml=require('js-yaml');
+          const pool=JSON.parse(fs.readFileSync('data/node-pool.json','utf8'));
+          const stable=yaml.load(fs.readFileSync('subscriptions/stable.yaml','utf8'))||{};
+          const nodes=Array.isArray(pool.nodes)?pool.nodes:[];
+          const stableNames=new Set((stable.proxies||[]).map(p=>p&&p.name).filter(Boolean));
+          const stablePool=nodes.filter(n=>stableNames.has(n.name));
+          const withProxy=stablePool.filter(n=>n.proxy&&typeof n.proxy==='object');
+          const withEndpoint=withProxy.filter(n=>n.proxy['endpoint-id']);
+          const withServerPortType=withProxy.filter(n=>n.proxy.server&&n.proxy.port&&n.proxy.type);
+          const endpointMatches=withEndpoint.filter(n=>String(n.proxy['endpoint-id'])===String(n.fingerprint));
+          const allPoolWithProxy=nodes.filter(n=>n.proxy&&typeof n.proxy==='object');
+          const allPoolServerPortType=allPoolWithProxy.filter(n=>n.proxy.server&&n.proxy.port&&n.proxy.type);
+          const allPoolEndpointMatches=allPoolWithProxy.filter(n=>n.proxy['endpoint-id']&&String(n.proxy['endpoint-id'])===String(n.fingerprint));
+          const out={
+            generatedAt:new Date().toISOString(),
+            stable:{
+              total:stableNames.size,
+              matchedPoolEntries:stablePool.length,
+              withProxy:withProxy.length,
+              withServerPortType:withServerPortType.length,
+              endpointIdEqualsFingerprint:endpointMatches.length
+            },
+            entirePool:{
+              total:nodes.length,
+              withProxy:allPoolWithProxy.length,
+              withServerPortType:allPoolServerPortType.length,
+              endpointIdEqualsFingerprint:allPoolEndpointMatches.length
+            },
+            poolCounters:{
+              stableCount:pool.stableCount,
+              activeCount:pool.activeCount,
+              staleCount:pool.staleCount,
+              deadCount:pool.deadCount
+            }
+          };
+          fs.mkdirSync('reports/node-pool-diagnostic',{recursive:true});
+          fs.writeFileSync('reports/node-pool-diagnostic/summary.json',JSON.stringify(out,null,2));
+          console.log(JSON.stringify(out,null,2));
+          NODE
+      - name: Upload Node Pool diagnostic
+        uses: actions/upload-artifact@v4
+        with:
+          name: node-pool-diagnostic
+          path: reports/node-pool-diagnostic/
+          retention-days: 14
+
       - name: Confirm provisional Best stability
         env:
           STABILITY_ROUNDS: '5'
