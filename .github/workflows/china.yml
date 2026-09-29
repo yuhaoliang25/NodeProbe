@@ -1,4 +1,4 @@
-name: Update China state
+name: Publish China results
 
 on:
   workflow_dispatch:
@@ -15,135 +15,71 @@ concurrency:
 jobs:
   china:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-      - run: npm install
-      - name: Fast JavaScript checks
-        run: npm run check && npm run lint
-      - name: Restore China node assets
-        uses: backblaze-labs/b2-action@v1
-        with:
-          action: download
-          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
-          application-key: ${{ secrets.B2_APPLICATION_KEY }}
-          bucket: nodeprobe
-          source: nodeprobe-state/china-node-assets.json
-          destination: data/china-node-assets.json
-      - name: Restore China pair knowledge
-        uses: backblaze-labs/b2-action@v1
-        with:
-          action: download
-          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
-          application-key: ${{ secrets.B2_APPLICATION_KEY }}
-          bucket: nodeprobe
-          source: nodeprobe-state/china-pair-knowledge.json
-          destination: data/china-pair-knowledge.json
 
-      - name: Pull current Global Stable discovery feed
+      - name: Pull latest China release manifest
         uses: backblaze-labs/b2-action@v1
         with:
           action: download
           application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
           application-key: ${{ secrets.B2_APPLICATION_KEY }}
           bucket: nodeprobe
-          source: nodeprobe-state/china/stable.yaml
-          destination: subscriptions/stable.yaml
+          source: nodeprobe-state/china/release.json
+          destination: data/china-release.json
 
-      - name: Pull China observation inbox from B2
+      - name: Pull China direct pool
         uses: backblaze-labs/b2-action@v1
         with:
           action: download
           application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
           application-key: ${{ secrets.B2_APPLICATION_KEY }}
           bucket: nodeprobe
-          source: nodeprobe-state/china/observations/
-          destination: data/china-probe-observations/
-      - name: Pull China pair observation inbox from B2
-        uses: backblaze-labs/b2-action@v1
-        with:
-          action: download
-          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
-          application-key: ${{ secrets.B2_APPLICATION_KEY }}
-          bucket: nodeprobe
-          source: nodeprobe-state/china/pair-observations/
-          destination: data/china-pair-observations/
-      - name: Apply China probe observations
-        run: npm run china-apply
-      - name: Apply China relay pair observations
-        run: npm run china-pair-apply
-      - name: Select China probe candidates
-        run: npm run china-assets
-      - name: Build China relay pair candidates
-        run: npm run china-relay-candidates
-      - name: Build validated China pair pool
-        run: npm run china-pairs
-      - name: Derive China direct pool
-        run: npm run china-pools
-      - name: Generate client Mihomo config
-        run: npm run client-config
-      - name: Save China node assets
-        if: success()
-        uses: backblaze-labs/b2-action@v1
-        with:
-          action: upload
-          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
-          application-key: ${{ secrets.B2_APPLICATION_KEY }}
-          bucket: nodeprobe
-          source: data/china-node-assets.json
-          destination: nodeprobe-state/china-node-assets.json
-      - name: Save China relay pair knowledge
-        if: success()
-        uses: backblaze-labs/b2-action@v1
-        with:
-          action: upload
-          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
-          application-key: ${{ secrets.B2_APPLICATION_KEY }}
-          bucket: nodeprobe
-          source: data/china-pair-knowledge.json
-          destination: nodeprobe-state/china-pair-knowledge.json
-      - name: Purge consumed China observation batches
-        if: success()
-        run: npm run china-sync -- purge-observations
-      - name: Purge consumed China pair observation batches
-        if: success()
-        run: npm run china-sync -- purge-pair-observations
-      - name: Publish China relay pair candidates
-        if: success()
-        uses: backblaze-labs/b2-action@v1
-        with:
-          action: upload
-          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
-          application-key: ${{ secrets.B2_APPLICATION_KEY }}
-          bucket: nodeprobe
-          source: data/china-relay-pair-candidates.json
-          destination: nodeprobe-state/china/pair-candidates.json
-      - name: Publish China probe candidates
-        if: success()
-        uses: backblaze-labs/b2-action@v1
-        with:
-          action: upload
-          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
-          application-key: ${{ secrets.B2_APPLICATION_KEY }}
-          bucket: nodeprobe
-          source: data/china-probe-candidates.json
-          destination: nodeprobe-state/china/candidates.json
-      - name: Save China probe candidates
-        if: success()
-        uses: backblaze-labs/b2-action@v1
-        with:
-          action: upload
-          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
-          application-key: ${{ secrets.B2_APPLICATION_KEY }}
-          bucket: nodeprobe
-          source: data/china-probe-candidates.json
-          destination: nodeprobe-state/china-probe-candidates.json
+          source: nodeprobe-state/china/direct.yaml
+          destination: subscriptions/direct.yaml
 
-      - name: Commit published China subscriptions
-        if: success()
+      - name: Pull China pair pool
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: download
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: nodeprobe-state/china/pairs.yaml
+          destination: subscriptions/pairs.yaml
+
+      - name: Pull China pool metadata
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: download
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: nodeprobe-state/china/china-pools.json
+          destination: subscriptions/china-pools.json
+
+      - name: Pull China pair pool metadata
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: download
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: nodeprobe-state/china/china-pair-pool.json
+          destination: subscriptions/china-pair-pool.json
+
+      - name: Pull China client config
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: download
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: nodeprobe-state/china/client.yaml
+          destination: mihomo/client.yaml
+
+      - name: Publish China subscriptions
         run: |
           set -euo pipefail
           git config user.name 'github-actions[bot]'
@@ -151,21 +87,19 @@ jobs:
 
           git add subscriptions/direct.yaml subscriptions/pairs.yaml subscriptions/china-pools.json subscriptions/china-pair-pool.json mihomo/client.yaml
           git diff --cached --quiet && exit 0
-          git commit -m "chore: refresh China subscriptions"
+          git commit -m "chore: publish China subscriptions"
 
           for attempt in 1 2 3; do
             git fetch origin main
             git rebase origin/main
-
             if git push origin HEAD:main; then
               exit 0
             fi
-
             if [ "$attempt" -lt 3 ]; then
               echo "Push raced with a newer main commit; retrying..."
               sleep 3
             fi
           done
 
-          echo "Failed to push China subscriptions after 3 attempts."
+          echo "Failed to publish China subscriptions after 3 attempts."
           exit 1
