@@ -529,6 +529,16 @@ proxies:
     username: 'testuser1'
     udp: true
     endpoint-id: 'd3594c2e62c0c2dd'
+  - name: '🇺🇸US_307|355KB/s|R002-260618 01'
+    port: 443
+    server: 'fan.596189.xyz'
+    skip-cert-verify: true
+    sni: 'fan.596189.xyz'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'd2750839eda0d01c'
   - name: '🇷🇴RO_56|896KB/s|P002-260618 01'
     password: 'None'
     port: 9002
@@ -1064,6 +1074,17 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '89fcd92b9be1f6ba'
+  - name: '🇺🇸US_538|654KB/s|R002-260618 01'
+    password: 'null'
+    port: 9002
+    server: '138.199.35.197'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    endpoint-id: '15b709e5fcfacad4'
   - name: '🇷🇴RO_87|1.3MB/s|K001-260618 01'
     password: 'null'
     port: 9002
@@ -1198,6 +1219,16 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '0ae09a41f776c539'
+  - name: '🇫🇷FR_183|751KB/s|R002-260618 01'
+    port: 443
+    server: 'fan.132031.xyz'
+    skip-cert-verify: true
+    sni: 'fan.132031.xyz'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'eedf278594fece87'
   - name: '🇷🇴RO_66|849KB/s|P002-260618 01'
     password: 'None'
     port: 9002
@@ -1262,3 +1293,33 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '5b107f4a88d7b51f'
+  - name: '🇺🇸US_65|345KB/s|R002-260618 01'
+    port: 443
+    server: 'fan.365747.xyz'
+    skip-cert-verify: true
+    sni: 'fan.365747.xyz'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '1b5f9ef740ef311b'
+  - name: '🇫🇷FR_66|3.0MB/s|R002-260618 01'
+    port: 443
+    server: '141.94.16.4'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'baa006648c5cceb5'
+  - name: '🇺🇸US_635|812KB/s|P002-260618 01'
+    password: 'null'
+    port: 9002
+    server: '138.199.35.198'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    endpoint-id: '0b88abd3210eb3d4'

@@ -534,6 +534,16 @@ proxies:
     username: 'testuser1'
     udp: true
     endpoint-id: 'd3594c2e62c0c2dd'
+  - name: '🇺🇸US_307|355KB/s|R002-260618 01'
+    port: 443
+    server: 'fan.596189.xyz'
+    skip-cert-verify: true
+    sni: 'fan.596189.xyz'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'd2750839eda0d01c'
   - name: '🇷🇴RO_56|896KB/s|P002-260618 01'
     password: 'None'
     port: 9002
@@ -1069,6 +1079,17 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '89fcd92b9be1f6ba'
+  - name: '🇺🇸US_538|654KB/s|R002-260618 01'
+    password: 'null'
+    port: 9002
+    server: '138.199.35.197'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    endpoint-id: '15b709e5fcfacad4'
   - name: '🇷🇴RO_87|1.3MB/s|K001-260618 01'
     password: 'null'
     port: 9002
@@ -1203,6 +1224,16 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '0ae09a41f776c539'
+  - name: '🇫🇷FR_183|751KB/s|R002-260618 01'
+    port: 443
+    server: 'fan.132031.xyz'
+    skip-cert-verify: true
+    sni: 'fan.132031.xyz'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'eedf278594fece87'
   - name: '🇷🇴RO_66|849KB/s|P002-260618 01'
     password: 'None'
     port: 9002
@@ -1267,6 +1298,36 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '5b107f4a88d7b51f'
+  - name: '🇺🇸US_65|345KB/s|R002-260618 01'
+    port: 443
+    server: 'fan.365747.xyz'
+    skip-cert-verify: true
+    sni: 'fan.365747.xyz'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '1b5f9ef740ef311b'
+  - name: '🇫🇷FR_66|3.0MB/s|R002-260618 01'
+    port: 443
+    server: '141.94.16.4'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'baa006648c5cceb5'
+  - name: '🇺🇸US_635|812KB/s|P002-260618 01'
+    password: 'null'
+    port: 9002
+    server: '138.199.35.198'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    endpoint-id: '0b88abd3210eb3d4'
   - name: 'PAIR-RELAY-3ba6a661707f5b86'
     port: 442
     server: '54.235.192.64'
@@ -1553,6 +1614,7 @@ proxy-groups:
       - '🇫🇷FR_32|1.7MB/s|R002-260618 01'
       - '🇷🇴RO_55|998KB/s|P002-260618 01'
       - '🇩🇪DE_7|551KB/s|R002-260618 01'
+      - '🇺🇸US_307|355KB/s|R002-260618 01'
       - '🇷🇴RO_56|896KB/s|P002-260618 01'
       - '🇷🇴RO_29|1.5MB/s 01'
       - '🇷🇴RO_20|1.7MB/s|P002-260618 01'
@@ -1607,6 +1669,7 @@ proxy-groups:
       - '🇷🇴RO_76|1.5MB/s 01'
       - '🇷🇴RO_16|319KB/s|P002-260618 01'
       - '🇷🇴RO_54|766KB/s|P002-260618 01'
+      - '🇺🇸US_538|654KB/s|R002-260618 01'
       - '🇷🇴RO_87|1.3MB/s|K001-260618 01'
       - '🇷🇴RO_90|1.2MB/s|R002-260618 01'
       - '🇳🇱NL_285|1.1MB/s|P002-260618 01'
@@ -1620,12 +1683,16 @@ proxy-groups:
       - '🇷🇴RO_30|1.2MB/s|R002-260618 01'
       - '🇷🇴RO_31|1.1MB/s|P002-260618 01'
       - '🇳🇱NL_147|2.4MB/s|R002-260618 01'
+      - '🇫🇷FR_183|751KB/s|R002-260618 01'
       - '🇷🇴RO_66|849KB/s|P002-260618 01'
       - '🇳🇱NL_166|5.5MB/s|R002-260618 01'
       - '🇷🇴RO_19|1.2MB/s|P002-260618 01'
       - '🇩🇪DE_84|248KB/s|R002-260618 01'
       - '🇺🇸US_636|349KB/s|R002-260618 01'
       - '🇺🇸US_61|332KB/s|R002-260618 01'
+      - '🇺🇸US_65|345KB/s|R002-260618 01'
+      - '🇫🇷FR_66|3.0MB/s|R002-260618 01'
+      - '🇺🇸US_635|812KB/s|P002-260618 01'
       - 'PAIR-520ab1b14821e8a7'
       - 'PAIR-89418881a18a3802'
       - 'PAIR-74350ce40fe0c6b6'
