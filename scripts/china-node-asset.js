@@ -88,6 +88,22 @@ function loadState() {
   if (!state || typeof state !== 'object' || !state.nodes || typeof state.nodes !== 'object') {
     throw new Error('China asset state is invalid: '+CONFIG.stateFile);
   }
+
+  // Migrate the pre-exit terminology in persisted observations. This is a
+  // schema rename only: the observation values and lifecycle counters remain
+  // unchanged.
+  for (const node of Object.values(state.nodes)) {
+    if (!node || !Array.isArray(node.observations)) continue;
+    for (const observation of node.observations) {
+      if (observation && observation.exitSuccess == null && observation.directSuccess != null) {
+        observation.exitSuccess = Boolean(observation.directSuccess);
+      }
+      if (observation && Object.prototype.hasOwnProperty.call(observation, 'directSuccess')) {
+        delete observation.directSuccess;
+      }
+    }
+  }
+
   return state;
 }
 
