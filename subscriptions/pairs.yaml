@@ -1,1 +1,229 @@
-proxies: []
+proxies:
+  - name: 'PAIR-RELAY-3ba6a661707f5b86'
+    port: 442
+    server: '54.235.192.64'
+    sub_tag: 'R002-260618'
+    type: 'http'
+    udp: true
+    endpoint-id: '3ba6a661707f5b86'
+  - name: 'PAIR-75a096f1c6fced57'
+    port: 9002
+    server: '84.17.47.150'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '2695164bab761c77'
+    dialer-proxy: 'PAIR-RELAY-3ba6a661707f5b86'
+  - name: 'PAIR-399e6634190d3a6b'
+    password: 'None'
+    port: 9002
+    server: '193.176.84.23'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '25f3758e1ead0039'
+    dialer-proxy: 'PAIR-RELAY-3ba6a661707f5b86'
+  - name: 'PAIR-2a4ad0f31a65a9fa'
+    password: 'None'
+    port: 9002
+    server: '193.176.84.31'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '23941f8658783ead'
+    dialer-proxy: 'PAIR-RELAY-3ba6a661707f5b86'
+  - name: 'PAIR-b6980f28708bc7fe'
+    password: 'null'
+    port: 9002
+    server: '84.17.47.150'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    endpoint-id: '218f7f99c451cb64'
+    dialer-proxy: 'PAIR-RELAY-3ba6a661707f5b86'
+  - name: 'PAIR-d9c43ba9472cab3a'
+    port: 9002
+    server: '193.176.84.23'
+    skip-cert-verify: true
+    sni: 'www.bing.com'
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '20b5be579a239a38'
+    dialer-proxy: 'PAIR-RELAY-3ba6a661707f5b86'
+  - name: 'PAIR-8818f8293f045bea'
+    password: 'None'
+    port: 9002
+    server: '193.176.84.33'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    endpoint-id: '203d0786854ce413'
+    dialer-proxy: 'PAIR-RELAY-3ba6a661707f5b86'
+  - name: 'PAIR-6a0cd6f705c966e6'
+    password: 'None'
+    port: 9002
+    server: '193.176.84.16'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '19b3bed5d116a36d'
+    dialer-proxy: 'PAIR-RELAY-3ba6a661707f5b86'
+  - name: 'PAIR-3bb03752515baa7e'
+    password: 'None'
+    port: 23856
+    server: '51.159.225.196'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '19f9563200872813'
+    dialer-proxy: 'PAIR-RELAY-3ba6a661707f5b86'
+  - name: 'PAIR-d8dc453b234842ea'
+    password: 'null'
+    port: 9002
+    server: '193.176.84.30'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    endpoint-id: '17224335d06bc14b'
+    dialer-proxy: 'PAIR-RELAY-3ba6a661707f5b86'
+  - name: 'PAIR-5555d4a7fc594178'
+    password: ''
+    port: 9002
+    server: '193.176.84.38'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    username: ''
+    udp: true
+    endpoint-id: '183e0c9c5a7c82fd'
+    dialer-proxy: 'PAIR-RELAY-3ba6a661707f5b86'
+  - name: 'PAIR-bc007a98273d32bc'
+    port: 443
+    server: '52.55.81.168'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '16c59e69fb978195'
+    dialer-proxy: 'PAIR-RELAY-3ba6a661707f5b86'
+  - name: 'PAIR-3e594f3729742d46'
+    port: 9002
+    server: '193.176.84.26'
+    skip-cert-verify: true
+    sni: 'www.bing.com'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '11a3c8757939cf6e'
+    dialer-proxy: 'PAIR-RELAY-3ba6a661707f5b86'
+  - name: 'PAIR-20fd441c7988f628'
+    port: 9002
+    server: '193.176.84.36'
+    skip-cert-verify: true
+    sni: 'www.bing.com'
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '10f256678a96194b'
+    dialer-proxy: 'PAIR-RELAY-3ba6a661707f5b86'
+  - name: 'PAIR-6caf805c65b4421a'
+    password: 'None'
+    port: 9002
+    server: '84.17.47.147'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '096c3c8668fe13c3'
+    dialer-proxy: 'PAIR-RELAY-3ba6a661707f5b86'
+  - name: 'PAIR-d0c440bd23bfd084'
+    password: 'e4b72b531a2d10900519'
+    port: 443
+    server: '146.70.29.45'
+    sni: '92461d2d.acsnet.co'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'testuser1'
+    udp: true
+    endpoint-id: '0092f1512984d7cf'
+    dialer-proxy: 'PAIR-RELAY-3ba6a661707f5b86'
+  - name: 'PAIR-de872dadb5d2a4c1'
+    port: 9002
+    server: '193.176.84.24'
+    skip-cert-verify: true
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'fbc52a60f2af237d'
+    dialer-proxy: 'PAIR-RELAY-3ba6a661707f5b86'
+  - name: 'PAIR-c33dba714b0bfbbd'
+    port: 9002
+    server: '193.176.84.37'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'e036d4cf16068a35'
+    dialer-proxy: 'PAIR-RELAY-3ba6a661707f5b86'
+  - name: 'PAIR-3f4af64e495e438b'
+    port: 9002
+    server: '193.176.84.32'
+    skip-cert-verify: true
+    sni: 'www.bing.com'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'ab1d4f1e2e3281cc'
+    dialer-proxy: 'PAIR-RELAY-3ba6a661707f5b86'
+  - name: 'PAIR-da41470973763729'
+    password: 'null'
+    port: 443
+    server: 'fan.240104.xyz'
+    sni: 'fan.240104.xyz'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    endpoint-id: 'a2852a26d8d9ed35'
+    dialer-proxy: 'PAIR-RELAY-3ba6a661707f5b86'
+  - name: 'PAIR-68b5d05029fff5fd'
+    port: 443
+    server: 'fan.240104.xyz'
+    skip-cert-verify: true
+    sni: 'fan.240104.xyz'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '2525753ed3d65e2e'
+    dialer-proxy: 'PAIR-RELAY-3ba6a661707f5b86'
