@@ -10,7 +10,7 @@ const CONFIG = {
   stableFile: process.env.CHINA_STABLE_FILE || 'subscriptions/stable.yaml',
   stateFile: process.env.CHINA_ASSET_FILE || 'data/china-node-assets.json',
   candidateFile: process.env.CHINA_CANDIDATE_FILE || 'data/china-probe-candidates.json',
-  maxNodesPerRun: Number(process.env.CHINA_MAX_NODES || 30),
+  maxNodesPerRun: Number(process.env.CHINA_MAX_NODES || 300),
   veteranRetestMs: 24 * 60 * 60 * 1000,
   failedRetryMs: 2 * 60 * 60 * 1000,
   recentWindow: 10,
