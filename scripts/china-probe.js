@@ -180,12 +180,12 @@ async function main(){
       return rows;
     }
 
-    // Stage 1 measures the actual direct proxy path: China -> node -> target.
+    // Stage 1 measures the actual proxy exit path: China -> node -> target.
     // This is intentionally separate from Stage 0 reachability.
     const reachableProxies=selected.filter(p=>reachable.has(endpointId(p)));
-    console.log('[china-probe] stage 1 direct fast start: '+reachableProxies.length+' nodes');
-    const stage1=await runStage(reachableProxies,CONFIG.fastTimeout,'direct-stage1-fast');
-    console.log('[china-probe] stage 1 direct fast done: '+stage1.filter(x=>x.success).length+'/'+stage1.length);
+    console.log('[china-probe] stage 1 exit fast start: '+reachableProxies.length+' nodes');
+    const stage1=await runStage(reachableProxies,CONFIG.fastTimeout,'exit-stage1-fast');
+    console.log('[china-probe] stage 1 exit fast done: '+stage1.filter(x=>x.success).length+'/'+stage1.length);
     const firstPass=reachableProxies.filter((p,i)=>stage1[i].success);
     const firstFail=reachableProxies.filter((p,i)=>!stage1[i].success);
 
@@ -255,8 +255,8 @@ async function main(){
       const trace=traces.get(id)||[];
       const last=trace[trace.length-1];
       const reachabilityAttempt=trace.find(x=>x.stage==='reachability');
-      const directAttempts=trace.filter(x=>/^direct-stage1-fast|stage1-retry|stage2|deep-round-/.test(x.stage));
-      const directSuccess=directAttempts.some(x=>x.success);
+      const exitAttempts=trace.filter(x=>/^exit-stage1-fast|stage1-retry|stage2|deep-round-/.test(x.stage));
+      const exitSuccess=exitAttempts.some(x=>x.success);
       const stability=stabilityById.has(id)?stabilityResults.find(x=>x.endpointId===id)||null:null;
       return {
         endpointId:id,
@@ -265,7 +265,7 @@ async function main(){
         success:Boolean(last?.success)&&(!stabilityById.has(id)||stabilityEligibleIds.has(id)),
         reachabilitySuccess:Boolean(reachabilityAttempt?.success),
         reachabilityLatencyMs:reachabilityAttempt?.latencyMs??null,
-        directSuccess,
+        exitSuccess,
         stabilityEligible:stability?.eligible??null,
         latencyMs:last?.latencyMs??null,
         error:last?.error||null,
@@ -297,7 +297,7 @@ async function main(){
     console.log(JSON.stringify({
       candidates:selected.length,
       reachable:reachable.size,
-      directCandidates:reachableProxies.length,
+      exitCandidates:reachableProxies.length,
       stage1Pass:firstPass.length,
       stage1RetryPass:retryPass.size,
       stage2Pass:stage2.filter(x=>x.success).length,
