@@ -12,18 +12,6 @@ const CONFIG={
   pairLimit:Number(process.env.CHINA_RELAY_PAIR_LIMIT||240),
 };
 
-function endpointId(p){
-  if(p['endpoint-id'])return p['endpoint-id'];
-  const t=String(p.type||'').toLowerCase();
-  const auth=t==='shadowsocks'?[p.cipher||'',p.password||'']:t==='vmess'||t==='vless'?[p.uuid||'']:[p.password||''];
-  const w=p['ws-opts']||{},g=p['grpc-opts']||{},r=p['reality-opts']||{};
-  return crypto.createHash('sha256').update(JSON.stringify([
-    t,String(p.server).toLowerCase(),Number(p.port),auth,p.network||'tcp',
-    {wsPath:w.path||'',wsHost:w.headers?.Host||'',grpcService:g['grpc-service-name']||''},
-    p.tls?'tls':'plain',p.sni||'',p.flow||'',r['public-key']||'',r['short-id']||''
-  ])).digest('hex').slice(0,16);
-}
-
 function proxyFor(node){
   return node?.proxy&&node.proxy.server&&node.proxy.port&&node.proxy.type?node.proxy:null;
 }
@@ -52,8 +40,6 @@ function relayScore(node){
 }
 
 const assets=loadAssets();
-const directTrusted=new Set(Object.entries(assets).filter(([,n])=>n?.state==='TRUSTED'&&proxyFor(n)).map(([id])=>id));
-
 const relayCandidates=[];
 for(const [id,node] of Object.entries(assets)){
   const p=node?.proxy;
