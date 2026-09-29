@@ -104,10 +104,14 @@ async function main(){
     candidates=JSON.parse(fs.readFileSync(CONFIG.candidateFile,'utf8')).candidates;
   }catch{}
   if(!Array.isArray(candidates))throw new Error('China candidate file missing or invalid');
-  const selected=candidates
-    .filter(x=>x&&x.endpointId&&x.proxy&&x.proxy.name&&x.proxy.server&&x.proxy.port&&x.proxy.type)
-    .map(x=>x.proxy);
+  const maxCandidates=Math.max(1,Number(process.env.CHINA_MAX_NODES||30));
+  const usable=candidates
+    .filter(x=>x&&x.endpointId&&x.proxy&&x.proxy.name&&x.proxy.server&&x.proxy.port&&x.proxy.type);
+  const selected=usable.slice(0,maxCandidates).map(x=>x.proxy);
   if(!selected.length)throw new Error('China candidate file contains no usable proxy candidates');
+  if(usable.length>selected.length){
+    console.log('[china-probe] candidate feed has '+usable.length+' usable nodes; limiting this probe run to '+selected.length+' (CHINA_MAX_NODES='+maxCandidates+')');
+  }
 
   const dir=fs.mkdtempSync(path.join(os.tmpdir(),'nodeprobe-china-'));
   const configPath=path.join(dir,'config.yaml');
