@@ -4,100 +4,30 @@ mode: 'rule'
 log-level: 'warning'
 ipv6: false
 proxies:
-  - name: '🇭🇰HK香港丨yoyapai.com_2'
-    type: 'vless'
-    server: '91.193.58.246'
-    port: 80
-    uuid: '26beb784-a664-4c3e-becf-0f0c12568b62'
-    network: 'ws'
-    tls: false
-    ws-opts:
-      path: '/pyip=Telegram-WangCai2🇨🇳'
-      headers:
-        Host: 'twilight-poetry-2bfe.218-699.workers.dev'
-    skip-cert-verify: true
-    udp: true
-  - name: '🇭🇰HK香港丨yoyapai.com_3'
-    type: 'vless'
-    server: '91.193.58.209'
-    port: 80
-    uuid: '26beb784-a664-4c3e-becf-0f0c12568b62'
-    network: 'ws'
-    tls: false
-    ws-opts:
-      path: '/pyip=Telegram-WangCai2🇨🇳'
-      headers:
-        Host: 'twilight-poetry-2bfe.218-699.workers.dev'
-    skip-cert-verify: true
-    udp: true
-  - name: '🇩🇪_德国丨yoyapai.com'
-    type: 'vless'
-    server: '46.101.253.244'
-    port: 2083
-    uuid: 'bba95b1f-f48c-454b-897b-a6c6bc307df1'
-    network: 'ws'
-    servername: 'edge.yzkvm.top'
-    tls: true
+  - alpn:
+      - 'http/1.1'
     client-fingerprint: 'chrome'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'edge.yzkvm.top'
-    skip-cert-verify: true
-    udp: true
-  - name: 'GB英国(mibei77.com 米贝节点分享)'
-    type: 'vless'
-    server: '80.93.202.40'
-    port: 8880
-    uuid: '6202b230-417c-4d8e-b624-0f71afa9c75d'
+    name: '🇫🇷FR_1202|1.3MB/s|B007-260618 01'
     network: 'ws'
-    tls: false
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'vms.lifetime02.workers.dev'
-    skip-cert-verify: true
+    password: 'Telegram_healer_config'
+    port: 443
+    server: '188.114.96.7'
+    skip-cert-verify: false
+    sni: 'BjSa2yGFITzjtHo8ucZe29xf2m2q9C.G3FIAJpF0Erm9k3x6WW-YeGzl2.workeRs.dEV'
+    sub_tag: 'B007-260618'
+    type: 'trojan'
     udp: true
-  - encryption: 'none'
-    name: '每天更新免费节点：v2rayclashfree.com'
-    network: 'ws'
-    port: 80
-    server: '162.159.237.18'
-    sub_tag: 'T001-260618'
-    type: 'vless'
-    udp: true
-    uuid: 'b4f25b41-cc8e-49eb-bdb8-83dd8c7e542d'
     ws-opts:
       headers:
-        Host: 'cfnew.schzyc.cc.cd'
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.81 Safari/537.36'
-      path: '/'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'cfnew.schzyc.cc.cd'
-  - name: '🇭🇰HK香港丨yoyapai.com_1'
-    type: 'vless'
-    server: '91.193.58.243'
-    port: 80
-    uuid: '26beb784-a664-4c3e-becf-0f0c12568b62'
-    network: 'ws'
-    tls: false
-    ws-opts:
-      path: '/pyip=Telegram-WangCai2🇨🇳'
-      headers:
-        Host: 'twilight-poetry-2bfe.218-699.workers.dev'
-    skip-cert-verify: true
-    udp: true
+        User-Agent: 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.104 Safari/537.36'
+      path: '/tr/J6IJuAAWkqyiEt8UkeRnVdLlkLIGukLr'
+      early-data-header-name: 'Sec-WebSocket-Protocol'
+      max-early-data: 2560
 proxy-groups:
   - name: 'PROXY'
     type: 'select'
     proxies:
       - 'DIRECT'
-      - '🇭🇰HK香港丨yoyapai.com_2'
-      - '🇭🇰HK香港丨yoyapai.com_3'
-      - '🇩🇪_德国丨yoyapai.com'
-      - 'GB英国(mibei77.com 米贝节点分享)'
-      - '每天更新免费节点：v2rayclashfree.com'
-      - '🇭🇰HK香港丨yoyapai.com_1'
+      - '🇫🇷FR_1202|1.3MB/s|B007-260618 01'
 rules:
   - 'MATCH,PROXY'
