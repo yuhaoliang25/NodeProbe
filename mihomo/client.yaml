@@ -1068,15 +1068,6 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '2f7696c478578be1'
-  - name: '🇮🇹IT_1|625KB/s|R002-260618 01'
-    port: 443
-    server: '91.243.118.217'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: 'e019d09aa7573606'
   - name: '🇳🇱NL_200|4.6MB/s|R002-260618 01'
     password: 'null'
     port: 23856
@@ -2439,7 +2430,6 @@ proxy-groups:
       - '🇳🇱NL_54|5.0MB/s|P002-260618 01'
       - '🇩🇪DE_38|595KB/s|P002-260618 01'
       - '🇷🇴RO_33|1.6MB/s|P002-260618 01'
-      - '🇮🇹IT_1|625KB/s|R002-260618 01'
       - '🇳🇱NL_200|4.6MB/s|R002-260618 01'
       - '🇷🇴RO_69|1.4MB/s|P002-260618 01'
       - '🇷🇴RO_79|1.1MB/s|R002-260618 01'
