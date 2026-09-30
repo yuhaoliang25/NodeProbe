@@ -1663,18 +1663,15 @@ proxies:
     udp: true
     sni: 'fan.973511.xyz'
     endpoint-id: '31b4fe08df14792d'
-  - name: '🇺🇸US_636|349KB/s|R002-260618 01'
-    password: 'null'
-    port: 443
-    server: 'fan.365747.xyz'
+  - name: '🇺🇸US_691|124KB/s|R002-260618 01'
+    port: 7615
+    server: '47.90.206.169'
     skip-cert-verify: true
-    sni: 'fan.365747.xyz'
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
-    username: 'null'
     udp: true
-    endpoint-id: '85b4f9a6dac23411'
+    endpoint-id: 'd3d97e8a4f270f45'
   - client-fingerprint: 'chrome'
     name: '🇫🇷FR_7|570KB/s 01'
     network: 'ws'
