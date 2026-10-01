@@ -1,8 +1,1 @@
-proxies:
-  - name: '🇪🇸_ES_西班牙-3319c2a0b15a9f76'
-    type: 'ss'
-    server: '5.188.181.201'
-    port: 9029
-    cipher: 'aes-256-cfb'
-    password: 'dU3DSNS8wYPXzEKw'
-    udp: true
+proxies: []
