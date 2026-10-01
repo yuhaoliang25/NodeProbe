@@ -4,21 +4,18 @@ mode: 'rule'
 log-level: 'warning'
 ipv6: false
 proxies:
-  - name: '🇭🇰_HK_中国香港-094d9935c732272a'
-    type: 'vmess'
-    server: 'v10.hdacd.com'
-    port: 30807
-    uuid: 'cbb3f877-d1fb-344c-87a9-d153bffd5484'
-    alterId: 2
-    cipher: 'auto'
-    tls: false
-    skip-cert-verify: true
+  - name: '🇪🇸_ES_西班牙-3319c2a0b15a9f76'
+    type: 'ss'
+    server: '5.188.181.201'
+    port: 9029
+    cipher: 'aes-256-cfb'
+    password: 'dU3DSNS8wYPXzEKw'
     udp: true
 proxy-groups:
   - name: 'PROXY'
     type: 'select'
     proxies:
       - 'DIRECT'
-      - '🇭🇰_HK_中国香港-094d9935c732272a'
+      - '🇪🇸_ES_西班牙-3319c2a0b15a9f76'
 rules:
   - 'MATCH,PROXY'
