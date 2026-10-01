@@ -1,1 +1,11 @@
-proxies: []
+proxies:
+  - name: '🇭🇰_HK_中国香港-094d9935c732272a'
+    type: 'vmess'
+    server: 'v10.hdacd.com'
+    port: 30807
+    uuid: 'cbb3f877-d1fb-344c-87a9-d153bffd5484'
+    alterId: 2
+    cipher: 'auto'
+    tls: false
+    skip-cert-verify: true
+    udp: true
