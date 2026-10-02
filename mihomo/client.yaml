@@ -1497,6 +1497,16 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: 'ce8b293a59a3c510'
+  - name: '🇺🇸US_62|756KB/s|P002-260618 01'
+    password: 'None'
+    port: 9002
+    server: '138.199.35.209'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '99b32b11e4aee1ba'
   - name: 'PAIR-RELAY-3ba6a661707f5b86'
     port: 442
     server: '54.235.192.64'
@@ -1879,6 +1889,7 @@ proxy-groups:
       - '🇺🇸US_567|734KB/s|P002-260618 01'
       - '🇺🇸US_306|800KB/s|R002-260618 01'
       - '🇺🇸US_618|676KB/s|P002-260618 01'
+      - '🇺🇸US_62|756KB/s|P002-260618 01'
       - 'PAIR-520ab1b14821e8a7'
       - 'PAIR-89418881a18a3802'
       - 'PAIR-74350ce40fe0c6b6'
