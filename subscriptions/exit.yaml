@@ -1513,3 +1513,13 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '99b32b11e4aee1ba'
+  - name: '🇳🇱NL_167|225KB/s|P002-260618 01'
+    password: 'None'
+    port: 443
+    server: '5.255.118.82'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '5785822f65964492'
