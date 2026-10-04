@@ -36637,7 +36637,7 @@ proxies:
       path: 'github.com/Alvin9999'
       headers:
         host: 'ip11.freegradely.xyz'
-  - name: '🇺🇸_US_美国_6'
+  - name: '🇺🇸_US_美国_6-f14a11711de3817a'
     port: 2086
     server: '104.19.21.71'
     type: 'vmess'
@@ -36667,7 +36667,7 @@ proxies:
       path: '/'
       headers:
         host: 's1c.v2.v001sss.xyz'
-  - name: '🇺🇸_US_美国_8'
+  - name: '🇺🇸_US_美国_8-2fe97a19f84221ff'
     port: 2086
     server: '172.64.99.22'
     type: 'vmess'
@@ -36712,7 +36712,7 @@ proxies:
       path: 'github.com/Alvin9999'
       headers:
         host: 'ip14.freegradely.xyz'
-  - name: '🇺🇸_US_美国_12'
+  - name: '🇺🇸_US_美国_12-3f709ccb6af6aa2d'
     port: 2086
     server: '104.20.25.146'
     type: 'vmess'
@@ -36757,7 +36757,7 @@ proxies:
       path: 'github.com/Alvin9999'
       headers:
         host: 'ip2.1457230.xyz'
-  - name: '🇺🇸_US_美国_17'
+  - name: '🇺🇸_US_美国_17-751bb00443f858ad'
     port: 2086
     server: '162.159.140.89'
     type: 'vmess'
@@ -36800,7 +36800,7 @@ proxies:
       path: 'github.com/Alvin9999'
       headers:
         host: 'ip1.1789034.xyz'
-  - name: '🇺🇸_US_美国_19'
+  - name: '🇺🇸_US_美国_19-15778b32a346b51f'
     port: 2086
     server: '104.26.5.113'
     type: 'vmess'
@@ -36815,7 +36815,7 @@ proxies:
       path: 'github.com/Alvin9999'
       headers:
         host: 'ip1.1789034.xyz'
-  - name: '🇺🇸_US_美国_22'
+  - name: '🇺🇸_US_美国_22-d05fe930d329c365'
     port: 2086
     server: 'russia.com'
     type: 'vmess'
@@ -36845,7 +36845,7 @@ proxies:
       path: 'github.com/Alvin9999'
       headers:
         host: 'ip11.freegradely.xyz'
-  - name: '🇨🇳_CN_中国->🇺🇸_US_美国'
+  - name: '🇨🇳_CN_中国->🇺🇸_US_美国-45194613253c3013'
     type: 'vless'
     server: 'jp.sofast.live'
     port: 52683
@@ -36863,7 +36863,17 @@ proxies:
     tls: false
     skip-cert-verify: true
     udp: true
-  - name: '🇧🇬 保加利亚_30TYGF'
+  - name: '🇭🇰_HK_中国香港->🇺🇸_US_美国'
+    type: 'vmess'
+    server: 'v29.hdacd.com'
+    port: 30829
+    uuid: 'cbb3f877-d1fb-344c-87a9-d153bffd5484'
+    alterId: 2
+    cipher: 'auto'
+    tls: false
+    skip-cert-verify: true
+    udp: true
+  - name: '🇧🇬 保加利亚_QHV8QI'
     server: '45.9.156.24'
     port: 443
     type: 'vless'
@@ -36879,40 +36889,6 @@ proxies:
     network: 'grpc'
     grpc-opts:
       grpc-service-name: 'api.v2.PushService'
-    udp: true
-  - name: '🇷🇸 塞尔维亚_RBMEF7'
-    server: '150.40.126.19'
-    port: 443
-    type: 'vless'
-    uuid: '2f35965a-9a9b-45fd-ba32-987296dfb6be'
-    tls: true
-    tfo: false
-    skip-cert-verify: false
-    reality-opts:
-      public-key: 'tL16MVY08r-7YDXb1_gxuBBWInpSFp97ZLJ_ax3R2iE'
-      short-id: '1469af2040b7c323'
-    servername: 'rs2.univesalsrv.com'
-    client-fingerprint: 'firefox'
-    network: 'grpc'
-    grpc-opts:
-      grpc-service-name: 'media.v1.ObjectService'
-    udp: true
-  - name: '🇧🇬 保加利亚_9XOBD0'
-    server: 'bg4.univesalsrv.com'
-    port: 443
-    type: 'vless'
-    uuid: '2f35965a-9a9b-45fd-ba32-987296dfb6be'
-    tls: true
-    tfo: false
-    skip-cert-verify: false
-    reality-opts:
-      public-key: 'k-vH6pkyAv26L1_dXKOFhp0Kesur9-FCUDoj-IIpVhc'
-      short-id: '51f45d4fd58cc319'
-    servername: 'bg4.univesalsrv.com'
-    client-fingerprint: 'firefox'
-    network: 'grpc'
-    grpc-opts:
-      grpc-service-name: 'cloud.v1.RelayService'
     udp: true
   - name: '🇷🇸 塞尔维亚_P2N61R'
     server: '150.40.126.21'
@@ -36931,41 +36907,76 @@ proxies:
     grpc-opts:
       grpc-service-name: 'edge.v2.FeedService'
     udp: true
+  - name: '🇷🇸 塞尔维亚_H3HLCU'
+    server: '150.40.126.19'
+    port: 443
+    type: 'vless'
+    uuid: '2f35965a-9a9b-45fd-ba32-987296dfb6be'
+    tls: true
+    tfo: false
+    skip-cert-verify: false
+    reality-opts:
+      public-key: 'tL16MVY08r-7YDXb1_gxuBBWInpSFp97ZLJ_ax3R2iE'
+      short-id: '1469af2040b7c323'
+    servername: 'rs2.univesalsrv.com'
+    client-fingerprint: 'chrome'
+    network: 'grpc'
+    grpc-opts:
+      grpc-service-name: 'media.v1.ObjectService'
+    udp: true
+  - name: '🇧🇬 保加利亚_H4PXMJ'
+    server: 'bg4.univesalsrv.com'
+    port: 443
+    type: 'vless'
+    uuid: '2f35965a-9a9b-45fd-ba32-987296dfb6be'
+    tls: true
+    tfo: false
+    skip-cert-verify: false
+    reality-opts:
+      public-key: 'k-vH6pkyAv26L1_dXKOFhp0Kesur9-FCUDoj-IIpVhc'
+      short-id: '51f45d4fd58cc319'
+    servername: 'bg4.univesalsrv.com'
+    client-fingerprint: 'firefox'
+    network: 'grpc'
+    grpc-opts:
+      grpc-service-name: 'cloud.v1.RelayService'
+    udp: true
+  - name: '🇸🇪 瑞典_3GRRED'
+    server: '34.51.231.250'
+    port: 443
+    type: 'vless'
+    uuid: 'e4be912f-68e8-4d51-80a4-1342b646f8e0'
+    tls: true
+    tfo: false
+    skip-cert-verify: false
+    reality-opts:
+      public-key: 'fV003yDr_sb_Wkgz6MxnIUJMgD15osWhzU-HZ5fLPFg'
+      short-id: '79ff7d51e3c56323'
+    servername: 'www.cloudflare.com'
+    client-fingerprint: 'chrome'
+    network: 'tcp'
+    udp: true
+  - name: '🇶🇦 卡塔尔_YZ328W'
+    server: '34.18.212.19'
+    port: 443
+    type: 'vless'
+    uuid: 'b6f775c2-70fd-4247-8d12-82cac46fdd50'
+    tls: true
+    tfo: false
+    skip-cert-verify: false
+    reality-opts:
+      public-key: 'tT6wEOh8ASizQYNRb51QdDlxAksSJbEaBnbQBajc6SQ'
+      short-id: 'c5426331173ca15c'
+    servername: 'www.cloudflare.com'
+    client-fingerprint: 'chrome'
+    network: 'tcp'
+    udp: true
   - name: 'tg频道:@freenodedaily'
     server: '63.180.254.10'
     port: 443
     type: 'ss'
     cipher: 'aes-256-cfb'
     password: 'amazonskr05'
-  - name: '美国(yudou789.top 玉豆分享)_48'
-    type: 'vless'
-    server: '155.46.167.30'
-    port: 8880
-    uuid: '6202b230-417c-4d8e-b624-0f71afa9c75d'
-    network: 'ws'
-    tls: false
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'vms.lifetime50.workers.dev'
-    skip-cert-verify: true
-    udp: true
-  - name: '美国(yudou789.top 玉豆分享)_75'
-    type: 'vless'
-    server: '45.9.156.27'
-    port: 443
-    uuid: '2f35965a-9a9b-45fd-ba32-987296dfb6be'
-    network: 'grpc'
-    servername: 'bg3.univesalsrv.com'
-    tls: true
-    client-fingerprint: 'chrome'
-    grpc-opts:
-      grpc-service-name: 'home.v1.ApiService'
-    reality-opts:
-      public-key: 'XBfCioniAKXgKYBUVnvBXu80AIaIa4SpAB3w8qeF7Gk'
-      short-id: '1be1bd931c98c84a'
-    skip-cert-verify: true
-    udp: true
   - name: '新加坡(yudou789.top 玉豆分享)'
     type: 'vless'
     server: '43.174.195.1'
@@ -36980,7 +36991,23 @@ proxies:
         Host: 'kv.074167.xyz'
     skip-cert-verify: true
     udp: true
-  - name: '美国(yudou789.top 玉豆分享)_14-b89a5ace0f4e5ea2'
+  - name: '美国(yudou789.top 玉豆分享)_3'
+    type: 'vless'
+    server: '45.9.156.27'
+    port: 443
+    uuid: '2f35965a-9a9b-45fd-ba32-987296dfb6be'
+    network: 'grpc'
+    servername: 'bg3.univesalsrv.com'
+    tls: true
+    client-fingerprint: 'firefox'
+    grpc-opts:
+      grpc-service-name: 'home.v1.ApiService'
+    reality-opts:
+      public-key: 'XBfCioniAKXgKYBUVnvBXu80AIaIa4SpAB3w8qeF7Gk'
+      short-id: '1be1bd931c98c84a'
+    skip-cert-verify: true
+    udp: true
+  - name: '美国(yudou789.top 玉豆分享)_14'
     type: 'vless'
     server: 'rs2.univesalsrv.com'
     port: 443
@@ -36994,6 +37021,19 @@ proxies:
     reality-opts:
       public-key: 'tL16MVY08r-7YDXb1_gxuBBWInpSFp97ZLJ_ax3R2iE'
       short-id: '1469af2040b7c323'
+    skip-cert-verify: true
+    udp: true
+  - name: '美国(yudou789.top 玉豆分享)_19'
+    type: 'vless'
+    server: '155.46.167.30'
+    port: 8880
+    uuid: '6202b230-417c-4d8e-b624-0f71afa9c75d'
+    network: 'ws'
+    tls: false
+    ws-opts:
+      path: '/'
+      headers:
+        Host: 'vms.lifetime50.workers.dev'
     skip-cert-verify: true
     udp: true
   - name: '美国(yudou789.top 玉豆分享)_19-8d4b1fb51cd9a1be'
@@ -37022,7 +37062,7 @@ proxies:
       short-id: '3f95392a418ec8fd'
     skip-cert-verify: true
     udp: true
-  - name: '德国(yudou789.top 玉豆分享)_1-5cf2634dd5f902df'
+  - name: '德国(yudou789.top 玉豆分享)_1'
     type: 'vless'
     server: '34.159.242.163'
     port: 443
@@ -37035,30 +37075,31 @@ proxies:
       short-id: '7394ea3cc2106697'
     skip-cert-verify: true
     udp: true
-  - name: '美国(yudou789.top 玉豆分享)_40-76aad2cfcb27c88d'
+  - name: '美国(yudou789.top 玉豆分享)_13-1a7fc1a099db5aaf'
     type: 'vless'
-    server: '34.51.231.250'
+    server: '31.76.64.248'
     port: 443
-    uuid: 'e4be912f-68e8-4d51-80a4-1342b646f8e0'
-    servername: 'www.cloudflare.com'
+    uuid: '0a322246-8c1a-47cd-9865-cccebbb2e5c1'
+    servername: 'blog.api.www.cloudflare.com'
     tls: true
-    client-fingerprint: 'chrome'
+    flow: 'xtls-rprx-vision'
+    client-fingerprint: 'firefox'
     reality-opts:
-      public-key: 'fV003yDr_sb_Wkgz6MxnIUJMgD15osWhzU-HZ5fLPFg'
-      short-id: '79ff7d51e3c56323'
+      public-key: '9OV_GN4lgwY_4llPfYCGev-PPXLMj-hfYnveKF4tjws'
+      short-id: 'f8'
     skip-cert-verify: true
     udp: true
-  - name: '美国(yudou789.top 玉豆分享)_46'
+  - name: '美国(yudou789.top 玉豆分享)_49-ea714857d6ed5528'
     type: 'vless'
-    server: '34.18.212.19'
+    server: '34.35.174.85'
     port: 443
-    uuid: 'b6f775c2-70fd-4247-8d12-82cac46fdd50'
+    uuid: '4758aee6-6d1a-4306-b460-2398b5af4e35'
     servername: 'www.cloudflare.com'
     tls: true
     client-fingerprint: 'chrome'
     reality-opts:
-      public-key: 'tT6wEOh8ASizQYNRb51QdDlxAksSJbEaBnbQBajc6SQ'
-      short-id: 'c5426331173ca15c'
+      public-key: 'dcox8XXfkOCmKn3kgrloj6wY5o1_0brJOi2mczYmAT4'
+      short-id: '5ced03e42cc31aab'
     skip-cert-verify: true
     udp: true
 proxy-groups:
@@ -39395,35 +39436,38 @@ proxy-groups:
       - '🇺🇸_US_美国->🇨🇦_CA_加拿大_1'
       - '🇺🇸_US_美国->🇫🇷_FR_法国_1'
       - '🇺🇸_US_美国_3-3c8b9ad76515d9ea'
-      - '🇺🇸_US_美国_6'
+      - '🇺🇸_US_美国_6-f14a11711de3817a'
       - '🇺🇸_US_美国->🇫🇷_FR_法国_2'
-      - '🇺🇸_US_美国_8'
+      - '🇺🇸_US_美国_8-2fe97a19f84221ff'
       - '🇺🇸_US_美国->🇨🇦_CA_加拿大_4'
       - '🇺🇸_US_美国->🇨🇦_CA_加拿大_5'
-      - '🇺🇸_US_美国_12'
+      - '🇺🇸_US_美国_12-3f709ccb6af6aa2d'
       - '🇺🇸_US_美国->🇨🇦_CA_加拿大_7'
       - '🇺🇸_US_美国->🇨🇦_CA_加拿大_8'
-      - '🇺🇸_US_美国_17'
+      - '🇺🇸_US_美国_17-751bb00443f858ad'
       - '🇺🇸_US_美国->🇨🇦_CA_加拿大_9'
       - '🇺🇸_US_美国->🇨🇦_CA_加拿大_10'
-      - '🇺🇸_US_美国_19'
-      - '🇺🇸_US_美国_22'
+      - '🇺🇸_US_美国_19-15778b32a346b51f'
+      - '🇺🇸_US_美国_22-d05fe930d329c365'
       - '🇺🇸_US_美国_23'
-      - '🇨🇳_CN_中国->🇺🇸_US_美国'
+      - '🇨🇳_CN_中国->🇺🇸_US_美国-45194613253c3013'
       - '4Nika-4d61ba854b'
-      - '🇧🇬 保加利亚_30TYGF'
-      - '🇷🇸 塞尔维亚_RBMEF7'
-      - '🇧🇬 保加利亚_9XOBD0'
+      - '🇭🇰_HK_中国香港->🇺🇸_US_美国'
+      - '🇧🇬 保加利亚_QHV8QI'
       - '🇷🇸 塞尔维亚_P2N61R'
+      - '🇷🇸 塞尔维亚_H3HLCU'
+      - '🇧🇬 保加利亚_H4PXMJ'
+      - '🇸🇪 瑞典_3GRRED'
+      - '🇶🇦 卡塔尔_YZ328W'
       - 'tg频道:@freenodedaily'
-      - '美国(yudou789.top 玉豆分享)_48'
-      - '美国(yudou789.top 玉豆分享)_75'
       - '新加坡(yudou789.top 玉豆分享)'
-      - '美国(yudou789.top 玉豆分享)_14-b89a5ace0f4e5ea2'
+      - '美国(yudou789.top 玉豆分享)_3'
+      - '美国(yudou789.top 玉豆分享)_14'
+      - '美国(yudou789.top 玉豆分享)_19'
       - '美国(yudou789.top 玉豆分享)_19-8d4b1fb51cd9a1be'
       - '法国(yudou789.top 玉豆分享)'
-      - '德国(yudou789.top 玉豆分享)_1-5cf2634dd5f902df'
-      - '美国(yudou789.top 玉豆分享)_40-76aad2cfcb27c88d'
-      - '美国(yudou789.top 玉豆分享)_46'
+      - '德国(yudou789.top 玉豆分享)_1'
+      - '美国(yudou789.top 玉豆分享)_13-1a7fc1a099db5aaf'
+      - '美国(yudou789.top 玉豆分享)_49-ea714857d6ed5528'
 rules:
   - 'MATCH,PROXY'
