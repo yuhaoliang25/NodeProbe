@@ -1296,15 +1296,6 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '5b107f4a88d7b51f'
-  - name: '🇫🇷FR_66|3.0MB/s|R002-260618 01'
-    port: 443
-    server: '141.94.16.4'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: 'baa006648c5cceb5'
   - name: '🇺🇸US_292|767KB/s|R002-260618 01'
     port: 9002
     server: '138.199.35.206'
@@ -1663,7 +1654,6 @@ proxy-groups:
       - '🇩🇪DE_84|248KB/s|R002-260618 01'
       - '🇺🇸US_691|124KB/s|R002-260618 01'
       - '🇺🇸US_61|332KB/s|R002-260618 01'
-      - '🇫🇷FR_66|3.0MB/s|R002-260618 01'
       - '🇺🇸US_292|767KB/s|R002-260618 01'
       - '🇺🇸US_297|497KB/s|P002-260618 01'
       - '🇺🇸US_635|812KB/s|P002-260618 01'
