@@ -1031,6 +1031,16 @@ proxies:
     username: 'null'
     udp: true
     endpoint-id: '49afa43edc803cfa'
+  - name: '🇷🇴RO_84|1.8MB/s 01'
+    password: 'null'
+    port: 9002
+    server: '193.176.84.27'
+    skip-cert-verify: true
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    endpoint-id: '94d1ad16d8c8e751'
   - name: '🇷🇴RO_76|1.5MB/s 01'
     port: 9002
     server: '193.176.84.30'
@@ -1114,6 +1124,17 @@ proxies:
     username: 'null'
     udp: true
     endpoint-id: '81de40b305c04cf1'
+  - name: '🇷🇴RO_96|891KB/s|R002-260618 01'
+    password: 'null'
+    port: 9002
+    server: '193.176.84.17'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    endpoint-id: '22fdb990adb73d92'
   - name: '🇺🇸US_627|334KB/s|R002-260618 01'
     port: 443
     server: '38.28.193.1'
@@ -1616,6 +1637,7 @@ proxy-groups:
       - '🇳🇱NL_226|3.3MB/s|R002-260618 01'
       - '🇳🇱NL_228|3.0MB/s|K001-260618 01'
       - '🇳🇱NL_230|2.0MB/s|R002-260618 01'
+      - '🇷🇴RO_84|1.8MB/s 01'
       - '🇷🇴RO_76|1.5MB/s 01'
       - '🇷🇴RO_16|319KB/s|P002-260618 01'
       - '🇷🇴RO_54|766KB/s|P002-260618 01'
@@ -1624,6 +1646,7 @@ proxy-groups:
       - '🇷🇴RO_90|1.2MB/s|R002-260618 01'
       - '🇳🇱NL_285|1.1MB/s|P002-260618 01'
       - '🇺🇸US_624|1.4MB/s 01'
+      - '🇷🇴RO_96|891KB/s|R002-260618 01'
       - '🇺🇸US_627|334KB/s|R002-260618 01'
       - '🇸🇬SG_38|247KB/s|R002-260618 01'
       - '🇷🇴RO_98|1.7MB/s|R002-260618 01'
