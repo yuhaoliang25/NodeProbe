@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 const fs=require('fs'),yaml=require('js-yaml'),crypto=require('crypto');
+const {timeDecayWeight,timeDecayedEvidence}=require('./time-decay');
 const raw=JSON.parse(fs.readFileSync('data/raw-sources.json','utf8'));
 const proxies=[],seen=new Set(),usedNames=new Set(),sourcesById=new Map();
 function valid(p){
