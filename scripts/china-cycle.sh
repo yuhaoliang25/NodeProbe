@@ -13,6 +13,7 @@ fi
 
 export CHINA_MAX_NODES="${CHINA_MAX_NODES:-300}"
 export CHINA_PROBE_CONCURRENCY="${CHINA_PROBE_CONCURRENCY:-8}"
+export CHINA_RELEASE_ID="${CHINA_RELEASE_ID:-$(date -u +%Y%m%dT%H%M%SZ)}"
 
 CANDIDATE_RUN_FILE="${CHINA_CANDIDATE_RUN_FILE:-data/.china-candidate-run}"
 PAIR_CANDIDATE_RUN_FILE="${CHINA_PAIR_CANDIDATE_RUN_FILE:-data/.china-pair-candidate-run}"
@@ -91,6 +92,7 @@ npm run china-pools
 npm run china-elite
 npm run china-sticky
 npm run client-config
+npm run china-diagnostics
 
 # Publish the completed state/results. release.json is uploaded last so the
 # GitHub publisher only observes a completed China generation.
