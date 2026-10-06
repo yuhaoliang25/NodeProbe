@@ -31,8 +31,8 @@ const CONFIG={
   // Stability is expensive quality evidence, not the China asset lifecycle gate.
   // Keep a bounded lane so a 300-node exit probe cannot turn into thousands of
   // repeated multi-target requests in one systemd cycle.
-  stabilityMaxNodes:Number(process.env.CHINA_STABILITY_MAX_NODES||60),
-  chatgptMaxNodes:Number(process.env.CHINA_CHATGPT_MAX_NODES||30),
+  stabilityMaxNodes:Number(process.env.CHINA_STABILITY_MAX_NODES||30),
+  chatgptMaxNodes:Number(process.env.CHINA_CHATGPT_MAX_NODES||20),
   stabilityMinSuccessRate:Number(process.env.CHINA_STABILITY_MIN_SUCCESS_RATE||0.9),
   stabilityMinTargetSuccessRate:Number(process.env.CHINA_STABILITY_MIN_TARGET_SUCCESS_RATE||0.67),
   stabilityMinRoundSuccessRate:Number(process.env.CHINA_STABILITY_MIN_ROUND_SUCCESS_RATE||0.67),
