@@ -12,6 +12,8 @@ const STABLE_LOCAL=process.env.CHINA_STABLE_FILE||'subscriptions/stable.yaml';
 const CANDIDATE_REMOTE=PREFIX+'/candidates.json';
 const OBS_REMOTE=PREFIX+'/observations';
 const CANDIDATE_LOCAL=process.env.CHINA_CANDIDATE_FILE||'data/china-probe-candidates.json';
+const DISCOVERY_QUEUE_REMOTE=PREFIX+'/discovery-queue.json';
+const DISCOVERY_QUEUE_LOCAL=process.env.CHINA_DISCOVERY_QUEUE_FILE||'data/china-discovery-queue.json';
 const OBS_DIR=process.env.CHINA_OBSERVATION_DIR||'data/china-probe-observations';
 const PAIR_CANDIDATE_REMOTE=PREFIX+'/pair-candidates.json';
 const PAIR_CANDIDATE_LOCAL=process.env.CHINA_RELAY_CANDIDATE_FILE||'data/china-relay-pair-candidates.json';
@@ -24,7 +26,7 @@ function run(args){
   if(r.status!==0)process.exit(r.status||1);
 }
 function usage(){
-  console.log('usage: node scripts/china-b2-sync.js pull-stable | pull-candidates | push-observations | pull-pair-candidates | push-pair-observations | publish-results');
+  console.log('usage: node scripts/china-b2-sync.js pull-stable | pull-candidates | pull-discovery-queue | push-observations | pull-pair-candidates | push-pair-observations | publish-results');
 }
 function localBatchNames(dir){
   try{
@@ -79,6 +81,18 @@ if(mode==='pull-stable'){
     console.error('B2 China candidate feed is missing or invalid.');
     process.exit(1);
   }
+ }else if(mode==='pull-discovery-queue'){
+  fs.mkdirSync(path.dirname(DISCOVERY_QUEUE_LOCAL),{recursive:true});
+  try{
+    run(['file','download','b2://'+BUCKET+'/'+DISCOVERY_QUEUE_REMOTE,DISCOVERY_QUEUE_LOCAL]);
+    const q=JSON.parse(fs.readFileSync(DISCOVERY_QUEUE_LOCAL,'utf8'));
+    if(!Array.isArray(q?.items))throw new Error('invalid discovery queue');
+  }catch(error){
+    if(fs.existsSync(DISCOVERY_QUEUE_LOCAL)){
+      try{fs.unlinkSync(DISCOVERY_QUEUE_LOCAL)}catch{}
+    }
+    console.log('No valid China discovery queue in B2; starting an empty backlog.');
+  }
  }else if(mode==='pull-pair-candidates'){
   fs.mkdirSync(path.dirname(PAIR_CANDIDATE_LOCAL),{recursive:true});
   run(['file','download','b2://'+BUCKET+'/'+PAIR_CANDIDATE_REMOTE,PAIR_CANDIDATE_LOCAL]);
@@ -101,6 +115,7 @@ if(mode==='pull-stable'){
 }else if(mode==='publish-results'){
   const outputs=[
     ['data/china-node-assets.json','nodeprobe-state/china-node-assets.json'],
+    ['data/china-discovery-queue.json',DISCOVERY_QUEUE_REMOTE],
     ['data/china-pair-knowledge.json','nodeprobe-state/china-pair-knowledge.json'],
     ['data/china-probe-candidates.json',CANDIDATE_REMOTE],
     ['data/china-relay-pair-candidates.json',PAIR_CANDIDATE_REMOTE],
