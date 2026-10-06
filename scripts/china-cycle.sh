@@ -26,6 +26,7 @@ npm run china-sync -- push-pair-observations || true
 # once-only work queue. Known China assets must continue to be maintained even
 # when the B2 candidate file has the same generatedAt as the previous cycle.
 npm run china-sync -- pull-stable || echo 'Global Stable unavailable; continuing from persistent China state.'
+npm run china-sync -- pull-discovery-queue || true
 npm run china-assets
 npm run china-probe
 npm run china-apply
