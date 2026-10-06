@@ -172,11 +172,18 @@ function nextProbeAt(node, atMs) {
   if (node.state === 'TRUSTED') {
     return new Date(atMs + CONFIG.veteranRetestMs).toISOString();
   }
-  if (node.state === 'DEGRADED' || node.state === 'UNTRUSTED') {
-    return new Date(atMs + CONFIG.failedRetryMs).toISOString();
-  }
   if (node.state === 'FORGOTTEN') {
     return new Date(atMs + CONFIG.forgottenRetryMs).toISOString();
+  }
+  // A newly discovered endpoint that has already failed is no longer fresh
+  // exploration. Give it the same recovery backoff as other failed assets;
+  // otherwise a dead NEW node is due on every cycle forever.
+  if (
+    node.failureStreak > 0 ||
+    node.state === 'DEGRADED' ||
+    node.state === 'UNTRUSTED'
+  ) {
+    return new Date(atMs + CONFIG.failedRetryMs).toISOString();
   }
   return new Date(atMs).toISOString();
 }
@@ -358,14 +365,19 @@ function buildCandidates(stable, state, atMs) {
 
   // Maintenance is driven entirely by the persistent China asset pool.
   // A known node remains eligible for re-probing even when it disappears from
-  // the latest Global Stable feed.
+  // the latest Global Stable feed. A failed NEW node is also maintenance:
+  // it must use the recovery lane rather than masquerading as fresh discovery.
   for (const old of Object.values(state.nodes || {})) {
     if (!old?.endpointId || !old?.proxy || !isDue(old, atMs)) continue;
 
     let category = 'probation-recheck';
     if (old.state === 'TRUSTED') {
       category = old.observedRuns >= 10 ? 'veteran' : 'trusted-recheck';
-    } else if (old.state === 'DEGRADED' || old.state === 'UNTRUSTED') {
+    } else if (
+      old.state === 'DEGRADED' ||
+      old.state === 'UNTRUSTED' ||
+      old.failureStreak > 0
+    ) {
       category = 'failed';
     } else if (old.state === 'FORGOTTEN') {
       category = 'forgotten';
