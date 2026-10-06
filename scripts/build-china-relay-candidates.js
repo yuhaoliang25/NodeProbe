@@ -4,6 +4,7 @@
 const fs=require('fs');
 const path=require('path');
 const crypto=require('crypto');
+const { timeDecayedEvidence } = require('./time-decay');
 const CONFIG={
     assetFile:process.env.CHINA_ASSET_FILE||'data/china-node-assets.json',
   outputFile:process.env.CHINA_RELAY_CANDIDATE_FILE||'data/china-relay-pair-candidates.json',
@@ -27,19 +28,19 @@ function latest(node){
   const xs=Array.isArray(node?.observations)?node.observations:[];
   return xs.length?xs[xs.length-1]:null;
 }
-function reachRate(node){
-  const xs=(Array.isArray(node?.observations)?node.observations:[]).slice(-10);
-  const usable=xs.filter(x=>x.reachabilitySuccess!=null);
-  return usable.length?usable.filter(x=>x.reachabilitySuccess).length/usable.length:0;
+function reachRate(node,atMs){
+  const xs=Array.isArray(node?.observations)?node.observations:[];
+  return timeDecayedEvidence(xs,atMs,CONFIG.decayHalfLifeMs,x=>x.reachabilitySuccess===true).rate;
 }
-function relayScore(node){
+function relayScore(node,atMs){
   const x=latest(node)||{};
-  const rate=reachRate(node);
+  const rate=reachRate(node,atMs);
   const latency=Number.isFinite(x.reachabilityLatencyMs)?x.reachabilityLatencyMs:3000;
   return rate*1000 + Math.min(500,Math.max(0,500-latency/2)) + Math.min(300,Number(node.observedRuns||0)*20);
 }
 
 const assets=loadAssets();
+const now=Date.now();
 const relayCandidates=[];
 for(const [id,node] of Object.entries(assets)){
   const p=node?.proxy;
@@ -56,11 +57,11 @@ for(const [id,node] of Object.entries(assets)){
   relayCandidates.push({
     endpointId:id,
     proxy:p,
-    score:relayScore(node),
+    score:relayScore(node,now),
     reason:'reachable-but-exit-weak',
     lastExitSuccess:x.exitSuccess===true,
     lastProbeSuccess:x.success===true,
-    recentReachabilityRate:reachRate(node),
+    recentReachabilityRate:reachRate(node,now),
     lastReachabilityLatencyMs:x.reachabilityLatencyMs??null,
     observedRuns:Number(node.observedRuns||0),
   });
@@ -123,6 +124,7 @@ const out={
     maxRelayCandidates:CONFIG.relayLimit,
     maxLandingCandidates:CONFIG.landingLimit,
     maxPairs:CONFIG.pairLimit,
+    decayHalfLifeMs:CONFIG.decayHalfLifeMs,
     noMultiHop:true,
   },
   relayCandidates:relays.map(({proxy,...x})=>x),
