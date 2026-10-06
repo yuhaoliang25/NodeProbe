@@ -26,7 +26,8 @@
     "china-relay-probe": "node scripts/china-relay-probe.js",
     "china-pair-apply": "node scripts/apply-china-pair-observations.js",
     "china-pairs": "node scripts/build-china-pairs.js",
-    "china-elite": "node scripts/build-china-elite.js"
+    "china-elite": "node scripts/build-china-elite.js",
+    "china-sticky": "node scripts/build-china-sticky.js"
   },
   "dependencies": {
     "js-yaml": "^4.1.0"
