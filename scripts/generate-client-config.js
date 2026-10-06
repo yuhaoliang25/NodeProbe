@@ -79,7 +79,16 @@ if (chatgpt.length) {
     'DOMAIN-SUFFIX,oaiusercontent.com,CHATGPT'
   );
 }
-rules.push('MATCH,PROXY');
+rules.push(
+  // Mihomo's built-in DIRECT is intentional here: China traffic should not
+  // consume a proxy unless a higher-priority application-specific rule matches.
+  'GEOSITE,private,DIRECT',
+  'GEOIP,private,DIRECT,no-resolve',
+  'GEOSITE,cn,DIRECT',
+  'GEOIP,cn,DIRECT,no-resolve',
+  'GEOSITE,geolocation-!cn,PROXY',
+  'MATCH,PROXY'
+);
 
 const config = {
   'mixed-port': 7890,
