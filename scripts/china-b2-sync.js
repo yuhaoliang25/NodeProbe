@@ -109,6 +109,7 @@ if(mode==='pull-stable'){
     ['subscriptions/chatgpt.yaml',PREFIX+'/chatgpt.yaml'],
     ['subscriptions/sticky.yaml',PREFIX+'/sticky.yaml'],
     ['data/china-sticky.json',PREFIX+'/china-sticky.json'],
+    ['data/china-diagnostics.json',PREFIX+'/china-diagnostics.json'],
     ['subscriptions/china-elite.json',PREFIX+'/china-elite.json'],
     ['subscriptions/pairs.yaml',PREFIX+'/pairs.yaml'],
     ['subscriptions/china-pools.json',PREFIX+'/china-pools.json'],
@@ -122,6 +123,7 @@ if(mode==='pull-stable'){
   const manifest={
     version:1,
     generatedAt:new Date().toISOString(),
+    releaseId:process.env.CHINA_RELEASE_ID||null,
     producer:'china-machine',
     files:outputs.map(([,remote])=>remote),
   };
