@@ -39,6 +39,16 @@ jobs:
           source: nodeprobe-state/china/exit.yaml
           destination: subscriptions/exit.yaml
 
+      - name: Pull China ChatGPT subscription
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: download
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: nodeprobe-state/china/chatgpt.yaml
+          destination: subscriptions/chatgpt.yaml
+
       - name: Pull China elite subscription
         uses: backblaze-labs/b2-action@v1
         with:
@@ -105,7 +115,7 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
 
-          git add subscriptions/exit.yaml subscriptions/elite.yaml subscriptions/china-elite.json subscriptions/pairs.yaml subscriptions/china-pools.json subscriptions/china-pair-pool.json mihomo/client.yaml
+          git add subscriptions/exit.yaml subscriptions/elite.yaml subscriptions/chatgpt.yaml subscriptions/china-elite.json subscriptions/pairs.yaml subscriptions/china-pools.json subscriptions/china-pair-pool.json mihomo/client.yaml
           git diff --cached --quiet && exit 0
           git commit -m "chore: publish China subscriptions"
 
