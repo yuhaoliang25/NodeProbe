@@ -278,7 +278,12 @@ async function main(){
         endpointId:id,
         proxy:p,
         at:trace[0]?.at||now(),
-        success:Boolean(last?.success)&&(!stabilityById.has(id)||stabilityEligibleIds.has(id)),
+        // China asset lifecycle success means the node can actually provide
+        // an exit path. Stability and ChatGPT are capability/quality evidence,
+        // not a second independent failure gate for the asset itself. In
+        // particular, a stability run may legitimately end with one failed
+        // attempt while still satisfying its configured eligibility criteria.
+        success:exitSuccess,
         reachabilitySuccess:Boolean(reachabilityAttempt?.success),
         reachabilityLatencyMs:reachabilityAttempt?.latencyMs??null,
         exitSuccess,
