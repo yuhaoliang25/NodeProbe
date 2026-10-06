@@ -15,11 +15,11 @@ const MIN_RECENT_RATE = Math.max(0, Math.min(1, Number(process.env.CHINA_STICKY_
 const PROTECT_FAILURE_STREAK = Math.max(1, Number(process.env.CHINA_STICKY_PROTECT_FAILURE_STREAK || 2));
 const MAX_PROTECTED_AGE_MS = Math.max(1, Number(process.env.CHINA_STICKY_MAX_PROTECTED_AGE_MS || 36 * 60 * 60 * 1000));
 const DECAY_HALF_LIFE_MS = Math.max(1, Number(process.env.CHINA_STICKY_DECAY_HALF_LIFE_MS || 72 * 60 * 60 * 1000));
-// Continuity is deliberately only a tiny tie-breaker: reliability/freshness
-// remain the primary reasons to select a sticky node. When the incumbent is
-// replaced, a candidate with a nearby literal IP gets a small advantage.
-// This is useful for IP-sensitive services without turning IP proximity into
-// a substitute for health evidence.
+// Continuity is deliberately only a tiny tie-breaker. Reliability/freshness
+// remain primary. Prefix continuity is preferred to raw numeric proximity:
+// same IPv4 /24 or IPv6 /48 is a stronger identity-continuity signal than
+// merely having nearby literal addresses. ASN continuity is not inferred here
+// because endpoint assets currently do not carry authoritative ASN metadata.
 const IP_CONTINUITY_WEIGHT = Math.max(
   0,
   Number(process.env.CHINA_STICKY_IP_CONTINUITY_WEIGHT || 0.002),
@@ -40,9 +40,6 @@ function rate(observations) {
     : 0;
 }
 
-// Wilson lower bound: a conservative estimate of long-run reliability.
-// It rewards accumulated evidence rather than letting a 5/5 node outrank a
-// heavily observed 99%-reliable veteran solely because of a perfect short sample.
 function wilsonLowerBound(successes, total, z = 1.96) {
   if (!total) return 0;
   const p = successes / total;
@@ -165,49 +162,86 @@ function canProtectCurrent(node, atMs) {
 function normalizeIp(value) {
   let ip = String(value || '').trim();
   if (!ip) return null;
-  // YAML Mihomo configs may use bracketed IPv6 literals.
   if (ip.startsWith('[') && ip.endsWith(']')) ip = ip.slice(1, -1);
   return net.isIP(ip) ? ip : null;
+}
+
+function ipv4Prefix(ip, bits) {
+  const octets = ip.split('.').map(Number);
+  if (bits === 24) return octets.slice(0, 3).join('.');
+  if (bits === 16) return octets.slice(0, 2).join('.');
+  return octets[0];
+}
+
+function ipv6Groups(ip) {
+  const parts = ip.split('::');
+  const left = parts[0] ? parts[0].split(':').filter(Boolean) : [];
+  const right = parts[1] ? parts[1].split(':').filter(Boolean) : [];
+  const missing = 8 - left.length - right.length;
+  return [...left, ...Array(Math.max(0, missing)).fill('0'), ...right]
+    .map(group => group.padStart(4, '0').toLowerCase());
+}
+
+function ipv6Prefix(ip, groups) {
+  return ipv6Groups(ip).slice(0, groups).join(':');
 }
 
 function ipDistanceScore(candidateIp, referenceIp) {
   const a = normalizeIp(candidateIp);
   const b = normalizeIp(referenceIp);
-  if (!a || !b) return 0;
+  if (!a || !b) {
+    return { score: 0, relation: 'unknown' };
+  }
+
   const versionA = net.isIP(a);
   const versionB = net.isIP(b);
-  if (versionA !== versionB) return 0;
+  if (versionA !== versionB) {
+    return { score: 0, relation: 'different-family' };
+  }
 
   if (versionA === 4) {
-    const toBigInt = ip => ip.split('.').reduce((value, octet) => (
-      (value << 8n) + BigInt(Number(octet))
-    ), 0n);
-    const distance = toBigInt(a) >= toBigInt(b)
-      ? toBigInt(a) - toBigInt(b)
-      : toBigInt(b) - toBigInt(a);
+    if (ipv4Prefix(a, 24) === ipv4Prefix(b, 24)) {
+      return { score: 1, relation: 'same-/24' };
+    }
+    if (ipv4Prefix(a, 16) === ipv4Prefix(b, 16)) {
+      return { score: 0.55, relation: 'same-/16' };
+    }
+
+    const toBigInt = ip => ip.split('.').reduce(
+      (value, octet) => (value << 8n) + BigInt(Number(octet)),
+      0n,
+    );
+    const ai = toBigInt(a);
+    const bi = toBigInt(b);
+    const distance = ai >= bi ? ai - bi : bi - ai;
     const max = 4294967295n;
-    return Number(max - distance) / Number(max);
+    return {
+      score: Number(max - distance) / Number(max) * 0.25,
+      relation: 'numeric-proximity',
+    };
   }
 
-  // IPv6 is handled with BigInt to avoid precision loss. The score is still
-  // normalized to [0, 1], so the same tiny continuity weight applies.
-  function ipv6ToBigInt(ip) {
-    const parts = ip.split('::');
-    const left = parts[0] ? parts[0].split(':').filter(Boolean) : [];
-    const right = parts[1] ? parts[1].split(':').filter(Boolean) : [];
-    const missing = 8 - left.length - right.length;
-    const groups = [...left, ...Array(Math.max(0, missing)).fill('0'), ...right];
-    return groups.reduce((value, group) => (
-      (value << 16n) + BigInt(parseInt(group, 16) || 0)
-    ), 0n);
+  if (ipv6Prefix(a, 6) === ipv6Prefix(b, 6)) {
+    return { score: 1, relation: 'same-/48' };
+  }
+  if (ipv6Prefix(a, 4) === ipv6Prefix(b, 4)) {
+    return { score: 0.55, relation: 'same-/64-region' };
   }
 
-  const ai = ipv6ToBigInt(a);
-  const bi = ipv6ToBigInt(b);
+  const ai = ipv6Groups(a).reduce(
+    (value, group) => (value << 16n) + BigInt(parseInt(group, 16) || 0),
+    0n,
+  );
+  const bi = ipv6Groups(b).reduce(
+    (value, group) => (value << 16n) + BigInt(parseInt(group, 16) || 0),
+    0n,
+  );
   const distance = ai >= bi ? ai - bi : bi - ai;
   const max = (1n << 128n) - 1n;
-  const similarity = max - distance;
-  return Number(similarity) / Number(max);
+  return {
+    score: Number(max - distance) / Number(max) * 0.25,
+    relation: 'numeric-proximity',
+  };
 }
 
 function continuityAdjustedScore(node, atMs, referenceServer) {
@@ -215,8 +249,9 @@ function continuityAdjustedScore(node, atMs, referenceServer) {
   const continuity = ipDistanceScore(node.proxy?.server, referenceServer);
   return {
     ...rank,
-    continuity,
-    continuityBonus: continuity * IP_CONTINUITY_WEIGHT,
+    continuity: continuity.score,
+    continuityRelation: continuity.relation,
+    continuityBonus: continuity.score * IP_CONTINUITY_WEIGHT,
   };
 }
 
@@ -235,9 +270,6 @@ function main() {
   const assets = loadJson(ASSET_FILE, { nodes: {} });
   let state = loadJson(STATE_FILE, createState());
   if (!state || typeof state !== 'object') state = createState();
-  // Keep the legacy field for state-file compatibility, but it is no longer
-  // used as a permanent blacklist. A transient failure must not permanently
-  // remove an otherwise healthy China asset from future sticky selection.
   if (!Array.isArray(state.retiredEndpointIds)) state.retiredEndpointIds = [];
 
   const nodes = Object.values(assets.nodes || {});
@@ -255,8 +287,6 @@ function main() {
   let selected = null;
   let reason = 'initial-selection';
 
-  // Sticky means sticky: never replace a healthy incumbent merely because a
-  // newly observed node has a better score.
   if (current && canProtectCurrent(current, atMs)) {
     selected = current;
     reason = Number(current.failureStreak || 0) > 0
@@ -273,8 +303,6 @@ function main() {
             : 'current-no-longer-eligible';
     }
 
-    // Do not permanently blacklist the previous incumbent. It remains in the
-    // normal eligible pool and may become sticky again after recovery.
     selected = eligibleNodes[0] || null;
   }
 
@@ -309,6 +337,10 @@ function main() {
     quotingType: "'",
   }));
 
+  const selectedContinuity = selected
+    ? ipDistanceScore(selected.proxy?.server, continuityReferenceServer)
+    : { score: 0, relation: 'none' };
+
   console.log(JSON.stringify({
     selected: selected ? {
       endpointId: selected.endpointId,
@@ -320,8 +352,9 @@ function main() {
       timeDecayedSuccessRate: stabilityRank(selected, atMs).decayedRate,
       effectiveObservations: stabilityRank(selected, atMs).effectiveObservations,
       continuityReferenceServer,
-      continuityScore: ipDistanceScore(selected.proxy?.server, continuityReferenceServer),
-      continuityBonus: ipDistanceScore(selected.proxy?.server, continuityReferenceServer) * IP_CONTINUITY_WEIGHT,
+      continuityScore: selectedContinuity.score,
+      continuityRelation: selectedContinuity.relation,
+      continuityBonus: selectedContinuity.score * IP_CONTINUITY_WEIGHT,
     } : null,
     candidateCount: eligibleNodes.length,
     reason,
