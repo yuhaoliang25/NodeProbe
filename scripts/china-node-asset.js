@@ -471,11 +471,10 @@ function buildCandidates(stable, state, atMs, discoveryQueue) {
   // Exploration consumes the persistent discovery backlog in oldest-first
   // order. It is intentionally not limited to the endpoints present in the
   // current Stable snapshot.
-  const explorationQueue = [...queueById.values()].sort((a, b) => {
-    const at = a.lastSelectedAt ? Date.parse(a.lastSelectedAt) : 0;
-    const bt = b.lastSelectedAt ? Date.parse(b.lastSelectedAt) : 0;
-    return at - bt || String(a.firstDiscoveredAt || '').localeCompare(String(b.firstDiscoveredAt || ''));
-  });
+  const explorationQueue = [...queueById.values()].sort((a, b) =>
+    String(a.firstDiscoveredAt || '').localeCompare(String(b.firstDiscoveredAt || ''))
+      || String(a.lastSelectedAt || '').localeCompare(String(b.lastSelectedAt || '')),
+  );
   for (const item of explorationQueue) {
     candidates.push({
       endpointId: item.endpointId,
