@@ -3,6 +3,7 @@
 const fs=require('fs');
 const path=require('path');
 const yaml=require('js-yaml');
+const { timeDecayedEvidence } = require('./time-decay');
 
 const C={
   stateFile:process.env.CHINA_PAIR_KNOWLEDGE_FILE||'data/china-pair-knowledge.json',
@@ -10,6 +11,7 @@ const C={
   maxAgeMs:Number(process.env.CHINA_PAIR_MAX_AGE_MS||72*60*60*1000),
   minSuccessRate:Number(process.env.CHINA_PAIR_MIN_SUCCESS_RATE||0.8),
   maxPairs:Number(process.env.CHINA_PAIR_MAX_OUTPUT||20),
+  decayHalfLifeMs:Number(process.env.CHINA_PAIR_DECAY_HALF_LIFE_MS||72*60*60*1000),
 };
 function dump(proxies){return yaml.dump({proxies},{lineWidth:-1,noRefs:true,forceQuotes:true,quotingType:"'"})}
 function load(){
@@ -20,12 +22,12 @@ function load(){
   }
   return state;
 }
-const state=load();const cutoff=Date.now()-C.maxAgeMs;const candidates=[];
+const state=load();const now=Date.now();const cutoff=now-C.maxAgeMs;const candidates=[];
 for(const [pairId,p] of Object.entries(state.pairs||{})){
   const last=Date.parse(p.lastObservedAt||'');
   if(!Number.isFinite(last)||last<cutoff||!p.relay||!p.landing)continue;
-  const obs=Array.isArray(p.observations)?p.observations.slice(-10):[];
-  const rate=obs.length?obs.filter(x=>x.success&&x.improved).length/obs.length:0;
+  const obs=Array.isArray(p.observations)?p.observations:[];
+  const rate=timeDecayedEvidence(obs,now,C.decayHalfLifeMs,x=>x.success===true&&x.improved===true).rate;
   if(!obs.some(x=>x.confirmed))continue;
   if(rate<C.minSuccessRate)continue;
   const relayName='PAIR-RELAY-'+p.relayEndpointId;
@@ -42,6 +44,7 @@ fs.mkdirSync(path.dirname(C.outputFile),{recursive:true});
 fs.writeFileSync(C.outputFile,dump(proxies));
 fs.writeFileSync(path.join(path.dirname(C.outputFile),'china-pair-pool.json'),JSON.stringify({
   generatedAt:new Date().toISOString(),
+  decayHalfLifeMs:C.decayHalfLifeMs,
   count:selected.length,
   definitions:{pair:'China → relay → landing → target; experimental evidence only'},
   pairs:selected.map(x=>({pairId:x.pairId,lastObservedAt:x.lastObservedAt,recentSuccessRate:x.rate,relayEndpointId:x.relayEndpointId||null}))
