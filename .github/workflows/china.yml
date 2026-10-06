@@ -29,6 +29,16 @@ jobs:
           source: nodeprobe-state/china/release.json
           destination: data/china-release.json
 
+      - name: Pull China diagnostics
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: download
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: nodeprobe-state/china/china-diagnostics.json
+          destination: data/china-diagnostics.json
+
       - name: Pull China exit pool
         uses: backblaze-labs/b2-action@v1
         with:
@@ -250,6 +260,17 @@ jobs:
 
           console.log('Validated China client policy: CN DIRECT + proxy fallback');
           NODE
+
+      - name: Upload China diagnostics artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: china-diagnostics-${{ github.run_id }}
+          path: |
+            data/*diagnostic*.json
+            data/*diagnostics*.json
+          if-no-files-found: warn
+          retention-days: 14
 
       - name: Publish China subscriptions
         run: |
