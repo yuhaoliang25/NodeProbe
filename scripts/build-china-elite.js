@@ -4,6 +4,7 @@
 const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
+const { timeDecayedEvidence } = require('./time-decay');
 
 const ASSET_FILE = process.env.CHINA_ASSET_FILE || 'data/china-node-assets.json';
 const PAIR_FILE = process.env.CHINA_PAIR_KNOWLEDGE_FILE || 'data/china-pair-knowledge.json';
@@ -16,6 +17,7 @@ const META_FILE = path.join(path.dirname(OUTPUT_FILE), 'china-elite.json');
 const MAX_PATHS = Math.max(1, Number(process.env.CHINA_ELITE_MAX_PATHS || 3));
 const MIN_OBSERVATIONS = Math.max(1, Number(process.env.CHINA_ELITE_MIN_OBSERVATIONS || 5));
 const MIN_RECENT_RATE = Math.max(0, Math.min(1, Number(process.env.CHINA_ELITE_MIN_RECENT_RATE || 0.90)));
+const DECAY_HALF_LIFE_MS = Math.max(1, Number(process.env.CHINA_ELITE_DECAY_HALF_LIFE_MS || 72 * 60 * 60 * 1000));
 const PAIR_MAX_AGE_MS = Math.max(1, Number(process.env.CHINA_PAIR_MAX_AGE_MS || 72 * 60 * 60 * 1000));
 const CHATGPT_MIN_RATE = Math.max(0, Math.min(1, Number(process.env.CHINA_CHATGPT_MIN_SUCCESS_RATE || 1.0)));
 const CHATGPT_MIN_ATTEMPTS = Math.max(1, Number(process.env.CHINA_CHATGPT_MIN_ATTEMPTS || 3));
@@ -101,31 +103,32 @@ function chatgptEligible(node) {
     latest.chatgptAttempts.length >= CHATGPT_MIN_ATTEMPTS;
 }
 
-function exitScore(node) {
+function exitScore(node, atMs = Date.now()) {
   const obs = recent(node);
-  const recentRate = rate(obs);
+  const decayed = timeDecayedEvidence(node.observations, atMs, DECAY_HALF_LIFE_MS);
+  const recentRate = decayed.rate;
   const lifetimeRate = node.observedRuns ? node.successes / node.observedRuns : 0;
   const latency = p95(obs);
   const latencyPenalty = latency == null ? 0 : Math.min(250, latency / 20);
   return recentRate * 1000 + lifetimeRate * 500 + Math.min(30, node.observedRuns || 0) * 5 - latencyPenalty;
 }
 
-function eligibleExits(state) {
+function eligibleExits(state, atMs = Date.now()) {
   return Object.values(state.nodes || {})
     .filter(node =>
       node &&
       node.state === 'TRUSTED' &&
       node.proxy &&
       Number(node.observedRuns) >= MIN_OBSERVATIONS &&
-      rate(recent(node)) >= MIN_RECENT_RATE &&
+      timeDecayedEvidence(node.observations, atMs, DECAY_HALF_LIFE_MS).rate >= MIN_RECENT_RATE &&
       Number(node.failureStreak || 0) === 0
     )
     .map(node => ({
       kind: 'exit',
       endpointId: node.endpointId,
       proxy: node.proxy,
-      score: exitScore(node),
-      recentSuccessRate: rate(recent(node)),
+      score: exitScore(node, atMs),
+      recentSuccessRate: timeDecayedEvidence(node.observations, atMs, DECAY_HALF_LIFE_MS).rate,
       lifetimeSuccessRate: node.observedRuns ? node.successes / node.observedRuns : 0,
       observedRuns: node.observedRuns,
       p95LatencyMs: p95(recent(node)),
@@ -156,7 +159,8 @@ function eligiblePairs(state) {
 function main() {
   const assets = loadJson(ASSET_FILE);
   const pairState = fs.existsSync(PAIR_FILE) ? loadJson(PAIR_FILE) : { pairs: {} };
-  const exits = eligibleExits(assets);
+  const atMs = Date.now();
+  const exits = eligibleExits(assets, atMs);
   const selected = exits.slice(0, MAX_PATHS);
 
   // ChatGPT is an independent capability pool. Retain healthy incumbents
@@ -173,8 +177,8 @@ function main() {
       kind: 'exit',
       endpointId: node.endpointId,
       proxy: node.proxy,
-      score: exitScore(node),
-      recentSuccessRate: rate(recent(node)),
+      score: exitScore(node, atMs),
+      recentSuccessRate: timeDecayedEvidence(node.observations, atMs, DECAY_HALF_LIFE_MS).rate,
       lifetimeSuccessRate: node.observedRuns ? node.successes / node.observedRuns : 0,
       observedRuns: node.observedRuns,
       p95LatencyMs: p95(recent(node)),
@@ -271,6 +275,7 @@ function main() {
     policy: {
       minObservations: MIN_OBSERVATIONS,
       minRecentSuccessRate: MIN_RECENT_RATE,
+      decayHalfLifeMs: DECAY_HALF_LIFE_MS,
       chatgptMinSuccessRate: CHATGPT_MIN_RATE,
       chatgptMinAttempts: CHATGPT_MIN_ATTEMPTS,
       chatgptPoolMode: 'incumbent-first-with-exploration',
