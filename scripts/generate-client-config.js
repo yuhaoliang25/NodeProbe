@@ -5,21 +5,16 @@ const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
 
-const INPUT_DIR = path.resolve('subscriptions');
+const INPUT = path.resolve(process.env.CHINA_ELITE_FILE || 'subscriptions/elite.yaml');
 const OUTPUT = path.resolve('mihomo/client.yaml');
-
-const POOLS = [{ file: 'exit.yaml', role: 'exit' }, { file: 'pairs.yaml', role: 'pair' }];
 const TEST_URL = 'https://www.google.com/generate_204';
 
-function loadPool(file) {
-  const full = path.join(INPUT_DIR, file);
-  if (!fs.existsSync(full)) return [];
-
-  const doc = yaml.load(fs.readFileSync(full, 'utf8'));
+function loadElite() {
+  if (!fs.existsSync(INPUT)) throw new Error('China elite subscription missing: ' + INPUT);
+  const doc = yaml.load(fs.readFileSync(INPUT, 'utf8'));
   if (!doc || !Array.isArray(doc.proxies)) {
-    throw new Error(`${file}: expected a YAML document with a proxies array`);
+    throw new Error('elite.yaml: expected a YAML document with a proxies array');
   }
-
   return doc.proxies
     .filter(p => p && typeof p === 'object' && p.name)
     .map(p => ({ ...p, name: String(p.name) }));
@@ -29,19 +24,18 @@ function uniqueProxies(items) {
   const seen = new Set();
   return items.filter(p => {
     if (seen.has(p.name)) {
-      throw new Error(`duplicate proxy name in client pools: ${p.name}`);
+      throw new Error('duplicate proxy name in elite subscription: ' + p.name);
     }
     seen.add(p.name);
     return true;
   });
 }
 
-const exit = loadPool('exit.yaml');
-const pairs = loadPool('pairs.yaml');
+const elite = uniqueProxies(loadElite());
+const selectable = elite
+  .filter(p => !String(p.name).startsWith('PAIR-RELAY-'))
+  .map(p => p.name);
 
-const exitNames = exit.map(p => p.name);
-const pairNames = pairs.filter(p => String(p.name).startsWith('PAIR-') && !String(p.name).startsWith('PAIR-RELAY-')).map(p => p.name);
-const proxies = uniqueProxies([...exit, ...pairs]);
 const config = {
   'mixed-port': 7890,
   'allow-lan': false,
@@ -49,13 +43,13 @@ const config = {
   'log-level': 'warning',
   ipv6: false,
 
-  proxies,
+  proxies: elite,
 
   'proxy-groups': [
     {
       name: 'EXIT-AUTO',
       type: 'url-test',
-      proxies: [...exitNames, ...pairNames],
+      proxies: selectable,
       url: TEST_URL,
       interval: 300,
       tolerance: 100,
@@ -84,7 +78,5 @@ fs.writeFileSync(
   'utf8'
 );
 
-console.log(
-  `client.yaml: exit=${exit.length} pairs=${pairNames.length}`
-);
-console.log(`generated: ${OUTPUT}`);
+console.log('client.yaml: elite=' + elite.length + ' selectable=' + selectable.length);
+console.log('generated: ' + OUTPUT);
