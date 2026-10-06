@@ -15,27 +15,6 @@ export CHINA_MAX_NODES="${CHINA_MAX_NODES:-300}"
 export CHINA_PROBE_CONCURRENCY="${CHINA_PROBE_CONCURRENCY:-8}"
 export CHINA_RELEASE_ID="${CHINA_RELEASE_ID:-$(date -u +%Y%m%dT%H%M%SZ)}"
 
-CANDIDATE_RUN_FILE="${CHINA_CANDIDATE_RUN_FILE:-data/.china-candidate-run}"
-PAIR_CANDIDATE_RUN_FILE="${CHINA_PAIR_CANDIDATE_RUN_FILE:-data/.china-pair-candidate-run}"
-
-candidate_run_is_new() {
-  local file="$1"
-  local marker="$2"
-  [ -f "$file" ] || return 0
-  local run_id
-  run_id="$(node -e 'const fs=require("fs"); const d=JSON.parse(fs.readFileSync(process.argv[1],"utf8")); process.stdout.write(String(d.generatedAt||""));' "$file")"
-  [ -n "$run_id" ] || return 0
-  [ ! -f "$marker" ] || [ "$(cat "$marker")" != "$run_id" ]
-}
-
-mark_candidate_run() {
-  local file="$1"
-  local marker="$2"
-  local run_id
-  run_id="$(node -e 'const fs=require("fs"); const d=JSON.parse(fs.readFileSync(process.argv[1],"utf8")); process.stdout.write(String(d.generatedAt||""));' "$file")"
-  printf '%s\n' "$run_id" > "$marker"
-}
-
 # Flush any observations left by a previous interrupted publish. The local
 # China asset state remains authoritative; B2 is an archive/inbox transport.
 npm run china-sync -- push-observations || true
