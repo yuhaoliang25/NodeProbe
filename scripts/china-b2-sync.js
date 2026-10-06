@@ -83,15 +83,24 @@ if(mode==='pull-stable'){
   }
  }else if(mode==='pull-discovery-queue'){
   fs.mkdirSync(path.dirname(DISCOVERY_QUEUE_LOCAL),{recursive:true});
+  const tmp=DISCOVERY_QUEUE_LOCAL+'.download.tmp';
   try{
-    run(['file','download','b2://'+BUCKET+'/'+DISCOVERY_QUEUE_REMOTE,DISCOVERY_QUEUE_LOCAL]);
-    const q=JSON.parse(fs.readFileSync(DISCOVERY_QUEUE_LOCAL,'utf8'));
-    if(!Array.isArray(q?.items))throw new Error('invalid discovery queue');
-  }catch(error){
-    if(fs.existsSync(DISCOVERY_QUEUE_LOCAL)){
-      try{fs.unlinkSync(DISCOVERY_QUEUE_LOCAL)}catch{}
+    try{fs.unlinkSync(tmp)}catch{}
+    // Never download directly over the live queue. A failed/partial download
+    // must not leave a JSON file that the next china-assets invocation can read.
+    run(['file','download','b2://'+BUCKET+'/'+DISCOVERY_QUEUE_REMOTE,tmp]);
+    const q=JSON.parse(fs.readFileSync(tmp,'utf8'));
+    if(!q || typeof q!=='object' || !Array.isArray(q.items)){
+      throw new Error('invalid discovery queue');
     }
-    console.log('No valid China discovery queue in B2; starting an empty backlog.');
+    fs.renameSync(tmp,DISCOVERY_QUEUE_LOCAL);
+  }catch(error){
+    try{fs.unlinkSync(tmp)}catch{}
+    if(error && error.message && !String(error.message).includes('status 1')){
+      console.log('No valid China discovery queue in B2; starting an empty backlog.');
+    }else{
+      console.log('No China discovery queue available in B2; keeping the existing local backlog.');
+    }
   }
  }else if(mode==='pull-pair-candidates'){
   fs.mkdirSync(path.dirname(PAIR_CANDIDATE_LOCAL),{recursive:true});
