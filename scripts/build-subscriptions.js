@@ -265,13 +265,22 @@ try{
      poolProxyById.set(id,p);
    }
  }
- const histStats=new Map(Object.entries(hist).map(([id,x])=>{
+ const NODE_DECAY_HALF_LIFE_MS=Number(process.env.NODE_DECAY_HALF_LIFE_MS||72*60*60*1000);
+ const histStats=new Map();
+ for(const [id,x] of Object.entries(hist)){
    const observations=[];
-   for(const batch of history) for(const r of batch.results||[])if(r.fingerprint===id&&Array.isArray(r.delays))observations.push(...r.delays);
-   const recent=observations.slice(-12), weights=recent.map((_,i)=>i+1), total=weights.reduce((a,b)=>a+b,0);
-   const weightedRate=total?recent.reduce((s,v,i)=>s+(Number(v)>0?weights[i]:0),0)/total:0;
-   return [id,{...x,recentTests:recent.length,weightedRate}];
- }));
+   for(const batch of history) {
+     const at=batch.generatedAt||batch.at||batch.timestamp;
+     for(const r of batch.results||[]) if(r.fingerprint===id&&Array.isArray(r.delays)){
+       for(const delay of r.delays) observations.push({at,success:Number(delay)>0,latencyMs:Number(delay)});
+     }
+   }
+   const decayed=timeDecayedEvidence(observations,Date.now(),NODE_DECAY_HALF_LIFE_MS);
+   const latencies=observations.filter(o=>o.success).map(o=>o.latencyMs).filter(Number.isFinite).sort((a,b)=>a-b);
+   const avg=latencies.length?Math.round(latencies.reduce((a,b)=>a+b,0)/latencies.length):null;
+   const p95=latencies.length?latencies[Math.min(latencies.length-1,Math.ceil(latencies.length*.95)-1)]:null;
+   histStats.set(id,{...x,recentTests:decayed.effectiveObservations,weightedRate:decayed.rate,avg,p95,decayHalfLifeMs:NODE_DECAY_HALF_LIFE_MS});
+ }
  function currentRate(r){return Number(r.successRate||0)}
  function currentLatency(r){return r.avgLatency==null?Infinity:Number(r.avgLatency)}
  function historyMetric(id){return histStats.get(id)||{tests:0,successes:0,latencies:[],recentTests:0,weightedRate:0}}
@@ -280,7 +289,7 @@ try{
    const currentOk=r.rounds>=2&&currentRate(r)>=0.8&&currentLatency(r)<=5000;
    if(!currentOk)return false;
    if(m.tests===0)return r.successes>=2;
-   return m.recentTests>=6&&m.weightedRate>=0.8;
+   return m.recentTests>=3&&m.weightedRate>=0.8;
  }
  function bestEligible(r){
    const m=historyMetric(r.fingerprint),st=currentStability.get(r.fingerprint)||currentStability.get(r.name);
@@ -291,7 +300,7 @@ try{
    // provisional set; the final rebuild after confirmation applies this gate.
    if(stability?.healthGeneratedAt===h.generatedAt && (!st || !st.eligible))return false;
    if(m.tests===0)return r.successes>=3;
-   return m.recentTests>=9&&m.weightedRate>=0.9;
+   return m.recentTests>=5&&m.weightedRate>=0.9;
  }
  const google=new Set(h.results.filter(r=>currentRate(r)>0).map(r=>r.name));
  // Node Pool lifecycle is authoritative for established Stable membership.
@@ -316,7 +325,7 @@ try{
    const id=entry.fingerprint||entry.proxy?.['endpoint-id'];
    if(entry.status!=='stable'||!id)return false;
    const m=historyMetric(id);
-   return m.recentTests>=9&&m.weightedRate>=0.9&&m.avg!=null&&m.avg<=2500&&m.p95!=null&&m.p95<=5000;
+   return m.recentTests>=5&&m.weightedRate>=0.9&&m.avg!=null&&m.avg<=2500&&m.p95!=null&&m.p95<=5000;
  }
  const bestIds=new Set(
    (poolState.nodes||[])
@@ -450,11 +459,14 @@ try{
      if(!x)return [];
      return [{at:run.generatedAt,successRate:Number(x.successRate||0),nodeSuccessRate:Number(x.nodeSuccessRate||0),avgLatency:x.avgLatency==null?null:Number(x.avgLatency),nodes:Number(x.nodes||0)}];
    });
-   const recent=observations.slice(-12),weights=recent.map((_,i)=>i+1),total=weights.reduce((a,b)=>a+b,0);
-   const weightedNodeSuccess=total?recent.reduce((s,x,i)=>s+x.nodeSuccessRate*weights[i],0)/total:0;
-   const weightedTestSuccess=total?recent.reduce((s,x,i)=>s+x.successRate*weights[i],0)/total:0;
-   const weightedNodes=total?recent.reduce((s,x,i)=>s+x.nodes*weights[i],0)/total:0;
-   const weightedSuccessfulNodes=total?recent.reduce((s,x,i)=>s+x.nodes*x.nodeSuccessRate*weights[i],0)/total:0;
+   const recent=observations;
+   const weightedNodeEvidence=timeDecayedEvidence(recent,Date.now(),NODE_DECAY_HALF_LIFE_MS,x=>Number(x.nodeSuccessRate||0)>0);
+   const weightedTestEvidence=timeDecayedEvidence(recent,Date.now(),NODE_DECAY_HALF_LIFE_MS,x=>Number(x.successRate||0)>0);
+   const totalWeight=weightedNodeEvidence.weightedTotal||0;
+   const weightedNodeSuccess=totalWeight?recent.reduce((sum,x)=>sum+Number(x.nodeSuccessRate||0)*require('./time-decay').timeDecayWeight(Date.now(),x.at,NODE_DECAY_HALF_LIFE_MS),0)/totalWeight:0;
+   const weightedTestSuccess=totalWeight?recent.reduce((sum,x)=>sum+Number(x.successRate||0)*require('./time-decay').timeDecayWeight(Date.now(),x.at,NODE_DECAY_HALF_LIFE_MS),0)/totalWeight:0;
+   const weightedNodes=totalWeight?recent.reduce((sum,x)=>sum+Number(x.nodes||0)*require('./time-decay').timeDecayWeight(Date.now(),x.at,NODE_DECAY_HALF_LIFE_MS),0)/totalWeight:0;
+   const weightedSuccessfulNodes=totalWeight?recent.reduce((sum,x)=>sum+Number(x.nodes||0)*Number(x.nodeSuccessRate||0)*require('./time-decay').timeDecayWeight(Date.now(),x.at,NODE_DECAY_HALF_LIFE_MS),0)/totalWeight:0;
    const alpha=2,beta=2,posteriorN=weightedNodes,posteriorS=weightedSuccessfulNodes,posteriorMean=(posteriorS+alpha)/(posteriorN+alpha+beta),phat=posteriorN>0?posteriorS/posteriorN:0,z=1.645;
    const denom=1+(z*z/Math.max(1,posteriorN));
    const wilsonLower=posteriorN>0?Math.max(0,(phat+(z*z/(2*posteriorN))-z*Math.sqrt((phat*(1-phat)/posteriorN)+(z*z/(4*posteriorN*posteriorN))))/denom):0;
