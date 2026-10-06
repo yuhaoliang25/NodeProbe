@@ -44,27 +44,25 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: 'e019d09aa7573606'
-  - name: '🇭🇰 香港 04'
-    port: 443
-    server: 'fan.240104.xyz'
+  - name: '🇺🇸US_99|810KB/s|R002-260618 01'
+    port: 9002
+    server: '138.199.35.220'
     skip-cert-verify: true
-    sni: 'fan.240104.xyz'
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
-    endpoint-id: '2525753ed3d65e2e'
-  - name: '🇭🇰 香港 09'
-    password: 'null'
-    port: 443
-    server: 'fan.240104.xyz'
-    sni: 'fan.240104.xyz'
-    sub_tag: 'R002-260618'
+    endpoint-id: '6493b98e9afea31a'
+  - name: '🇺🇸US_42|776KB/s 01'
+    password: ''
+    port: 9002
+    server: '138.199.35.218'
+    skip-cert-verify: true
     tls: true
     type: 'http'
-    username: 'null'
+    username: ''
     udp: true
-    endpoint-id: 'a2852a26d8d9ed35'
+    endpoint-id: '351dcbb70d0afdd5'
 proxy-groups:
   - name: 'PROXY'
     type: 'select'
@@ -74,8 +72,8 @@ proxy-groups:
     type: 'select'
     proxies:
       - '🇮🇹IT_1|625KB/s|R002-260618 01'
-      - '🇭🇰 香港 04'
-      - '🇭🇰 香港 09'
+      - '🇺🇸US_99|810KB/s|R002-260618 01'
+      - '🇺🇸US_42|776KB/s 01'
 rules:
   - 'DOMAIN-SUFFIX,chatgpt.com,CHATGPT'
   - 'DOMAIN-SUFFIX,chat.openai.com,CHATGPT'

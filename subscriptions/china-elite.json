@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-10-06T11:00:52.133Z",
+  "generatedAt": "2026-10-06T11:15:19.328Z",
   "maxPaths": 3,
   "counts": {
     "eligibleExits": 0,
-    "chatgptEligibleExits": 26,
+    "chatgptEligibleExits": 43,
     "chatgptSelectedPaths": 3,
     "chatgptIncumbentPaths": 1,
     "selectedPaths": 0,
@@ -15,6 +15,9 @@
     "chatgptMinSuccessRate": 1,
     "chatgptMinAttempts": 3,
     "chatgptPoolMode": "incumbent-first-with-exploration",
+    "chatgptExcludedRegions": [
+      "HK"
+    ],
     "pairFallbackOnly": true
   },
   "paths": [],
@@ -23,24 +26,24 @@
       "kind": "chatgpt-incumbent",
       "endpointId": "e019d09aa7573606",
       "name": "🇮🇹IT_1|625KB/s|R002-260618 01",
-      "score": 1190.7,
-      "chatgptScore": 878.7,
+      "score": 1231.4142857142858,
+      "chatgptScore": 967.15,
       "chatgptSuccessRate": 1
     },
     {
       "kind": "chatgpt-exploration",
-      "endpointId": "2525753ed3d65e2e",
-      "name": "🇭🇰 香港 04",
-      "score": 1407.3,
-      "chatgptScore": 992.5,
+      "endpointId": "6493b98e9afea31a",
+      "name": "🇺🇸US_99|810KB/s|R002-260618 01",
+      "score": 1454.4,
+      "chatgptScore": 960.1,
       "chatgptSuccessRate": 1
     },
     {
       "kind": "chatgpt-exploration",
-      "endpointId": "a2852a26d8d9ed35",
-      "name": "🇭🇰 香港 09",
-      "score": 1405.95,
-      "chatgptScore": 991.5,
+      "endpointId": "351dcbb70d0afdd5",
+      "name": "🇺🇸US_42|776KB/s 01",
+      "score": 1454.35,
+      "chatgptScore": 959.7,
       "chatgptSuccessRate": 1
     }
   ]
