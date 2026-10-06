@@ -1,1 +1,10 @@
-proxies: []
+proxies:
+  - name: '🇮🇹IT_1|625KB/s|R002-260618 01'
+    port: 443
+    server: '91.243.118.217'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'e019d09aa7573606'

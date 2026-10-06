@@ -1,9 +1,16 @@
 {
-  "generatedAt": "2026-10-06T12:55:57.848Z",
+  "generatedAt": "2026-10-06T17:08:06.223Z",
   "decayHalfLifeMs": 259200000,
-  "count": 0,
+  "count": 1,
   "definitions": {
     "pair": "China → relay → landing → target; experimental evidence only"
   },
-  "pairs": []
+  "pairs": [
+    {
+      "pairId": "eb6b2e11a95f7e4a",
+      "lastObservedAt": "2026-10-06T15:35:38.460Z",
+      "recentSuccessRate": 1,
+      "relayEndpointId": "6493b98e9afea31a"
+    }
+  ]
 }
