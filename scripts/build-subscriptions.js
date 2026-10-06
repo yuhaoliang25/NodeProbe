@@ -142,6 +142,10 @@ fs.writeFileSync('data/current-node-sources.json',JSON.stringify(Object.fromEntr
 
 // Complete inventory is kept for all.yaml; only selected work is written to candidates.json.
 const candidateLimit=Math.max(1,Number(process.env.NODE_CANDIDATE_LIMIT||1500));
+// Global is now primarily a discovery feeder for downstream probes. Maintenance
+// must not consume the entire work budget and starve new source exploration.
+const maintenanceShare=Math.max(0,Math.min(1,Number(process.env.NODE_MAINTENANCE_SHARE||0.4)));
+const maintenanceLimit=Math.floor(candidateLimit*maintenanceShare);
 const deadRecheckLimit=Math.max(0,Number(process.env.NODE_DEAD_RECHECK_LIMIT||50));
 const nowMs=Date.now();
 const poolById=new Map((poolState.nodes||[]).map(x=>[x.fingerprint,x]));
@@ -199,16 +203,23 @@ const exploration=proxies.filter(p=>{
  return !entry&&!p._poolOnly;
 });
 const selectedIds=new Set(),selected=[];
-for(const item of maintenance){
- if(selected.length>=candidateLimit)break;
+const maintenanceSelected=maintenance.slice(0,maintenanceLimit);
+for(const item of maintenanceSelected){
  selected.push(item.proxy); selectedIds.add(item.id);
 }
-for(const p of exploration){
- if(selected.length>=candidateLimit)break;
+// Exploration receives the remaining normal candidate capacity. This is the
+// important anti-starvation rule: a large persistent pool cannot suppress
+// discovery of newly published source nodes.
+const explorationCapacity=Math.max(0,candidateLimit-selected.length);
+for(const p of exploration.slice(0,explorationCapacity)){
  const id=p['endpoint-id']||p._id;
  if(selectedIds.has(id))continue;
  selected.push(p); selectedIds.add(id);
 }
+console.log('candidate allocation: maintenance',maintenanceSelected.length,
+  'exploration',selected.length-maintenanceSelected.length,
+  'maintenanceDue',maintenance.length,'explorationAvailable',exploration.length,
+  'limit',candidateLimit,'maintenanceShare',maintenanceShare);
 // DEAD rechecks are a bounded supplemental workload: they never displace
 // normal maintenance or exploration candidates from candidateLimit.
 for(const item of deadRechecks.slice(0,deadRecheckLimit)){
@@ -286,10 +297,13 @@ try{
  function historyMetric(id){return histStats.get(id)||{tests:0,successes:0,latencies:[],recentTests:0,weightedRate:0}}
  function stableEligible(r){
    const m=historyMetric(r.fingerprint);
-   const currentOk=r.rounds>=2&&currentRate(r)>=0.8&&currentLatency(r)<=5000;
+   // Stable is a discovery-grade gate, not China-grade trust. China
+   // independently retests every newly imported node, so Global only needs
+   // enough evidence to keep obviously broken endpoints out of the feed.
+   const currentOk=r.rounds>=2&&currentRate(r)>=0.67&&currentLatency(r)<=8000;
    if(!currentOk)return false;
-   if(m.tests===0)return r.successes>=2;
-   return m.recentTests>=3&&m.weightedRate>=0.8;
+   if(m.tests===0)return r.successes>=1;
+   return m.recentTests>=2&&m.weightedRate>=0.67;
  }
  function bestEligible(r){
    const m=historyMetric(r.fingerprint),st=currentStability.get(r.fingerprint)||currentStability.get(r.name);
