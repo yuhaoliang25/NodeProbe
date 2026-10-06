@@ -3,51 +3,47 @@ allow-lan: false
 mode: 'rule'
 log-level: 'warning'
 ipv6: false
-proxies:
-  - name: '🇭🇰 香港 04'
-    port: 443
-    server: 'fan.240104.xyz'
-    skip-cert-verify: true
-    sni: 'fan.240104.xyz'
-    sub_tag: 'R002-260618'
-    tls: true
+rule-providers:
+  private_domain:
     type: 'http'
-    udp: true
-    endpoint-id: '2525753ed3d65e2e'
-  - name: '🇸🇬SG_38|247KB/s|R002-260618 01'
-    port: 443
-    server: '154.26.139.24'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
+    behavior: 'domain'
+    format: 'mrs'
+    interval: 86400
+    url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs'
+  cn_domain:
     type: 'http'
-    udp: true
-    endpoint-id: 'd1f4a0d80288cf0b'
-  - name: '🇳🇱NL_160|6.6MB/s|R002-260618 01'
-    port: 23856
-    server: '51.159.225.196'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
+    behavior: 'domain'
+    format: 'mrs'
+    interval: 86400
+    url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs'
+  geolocation_not_cn:
     type: 'http'
-    udp: true
-    endpoint-id: 'ef628958ee9b9c79'
+    behavior: 'domain'
+    format: 'mrs'
+    interval: 86400
+    url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.mrs'
+  private_ip:
+    type: 'http'
+    behavior: 'ipcidr'
+    format: 'mrs'
+    interval: 86400
+    url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/private.mrs'
+  cn_ip:
+    type: 'http'
+    behavior: 'ipcidr'
+    format: 'mrs'
+    interval: 86400
+    url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs'
+proxies: []
 proxy-groups:
   - name: 'PROXY'
     type: 'select'
     proxies:
-      - '🇭🇰 香港 04'
-      - '🇸🇬SG_38|247KB/s|R002-260618 01'
-      - '🇳🇱NL_160|6.6MB/s|R002-260618 01'
       - 'DIRECT'
-  - name: 'STICKY'
-    type: 'select'
-    proxies:
-      - '🇭🇰 香港 04'
 rules:
-  - 'DOMAIN-SUFFIX,x.com,STICKY'
-  - 'DOMAIN-SUFFIX,twitter.com,STICKY'
-  - 'DOMAIN-SUFFIX,t.co,STICKY'
-  - 'DOMAIN-SUFFIX,threads.com,STICKY'
-  - 'DOMAIN-SUFFIX,threads.net,STICKY'
+  - 'RULE-SET,private_domain,DIRECT'
+  - 'RULE-SET,private_ip,DIRECT,no-resolve'
+  - 'RULE-SET,cn_domain,DIRECT'
+  - 'RULE-SET,cn_ip,DIRECT,no-resolve'
+  - 'RULE-SET,geolocation_not_cn,PROXY'
   - 'MATCH,PROXY'

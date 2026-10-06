@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-06T09:04:07.599Z",
+  "generatedAt": "2026-10-06T09:55:22.197Z",
   "maxPaths": 3,
   "counts": {
-    "eligibleExits": 154,
+    "eligibleExits": 0,
     "chatgptEligibleExits": 0,
     "chatgptSelectedPaths": 0,
-    "selectedPaths": 3,
-    "publishedProxies": 3
+    "selectedPaths": 0,
+    "publishedProxies": 0
   },
   "policy": {
     "minObservations": 5,
@@ -15,37 +15,6 @@
     "chatgptMinAttempts": 3,
     "pairFallbackOnly": true
   },
-  "paths": [
-    {
-      "kind": "exit",
-      "endpointId": "2525753ed3d65e2e",
-      "name": "🇭🇰 香港 04",
-      "score": 1508.6,
-      "recentSuccessRate": 1,
-      "lifetimeSuccessRate": 1,
-      "observedRuns": 11,
-      "p95LatencyMs": 928
-    },
-    {
-      "kind": "exit",
-      "endpointId": "d1f4a0d80288cf0b",
-      "name": "🇸🇬SG_38|247KB/s|R002-260618 01",
-      "score": 1490.9,
-      "recentSuccessRate": 1,
-      "lifetimeSuccessRate": 0.9375,
-      "observedRuns": 16,
-      "p95LatencyMs": 1157
-    },
-    {
-      "kind": "exit",
-      "endpointId": "ef628958ee9b9c79",
-      "name": "🇳🇱NL_160|6.6MB/s|R002-260618 01",
-      "score": 1489.9309523809522,
-      "recentSuccessRate": 1,
-      "lifetimeSuccessRate": 0.9047619047619048,
-      "observedRuns": 21,
-      "p95LatencyMs": 1349
-    }
-  ],
+  "paths": [],
   "chatgptPaths": []
 }
