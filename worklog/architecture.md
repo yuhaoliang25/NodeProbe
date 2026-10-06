@@ -1096,3 +1096,88 @@ Threads moved its web experience from Threads.net to Threads.com, so both are re
 
 The Sticky Route is deliberately separate from ChatGPT capability selection. A node does not become Sticky merely because it can access ChatGPT, and Sticky selection does not alter ordinary Elite ranking.
 
+
+
+---
+
+# 2026-10-06 Current Architecture Revision
+
+This section is the current authority for China Probe. Older China sections are retained as history, but are superseded where they describe GitHub as the China state-transition owner or Global Best as a China production dependency.
+
+## China ownership
+
+China is an independent trust domain. Global Stable is discovery/bootstrap input only. Global Best is not required for China production.
+
+The China machine owns China asset lifecycle, applied observations, candidate scheduling, pair knowledge, Exit/Elite/ChatGPT/Sticky selection, and generated client configuration. B2 is transport/storage. GitHub publishes completed generations and must not run a competing China state machine.
+
+## Maintenance invariant
+
+Every China run combines persistent maintenance with current Stable exploration:
+
+    persistent China assets + current Stable exploration -> bounded candidate set
+
+A known asset remains in the China pool when it disappears from Stable. A failed recognized asset enters recovery/maintenance; it is not treated as fresh discovery.
+
+The current default budget is 300 candidates, with roughly 60% ordinary maintenance, 30% recovery, and 10% new exploration after incumbent reservations. Unused category capacity is filled by other candidates.
+
+A recent diagnostic run proved that maintenance is actually entering the probe: 269 probation-recheck candidates, 30 new candidates, and 1 ChatGPT incumbent were included in a 300-node run.
+
+## Time-decayed evidence
+
+China reliability uses exponentially time-decayed evidence with a default half-life of 72 hours. Old successes therefore lose influence instead of remaining permanently equivalent to recent observations.
+
+Lifecycle and production selection remain separate. A trusted node continues to be monitored; one failure does not erase its history. Recovery requires fresh evidence and does not immediately inherit historical trust.
+
+## Production layers
+
+- Exit: all currently TRUSTED China assets with usable proxy definitions.
+- Elite: deliberately small production selection, normally at most 3 paths.
+- ChatGPT: independently capability-qualified pool; it does not require Elite membership.
+- Sticky: one persistent route for IP-sensitive services.
+- Pairs: experimental two-hop paths, secondary to ordinary exits.
+
+Selection-layer membership does not itself change China asset identity or lifecycle.
+
+## Sticky continuity
+
+Sticky protects a healthy incumbent instead of switching merely because a newcomer scores higher. The incumbent is actively re-probed. Replacement occurs only after loss of eligibility.
+
+When replacement is necessary, IP continuity is only a tiny tie-breaker. The current preference order is same IPv4 /24, same IPv4 /16, same IPv6 /48, same IPv6 /64 region, then weak literal-IP numeric proximity. Default weight is 0.002.
+
+This is a continuity heuristic, not proof of common ASN/ISP/ownership. ASN is deliberately not inferred because the asset model has no authoritative ASN field.
+
+## Client policy
+
+The intended generated Mihomo policy is:
+
+    China/private traffic -> DIRECT
+    ChatGPT -> CHATGPT
+    X/Twitter/Threads -> STICKY
+    other overseas traffic -> PROXY
+    fallback -> PROXY
+
+Mihomo's literal DIRECT strategy remains unchanged. NodeProbe internal terminology should use Exit/China exit rather than ambiguous internal use of “direct”.
+
+## Pair boundary
+
+Pair/relay work is experimental and secondary. Directly usable China exits remain primary. Pair evidence does not promote or kill endpoint assets. Missing pair candidates must not block normal China probing.
+
+## Runtime data boundary
+
+B2 is preferred for authoritative runtime state and immutable observation transport. GitHub Actions artifacts hold temporary diagnostics/audits. Git holds code, architecture/worklog, and intentionally published subscriptions. Large runtime data should not be committed merely for inspectability.
+
+## Time semantics
+
+firstObservedAt is the first time NodeProbe observed an endpoint, not its true publication time. Source file modification time is not node publication time. Future documentation must not infer publication age without independent historical evidence.
+
+## Diagnostic lessons now treated as invariants
+
+- Do not test only newly discovered nodes; maintenance must be visible in candidate diagnostics.
+- Do not make ChatGPT a subset of Elite.
+- Do not let empty Global Best remove China production capability.
+- Do not let source/discovery snapshots delete persistent China assets.
+- Observation batches must be immutable and replay-safe.
+- Generated YAML/client output needs semantic contract validation, not only syntax checks.
+- Candidate categories and probe counts must be logged so starvation is detectable.
+
+**Revision date: 2026-10-06.**
