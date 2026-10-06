@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 'use strict';
+const path=require('path');
 const fs=require('fs'),yaml=require('js-yaml'),crypto=require('crypto');
 const {timeDecayWeight,timeDecayedEvidence}=require('./time-decay');
 const raw=JSON.parse(fs.readFileSync('data/raw-sources.json','utf8'));
