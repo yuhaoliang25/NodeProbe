@@ -106,6 +106,7 @@ if(mode==='pull-stable'){
     ['data/china-relay-pair-candidates.json',PAIR_CANDIDATE_REMOTE],
     ['subscriptions/exit.yaml',PREFIX+'/exit.yaml'],
     ['subscriptions/elite.yaml',PREFIX+'/elite.yaml'],
+    ['subscriptions/chatgpt.yaml',PREFIX+'/chatgpt.yaml'],
     ['subscriptions/china-elite.json',PREFIX+'/china-elite.json'],
     ['subscriptions/pairs.yaml',PREFIX+'/pairs.yaml'],
     ['subscriptions/china-pools.json',PREFIX+'/china-pools.json'],
