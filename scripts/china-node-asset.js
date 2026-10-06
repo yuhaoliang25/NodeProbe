@@ -125,7 +125,10 @@ function loadDiscoveryQueue() {
 
 function saveDiscoveryQueue(queue) {
   fs.mkdirSync(path.dirname(CONFIG.discoveryQueueFile), { recursive: true });
-  fs.writeFileSync(CONFIG.discoveryQueueFile, JSON.stringify(queue, null, 2) + '\\n');
+  const tmp = CONFIG.discoveryQueueFile + '.tmp';
+  fs.writeFileSync(tmp, JSON.stringify(queue, null, 2) + '\\n');
+  // Atomic replace: readers can only observe a complete JSON document.
+  fs.renameSync(tmp, CONFIG.discoveryQueueFile);
 }
 
 function loadState() {
