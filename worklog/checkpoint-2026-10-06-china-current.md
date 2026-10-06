@@ -121,3 +121,14 @@ The Global line is no longer treated as the main asset-maintenance product. Its 
 - Global Stable admission is intentionally lighter than China trust: current evidence requires at least 2 rounds, >=67% success, and average latency <=8s; historical evidence requires effective observations >=2 and time-decayed success >=67%. A node with no history only needs one successful observation in the current run.
 - This is deliberately not a relaxation of Best. Best retains its stronger quality/stability gates.
 - China remains authoritative for China asset trust and maintenance; Stable is only an exploration feed and must not be treated as inherited China reputation.
+
+## 2026-10-06 China Probe workload budget
+
+The China asset lifecycle and expensive quality/capability evidence are intentionally separated. A cycle may probe up to CHINA_MAX_NODES (default 300) exit candidates, but it must not send every surviving exit through the expensive multi-target stability and ChatGPT stages.
+
+Current defaults in scripts/china-probe.js:
+- CHINA_STABILITY_MAX_NODES=30: at most 30 deep survivors enter 3-round stability confirmation; ChatGPT incumbents and Sticky incumbent are prioritized before ordinary candidates.
+- CHINA_CHATGPT_MAX_NODES=20: at most 20 non-Hong-Kong candidates enter ChatGPT capability testing; existing ChatGPT incumbents are first, then stability-eligible exploration.
+- These stages remain evidence/capability signals and do not independently turn a China asset failure into a lifecycle failure.
+
+This bounds the expensive tail of a 300-node cycle. The previous 203-node stability run generated 1,218 attempts per round and the subsequent 199-node ChatGPT run added another 597 attempts, causing the systemd startup timeout. The new budget prevents that scaling path while preserving forced incumbent checks.
