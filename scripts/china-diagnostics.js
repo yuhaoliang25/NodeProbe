@@ -31,7 +31,8 @@ function probeSummary(p){
     chatgptEligible:obs.filter(x=>x.chatgptEligible===true).length,
     success:obs.filter(x=>x.success===true).length,
     failures:obs.filter(x=>x.success!==true).length,
-    attempts:Array.isArray(p.attempts)?p.attempts.length:0
+    attempts:Array.isArray(p.attempts)?p.attempts.length:0,
+    deepPass:obs.filter(x=>Array.isArray(x.successfulStages) && x.successfulStages.some(s=>s.startsWith('deep-round-'))).length
   };
 }
 
@@ -68,6 +69,7 @@ const diagnostics={
     stickyEligible:Number(sticky.candidateCount||0),
     stickySelected:sticky.endpointId||null,
     stickyReason:sticky.switchReason||null,
+    stickyRetiredLegacyCount:Array.isArray(sticky.retiredEndpointIds)?sticky.retiredEndpointIds.length:0,
     eliteEligible:Number(eliteMeta.counts?.eligibleExits||0),
     eliteSelected:Number(eliteMeta.counts?.selectedPaths||0),
     chatgptEligible:Number(eliteMeta.counts?.chatgptEligibleExits||0),
