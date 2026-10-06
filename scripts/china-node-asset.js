@@ -376,22 +376,57 @@ function buildCandidates(stable, state, atMs) {
     .filter(candidate => candidate.category === 'new')
     .sort((a, b) => b.score - a.score);
 
-  // Maintenance has priority over exploration, but repeated failed recovery
-  // checks must not consume the entire run forever. Keep a bounded recovery
-  // budget so ordinary maintenance and new discovery retain probe capacity.
+  // Maintenance remains the dominant workload, but it must not permanently
+  // starve either recovery or exploration. The quotas below are upper bounds:
+  // when a category has fewer candidates than its quota, the unused capacity
+  // is filled by the other categories in priority order.
+  //
+  // With the default 300-node run this yields roughly:
+  //   60% ordinary maintenance
+  //   30% failed/forgotten recovery
+  //   10% new exploration
+  //
+  // Recovery therefore stays below the 33% ceiling while Stable discovery
+  // retains a small continuous lane. Existing assets still account for at
+  // least 90% of a fully populated run.
   const recovery = maintenance.filter(
     candidate => candidate.category === 'failed' || candidate.category === 'forgotten',
   );
   const ordinaryMaintenance = maintenance.filter(
     candidate => candidate.category !== 'failed' && candidate.category !== 'forgotten',
   );
-  const recoveryLimit = Math.max(1, Math.floor(CONFIG.maxNodesPerRun * 0.33));
-  const selectedRecovery = recovery.slice(0, recoveryLimit);
 
-  return ordinaryMaintenance
-    .concat(selectedRecovery)
-    .concat(exploration)
-    .slice(0, CONFIG.maxNodesPerRun);
+  const recoveryLimit = Math.max(1, Math.floor(CONFIG.maxNodesPerRun * 0.30));
+  const explorationLimit = Math.max(1, Math.floor(CONFIG.maxNodesPerRun * 0.10));
+  const ordinaryLimit = Math.max(
+    1,
+    CONFIG.maxNodesPerRun - recoveryLimit - explorationLimit,
+  );
+
+  const selectedOrdinary = ordinaryMaintenance.slice(0, ordinaryLimit);
+  const selectedRecovery = recovery.slice(0, recoveryLimit);
+  const selectedExploration = exploration.slice(0, explorationLimit);
+
+  const selected = [
+    ...selectedOrdinary,
+    ...selectedRecovery,
+    ...selectedExploration,
+  ];
+
+  // Quotas are only reservations. If one lane is under-populated, use the
+  // remaining capacity rather than deliberately probing fewer nodes.
+  if (selected.length < CONFIG.maxNodesPerRun) {
+    const selectedIds = new Set(selected.map(candidate => candidate.endpointId));
+    const remainder = [
+      ...ordinaryMaintenance,
+      ...recovery,
+      ...exploration,
+    ].filter(candidate => !selectedIds.has(candidate.endpointId));
+
+    selected.push(...remainder.slice(0, CONFIG.maxNodesPerRun - selected.length));
+  }
+
+  return selected;
 }
 function saveState(state) {
   fs.mkdirSync(path.dirname(CONFIG.stateFile), { recursive: true });
