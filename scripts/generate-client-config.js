@@ -34,16 +34,11 @@ const elite = uniqueProxies(loadYamlProxies(INPUT, 'elite.yaml'));
 const chatgpt = uniqueProxies(loadYamlProxies(CHATGPT_INPUT, 'chatgpt.yaml'));
 const sticky = uniqueProxies(loadYamlProxies(STICKY_INPUT, 'sticky.yaml'));
 
-const eliteNames = new Set(elite.map(p => p.name));
-for (const p of chatgpt) {
-  if (!eliteNames.has(p.name)) {
-    throw new Error('ChatGPT proxy is not present in elite.yaml: ' + p.name);
-  }
-}
-
-// Sticky is normally a member of Elite already. Keep one proxy definition per
-// name; the STICKY group can still reference that shared proxy.
-const allProxies = uniqueProxies([...elite, ...sticky]);
+// ChatGPT is an independent capability pool and therefore does not have
+// to be a member of the ordinary Elite pool. Sticky is likewise a separate
+// policy pool. All referenced proxy definitions must nevertheless be present
+// in the generated client config.
+const allProxies = uniqueProxies([...elite, ...chatgpt, ...sticky]);
 const selectable = elite
   .filter(p => !String(p.name).startsWith('PAIR-RELAY-'))
   .map(p => p.name);
