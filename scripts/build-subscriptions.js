@@ -239,9 +239,8 @@ deadRechecks.sort((a,b)=>b.overdueMs-a.overdueMs||a.id.localeCompare(b.id));
 const exploration=[...queueById.values()]
   .filter(item=>!knownPoolIds.has(item.endpointId))
   .sort((a,b)=>{
-    const at=a.lastSelectedAt?Date.parse(a.lastSelectedAt):0;
-    const bt=b.lastSelectedAt?Date.parse(b.lastSelectedAt):0;
-    return at-bt || String(a.firstDiscoveredAt||'').localeCompare(String(b.firstDiscoveredAt||''));
+    return String(a.firstDiscoveredAt||'').localeCompare(String(b.firstDiscoveredAt||''))
+      || String(a.lastSelectedAt||'').localeCompare(String(b.lastSelectedAt||''));
   })
   .map(item=>item.proxy)
   .filter(Boolean);
