@@ -109,6 +109,57 @@ jobs:
           source: nodeprobe-state/china/china-pair-pool.json
           destination: subscriptions/china-pair-pool.json
 
+      - name: Verify China release consistency
+        run: |
+          set -euo pipefail
+          node - <<'NODE'
+          const fs = require('fs');
+          const crypto = require('crypto');
+
+          const manifest = JSON.parse(fs.readFileSync('data/china-release.json', 'utf8'));
+          if (manifest.version < 2 || !Array.isArray(manifest.files)) {
+            throw new Error('China release manifest is missing per-file hashes (version 2 required)');
+          }
+
+          const checks = [
+            ['nodeprobe-state/china/exit.yaml', 'subscriptions/exit.yaml'],
+            ['nodeprobe-state/china/elite.yaml', 'subscriptions/elite.yaml'],
+            ['nodeprobe-state/china/chatgpt.yaml', 'subscriptions/chatgpt.yaml'],
+            ['nodeprobe-state/china/sticky.yaml', 'subscriptions/sticky.yaml'],
+            ['nodeprobe-state/china/china-elite.json', 'subscriptions/china-elite.json'],
+            ['nodeprobe-state/china/pairs.yaml', 'subscriptions/pairs.yaml'],
+            ['nodeprobe-state/china/china-pools.json', 'subscriptions/china-pools.json'],
+            ['nodeprobe-state/china/china-pair-pool.json', 'subscriptions/china-pair-pool.json']
+          ];
+
+          const byRemote = new Map(manifest.files.map(f => [f.remote, f]));
+          for (const [remote, local] of checks) {
+            const entry = byRemote.get(remote);
+            if (!entry || !entry.sha256) {
+              throw new Error('China release manifest missing hash for: ' + remote);
+            }
+            const bytes = fs.readFileSync(local);
+            const sha256 = crypto.createHash('sha256').update(bytes).digest('hex');
+            if (sha256 !== entry.sha256) {
+              throw new Error(
+                'China release consistency check failed for ' + remote +
+                ': expected ' + entry.sha256 + ', got ' + sha256
+              );
+            }
+            if (bytes.length !== entry.size) {
+              throw new Error(
+                'China release size check failed for ' + remote +
+                ': expected ' + entry.size + ', got ' + bytes.length
+              );
+            }
+          }
+
+          console.log(
+            'Verified China release ' + (manifest.releaseId || '(no releaseId)') +
+            ': ' + checks.length + ' downloaded files match manifest hashes.'
+          );
+          NODE
+
       - name: Generate client config from published China subscriptions
         run: |
           set -euo pipefail
