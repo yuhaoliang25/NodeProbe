@@ -93,6 +93,17 @@ jobs:
           source: nodeprobe-state/node-pool.json
           destination: data/node-pool.json
 
+      - name: Restore node-discovery-queue.json from B2
+        continue-on-error: true
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: download
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: nodeprobe-state/node-discovery-queue.json
+          destination: data/node-discovery-queue.json
+
       - name: Restore history.json from B2
         continue-on-error: true
         uses: backblaze-labs/b2-action@v1
@@ -401,6 +412,17 @@ jobs:
           bucket: nodeprobe
           source: data/node-pool.json
           destination: nodeprobe-state/node-pool.json
+
+      - name: Save node-discovery-queue.json to B2
+        if: success()
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: upload
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: data/node-discovery-queue.json
+          destination: nodeprobe-state/node-discovery-queue.json
 
       - name: Save history.json to B2
         if: success()
