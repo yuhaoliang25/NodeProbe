@@ -34,6 +34,10 @@ const CONFIG={
   stabilityP95:Number(process.env.CHINA_STABILITY_P95_LIMIT||5000),
   stabilityMaxConsecutiveFailures:Number(process.env.CHINA_STABILITY_MAX_CONSECUTIVE_FAILURES||1),
   stabilityMaxConsecutiveTimeouts:Number(process.env.CHINA_STABILITY_MAX_CONSECUTIVE_TIMEOUTS||1),
+  chatgptTarget:process.env.CHINA_CHATGPT_TARGET||'https://chatgpt.com/',
+  chatgptExpected:Number(process.env.CHINA_CHATGPT_EXPECTED||200),
+  chatgptAttempts:Number(process.env.CHINA_CHATGPT_ATTEMPTS||3),
+  chatgptTimeout:Number(process.env.CHINA_CHATGPT_TIMEOUT||8000),
   environment:process.env.CHINA_PROBE_ENV||os.hostname(),
 };
 
@@ -246,6 +250,18 @@ async function main(){
       return {endpointId:id,...summarizeAttempts(stabilityById.get(id)||[],stabilityTargets,CONFIG.stabilityRounds,{minSuccessRate:CONFIG.stabilityMinSuccessRate,minTargetSuccessRate:CONFIG.stabilityMinTargetSuccessRate,minRoundSuccessRate:CONFIG.stabilityMinRoundSuccessRate,maxConsecutiveFailures:CONFIG.stabilityMaxConsecutiveFailures,maxConsecutiveTimeouts:CONFIG.stabilityMaxConsecutiveTimeouts,p95Latency:CONFIG.stabilityP95})};
     });
     const stabilityEligibleIds=new Set(stabilityResults.filter(x=>x.eligible).map(x=>x.endpointId));
+    const chatgptCandidates=stabilityCandidates.filter(p=>stabilityEligibleIds.has(endpointId(p)));
+    console.log('[china-probe] ChatGPT capability test start: '+chatgptCandidates.length+' nodes');
+    const chatgptRows=await runConcurrent(chatgptCandidates,async p=>{
+      const attempts=[];
+      for(let attempt=1;attempt<=CONFIG.chatgptAttempts;attempt++){
+        const result=await probeDelay({api:CONFIG.api,name:p.name,target:CONFIG.chatgptTarget,expected:String(CONFIG.chatgptExpected),timeout:CONFIG.chatgptTimeout});
+        attempts.push({success:result.success,latencyMs:result.delayMs,error:result.error,timeout:result.timeout,at:result.startedAt,finishedAt:result.finishedAt});
+      }
+      return {endpointId:endpointId(p),successRate:attempts.filter(x=>x.success).length/attempts.length,success:attempts.every(x=>x.success),attempts};
+    },CONFIG.stabilityConcurrency);
+    const chatgptById=new Map(chatgptRows.map(x=>[x.endpointId,x]));
+    console.log('[china-probe] ChatGPT capability test done: '+chatgptRows.filter(x=>x.success).length+'/'+chatgptRows.length+' nodes passed');
 
     // Stage attempts are detailed evidence. Only one final observation per node
     // is applied to the China asset, so several stages in one probe run do not
@@ -267,6 +283,9 @@ async function main(){
         reachabilityLatencyMs:reachabilityAttempt?.latencyMs??null,
         exitSuccess,
         stabilityEligible:stability?.eligible??null,
+        chatgptEligible:chatgptById.get(id)?.success??null,
+        chatgptSuccessRate:chatgptById.get(id)?.successRate??null,
+        chatgptAttempts:chatgptById.get(id)?.attempts??[],
         latencyMs:last?.latencyMs??null,
         error:last?.error||null,
         timeout:Boolean(last?.timeout),
@@ -288,7 +307,7 @@ async function main(){
       probeEnvironment:CONFIG.environment,
       target:CONFIG.target,
       expected:CONFIG.expected,
-      stages:{reachabilityTimeout:CONFIG.reachabilityTimeout,stage1Timeout:CONFIG.fastTimeout,deepRounds:CONFIG.deepRounds,stabilityRounds:CONFIG.stabilityRounds,stabilityAttempts:CONFIG.stabilityAttempts},
+      stages:{reachabilityTimeout:CONFIG.reachabilityTimeout,stage1Timeout:CONFIG.fastTimeout,deepRounds:CONFIG.deepRounds,stabilityRounds:CONFIG.stabilityRounds,stabilityAttempts:CONFIG.stabilityAttempts,chatgptTarget:CONFIG.chatgptTarget,chatgptExpected:CONFIG.chatgptExpected,chatgptAttempts:CONFIG.chatgptAttempts},
       observations:finalObservations,
       attempts:observations,
       stabilityResults,
