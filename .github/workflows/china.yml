@@ -109,18 +109,46 @@ jobs:
           source: nodeprobe-state/china/china-pair-pool.json
           destination: subscriptions/china-pair-pool.json
 
-      - name: Pull China client config
-        uses: backblaze-labs/b2-action@v1
-        with:
-          action: download
-          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
-          application-key: ${{ secrets.B2_APPLICATION_KEY }}
-          bucket: nodeprobe
-          source: nodeprobe-state/china/client.yaml
-          destination: mihomo/client.yaml
-
-      - name: Publish China subscriptions
+      - name: Generate client config from published China subscriptions
         run: |
+          set -euo pipefail
+          npm ci --ignore-scripts
+          npm run client-config
+
+          node - <<'NODE'
+          const fs = require('fs');
+          const yaml = require('js-yaml');
+          const file = 'mihomo/client.yaml';
+          const doc = yaml.load(fs.readFileSync(file, 'utf8'));
+
+          if (!doc || !Array.isArray(doc.rules)) {
+            throw new Error('Generated client.yaml has no rules array');
+          }
+
+          const required = [
+            'DOMAIN-SUFFIX,x.com,STICKY',
+            'DOMAIN-SUFFIX,chatgpt.com,CHATGPT',
+            'RULE-SET,cn_domain,DIRECT',
+            'RULE-SET,cn_ip,DIRECT,no-resolve',
+            'MATCH,PROXY'
+          ];
+
+          for (const rule of required) {
+            if (!doc.rules.includes(rule)) {
+              throw new Error('Generated client.yaml missing required rule: ' + rule);
+            }
+          }
+
+          for (const name of ['cn_domain', 'cn_ip', 'private_domain', 'private_ip']) {
+            if (!doc['rule-providers'] || !doc['rule-providers'][name]) {
+              throw new Error('Generated client.yaml missing rule-provider: ' + name);
+            }
+          }
+
+          console.log('Validated China client policy: CN DIRECT + ChatGPT + X STICKY + proxy fallback');
+          NODE
+
+      - name: Publish China subscriptions        run: |
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
