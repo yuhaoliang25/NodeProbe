@@ -635,6 +635,7 @@ function selectCandidates() {
 
   console.log(JSON.stringify({
     stable: stable.length,
+    discoveryBacklog: discoveryQueue.items.length,
     candidates: candidates.length,
     categories: candidates.reduce((m, x) => {
       m[x.category] = (m[x.category] || 0) + 1;
