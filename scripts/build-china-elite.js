@@ -66,11 +66,21 @@ function chatgptScore(node) {
     latencyPenalty;
 }
 
-function chatgptEligible(node) {
+function latestChatGPTObservation(node) {
   const obs = recent(node).filter(x => Array.isArray(x.chatgptAttempts) && x.chatgptAttempts.length);
-  if (!obs.length) return false;
-  const latest = obs[obs.length - 1];
-  return latest.chatgptEligible === true &&
+  return obs.length ? obs[obs.length - 1] : null;
+}
+
+function chatgptEligible(node) {
+  const latest = latestChatGPTObservation(node);
+  if (!latest) return false;
+  // ChatGPT is its own capability pool. It still requires a confirmed usable
+  // exit in the same observation, but it must not depend on the ordinary
+  // Elite threshold (top-3 ranking, five-run trust threshold, or 90% recent
+  // rate). The ChatGPT-specific three-attempt test is the capability gate.
+  return latest.success === true &&
+    latest.exitSuccess === true &&
+    latest.chatgptEligible === true &&
     Number(latest.chatgptSuccessRate) >= CHATGPT_MIN_RATE &&
     latest.chatgptAttempts.length >= CHATGPT_MIN_ATTEMPTS;
 }
@@ -137,9 +147,23 @@ function main() {
   // first, then use newly tested ChatGPT-capable exits to fill vacancies.
   const previousChatgpt = loadYaml(CHATGPT_OUTPUT_FILE);
   const previousNames = new Set(previousChatgpt.map(p => String(p.name)));
-  const eligibleChatgpt = exits
-    .filter(item => chatgptEligible(assets.nodes[item.endpointId]))
-    .map(item => ({ ...item, chatgptScore: chatgptScore(assets.nodes[item.endpointId]) }))
+  // Do not derive ChatGPT candidates from the ordinary Elite list.
+  // The ordinary list is deliberately small and ranking-oriented; ChatGPT
+  // needs its own evidence pool so a capable node can enter or remain there
+  // even when it is not among the ordinary Elite paths.
+  const eligibleChatgpt = Object.values(assets.nodes || {})
+    .filter(node => node && node.proxy && chatgptEligible(node))
+    .map(node => ({
+      kind: 'exit',
+      endpointId: node.endpointId,
+      proxy: node.proxy,
+      score: exitScore(node),
+      recentSuccessRate: rate(recent(node)),
+      lifetimeSuccessRate: node.observedRuns ? node.successes / node.observedRuns : 0,
+      observedRuns: node.observedRuns,
+      p95LatencyMs: p95(recent(node)),
+      chatgptScore: chatgptScore(node),
+    }))
     .sort((a,b) => b.chatgptScore - a.chatgptScore || b.score - a.score);
   const byName = new Map(eligibleChatgpt.map(item => [String(item.proxy.name), item]));
   const incumbents = previousChatgpt.map(proxy => byName.get(String(proxy.name))).filter(Boolean);
