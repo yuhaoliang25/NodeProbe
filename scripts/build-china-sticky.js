@@ -103,6 +103,9 @@ function main() {
   const assets = loadJson(ASSET_FILE, { nodes: {} });
   let state = loadJson(STATE_FILE, createState());
   if (!state || typeof state !== 'object') state = createState();
+  // Keep the legacy field for state-file compatibility, but it is no longer
+  // used as a permanent blacklist. A transient failure must not permanently
+  // remove an otherwise healthy China asset from future sticky selection.
   if (!Array.isArray(state.retiredEndpointIds)) state.retiredEndpointIds = [];
 
   const nodes = Object.values(assets.nodes || {});
@@ -120,15 +123,12 @@ function main() {
     reason = 'retain-current';
   } else {
     if (current?.endpointId) {
-      if (!state.retiredEndpointIds.includes(current.endpointId)) {
-        state.retiredEndpointIds.push(current.endpointId);
-      }
       reason = latestFailed(current) ? 'current-failed-or-timeout' : 'current-no-longer-eligible';
     }
 
-    selected = eligibleNodes.find(node =>
-      !state.retiredEndpointIds.includes(node.endpointId)
-    ) || null;
+    // Do not permanently blacklist the previous incumbent. It remains in the
+    // normal eligible pool and may become sticky again after recovery.
+    selected = eligibleNodes[0] || null;
   }
 
   if (selected) {
@@ -146,7 +146,7 @@ function main() {
 
   state.generatedAt = new Date().toISOString();
   state.candidateCount = eligibleNodes.length;
-  state.retiredCount = state.retiredEndpointIds.length;
+  state.retiredCount = 0;
 
   fs.mkdirSync(path.dirname(STATE_FILE), { recursive: true });
   fs.mkdirSync(path.dirname(OUTPUT_FILE), { recursive: true });
