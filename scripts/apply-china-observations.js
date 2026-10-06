@@ -100,6 +100,9 @@ function apply(){
       reachabilityLatencyMs:o.reachabilityLatencyMs,
       exitSuccess:o.exitSuccess,
       stabilityEligible:o.stabilityEligible,
+      chatgptEligible:o.chatgptEligible,
+      chatgptSuccessRate:o.chatgptSuccessRate,
+      chatgptAttempts:o.chatgptAttempts,
     });
     applied++;
     appliedIds.add(id);
