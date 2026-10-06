@@ -229,8 +229,11 @@ async function main(){
     for(let round=1;round<=CONFIG.stabilityRounds;round++){
       console.log('[china-probe] stability round '+round+' start: '+stabilityCandidates.length+' nodes');
       const jobs=[];
+      // Keep target ordering deterministic. The stability summary measures
+      // consecutive failures/timeouts, so randomizing targets would make those
+      // metrics depend on scheduling luck rather than probe results.
       for(const p of stabilityCandidates){
-        for(const target of [...stabilityTargets].sort(()=>Math.random()-.5)){
+        for(const target of stabilityTargets){
           for(let attempt=1;attempt<=perRound;attempt++)jobs.push({p,target,attempt});
         }
       }
@@ -269,10 +272,13 @@ async function main(){
     const finalObservations=selected.map(p=>{
       const id=endpointId(p);
       const trace=traces.get(id)||[];
-      const last=trace[trace.length-1];
       const reachabilityAttempt=trace.find(x=>x.stage==='reachability');
-      const exitAttempts=trace.filter(x=>/^exit-stage1-fast|stage1-retry|stage2|deep-round-/.test(x.stage));
-      const exitSuccess=exitAttempts.some(x=>x.success);
+      const exitAttempts=trace.filter(x=>/^(exit-stage1-fast|stage1-retry|stage2|deep-round-)/.test(x.stage));
+      // Exit lifecycle success means the node survived the complete exit
+      // confirmation pipeline. Stage-1 success alone is not enough: a node
+      // that later fails stage 2/deep must not remain successful for this run.
+      const exitSuccess=deep.some(x=>endpointId(x)===id);
+      const lastExitAttempt=exitAttempts[exitAttempts.length-1]||null;
       const stability=stabilityById.has(id)?stabilityResults.find(x=>x.endpointId===id)||null:null;
       return {
         endpointId:id,
@@ -291,11 +297,11 @@ async function main(){
         chatgptEligible:chatgptById.get(id)?.success??null,
         chatgptSuccessRate:chatgptById.get(id)?.successRate??null,
         chatgptAttempts:chatgptById.get(id)?.attempts??[],
-        latencyMs:last?.latencyMs??null,
-        error:last?.error||null,
-        timeout:Boolean(last?.timeout),
+        latencyMs:lastExitAttempt?.latencyMs??null,
+        error:lastExitAttempt?.error||null,
+        timeout:Boolean(lastExitAttempt?.timeout),
         probeEnvironment:CONFIG.environment,
-        stage:last?.stage||null,
+        stage:lastExitAttempt?.stage||null,
         successfulStages:trace.filter(x=>x.success).map(x=>x.stage),
         failedStages:trace.filter(x=>!x.success).map(x=>x.stage),
         attemptCount:trace.length,
