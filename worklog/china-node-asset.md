@@ -1157,3 +1157,89 @@ A China probe machine may start before the Global/China candidate feed exists in
 
 Thus a missing candidate feed is a normal bootstrap condition, not a probe failure, while the probe remains bounded and never falls back to probing the entire Stable pool.
 
+
+
+---
+
+# 2026-10-06 Current China Asset Rules
+
+This section supersedes older sections that still describe GitHub as the owner of China state transitions. Those sections remain useful as migration history.
+
+## Ownership
+
+The China machine is authoritative for China asset lifecycle, applied observations, candidate scheduling, pair knowledge, Exit/Elite/ChatGPT/Sticky selection, and generated client configuration. B2 is asynchronous transport/storage. GitHub is publication-oriented and must not reconstruct a competing China state machine.
+
+## Global boundary
+
+Global Stable can introduce unknown endpoints or refresh known proxy definitions. It cannot delete China assets, transfer Global trust, or decide China lifecycle. Global Best is not a China production dependency. A one-time Global-to-China cold-start import is bootstrap only.
+
+## Maintenance
+
+Every cycle combines persistent maintenance and Stable exploration. The current default budget is 300 candidates, with approximately 60% ordinary maintenance, 30% recovery and 10% new exploration after incumbent reservations. Under-populated lanes release their unused capacity.
+
+This prevents the historical failure mode where only new nodes were tested and all production nodes disappeared when those new nodes failed.
+
+## Time decay
+
+China reliability uses a 72-hour default exponential half-life. Recent observations therefore matter more than equally successful observations from many days ago. Minimum observation counts, failure streaks and recovery streaks remain separate safeguards.
+
+A recovered failed node does not instantly regain historical trust; it must rebuild fresh evidence.
+
+## Production layers
+
+- Exit = all currently TRUSTED China assets with usable proxies.
+- Elite = small production selection, normally at most 3 paths.
+- ChatGPT = independent capability-qualified pool, capped at 3 and incumbent-first with exploration.
+- Sticky = one persistent route for risk-sensitive services.
+- Pairs = experimental fallback paths.
+
+A node can remain Trusted and monitored even when it is not selected by Elite.
+
+## Sticky continuity
+
+Sticky keeps a healthy incumbent instead of switching simply because another node scores higher. The incumbent is actively probed each cycle. Repeated failure or stale evidence releases it.
+
+Replacement uses reliability as the primary evidence. IP continuity is only a tiny tie-breaker: same IPv4 /24, same IPv4 /16, same IPv6 /48, same IPv6 /64 region, then weak literal-IP proximity. Default continuity weight is 0.002.
+
+This is only a heuristic for smoother source-IP changes. It does not establish common ASN, ISP or ownership.
+
+## Client routing
+
+Current intended policy:
+
+    China/private traffic -> Mihomo DIRECT
+    ChatGPT -> CHATGPT
+    X/Twitter/Threads -> STICKY
+    other overseas traffic -> PROXY
+    fallback -> PROXY
+
+The Mihomo DIRECT strategy itself must not be renamed. NodeProbe's own internal concept should use Exit/China exit rather than ambiguous “direct” terminology.
+
+## Pair experiment
+
+Pair testing is secondary to directly usable China exits. Pair evidence never automatically promotes or kills an endpoint asset. If pair candidates are unavailable, normal China probing continues.
+
+## Diagnostics
+
+A China run must expose candidate categories and counts, reachability, exit success, deep/stability evidence, ChatGPT eligibility and subscription counts. These diagnostics are specifically intended to reveal whether maintenance assets actually entered the probe.
+
+One probe run may contain many internal attempts, but only one final observation per endpoint/run is applied to persistent lifecycle history. Internal attempts are diagnostic evidence, not extra lifecycle observations.
+
+## Runtime and deployment
+
+Current local deployment:
+
+- repository: /home/lyh/NodeProbe
+- cycle: scripts/china-cycle.sh
+- service: nodeprobe-china.service
+- Mihomo API: http://127.0.0.1:19090
+- default candidate budget: 300
+- default probe concurrency: 8
+
+The machine should interact with B2 for normal runtime exchange rather than relying on Git push/pull.
+
+## Time semantics
+
+firstObservedAt means the first NodeProbe observation, not the true publication time of a node. Source file timestamps must not be interpreted as per-node publication times.
+
+**Revision date: 2026-10-06.**
