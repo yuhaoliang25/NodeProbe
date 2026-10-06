@@ -107,6 +107,8 @@ if(mode==='pull-stable'){
     ['subscriptions/exit.yaml',PREFIX+'/exit.yaml'],
     ['subscriptions/elite.yaml',PREFIX+'/elite.yaml'],
     ['subscriptions/chatgpt.yaml',PREFIX+'/chatgpt.yaml'],
+    ['subscriptions/sticky.yaml',PREFIX+'/sticky.yaml'],
+    ['data/china-sticky.json',PREFIX+'/china-sticky.json'],
     ['subscriptions/china-elite.json',PREFIX+'/china-elite.json'],
     ['subscriptions/pairs.yaml',PREFIX+'/pairs.yaml'],
     ['subscriptions/china-pools.json',PREFIX+'/china-pools.json'],
