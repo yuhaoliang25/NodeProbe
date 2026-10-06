@@ -253,8 +253,22 @@ async function main(){
       return {endpointId:id,...summarizeAttempts(stabilityById.get(id)||[],stabilityTargets,CONFIG.stabilityRounds,{minSuccessRate:CONFIG.stabilityMinSuccessRate,minTargetSuccessRate:CONFIG.stabilityMinTargetSuccessRate,minRoundSuccessRate:CONFIG.stabilityMinRoundSuccessRate,maxConsecutiveFailures:CONFIG.stabilityMaxConsecutiveFailures,maxConsecutiveTimeouts:CONFIG.stabilityMaxConsecutiveTimeouts,p95Latency:CONFIG.stabilityP95})};
     });
     const stabilityEligibleIds=new Set(stabilityResults.filter(x=>x.eligible).map(x=>x.endpointId));
-    const chatgptCandidates=stabilityCandidates.filter(p=>stabilityEligibleIds.has(endpointId(p)));
-    console.log('[china-probe] ChatGPT capability test start: '+chatgptCandidates.length+' nodes');
+    // ChatGPT is an independent capability pool. Existing ChatGPT incumbents
+    // are deliberately tested even when their general stability score misses
+    // the current threshold; they have already earned a place in the
+    // capability pool and should be allowed to prove or lose it on the
+    // ChatGPT-specific target. New/exploration nodes still need normal
+    // stability eligibility before receiving the more expensive ChatGPT test.
+    const chatgptIncumbentIds=new Set(
+      candidates
+        .filter(x=>x.category==='chatgpt-incumbent')
+        .map(x=>x.endpointId),
+    );
+    const chatgptCandidates=deep.filter(p=>{
+      const id=endpointId(p);
+      return chatgptIncumbentIds.has(id) || stabilityEligibleIds.has(id);
+    });
+    console.log('[china-probe] ChatGPT capability test start: '+chatgptCandidates.length+' nodes (incumbents='+chatgptCandidates.filter(p=>chatgptIncumbentIds.has(endpointId(p))).length+', exploration='+chatgptCandidates.filter(p=>!chatgptIncumbentIds.has(endpointId(p))).length+')');
     const chatgptRows=await runConcurrent(chatgptCandidates,async p=>{
       const attempts=[];
       for(let attempt=1;attempt<=CONFIG.chatgptAttempts;attempt++){
