@@ -1068,3 +1068,31 @@ China now has a separate final-selection stage above the asset pools:
 Elite selection does not mutate China asset state. It ranks Trusted exits using persistent China evidence (minimum observations, recent success rate, failure streak, lifetime success rate and recent p95 latency). Validated pair paths are fallback-only and fill unused elite slots when there are too few qualifying exits.
 
 This is a presentation/production-selection layer, not another asset lifecycle state: a node can remain Trusted and monitored even when it is not selected for the tiny production subscription.
+
+
+## China sticky route for risk-sensitive services
+
+Some services are sensitive to frequent changes of source IP or apparent region. China Probe therefore has a separate **Sticky Route** selection layer for such traffic.
+
+The policy is intentionally different from Elite:
+
+- select one node from the historically most stable Trusted China exits;
+- persist that selection in `data/china-sticky.json`;
+- once selected, keep it even if another node later obtains a better stability score;
+- replace it only when the incumbent fails a China observation / timeout or is no longer eligible;
+- after replacement, the failed incumbent is retired from future Sticky selection, so a temporary recovery does not immediately cause the system to switch back;
+- choose the next replacement from the remaining historically strongest eligible nodes.
+
+The ranking uses accumulated evidence rather than only the latest run. It uses a conservative Wilson lower bound of historical success probability, then lifetime success rate, recent success rate, observation count and recent p95 latency as tie-breakers.
+
+This is a **route-selection policy**, not a new China asset lifecycle state. The underlying node remains independently managed by the China asset pool.
+
+The generated `subscriptions/sticky.yaml` normally contains exactly one proxy. `mihomo/client.yaml` exposes it through a `STICKY` group and routes risk-sensitive service domains to that group. Current domain set includes:
+
+- X: `x.com`, `twitter.com`, `t.co`;
+- Threads: `threads.com`, `threads.net`.
+
+Threads moved its web experience from Threads.net to Threads.com, so both are retained for compatibility. citeturn3search0
+
+The Sticky Route is deliberately separate from ChatGPT capability selection. A node does not become Sticky merely because it can access ChatGPT, and Sticky selection does not alter ordinary Elite ranking.
+
