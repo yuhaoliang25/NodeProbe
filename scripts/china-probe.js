@@ -28,6 +28,11 @@ const CONFIG={
   stabilityAttempts:Number(process.env.CHINA_STABILITY_ATTEMPTS||6),
   stabilityTimeout:Number(process.env.CHINA_STABILITY_TIMEOUT||5000),
   stabilityConcurrency:Number(process.env.CHINA_STABILITY_CONCURRENCY||8),
+  // Stability is expensive quality evidence, not the China asset lifecycle gate.
+  // Keep a bounded lane so a 300-node exit probe cannot turn into thousands of
+  // repeated multi-target requests in one systemd cycle.
+  stabilityMaxNodes:Number(process.env.CHINA_STABILITY_MAX_NODES||60),
+  chatgptMaxNodes:Number(process.env.CHINA_CHATGPT_MAX_NODES||30),
   stabilityMinSuccessRate:Number(process.env.CHINA_STABILITY_MIN_SUCCESS_RATE||0.9),
   stabilityMinTargetSuccessRate:Number(process.env.CHINA_STABILITY_MIN_TARGET_SUCCESS_RATE||0.67),
   stabilityMinRoundSuccessRate:Number(process.env.CHINA_STABILITY_MIN_ROUND_SUCCESS_RATE||0.67),
@@ -238,11 +243,27 @@ async function main(){
       {id:'github',url:'https://github.com/',expected:'200'},
     ];
     const stabilityAttempts=[];
-    const stabilityCandidates=deep.slice();
+    const candidateMeta=new Map(
+      selected.map(candidate => [endpointId(candidate.proxy), candidate]),
+    );
+    const deepRanked=[...deep].sort((a,b)=>{
+      const ca=candidateMeta.get(endpointId(a));
+      const cb=candidateMeta.get(endpointId(b));
+      return Number(cb?.score||0)-Number(ca?.score||0);
+    });
+    const stabilityIncumbents=deepRanked.filter(p=>{
+      const category=candidateMeta.get(endpointId(p))?.category;
+      return category==='chatgpt-incumbent' || category==='sticky-incumbent';
+    });
+    const stabilityOthers=deepRanked.filter(p=>!stabilityIncumbents.some(x=>endpointId(x)===endpointId(p)));
+    const stabilityCandidates=[
+      ...stabilityIncumbents,
+      ...stabilityOthers,
+    ].slice(0,CONFIG.stabilityMaxNodes);
     const perRound=CONFIG.stabilityAttempts/CONFIG.stabilityRounds;
     if(!Number.isInteger(perRound))throw new Error('CHINA_STABILITY_ATTEMPTS must divide evenly by CHINA_STABILITY_ROUNDS');
     for(let round=1;round<=CONFIG.stabilityRounds;round++){
-      console.log('[china-probe] stability round '+round+' start: '+stabilityCandidates.length+' nodes');
+      console.log('[china-probe] stability round '+round+' start: '+stabilityCandidates.length+' nodes (max='+CONFIG.stabilityMaxNodes+')');
       const jobs=[];
       // Keep target ordering deterministic. The stability summary measures
       // consecutive failures/timeouts, so randomizing targets would make those
@@ -279,13 +300,19 @@ async function main(){
         .filter(x=>x.category==='chatgpt-incumbent')
         .map(x=>x.endpointId),
     );
-    const chatgptCandidates=deep.filter(p=>{
-      const id=endpointId(p);
-      if(isHongKongProxy(p)) return false;
-      return chatgptIncumbentIds.has(id) || stabilityEligibleIds.has(id);
+    const chatgptRanked=[...deep].filter(p=>!isHongKongProxy(p)).sort((a,b)=>{
+      const ca=candidateMeta.get(endpointId(a));
+      const cb=candidateMeta.get(endpointId(b));
+      const ai=chatgptIncumbentIds.has(endpointId(a))?1:0;
+      const bi=chatgptIncumbentIds.has(endpointId(b))?1:0;
+      if(ai!==bi)return bi-ai;
+      return Number(cb?.score||0)-Number(ca?.score||0);
     });
+    const chatgptCandidates=chatgptRanked
+      .filter(p=>chatgptIncumbentIds.has(endpointId(p)) || stabilityEligibleIds.has(endpointId(p)))
+      .slice(0,CONFIG.chatgptMaxNodes);
     const chatgptHongKongExcluded=deep.filter(isHongKongProxy).length;
-    console.log('[china-probe] ChatGPT capability test start: '+chatgptCandidates.length+' nodes (incumbents='+chatgptCandidates.filter(p=>chatgptIncumbentIds.has(endpointId(p))).length+', exploration='+chatgptCandidates.filter(p=>!chatgptIncumbentIds.has(endpointId(p))).length+', hong-kong-excluded='+chatgptHongKongExcluded+')');
+    console.log('[china-probe] ChatGPT capability test start: '+chatgptCandidates.length+' nodes (max='+CONFIG.chatgptMaxNodes+', incumbents='+chatgptCandidates.filter(p=>chatgptIncumbentIds.has(endpointId(p))).length+', exploration='+chatgptCandidates.filter(p=>!chatgptIncumbentIds.has(endpointId(p))).length+', hong-kong-excluded='+chatgptHongKongExcluded+')');
     const chatgptRows=await runConcurrent(chatgptCandidates,async p=>{
       const attempts=[];
       for(let attempt=1;attempt<=CONFIG.chatgptAttempts;attempt++){
