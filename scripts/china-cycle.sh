@@ -88,6 +88,7 @@ npm run china-assets
 npm run china-relay-candidates
 npm run china-pairs
 npm run china-pools
+npm run china-elite
 npm run client-config
 
 # Publish the completed state/results. release.json is uploaded last so the
