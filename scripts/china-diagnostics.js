@@ -35,6 +35,15 @@ function probeSummary(p){
     }
     return Object.fromEntries(Object.entries(out).sort((a,b)=>b[1]-a[1]).slice(0,10));
   };
+  const errorKinds=(stage)=>{
+    const out={};
+    for(const x of stageRows(stage)){
+      if(x.success===true)continue;
+      const key=String(x.errorKind||'unknown');
+      out[key]=(out[key]||0)+1;
+    }
+    return Object.fromEntries(Object.entries(out).sort((a,b)=>b[1]-a[1]));
+  };
   return {
     candidates:obs.length,
     reachable:obs.filter(x=>x.reachabilitySuccess===true).length,
@@ -59,6 +68,11 @@ function probeSummary(p){
       stage1Fast:errorCounts('exit-stage1-fast'),
       stage1Retry:errorCounts('stage1-retry'),
       stage2:errorCounts('stage2')
+    },
+    failureKinds:{
+      stage1Fast:errorKinds('exit-stage1-fast'),
+      stage1Retry:errorKinds('stage1-retry'),
+      stage2:errorKinds('stage2')
     },
     deepPass:obs.filter(x=>Array.isArray(x.successfulStages) && x.successfulStages.some(s=>s.startsWith('deep-round-'))).length
   };
