@@ -132,3 +132,24 @@ Current defaults in scripts/china-probe.js:
 - These stages remain evidence/capability signals and do not independently turn a China asset failure into a lifecycle failure.
 
 This bounds the expensive tail of a 300-node cycle. The previous 203-node stability run generated 1,218 attempts per round and the subsequent 199-node ChatGPT run added another 597 attempts, causing the systemd startup timeout. The new budget prevents that scaling path while preserving forced incumbent checks.
+
+
+## 2026-10-06 Persistent discovery backlog
+
+The previous architecture had one important gap: Stable was a current discovery snapshot, and the per-run candidate file was only a scheduling artifact. A newly discovered endpoint that did not fit the current test budget could therefore disappear without being remembered.
+
+This is now fixed on both sides:
+
+- Global persists `data/node-discovery-queue.json` in B2. Source discovery adds new endpoints; candidate selection consumes backlog capacity oldest-first without deleting untested entries. Recognized Node Pool endpoints, including DEAD nodes, are removed from the discovery backlog and remain under lifecycle maintenance.
+- China persists `data/china-discovery-queue.json` in B2. Stable adds new discovery items; the 300-node candidate budget consumes from this backlog oldest-first. Selection records `lastSelectedAt` but does not delete the item; only recognition into the China asset pool removes it.
+- China `china-probe-candidates.json` remains a per-cycle work schedule, not a durable queue.
+- Global checkpoints the discovery queue immediately after candidate allocation, before the long health/GEO stages, so a later workflow failure does not erase newly discovered backlog.
+
+This makes “increase exploration intensity” mean **increase backlog consumption rate**, rather than simply “re-fetch and hope the same nodes appear again”.
+
+The important semantic distinction is now explicit:
+
+    discovered but not tested != already tested
+    disappeared from Stable != dead
+    selected for a run != consumed from discovery backlog
+    recognized asset != discovery candidate
