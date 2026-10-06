@@ -1,0 +1,11 @@
+proxies:
+  - name: '🇭🇰 香港 04'
+    port: 443
+    server: 'fan.240104.xyz'
+    skip-cert-verify: true
+    sni: 'fan.240104.xyz'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '2525753ed3d65e2e'

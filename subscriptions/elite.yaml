@@ -1,8 +1,3 @@
-mixed-port: 7890
-allow-lan: false
-mode: 'rule'
-log-level: 'warning'
-ipv6: false
 proxies:
   - name: '🇭🇰 香港 04'
     port: 443
@@ -32,22 +27,3 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: 'ef628958ee9b9c79'
-proxy-groups:
-  - name: 'PROXY'
-    type: 'select'
-    proxies:
-      - '🇭🇰 香港 04'
-      - '🇸🇬SG_38|247KB/s|R002-260618 01'
-      - '🇳🇱NL_160|6.6MB/s|R002-260618 01'
-      - 'DIRECT'
-  - name: 'STICKY'
-    type: 'select'
-    proxies:
-      - '🇭🇰 香港 04'
-rules:
-  - 'DOMAIN-SUFFIX,x.com,STICKY'
-  - 'DOMAIN-SUFFIX,twitter.com,STICKY'
-  - 'DOMAIN-SUFFIX,t.co,STICKY'
-  - 'DOMAIN-SUFFIX,threads.com,STICKY'
-  - 'DOMAIN-SUFFIX,threads.net,STICKY'
-  - 'MATCH,PROXY'
