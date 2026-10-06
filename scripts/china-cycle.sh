@@ -52,24 +52,14 @@ npm run china-probe
 npm run china-apply
 npm run china-sync -- push-observations
 
-if npm run china-sync -- pull-pair-candidates; then
-  if candidate_run_is_new "${CHINA_RELAY_CANDIDATE_FILE:-data/china-relay-pair-candidates.json}" "$PAIR_CANDIDATE_RUN_FILE"; then
-    echo 'Using new China relay pair candidate feed from B2.'
-    npm run china-relay-probe
-    npm run china-pair-apply
-    mark_candidate_run "${CHINA_RELAY_CANDIDATE_FILE:-data/china-relay-pair-candidates.json}" "$PAIR_CANDIDATE_RUN_FILE"
-    npm run china-sync -- push-pair-observations
-  else
-    echo 'China relay pair candidate feed already consumed; skipping duplicate pair probe.'
-  fi
-else
-  echo 'No usable China relay pair candidate feed; generating a local China-only pair set.'
-  npm run china-relay-candidates
-  npm run china-relay-probe
-  npm run china-pair-apply
-  mark_candidate_run "${CHINA_RELAY_CANDIDATE_FILE:-data/china-relay-pair-candidates.json}" "$PAIR_CANDIDATE_RUN_FILE"
-  npm run china-sync -- push-pair-observations
-fi
+# Relay/pair experiments are derived from the current persistent China asset
+# pool. As with ordinary candidates, the generated pair feed is a scheduling
+# artifact, not a once-only B2 work queue. Rebuild it every cycle so pair
+# evidence can evolve with the current China assets.
+npm run china-relay-candidates
+npm run china-relay-probe
+npm run china-pair-apply
+npm run china-sync -- push-pair-observations
 
 # From this point onward the China machine owns the entire state transition.
 # No GitHub workflow is needed to apply observations or derive the next feed.
