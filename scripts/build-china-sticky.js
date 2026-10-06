@@ -11,6 +11,8 @@ const OUTPUT_FILE = process.env.CHINA_STICKY_FILE || 'subscriptions/sticky.yaml'
 
 const MIN_OBSERVATIONS = Math.max(1, Number(process.env.CHINA_STICKY_MIN_OBSERVATIONS || 5));
 const MIN_RECENT_RATE = Math.max(0, Math.min(1, Number(process.env.CHINA_STICKY_MIN_RECENT_RATE || 0.90)));
+const PROTECT_FAILURE_STREAK = Math.max(1, Number(process.env.CHINA_STICKY_PROTECT_FAILURE_STREAK || 2));
+const MAX_PROTECTED_AGE_MS = Math.max(1, Number(process.env.CHINA_STICKY_MAX_PROTECTED_AGE_MS || 36 * 60 * 60 * 1000));
 
 function loadJson(file, fallback) {
   if (!fs.existsSync(file)) return fallback;
@@ -88,6 +90,20 @@ function latestFailed(node) {
   return Boolean(latest && latest.success !== true);
 }
 
+function isFreshEnough(node, atMs) {
+  const lastProbe = Date.parse(node?.lastProbeAt || node?.lastObservedAt || '');
+  return Number.isFinite(lastProbe) && atMs - lastProbe <= MAX_PROTECTED_AGE_MS;
+}
+
+function canProtectCurrent(node, atMs) {
+  if (!node || !node.proxy) return false;
+  if (Number(node.observedRuns) < MIN_OBSERVATIONS) return false;
+  if (node.state !== 'TRUSTED') return false;
+  if (Number(node.failureStreak || 0) >= PROTECT_FAILURE_STREAK) return false;
+  if (!isFreshEnough(node, atMs)) return false;
+  return true;
+}
+
 function createState() {
   return {
     version: 1,
@@ -109,6 +125,7 @@ function main() {
   if (!Array.isArray(state.retiredEndpointIds)) state.retiredEndpointIds = [];
 
   const nodes = Object.values(assets.nodes || {});
+  const atMs = Date.now();
   const byId = new Map(nodes.filter(x => x?.endpointId).map(x => [x.endpointId, x]));
   const eligibleNodes = nodes.filter(eligible).sort(compare);
   const current = state.endpointId ? byId.get(state.endpointId) : null;
@@ -118,12 +135,20 @@ function main() {
 
   // Sticky means sticky: never replace a healthy incumbent merely because a
   // newly observed node has a better score.
-  if (current && eligible(current) && !latestFailed(current)) {
+  if (current && canProtectCurrent(current, atMs)) {
     selected = current;
-    reason = 'retain-current';
+    reason = Number(current.failureStreak || 0) > 0
+      ? 'retain-current-after-single-failure'
+      : 'retain-current';
   } else {
     if (current?.endpointId) {
-      reason = latestFailed(current) ? 'current-failed-or-timeout' : 'current-no-longer-eligible';
+      reason = Number(current.failureStreak || 0) >= PROTECT_FAILURE_STREAK
+        ? 'current-consecutive-failures'
+        : !isFreshEnough(current, atMs)
+          ? 'current-stale-probe'
+          : latestFailed(current)
+            ? 'current-failed-or-timeout'
+            : 'current-no-longer-eligible';
     }
 
     // Do not permanently blacklist the previous incumbent. It remains in the
