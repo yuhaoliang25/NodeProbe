@@ -119,7 +119,9 @@ function main() {
   const pairState = fs.existsSync(PAIR_FILE) ? loadJson(PAIR_FILE) : { pairs: {} };
   const exits = eligibleExits(assets);
   const selected = exits.slice(0, MAX_PATHS);
-  const chatgptExits = exits.filter(x => chatgptEligible(assets.nodes[x.endpointId]));
+  // ChatGPT is a capability subset of the general Elite paths. Do not
+  // introduce a lower-ranked node just because it can reach ChatGPT.
+  const chatgptExits = selected.filter(x => chatgptEligible(assets.nodes[x.endpointId]));
   const chatgptSelected = chatgptExits.slice(0, MAX_PATHS);
   const pairFallbacks = selected.length < MAX_PATHS ? eligiblePairs(pairState).slice(0, MAX_PATHS - selected.length) : [];
 
