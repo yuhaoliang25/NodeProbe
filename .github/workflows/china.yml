@@ -118,16 +118,22 @@ jobs:
           node - <<'NODE'
           const fs = require('fs');
           const yaml = require('js-yaml');
+
+          function loadProxies(file) {
+            const doc = yaml.load(fs.readFileSync(file, 'utf8'));
+            return Array.isArray(doc?.proxies) ? doc.proxies.filter(p => p && p.name) : [];
+          }
+
           const file = 'mihomo/client.yaml';
           const doc = yaml.load(fs.readFileSync(file, 'utf8'));
+          const sticky = loadProxies('subscriptions/sticky.yaml');
+          const chatgpt = loadProxies('subscriptions/chatgpt.yaml');
 
           if (!doc || !Array.isArray(doc.rules)) {
             throw new Error('Generated client.yaml has no rules array');
           }
 
           const required = [
-            'DOMAIN-SUFFIX,x.com,STICKY',
-            'DOMAIN-SUFFIX,chatgpt.com,CHATGPT',
             'RULE-SET,cn_domain,DIRECT',
             'RULE-SET,cn_ip,DIRECT,no-resolve',
             'MATCH,PROXY'
@@ -135,7 +141,7 @@ jobs:
 
           for (const rule of required) {
             if (!doc.rules.includes(rule)) {
-              throw new Error('Generated client.yaml missing required rule: ' + rule);
+              throw new Error('Generated client.yaml missing required base rule: ' + rule);
             }
           }
 
@@ -145,7 +151,41 @@ jobs:
             }
           }
 
-          console.log('Validated China client policy: CN DIRECT + ChatGPT + X STICKY + proxy fallback');
+          if (sticky.length) {
+            for (const rule of [
+              'DOMAIN-SUFFIX,x.com,STICKY',
+              'DOMAIN-SUFFIX,twitter.com,STICKY',
+              'DOMAIN-SUFFIX,t.co,STICKY',
+              'DOMAIN-SUFFIX,threads.com,STICKY',
+              'DOMAIN-SUFFIX,threads.net,STICKY'
+            ]) {
+              if (!doc.rules.includes(rule)) {
+                throw new Error('Generated client.yaml missing sticky rule: ' + rule);
+              }
+            }
+            console.log('Validated X/Threads sticky policy: sticky proxies=' + sticky.length);
+          } else {
+            console.log('China sticky subscription is empty; X/Threads sticky rules are intentionally omitted for this publication.');
+          }
+
+          if (chatgpt.length) {
+            for (const rule of [
+              'DOMAIN-SUFFIX,chatgpt.com,CHATGPT',
+              'DOMAIN-SUFFIX,chat.openai.com,CHATGPT',
+              'DOMAIN-SUFFIX,auth.openai.com,CHATGPT',
+              'DOMAIN-SUFFIX,oaistatic.com,CHATGPT',
+              'DOMAIN-SUFFIX,oaiusercontent.com,CHATGPT'
+            ]) {
+              if (!doc.rules.includes(rule)) {
+                throw new Error('Generated client.yaml missing ChatGPT rule: ' + rule);
+              }
+            }
+            console.log('Validated ChatGPT anti-risk policy: chatgpt proxies=' + chatgpt.length);
+          } else {
+            console.log('China ChatGPT subscription is empty; ChatGPT-specific rules are intentionally omitted for this publication.');
+          }
+
+          console.log('Validated China client policy: CN DIRECT + proxy fallback');
           NODE
 
       - name: Publish China subscriptions
