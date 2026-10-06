@@ -63,6 +63,20 @@ function tcpReachability(proxy,timeout){
   });
 }
 
+function isHongKongProxy(proxy) {
+  const name = String(proxy?.name || '');
+  // Hong Kong is explicitly excluded from the ChatGPT capability pool.
+  if (/香港|hong[\s_-]*kong/i.test(name)) return true;
+  const flag = name.match(/[\u{1F1E6}-\u{1F1FF}]{2}/u)?.[0];
+  if (flag) {
+    const code = [...flag]
+      .map(ch => String.fromCharCode(ch.codePointAt(0) - 0x1F1E6 + 65))
+      .join('');
+    if (code === 'HK') return true;
+  }
+  return /(?:^|[^A-Za-z])HK_\d+(?:\||$)/.test(name);
+}
+
 function endpointId(p){
   if(p['endpoint-id'])return p['endpoint-id'];
   const crypto=require('crypto');
@@ -266,9 +280,11 @@ async function main(){
     );
     const chatgptCandidates=deep.filter(p=>{
       const id=endpointId(p);
+      if(isHongKongProxy(p)) return false;
       return chatgptIncumbentIds.has(id) || stabilityEligibleIds.has(id);
     });
-    console.log('[china-probe] ChatGPT capability test start: '+chatgptCandidates.length+' nodes (incumbents='+chatgptCandidates.filter(p=>chatgptIncumbentIds.has(endpointId(p))).length+', exploration='+chatgptCandidates.filter(p=>!chatgptIncumbentIds.has(endpointId(p))).length+')');
+    const chatgptHongKongExcluded=deep.filter(isHongKongProxy).length;
+    console.log('[china-probe] ChatGPT capability test start: '+chatgptCandidates.length+' nodes (incumbents='+chatgptCandidates.filter(p=>chatgptIncumbentIds.has(endpointId(p))).length+', exploration='+chatgptCandidates.filter(p=>!chatgptIncumbentIds.has(endpointId(p))).length+', hong-kong-excluded='+chatgptHongKongExcluded+')');
     const chatgptRows=await runConcurrent(chatgptCandidates,async p=>{
       const attempts=[];
       for(let attempt=1;attempt<=CONFIG.chatgptAttempts;attempt++){
