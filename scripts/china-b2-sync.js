@@ -83,7 +83,7 @@ if(mode==='pull-stable'){
   }
  }else if(mode==='pull-discovery-queue'){
   fs.mkdirSync(path.dirname(DISCOVERY_QUEUE_LOCAL),{recursive:true});
-  const tmp=DISCOVERY_QUEUE_LOCAL+'.download.tmp';
+  const tmp=`${DISCOVERY_QUEUE_LOCAL}.${process.pid}.download.tmp`;
   try{
     try{fs.unlinkSync(tmp)}catch{}
     // Never download directly over the live queue. A failed/partial download
