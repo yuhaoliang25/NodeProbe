@@ -23,6 +23,18 @@ function countStates(nodes){
 function probeSummary(p){
   if(!p)return null;
   const obs=Array.isArray(p.observations)?p.observations:[];
+  const attempts=Array.isArray(p.attempts)?p.attempts:[];
+  const countStage=(stage,predicate=x=>x.success===true)=>attempts.filter(x=>x.stage===stage&&predicate(x)).length;
+  const stageRows=(stage)=>attempts.filter(x=>x.stage===stage);
+  const errorCounts=(stage)=>{
+    const out={};
+    for(const x of stageRows(stage)){
+      if(x.success===true)continue;
+      const key=String(x.error||'unknown').slice(0,160);
+      out[key]=(out[key]||0)+1;
+    }
+    return Object.fromEntries(Object.entries(out).sort((a,b)=>b[1]-a[1]).slice(0,10));
+  };
   return {
     candidates:obs.length,
     reachable:obs.filter(x=>x.reachabilitySuccess===true).length,
@@ -31,7 +43,23 @@ function probeSummary(p){
     chatgptEligible:obs.filter(x=>x.chatgptEligible===true).length,
     success:obs.filter(x=>x.success===true).length,
     failures:obs.filter(x=>x.success!==true).length,
-    attempts:Array.isArray(p.attempts)?p.attempts.length:0,
+    attempts:attempts.length,
+    stages:{
+      stage1Fast:{attempts:stageRows('exit-stage1-fast').length,passed:countStage('exit-stage1-fast')},
+      stage1Retry:{attempts:stageRows('stage1-retry').length,passed:countStage('stage1-retry')},
+      stage2:{attempts:stageRows('stage2').length,passed:countStage('stage2')},
+      deepRounds:Object.fromEntries([...new Set(attempts.map(x=>x.stage).filter(s=>String(s).startsWith('deep-round-')))]
+        .sort()
+        .map(stage=>[stage,{attempts:stageRows(stage).length,passed:countStage(stage)}])),
+      stability:Object.fromEntries([...new Set(attempts.map(x=>x.stage).filter(s=>String(s).startsWith('stability-round-')))]
+        .sort()
+        .map(stage=>[stage,{attempts:stageRows(stage).length,passed:countStage(stage)}]))
+    },
+    failureReasons:{
+      stage1Fast:errorCounts('exit-stage1-fast'),
+      stage1Retry:errorCounts('stage1-retry'),
+      stage2:errorCounts('stage2')
+    },
     deepPass:obs.filter(x=>Array.isArray(x.successfulStages) && x.successfulStages.some(s=>s.startsWith('deep-round-'))).length
   };
 }
