@@ -80,13 +80,12 @@ if (chatgpt.length) {
   );
 }
 rules.push(
-  // Mihomo's built-in DIRECT is intentional here: China traffic should not
-  // consume a proxy unless a higher-priority application-specific rule matches.
-  'GEOSITE,private,DIRECT',
-  'GEOIP,private,DIRECT,no-resolve',
-  'GEOSITE,cn,DIRECT',
-  'GEOIP,cn,DIRECT,no-resolve',
-  'GEOSITE,geolocation-!cn,PROXY',
+  // Application-specific policies must win before the geographic split.
+  'RULE-SET,private_domain,DIRECT',
+  'RULE-SET,private_ip,DIRECT,no-resolve',
+  'RULE-SET,cn_domain,DIRECT',
+  'RULE-SET,cn_ip,DIRECT,no-resolve',
+  'RULE-SET,geolocation_not_cn,PROXY',
   'MATCH,PROXY'
 );
 
@@ -96,6 +95,47 @@ const config = {
   mode: 'rule',
   'log-level': 'warning',
   ipv6: false,
+
+  // Use Mihomo's official MetaCubeX rule datasets rather than relying on
+  // the runtime's implicit GEO database. This makes the China/direct policy
+  // explicit and keeps the generated client self-contained.
+  'rule-providers': {
+    private_domain: {
+      type: 'http',
+      behavior: 'domain',
+      format: 'mrs',
+      interval: 86400,
+      url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs'
+    },
+    cn_domain: {
+      type: 'http',
+      behavior: 'domain',
+      format: 'mrs',
+      interval: 86400,
+      url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs'
+    },
+    geolocation_not_cn: {
+      type: 'http',
+      behavior: 'domain',
+      format: 'mrs',
+      interval: 86400,
+      url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.mrs'
+    },
+    private_ip: {
+      type: 'http',
+      behavior: 'ipcidr',
+      format: 'mrs',
+      interval: 86400,
+      url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/private.mrs'
+    },
+    cn_ip: {
+      type: 'http',
+      behavior: 'ipcidr',
+      format: 'mrs',
+      interval: 86400,
+      url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs'
+    }
+  },
 
   proxies: allProxies,
 
