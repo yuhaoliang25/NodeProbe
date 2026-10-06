@@ -7,7 +7,6 @@ const yaml = require('js-yaml');
 
 const INPUT = path.resolve(process.env.CHINA_ELITE_FILE || 'subscriptions/elite.yaml');
 const OUTPUT = path.resolve('mihomo/client.yaml');
-const TEST_URL = 'https://www.google.com/generate_204';
 
 function loadElite() {
   if (!fs.existsSync(INPUT)) throw new Error('China elite subscription missing: ' + INPUT);
@@ -47,19 +46,9 @@ const config = {
 
   'proxy-groups': [
     {
-      name: 'EXIT-AUTO',
-      type: 'url-test',
-      proxies: selectable,
-      url: TEST_URL,
-      interval: 300,
-      tolerance: 100,
-      lazy: false,
-      'expected-status': 204
-    },
-    {
       name: 'PROXY',
       type: 'select',
-      proxies: ['EXIT-AUTO', 'DIRECT']
+      proxies: [...selectable, 'DIRECT']
     }
   ],
 
