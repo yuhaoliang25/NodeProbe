@@ -148,7 +148,8 @@ jobs:
           console.log('Validated China client policy: CN DIRECT + ChatGPT + X STICKY + proxy fallback');
           NODE
 
-      - name: Publish China subscriptions        run: |
+      - name: Publish China subscriptions
+        run: |
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
