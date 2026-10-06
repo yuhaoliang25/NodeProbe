@@ -116,7 +116,19 @@ jobs:
           const fs = require('fs');
           const crypto = require('crypto');
 
-          const manifest = JSON.parse(fs.readFileSync('data/china-release.json', 'utf8'));
+          const manifestText = fs.readFileSync('data/china-release.json', 'utf8');
+          let manifest;
+          try {
+            manifest = JSON.parse(manifestText);
+          } catch (error) {
+            // Older China machines accidentally wrote a literal "\\n" after
+            // the closing JSON brace. Accept that legacy artifact temporarily;
+            // new releases must still be valid JSON.
+            const repaired = manifestText.replace(/\\\\n\\s*$/, '');
+            if (repaired === manifestText) throw error;
+            manifest = JSON.parse(repaired);
+            console.warn('Accepted legacy China release manifest with literal \\n suffix.');
+          }
           if (manifest.version < 2 || !Array.isArray(manifest.files)) {
             throw new Error('China release manifest is missing per-file hashes (version 2 required)');
           }
