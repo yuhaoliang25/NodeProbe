@@ -58,7 +58,14 @@ function apply(){
   for(const item of observations){
     const o=item.observation;
     if(!o||!o.endpointId||typeof o.success!=='boolean')continue;
-    if(item.batchName)batchesSeen.add(item.batchName);
+    if(item.batchName){
+      // A batch is marked processed only after every valid observation in it
+      // has been applied and the state has been saved. Prefer the batch-level
+      // marker over the bounded observation-ID retention so an old inbox file
+      // cannot be re-applied after its individual IDs age out.
+      if(processedBatches.has(item.batchName))continue;
+      batchesSeen.add(item.batchName);
+    }
     const id=observationId(o);
     if(appliedIds.has(id))continue;
     // Observations are authoritative evidence from the China probe agent.
