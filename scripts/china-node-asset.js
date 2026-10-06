@@ -112,19 +112,34 @@ function parseDiscoveryQueueText(text) {
   try {
     return JSON.parse(text);
   } catch (error) {
-    // A previous non-atomic writer can leave two complete JSON documents
-    // concatenated. The reported JSON error position is the start of the
-    // second document; salvage the newest complete document instead of
-    // discarding the persistent discovery backlog.
-    const position = Number(error?.message?.match(/position (\d+)/)?.[1]);
-    if (!Number.isInteger(position) || position <= 0) throw error;
-    const tail = text.slice(position).trim();
-    if (!tail.startsWith('{')) throw error;
-    const recovered = JSON.parse(tail);
-    return recovered;
+    // A previous writer may have concatenated two complete JSON documents.
+    // JSON.parse reports the first non-whitespace character after document #1,
+    // but that position is not a safe assumption for locating document #2
+    // because whitespace/newlines may surround the boundary. Search nearby
+    // object starts and accept the first complete queue document we can parse.
+    const match = String(error?.message || '').match(/position (\d+)/);
+    const position = match ? Number(match[1]) : NaN;
+    if (!Number.isInteger(position) || position < 0) throw error;
+
+    const candidates = [];
+    const from = Math.max(0, position - 4096);
+    for (let i = from; i < text.length; i += 1) {
+      if (text[i] !== '{') continue;
+      try {
+        const value = JSON.parse(text.slice(i));
+        if (value && typeof value === 'object' && Array.isArray(value.items)) {
+          candidates.push(value);
+          // Prefer the first complete queue after the reported boundary.
+          return value;
+        }
+      } catch {
+        // Keep scanning: this may be an inner object or the first document.
+      }
+    }
+
+    throw error;
   }
 }
-
 function loadDiscoveryQueue() {
   if (!fs.existsSync(CONFIG.discoveryQueueFile)) {
     return { version: 1, updatedAt: null, items: [] };
