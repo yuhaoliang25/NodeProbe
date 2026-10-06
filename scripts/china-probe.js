@@ -244,7 +244,10 @@ async function main(){
     ];
     const stabilityAttempts=[];
     const candidateMeta=new Map(
-      selected.map(candidate => [endpointId(candidate.proxy), candidate]),
+      selected.map(proxy => {
+        const candidate=candidates.find(x=>x?.endpointId===endpointId(proxy));
+        return [endpointId(proxy), candidate||{proxy}];
+      }),
     );
     const deepRanked=[...deep].sort((a,b)=>{
       const ca=candidateMeta.get(endpointId(a));
