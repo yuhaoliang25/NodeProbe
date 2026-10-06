@@ -108,14 +108,38 @@ function loadChatGPTIncumbents() {
   return [...byId.values()];
 }
 
+function parseDiscoveryQueueText(text) {
+  try {
+    return JSON.parse(text);
+  } catch (error) {
+    // A previous non-atomic writer can leave two complete JSON documents
+    // concatenated. The reported JSON error position is the start of the
+    // second document; salvage the newest complete document instead of
+    // discarding the persistent discovery backlog.
+    const position = Number(error?.message?.match(/position (\\d+)/)?.[1]);
+    if (!Number.isInteger(position) || position <= 0) throw error;
+    const tail = text.slice(position).trim();
+    if (!tail.startsWith('{')) throw error;
+    const recovered = JSON.parse(tail);
+    return recovered;
+  }
+}
+
 function loadDiscoveryQueue() {
   if (!fs.existsSync(CONFIG.discoveryQueueFile)) {
     return { version: 1, updatedAt: null, items: [] };
   }
   try {
-    const queue = JSON.parse(fs.readFileSync(CONFIG.discoveryQueueFile, 'utf8'));
+    const raw = fs.readFileSync(CONFIG.discoveryQueueFile, 'utf8');
+    const queue = parseDiscoveryQueueText(raw);
     if (!queue || typeof queue !== 'object' || !Array.isArray(queue.items)) {
       throw new Error('China discovery queue is invalid: ' + CONFIG.discoveryQueueFile);
+    }
+    // Rewrite a successfully recovered queue atomically so the corruption is
+    // repaired before this cycle modifies or republishes it.
+    if (raw.trim() !== JSON.stringify(queue, null, 2).trim()) {
+      saveDiscoveryQueue(queue);
+      console.log('Recovered and atomically repaired China discovery queue.');
     }
     return queue;
   } catch (error) {
