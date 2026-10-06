@@ -10,6 +10,7 @@ const PAIR_FILE = process.env.CHINA_PAIR_KNOWLEDGE_FILE || 'data/china-pair-know
 const EXIT_FILE = process.env.CHINA_EXIT_POOL_FILE || 'subscriptions/exit.yaml';
 const PAIR_POOL_FILE = process.env.CHINA_PAIR_POOL_FILE || 'subscriptions/pairs.yaml';
 const OUTPUT_FILE = process.env.CHINA_ELITE_FILE || 'subscriptions/elite.yaml';
+const CHATGPT_OUTPUT_FILE = process.env.CHINA_CHATGPT_FILE || 'subscriptions/chatgpt.yaml';
 const META_FILE = path.join(path.dirname(OUTPUT_FILE), 'china-elite.json');
 
 const MAX_PATHS = Math.max(1, Number(process.env.CHINA_ELITE_MAX_PATHS || 3));
@@ -176,6 +177,10 @@ function main() {
     quotingType: "'",
   }));
 
+  fs.writeFileSync(CHATGPT_OUTPUT_FILE, yaml.dump({ proxies: chatgptSelected.map(item => item.proxy) }, {
+    lineWidth: -1, noRefs: true, forceQuotes: true, quotingType: '\''
+  }));
+
   fs.writeFileSync(META_FILE, JSON.stringify({
     generatedAt: new Date().toISOString(),
     maxPaths: MAX_PATHS,
@@ -204,6 +209,7 @@ function main() {
     chatgptEligibleExits: chatgptExits.length,
     chatgptSelectedPaths: chatgptSelected.length,
     output: OUTPUT_FILE,
+    chatgptOutput: CHATGPT_OUTPUT_FILE,
   }, null, 2));
 }
 
