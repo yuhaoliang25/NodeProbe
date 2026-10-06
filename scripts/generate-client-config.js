@@ -6,6 +6,7 @@ const path = require('path');
 const yaml = require('js-yaml');
 
 const INPUT = path.resolve(process.env.CHINA_ELITE_FILE || 'subscriptions/elite.yaml');
+const CHATGPT_INPUT = path.resolve(process.env.CHINA_CHATGPT_FILE || 'subscriptions/chatgpt.yaml');
 const OUTPUT = path.resolve('mihomo/client.yaml');
 
 function loadElite() {
@@ -17,6 +18,13 @@ function loadElite() {
   return doc.proxies
     .filter(p => p && typeof p === 'object' && p.name)
     .map(p => ({ ...p, name: String(p.name) }));
+}
+
+function loadChatGPT() {
+  if (!fs.existsSync(CHATGPT_INPUT)) throw new Error('China ChatGPT subscription missing: ' + CHATGPT_INPUT);
+  const doc = yaml.load(fs.readFileSync(CHATGPT_INPUT, 'utf8'));
+  if (!doc || !Array.isArray(doc.proxies)) throw new Error('chatgpt.yaml: expected a YAML document with a proxies array');
+  return doc.proxies.filter(p => p && typeof p === 'object' && p.name).map(p => ({ ...p, name: String(p.name) }));
 }
 
 function uniqueProxies(items) {
@@ -31,6 +39,9 @@ function uniqueProxies(items) {
 }
 
 const elite = uniqueProxies(loadElite());
+const chatgpt = uniqueProxies(loadChatGPT());
+const eliteNames = new Set(elite.map(p => p.name));
+for (const p of chatgpt) if (!eliteNames.has(p.name)) throw new Error('ChatGPT proxy is not present in elite.yaml: ' + p.name);
 const selectable = elite
   .filter(p => !String(p.name).startsWith('PAIR-RELAY-'))
   .map(p => p.name);
@@ -49,10 +60,23 @@ const config = {
       name: 'PROXY',
       type: 'select',
       proxies: [...selectable, 'DIRECT']
+    },
+    {
+      name: 'CHATGPT',
+      type: 'select',
+      proxies: chatgpt.map(p => p.name)
+
     }
   ],
 
-  rules: ['MATCH,PROXY']
+  rules: [
+    'DOMAIN-SUFFIX,chatgpt.com,CHATGPT',
+    'DOMAIN-SUFFIX,chat.openai.com,CHATGPT',
+    'DOMAIN-SUFFIX,auth.openai.com,CHATGPT',
+    'DOMAIN-SUFFIX,oaistatic.com,CHATGPT',
+    'DOMAIN-SUFFIX,oaiusercontent.com,CHATGPT',
+    'MATCH,PROXY'
+  ]
 };
 
 fs.mkdirSync(path.dirname(OUTPUT), { recursive: true });
@@ -67,5 +91,5 @@ fs.writeFileSync(
   'utf8'
 );
 
-console.log('client.yaml: elite=' + elite.length + ' selectable=' + selectable.length);
+console.log('client.yaml: elite=' + elite.length + ' selectable=' + selectable.length + ' chatgpt=' + chatgpt.length);
 console.log('generated: ' + OUTPUT);
