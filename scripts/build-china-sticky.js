@@ -4,6 +4,7 @@
 const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
+const net = require('net');
 
 const ASSET_FILE = process.env.CHINA_ASSET_FILE || 'data/china-node-assets.json';
 const STATE_FILE = process.env.CHINA_STICKY_STATE_FILE || 'data/china-sticky.json';
@@ -14,6 +15,15 @@ const MIN_RECENT_RATE = Math.max(0, Math.min(1, Number(process.env.CHINA_STICKY_
 const PROTECT_FAILURE_STREAK = Math.max(1, Number(process.env.CHINA_STICKY_PROTECT_FAILURE_STREAK || 2));
 const MAX_PROTECTED_AGE_MS = Math.max(1, Number(process.env.CHINA_STICKY_MAX_PROTECTED_AGE_MS || 36 * 60 * 60 * 1000));
 const DECAY_HALF_LIFE_MS = Math.max(1, Number(process.env.CHINA_STICKY_DECAY_HALF_LIFE_MS || 72 * 60 * 60 * 1000));
+// Continuity is deliberately only a tiny tie-breaker: reliability/freshness
+// remain the primary reasons to select a sticky node. When the incumbent is
+// replaced, a candidate with a nearby literal IP gets a small advantage.
+// This is useful for IP-sensitive services without turning IP proximity into
+// a substitute for health evidence.
+const IP_CONTINUITY_WEIGHT = Math.max(
+  0,
+  Number(process.env.CHINA_STICKY_IP_CONTINUITY_WEIGHT || 0.002),
+);
 
 function loadJson(file, fallback) {
   if (!fs.existsSync(file)) return fallback;
@@ -117,10 +127,13 @@ function eligible(node, atMs) {
   return true;
 }
 
-function compare(a, b, atMs) {
-  const ar = stabilityRank(a, atMs);
-  const br = stabilityRank(b, atMs);
-  return br.lowerBound - ar.lowerBound ||
+function compare(a, b, atMs, referenceServer = null) {
+  const ar = continuityAdjustedScore(a, atMs, referenceServer);
+  const br = continuityAdjustedScore(b, atMs, referenceServer);
+  return (
+    (br.lowerBound + br.continuityBonus) -
+    (ar.lowerBound + ar.continuityBonus)
+  ) ||
     br.decayedRate - ar.decayedRate ||
     br.recentRate - ar.recentRate ||
     br.observedRuns - ar.observedRuns ||
@@ -149,6 +162,63 @@ function canProtectCurrent(node, atMs) {
   return true;
 }
 
+function normalizeIp(value) {
+  let ip = String(value || '').trim();
+  if (!ip) return null;
+  // YAML Mihomo configs may use bracketed IPv6 literals.
+  if (ip.startsWith('[') && ip.endsWith(']')) ip = ip.slice(1, -1);
+  return net.isIP(ip) ? ip : null;
+}
+
+function ipDistanceScore(candidateIp, referenceIp) {
+  const a = normalizeIp(candidateIp);
+  const b = normalizeIp(referenceIp);
+  if (!a || !b) return 0;
+  const versionA = net.isIP(a);
+  const versionB = net.isIP(b);
+  if (versionA !== versionB) return 0;
+
+  if (versionA === 4) {
+    const toBigInt = ip => ip.split('.').reduce((value, octet) => (
+      (value << 8n) + BigInt(Number(octet))
+    ), 0n);
+    const distance = toBigInt(a) >= toBigInt(b)
+      ? toBigInt(a) - toBigInt(b)
+      : toBigInt(b) - toBigInt(a);
+    return Number(1n - distance > 0n ? 1n - distance / 4294967295n : 0n);
+  }
+
+  // IPv6 is handled with BigInt to avoid precision loss. The score is still
+  // normalized to [0, 1], so the same tiny continuity weight applies.
+  function ipv6ToBigInt(ip) {
+    const parts = ip.split('::');
+    const left = parts[0] ? parts[0].split(':').filter(Boolean) : [];
+    const right = parts[1] ? parts[1].split(':').filter(Boolean) : [];
+    const missing = 8 - left.length - right.length;
+    const groups = [...left, ...Array(Math.max(0, missing)).fill('0'), ...right];
+    return groups.reduce((value, group) => (
+      (value << 16n) + BigInt(parseInt(group, 16) || 0)
+    ), 0n);
+  }
+
+  const ai = ipv6ToBigInt(a);
+  const bi = ipv6ToBigInt(b);
+  const distance = ai >= bi ? ai - bi : bi - ai;
+  const max = (1n << 128n) - 1n;
+  const similarity = max - distance;
+  return Number(similarity) / Number(max);
+}
+
+function continuityAdjustedScore(node, atMs, referenceServer) {
+  const rank = stabilityRank(node, atMs);
+  const continuity = ipDistanceScore(node.proxy?.server, referenceServer);
+  return {
+    ...rank,
+    continuity,
+    continuityBonus: continuity * IP_CONTINUITY_WEIGHT,
+  };
+}
+
 function createState() {
   return {
     version: 1,
@@ -172,8 +242,14 @@ function main() {
   const nodes = Object.values(assets.nodes || {});
   const atMs = Date.now();
   const byId = new Map(nodes.filter(x => x?.endpointId).map(x => [x.endpointId, x]));
-  const eligibleNodes = nodes.filter(node => eligible(node, atMs)).sort((a, b) => compare(a, b, atMs));
   const current = state.endpointId ? byId.get(state.endpointId) : null;
+  const continuityReferenceServer =
+    current?.proxy?.server ||
+    state.lastSelectedServer ||
+    null;
+  const eligibleNodes = nodes
+    .filter(node => eligible(node, atMs))
+    .sort((a, b) => compare(a, b, atMs, continuityReferenceServer));
 
   let selected = null;
   let reason = 'initial-selection';
@@ -209,6 +285,8 @@ function main() {
       state.switchedAt = timestamp;
       state.switchReason = reason;
     }
+    state.lastSelectedServer = selected.proxy?.server || state.lastSelectedServer || null;
+    }
   } else {
     state.endpointId = null;
     state.switchReason = reason;
@@ -241,6 +319,9 @@ function main() {
       recentSuccessRate: stabilityRank(selected, atMs).recentRate,
       timeDecayedSuccessRate: stabilityRank(selected, atMs).decayedRate,
       effectiveObservations: stabilityRank(selected, atMs).effectiveObservations,
+      continuityReferenceServer,
+      continuityScore: ipDistanceScore(selected.proxy?.server, continuityReferenceServer),
+      continuityBonus: ipDistanceScore(selected.proxy?.server, continuityReferenceServer) * IP_CONTINUITY_WEIGHT,
     } : null,
     candidateCount: eligibleNodes.length,
     reason,
