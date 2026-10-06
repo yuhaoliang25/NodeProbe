@@ -124,7 +124,7 @@ jobs:
             // Older China machines accidentally wrote a literal "\\n" after
             // the closing JSON brace. Accept that legacy artifact temporarily;
             // new releases must still be valid JSON.
-            const repaired = manifestText.replace(/\\\\n\\s*$/, '');
+            const repaired = manifestText.replace(/\\n\\s*$/, '');
             if (repaired === manifestText) throw error;
             manifest = JSON.parse(repaired);
             console.warn('Accepted legacy China release manifest with literal \\n suffix.');
