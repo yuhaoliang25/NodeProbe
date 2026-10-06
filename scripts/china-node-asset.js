@@ -5,6 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 const yaml = require('js-yaml');
+const { timeDecayedEvidence } = require('./time-decay');
 
 const CONFIG = {
   stableFile: process.env.CHINA_STABLE_FILE || 'subscriptions/stable.yaml',
@@ -16,6 +17,7 @@ const CONFIG = {
   veteranRetestMs: 24 * 60 * 60 * 1000,
   failedRetryMs: 2 * 60 * 60 * 1000,
   recentWindow: 10,
+  decayHalfLifeMs: Number(process.env.CHINA_ASSET_DECAY_HALF_LIFE_MS || 72 * 60 * 60 * 1000),
   observationRetention: 50,
   forgottenAfterFailures: 3,
   forgottenRetryMs: 7 * 24 * 60 * 60 * 1000,
@@ -132,15 +134,14 @@ function loadState() {
   return state;
 }
 
-function recentRate(node) {
+function recentRate(node, atMs = Date.now()) {
   const observations = Array.isArray(node.observations) ? node.observations : [];
-  const recent = observations.slice(-CONFIG.recentWindow);
-  if (!recent.length) return null;
-  return recent.filter(x => x.success).length / recent.length;
+  if (!observations.length) return null;
+  return timeDecayedEvidence(observations, atMs, CONFIG.decayHalfLifeMs).rate;
 }
 
-function deriveState(node) {
-  const rate = recentRate(node);
+function deriveState(node, atMs = Date.now()) {
+  const rate = recentRate(node, atMs);
 
   if (node.successes === 0) return 'NEW';
   if (node.state === 'FORGOTTEN') return 'FORGOTTEN';
@@ -276,7 +277,7 @@ function updateNode(node, observation) {
     // TRUSTED.
     node.state = 'PROBATION';
   } else {
-    node.state = deriveState(node);
+    node.state = deriveState(node, Date.parse(at));
   }
 
   if (node.state === 'UNTRUSTED') {
