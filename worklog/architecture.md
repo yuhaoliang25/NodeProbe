@@ -1203,3 +1203,41 @@ Current defaults in scripts/china-probe.js:
 - These stages remain evidence/capability signals and do not independently turn a China asset failure into a lifecycle failure.
 
 This bounds the expensive tail of a 300-node cycle. The previous 203-node stability run generated 1,218 attempts per round and the subsequent 199-node ChatGPT run added another 597 attempts, causing the systemd startup timeout. The new budget prevents that scaling path while preserving forced incumbent checks.
+
+## 2026-10-06 Persistent discovery backlog
+
+The increased exploration budget is now backed by explicit persistent discovery memory on both Global and China. This closes the gap between “re-discover candidates from the current snapshot” and “remember candidates that were discovered but did not fit this run's test budget”.
+
+### Global
+
+- `data/node-discovery-queue.json` is runtime state stored in B2 as `nodeprobe-state/node-discovery-queue.json`.
+- Every current source discovery adds or refreshes an unrecognized endpoint in the queue.
+- Queue entries are oldest-first and retain the last known proxy/source provenance.
+- Selecting a queue item for a run records `lastSelectedAt` but does **not** consume/remove it.
+- If the workflow reaches node-pool processing and the endpoint becomes a recognized Global asset, it is removed from the discovery queue on the next build.
+- An endpoint already present in the Node Pool, including DEAD nodes, is never reintroduced as discovery merely because a source publishes it again.
+- The queue is checkpointed to B2 immediately after candidate allocation, so a later long-running probe failure does not erase newly discovered backlog.
+
+Therefore increasing Global exploration intensity now means increasing the rate at which a persistent backlog is tested, rather than relying on the same endpoint appearing again in the next source snapshot.
+
+### China
+
+- `data/china-discovery-queue.json` is the China-side persistent discovery backlog, stored under `nodeprobe-state/china/discovery-queue.json`.
+- Current Global Stable discovery adds new endpoints; recognized China assets are removed from the queue and remain owned by the China asset lifecycle.
+- A Stable endpoint that was discovered but did not fit the current 300-node China budget remains pending even if it disappears from the next Stable snapshot.
+- Candidate selection marks the item as selected but does not consume it. If the probe/apply stage never records the endpoint, it remains pending for a later cycle.
+- This queue is deliberately separate from `china-probe-candidates.json`: the latter is a generated work schedule for one cycle, while the former is durable discovery memory.
+
+The resulting model is:
+
+    current sources / Global Stable
+                ↓
+        persistent discovery queue
+                ↓
+       bounded per-run candidates
+                ↓
+       first successful observation
+                ↓
+       persistent asset pool
+
+Source disappearance therefore means “not currently rediscovered”, not “already tested” and not “delete the pending work”.
