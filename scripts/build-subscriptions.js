@@ -141,6 +141,44 @@ try{
 }catch(e){console.log('persistent node pool unavailable:',e.message)}
 fs.writeFileSync('data/current-node-sources.json',JSON.stringify(Object.fromEntries(currentSourceMembership),null,2));
 
+// Discovery backlog is persistent runtime memory. Current source snapshots add
+// information to it, but disappearance from a source does not delete a pending
+// endpoint. Once an endpoint enters the Node Pool (including DEAD), it is no
+// longer a discovery item; its lifecycle is owned by the pool instead.
+const discoveryQueueFile='data/node-discovery-queue.json';
+let discoveryQueue={version:1,updatedAt:null,items:[]};
+try{
+  if(fs.existsSync(discoveryQueueFile)){
+    const q=JSON.parse(fs.readFileSync(discoveryQueueFile,'utf8'));
+    if(Array.isArray(q?.items)) discoveryQueue=q;
+  }
+}catch{}
+const queueById=new Map((discoveryQueue.items||[]).filter(x=>x?.endpointId).map(x=>[x.endpointId,x]));
+for(const [id,sources] of currentSourceMembership){
+  const p=proxies.find(x=>(x['endpoint-id']||x._id)===id);
+  if(!p)continue;
+  const existing=queueById.get(id);
+  if(existing){
+    existing.proxy={...p};
+    existing.sources=[...new Set([...(existing.sources||[]),...(sources||[])])];
+    existing.lastDiscoveredAt=new Date().toISOString();
+  }else{
+    queueById.set(id,{
+      endpointId:id,
+      proxy:{...p},
+      sources:[...new Set(sources||[])],
+      firstDiscoveredAt:new Date().toISOString(),
+      lastDiscoveredAt:new Date().toISOString(),
+      lastSelectedAt:null,
+    });
+  }
+}
+const knownPoolIds=new Set((poolState.nodes||[]).map(entry=>entry.fingerprint||entry.proxy?.['endpoint-id']).filter(Boolean));
+for(const id of [...queueById.keys()]) if(knownPoolIds.has(id)) queueById.delete(id);
+discoveryQueue={version:1,updatedAt:new Date().toISOString(),items:[...queueById.values()]};
+fs.mkdirSync(path.dirname(discoveryQueueFile),{recursive:true});
+fs.writeFileSync(discoveryQueueFile,JSON.stringify(discoveryQueue,null,2)+'\\n');
+
 // Complete inventory is kept for all.yaml; only selected work is written to candidates.json.
 const candidateLimit=Math.max(1,Number(process.env.NODE_CANDIDATE_LIMIT||1500));
 // Global is now primarily a discovery feeder for downstream probes. Maintenance
@@ -198,11 +236,15 @@ for(const entry of poolState.nodes||[]){
   });
 }
 deadRechecks.sort((a,b)=>b.overdueMs-a.overdueMs||a.id.localeCompare(b.id));
-const exploration=proxies.filter(p=>{
- const id=p['endpoint-id']||p._id;
- const entry=poolById.get(id);
- return !entry&&!p._poolOnly;
-});
+const exploration=[...queueById.values()]
+  .filter(item=>!knownPoolIds.has(item.endpointId))
+  .sort((a,b)=>{
+    const at=a.lastSelectedAt?Date.parse(a.lastSelectedAt):0;
+    const bt=b.lastSelectedAt?Date.parse(b.lastSelectedAt):0;
+    return at-bt || String(a.firstDiscoveredAt||'').localeCompare(String(b.firstDiscoveredAt||''));
+  })
+  .map(item=>item.proxy)
+  .filter(Boolean);
 const selectedIds=new Set(),selected=[];
 const maintenanceSelected=maintenance.slice(0,maintenanceLimit);
 for(const item of maintenanceSelected){
@@ -216,7 +258,16 @@ for(const p of exploration.slice(0,explorationCapacity)){
  const id=p['endpoint-id']||p._id;
  if(selectedIds.has(id))continue;
  selected.push(p); selectedIds.add(id);
+ const item=queueById.get(id);
+ if(item)item.lastSelectedAt=new Date().toISOString();
 }
+// Persist the selection timestamp without consuming the backlog. A candidate
+// that was selected but never observed because the workflow crashed remains in
+// the queue and can be selected again on a later run. Successful observation
+// removes it when Node Pool state is rebuilt.
+discoveryQueue.updatedAt=new Date().toISOString();
+discoveryQueue.items=[...queueById.values()];
+fs.writeFileSync(discoveryQueueFile,JSON.stringify(discoveryQueue,null,2)+'\\n');
 console.log('candidate allocation: maintenance',maintenanceSelected.length,
   'exploration',selected.length-maintenanceSelected.length,
   'maintenanceDue',maintenance.length,'explorationAvailable',exploration.length,
