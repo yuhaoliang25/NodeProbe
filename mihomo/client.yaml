@@ -112,7 +112,7 @@ proxy-groups:
   - name: 'STICKY'
     type: 'select'
     proxies:
-      - '🇮🇹IT_1|625KB/s|R002-260618 01'
+      - '🇸🇬SG_38|247KB/s|R002-260618 01'
 rules:
   - 'DOMAIN-SUFFIX,x.com,STICKY'
   - 'DOMAIN-SUFFIX,twitter.com,STICKY'

@@ -1,13 +1,4 @@
 proxies:
-  - name: '🇮🇹IT_1|625KB/s|R002-260618 01'
-    port: 443
-    server: '91.243.118.217'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: 'e019d09aa7573606'
   - name: '🇭🇰 香港 04'
     port: 443
     server: 'fan.240104.xyz'
@@ -478,6 +469,16 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '25f3758e1ead0039'
+  - name: '🇫🇷FR_32|1.7MB/s|R002-260618 01'
+    port: 443
+    server: '103.82.101.44'
+    skip-cert-verify: true
+    sni: 'f3a61d8406d537345747f99f8a281007-3f754ed5da1bba09.apache-iv.com'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '76887085bc7044ab'
   - name: '🇷🇴RO_55|998KB/s|P002-260618 01'
     password: 'None'
     port: 9002
@@ -875,6 +876,15 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '774405f482604a30'
+  - name: '🇺🇸US_457|806KB/s|R002-260618 01'
+    port: 9002
+    server: '138.199.35.204'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'cf366d738ac1179d'
   - name: '❓Other_4|1.5MB/s|P002-260618 01'
     password: 'None'
     port: 9002
@@ -1029,6 +1039,17 @@ proxies:
     username: 'null'
     udp: true
     endpoint-id: '4f982cd9307ab868'
+  - name: '🇷🇴RO_90|1.2MB/s|R002-260618 01'
+    password: 'null'
+    port: 9002
+    server: '193.176.84.16'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    endpoint-id: '7085e434dab8b9e1'
   - name: '🇳🇱NL_285|1.1MB/s|P002-260618 01'
     password: 'null'
     port: 443
@@ -1172,6 +1193,17 @@ proxies:
     username: 'testuser1'
     udp: true
     endpoint-id: '1b365f8090e75c3c'
+  - name: '🇷🇴RO_19|1.2MB/s|P002-260618 01'
+    password: ''
+    port: 9002
+    server: '193.176.84.16'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    username: ''
+    udp: true
+    endpoint-id: '71a8eada6fa1c8c0'
   - name: '🇩🇪DE_84|248KB/s|R002-260618 01'
     password: 'null'
     port: 443
@@ -1223,6 +1255,26 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '1b5f9ef740ef311b'
+  - name: '🇫🇷FR_66|3.0MB/s|R002-260618 01'
+    port: 443
+    server: '141.94.16.4'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'baa006648c5cceb5'
+  - name: '🇺🇸US_635|812KB/s|P002-260618 01'
+    password: 'null'
+    port: 9002
+    server: '138.199.35.198'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    endpoint-id: '0b88abd3210eb3d4'
   - name: '🇯🇵JP_17|159KB/s|R002-260618 01'
     password: 'null'
     port: 443
@@ -1261,6 +1313,57 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '7ae9c25547c29cee'
+  - name: '🇺🇸US_447|706KB/s|R002-260618 01'
+    password: ''
+    port: 9002
+    server: '138.199.35.201'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    username: ''
+    endpoint-id: '07f00881694afd58'
+  - name: '🇺🇸US_490|770KB/s|R002-260618 01'
+    password: 'None'
+    port: 9002
+    server: '138.199.35.201'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '6a686b4cda81077c'
+  - name: '🇺🇸US_200|293KB/s|P002-260618 01'
+    password: 'None'
+    port: 9002
+    server: '138.199.35.198'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '91b783c05ebd3e48'
+  - name: '🇺🇸US_187|781KB/s 01'
+    password: ''
+    port: 9002
+    server: '138.199.35.199'
+    skip-cert-verify: true
+    tls: true
+    type: 'http'
+    username: ''
+    udp: true
+    endpoint-id: '6799cd46b29f0ad9'
+  - name: '🇺🇸US_486|721KB/s|P002-260618 01'
+    password: 'None'
+    port: 9002
+    server: '138.199.35.204'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '4686a98fb10918e7'
   - name: '🇺🇸US_249|347KB/s|R002-260618 01'
     password: 'null'
     port: 443
@@ -1272,6 +1375,76 @@ proxies:
     username: 'null'
     udp: true
     endpoint-id: 'e73f9b00dc6db0bb'
+  - name: '🇺🇸US_312|828KB/s 01'
+    password: ''
+    port: 9002
+    server: '138.199.35.203'
+    skip-cert-verify: true
+    tls: true
+    type: 'http'
+    username: ''
+    udp: true
+    endpoint-id: '569c76a2e3389bb7'
+  - name: '🇺🇸US_557|781KB/s|R002-260618 01'
+    port: 9002
+    server: '138.199.35.211'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'ccfa49dbe0f74fb1'
+  - name: '🇺🇸US_460|759KB/s|P002-260618 01'
+    password: 'None'
+    port: 9002
+    server: '138.199.35.218'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '3d797a657bcccfc8'
+  - name: '🇺🇸US_243|833KB/s|P002-260618 01'
+    password: 'null'
+    port: 9002
+    server: '138.199.35.220'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    endpoint-id: 'f5df955ef86aa7fa'
+  - name: '🇺🇸US_494|762KB/s|P002-260618 01'
+    password: 'null'
+    port: 9002
+    server: '138.199.35.215'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    endpoint-id: '1ad38a7e676afc40'
+  - name: '🇺🇸US_309|791KB/s|P002-260618 01'
+    password: 'None'
+    port: 9002
+    server: '138.199.35.220'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'cc8428afcf80cbb0'
+  - name: '🇺🇸US_49|788KB/s|R002-260618 01'
+    port: 9002
+    server: '138.199.35.198'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '64b00770f99303a9'
   - name: '🇳🇱NL_221|3.8MB/s|R002-260618 01'
     port: 443
     server: '5.255.118.82'
@@ -1291,6 +1464,16 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: 'a7050f9b8d257d48'
+  - name: '🇺🇸US_632|380KB/s|P002-260618 01'
+    password: 'None'
+    port: 8090
+    server: '209.148.53.153'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '1eae0757f380f7d4'
   - name: '🇺🇸US_547|586KB/s|R002-260618 01'
     port: 443
     server: '216.107.139.82'
@@ -1390,3 +1573,107 @@ proxies:
     username: 'null'
     udp: true
     endpoint-id: '10edd1f9ee6fc8d9'
+  - name: '🇳🇱NL_287|777KB/s|R002-260618 01'
+    port: 443
+    server: '185.246.153.42'
+    skip-cert-verify: true
+    sni: '482c8436a1f7c908b48a1757abb5dd79-3791fb4df2db250b.apache-iv.com'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'e1c82204f654007f'
+  - name: '🇺🇸US_765|333KB/s|R002-260618 01'
+    password: 'null'
+    port: 443
+    server: '38.28.193.188'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    endpoint-id: '8b549a577b977342'
+  - name: '🇺🇸US_567|734KB/s|P002-260618 01'
+    password: 'null'
+    port: 9002
+    server: '138.199.35.219'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    endpoint-id: 'd770502da3de9f92'
+  - name: '🇺🇸US_306|800KB/s|R002-260618 01'
+    password: 'null'
+    port: 9002
+    server: '138.199.35.214'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    endpoint-id: '54fe9da700e0b77f'
+  - name: '🇺🇸US_618|676KB/s|P002-260618 01'
+    password: 'None'
+    port: 9002
+    server: '138.199.35.199'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'ce8b293a59a3c510'
+  - name: '🇺🇸US_646|716KB/s|P002-260618 01'
+    password: ''
+    port: 9002
+    server: '138.199.35.210'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    username: ''
+    udp: true
+    endpoint-id: '269ddeaf47fdd335'
+  - name: '🇳🇱NL_167|225KB/s|P002-260618 01'
+    password: 'None'
+    port: 443
+    server: '5.255.118.82'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '5785822f65964492'
+  - name: '🇩🇪DE_11|2.9MB/s|R002-260618 01'
+    port: 443
+    server: '185.44.107.166'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '82d5def0fabb8171'
+  - name: '🇺🇸US_82|334KB/s|Z001-260618 01'
+    port: 443
+    server: 'fan.226278.xyz'
+    sub_tag: 'Z001-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    sni: 'fan.226278.xyz'
+    endpoint-id: 'b952ddd8ab2d095f'
+  - delay: 1488
+    name: '🇷🇴RO_107|1.3MB/s|G001-260618 01'
+    password: 'null'
+    port: 9002
+    server: '193.176.84.35'
+    skip-cert-verify: true
+    sub_tag: 'G001-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    username: 'null'
+    endpoint-id: 'c3f495af41c2f3fc'

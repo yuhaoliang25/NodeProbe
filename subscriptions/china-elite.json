@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-06T17:08:06.536Z",
+  "generatedAt": "2026-10-06T21:50:10.901Z",
   "maxPaths": 3,
   "counts": {
-    "eligibleExits": 140,
-    "chatgptEligibleExits": 71,
+    "eligibleExits": 168,
+    "chatgptEligibleExits": 138,
     "chatgptSelectedPaths": 3,
-    "chatgptIncumbentPaths": 2,
+    "chatgptIncumbentPaths": 3,
     "selectedPaths": 3,
     "publishedProxies": 3
   },
@@ -58,24 +58,24 @@
       "kind": "chatgpt-incumbent",
       "endpointId": "e019d09aa7573606",
       "name": "🇮🇹IT_1|625KB/s|R002-260618 01",
-      "score": 1451.4,
-      "chatgptScore": 962.1,
+      "score": 1244.373735426524,
+      "chatgptScore": 968.95,
       "chatgptSuccessRate": 1
     },
     {
       "kind": "chatgpt-incumbent",
       "endpointId": "351dcbb70d0afdd5",
       "name": "🇺🇸US_42|776KB/s 01",
-      "score": 868.7118613247364,
-      "chatgptScore": 1001.35,
+      "score": 1047.6065622917522,
+      "chatgptScore": 1045.8,
       "chatgptSuccessRate": 1
     },
     {
-      "kind": "chatgpt-exploration",
+      "kind": "chatgpt-incumbent",
       "endpointId": "d1f4a0d80288cf0b",
       "name": "🇸🇬SG_38|247KB/s|R002-260618 01",
-      "score": 1473,
-      "chatgptScore": 978.45,
+      "score": 1459.8,
+      "chatgptScore": 1071.45,
       "chatgptSuccessRate": 1
     }
   ]
