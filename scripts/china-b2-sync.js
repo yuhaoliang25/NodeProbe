@@ -141,7 +141,7 @@ if(mode==='pull-stable'){
   };
   const manifestFile=path.join(process.env.CHINA_RELEASE_TMP_DIR||'data','.china-release.json');
   fs.mkdirSync(path.dirname(manifestFile),{recursive:true});
-  fs.writeFileSync(manifestFile,JSON.stringify(manifest,null,2)+'\\n');
+  fs.writeFileSync(manifestFile,JSON.stringify(manifest,null,2)+'\n');
   // The manifest is published last. GitHub only needs to consume a release
   // after this marker exists, so it never becomes the China state writer.
   run(['file','upload',BUCKET,manifestFile,PREFIX+'/release.json']);
