@@ -10,6 +10,7 @@ const CONFIG = {
   stableFile: process.env.CHINA_STABLE_FILE || 'subscriptions/stable.yaml',
   stateFile: process.env.CHINA_ASSET_FILE || 'data/china-node-assets.json',
   candidateFile: process.env.CHINA_CANDIDATE_FILE || 'data/china-probe-candidates.json',
+  chatgptFile: process.env.CHINA_CHATGPT_FILE || 'subscriptions/chatgpt.yaml',
   maxNodesPerRun: Number(process.env.CHINA_MAX_NODES || 300),
   veteranRetestMs: 24 * 60 * 60 * 1000,
   failedRetryMs: 2 * 60 * 60 * 1000,
@@ -77,6 +78,20 @@ function loadStable() {
     }
   }
 
+  return [...byId.values()];
+}
+
+function loadChatGPTIncumbents() {
+  if (!fs.existsSync(CONFIG.chatgptFile)) return [];
+  const doc = yaml.load(fs.readFileSync(CONFIG.chatgptFile, 'utf8'));
+  if (!Array.isArray(doc?.proxies)) return [];
+
+  const byId = new Map();
+  for (const proxy of doc.proxies) {
+    if (!proxy || !proxy.server || !proxy.port || !proxy.type) continue;
+    const endpointId = endpointIdentity(proxy);
+    if (!byId.has(endpointId)) byId.set(endpointId, { endpointId, proxy });
+  }
   return [...byId.values()];
 }
 
@@ -316,6 +331,21 @@ function scoreCandidate(node, category, atMs) {
 
 function buildCandidates(stable, state, atMs) {
   const candidates = [];
+  const chatgptIncumbents = loadChatGPTIncumbents();
+
+  // The ChatGPT subscription is its own maintained pool. Its current members
+  // are forced into every China probe cycle so a healthy incumbent is retested
+  // even when ordinary asset scheduling says it is not due yet. This prevents
+  // ordinary Elite ranking from silently dropping a proven ChatGPT path.
+  for (const item of chatgptIncumbents) {
+    const old = state.nodes[item.endpointId];
+    candidates.push({
+      endpointId: item.endpointId,
+      proxy: old?.proxy || item.proxy,
+      category: 'chatgpt-incumbent',
+      score: 2000,
+    });
+  }
   // Stable is an exploration feed: it can introduce new endpoints and refresh
   // the current proxy definition for known endpoints. It is not the authority
   // for China asset membership or maintenance scheduling.
@@ -369,8 +399,18 @@ function buildCandidates(stable, state, atMs) {
   }
 
   const unique = [...deduped.values()];
+  const chatgptIncumbentIds = new Set(
+    chatgptIncumbents.map(item => item.endpointId),
+  );
+  const chatgptIncumbentsSelected = unique
+    .filter(candidate => candidate.category === 'chatgpt-incumbent')
+    .sort((a, b) => b.score - a.score);
+
   const maintenance = unique
-    .filter(candidate => candidate.category !== 'new')
+    .filter(candidate =>
+      candidate.category !== 'new' &&
+      candidate.category !== 'chatgpt-incumbent'
+    )
     .sort((a, b) => b.score - a.score);
   const exploration = unique
     .filter(candidate => candidate.category === 'new')
@@ -403,11 +443,22 @@ function buildCandidates(stable, state, atMs) {
     CONFIG.maxNodesPerRun - recoveryLimit - explorationLimit,
   );
 
-  const selectedOrdinary = ordinaryMaintenance.slice(0, ordinaryLimit);
-  const selectedRecovery = recovery.slice(0, recoveryLimit);
-  const selectedExploration = exploration.slice(0, explorationLimit);
+  const incumbentLimit = Math.min(
+    Math.max(0, CONFIG.maxNodesPerRun),
+    chatgptIncumbentsSelected.length,
+  );
+  const selectedIncumbents = chatgptIncumbentsSelected.slice(0, incumbentLimit);
+  const remainingCapacity = Math.max(
+    0,
+    CONFIG.maxNodesPerRun - selectedIncumbents.length,
+  );
+
+  const selectedOrdinary = ordinaryMaintenance.slice(0, Math.min(ordinaryLimit, remainingCapacity));
+  const selectedRecovery = recovery.slice(0, Math.min(recoveryLimit, Math.max(0, remainingCapacity - selectedOrdinary.length)));
+  const selectedExploration = exploration.slice(0, Math.min(explorationLimit, Math.max(0, remainingCapacity - selectedOrdinary.length - selectedRecovery.length)));
 
   const selected = [
+    ...selectedIncumbents,
     ...selectedOrdinary,
     ...selectedRecovery,
     ...selectedExploration,
@@ -421,7 +472,10 @@ function buildCandidates(stable, state, atMs) {
       ...ordinaryMaintenance,
       ...recovery,
       ...exploration,
-    ].filter(candidate => !selectedIds.has(candidate.endpointId));
+    ].filter(candidate =>
+      !selectedIds.has(candidate.endpointId) &&
+      !chatgptIncumbentIds.has(candidate.endpointId)
+    );
 
     selected.push(...remainder.slice(0, CONFIG.maxNodesPerRun - selected.length));
   }
@@ -475,6 +529,7 @@ function selectCandidates() {
       m[x.category] = (m[x.category] || 0) + 1;
       return m;
     }, {}),
+    chatgptIncumbents: candidates.filter(x => x.category === 'chatgpt-incumbent').length,
     stateFile: CONFIG.stateFile,
     candidateFile: CONFIG.candidateFile,
   }, null, 2));
