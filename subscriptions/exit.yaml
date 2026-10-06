@@ -260,6 +260,16 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '32e893781e4a97f8'
+  - name: '🇺🇸US_42|776KB/s 01'
+    password: ''
+    port: 9002
+    server: '138.199.35.218'
+    skip-cert-verify: true
+    tls: true
+    type: 'http'
+    username: ''
+    udp: true
+    endpoint-id: '351dcbb70d0afdd5'
   - name: '🇷🇴RO_49|1021KB/s|Z001-260618 01'
     port: 9002
     server: '193.176.84.21'
@@ -334,6 +344,15 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '23941f8658783ead'
+  - name: '🇺🇸US_99|810KB/s|R002-260618 01'
+    port: 9002
+    server: '138.199.35.220'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '6493b98e9afea31a'
   - name: '🇷🇴RO_80|1.8MB/s|P002-260618 01'
     password: 'None'
     port: 9002
@@ -412,6 +431,15 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '43fb51cc32fb89f3'
+  - name: '🇺🇸US_196|813KB/s|R002-260618 01'
+    port: 9002
+    server: '138.199.35.200'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'f48e1677a33b866f'
   - name: '🇳🇱NL_158|2.7MB/s|P002-260618 01'
     password: 'None'
     port: 9002
@@ -885,6 +913,15 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '774405f482604a30'
+  - name: '🇺🇸US_457|806KB/s|R002-260618 01'
+    port: 9002
+    server: '138.199.35.204'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'cf366d738ac1179d'
   - name: '❓Other_4|1.5MB/s|P002-260618 01'
     password: 'None'
     port: 9002
@@ -1434,6 +1471,27 @@ proxies:
     username: 'null'
     udp: true
     endpoint-id: 'd770502da3de9f92'
+  - name: '🇺🇸US_306|800KB/s|R002-260618 01'
+    password: 'null'
+    port: 9002
+    server: '138.199.35.214'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    endpoint-id: '54fe9da700e0b77f'
+  - name: '🇺🇸US_618|676KB/s|P002-260618 01'
+    password: 'None'
+    port: 9002
+    server: '138.199.35.199'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'ce8b293a59a3c510'
   - name: '🇺🇸US_646|716KB/s|P002-260618 01'
     password: ''
     port: 9002
