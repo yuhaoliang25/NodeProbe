@@ -53,6 +53,19 @@ function chatgptRate(node) {
   return values.length ? values.reduce((a,b)=>a+b,0)/values.length : null;
 }
 
+function chatgptScore(node) {
+  const obs = recent(node).filter(x => Array.isArray(x.chatgptAttempts) && x.chatgptAttempts.length);
+  const latest = obs[obs.length - 1];
+  if (!latest || latest.chatgptEligible !== true) return -Infinity;
+  const successRate = Number(latest.chatgptSuccessRate);
+  const latency = p95(latest.chatgptAttempts);
+  const latencyPenalty = latency == null ? 0 : Math.min(250, latency / 20);
+  return successRate * 1000 +
+    Math.min(100, obs.length * 10) +
+    Math.min(50, Number(node.observedRuns || 0)) -
+    latencyPenalty;
+}
+
 function chatgptEligible(node) {
   const obs = recent(node).filter(x => Array.isArray(x.chatgptAttempts) && x.chatgptAttempts.length);
   if (!obs.length) return false;
@@ -119,10 +132,31 @@ function main() {
   const pairState = fs.existsSync(PAIR_FILE) ? loadJson(PAIR_FILE) : { pairs: {} };
   const exits = eligibleExits(assets);
   const selected = exits.slice(0, MAX_PATHS);
-  // ChatGPT is a capability subset of the general Elite paths. Do not
-  // introduce a lower-ranked node just because it can reach ChatGPT.
-  const chatgptExits = selected.filter(x => chatgptEligible(assets.nodes[x.endpointId]));
-  const chatgptSelected = chatgptExits.slice(0, MAX_PATHS);
+
+  // ChatGPT is an independent capability pool. Retain healthy incumbents
+  // first, then use newly tested ChatGPT-capable exits to fill vacancies.
+  const previousChatgpt = loadYaml(CHATGPT_OUTPUT_FILE);
+  const previousNames = new Set(previousChatgpt.map(p => String(p.name)));
+  const eligibleChatgpt = exits
+    .filter(item => chatgptEligible(assets.nodes[item.endpointId]))
+    .map(item => ({ ...item, chatgptScore: chatgptScore(assets.nodes[item.endpointId]) }))
+    .sort((a,b) => b.chatgptScore - a.chatgptScore || b.score - a.score);
+  const byName = new Map(eligibleChatgpt.map(item => [String(item.proxy.name), item]));
+  const incumbents = previousChatgpt.map(proxy => byName.get(String(proxy.name))).filter(Boolean);
+  const chatgptSelected = [];
+  const selectedIds = new Set();
+  for (const item of incumbents) {
+    if (chatgptSelected.length >= MAX_PATHS) break;
+    chatgptSelected.push(item);
+    selectedIds.add(item.endpointId);
+  }
+  for (const item of eligibleChatgpt) {
+    if (chatgptSelected.length >= MAX_PATHS) break;
+    if (selectedIds.has(item.endpointId)) continue;
+    chatgptSelected.push(item);
+    selectedIds.add(item.endpointId);
+  }
+  const chatgptExits = eligibleChatgpt;
   const pairFallbacks = selected.length < MAX_PATHS ? eligiblePairs(pairState).slice(0, MAX_PATHS - selected.length) : [];
 
   const exitNames = new Set(loadYaml(EXIT_FILE).map(p => String(p.name)));
@@ -190,6 +224,7 @@ function main() {
       eligibleExits: exits.length,
       chatgptEligibleExits: chatgptExits.length,
       chatgptSelectedPaths: chatgptSelected.length,
+      chatgptIncumbentPaths: incumbents.length,
       selectedPaths: paths.length,
       publishedProxies: unique.length,
     },
@@ -198,10 +233,11 @@ function main() {
       minRecentSuccessRate: MIN_RECENT_RATE,
       chatgptMinSuccessRate: CHATGPT_MIN_RATE,
       chatgptMinAttempts: CHATGPT_MIN_ATTEMPTS,
+      chatgptPoolMode: 'incumbent-first-with-exploration',
       pairFallbackOnly: true,
     },
     paths,
-    chatgptPaths: chatgptSelected.map(item => ({kind:'chatgpt-exit', endpointId:item.endpointId, name:String(item.proxy.name||''), score:item.score, chatgptSuccessRate:chatgptRate(assets.nodes[item.endpointId])})),
+    chatgptPaths: chatgptSelected.map(item => ({kind: previousNames.has(String(item.proxy.name)) ? 'chatgpt-incumbent' : 'chatgpt-exploration', endpointId:item.endpointId, name:String(item.proxy.name||''), score:item.score, chatgptScore:item.chatgptScore, chatgptSuccessRate:chatgptRate(assets.nodes[item.endpointId])})),
   }, null, 2) + '\n');
 
   console.log(JSON.stringify({
@@ -210,6 +246,7 @@ function main() {
     publishedProxies: unique.length,
     chatgptEligibleExits: chatgptExits.length,
     chatgptSelectedPaths: chatgptSelected.length,
+    chatgptIncumbentPaths: incumbents.length,
     output: OUTPUT_FILE,
     chatgptOutput: CHATGPT_OUTPUT_FILE,
   }, null, 2));
