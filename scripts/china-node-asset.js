@@ -362,7 +362,7 @@ function buildCandidates(stable, state, atMs) {
   for (const old of Object.values(state.nodes || {})) {
     if (!old?.endpointId || !old?.proxy || !isDue(old, atMs)) continue;
 
-    let category = 'new';
+    let category = 'probation-recheck';
     if (old.state === 'TRUSTED') {
       category = old.observedRuns >= 10 ? 'veteran' : 'trusted-recheck';
     } else if (old.state === 'DEGRADED' || old.state === 'UNTRUSTED') {
