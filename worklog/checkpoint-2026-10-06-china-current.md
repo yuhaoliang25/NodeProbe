@@ -110,3 +110,14 @@ firstObservedAt is the first NodeProbe observation, not actual publication time.
 Before further threshold tuning, run and inspect a complete China cycle. Verify maintenance candidates, Sticky/ChatGPT incumbent probing, generated subscriptions, client routing rules, B2 publication and release-marker ordering.
 
 Date: 2026-10-06
+
+
+## 2026-10-06 Global → China discovery decoupling
+
+The Global line is no longer treated as the main asset-maintenance product. Its Stable output is a discovery-grade feed for downstream probes, especially China.
+
+- Global candidate allocation now reserves at most 40% of the normal candidate budget for due maintenance by default (`NODE_MAINTENANCE_SHARE=0.4`); the remaining capacity is available to new source exploration.
+- This prevents a large persistent Global pool from consuming the entire candidate budget and indirectly starving new nodes before they can reach `stable.yaml` and China exploration.
+- Global Stable admission is intentionally lighter than China trust: current evidence requires at least 2 rounds, >=67% success, and average latency <=8s; historical evidence requires effective observations >=2 and time-decayed success >=67%. A node with no history only needs one successful observation in the current run.
+- This is deliberately not a relaxation of Best. Best retains its stronger quality/stability gates.
+- China remains authoritative for China asset trust and maintenance; Stable is only an exploration feed and must not be treated as inherited China reputation.
