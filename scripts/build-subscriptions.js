@@ -270,6 +270,7 @@ fs.writeFileSync(discoveryQueueFile,JSON.stringify(discoveryQueue,null,2)+'\\n')
 console.log('candidate allocation: maintenance',maintenanceSelected.length,
   'exploration',selected.length-maintenanceSelected.length,
   'maintenanceDue',maintenance.length,'explorationAvailable',exploration.length,
+  'discoveryBacklog',queueById.size,
   'limit',candidateLimit,'maintenanceShare',maintenanceShare);
 // DEAD rechecks are a bounded supplemental workload: they never displace
 // normal maintenance or exploration candidates from candidateLimit.
