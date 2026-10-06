@@ -185,7 +185,8 @@ function ipDistanceScore(candidateIp, referenceIp) {
     const distance = toBigInt(a) >= toBigInt(b)
       ? toBigInt(a) - toBigInt(b)
       : toBigInt(b) - toBigInt(a);
-    return Number(1n - distance > 0n ? 1n - distance / 4294967295n : 0n);
+    const max = 4294967295n;
+    return Number(max - distance) / Number(max);
   }
 
   // IPv6 is handled with BigInt to avoid precision loss. The score is still
@@ -286,7 +287,6 @@ function main() {
       state.switchReason = reason;
     }
     state.lastSelectedServer = selected.proxy?.server || state.lastSelectedServer || null;
-    }
   } else {
     state.endpointId = null;
     state.switchReason = reason;
