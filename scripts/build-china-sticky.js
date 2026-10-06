@@ -13,6 +13,7 @@ const MIN_OBSERVATIONS = Math.max(1, Number(process.env.CHINA_STICKY_MIN_OBSERVA
 const MIN_RECENT_RATE = Math.max(0, Math.min(1, Number(process.env.CHINA_STICKY_MIN_RECENT_RATE || 0.90)));
 const PROTECT_FAILURE_STREAK = Math.max(1, Number(process.env.CHINA_STICKY_PROTECT_FAILURE_STREAK || 2));
 const MAX_PROTECTED_AGE_MS = Math.max(1, Number(process.env.CHINA_STICKY_MAX_PROTECTED_AGE_MS || 36 * 60 * 60 * 1000));
+const DECAY_HALF_LIFE_MS = Math.max(1, Number(process.env.CHINA_STICKY_DECAY_HALF_LIFE_MS || 72 * 60 * 60 * 1000));
 
 function loadJson(file, fallback) {
   if (!fs.existsSync(file)) return fallback;
@@ -42,12 +43,51 @@ function wilsonLowerBound(successes, total, z = 1.96) {
   return (centre - margin) / denominator;
 }
 
-function stabilityRank(node) {
+function timeDecayWeight(atMs, observationAt) {
+  const t = Date.parse(observationAt || '');
+  if (!Number.isFinite(t) || t > atMs) return 0;
+  return Math.pow(0.5, Math.max(0, atMs - t) / DECAY_HALF_LIFE_MS);
+}
+
+function timeDecayedEvidence(node, atMs) {
+  const observations = Array.isArray(node?.observations) ? node.observations : [];
+  let weightedTotal = 0;
+  let weightedSuccesses = 0;
+  let squaredWeightTotal = 0;
+
+  for (const observation of observations) {
+    const weight = timeDecayWeight(atMs, observation.at);
+    if (weight <= 0) continue;
+    weightedTotal += weight;
+    squaredWeightTotal += weight * weight;
+    if (observation.success === true) weightedSuccesses += weight;
+  }
+
+  const weightedFailures = Math.max(0, weightedTotal - weightedSuccesses);
+  const effectiveObservations = squaredWeightTotal > 0
+    ? (weightedTotal * weightedTotal) / squaredWeightTotal
+    : 0;
+  const decayedRate = weightedTotal > 0 ? weightedSuccesses / weightedTotal : 0;
+  const lowerBound = effectiveObservations > 0
+    ? wilsonLowerBound(weightedSuccesses, effectiveObservations)
+    : 0;
+
+  return {
+    decayedRate,
+    lowerBound,
+    effectiveObservations,
+    weightedTotal,
+    weightedSuccesses,
+    weightedFailures,
+  };
+}
+
+function stabilityRank(node, atMs) {
   const total = Number(node.observedRuns) || 0;
   const successes = Number(node.successes) || 0;
   const recentObservations = recent(node);
+  const decayed = timeDecayedEvidence(node, atMs);
   const recentRate = rate(recentObservations);
-  const lowerBound = wilsonLowerBound(successes, total);
   const latencyValues = recentObservations
     .map(x => Number(x.latencyMs))
     .filter(Number.isFinite)
@@ -57,27 +97,31 @@ function stabilityRank(node) {
     : Number.POSITIVE_INFINITY;
 
   return {
-    lowerBound,
+    lowerBound: decayed.lowerBound,
     recentRate,
+    decayedRate: decayed.decayedRate,
+    effectiveObservations: decayed.effectiveObservations,
     lifetimeRate: total ? successes / total : 0,
     observedRuns: total,
     p95LatencyMs: p95,
   };
 }
 
-function eligible(node) {
+function eligible(node, atMs) {
   if (!node || node.state !== 'TRUSTED' || !node.proxy) return false;
   if (Number(node.observedRuns) < MIN_OBSERVATIONS) return false;
-  if (rate(recent(node)) < MIN_RECENT_RATE) return false;
+  const decayed = timeDecayedEvidence(node, atMs);
+  if (decayed.effectiveObservations < MIN_OBSERVATIONS) return false;
+  if (decayed.decayedRate < MIN_RECENT_RATE) return false;
   if (Number(node.failureStreak || 0) !== 0) return false;
   return true;
 }
 
-function compare(a, b) {
-  const ar = stabilityRank(a);
-  const br = stabilityRank(b);
+function compare(a, b, atMs) {
+  const ar = stabilityRank(a, atMs);
+  const br = stabilityRank(b, atMs);
   return br.lowerBound - ar.lowerBound ||
-    br.lifetimeRate - ar.lifetimeRate ||
+    br.decayedRate - ar.decayedRate ||
     br.recentRate - ar.recentRate ||
     br.observedRuns - ar.observedRuns ||
     ar.p95LatencyMs - br.p95LatencyMs ||
@@ -98,6 +142,7 @@ function isFreshEnough(node, atMs) {
 function canProtectCurrent(node, atMs) {
   if (!node || !node.proxy) return false;
   if (Number(node.observedRuns) < MIN_OBSERVATIONS) return false;
+  if (timeDecayedEvidence(node, atMs).effectiveObservations < MIN_OBSERVATIONS) return false;
   if (node.state !== 'TRUSTED') return false;
   if (Number(node.failureStreak || 0) >= PROTECT_FAILURE_STREAK) return false;
   if (!isFreshEnough(node, atMs)) return false;
@@ -127,7 +172,7 @@ function main() {
   const nodes = Object.values(assets.nodes || {});
   const atMs = Date.now();
   const byId = new Map(nodes.filter(x => x?.endpointId).map(x => [x.endpointId, x]));
-  const eligibleNodes = nodes.filter(eligible).sort(compare);
+  const eligibleNodes = nodes.filter(node => eligible(node, atMs)).sort((a, b) => compare(a, b, atMs));
   const current = state.endpointId ? byId.get(state.endpointId) : null;
 
   let selected = null;
@@ -171,6 +216,7 @@ function main() {
 
   state.generatedAt = new Date().toISOString();
   state.candidateCount = eligibleNodes.length;
+  state.decayHalfLifeMs = DECAY_HALF_LIFE_MS;
   state.retiredCount = 0;
 
   fs.mkdirSync(path.dirname(STATE_FILE), { recursive: true });
@@ -191,8 +237,10 @@ function main() {
       name: selected.proxy?.name || null,
       state: selected.state,
       observedRuns: selected.observedRuns,
-      lifetimeSuccessRate: stabilityRank(selected).lifetimeRate,
-      recentSuccessRate: stabilityRank(selected).recentRate,
+      lifetimeSuccessRate: stabilityRank(selected, atMs).lifetimeRate,
+      recentSuccessRate: stabilityRank(selected, atMs).recentRate,
+      timeDecayedSuccessRate: stabilityRank(selected, atMs).decayedRate,
+      effectiveObservations: stabilityRank(selected, atMs).effectiveObservations,
     } : null,
     candidateCount: eligibleNodes.length,
     reason,
