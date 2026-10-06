@@ -116,7 +116,7 @@ function parseDiscoveryQueueText(text) {
     // concatenated. The reported JSON error position is the start of the
     // second document; salvage the newest complete document instead of
     // discarding the persistent discovery backlog.
-    const position = Number(error?.message?.match(/position (\\d+)/)?.[1]);
+    const position = Number(error?.message?.match(/position (\d+)/)?.[1]);
     if (!Number.isInteger(position) || position <= 0) throw error;
     const tail = text.slice(position).trim();
     if (!tail.startsWith('{')) throw error;
