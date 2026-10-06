@@ -11,6 +11,7 @@ const CONFIG = {
   stateFile: process.env.CHINA_ASSET_FILE || 'data/china-node-assets.json',
   candidateFile: process.env.CHINA_CANDIDATE_FILE || 'data/china-probe-candidates.json',
   chatgptFile: process.env.CHINA_CHATGPT_FILE || 'subscriptions/chatgpt.yaml',
+  stickyFile: process.env.CHINA_STICKY_FILE || 'subscriptions/sticky.yaml',
   maxNodesPerRun: Number(process.env.CHINA_MAX_NODES || 300),
   veteranRetestMs: 24 * 60 * 60 * 1000,
   failedRetryMs: 2 * 60 * 60 * 1000,
@@ -79,6 +80,15 @@ function loadStable() {
   }
 
   return [...byId.values()];
+}
+
+function loadStickyIncumbent() {
+  if (!fs.existsSync(CONFIG.stickyFile)) return null;
+  const doc = yaml.load(fs.readFileSync(CONFIG.stickyFile, 'utf8'));
+  if (!Array.isArray(doc?.proxies) || doc.proxies.length === 0) return null;
+  const proxy = doc.proxies[0];
+  if (!proxy || !proxy.server || !proxy.port || !proxy.type) return null;
+  return { endpointId: endpointIdentity(proxy), proxy };
 }
 
 function loadChatGPTIncumbents() {
@@ -339,6 +349,20 @@ function scoreCandidate(node, category, atMs) {
 function buildCandidates(stable, state, atMs) {
   const candidates = [];
   const chatgptIncumbents = loadChatGPTIncumbents();
+  const stickyIncumbent = loadStickyIncumbent();
+
+  // Sticky is intentionally probed every cycle. Its purpose is to protect
+  // the incumbent from churn, not to protect it from reality: a recently
+  // dead incumbent must be detected before it can hurt short-term use.
+  if (stickyIncumbent) {
+    const old = state.nodes[stickyIncumbent.endpointId];
+    candidates.push({
+      endpointId: stickyIncumbent.endpointId,
+      proxy: old?.proxy || stickyIncumbent.proxy,
+      category: 'sticky-incumbent',
+      score: 2100,
+    });
+  }
 
   // The ChatGPT subscription is its own maintained pool. Its current members
   // are forced into every China probe cycle so a healthy incumbent is retested
@@ -414,6 +438,10 @@ function buildCandidates(stable, state, atMs) {
   const chatgptIncumbentIds = new Set(
     chatgptIncumbents.map(item => item.endpointId),
   );
+  const stickyIncumbentSelected = unique
+    .filter(candidate => candidate.category === 'sticky-incumbent')
+    .sort((a, b) => b.score - a.score);
+
   const chatgptIncumbentsSelected = unique
     .filter(candidate => candidate.category === 'chatgpt-incumbent')
     .sort((a, b) => b.score - a.score);
@@ -421,7 +449,8 @@ function buildCandidates(stable, state, atMs) {
   const maintenance = unique
     .filter(candidate =>
       candidate.category !== 'new' &&
-      candidate.category !== 'chatgpt-incumbent'
+      candidate.category !== 'chatgpt-incumbent' &&
+      candidate.category !== 'sticky-incumbent'
     )
     .sort((a, b) => b.score - a.score);
   const exploration = unique
@@ -460,9 +489,10 @@ function buildCandidates(stable, state, atMs) {
     chatgptIncumbentsSelected.length,
   );
   const selectedIncumbents = chatgptIncumbentsSelected.slice(0, incumbentLimit);
+  const selectedSticky = stickyIncumbentSelected.slice(0, Math.min(1, Math.max(0, CONFIG.maxNodesPerRun - selectedIncumbents.length)));
   const remainingCapacity = Math.max(
     0,
-    CONFIG.maxNodesPerRun - selectedIncumbents.length,
+    CONFIG.maxNodesPerRun - selectedIncumbents.length - selectedSticky.length,
   );
 
   const selectedOrdinary = ordinaryMaintenance.slice(0, Math.min(ordinaryLimit, remainingCapacity));
@@ -471,6 +501,7 @@ function buildCandidates(stable, state, atMs) {
 
   const selected = [
     ...selectedIncumbents,
+    ...selectedSticky,
     ...selectedOrdinary,
     ...selectedRecovery,
     ...selectedExploration,
@@ -486,7 +517,8 @@ function buildCandidates(stable, state, atMs) {
       ...exploration,
     ].filter(candidate =>
       !selectedIds.has(candidate.endpointId) &&
-      !chatgptIncumbentIds.has(candidate.endpointId)
+      !chatgptIncumbentIds.has(candidate.endpointId) &&
+      candidate.category !== 'sticky-incumbent'
     );
 
     selected.push(...remainder.slice(0, CONFIG.maxNodesPerRun - selected.length));
