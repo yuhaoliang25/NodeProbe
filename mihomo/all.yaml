@@ -36421,69 +36421,37 @@ proxies:
     sub_tag: 'M003-260806'
     type: 'ss'
     udp: true
-  - name: '🇺🇸_US_美国_5'
-    type: 'vmess'
-    server: '104.19.47.36'
-    port: 2086
-    cipher: 'auto'
-    uuid: 'e9e3cc13-db48-4cc1-8c24-7626439a5339'
-    alterId: 0
-    sni: 'ip2.1457230.xyz'
+  - name: '🇨🇳_CN_中国->🇯🇵_JP_日本'
+    type: 'ss'
+    server: '121.46.230.137'
+    port: 65443
+    cipher: 'aes-256-cfb'
+    password: '7eadc6dbe2ae'
+    skip-cert-verify: true
+    udp: true
+  - name: '🇺🇸_US_美国_1-4552291423b02688'
+    type: 'vless'
+    server: '104.17.25.208'
+    port: 2096
+    uuid: '42c62a5a-cd31-4551-80ef-908732370287'
     network: 'ws'
-  - name: '🇺🇸_US_美国->🇨🇦_CA_加拿大_2'
-    type: 'vmess'
-    server: 'ip.sb'
-    port: 2086
-    cipher: 'auto'
-    uuid: 'e9e3cc13-db48-4cc1-8c24-7626439a5339'
-    alterId: 0
-    sni: ''
-    network: 'ws'
-  - name: '🇺🇸_US_美国_16'
-    type: 'vmess'
-    server: '172.64.166.22'
-    port: 2086
-    cipher: 'auto'
-    uuid: 'e9e3cc13-db48-4cc1-8c24-7626439a5339'
-    alterId: 0
-    sni: ''
-    network: 'ws'
-  - name: '🇺🇸_US_美国_21'
-    type: 'vmess'
-    server: '104.19.45.90'
-    port: 2086
-    cipher: 'auto'
-    uuid: 'e9e3cc13-db48-4cc1-8c24-7626439a5339'
-    alterId: 0
-    sni: ''
-    network: 'ws'
-  - name: '🇺🇸_US_美国_24'
-    type: 'vmess'
-    server: '104.19.47.32'
-    port: 2086
-    cipher: 'auto'
-    uuid: 'e9e3cc13-db48-4cc1-8c24-7626439a5339'
-    alterId: 0
-    sni: ''
-    network: 'ws'
-  - name: '🇺🇸_US_美国_27'
-    type: 'vmess'
-    server: '104.19.46.27'
-    port: 2086
-    cipher: 'auto'
-    uuid: 'e9e3cc13-db48-4cc1-8c24-7626439a5339'
-    alterId: 0
-    sni: ''
-    network: 'ws'
-  - name: '🇺🇸_US_美国_29'
-    type: 'vmess'
-    server: '104.19.59.89'
-    port: 2086
-    cipher: 'auto'
-    uuid: 'e9e3cc13-db48-4cc1-8c24-7626439a5339'
-    alterId: 0
-    sni: ''
-    network: 'ws'
+    servername: 'fq.jp188.dpdns.org'
+    tls: true
+    client-fingerprint: 'chrome'
+    ws-opts:
+      path: '/proxyip=154.17.22.207,69.63.210.157,134.195.211.13,172.236.245.153,209.146.115.209,64.186.224.194,149.28.94.52,107.151.188.57'
+      headers:
+        Host: 'fq.jp188.dpdns.org'
+    skip-cert-verify: true
+    udp: true
+  - name: '🇮🇪_IE_爱尔兰'
+    type: 'ss'
+    server: '54.171.218.140'
+    port: 443
+    cipher: 'aes-256-cfb'
+    password: 'amazonskr05'
+    skip-cert-verify: true
+    udp: true
   - name: '🇭🇰_HK_中国香港-094d9935c732272a'
     type: 'vmess'
     server: 'v10.hdacd.com'
@@ -36495,14 +36463,145 @@ proxies:
     skip-cert-verify: true
     udp: true
   - name: '🇨🇳_CN_中国->🇺🇸_US_美国'
-    type: 'vless'
-    server: 'jp.sofast.live'
-    port: 52683
-    uuid: '399b6b23-cc40-4831-a494-61948e2df133'
-    tls: false
+    type: 'ss'
+    server: '121.46.230.232'
+    port: 65443
+    cipher: 'aes-256-cfb'
+    password: '7eadc6dbe2ae'
     skip-cert-verify: true
     udp: true
-  - name: '🇭🇰_HK_中国香港->🇺🇸_US_美国'
+  - name: '🇨🇳_CN_中国->🇺🇸_US_美国_2'
+    type: 'ss'
+    server: '121.46.230.233'
+    port: 65443
+    cipher: 'aes-256-cfb'
+    password: '7eadc6dbe2ae'
+    skip-cert-verify: true
+    udp: true
+  - name: '🇨🇳_CN_中国->🇰🇷_KR_韩国'
+    type: 'ss'
+    server: '121.46.230.138'
+    port: 65443
+    cipher: 'aes-256-cfb'
+    password: '7eadc6dbe2ae'
+    skip-cert-verify: true
+    udp: true
+  - name: '🇹🇼_TW_中国台湾->🇫🇮_FI_芬兰'
+    type: 'vless'
+    server: 'brightharbor.download'
+    port: 443
+    uuid: '6429d27e-a7d4-4e04-ae57-e88243fbbfe3'
+    servername: 'localhost'
+    tls: true
+    flow: 'xtls-rprx-vision'
+    client-fingerprint: 'chrome'
+    reality-opts:
+      public-key: 'F2VfBr2UmjDTErB_oruvW5aIvzH_xGfM2AW5_w-DF0I'
+    skip-cert-verify: true
+    udp: true
+  - name: '🇳🇱_NL_荷兰->🇲🇩_MD_摩尔多瓦'
+    type: 'vless'
+    server: '31.59.150.174'
+    port: 9443
+    uuid: '92089155-6602-4122-86d4-fe6de20e8c4d'
+    servername: 'hotcoals.aeternavpn.space'
+    tls: true
+    flow: 'xtls-rprx-vision'
+    client-fingerprint: 'firefox'
+    reality-opts:
+      public-key: 'RWu6ktBE4DFbUz_prmz-5KuolLhO53ehh19mNxhP-wI'
+      short-id: 'a1b2c3d4'
+    skip-cert-verify: true
+    udp: true
+  - name: '🇺🇸_US_美国_2-7c8e4487b604ad6e'
+    type: 'vmess'
+    server: 'www.shopify.com'
+    port: 443
+    uuid: '6a89a215-22bf-4bd7-9642-b95b2e09583a'
+    alterId: 0
+    cipher: 'auto'
+    tls: true
+    skip-cert-verify: true
+    servername: 'guanwang.awsno.com'
+    network: 'ws'
+    ws-opts:
+      path: '/hls/cctv5phd.m3u8'
+      headers:
+        Host: 'guanwang.awsno.com'
+    udp: true
+  - name: '🇯🇵_JP_日本-5a76ae79fdfcdee3'
+    type: 'vmess'
+    server: '38.47.121.14'
+    port: 49432
+    uuid: 'ce94f204-ffa6-4fa8-a1dc-ecfccfd463cb'
+    alterId: 0
+    cipher: 'auto'
+    tls: false
+    skip-cert-verify: true
+    network: 'http'
+    udp: true
+  - name: '🇺🇸_US_美国->🇯🇵_JP_日本'
+    type: 'vless'
+    server: '130.12.102.125'
+    port: 443
+    uuid: '6429d27e-a7d4-4e04-ae57-e88243fbbfe3'
+    servername: 'localhost'
+    tls: true
+    client-fingerprint: 'chrome'
+    reality-opts:
+      public-key: 'F2VfBr2UmjDTErB_oruvW5aIvzH_xGfM2AW5_w-DF0I'
+    skip-cert-verify: true
+    udp: true
+  - name: '🇲🇾_MY_马来西亚'
+    type: 'ss'
+    server: '118.107.222.231'
+    port: 65443
+    cipher: 'aes-256-cfb'
+    password: '7eadc6dbe2ae'
+    skip-cert-verify: true
+    udp: true
+  - name: '🇩🇪_DE_德国_1-f9f5076bb02f7172'
+    type: 'vless'
+    server: '176.96.138.122'
+    port: 443
+    uuid: 'b229d38c-35ec-4a0b-9c86-8fceba243d6c'
+    servername: 'plucky-xenon.cdn.cachefleet.com'
+    tls: true
+    flow: 'xtls-rprx-vision'
+    client-fingerprint: 'qq'
+    reality-opts:
+      public-key: 'O_YZOJVON0LE1U01hAtNUOVRy7z6fkBUXbMtpCGoGEg'
+    skip-cert-verify: true
+    udp: true
+  - name: '🇷🇺_RU_俄罗斯->🇰🇿_KZ_哈萨克斯坦'
+    type: 'vless'
+    server: '82.202.157.181'
+    port: 9882
+    uuid: '5d16ac22-6eea-426f-b778-6f4c2961faef'
+    network: 'grpc'
+    servername: 'dl.google.com'
+    tls: true
+    client-fingerprint: 'firefox'
+    grpc-opts:
+      grpc-service-name: 'grpc-tunnel'
+    reality-opts:
+      public-key: 'bnRIb3Er1i-K6NGGByCO9UbGfOvu43ZoiK7ulPd1SzU'
+      short-id: 'aa'
+    skip-cert-verify: true
+    udp: true
+  - name: '🇺🇸_US_美国->🇯🇵_JP_日本_1'
+    type: 'vless'
+    server: '130.12.102.26'
+    port: 443
+    uuid: '6429d27e-a7d4-4e04-ae57-e88243fbbfe3'
+    servername: 'localhost'
+    tls: true
+    client-fingerprint: 'chrome'
+    reality-opts:
+      public-key: 'F2VfBr2UmjDTErB_oruvW5aIvzH_xGfM2AW5_w-DF0I'
+    skip-cert-verify: true
+    udp: true
+  - name: '🇭🇰_HK_中国香港->🇺🇸_US_美国-dc60274e8c9590d0'
     type: 'vmess'
     server: 'v29.hdacd.com'
     port: 30829
@@ -36512,22 +36611,13 @@ proxies:
     tls: false
     skip-cert-verify: true
     udp: true
-  - name: '🇷🇸 塞尔维亚_IZ56P0'
-    server: '150.40.126.19'
-    port: 443
+  - name: '🇨🇳_CN_中国->🇺🇸_US_美国_1'
     type: 'vless'
-    uuid: '2f35965a-9a9b-45fd-ba32-987296dfb6be'
-    tls: true
-    tfo: false
-    skip-cert-verify: false
-    reality-opts:
-      public-key: 'tL16MVY08r-7YDXb1_gxuBBWInpSFp97ZLJ_ax3R2iE'
-      short-id: '1469af2040b7c323'
-    servername: 'rs2.univesalsrv.com'
-    client-fingerprint: 'firefox'
-    network: 'grpc'
-    grpc-opts:
-      grpc-service-name: 'media.v1.ObjectService'
+    server: 'jp.sofast.live'
+    port: 52683
+    uuid: '399b6b23-cc40-4831-a494-61948e2df133'
+    tls: false
+    skip-cert-verify: true
     udp: true
   - name: '🇩🇪 德国_MO24K3'
     server: '31.76.64.248'
@@ -36545,25 +36635,8 @@ proxies:
     client-fingerprint: 'firefox'
     network: 'tcp'
     udp: true
-  - name: '🇧🇬 保加利亚_4NYGXC'
-    server: 'bg4.univesalsrv.com'
-    port: 443
-    type: 'vless'
-    uuid: '2f35965a-9a9b-45fd-ba32-987296dfb6be'
-    tls: true
-    tfo: false
-    skip-cert-verify: false
-    reality-opts:
-      public-key: 'k-vH6pkyAv26L1_dXKOFhp0Kesur9-FCUDoj-IIpVhc'
-      short-id: '51f45d4fd58cc319'
-    servername: 'bg4.univesalsrv.com'
-    client-fingerprint: 'firefox'
-    network: 'grpc'
-    grpc-opts:
-      grpc-service-name: 'cloud.v1.RelayService'
-    udp: true
-  - name: '🇷🇸 塞尔维亚_VNZ6WE'
-    server: 'rs2.univesalsrv.com'
+  - name: '🇷🇸 塞尔维亚_0XK78I'
+    server: '150.40.126.19'
     port: 443
     type: 'vless'
     uuid: '2f35965a-9a9b-45fd-ba32-987296dfb6be'
@@ -36579,23 +36652,56 @@ proxies:
     grpc-opts:
       grpc-service-name: 'media.v1.ObjectService'
     udp: true
+  - name: '🇺🇸 美国_FTJRL4'
+    server: '34.187.170.146'
+    port: 443
+    type: 'vless'
+    uuid: 'dffab367-7769-4c6c-86f2-66fc6bd03003'
+    tls: true
+    tfo: false
+    skip-cert-verify: false
+    reality-opts:
+      public-key: 'LYnDDS0AkBwVeeTyIEE5MhrTV_PZO5f1qBAbMN6z4HM'
+      short-id: 'f1955f72763eb2fb'
+    servername: 'www.cloudflare.com'
+    client-fingerprint: 'qq'
+    network: 'tcp'
+    udp: true
   - name: 'tg频道:@freenodedaily'
     server: '63.180.254.10'
     port: 443
     type: 'ss'
     cipher: 'aes-256-cfb'
     password: 'amazonskr05'
-  - name: '美国(yudou789.top 玉豆分享)_68'
+  - name: '美国(yudou789.top 玉豆分享)_19'
     type: 'vless'
-    server: '34.187.170.146'
+    server: 'rs2.univesalsrv.com'
     port: 443
-    uuid: 'dffab367-7769-4c6c-86f2-66fc6bd03003'
-    servername: 'www.cloudflare.com'
+    uuid: '2f35965a-9a9b-45fd-ba32-987296dfb6be'
+    network: 'grpc'
     tls: true
     client-fingerprint: 'chrome'
+    grpc-opts:
+      grpc-service-name: 'media.v1.ObjectService'
     reality-opts:
-      public-key: 'LYnDDS0AkBwVeeTyIEE5MhrTV_PZO5f1qBAbMN6z4HM'
-      short-id: 'f1955f72763eb2fb'
+      public-key: 'tL16MVY08r-7YDXb1_gxuBBWInpSFp97ZLJ_ax3R2iE'
+      short-id: '1469af2040b7c323'
+    skip-cert-verify: true
+    udp: true
+  - name: '美国(yudou789.top 玉豆分享)_21'
+    type: 'vless'
+    server: 'bg4.univesalsrv.com'
+    port: 443
+    uuid: '2f35965a-9a9b-45fd-ba32-987296dfb6be'
+    network: 'grpc'
+    servername: 'bg4.univesalsrv.com'
+    tls: true
+    client-fingerprint: 'firefox'
+    grpc-opts:
+      grpc-service-name: 'cloud.v1.RelayService'
+    reality-opts:
+      public-key: 'k-vH6pkyAv26L1_dXKOFhp0Kesur9-FCUDoj-IIpVhc'
+      short-id: '51f45d4fd58cc319'
     skip-cert-verify: true
     udp: true
   - name: '美国(yudou789.top 玉豆分享)_80'
@@ -38942,22 +39048,30 @@ proxy-groups:
       - '🇫🇷FR_1742|541KB/s 01'
       - '🇫🇷FR_1745|298KB/s|M003-260806 01'
       - '🇹🇼TW_35|206KB/s|M003-260806 01'
-      - '🇺🇸_US_美国_5'
-      - '🇺🇸_US_美国->🇨🇦_CA_加拿大_2'
-      - '🇺🇸_US_美国_16'
-      - '🇺🇸_US_美国_21'
-      - '🇺🇸_US_美国_24'
-      - '🇺🇸_US_美国_27'
-      - '🇺🇸_US_美国_29'
+      - '🇨🇳_CN_中国->🇯🇵_JP_日本'
+      - '🇺🇸_US_美国_1-4552291423b02688'
+      - '🇮🇪_IE_爱尔兰'
       - '🇭🇰_HK_中国香港-094d9935c732272a'
       - '🇨🇳_CN_中国->🇺🇸_US_美国'
-      - '🇭🇰_HK_中国香港->🇺🇸_US_美国'
-      - '🇷🇸 塞尔维亚_IZ56P0'
+      - '🇨🇳_CN_中国->🇺🇸_US_美国_2'
+      - '🇨🇳_CN_中国->🇰🇷_KR_韩国'
+      - '🇹🇼_TW_中国台湾->🇫🇮_FI_芬兰'
+      - '🇳🇱_NL_荷兰->🇲🇩_MD_摩尔多瓦'
+      - '🇺🇸_US_美国_2-7c8e4487b604ad6e'
+      - '🇯🇵_JP_日本-5a76ae79fdfcdee3'
+      - '🇺🇸_US_美国->🇯🇵_JP_日本'
+      - '🇲🇾_MY_马来西亚'
+      - '🇩🇪_DE_德国_1-f9f5076bb02f7172'
+      - '🇷🇺_RU_俄罗斯->🇰🇿_KZ_哈萨克斯坦'
+      - '🇺🇸_US_美国->🇯🇵_JP_日本_1'
+      - '🇭🇰_HK_中国香港->🇺🇸_US_美国-dc60274e8c9590d0'
+      - '🇨🇳_CN_中国->🇺🇸_US_美国_1'
       - '🇩🇪 德国_MO24K3'
-      - '🇧🇬 保加利亚_4NYGXC'
-      - '🇷🇸 塞尔维亚_VNZ6WE'
+      - '🇷🇸 塞尔维亚_0XK78I'
+      - '🇺🇸 美国_FTJRL4'
       - 'tg频道:@freenodedaily'
-      - '美国(yudou789.top 玉豆分享)_68'
+      - '美国(yudou789.top 玉豆分享)_19'
+      - '美国(yudou789.top 玉豆分享)_21'
       - '美国(yudou789.top 玉豆分享)_80'
 rules:
   - 'MATCH,PROXY'
