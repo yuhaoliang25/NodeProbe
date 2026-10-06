@@ -48,16 +48,25 @@ async function probeDelay({api,name,target,expected,timeout}){
       delayMs:Number.isFinite(delayMs)&&delayMs>0?delayMs:null,
       timeout:false,
       error:null,
+      errorKind:null,
     };
   }catch(e){
     const error=String(e&&e.message||e).slice(0,300);
+    const timeout = /timeout|timed out|deadline/i.test(error);
+    const apiStatus = error.match(/^API (\\d{3})\\b/);
+    const errorKind = timeout
+      ? 'request-timeout'
+      : apiStatus
+        ? 'mihomo-api-' + apiStatus[1]
+        : 'probe-error';
     return {
       startedAt,
       finishedAt:new Date().toISOString(),
       success:false,
       delayMs:null,
-      timeout:/timeout|timed out|deadline/i.test(error),
+      timeout,
       error,
+      errorKind,
     };
   }
 }
