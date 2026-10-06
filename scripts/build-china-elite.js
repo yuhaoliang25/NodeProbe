@@ -46,6 +46,22 @@ function p95(obs) {
   return values.length ? values[Math.min(values.length - 1, Math.ceil(values.length * 0.95) - 1)] : null;
 }
 
+function isHongKongProxy(proxy) {
+  const name = String(proxy?.name || '');
+  // ChatGPT must not use Hong Kong exits, regardless of ordinary Elite
+  // eligibility. Prefer explicit country markers used by NodeProbe naming,
+  // and also recognize literal Chinese/English labels.
+  if (/香港|hong[\s_-]*kong/i.test(name)) return true;
+  const flag = name.match(/[\u{1F1E6}-\u{1F1FF}]{2}/u)?.[0];
+  if (flag) {
+    const code = [...flag]
+      .map(ch => String.fromCharCode(ch.codePointAt(0) - 0x1F1E6 + 65))
+      .join('');
+    if (code === 'HK') return true;
+  }
+  return /(?:^|[^A-Za-z])HK_\d+(?:\||$)/.test(name);
+}
+
 function chatgptRate(node) {
   const obs = recent(node).filter(x => Array.isArray(x.chatgptAttempts) && x.chatgptAttempts.length);
   if (!obs.length) return null;
@@ -152,7 +168,7 @@ function main() {
   // needs its own evidence pool so a capable node can enter or remain there
   // even when it is not among the ordinary Elite paths.
   const eligibleChatgpt = Object.values(assets.nodes || {})
-    .filter(node => node && node.proxy && chatgptEligible(node))
+    .filter(node => node && node.proxy && !isHongKongProxy(node.proxy) && chatgptEligible(node))
     .map(node => ({
       kind: 'exit',
       endpointId: node.endpointId,
@@ -258,6 +274,7 @@ function main() {
       chatgptMinSuccessRate: CHATGPT_MIN_RATE,
       chatgptMinAttempts: CHATGPT_MIN_ATTEMPTS,
       chatgptPoolMode: 'incumbent-first-with-exploration',
+      chatgptExcludedRegions: ['HK'],
       pairFallbackOnly: true,
     },
     paths,
