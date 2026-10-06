@@ -211,6 +211,9 @@ function updateNode(node, observation) {
     reachabilityLatencyMs: observation.reachabilityLatencyMs == null ? null : Number(observation.reachabilityLatencyMs),
     exitSuccess: observation.exitSuccess == null ? null : Boolean(observation.exitSuccess),
     stabilityEligible: observation.stabilityEligible == null ? null : Boolean(observation.stabilityEligible),
+    chatgptEligible: observation.chatgptEligible == null ? null : Boolean(observation.chatgptEligible),
+    chatgptSuccessRate: observation.chatgptSuccessRate == null ? null : Number(observation.chatgptSuccessRate),
+    chatgptAttempts: Array.isArray(observation.chatgptAttempts) ? observation.chatgptAttempts : [],
   });
 
   if (node.observations.length > CONFIG.observationRetention) {
