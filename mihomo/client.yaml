@@ -34,13 +34,54 @@ rule-providers:
     format: 'mrs'
     interval: 86400
     url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs'
-proxies: []
+proxies:
+  - name: '🇮🇹IT_1|625KB/s|R002-260618 01'
+    port: 443
+    server: '91.243.118.217'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'e019d09aa7573606'
+  - name: '🇭🇰 香港 04'
+    port: 443
+    server: 'fan.240104.xyz'
+    skip-cert-verify: true
+    sni: 'fan.240104.xyz'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '2525753ed3d65e2e'
+  - name: '🇭🇰 香港 09'
+    password: 'null'
+    port: 443
+    server: 'fan.240104.xyz'
+    sni: 'fan.240104.xyz'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    endpoint-id: 'a2852a26d8d9ed35'
 proxy-groups:
   - name: 'PROXY'
     type: 'select'
     proxies:
       - 'DIRECT'
+  - name: 'CHATGPT'
+    type: 'select'
+    proxies:
+      - '🇮🇹IT_1|625KB/s|R002-260618 01'
+      - '🇭🇰 香港 04'
+      - '🇭🇰 香港 09'
 rules:
+  - 'DOMAIN-SUFFIX,chatgpt.com,CHATGPT'
+  - 'DOMAIN-SUFFIX,chat.openai.com,CHATGPT'
+  - 'DOMAIN-SUFFIX,auth.openai.com,CHATGPT'
+  - 'DOMAIN-SUFFIX,oaistatic.com,CHATGPT'
+  - 'DOMAIN-SUFFIX,oaiusercontent.com,CHATGPT'
   - 'RULE-SET,private_domain,DIRECT'
   - 'RULE-SET,private_ip,DIRECT,no-resolve'
   - 'RULE-SET,cn_domain,DIRECT'
