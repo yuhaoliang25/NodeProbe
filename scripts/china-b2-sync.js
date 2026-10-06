@@ -120,12 +120,24 @@ if(mode==='pull-stable'){
     if(!fs.existsSync(local))throw new Error('China result missing: '+local);
     run(['file','upload',BUCKET,local,remote]);
   }
+  const crypto=require('crypto');
+  const generatedAt=new Date().toISOString();
+  const releaseId=process.env.CHINA_RELEASE_ID||null;
+  const files=outputs.map(([local,remote])=>{
+    const bytes=fs.readFileSync(local);
+    return {
+      local,
+      remote,
+      size:bytes.length,
+      sha256:crypto.createHash('sha256').update(bytes).digest('hex'),
+    };
+  });
   const manifest={
-    version:1,
-    generatedAt:new Date().toISOString(),
-    releaseId:process.env.CHINA_RELEASE_ID||null,
+    version:2,
+    generatedAt,
+    releaseId,
     producer:'china-machine',
-    files:outputs.map(([,remote])=>remote),
+    files,
   };
   const manifestFile=path.join(process.env.CHINA_RELEASE_TMP_DIR||'data','.china-release.json');
   fs.mkdirSync(path.dirname(manifestFile),{recursive:true});
