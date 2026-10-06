@@ -164,7 +164,7 @@ function loadDiscoveryQueue() {
 
 function saveDiscoveryQueue(queue) {
   fs.mkdirSync(path.dirname(CONFIG.discoveryQueueFile), { recursive: true });
-  const tmp = CONFIG.discoveryQueueFile + '.tmp';
+  const tmp = `${CONFIG.discoveryQueueFile}.${process.pid}.tmp`;
   fs.writeFileSync(tmp, JSON.stringify(queue, null, 2) + '\\n');
   // Atomic replace: readers can only observe a complete JSON document.
   fs.renameSync(tmp, CONFIG.discoveryQueueFile);
