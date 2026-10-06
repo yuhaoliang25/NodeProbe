@@ -7,41 +7,43 @@ const yaml = require('js-yaml');
 
 const INPUT = path.resolve(process.env.CHINA_ELITE_FILE || 'subscriptions/elite.yaml');
 const CHATGPT_INPUT = path.resolve(process.env.CHINA_CHATGPT_FILE || 'subscriptions/chatgpt.yaml');
+const STICKY_INPUT = path.resolve(process.env.CHINA_STICKY_FILE || 'subscriptions/sticky.yaml');
 const OUTPUT = path.resolve('mihomo/client.yaml');
 
-function loadElite() {
-  if (!fs.existsSync(INPUT)) throw new Error('China elite subscription missing: ' + INPUT);
-  const doc = yaml.load(fs.readFileSync(INPUT, 'utf8'));
+function loadYamlProxies(file, label) {
+  if (!fs.existsSync(file)) throw new Error(label + ' subscription missing: ' + file);
+  const doc = yaml.load(fs.readFileSync(file, 'utf8'));
   if (!doc || !Array.isArray(doc.proxies)) {
-    throw new Error('elite.yaml: expected a YAML document with a proxies array');
+    throw new Error(label + ': expected a YAML document with a proxies array');
   }
   return doc.proxies
     .filter(p => p && typeof p === 'object' && p.name)
     .map(p => ({ ...p, name: String(p.name) }));
 }
 
-function loadChatGPT() {
-  if (!fs.existsSync(CHATGPT_INPUT)) throw new Error('China ChatGPT subscription missing: ' + CHATGPT_INPUT);
-  const doc = yaml.load(fs.readFileSync(CHATGPT_INPUT, 'utf8'));
-  if (!doc || !Array.isArray(doc.proxies)) throw new Error('chatgpt.yaml: expected a YAML document with a proxies array');
-  return doc.proxies.filter(p => p && typeof p === 'object' && p.name).map(p => ({ ...p, name: String(p.name) }));
-}
-
 function uniqueProxies(items) {
   const seen = new Set();
   return items.filter(p => {
     if (seen.has(p.name)) {
-      throw new Error('duplicate proxy name in elite subscription: ' + p.name);
+      throw new Error('duplicate proxy name: ' + p.name);
     }
     seen.add(p.name);
     return true;
   });
 }
 
-const elite = uniqueProxies(loadElite());
-const chatgpt = uniqueProxies(loadChatGPT());
+const elite = uniqueProxies(loadYamlProxies(INPUT, 'elite.yaml'));
+const chatgpt = uniqueProxies(loadYamlProxies(CHATGPT_INPUT, 'chatgpt.yaml'));
+const sticky = uniqueProxies(loadYamlProxies(STICKY_INPUT, 'sticky.yaml'));
+
 const eliteNames = new Set(elite.map(p => p.name));
-for (const p of chatgpt) if (!eliteNames.has(p.name)) throw new Error('ChatGPT proxy is not present in elite.yaml: ' + p.name);
+for (const p of chatgpt) {
+  if (!eliteNames.has(p.name)) {
+    throw new Error('ChatGPT proxy is not present in elite.yaml: ' + p.name);
+  }
+}
+
+const allProxies = uniqueProxies([...elite, ...sticky]);
 const selectable = elite
   .filter(p => !String(p.name).startsWith('PAIR-RELAY-'))
   .map(p => p.name);
@@ -52,14 +54,32 @@ const chatgptGroup = chatgpt.length ? [{
   proxies: chatgpt.map(p => p.name)
 }] : [];
 
-const rules = chatgpt.length ? [
-  'DOMAIN-SUFFIX,chatgpt.com,CHATGPT',
-  'DOMAIN-SUFFIX,chat.openai.com,CHATGPT',
-  'DOMAIN-SUFFIX,auth.openai.com,CHATGPT',
-  'DOMAIN-SUFFIX,oaistatic.com,CHATGPT',
-  'DOMAIN-SUFFIX,oaiusercontent.com,CHATGPT',
-  'MATCH,PROXY'
-] : ['MATCH,PROXY'];
+const stickyGroup = sticky.length ? [{
+  name: 'STICKY',
+  type: 'select',
+  proxies: sticky.map(p => p.name)
+}] : [];
+
+const rules = [];
+if (sticky.length) {
+  rules.push(
+    'DOMAIN-SUFFIX,x.com,STICKY',
+    'DOMAIN-SUFFIX,twitter.com,STICKY',
+    'DOMAIN-SUFFIX,t.co,STICKY',
+    'DOMAIN-SUFFIX,threads.com,STICKY',
+    'DOMAIN-SUFFIX,threads.net,STICKY'
+  );
+}
+if (chatgpt.length) {
+  rules.push(
+    'DOMAIN-SUFFIX,chatgpt.com,CHATGPT',
+    'DOMAIN-SUFFIX,chat.openai.com,CHATGPT',
+    'DOMAIN-SUFFIX,auth.openai.com,CHATGPT',
+    'DOMAIN-SUFFIX,oaistatic.com,CHATGPT',
+    'DOMAIN-SUFFIX,oaiusercontent.com,CHATGPT'
+  );
+}
+rules.push('MATCH,PROXY');
 
 const config = {
   'mixed-port': 7890,
@@ -68,7 +88,7 @@ const config = {
   'log-level': 'warning',
   ipv6: false,
 
-  proxies: elite,
+  proxies: allProxies,
 
   'proxy-groups': [
     {
@@ -76,7 +96,8 @@ const config = {
       type: 'select',
       proxies: [...selectable, 'DIRECT']
     },
-    ...chatgptGroup
+    ...chatgptGroup,
+    ...stickyGroup
   ],
   rules
 };
@@ -93,5 +114,10 @@ fs.writeFileSync(
   'utf8'
 );
 
-console.log('client.yaml: elite=' + elite.length + ' selectable=' + selectable.length + ' chatgpt=' + chatgpt.length);
+console.log(
+  'client.yaml: elite=' + elite.length +
+  ' selectable=' + selectable.length +
+  ' chatgpt=' + chatgpt.length +
+  ' sticky=' + sticky.length
+);
 console.log('generated: ' + OUTPUT);
