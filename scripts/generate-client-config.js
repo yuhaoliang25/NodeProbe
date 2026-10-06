@@ -46,6 +46,21 @@ const selectable = elite
   .filter(p => !String(p.name).startsWith('PAIR-RELAY-'))
   .map(p => p.name);
 
+const chatgptGroup = chatgpt.length ? [{
+  name: 'CHATGPT',
+  type: 'select',
+  proxies: chatgpt.map(p => p.name)
+}] : [];
+
+const rules = chatgpt.length ? [
+  'DOMAIN-SUFFIX,chatgpt.com,CHATGPT',
+  'DOMAIN-SUFFIX,chat.openai.com,CHATGPT',
+  'DOMAIN-SUFFIX,auth.openai.com,CHATGPT',
+  'DOMAIN-SUFFIX,oaistatic.com,CHATGPT',
+  'DOMAIN-SUFFIX,oaiusercontent.com,CHATGPT',
+  'MATCH,PROXY'
+] : ['MATCH,PROXY'];
+
 const config = {
   'mixed-port': 7890,
   'allow-lan': false,
@@ -61,22 +76,9 @@ const config = {
       type: 'select',
       proxies: [...selectable, 'DIRECT']
     },
-    {
-      name: 'CHATGPT',
-      type: 'select',
-      proxies: chatgpt.map(p => p.name)
-
-    }
+    ...chatgptGroup
   ],
-
-  rules: [
-    'DOMAIN-SUFFIX,chatgpt.com,CHATGPT',
-    'DOMAIN-SUFFIX,chat.openai.com,CHATGPT',
-    'DOMAIN-SUFFIX,auth.openai.com,CHATGPT',
-    'DOMAIN-SUFFIX,oaistatic.com,CHATGPT',
-    'DOMAIN-SUFFIX,oaiusercontent.com,CHATGPT',
-    'MATCH,PROXY'
-  ]
+  rules
 };
 
 fs.mkdirSync(path.dirname(OUTPUT), { recursive: true });
