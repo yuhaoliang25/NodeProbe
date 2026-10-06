@@ -1055,3 +1055,16 @@ A previously stable node is not permanently healthy. A DEAD node is not permanen
 > ### Storage boundary
 >
 > ```
+
+## China production subscription stage
+
+China now has a separate final-selection stage above the asset pools:
+
+- `subscriptions/exit.yaml`: the complete China Trusted exit pool.
+- `subscriptions/pairs.yaml`: validated experimental pair paths.
+- `subscriptions/elite.yaml`: a deliberately tiny production selection, defaulting to at most 3 selectable paths.
+- `mihomo/client.yaml`: generated only from `elite.yaml`, so the client no longer exposes the entire China asset pool.
+
+Elite selection does not mutate China asset state. It ranks Trusted exits using persistent China evidence (minimum observations, recent success rate, failure streak, lifetime success rate and recent p95 latency). Validated pair paths are fallback-only and fill unused elite slots when there are too few qualifying exits.
+
+This is a presentation/production-selection layer, not another asset lifecycle state: a node can remain Trusted and monitored even when it is not selected for the tiny production subscription.
