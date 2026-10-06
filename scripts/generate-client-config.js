@@ -41,7 +41,9 @@ for (const p of chatgpt) {
   }
 }
 
-// Sticky is normally a member of Elite already. Keep one proxy definition per\n// name; the STICKY group can still reference that shared proxy.\nconst allProxies = uniqueProxies([...elite, ...sticky]);
+// Sticky is normally a member of Elite already. Keep one proxy definition per
+// name; the STICKY group can still reference that shared proxy.
+const allProxies = uniqueProxies([...elite, ...sticky]);
 const selectable = elite
   .filter(p => !String(p.name).startsWith('PAIR-RELAY-'))
   .map(p => p.name);
