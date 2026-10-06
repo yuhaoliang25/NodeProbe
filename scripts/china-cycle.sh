@@ -4,6 +4,15 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT_DIR"
 
+# Prevent overlapping China cycles from concurrently reading/writing the
+# persistent discovery queue and other local state files.
+LOCK_FILE="${CHINA_CYCLE_LOCK_FILE:-/tmp/nodeprobe-china-cycle.lock}"
+exec 9>"$LOCK_FILE"
+if ! flock -n 9; then
+  echo "Another China cycle is already running; exiting without overlap."
+  exit 0
+fi
+
 if [ -f /etc/nodeprobe/china.env ]; then
   set -a
   # shellcheck disable=SC1091
