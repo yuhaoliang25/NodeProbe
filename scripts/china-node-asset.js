@@ -11,6 +11,7 @@ const CONFIG = {
   stableFile: process.env.CHINA_STABLE_FILE || 'subscriptions/stable.yaml',
   stateFile: process.env.CHINA_ASSET_FILE || 'data/china-node-assets.json',
   candidateFile: process.env.CHINA_CANDIDATE_FILE || 'data/china-probe-candidates.json',
+  discoveryQueueFile: process.env.CHINA_DISCOVERY_QUEUE_FILE || 'data/china-discovery-queue.json',
   chatgptFile: process.env.CHINA_CHATGPT_FILE || 'subscriptions/chatgpt.yaml',
   stickyFile: process.env.CHINA_STICKY_FILE || 'subscriptions/sticky.yaml',
   maxNodesPerRun: Number(process.env.CHINA_MAX_NODES || 300),
@@ -105,6 +106,26 @@ function loadChatGPTIncumbents() {
     if (!byId.has(endpointId)) byId.set(endpointId, { endpointId, proxy });
   }
   return [...byId.values()];
+}
+
+function loadDiscoveryQueue() {
+  if (!fs.existsSync(CONFIG.discoveryQueueFile)) {
+    return { version: 1, updatedAt: null, items: [] };
+  }
+  try {
+    const queue = JSON.parse(fs.readFileSync(CONFIG.discoveryQueueFile, 'utf8'));
+    if (!queue || typeof queue !== 'object' || !Array.isArray(queue.items)) {
+      throw new Error('China discovery queue is invalid: ' + CONFIG.discoveryQueueFile);
+    }
+    return queue;
+  } catch (error) {
+    throw new Error('Unable to load China discovery queue: ' + error.message);
+  }
+}
+
+function saveDiscoveryQueue(queue) {
+  fs.mkdirSync(path.dirname(CONFIG.discoveryQueueFile), { recursive: true });
+  fs.writeFileSync(CONFIG.discoveryQueueFile, JSON.stringify(queue, null, 2) + '\\n');
 }
 
 function loadState() {
@@ -347,8 +368,39 @@ function scoreCandidate(node, category, atMs) {
   return score;
 }
 
-function buildCandidates(stable, state, atMs) {
+function buildCandidates(stable, state, atMs, discoveryQueue) {
   const candidates = [];
+
+  // Stable is a discovery feed, not a one-run queue. Every newly seen endpoint
+  // enters persistent discovery memory; if the current run cannot afford to
+  // test it, it remains pending for a later cycle even if Stable changes.
+  const queueById = new Map(
+    (discoveryQueue.items || []).filter(item => item?.endpointId).map(item => [item.endpointId, item]),
+  );
+  for (const item of stable) {
+    const existing = queueById.get(item.endpointId);
+    if (existing) {
+      existing.proxy = item.proxy;
+      existing.lastDiscoveredAt = now();
+    } else if (!state.nodes[item.endpointId]) {
+      const at = now();
+      queueById.set(item.endpointId, {
+        endpointId: item.endpointId,
+        proxy: item.proxy,
+        firstDiscoveredAt: at,
+        lastDiscoveredAt: at,
+        lastSelectedAt: null,
+      });
+    }
+  }
+
+  // Once China has recognized an endpoint, the asset lifecycle owns it. The
+  // discovery backlog must never compete with maintenance or revive forgotten
+  // assets from a later Stable snapshot.
+  for (const id of [...queueById.keys()]) {
+    if (state.nodes[id]) queueById.delete(id);
+  }
+  discoveryQueue.items = [...queueById.values()];
   const chatgptIncumbents = loadChatGPTIncumbents();
   const stickyIncumbent = loadStickyIncumbent();
 
@@ -416,9 +468,15 @@ function buildCandidates(stable, state, atMs) {
     });
   }
 
-  // Exploration is the only part that depends on the current Stable feed.
-  for (const item of stable) {
-    if (state.nodes[item.endpointId]) continue;
+  // Exploration consumes the persistent discovery backlog in oldest-first
+  // order. It is intentionally not limited to the endpoints present in the
+  // current Stable snapshot.
+  const explorationQueue = [...queueById.values()].sort((a, b) => {
+    const at = a.lastSelectedAt ? Date.parse(a.lastSelectedAt) : 0;
+    const bt = b.lastSelectedAt ? Date.parse(b.lastSelectedAt) : 0;
+    return at - bt || String(a.firstDiscoveredAt || '').localeCompare(String(b.firstDiscoveredAt || ''));
+  });
+  for (const item of explorationQueue) {
     candidates.push({
       endpointId: item.endpointId,
       proxy: item.proxy,
@@ -508,6 +566,13 @@ function buildCandidates(stable, state, atMs) {
     ...selectedExploration,
   ];
 
+  for (const candidate of selected) {
+    const item = queueById.get(candidate.endpointId);
+    if (item) item.lastSelectedAt = now();
+  }
+  discoveryQueue.items = [...queueById.values()];
+  discoveryQueue.updatedAt = now();
+
   // Quotas are only reservations. If one lane is under-populated, use the
   // remaining capacity rather than deliberately probing fewer nodes.
   if (selected.length < CONFIG.maxNodesPerRun) {
@@ -551,12 +616,14 @@ function saveCandidates(candidates, at) {
 function selectCandidates() {
   const stable = loadStable();
   const state = loadState();
+  const discoveryQueue = loadDiscoveryQueue();
   const at = now();
   const atMs = Date.parse(at);
 
   // Stable is only the discovery feed. Known China assets are maintained from
   // persistent China state even when they are absent from the current Stable feed.
-  const candidates = buildCandidates(stable, state, atMs);
+  const candidates = buildCandidates(stable, state, atMs, discoveryQueue);
+  saveDiscoveryQueue(discoveryQueue);
 
   state.generatedAt = at;
   state.lastCandidateRunAt = at;
@@ -594,5 +661,7 @@ module.exports = {
   updateNode,
   isDue,
   buildCandidates,
+  loadDiscoveryQueue,
+  saveDiscoveryQueue,
   selectCandidates,
 };
