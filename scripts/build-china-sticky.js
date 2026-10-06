@@ -208,11 +208,11 @@ function ipDistanceScore(candidateIp, referenceIp) {
     }
 
     const toBigInt = ip => ip.split('.').reduce(
-      (value, octet) => (value << 8n) + BigInt(Number(octet)),
+      (value, octet) => (value << 8n) + globalThis.BigInt(Number(octet)),
       0n,
     );
-    const ai = toBigInt(a);
-    const bi = toBigInt(b);
+    const ai = toglobalThis.BigInt(a);
+    const bi = toglobalThis.BigInt(b);
     const distance = ai >= bi ? ai - bi : bi - ai;
     const max = 4294967295n;
     return {
@@ -229,11 +229,11 @@ function ipDistanceScore(candidateIp, referenceIp) {
   }
 
   const ai = ipv6Groups(a).reduce(
-    (value, group) => (value << 16n) + BigInt(parseInt(group, 16) || 0),
+    (value, group) => (value << 16n) + globalThis.BigInt(parseInt(group, 16) || 0),
     0n,
   );
   const bi = ipv6Groups(b).reduce(
-    (value, group) => (value << 16n) + BigInt(parseInt(group, 16) || 0),
+    (value, group) => (value << 16n) + globalThis.BigInt(parseInt(group, 16) || 0),
     0n,
   );
   const distance = ai >= bi ? ai - bi : bi - ai;
