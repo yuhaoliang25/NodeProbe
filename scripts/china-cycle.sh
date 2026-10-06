@@ -41,28 +41,16 @@ mark_candidate_run() {
 npm run china-sync -- push-observations || true
 npm run china-sync -- push-pair-observations || true
 
-# Stable is discovery input only. A missing/invalid Stable feed must not replace
-# the persistent China asset state or stop its maintenance loop.
+# Stable is discovery input only. Rebuild the local candidate schedule every
+# cycle from the persistent China asset pool plus the current Stable discovery
+# feed. The B2 candidate file is an exported runtime artifact, not a lock or
+# once-only work queue. Known China assets must continue to be maintained even
+# when the B2 candidate file has the same generatedAt as the previous cycle.
 npm run china-sync -- pull-stable || echo 'Global Stable unavailable; continuing from persistent China state.'
-
-if npm run china-sync -- pull-candidates; then
-  if candidate_run_is_new "${CHINA_CANDIDATE_FILE:-data/china-probe-candidates.json}" "$CANDIDATE_RUN_FILE"; then
-    echo 'Using new China candidate feed from B2.'
-    npm run china-probe
-    npm run china-apply
-    mark_candidate_run "${CHINA_CANDIDATE_FILE:-data/china-probe-candidates.json}" "$CANDIDATE_RUN_FILE"
-    npm run china-sync -- push-observations
-  else
-    echo 'China candidate feed already consumed; skipping duplicate probe.'
-  fi
-else
-  echo 'No usable China candidate feed; generating candidates from persistent China assets and Stable discovery.'
-  npm run china-assets
-  npm run china-probe
-  npm run china-apply
-  mark_candidate_run "${CHINA_CANDIDATE_FILE:-data/china-probe-candidates.json}" "$CANDIDATE_RUN_FILE"
-  npm run china-sync -- push-observations
-fi
+npm run china-assets
+npm run china-probe
+npm run china-apply
+npm run china-sync -- push-observations
 
 if npm run china-sync -- pull-pair-candidates; then
   if candidate_run_is_new "${CHINA_RELAY_CANDIDATE_FILE:-data/china-relay-pair-candidates.json}" "$PAIR_CANDIDATE_RUN_FILE"; then
