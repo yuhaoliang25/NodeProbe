@@ -65,26 +65,26 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '2525753ed3d65e2e'
-  - name: '🇺🇸US_42|776KB/s 01'
+  - name: '🇺🇸US_282|796KB/s 01'
     password: ''
     port: 9002
-    server: '138.199.35.218'
+    server: '138.199.35.219'
     skip-cert-verify: true
     tls: true
     type: 'http'
     username: ''
     udp: true
-    endpoint-id: '351dcbb70d0afdd5'
-  - name: '🇺🇸US_301|766KB/s|P002-260618 01'
-    password: 'None'
+    endpoint-id: '524b09514efc35f8'
+  - name: '🇺🇸US_68|722KB/s 01'
+    password: ''
     port: 9002
-    server: '138.199.35.219'
+    server: '138.199.35.205'
     skip-cert-verify: true
-    sub_tag: 'P002-260618'
     tls: true
     type: 'http'
+    username: ''
     udp: true
-    endpoint-id: '9de4a3caca4fd09d'
+    endpoint-id: 'dbacf984d30f7bed'
 proxy-groups:
   - name: 'PROXY'
     type: 'select'
@@ -96,9 +96,9 @@ proxy-groups:
   - name: 'CHATGPT'
     type: 'select'
     proxies:
-      - '🇺🇸US_42|776KB/s 01'
       - '🇸🇬SG_38|247KB/s|R002-260618 01'
-      - '🇺🇸US_301|766KB/s|P002-260618 01'
+      - '🇺🇸US_282|796KB/s 01'
+      - '🇺🇸US_68|722KB/s 01'
   - name: 'STICKY'
     type: 'select'
     proxies:
