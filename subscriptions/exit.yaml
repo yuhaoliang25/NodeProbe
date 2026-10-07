@@ -1,4 +1,22 @@
 proxies:
+  - name: '🇮🇹IT_1|625KB/s|R002-260618 01'
+    port: 443
+    server: '91.243.118.217'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'e019d09aa7573606'
+  - name: '🇺🇸US_99|810KB/s|R002-260618 01'
+    port: 9002
+    server: '138.199.35.220'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '6493b98e9afea31a'
   - name: '🇭🇰 香港 04'
     port: 443
     server: 'fan.240104.xyz'
@@ -1313,6 +1331,18 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '7ae9c25547c29cee'
+  - name: '🇺🇸US_626|798KB/s|R002-260618 01'
+    password: 'null'
+    port: 9002
+    server: '138.199.35.198'
+    skip-cert-verify: true
+    sni: '138.199.35.198'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    endpoint-id: 'f8df99716a85628c'
   - name: '🇺🇸US_447|706KB/s|R002-260618 01'
     password: ''
     port: 9002

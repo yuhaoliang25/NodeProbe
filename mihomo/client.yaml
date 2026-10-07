@@ -35,6 +35,15 @@ rule-providers:
     interval: 86400
     url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs'
 proxies:
+  - name: '🇸🇬SG_38|247KB/s|R002-260618 01'
+    port: 443
+    server: '154.26.139.24'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'd1f4a0d80288cf0b'
   - name: '🇭🇰 香港 09'
     password: 'null'
     port: 443
@@ -56,17 +65,6 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '2525753ed3d65e2e'
-  - name: '🇸🇬SG_12|648KB/s|R002-260618 01'
-    password: 'e4b72b531a2d10900519'
-    port: 443
-    server: '146.70.29.45'
-    sni: '92461d2d.acsnet.co'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'testuser1'
-    udp: true
-    endpoint-id: '0092f1512984d7cf'
   - name: '🇮🇹IT_1|625KB/s|R002-260618 01'
     port: 443
     server: '91.243.118.217'
@@ -86,22 +84,13 @@ proxies:
     username: ''
     udp: true
     endpoint-id: '351dcbb70d0afdd5'
-  - name: '🇸🇬SG_38|247KB/s|R002-260618 01'
-    port: 443
-    server: '154.26.139.24'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: 'd1f4a0d80288cf0b'
 proxy-groups:
   - name: 'PROXY'
     type: 'select'
     proxies:
+      - '🇸🇬SG_38|247KB/s|R002-260618 01'
       - '🇭🇰 香港 09'
       - '🇭🇰 香港 04'
-      - '🇸🇬SG_12|648KB/s|R002-260618 01'
       - 'DIRECT'
   - name: 'CHATGPT'
     type: 'select'
