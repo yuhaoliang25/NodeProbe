@@ -65,15 +65,6 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '2525753ed3d65e2e'
-  - name: '🇮🇹IT_1|625KB/s|R002-260618 01'
-    port: 443
-    server: '91.243.118.217'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: 'e019d09aa7573606'
   - name: '🇺🇸US_42|776KB/s 01'
     password: ''
     port: 9002
@@ -84,6 +75,16 @@ proxies:
     username: ''
     udp: true
     endpoint-id: '351dcbb70d0afdd5'
+  - name: '🇺🇸US_301|766KB/s|P002-260618 01'
+    password: 'None'
+    port: 9002
+    server: '138.199.35.219'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '9de4a3caca4fd09d'
 proxy-groups:
   - name: 'PROXY'
     type: 'select'
@@ -95,9 +96,9 @@ proxy-groups:
   - name: 'CHATGPT'
     type: 'select'
     proxies:
-      - '🇮🇹IT_1|625KB/s|R002-260618 01'
       - '🇺🇸US_42|776KB/s 01'
       - '🇸🇬SG_38|247KB/s|R002-260618 01'
+      - '🇺🇸US_301|766KB/s|P002-260618 01'
   - name: 'STICKY'
     type: 'select'
     proxies:
@@ -113,6 +114,7 @@ rules:
   - 'DOMAIN-SUFFIX,auth.openai.com,CHATGPT'
   - 'DOMAIN-SUFFIX,oaistatic.com,CHATGPT'
   - 'DOMAIN-SUFFIX,oaiusercontent.com,CHATGPT'
+  - 'DOMAIN-SUFFIX,services.googleapis.cn,PROXY'
   - 'RULE-SET,private_domain,DIRECT'
   - 'RULE-SET,private_ip,DIRECT,no-resolve'
   - 'RULE-SET,cn_domain,DIRECT'
