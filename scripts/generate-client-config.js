@@ -34,10 +34,6 @@ const elite = uniqueProxies(loadYamlProxies(INPUT, 'elite.yaml'));
 const chatgpt = uniqueProxies(loadYamlProxies(CHATGPT_INPUT, 'chatgpt.yaml'));
 const sticky = uniqueProxies(loadYamlProxies(STICKY_INPUT, 'sticky.yaml'));
 
-// ChatGPT is an independent capability pool and therefore does not have
-// to be a member of the ordinary Elite pool. Sticky is likewise a separate
-// policy pool. All referenced proxy definitions must nevertheless be present
-// in the generated client config.
 const allProxies = uniqueProxies([...elite, ...chatgpt, ...sticky]);
 const selectable = elite
   .filter(p => !String(p.name).startsWith('PAIR-RELAY-'))
@@ -76,6 +72,7 @@ if (chatgpt.length) {
 }
 rules.push(
   // Application-specific policies must win before the geographic split.
+  'DOMAIN-SUFFIX,services.googleapis.cn,PROXY',
   'RULE-SET,private_domain,DIRECT',
   'RULE-SET,private_ip,DIRECT,no-resolve',
   'RULE-SET,cn_domain,DIRECT',
@@ -91,9 +88,6 @@ const config = {
   'log-level': 'warning',
   ipv6: false,
 
-  // Use Mihomo's official MetaCubeX rule datasets rather than relying on
-  // the runtime's implicit GEO database. This makes the China/direct policy
-  // explicit and keeps the generated client self-contained.
   'rule-providers': {
     private_domain: {
       type: 'http',
