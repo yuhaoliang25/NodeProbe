@@ -46,13 +46,13 @@ const jsFiles = collectJs(scriptsDir).sort();
 let ok = true;
 
 for (const file of jsFiles) {
-  const result = spawnSync(process.execPath, ['--check', path.join('scripts', file)], {
+  const result = spawnSync(process.execPath, ['--check', file], {
     cwd: ROOT,
     stdio: 'inherit',
     env: process.env,
   });
   if (result.status !== 0) {
-    fail('syntax error in scripts/' + file);
+    fail('syntax error in ' + path.relative(ROOT, file));
     ok = false;
   }
 }
