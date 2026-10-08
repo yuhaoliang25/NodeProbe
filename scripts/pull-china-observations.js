@@ -12,6 +12,7 @@ const OBS_DIR=process.env.CHINA_OBSERVATION_DIR||'data/china-probe-observations'
 const ASSET_FILE=process.env.CHINA_ASSET_FILE||'data/china-node-assets.json';
 const B2_LIST_TIMEOUT_MS=Number(process.env.CHINA_B2_LIST_TIMEOUT_MS||15000);
 const B2_DOWNLOAD_TIMEOUT_MS=Number(process.env.CHINA_B2_DOWNLOAD_TIMEOUT_MS||60000);
+const RECOVERY_WINDOW_HOURS=Number(process.env.CHINA_OBSERVATION_RECOVERY_WINDOW_HOURS||48);
 
 function run(args,timeout){ 
   const r=spawnSync(process.env.B2_BIN||'b2v4',args,{
@@ -53,13 +54,28 @@ function listRemote(){
     .map(x=>x.includes('/')?x.slice(x.lastIndexOf('/')+1):x);
 }
 
+function batchTimestamp(file){
+  const match=file.match(/^(\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:-\\d{3})?Z)-/);
+  if(!match)return null;
+  const normalized=match[1].replace(/-(\\d{3})Z$/,'.$1Z');
+  const time=Date.parse(normalized);
+  return Number.isFinite(time)?time:null;
+}
+
 function pull(){
   fs.mkdirSync(OBS_DIR,{recursive:true});
   const processed=processedBatches();
   const remoteFiles=listRemote();
+  const cutoff=Date.now()-RECOVERY_WINDOW_HOURS*60*60*1000;
   let downloaded=0;
+  let skippedOld=0;
   for(const file of remoteFiles){
     if(processed.has(file))continue;
+    const timestamp=batchTimestamp(file);
+    if(timestamp!==null && timestamp<cutoff){
+      skippedOld++;
+      continue;
+    }
     const remote=OBS_REMOTE+'/'+file;
     const local=path.join(OBS_DIR,file);
     console.log(`[china-observations] downloading ${file}...`);
@@ -71,6 +87,8 @@ function pull(){
     remoteBatches:remoteFiles.length,
     alreadyProcessed:processed.size,
     downloaded,
+    skippedOld,
+    recoveryWindowHours:RECOVERY_WINDOW_HOURS,
     observationDir:OBS_DIR,
   },null,2));
 }
