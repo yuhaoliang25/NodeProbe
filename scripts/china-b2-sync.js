@@ -23,6 +23,7 @@ const ASSET_FILE=process.env.CHINA_ASSET_FILE||'data/china-node-assets.json';
 const PAIR_KNOWLEDGE_FILE=process.env.CHINA_PAIR_KNOWLEDGE_FILE||'data/china-pair-knowledge.json';
 const B2_LIST_TIMEOUT_MS=Number(process.env.CHINA_B2_LIST_TIMEOUT_MS||15000);
 const B2_OBSERVATION_DOWNLOAD_TIMEOUT_MS=Number(process.env.CHINA_B2_OBSERVATION_DOWNLOAD_TIMEOUT_MS||60000);
+const PAIR_OBSERVATION_RECOVERY_WINDOW_HOURS=Number(process.env.CHINA_PAIR_OBSERVATION_RECOVERY_WINDOW_HOURS||48);
 
 function run(args,options){
   const r=spawnSync(process.env.B2_BIN||'b2v4',args,{
@@ -64,6 +65,14 @@ function listRemote(prefix){
     .filter(x=>x.endsWith('.json'))
     .map(x=>x.includes('/')?x.slice(x.lastIndexOf('/')+1):x);
 }
+function batchTimestamp(file){
+  const match=file.match(/^(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:-\d{3})?Z)-/);
+  if(!match)return null;
+  const normalized=match[1].replace(/-(\d{3})Z$/,'.$1Z');
+  const time=Date.parse(normalized);
+  return Number.isFinite(time)?time:null;
+}
+
 function processedBatches(stateFile,key){
   try{
     const state=JSON.parse(fs.readFileSync(stateFile,'utf8'));
@@ -139,12 +148,30 @@ if(mode==='pull-stable'){
 }else if(mode==='pull-pair-observations'){
   fs.mkdirSync(PAIR_OBS_DIR,{recursive:true});
   const processed=processedBatches(PAIR_KNOWLEDGE_FILE,'processedBatches');
-  for(const file of listRemote(PAIR_OBS_REMOTE)){
+  const remoteFiles=listRemote(PAIR_OBS_REMOTE);
+  const cutoff=Date.now()-PAIR_OBSERVATION_RECOVERY_WINDOW_HOURS*60*60*1000;
+  let downloaded=0;
+  let skippedOld=0;
+  for(const file of remoteFiles){
     if(processed.has(file))continue;
+    const timestamp=batchTimestamp(file);
+    if(timestamp!==null && timestamp<cutoff){
+      skippedOld++;
+      continue;
+    }
     const local=path.join(PAIR_OBS_DIR,file);
+    console.log(`[china-b2] downloading pair observation ${file}...`);
     run(['file','download','b2://'+BUCKET+'/'+PAIR_OBS_REMOTE+'/'+file,local],{timeout:B2_OBSERVATION_DOWNLOAD_TIMEOUT_MS});
+    downloaded++;
   }
-  console.log(JSON.stringify({processed:processed.size,observationDir:PAIR_OBS_DIR},null,2));
+  console.log(JSON.stringify({
+    remoteBatches:remoteFiles.length,
+    alreadyProcessed:processed.size,
+    downloaded,
+    skippedOld,
+    recoveryWindowHours:PAIR_OBSERVATION_RECOVERY_WINDOW_HOURS,
+    observationDir:PAIR_OBS_DIR,
+  },null,2));
 }else if(mode==='push-observations'){
   if(!fs.existsSync(OBS_DIR)){ console.log('no observation batches'); process.exit(0); }
   const files=fs.readdirSync(OBS_DIR).filter(x=>x.endsWith('.json')).sort();
