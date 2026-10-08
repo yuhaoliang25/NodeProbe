@@ -25,7 +25,6 @@ function run(args,timeout){
     }
     throw r.error;
   }
-  if(r.error)throw r.error;
   if(r.status!==0){
     process.stderr.write(r.stderr||'');
     process.exit(r.status||1);
