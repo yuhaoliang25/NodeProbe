@@ -24,11 +24,10 @@ export CHINA_MAX_NODES="${CHINA_MAX_NODES:-300}"
 export CHINA_PROBE_CONCURRENCY="${CHINA_PROBE_CONCURRENCY:-8}"
 export CHINA_RELEASE_ID="${CHINA_RELEASE_ID:-$(date -u +%Y%m%dT%H%M%SZ)}"
 
-# Recover any observation batches that were uploaded by a previous interrupted
-# cycle before they could be applied. Local persistent state remains authoritative.
-npm run china-pull-observations || true
-npm run china-sync -- pull-pair-observations || true
-
+# Local observation batches are the authoritative handoff between probing and
+# application. Apply them before uploading; if a cycle is interrupted, the local
+# batch remains available for the next run. B2 is transport/archive only and must
+# not be scanned as a pending-work queue.
 # Stable is discovery input only. Rebuild the local candidate schedule every
 # cycle from the persistent China asset pool plus the current Stable discovery
 # feed. The B2 candidate file is an exported runtime artifact, not a lock or
