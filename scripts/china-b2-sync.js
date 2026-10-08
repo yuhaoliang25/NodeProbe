@@ -98,7 +98,7 @@ function purgeProcessed(prefix,stateFile,key){
   let deleted=0;
   for(const file of listRemote(prefix)){
     if(!processed.has(file))continue;
-    runQuiet(['file','delete','b2://'+BUCKET+'/'+prefix+'/'+file]);
+    runQuiet(['rm','b2://'+BUCKET+'/'+prefix+'/'+file]);
     deleted++;
   }
   console.log(JSON.stringify({processed:processed.size,deleted},null,2));
