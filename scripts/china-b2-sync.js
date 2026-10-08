@@ -19,6 +19,8 @@ const PAIR_CANDIDATE_REMOTE=PREFIX+'/pair-candidates.json';
 const PAIR_CANDIDATE_LOCAL=process.env.CHINA_RELAY_CANDIDATE_FILE||'data/china-relay-pair-candidates.json';
 const PAIR_OBS_REMOTE=PREFIX+'/pair-observations';
 const PAIR_OBS_DIR=process.env.CHINA_PAIR_OBSERVATION_DIR||'data/china-pair-observations';
+const ASSET_FILE=process.env.CHINA_ASSET_FILE||'data/china-node-assets.json';
+const PAIR_KNOWLEDGE_FILE=process.env.CHINA_PAIR_KNOWLEDGE_FILE||'data/china-pair-knowledge.json';
 
 function run(args){
   const r=spawnSync(process.env.B2_BIN||'b2v4',args,{stdio:'inherit',env:process.env});
@@ -26,7 +28,7 @@ function run(args){
   if(r.status!==0)process.exit(r.status||1);
 }
 function usage(){
-  console.log('usage: node scripts/china-b2-sync.js pull-stable | pull-candidates | pull-discovery-queue | push-observations | pull-pair-candidates | push-pair-observations | publish-results');
+  console.log('usage: node scripts/china-b2-sync.js pull-stable | pull-candidates | pull-discovery-queue | pull-pair-observations | push-observations | purge-observations | pull-pair-candidates | push-pair-observations | purge-pair-observations | publish-results');
 }
 function localBatchNames(dir){
   try{
@@ -46,19 +48,27 @@ function listRemote(prefix){
     .filter(x=>x.endsWith('.json'))
     .map(x=>x.includes('/')?x.slice(x.lastIndexOf('/')+1):x);
 }
-function purgeDownloaded(prefix,localDir){
-  const downloaded=localBatchNames(localDir);
-  if(!downloaded.size){
-    console.log('no downloaded observation batches to purge');
+function processedBatches(stateFile,key){
+  try{
+    const state=JSON.parse(fs.readFileSync(stateFile,'utf8'));
+    return new Set(Array.isArray(state?.[key])?state[key]:[]);
+  }catch{
+    return new Set();
+  }
+}
+function purgeProcessed(prefix,stateFile,key){
+  const processed=processedBatches(stateFile,key);
+  if(!processed.size){
+    console.log('no processed observation batches to purge');
     return;
   }
   let deleted=0;
   for(const file of listRemote(prefix)){
-    if(!downloaded.has(file))continue;
+    if(!processed.has(file))continue;
     run(['file','delete','b2://'+BUCKET+'/'+prefix+'/'+file]);
     deleted++;
   }
-  console.log(JSON.stringify({downloaded:downloaded.size,deleted},null,2));
+  console.log(JSON.stringify({processed:processed.size,deleted},null,2));
 }
 function validateCandidateFile(file, key){
   try{
@@ -119,8 +129,6 @@ if(mode==='pull-stable'){
   }
 }else if(mode==='purge-observations'){
   purgeDownloaded(OBS_REMOTE,OBS_DIR);
-}else if(mode==='purge-pair-observations'){
-  purgeDownloaded(PAIR_OBS_REMOTE,PAIR_OBS_DIR);
 }else if(mode==='publish-results'){
   const outputs=[
     ['data/china-node-assets.json','nodeprobe-state/china-node-assets.json'],
