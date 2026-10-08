@@ -703,3 +703,37 @@ NodeProbe State
 > **这些长期记忆应该存在哪里，才能让 NodeProbe 在临时 GitHub Actions runner 上持续存在。**
 
 因此，Storage Architecture 属于基础设施层，不应该反过来改变 Node/Source 的业务语义。
+
+
+---
+
+## 17. China diagnostics retention
+
+China raw observations are ephemeral and are not uploaded to B2.
+
+China diagnostics are different: they are small audit records and are retained per run for later investigation.
+
+The China publisher therefore keeps two forms:
+
+- `nodeprobe-state/china/china-diagnostics.json` — latest diagnostic snapshot;
+- `nodeprobe-state/china/diagnostics/<releaseId>.json` — immutable per-run audit record.
+
+The per-run record is removed from the China machine immediately after a successful upload, so local storage does not grow.
+
+B2 file versions are **not** used as the diagnostic history mechanism. The history uses explicit per-run file names so each run can be inspected independently.
+
+The B2 bucket should apply a lifecycle rule to the `nodeprobe-state/china/diagnostics/` prefix. Recommended initial retention:
+
+> **90 days of prior diagnostic records.**
+
+This keeps enough history for debugging long-lived node lifecycle problems without allowing diagnostics to accumulate forever.
+
+Do not apply this retention rule to:
+
+- `nodeprobe-state/china-node-assets.json`;
+- China discovery state;
+- pair knowledge;
+- current subscriptions;
+- `release.json`.
+
+Those are current state/product artifacts rather than disposable audit history.
