@@ -48,6 +48,19 @@ function p95(obs) {
   return values.length ? values[Math.min(values.length - 1, Math.ceil(values.length * 0.95) - 1)] : null;
 }
 
+function latestSpeed(node) {
+  const obs = recent(node).filter(x => Number.isFinite(Number(x.speedMbps)) && Number(x.speedMbps) > 0);
+  return obs.length ? Number(obs[obs.length - 1].speedMbps) : null;
+}
+
+function speedScore(node) {
+  const speed = latestSpeed(node);
+  if (speed == null) return 0;
+  // Logarithmic scoring keeps a 100 Mbps node from completely overwhelming
+  // reliability, while still strongly preferring 10 Mbps over 1 Mbps.
+  return Math.min(500, Math.log2(1 + speed) * 80);
+}
+
 function isHongKongProxy(proxy) {
   const name = String(proxy?.name || '');
   // ChatGPT must not use Hong Kong exits, regardless of ordinary Elite
@@ -110,7 +123,9 @@ function exitScore(node, atMs = Date.now()) {
   const lifetimeRate = node.observedRuns ? node.successes / node.observedRuns : 0;
   const latency = p95(obs);
   const latencyPenalty = latency == null ? 0 : Math.min(250, latency / 20);
-  return recentRate * 1000 + lifetimeRate * 500 + Math.min(30, node.observedRuns || 0) * 5 - latencyPenalty;
+  const measuredSpeedMbps = latestSpeed(node);
+  const throughputScore = speedScore(node);
+  return recentRate * 1000 + lifetimeRate * 500 + throughputScore + Math.min(30, node.observedRuns || 0) * 5 - latencyPenalty;
 }
 
 function eligibleExits(state, atMs = Date.now()) {
@@ -132,6 +147,7 @@ function eligibleExits(state, atMs = Date.now()) {
       lifetimeSuccessRate: node.observedRuns ? node.successes / node.observedRuns : 0,
       observedRuns: node.observedRuns,
       p95LatencyMs: p95(recent(node)),
+      speedMbps: latestSpeed(node),
     }))
     .sort((a, b) => b.score - a.score || b.recentSuccessRate - a.recentSuccessRate || b.observedRuns - a.observedRuns);
 }
@@ -182,6 +198,7 @@ function main() {
       lifetimeSuccessRate: node.observedRuns ? node.successes / node.observedRuns : 0,
       observedRuns: node.observedRuns,
       p95LatencyMs: p95(recent(node)),
+      speedMbps: latestSpeed(node),
       chatgptScore: chatgptScore(node),
     }))
     .sort((a,b) => b.chatgptScore - a.chatgptScore || b.score - a.score);
@@ -221,6 +238,7 @@ function main() {
       lifetimeSuccessRate: item.lifetimeSuccessRate,
       observedRuns: item.observedRuns,
       p95LatencyMs: item.p95LatencyMs,
+      speedMbps: item.speedMbps,
     });
   }
 
