@@ -110,6 +110,11 @@ function apply(){
       chatgptEligible:o.chatgptEligible,
       chatgptSuccessRate:o.chatgptSuccessRate,
       chatgptAttempts:o.chatgptAttempts,
+      speedMbps:o.speedMbps,
+      speedDownloadBytes:o.speedDownloadBytes,
+      speedElapsedMs:o.speedElapsedMs,
+      speedSuccess:o.speedSuccess,
+      speedError:o.speedError,
     });
     applied++;
     appliedIds.add(id);
