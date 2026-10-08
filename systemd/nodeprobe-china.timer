@@ -3,7 +3,10 @@ Description=Run NodeProbe China probe periodically
 
 [Timer]
 OnBootSec=3min
-OnUnitActiveSec=30min
+# Count the interval from the end of the previous oneshot cycle, not from
+# service activation. This prevents the timer from queuing the next start
+# while a long China cycle is still running.
+OnUnitInactiveSec=30min
 RandomizedDelaySec=2min
 Persistent=true
 
