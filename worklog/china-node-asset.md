@@ -1243,3 +1243,22 @@ The machine should interact with B2 for normal runtime exchange rather than rely
 firstObservedAt means the first NodeProbe observation, not the true publication time of a node. Source file timestamps must not be interpreted as per-node publication times.
 
 **Revision date: 2026-10-06.**
+
+
+## 2026-10-08 B2 observation 生命周期修复
+
+本次发现 China B2 存储增长有两类来源：固定路径结果文件会在 B2 产生历史版本，以及 `observations/`、`pair-observations/` 下的批次此前上传后没有可靠回收。
+
+更重要的是，旧版 `china-cycle.sh` 在周期开始时先执行 `push-observations` / `push-pair-observations`，会把上一次中断留下、尚未应用的本地 observation 上传并删除；随后才执行 apply，因此这些证据可能永远不会进入 China asset / pair knowledge 状态。
+
+当前生命周期改为：
+
+1. 周期开始先从 B2 恢复尚未处理的 observation 批次；
+2. `china-apply` / `china-pair-apply` 先把 observation 写入持久状态；
+3. 状态保存成功后才上传 observation 批次；
+4. 根据持久状态中的 `processedObservationBatches` / `processedBatches` 删除已消费的 B2 批次；
+5. 下一周期仍会先恢复 B2 中未处理批次，因此中断不会把证据直接丢掉。
+
+B2 observation 不再依赖“本地文件是否还存在”来判断是否可以删除。
+
+注意：B2 的历史版本仍需要 Bucket Lifecycle Rule 管理。Backblaze B2 默认保留旧版本；建议对 `nodeprobe-state/` 配置合适的旧版本生命周期，否则固定路径的每小时上传仍会积累历史版本。
