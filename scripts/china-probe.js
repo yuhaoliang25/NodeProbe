@@ -37,6 +37,11 @@ const CONFIG={
   stabilityMinTargetSuccessRate:Number(process.env.CHINA_STABILITY_MIN_TARGET_SUCCESS_RATE||0.67),
   stabilityMinRoundSuccessRate:Number(process.env.CHINA_STABILITY_MIN_ROUND_SUCCESS_RATE||0.67),
   stabilityP95:Number(process.env.CHINA_STABILITY_P95_LIMIT||5000),
+  speedTarget:process.env.CHINA_SPEED_TARGET||'https://speed.cloudflare.com/__down?bytes=5000000',
+  speedBytes:Number(process.env.CHINA_SPEED_BYTES||5000000),
+  speedTimeout:Number(process.env.CHINA_SPEED_TIMEOUT||15000),
+  speedMaxNodes:Number(process.env.CHINA_SPEED_MAX_NODES||30),
+  speedConcurrency:Number(process.env.CHINA_SPEED_CONCURRENCY||1),
   stabilityMaxConsecutiveFailures:Number(process.env.CHINA_STABILITY_MAX_CONSECUTIVE_FAILURES||1),
   stabilityMaxConsecutiveTimeouts:Number(process.env.CHINA_STABILITY_MAX_CONSECUTIVE_TIMEOUTS||1),
   chatgptTarget:process.env.CHINA_CHATGPT_TARGET||'https://chatgpt.com/',
@@ -66,6 +71,42 @@ function tcpReachability(proxy,timeout){
     socket.once('connect',()=>finish(true));
     socket.once('error',e=>finish(false,String(e.message||e).slice(0,300)));
   });
+}
+
+async function selectProbeProxy(name){
+  const r=await fetch(CONFIG.api+'/proxies/'+encodeURIComponent('CHINA-PROBE'),{
+    method:'PUT',
+    headers:{'content-type':'application/json'},
+    body:JSON.stringify({name}),
+  });
+  if(!r.ok)throw new Error('API '+r.status+' '+(await r.text()).slice(0,200));
+}
+
+async function downloadSpeedViaMihomo(proxyName){
+  const started=Date.now();
+  try{
+    await selectProbeProxy(proxyName);
+    const response=await fetch('http://127.0.0.1:'+CONFIG.mixedPort+'/',{
+      headers:{'x-nodeprobe-speed-target':CONFIG.speedTarget},
+      signal:AbortSignal.timeout(CONFIG.speedTimeout),
+    });
+    if(!response.ok)throw new Error('HTTP '+response.status);
+    const reader=response.body?.getReader();
+    if(!reader)throw new Error('response body is not readable');
+    let bytes=0;
+    while(bytes<CONFIG.speedBytes){
+      const {done,value}=await reader.read();
+      if(done)break;
+      bytes+=value?.byteLength||0;
+    }
+    try{await reader.cancel();}catch{}
+    const elapsedMs=Math.max(1,Date.now()-started);
+    const speedMbps=(bytes*8)/(elapsedMs/1000)/1000000;
+    return {success:bytes>0,speedMbps,downloadBytes:bytes,elapsedMs,error:null,timeout:false};
+  }catch(e){
+    const error=String(e&&e.message||e).slice(0,300);
+    return {success:false,speedMbps:null,downloadBytes:0,elapsedMs:Date.now()-started,error,timeout:/timeout|aborted|deadline/i.test(error)};
+  }
 }
 
 function isHongKongProxy(proxy) {
@@ -292,6 +333,22 @@ async function main(){
       return {endpointId:id,...summarizeAttempts(stabilityById.get(id)||[],stabilityTargets,CONFIG.stabilityRounds,{minSuccessRate:CONFIG.stabilityMinSuccessRate,minTargetSuccessRate:CONFIG.stabilityMinTargetSuccessRate,minRoundSuccessRate:CONFIG.stabilityMinRoundSuccessRate,maxConsecutiveFailures:CONFIG.stabilityMaxConsecutiveFailures,maxConsecutiveTimeouts:CONFIG.stabilityMaxConsecutiveTimeouts,p95Latency:CONFIG.stabilityP95})};
     });
     const stabilityEligibleIds=new Set(stabilityResults.filter(x=>x.eligible).map(x=>x.endpointId));
+
+    // Stage 4: real download throughput, only after stability eligibility.
+    // The single CHINA-PROBE group is switched to one node at a time, so this
+    // stage is serialized and cannot accidentally mix two proxy paths.
+    const speedCandidates=stabilityCandidates
+      .filter(p=>stabilityEligibleIds.has(endpointId(p)))
+      .slice(0,CONFIG.speedMaxNodes);
+    console.log('[china-probe] speed test start: '+speedCandidates.length+' stable nodes (max='+CONFIG.speedMaxNodes+', bytes='+CONFIG.speedBytes+')');
+    const speedResults=[];
+    for(const p of speedCandidates){
+      const result=await downloadSpeedViaMihomo(p.name);
+      speedResults.push({endpointId:endpointId(p),at:now(),success:result.success,speedMbps:result.speedMbps,downloadBytes:result.downloadBytes,speedElapsedMs:result.elapsedMs,error:result.error,timeout:result.timeout,probeEnvironment:CONFIG.environment,stage:'speed-test',speedTarget:CONFIG.speedTarget,finishedAt:now()});
+    }
+    const speedById=new Map(speedResults.map(x=>[x.endpointId,x]));
+    console.log('[china-probe] speed test done: '+speedResults.filter(x=>x.success).length+'/'+speedResults.length+' nodes passed');
+
     // ChatGPT is an independent capability pool. Existing ChatGPT incumbents
     // are deliberately tested even when their general stability score misses
     // the current threshold; they have already earned a place in the
@@ -358,6 +415,11 @@ async function main(){
         chatgptEligible:chatgptById.get(id)?.success??null,
         chatgptSuccessRate:chatgptById.get(id)?.successRate??null,
         chatgptAttempts:chatgptById.get(id)?.attempts??[],
+        speedMbps:speedById.get(id)?.speedMbps??null,
+        speedDownloadBytes:speedById.get(id)?.downloadBytes??null,
+        speedElapsedMs:speedById.get(id)?.speedElapsedMs??null,
+        speedSuccess:speedById.get(id)?.success??null,
+        speedError:speedById.get(id)?.error??null,
         latencyMs:lastExitAttempt?.latencyMs??null,
         error:lastExitAttempt?.error||null,
         errorKind:lastExitAttempt?.errorKind||null,
@@ -380,7 +442,7 @@ async function main(){
       probeEnvironment:CONFIG.environment,
       target:CONFIG.target,
       expected:CONFIG.expected,
-      stages:{reachabilityTimeout:CONFIG.reachabilityTimeout,stage1Timeout:CONFIG.fastTimeout,deepRounds:CONFIG.deepRounds,stabilityRounds:CONFIG.stabilityRounds,stabilityAttempts:CONFIG.stabilityAttempts,chatgptTarget:CONFIG.chatgptTarget,chatgptExpected:CONFIG.chatgptExpected,chatgptAttempts:CONFIG.chatgptAttempts},
+      stages:{reachabilityTimeout:CONFIG.reachabilityTimeout,stage1Timeout:CONFIG.fastTimeout,deepRounds:CONFIG.deepRounds,stabilityRounds:CONFIG.stabilityRounds,stabilityAttempts:CONFIG.stabilityAttempts,speedTarget:CONFIG.speedTarget,speedBytes:CONFIG.speedBytes,speedTimeout:CONFIG.speedTimeout,speedMaxNodes:CONFIG.speedMaxNodes,chatgptTarget:CONFIG.chatgptTarget,chatgptExpected:CONFIG.chatgptExpected,chatgptAttempts:CONFIG.chatgptAttempts},
       observations:finalObservations,
       attempts:observations,
       stabilityResults,
