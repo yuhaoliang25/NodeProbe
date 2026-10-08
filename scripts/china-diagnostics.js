@@ -86,7 +86,7 @@ const eliteMeta=readJson('subscriptions/china-elite.json',{});
 const pools=readJson('subscriptions/china-pools.json',{});
 const pairPool=readJson('subscriptions/china-pair-pool.json',{});
 const diagnostics={
-  version:1,
+  version:2,
   generatedAt:new Date().toISOString(),
   releaseId:process.env.CHINA_RELEASE_ID||null,
   environment:process.env.CHINA_PROBE_ENV||null,
@@ -122,4 +122,24 @@ const diagnostics={
 };
 fs.mkdirSync('data',{recursive:true});
 fs.writeFileSync('data/china-diagnostics.json',JSON.stringify(diagnostics,null,2)+'\n');
-console.log(`[china] diagnostics: assets=${diagnostics.assets.total} candidates=${diagnostics.candidates.total} probe=${diagnostics.probe?.candidates??0} reachable=${diagnostics.probe?.reachable??0} stability=${diagnostics.probe?.stabilityEligible??0} exit=${diagnostics.subscriptions.exit} elite=${diagnostics.subscriptions.elite} chatgpt=${diagnostics.subscriptions.chatgpt} pairs=${diagnostics.subscriptions.pairs}`);
+
+// Raw probe observations are transient. The snapshot has already been summarized
+// above; only processed batches are removed here. Unprocessed batches remain for
+// crash recovery and are not uploaded to B2.
+function cleanupTransient(stateFile, processedKey, dir){
+  const state=readJson(stateFile,null);
+  const processed=new Set(Array.isArray(state?.[processedKey])?state[processedKey]:[]);
+  let removed=0;
+  if(fs.existsSync(dir)){
+    for(const name of fs.readdirSync(dir).filter(x=>x.endsWith('.json'))){
+      if(!processed.has(name))continue;
+      try{fs.unlinkSync(require('path').join(dir,name));removed++;}catch{}
+    }
+  }
+  return removed;
+}
+const cleanedObservationBatches=cleanupTransient(process.env.CHINA_ASSET_FILE||'data/china-node-assets.json','processedObservationBatches',process.env.CHINA_OBSERVATION_DIR||'data/china-probe-observations');
+const cleanedPairObservationBatches=cleanupTransient(process.env.CHINA_PAIR_KNOWLEDGE_FILE||'data/china-pair-knowledge.json','processedBatches',process.env.CHINA_PAIR_OBSERVATION_DIR||'data/china-pair-observations');
+try{fs.unlinkSync(process.env.CHINA_OBSERVATION_FILE||'data/china-probe-observations.json');}catch{}
+try{fs.unlinkSync(process.env.CHINA_PAIR_OBSERVATION_FILE||'data/china-pair-observations.json');}catch{}
+console.log(`[china] diagnostics: assets= assets=${diagnostics.assets.total} candidates=${diagnostics.candidates.total} probe=${diagnostics.probe?.candidates??0} reachable=${diagnostics.probe?.reachable??0} stability=${diagnostics.probe?.stabilityEligible??0} exit=${diagnostics.subscriptions.exit} elite=${diagnostics.subscriptions.elite} chatgpt=${diagnostics.subscriptions.chatgpt} pairs=${diagnostics.subscriptions.pairs}`);

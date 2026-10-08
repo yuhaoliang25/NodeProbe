@@ -10,20 +10,13 @@ const PREFIX=process.env.CHINA_B2_PREFIX||'nodeprobe-state/china';
 const STABLE_REMOTE=process.env.CHINA_STABLE_REMOTE||'nodeprobe-state/china/stable.yaml';
 const STABLE_LOCAL=process.env.CHINA_STABLE_FILE||'subscriptions/stable.yaml';
 const CANDIDATE_REMOTE=PREFIX+'/candidates.json';
-const OBS_REMOTE=PREFIX+'/observations';
 const CANDIDATE_LOCAL=process.env.CHINA_CANDIDATE_FILE||'data/china-probe-candidates.json';
 const DISCOVERY_QUEUE_REMOTE=PREFIX+'/discovery-queue.json';
 const DISCOVERY_QUEUE_LOCAL=process.env.CHINA_DISCOVERY_QUEUE_FILE||'data/china-discovery-queue.json';
-const OBS_DIR=process.env.CHINA_OBSERVATION_DIR||'data/china-probe-observations';
 const PAIR_CANDIDATE_REMOTE=PREFIX+'/pair-candidates.json';
 const PAIR_CANDIDATE_LOCAL=process.env.CHINA_RELAY_CANDIDATE_FILE||'data/china-relay-pair-candidates.json';
-const PAIR_OBS_REMOTE=PREFIX+'/pair-observations';
-const PAIR_OBS_DIR=process.env.CHINA_PAIR_OBSERVATION_DIR||'data/china-pair-observations';
 const ASSET_FILE=process.env.CHINA_ASSET_FILE||'data/china-node-assets.json';
 const PAIR_KNOWLEDGE_FILE=process.env.CHINA_PAIR_KNOWLEDGE_FILE||'data/china-pair-knowledge.json';
-const B2_LIST_TIMEOUT_MS=Number(process.env.CHINA_B2_LIST_TIMEOUT_MS||15000);
-const B2_OBSERVATION_DOWNLOAD_TIMEOUT_MS=Number(process.env.CHINA_B2_OBSERVATION_DOWNLOAD_TIMEOUT_MS||60000);
-const PAIR_OBSERVATION_RECOVERY_WINDOW_HOURS=Number(process.env.CHINA_PAIR_OBSERVATION_RECOVERY_WINDOW_HOURS||48);
 
 function run(args,options){
   const r=spawnSync(process.env.B2_BIN||'b2v4',args,{
@@ -43,65 +36,7 @@ function runQuiet(args){
   }
 }
 function usage(){
-  console.log('usage: node scripts/china-b2-sync.js pull-stable | pull-candidates | pull-discovery-queue | pull-pair-observations | push-observations | purge-observations | pull-pair-candidates | push-pair-observations | purge-pair-observations | publish-results');
-}
-function localBatchNames(dir){
-  try{
-    return new Set(fs.readdirSync(dir).filter(x=>x.endsWith('.json')));
-  }catch{
-    return new Set();
-  }
-}
-function listRemote(prefix){
-  console.log(`[china-b2] listing ${prefix} (timeout=${B2_LIST_TIMEOUT_MS}ms)...`);
-  const r=spawnSync(process.env.B2_BIN||'b2v4',['ls','b2://'+BUCKET+'/'+prefix],{
-    encoding:'utf8',
-    env:process.env,
-    timeout:B2_LIST_TIMEOUT_MS,
-  });
-  if(r.error){
-    if(r.error.code==='ETIMEDOUT'){
-      throw new Error(`B2 ls timed out after ${B2_LIST_TIMEOUT_MS}ms: ${prefix}`);
-    }
-    throw r.error;
-  }
-  if(r.status!==0){
-    process.stderr.write(r.stderr||'');
-    process.exit(r.status||1);
-  }
-  return (r.stdout||'').split(/\r?\n/).map(x=>x.trim()).filter(Boolean)
-    .filter(x=>x.endsWith('.json'))
-    .map(x=>x.includes('/')?x.slice(x.lastIndexOf('/')+1):x);
-}
-function batchTimestamp(file){
-  const match=file.match(/^(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:-\d{3})?Z)-/);
-  if(!match)return null;
-  const normalized=match[1].replace(/-(\d{3})Z$/,'.$1Z');
-  const time=Date.parse(normalized);
-  return Number.isFinite(time)?time:null;
-}
-
-function processedBatches(stateFile,key){
-  try{
-    const state=JSON.parse(fs.readFileSync(stateFile,'utf8'));
-    return new Set(Array.isArray(state?.[key])?state[key]:[]);
-  }catch{
-    return new Set();
-  }
-}
-function purgeProcessed(prefix,stateFile,key){
-  const processed=processedBatches(stateFile,key);
-  if(!processed.size){
-    console.log('no processed observation batches to purge');
-    return;
-  }
-  let deleted=0;
-  for(const file of listRemote(prefix)){
-    if(!processed.has(file))continue;
-    runQuiet(['rm','b2://'+BUCKET+'/'+prefix+'/'+file]);
-    deleted++;
-  }
-  console.log(JSON.stringify({processed:processed.size,deleted},null,2));
+  console.log('usage: node scripts/china-b2-sync.js pull-stable | pull-candidates | pull-discovery-queue | pull-pair-candidates | publish-results');
 }
 function validateCandidateFile(file, key){
   try{
@@ -111,31 +46,6 @@ function validateCandidateFile(file, key){
   }catch{
     return false;
   }
-}
-function pushObservationBatches(dir,remotePrefix,stateFile,stateKey,label){
-  if(!fs.existsSync(dir)){ console.log(`no ${label} observation batches`); return; }
-  const files=fs.readdirSync(dir).filter(x=>x.endsWith('.json')).sort();
-  if(!files.length){ console.log(`no ${label} observation batches`); return; }
-  const processed=processedBatches(stateFile,stateKey);
-  // A recovery download may leave a batch locally even though the same batch
-  // is already archived in B2 and marked processed. Reconcile that case before
-  // treating the inbox as new upload work. If a processed batch is absent from
-  // B2, keep the normal retry path so a failed prior upload is recoverable.
-  const remote=new Set(listRemote(remotePrefix));
-  let uploaded=0;
-  let discarded=0;
-  for(const file of files){
-    const local=path.join(dir,file);
-    if(processed.has(file) && remote.has(file)){
-      fs.unlinkSync(local);
-      discarded++;
-      continue;
-    }
-    run(['file','upload',BUCKET,local,remotePrefix+'/'+file]);
-    fs.unlinkSync(local);
-    uploaded++;
-  }
-  console.log(`[china-b2] ${label} observations: uploaded=${uploaded} discardedArchived=${discarded}`);
 }
 const mode=process.argv[2];
 if(mode==='pull-stable'){
@@ -178,39 +88,6 @@ if(mode==='pull-stable'){
     console.error('B2 China pair candidate feed is missing or invalid.');
     process.exit(1);
   }
-}else if(mode==='pull-pair-observations'){
-  fs.mkdirSync(PAIR_OBS_DIR,{recursive:true});
-  const processed=processedBatches(PAIR_KNOWLEDGE_FILE,'processedBatches');
-  const remoteFiles=listRemote(PAIR_OBS_REMOTE);
-  const cutoff=Date.now()-PAIR_OBSERVATION_RECOVERY_WINDOW_HOURS*60*60*1000;
-  let downloaded=0;
-  let skippedOld=0;
-  for(const file of remoteFiles){
-    if(processed.has(file))continue;
-    const timestamp=batchTimestamp(file);
-    if(timestamp!==null && timestamp<cutoff){
-      skippedOld++;
-      continue;
-    }
-    const local=path.join(PAIR_OBS_DIR,file);
-    console.log(`[china-b2] downloading pair observation ${file}...`);
-    run(['file','download','b2://'+BUCKET+'/'+PAIR_OBS_REMOTE+'/'+file,local],{timeout:B2_OBSERVATION_DOWNLOAD_TIMEOUT_MS});
-    downloaded++;
-  }
-  console.log(JSON.stringify({
-    remoteBatches:remoteFiles.length,
-    alreadyProcessed:processed.size,
-    downloaded,
-    skippedOld,
-    recoveryWindowHours:PAIR_OBSERVATION_RECOVERY_WINDOW_HOURS,
-    observationDir:PAIR_OBS_DIR,
-  },null,2));
-}else if(mode==='push-observations'){
-  pushObservationBatches(OBS_DIR,OBS_REMOTE,ASSET_FILE,'processedObservationBatches','main');
-}else if(mode==='purge-observations'){
-  purgeProcessed(OBS_REMOTE,ASSET_FILE,'processedObservationBatches');
-}else if(mode==='purge-pair-observations'){
-  purgeProcessed(PAIR_OBS_REMOTE,PAIR_KNOWLEDGE_FILE,'processedBatches');
 }else if(mode==='publish-results'){
   const outputs=[
     ['data/china-node-assets.json','nodeprobe-state/china-node-assets.json'],
@@ -260,9 +137,8 @@ if(mode==='pull-stable'){
   // after this marker exists, so it never becomes the China state writer.
   runQuiet(['file','upload',BUCKET,manifestFile,PREFIX+'/release.json']);
   console.log(`[china] publish complete: ${outputs.length} result files + release manifest (releaseId=${releaseId||'none'})`);
-}else if(mode==='push-pair-observations'){
-  pushObservationBatches(PAIR_OBS_DIR,PAIR_OBS_REMOTE,PAIR_KNOWLEDGE_FILE,'processedBatches','pair');
-}else{
+}
+else{
   usage();
   process.exit(2);
 }

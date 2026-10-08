@@ -127,10 +127,24 @@ function apply(){
   state.lastObservationCount=applied;
   saveState(state);
 
+  // Raw observations are one-shot processing material. State is saved first,
+  // so an interrupted cleanup is safe: the next run sees the processed batch
+  // marker and will not apply it again.
+  let cleanedBatches=0;
+  for(const batchName of batchesSeen){
+    try{fs.unlinkSync(path.join(CONFIG.observationDir,batchName));cleanedBatches++;}catch(error){
+      if(error?.code!=='ENOENT')console.error(`[china] failed to remove processed observation batch ${batchName}: ${error.message}`);
+    }
+  }
+  try{fs.unlinkSync(CONFIG.observationFile);}catch(error){
+    if(error?.code!=='ENOENT')console.error(`[china] failed to remove observation snapshot: ${error.message}`);
+  }
+
   console.log(JSON.stringify({
     observations:observations.length,
     applied,
     processedBatches:[...batchesSeen],
+    cleanedBatches,
     assetFile:CONFIG.assetFile,
   },null,2));
 }

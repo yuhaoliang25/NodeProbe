@@ -85,6 +85,18 @@ function apply(){
   state.version=1;state.generatedAt=now();state.processedBatches=[...seen].slice(-C.batchRetention);
   state.appliedObservationIds=[...appliedIds].slice(-C.appliedObservationRetention);
   fs.mkdirSync(path.dirname(C.stateFile),{recursive:true});fs.writeFileSync(C.stateFile,JSON.stringify(state,null,2)+'\n');
-  console.log(JSON.stringify({applied,pairs:Object.keys(state.pairs).length,stateFile:C.stateFile},null,2));
+  // Raw pair observations are one-shot processing material. Save knowledge first;
+  // an interrupted cleanup is safe because processedBatches prevents replay.
+  let cleanedBatches=0;
+  for(const b of loadBatches()){
+    if(!b.name||!seen.has(b.name))continue;
+    try{fs.unlinkSync(path.join(C.observationDir,b.name));cleanedBatches++;}catch(error){
+      if(error?.code!=='ENOENT')console.error(`[china] failed to remove processed pair observation batch ${b.name}: ${error.message}`);
+    }
+  }
+  try{fs.unlinkSync(C.observationFile);}catch(error){
+    if(error?.code!=='ENOENT')console.error(`[china] failed to remove pair observation snapshot: ${error.message}`);
+  }
+  console.log(JSON.stringify({applied,pairs:Object.keys(state.pairs).length,cleanedBatches,stateFile:C.stateFile},null,2));
 }
 apply();

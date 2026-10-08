@@ -23,8 +23,6 @@ fi
 export CHINA_MAX_NODES="${CHINA_MAX_NODES:-300}"
 export CHINA_PROBE_CONCURRENCY="${CHINA_PROBE_CONCURRENCY:-8}"
 export CHINA_B2_LIST_TIMEOUT_MS="${CHINA_B2_LIST_TIMEOUT_MS:-15000}"
-export CHINA_B2_OBSERVATION_DOWNLOAD_TIMEOUT_MS="${CHINA_B2_OBSERVATION_DOWNLOAD_TIMEOUT_MS:-60000}"
-export PAIR_OBSERVATION_RECOVERY_WINDOW_HOURS="${PAIR_OBSERVATION_RECOVERY_WINDOW_HOURS:-48}"
 export CHINA_RELEASE_ID="${CHINA_RELEASE_ID:-$(date -u +%Y%m%dT%H%M%SZ)}"
 
 # Cheap gate before any B2 mutation, probing, or test execution. This catches
@@ -32,10 +30,9 @@ export CHINA_RELEASE_ID="${CHINA_RELEASE_ID:-$(date -u +%Y%m%dT%H%M%SZ)}"
 # module-supplied preflight checks before a long cycle can fail at the end.
 npm run china-preflight
 
-# Local observation batches are the authoritative handoff between probing and
-# application. Apply them before uploading; if a cycle is interrupted, the local
-# batch remains available for the next run. B2 is transport/archive only and must
-# not be scanned as a pending-work queue.
+# Local observation batches are the crash-safe handoff between probing and
+# application. They are consumed once and cleaned up locally after the resulting
+# persistent state is saved. Raw observations are never uploaded to B2.
 # Stable is discovery input only. Rebuild the local candidate schedule every
 # cycle from the persistent China asset pool plus the current Stable discovery
 # feed. The B2 candidate file is an exported runtime artifact, not a lock or
@@ -46,8 +43,6 @@ npm run china-sync -- pull-discovery-queue || true
 npm run china-assets
 npm run china-probe
 npm run china-apply
-npm run china-sync -- push-observations
-npm run china-sync -- purge-observations
 
 # Relay/pair experiments are derived from the current persistent China asset
 # pool. As with ordinary candidates, the generated pair feed is a scheduling
@@ -56,8 +51,6 @@ npm run china-sync -- purge-observations
 npm run china-relay-candidates
 npm run china-relay-probe
 npm run china-pair-apply
-npm run china-sync -- push-pair-observations
-npm run china-sync -- purge-pair-observations
 
 # From this point onward the China machine owns the entire state transition.
 # No GitHub workflow is needed to apply observations or derive the next feed.
