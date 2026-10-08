@@ -112,7 +112,7 @@ function validateCandidateFile(file, key){
     return false;
   }
 }
-function pushObservationBatches(dir,remote,stateFile,stateKey,label){
+function pushObservationBatches(dir,remotePrefix,stateFile,stateKey,label){
   if(!fs.existsSync(dir)){ console.log(`no ${label} observation batches`); return; }
   const files=fs.readdirSync(dir).filter(x=>x.endsWith('.json')).sort();
   if(!files.length){ console.log(`no ${label} observation batches`); return; }
@@ -121,7 +121,7 @@ function pushObservationBatches(dir,remote,stateFile,stateKey,label){
   // is already archived in B2 and marked processed. Reconcile that case before
   // treating the inbox as new upload work. If a processed batch is absent from
   // B2, keep the normal retry path so a failed prior upload is recoverable.
-  const remote=new Set(listRemote(remote));
+  const remote=new Set(listRemote(remotePrefix));
   let uploaded=0;
   let discarded=0;
   for(const file of files){
@@ -131,7 +131,7 @@ function pushObservationBatches(dir,remote,stateFile,stateKey,label){
       discarded++;
       continue;
     }
-    run(['file','upload',BUCKET,local,remote+'/'+file]);
+    run(['file','upload',BUCKET,local,remotePrefix+'/'+file]);
     fs.unlinkSync(local);
     uploaded++;
   }
