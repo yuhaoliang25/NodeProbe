@@ -86,26 +86,32 @@ async function downloadSpeedViaMihomo(proxyName){
   const started=Date.now();
   try{
     await selectProbeProxy(proxyName);
-    const response=await fetch('http://127.0.0.1:'+CONFIG.mixedPort+'/',{
-      headers:{'x-nodeprobe-speed-target':CONFIG.speedTarget},
-      signal:AbortSignal.timeout(CONFIG.speedTimeout),
-    });
-    if(!response.ok)throw new Error('HTTP '+response.status);
-    const reader=response.body?.getReader();
-    if(!reader)throw new Error('response body is not readable');
-    let bytes=0;
-    while(bytes<CONFIG.speedBytes){
-      const {done,value}=await reader.read();
-      if(done)break;
-      bytes+=value?.byteLength||0;
-    }
-    try{await reader.cancel();}catch{}
+    // CHINA-PROBE is selected in Mihomo first; curl then traverses the local
+    // mixed HTTP proxy, so the measured bytes are actually transferred through
+    // the candidate node rather than directly from the China machine.
+    const {spawnSync}=require('child_process');
+    const result=spawnSync('curl',[
+      '--proxy','http://127.0.0.1:'+CONFIG.mixedPort,
+      '--silent','--show-error','--location',
+      '--max-time',String(Math.ceil(CONFIG.speedTimeout/1000)),
+      '--connect-timeout','5',
+      '--output','/dev/null',
+      '--write-out','%{http_code} %{size_download} %{time_total}',
+      CONFIG.speedTarget,
+    ],{encoding:'utf8',maxBuffer:1024*1024});
     const elapsedMs=Math.max(1,Date.now()-started);
-    const speedMbps=(bytes*8)/(elapsedMs/1000)/1000000;
-    return {success:bytes>0,speedMbps,downloadBytes:bytes,elapsedMs,error:null,timeout:false};
+    const parts=String(result.stdout||'').trim().split(/\\s+/);
+    const httpCode=Number(parts[0]);
+    const bytes=Number(parts[1]);
+    const curlSeconds=Number(parts[2]);
+    if(result.status!==0)throw new Error(String(result.stderr||'curl failed').trim().slice(0,300));
+    if(!Number.isFinite(bytes)||bytes<=0)throw new Error('speed test returned no body');
+    const measuredMs=Number.isFinite(curlSeconds)&&curlSeconds>0?curlSeconds*1000:elapsedMs;
+    const speedMbps=(bytes*8)/(measuredMs/1000)/1000000;
+    return {success:httpCode>=200&&httpCode<400,speedMbps,downloadBytes:bytes,elapsedMs:measuredMs,httpCode,error:null,timeout:false};
   }catch(e){
     const error=String(e&&e.message||e).slice(0,300);
-    return {success:false,speedMbps:null,downloadBytes:0,elapsedMs:Date.now()-started,error,timeout:/timeout|aborted|deadline/i.test(error)};
+    return {success:false,speedMbps:null,downloadBytes:0,elapsedMs:Date.now()-started,httpCode:null,error,timeout:/timeout|timed out|deadline/i.test(error)};
   }
 }
 
