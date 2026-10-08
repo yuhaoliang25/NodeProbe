@@ -28,7 +28,8 @@
     "china-pairs": "node scripts/build-china-pairs.js",
     "china-elite": "node scripts/build-china-elite.js",
     "china-sticky": "node scripts/build-china-sticky.js",
-    "china-diagnostics": "node scripts/china-diagnostics.js"
+    "china-diagnostics": "node scripts/china-diagnostics.js",
+    "china-preflight": "node scripts/china-preflight.js"
   },
   "dependencies": {
     "js-yaml": "^4.1.0"
