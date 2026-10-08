@@ -175,6 +175,14 @@ const diagnostics={
 };
 fs.mkdirSync('data',{recursive:true});
 fs.writeFileSync('data/china-diagnostics.json',JSON.stringify(diagnostics,null,2)+'\n');
+const diagnosticHistoryDir=process.env.CHINA_DIAGNOSTICS_HISTORY_DIR||'data/china-diagnostics-history';
+const diagnosticHistoryId=String(process.env.CHINA_RELEASE_ID||diagnostics.generatedAt)
+  .replace(/[^A-Za-z0-9._-]/g,'_');
+fs.mkdirSync(diagnosticHistoryDir,{recursive:true});
+fs.writeFileSync(
+  require('path').join(diagnosticHistoryDir,diagnosticHistoryId+'.json'),
+  JSON.stringify(diagnostics,null,2)+'\n'
+);
 
 // Raw probe observations are transient. The snapshot has already been summarized
 // above; only processed batches are removed here. Unprocessed batches remain for
