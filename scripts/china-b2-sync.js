@@ -21,9 +21,15 @@ const PAIR_OBS_REMOTE=PREFIX+'/pair-observations';
 const PAIR_OBS_DIR=process.env.CHINA_PAIR_OBSERVATION_DIR||'data/china-pair-observations';
 const ASSET_FILE=process.env.CHINA_ASSET_FILE||'data/china-node-assets.json';
 const PAIR_KNOWLEDGE_FILE=process.env.CHINA_PAIR_KNOWLEDGE_FILE||'data/china-pair-knowledge.json';
+const B2_LIST_TIMEOUT_MS=Number(process.env.CHINA_B2_LIST_TIMEOUT_MS||15000);
+const B2_OBSERVATION_DOWNLOAD_TIMEOUT_MS=Number(process.env.CHINA_B2_OBSERVATION_DOWNLOAD_TIMEOUT_MS||60000);
 
-function run(args){
-  const r=spawnSync(process.env.B2_BIN||'b2v4',args,{stdio:'inherit',env:process.env});
+function run(args,options){
+  const r=spawnSync(process.env.B2_BIN||'b2v4',args,{
+    stdio:'inherit',
+    env:process.env,
+    ...(options||{}),
+  });
   if(r.error)throw r.error;
   if(r.status!==0)process.exit(r.status||1);
 }
@@ -38,8 +44,18 @@ function localBatchNames(dir){
   }
 }
 function listRemote(prefix){
-  const r=spawnSync(process.env.B2_BIN||'b2v4',['ls','b2://'+BUCKET+'/'+prefix],{encoding:'utf8',env:process.env});
-  if(r.error)throw r.error;
+  console.log(`[china-b2] listing ${prefix} (timeout=${B2_LIST_TIMEOUT_MS}ms)...`);
+  const r=spawnSync(process.env.B2_BIN||'b2v4',['ls','b2://'+BUCKET+'/'+prefix],{
+    encoding:'utf8',
+    env:process.env,
+    timeout:B2_LIST_TIMEOUT_MS,
+  });
+  if(r.error){
+    if(r.error.code==='ETIMEDOUT'){
+      throw new Error(`B2 ls timed out after ${B2_LIST_TIMEOUT_MS}ms: ${prefix}`);
+    }
+    throw r.error;
+  }
   if(r.status!==0){
     process.stderr.write(r.stderr||'');
     process.exit(r.status||1);
@@ -126,7 +142,7 @@ if(mode==='pull-stable'){
   for(const file of listRemote(PAIR_OBS_REMOTE)){
     if(processed.has(file))continue;
     const local=path.join(PAIR_OBS_DIR,file);
-    run(['file','download','b2://'+BUCKET+'/'+PAIR_OBS_REMOTE+'/'+file,local]);
+    run(['file','download','b2://'+BUCKET+'/'+PAIR_OBS_REMOTE+'/'+file,local],{timeout:B2_OBSERVATION_DOWNLOAD_TIMEOUT_MS});
   }
   console.log(JSON.stringify({processed:processed.size,observationDir:PAIR_OBS_DIR},null,2));
 }else if(mode==='push-observations'){
