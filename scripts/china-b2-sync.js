@@ -112,6 +112,31 @@ function validateCandidateFile(file, key){
     return false;
   }
 }
+function pushObservationBatches(dir,remote,stateFile,stateKey,label){
+  if(!fs.existsSync(dir)){ console.log(`no ${label} observation batches`); return; }
+  const files=fs.readdirSync(dir).filter(x=>x.endsWith('.json')).sort();
+  if(!files.length){ console.log(`no ${label} observation batches`); return; }
+  const processed=processedBatches(stateFile,stateKey);
+  // A recovery download may leave a batch locally even though the same batch
+  // is already archived in B2 and marked processed. Reconcile that case before
+  // treating the inbox as new upload work. If a processed batch is absent from
+  // B2, keep the normal retry path so a failed prior upload is recoverable.
+  const remote=new Set(listRemote(remote));
+  let uploaded=0;
+  let discarded=0;
+  for(const file of files){
+    const local=path.join(dir,file);
+    if(processed.has(file) && remote.has(file)){
+      fs.unlinkSync(local);
+      discarded++;
+      continue;
+    }
+    run(['file','upload',BUCKET,local,remote+'/'+file]);
+    fs.unlinkSync(local);
+    uploaded++;
+  }
+  console.log(`[china-b2] ${label} observations: uploaded=${uploaded} discardedArchived=${discarded}`);
+}
 const mode=process.argv[2];
 if(mode==='pull-stable'){
   fs.mkdirSync(path.dirname(STABLE_LOCAL),{recursive:true});
@@ -181,12 +206,7 @@ if(mode==='pull-stable'){
     observationDir:PAIR_OBS_DIR,
   },null,2));
 }else if(mode==='push-observations'){
-  if(!fs.existsSync(OBS_DIR)){ console.log('no observation batches'); process.exit(0); }
-  const files=fs.readdirSync(OBS_DIR).filter(x=>x.endsWith('.json')).sort();
-  for(const file of files){
-    run(['file','upload',BUCKET,path.join(OBS_DIR,file),OBS_REMOTE+'/'+file]);
-    fs.unlinkSync(path.join(OBS_DIR,file));
-  }
+  pushObservationBatches(OBS_DIR,OBS_REMOTE,ASSET_FILE,'processedObservationBatches','main');
 }else if(mode==='purge-observations'){
   purgeProcessed(OBS_REMOTE,ASSET_FILE,'processedObservationBatches');
 }else if(mode==='purge-pair-observations'){
@@ -241,12 +261,7 @@ if(mode==='pull-stable'){
   runQuiet(['file','upload',BUCKET,manifestFile,PREFIX+'/release.json']);
   console.log(`[china] publish complete: ${outputs.length} result files + release manifest (releaseId=${releaseId||'none'})`);
 }else if(mode==='push-pair-observations'){
-  if(!fs.existsSync(PAIR_OBS_DIR)){ console.log('no pair observation batches'); process.exit(0); }
-  const files=fs.readdirSync(PAIR_OBS_DIR).filter(x=>x.endsWith('.json')).sort();
-  for(const file of files){
-    run(['file','upload',BUCKET,path.join(PAIR_OBS_DIR,file),PAIR_OBS_REMOTE+'/'+file]);
-    fs.unlinkSync(path.join(PAIR_OBS_DIR,file));
-  }
+  pushObservationBatches(PAIR_OBS_DIR,PAIR_OBS_REMOTE,PAIR_KNOWLEDGE_FILE,'processedBatches','pair');
 }else{
   usage();
   process.exit(2);
