@@ -55,9 +55,9 @@ function listRemote(){
 }
 
 function batchTimestamp(file){
-  const match=file.match(/^(\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:-\\d{3})?Z)-/);
+  const match=file.match(/^(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:-\d{3})?Z)-/);
   if(!match)return null;
-  const normalized=match[1].replace(/-(\\d{3})Z$/,'.$1Z');
+  const normalized=match[1].replace(/-(\d{3})Z$/,'.$1Z');
   const time=Date.parse(normalized);
   return Number.isFinite(time)?time:null;
 }
