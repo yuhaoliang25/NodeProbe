@@ -123,7 +123,6 @@ function exitScore(node, atMs = Date.now()) {
   const lifetimeRate = node.observedRuns ? node.successes / node.observedRuns : 0;
   const latency = p95(obs);
   const latencyPenalty = latency == null ? 0 : Math.min(250, latency / 20);
-  const measuredSpeedMbps = latestSpeed(node);
   const throughputScore = speedScore(node);
   return recentRate * 1000 + lifetimeRate * 500 + throughputScore + Math.min(30, node.observedRuns || 0) * 5 - latencyPenalty;
 }
