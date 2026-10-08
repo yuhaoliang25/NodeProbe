@@ -101,6 +101,7 @@ if(mode==='pull-stable'){
     ['subscriptions/sticky.yaml',PREFIX+'/sticky.yaml'],
     ['data/china-sticky.json',PREFIX+'/china-sticky.json'],
     ['data/china-diagnostics.json',PREFIX+'/china-diagnostics.json'],
+    ['data/china-diagnostics-history/'+String(process.env.CHINA_RELEASE_ID||'unknown').replace(/[^A-Za-z0-9._-]/g,'_')+'.json',PREFIX+'/diagnostics/'+String(process.env.CHINA_RELEASE_ID||'unknown').replace(/[^A-Za-z0-9._-]/g,'_')+'.json'],
     ['subscriptions/china-elite.json',PREFIX+'/china-elite.json'],
     ['subscriptions/pairs.yaml',PREFIX+'/pairs.yaml'],
     ['subscriptions/china-pools.json',PREFIX+'/china-pools.json'],
@@ -110,12 +111,6 @@ if(mode==='pull-stable'){
   for(const [local,remote] of outputs){
     if(!fs.existsSync(local))throw new Error('China result missing: '+local);
     runQuiet(['file','upload',BUCKET,local,remote]);
-  }
-  // Per-run diagnostics are audit records. Remove the local copy after the
-  // upload so the China machine does not accumulate historical diagnostics.
-  const localDiagnosticHistory=outputs.find(([local])=>local.startsWith('data/china-diagnostics-history/'))?.[0];
-  if(localDiagnosticHistory){
-    try{fs.unlinkSync(localDiagnosticHistory);}catch{}
   }
   const crypto=require('crypto');
   const generatedAt=new Date().toISOString();
@@ -142,6 +137,13 @@ if(mode==='pull-stable'){
   // The manifest is published last. GitHub only needs to consume a release
   // after this marker exists, so it never becomes the China state writer.
   runQuiet(['file','upload',BUCKET,manifestFile,PREFIX+'/release.json']);
+  // Per-run diagnostics are audit records. Remove the local copy after the
+  // upload so the China machine does not accumulate historical diagnostics.
+  const localDiagnosticHistory=outputs.find(([local])=>local.startsWith('data/china-diagnostics-history/'))?.[0];
+  if(localDiagnosticHistory){
+    try{fs.unlinkSync(localDiagnosticHistory);}catch{}
+  }
+
   console.log(`[china] publish complete: ${outputs.length} result files + release manifest (releaseId=${releaseId||'none'})`);
 }
 else{
