@@ -10,9 +10,21 @@ const PREFIX=process.env.CHINA_B2_PREFIX||'nodeprobe-state/china';
 const OBS_REMOTE=PREFIX+'/observations';
 const OBS_DIR=process.env.CHINA_OBSERVATION_DIR||'data/china-probe-observations';
 const ASSET_FILE=process.env.CHINA_ASSET_FILE||'data/china-node-assets.json';
+const B2_LIST_TIMEOUT_MS=Number(process.env.CHINA_B2_LIST_TIMEOUT_MS||15000);
+const B2_DOWNLOAD_TIMEOUT_MS=Number(process.env.CHINA_B2_DOWNLOAD_TIMEOUT_MS||60000);
 
-function run(args){
-  const r=spawnSync(process.env.B2_BIN||'b2v4',args,{encoding:'utf8',env:process.env});
+function run(args,timeout){ 
+  const r=spawnSync(process.env.B2_BIN||'b2v4',args,{
+    encoding:'utf8',
+    env:process.env,
+    timeout,
+  });
+  if(r.error){
+    if(r.error.code==='ETIMEDOUT'){
+      throw new Error(`B2 command timed out after ${timeout}ms: ${args.join(' ')}`);
+    }
+    throw r.error;
+  }
   if(r.error)throw r.error;
   if(r.status!==0){
     process.stderr.write(r.stderr||'');
@@ -32,7 +44,9 @@ function processedBatches(){
 }
 
 function listRemote(){
-  const stdout=run(['ls','b2://'+BUCKET+'/'+OBS_REMOTE]);
+  console.log(`[china-observations] listing B2 observation batches (timeout=${B2_LIST_TIMEOUT_MS}ms)...`);
+  const stdout=run(['ls','b2://'+BUCKET+'/'+OBS_REMOTE],B2_LIST_TIMEOUT_MS);
+  console.log('[china-observations] B2 observation listing completed.');
   return stdout.split(/\r?\n/)
     .map(x=>x.trim())
     .filter(Boolean)
@@ -49,8 +63,10 @@ function pull(){
     if(processed.has(file))continue;
     const remote=OBS_REMOTE+'/'+file;
     const local=path.join(OBS_DIR,file);
-    run(['file','download','b2://'+BUCKET+'/'+remote,local]);
+    console.log(`[china-observations] downloading ${file}...`);
+    run(['file','download','b2://'+BUCKET+'/'+remote,local],B2_DOWNLOAD_TIMEOUT_MS);
     downloaded++;
+    console.log(`[china-observations] recovered ${file}`);
   }
   console.log(JSON.stringify({
     remoteBatches:remoteFiles.length,
