@@ -111,6 +111,12 @@ if(mode==='pull-stable'){
     if(!fs.existsSync(local))throw new Error('China result missing: '+local);
     runQuiet(['file','upload',BUCKET,local,remote]);
   }
+  // Per-run diagnostics are audit records. Remove the local copy after the
+  // upload so the China machine does not accumulate historical diagnostics.
+  const localDiagnosticHistory=outputs.find(([local])=>local.startsWith('data/china-diagnostics-history/'))?.[0];
+  if(localDiagnosticHistory){
+    try{fs.unlinkSync(localDiagnosticHistory);}catch{}
+  }
   const crypto=require('crypto');
   const generatedAt=new Date().toISOString();
   const releaseId=process.env.CHINA_RELEASE_ID||null;
