@@ -122,4 +122,4 @@ const diagnostics={
 };
 fs.mkdirSync('data',{recursive:true});
 fs.writeFileSync('data/china-diagnostics.json',JSON.stringify(diagnostics,null,2)+'\n');
-console.log(JSON.stringify(diagnostics,null,2));
+console.log(`[china] diagnostics: assets=${diagnostics.assets.total} candidates=${diagnostics.candidates.total} probe=${diagnostics.probe?.candidates??0} reachable=${diagnostics.probe?.reachable??0} stability=${diagnostics.probe?.stabilityEligible??0} exit=${diagnostics.subscriptions.exit} elite=${diagnostics.subscriptions.elite} chatgpt=${diagnostics.subscriptions.chatgpt} pairs=${diagnostics.subscriptions.pairs}`);
