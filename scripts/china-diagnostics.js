@@ -20,7 +20,15 @@ function countStates(nodes){
     return m;
   },{});
 }
-function probeSummary(p){
+function percentile(values, q){
+  const xs=values.filter(Number.isFinite).sort((a,b)=>a-b);
+  if(!xs.length)return null;
+  const pos=(xs.length-1)*q;
+  const lo=Math.floor(pos), hi=Math.ceil(pos);
+  if(lo===hi)return xs[lo];
+  return xs[lo]+(xs[hi]-xs[lo])*(pos-lo);
+}
+function probeSummary(p, candidates){
   if(!p)return null;
   const obs=Array.isArray(p.observations)?p.observations:[];
   const attempts=Array.isArray(p.attempts)?p.attempts:[];
@@ -44,8 +52,25 @@ function probeSummary(p){
     }
     return Object.fromEntries(Object.entries(out).sort((a,b)=>b[1]-a[1]));
   };
+  const speed=obs.filter(x=>Number.isFinite(Number(x.speedMbps))&&x.speedSuccess===true).map(x=>Number(x.speedMbps));
+  const categories=(candidates?.candidates||[]).reduce((m,x)=>{m[x.category||'unknown']=(m[x.category||'unknown']||0)+1;return m;},{});
+  const categoryOutcomes={};
+  for(const x of candidates?.candidates||[]){
+    const o=obs.find(y=>y.endpointId===x.endpointId);
+    const k=x.category||'unknown';
+    const row=categoryOutcomes[k]||(categoryOutcomes[k]={candidates:0,probed:0,success:0,reachable:0,stabilityEligible:0,speedTested:0});
+    row.candidates++;
+    if(!o)continue;
+    row.probed++;
+    if(o.success===true)row.success++;
+    if(o.reachabilitySuccess===true)row.reachable++;
+    if(o.stabilityEligible===true)row.stabilityEligible++;
+    if(o.speedSuccess===true)row.speedTested++;
+  }
   return {
     candidates:obs.length,
+    categoryCounts:categories,
+    categoryOutcomes,
     reachable:obs.filter(x=>x.reachabilitySuccess===true).length,
     exitSuccess:obs.filter(x=>x.exitSuccess===true).length,
     stabilityEligible:obs.filter(x=>x.stabilityEligible===true).length,
@@ -74,7 +99,22 @@ function probeSummary(p){
       stage1Retry:errorKinds('stage1-retry'),
       stage2:errorKinds('stage2')
     },
-    deepPass:obs.filter(x=>Array.isArray(x.successfulStages) && x.successfulStages.some(s=>s.startsWith('deep-round-'))).length
+    deepPass:obs.filter(x=>Array.isArray(x.successfulStages) && x.successfulStages.some(s=>s.startsWith('deep-round-'))).length,
+    speed:{
+      tested:speed.length,
+      minMbps:speed.length?Math.min(...speed):null,
+      medianMbps:percentile(speed,0.5),
+      p95Mbps:percentile(speed,0.95),
+      maxMbps:speed.length?Math.max(...speed):null
+    },
+    topFailures:Object.fromEntries(
+      Object.entries(
+        attempts.filter(x=>x.success!==true).reduce((m,x)=>{
+          const key=String(x.errorKind||x.error||'unknown').slice(0,160);
+          m[key]=(m[key]||0)+1; return m;
+        },{})
+      ).sort((a,b)=>b[1]-a[1]).slice(0,15)
+    )
   };
 }
 
@@ -99,13 +139,26 @@ const diagnostics={
     total:Array.isArray(candidates.candidates)?candidates.candidates.length:0,
     categories:(candidates.candidates||[]).reduce((m,x)=>{const k=x.category||'unknown';m[k]=(m[k]||0)+1;return m;},{})
   },
-  probe:probeSummary(probe),
+  probe:probeSummary(probe,candidates),
   subscriptions:{
     exit:readYamlProxies('subscriptions/exit.yaml').length,
     elite:readYamlProxies('subscriptions/elite.yaml').length,
     chatgpt:readYamlProxies('subscriptions/chatgpt.yaml').length,
     sticky:readYamlProxies('subscriptions/sticky.yaml').length,
     pairs:readYamlProxies('subscriptions/pairs.yaml').length
+  },
+  runAudit:{
+    candidateBudget:Number(process.env.CHINA_MAX_NODES||300),
+    probeEnvironment:process.env.CHINA_PROBE_ENV||null,
+    inputCandidateCategories:(candidates.candidates||[]).reduce((m,x)=>{const k=x.category||'unknown';m[k]=(m[k]||0)+1;return m;},{}),
+    outputStateCounts:countStates(assets.nodes),
+    generatedSubscriptions:{
+      exit:readYamlProxies('subscriptions/exit.yaml').length,
+      elite:readYamlProxies('subscriptions/elite.yaml').length,
+      chatgpt:readYamlProxies('subscriptions/chatgpt.yaml').length,
+      sticky:readYamlProxies('subscriptions/sticky.yaml').length,
+      pairs:readYamlProxies('subscriptions/pairs.yaml').length
+    }
   },
   selection:{
     stickyEligible:Number(sticky.candidateCount||0),
