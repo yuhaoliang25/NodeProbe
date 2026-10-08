@@ -24,6 +24,11 @@ export CHINA_MAX_NODES="${CHINA_MAX_NODES:-300}"
 export CHINA_PROBE_CONCURRENCY="${CHINA_PROBE_CONCURRENCY:-8}"
 export CHINA_RELEASE_ID="${CHINA_RELEASE_ID:-$(date -u +%Y%m%dT%H%M%SZ)}"
 
+# Cheap gate before any B2 mutation, probing, or test execution. This catches
+# syntax errors, undefined variables, invalid runtime configuration, and any
+# module-supplied preflight checks before a long cycle can fail at the end.
+npm run china-preflight
+
 # Local observation batches are the authoritative handoff between probing and
 # application. Apply them before uploading; if a cycle is interrupted, the local
 # batch remains available for the next run. B2 is transport/archive only and must
