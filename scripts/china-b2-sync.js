@@ -34,6 +34,14 @@ function run(args,options){
   if(r.error)throw r.error;
   if(r.status!==0)process.exit(r.status||1);
 }
+function runQuiet(args){
+  const r=spawnSync(process.env.B2_BIN||'b2v4',args,{encoding:'utf8',env:process.env});
+  if(r.error)throw r.error;
+  if(r.status!==0){
+    if(r.stderr)process.stderr.write(r.stderr);
+    throw new Error(`B2 command failed: ${args.join(' ')}`);
+  }
+}
 function usage(){
   console.log('usage: node scripts/china-b2-sync.js pull-stable | pull-candidates | pull-discovery-queue | pull-pair-observations | push-observations | purge-observations | pull-pair-candidates | push-pair-observations | purge-pair-observations | publish-results');
 }
@@ -204,7 +212,7 @@ if(mode==='pull-stable'){
   ];
   for(const [local,remote] of outputs){
     if(!fs.existsSync(local))throw new Error('China result missing: '+local);
-    run(['file','upload',BUCKET,local,remote]);
+    runQuiet(['file','upload',BUCKET,local,remote]);
   }
   const crypto=require('crypto');
   const generatedAt=new Date().toISOString();
@@ -230,8 +238,8 @@ if(mode==='pull-stable'){
   fs.writeFileSync(manifestFile,JSON.stringify(manifest,null,2)+'\n');
   // The manifest is published last. GitHub only needs to consume a release
   // after this marker exists, so it never becomes the China state writer.
-  run(['file','upload',BUCKET,manifestFile,PREFIX+'/release.json']);
-  console.log(JSON.stringify(manifest,null,2));
+  runQuiet(['file','upload',BUCKET,manifestFile,PREFIX+'/release.json']);
+  console.log(`[china] publish complete: ${outputs.length} result files + release manifest (releaseId=${releaseId||'none'})`);
 }else if(mode==='push-pair-observations'){
   if(!fs.existsSync(PAIR_OBS_DIR)){ console.log('no pair observation batches'); process.exit(0); }
   const files=fs.readdirSync(PAIR_OBS_DIR).filter(x=>x.endsWith('.json')).sort();
