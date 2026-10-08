@@ -24,10 +24,10 @@ export CHINA_MAX_NODES="${CHINA_MAX_NODES:-300}"
 export CHINA_PROBE_CONCURRENCY="${CHINA_PROBE_CONCURRENCY:-8}"
 export CHINA_RELEASE_ID="${CHINA_RELEASE_ID:-$(date -u +%Y%m%dT%H%M%SZ)}"
 
-# Flush any observations left by a previous interrupted publish. The local
-# China asset state remains authoritative; B2 is an archive/inbox transport.
-npm run china-sync -- push-observations || true
-npm run china-sync -- push-pair-observations || true
+# Recover any observation batches that were uploaded by a previous interrupted
+# cycle before they could be applied. Local persistent state remains authoritative.
+npm run china-pull-observations || true
+npm run china-sync -- pull-pair-observations || true
 
 # Stable is discovery input only. Rebuild the local candidate schedule every
 # cycle from the persistent China asset pool plus the current Stable discovery
@@ -40,6 +40,7 @@ npm run china-assets
 npm run china-probe
 npm run china-apply
 npm run china-sync -- push-observations
+npm run china-sync -- purge-observations
 
 # Relay/pair experiments are derived from the current persistent China asset
 # pool. As with ordinary candidates, the generated pair feed is a scheduling
@@ -49,6 +50,7 @@ npm run china-relay-candidates
 npm run china-relay-probe
 npm run china-pair-apply
 npm run china-sync -- push-pair-observations
+npm run china-sync -- purge-pair-observations
 
 # From this point onward the China machine owns the entire state transition.
 # No GitHub workflow is needed to apply observations or derive the next feed.
