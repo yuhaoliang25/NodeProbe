@@ -32,9 +32,16 @@ function run(name, command, args) {
 }
 
 const scriptsDir = path.join(ROOT, 'scripts');
-const jsFiles = fs.readdirSync(scriptsDir)
-  .filter(file => file.endsWith('.js'))
-  .sort();
+function collectJs(dir) {
+  const out = [];
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) out.push(...collectJs(full));
+    else if (entry.isFile() && entry.name.endsWith('.js')) out.push(full);
+  }
+  return out;
+}
+const jsFiles = collectJs(scriptsDir).sort();
 
 let ok = true;
 
@@ -80,10 +87,19 @@ if (!process.env.CHINA_B2_PREFIX) {
   console.warn('[china-preflight] CHINA_B2_PREFIX not set; china-b2-sync.js will use its default.');
 }
 
-const moduleChecks = (process.env.CHINA_PREFLIGHT_MODULES || '')
+const autoModuleChecks = fs.existsSync(path.join(scriptsDir, 'preflight'))
+  ? fs.readdirSync(path.join(scriptsDir, 'preflight'))
+      .filter(file => file.endsWith('.js'))
+      .sort()
+      .map(file => path.join('scripts', 'preflight', file))
+  : [];
+
+const configuredModuleChecks = (process.env.CHINA_PREFLIGHT_MODULES || '')
   .split(',')
   .map(x => x.trim())
   .filter(Boolean);
+
+const moduleChecks = [...autoModuleChecks, ...configuredModuleChecks];
 
 for (const modulePath of moduleChecks) {
   const resolved = path.resolve(modulePath);
