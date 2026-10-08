@@ -120,6 +120,15 @@ if(mode==='pull-stable'){
     console.error('B2 China pair candidate feed is missing or invalid.');
     process.exit(1);
   }
+}else if(mode==='pull-pair-observations'){
+  fs.mkdirSync(PAIR_OBS_DIR,{recursive:true});
+  const processed=processedBatches(PAIR_KNOWLEDGE_FILE,'processedBatches');
+  for(const file of listRemote(PAIR_OBS_REMOTE)){
+    if(processed.has(file))continue;
+    const local=path.join(PAIR_OBS_DIR,file);
+    run(['file','download','b2://'+BUCKET+'/'+PAIR_OBS_REMOTE+'/'+file,local]);
+  }
+  console.log(JSON.stringify({processed:processed.size,observationDir:PAIR_OBS_DIR},null,2));
 }else if(mode==='push-observations'){
   if(!fs.existsSync(OBS_DIR)){ console.log('no observation batches'); process.exit(0); }
   const files=fs.readdirSync(OBS_DIR).filter(x=>x.endsWith('.json')).sort();
@@ -128,7 +137,9 @@ if(mode==='pull-stable'){
     fs.unlinkSync(path.join(OBS_DIR,file));
   }
 }else if(mode==='purge-observations'){
-  purgeDownloaded(OBS_REMOTE,OBS_DIR);
+  purgeProcessed(OBS_REMOTE,ASSET_FILE,'processedObservationBatches');
+}else if(mode==='purge-pair-observations'){
+  purgeProcessed(PAIR_OBS_REMOTE,PAIR_KNOWLEDGE_FILE,'processedBatches');
 }else if(mode==='publish-results'){
   const outputs=[
     ['data/china-node-assets.json','nodeprobe-state/china-node-assets.json'],
