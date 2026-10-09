@@ -216,19 +216,16 @@ function main() {
     .sort((a,b) => b.chatgptScore - a.chatgptScore || b.score - a.score);
   const byName = new Map(eligibleChatgpt.map(item => [String(item.proxy.name), item]));
   const incumbents = previousChatgpt.map(proxy => byName.get(String(proxy.name))).filter(Boolean);
-  const chatgptSelected = [];
-  const selectedIds = new Set();
-  for (const item of incumbents) {
-    if (chatgptSelected.length >= MAX_PATHS) break;
-    chatgptSelected.push(item);
-    selectedIds.add(item.endpointId);
-  }
-  for (const item of eligibleChatgpt) {
-    if (chatgptSelected.length >= MAX_PATHS) break;
-    if (selectedIds.has(item.endpointId)) continue;
-    chatgptSelected.push(item);
-    selectedIds.add(item.endpointId);
-  }
+  // Rank incumbents and newcomers together. A small incumbent bonus reduces
+  // unnecessary churn, but cannot override meaningful reliability, latency,
+  // or throughput differences.
+  const chatgptSelected = [...eligibleChatgpt]
+    .sort((a, b) =>
+      (b.chatgptScore + (previousNames.has(String(b.proxy.name)) ? 25 : 0)) -
+      (a.chatgptScore + (previousNames.has(String(a.proxy.name)) ? 25 : 0)) ||
+      b.score - a.score
+    )
+    .slice(0, MAX_PATHS);
   const chatgptExits = eligibleChatgpt;
   const pairFallbacks = selected.length < MAX_PATHS ? eligiblePairs(pairState).slice(0, MAX_PATHS - selected.length) : [];
 
