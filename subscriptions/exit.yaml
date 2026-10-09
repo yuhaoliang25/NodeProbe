@@ -490,16 +490,6 @@ proxies:
     username: 'testuser1'
     udp: true
     endpoint-id: 'd3594c2e62c0c2dd'
-  - name: '🇺🇸US_307|355KB/s|R002-260618 01'
-    port: 443
-    server: 'fan.596189.xyz'
-    skip-cert-verify: true
-    sni: 'fan.596189.xyz'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: 'd2750839eda0d01c'
   - name: '🇷🇴RO_56|896KB/s|P002-260618 01'
     password: 'None'
     port: 9002
@@ -894,6 +884,15 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: 'd4413cdbd7ce70bf'
+  - name: '🇩🇪DE_46|313KB/s|R002-260618 01'
+    port: 443
+    server: 'fan.973511.xyz'
+    sni: 'fan.973511.xyz'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'fb2a0aead2bd06ff'
   - name: '🇳🇱NL_55|1.2MB/s|R002-260618 01'
     port: 443
     server: '185.246.153.28'
@@ -1415,6 +1414,16 @@ proxies:
     username: 'null'
     udp: true
     endpoint-id: '954f43d4c028676b'
+  - name: '🇺🇸US_402|754KB/s|P002-260618 01'
+    password: 'None'
+    port: 9002
+    server: '138.199.35.205'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '07d9afb057a46178'
   - name: '🇺🇸US_407|754KB/s|P002-260618 01'
     password: 'None'
     port: 9002
@@ -1545,16 +1554,6 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '52c2b5311d0a1a60'
-  - name: '🇺🇸US_419|760KB/s|P002-260618 01'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.217'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '6b557e660da4c5d8'
   - name: '🇺🇸US_197|805KB/s|R002-260618 01'
     port: 9002
     server: '138.199.35.207'
@@ -1605,17 +1604,6 @@ proxies:
     username: 'null'
     udp: true
     endpoint-id: 'b5f583d9c4ba0cfb'
-  - name: '🇺🇸US_249|347KB/s|R002-260618 01'
-    password: 'null'
-    port: 443
-    server: 'fan.596189.xyz'
-    sni: 'fan.596189.xyz'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    endpoint-id: 'e73f9b00dc6db0bb'
   - name: '🇺🇸US_312|828KB/s 01'
     password: ''
     port: 9002
@@ -1879,61 +1867,6 @@ proxies:
     username: 'null'
     udp: true
     endpoint-id: '807b0de277339c83'
-  - name: '🇷🇴RO_99|1.2MB/s|R002-260618 01'
-    password: 'null'
-    port: 9002
-    server: '193.176.84.35'
-    skip-cert-verify: true
-    sni: '193.176.84.35'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    endpoint-id: '0fdbc6e9706a0afd'
-  - name: '🇫🇷FR_298|3.6MB/s|R002-260618 01'
-    port: 6103
-    server: '87.98.174.157'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: 'c0870835e6ab426a'
-  - name: '🇷🇴RO_100|1.4MB/s|R002-260618 01'
-    password: 'null'
-    port: 9002
-    server: '193.176.84.34'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    endpoint-id: '6cbd1b7f2c11f2ec'
-  - name: '🇷🇴RO_101|1.5MB/s|R002-260618 01'
-    password: 'null'
-    port: 9002
-    server: '193.176.84.23'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    endpoint-id: '35a6c76600f2e01f'
-  - name: '🇷🇴RO_102|880KB/s|R002-260618 01'
-    password: 'null'
-    port: 9002
-    server: '193.176.84.38'
-    skip-cert-verify: true
-    sni: '193.176.84.38'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    endpoint-id: 'e30ff516b8a83366'
   - name: '🇷🇴RO_103|1.0MB/s|R002-260618 01'
     password: 'null'
     port: 9002
@@ -1945,18 +1878,6 @@ proxies:
     username: 'null'
     udp: true
     endpoint-id: '6bcbf3475104a33d'
-  - name: '🇷🇴RO_104|1.2MB/s|R002-260618 01'
-    password: 'null'
-    port: 9002
-    server: '193.176.84.33'
-    skip-cert-verify: true
-    sni: '193.176.84.33'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    endpoint-id: '10edd1f9ee6fc8d9'
   - name: '🇫🇷FR_393|77KB/s|R002-260618 01'
     password: 'null'
     port: 443

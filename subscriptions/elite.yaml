@@ -19,12 +19,12 @@ proxies:
     username: ''
     udp: true
     endpoint-id: '709db4aba6d49da5'
-  - name: '🇳🇱NL_46|5.3MB/s|R002-260618 01'
-    port: 9002
-    server: '84.17.47.150'
+  - name: '🇳🇱NL_221|3.8MB/s|R002-260618 01'
+    port: 443
+    server: '5.255.118.82'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
-    endpoint-id: '2695164bab761c77'
+    endpoint-id: '2a89310d810d8786'

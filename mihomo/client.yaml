@@ -55,24 +55,15 @@ proxies:
     username: ''
     udp: true
     endpoint-id: '709db4aba6d49da5'
-  - name: '🇳🇱NL_46|5.3MB/s|R002-260618 01'
-    port: 9002
-    server: '84.17.47.150'
+  - name: '🇳🇱NL_221|3.8MB/s|R002-260618 01'
+    port: 443
+    server: '5.255.118.82'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
-    endpoint-id: '2695164bab761c77'
-  - name: '🇯🇵JP_4|254KB/s|R002-260618 01'
-    port: 443
-    server: 'fan.571589.xyz'
-    sni: 'fan.571589.xyz'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '7a223d425bb0d505'
+    endpoint-id: '2a89310d810d8786'
   - name: '🇯🇵JP_41|290KB/s|R002-260618 01'
     port: 443
     server: 'fan.587475.xyz'
@@ -82,34 +73,43 @@ proxies:
     udp: true
     sni: 'fan.587475.xyz'
     endpoint-id: 'ac5a189a995d7c1d'
-  - name: '🇺🇸US_498|773KB/s|R002-260618 01'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.195'
-    skip-cert-verify: true
+  - name: '🇯🇵JP_4|254KB/s|R002-260618 01'
+    port: 443
+    server: 'fan.571589.xyz'
+    sni: 'fan.571589.xyz'
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
-    endpoint-id: '35ba5e76f13f0e5f'
+    endpoint-id: '7a223d425bb0d505'
+  - name: '🇺🇸US_402|754KB/s|P002-260618 01'
+    password: 'None'
+    port: 9002
+    server: '138.199.35.205'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '07d9afb057a46178'
 proxy-groups:
   - name: 'PROXY'
     type: 'select'
     proxies:
       - '🇸🇬SG_38|247KB/s|R002-260618 01'
       - '🇳🇱NL_142|5.6MB/s|P002-260618 01'
-      - '🇳🇱NL_46|5.3MB/s|R002-260618 01'
+      - '🇳🇱NL_221|3.8MB/s|R002-260618 01'
       - 'DIRECT'
   - name: 'CHATGPT'
     type: 'select'
     proxies:
-      - '🇯🇵JP_4|254KB/s|R002-260618 01'
+      - '🇸🇬SG_38|247KB/s|R002-260618 01'
       - '🇯🇵JP_41|290KB/s|R002-260618 01'
-      - '🇺🇸US_498|773KB/s|R002-260618 01'
+      - '🇯🇵JP_4|254KB/s|R002-260618 01'
   - name: 'STICKY'
     type: 'select'
     proxies:
-      - '🇯🇵JP_41|290KB/s|R002-260618 01'
+      - '🇺🇸US_402|754KB/s|P002-260618 01'
 rules:
   - 'DOMAIN-SUFFIX,x.com,STICKY'
   - 'DOMAIN-SUFFIX,twitter.com,STICKY'

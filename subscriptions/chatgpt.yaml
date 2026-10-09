@@ -1,13 +1,13 @@
 proxies:
-  - name: '🇯🇵JP_4|254KB/s|R002-260618 01'
+  - name: '🇸🇬SG_38|247KB/s|R002-260618 01'
     port: 443
-    server: 'fan.571589.xyz'
-    sni: 'fan.571589.xyz'
+    server: '154.26.139.24'
+    skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
-    endpoint-id: '7a223d425bb0d505'
+    endpoint-id: 'd1f4a0d80288cf0b'
   - name: '🇯🇵JP_41|290KB/s|R002-260618 01'
     port: 443
     server: 'fan.587475.xyz'
@@ -17,13 +17,12 @@ proxies:
     udp: true
     sni: 'fan.587475.xyz'
     endpoint-id: 'ac5a189a995d7c1d'
-  - name: '🇺🇸US_498|773KB/s|R002-260618 01'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.195'
-    skip-cert-verify: true
+  - name: '🇯🇵JP_4|254KB/s|R002-260618 01'
+    port: 443
+    server: 'fan.571589.xyz'
+    sni: 'fan.571589.xyz'
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
-    endpoint-id: '35ba5e76f13f0e5f'
+    endpoint-id: '7a223d425bb0d505'
