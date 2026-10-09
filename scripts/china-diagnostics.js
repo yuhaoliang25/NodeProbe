@@ -149,6 +149,8 @@ const diagnostics={
   speedPersistence:{
     assetNodes:assetNodes.length,
     nodesWithSuccessfulSpeed:latestSpeedValues.length,
+    attemptedSpeedObservations:speedObservations.filter(o=>o?.speedSuccess===true||o?.speedSuccess===false).length,
+    failedSpeedObservations:speedObservations.filter(o=>o?.speedSuccess===false).length,
     retainedSuccessfulSpeedObservations:speedObservations.filter(o=>o?.speedSuccess===true&&Number.isFinite(Number(o.speedMbps))&&Number(o.speedMbps)>0).length,
     medianLatestMbps:latestSpeedValues.length?percentile(latestSpeedValues,0.5):null,
     maxLatestMbps:latestSpeedValues.length?Math.max(...latestSpeedValues):null
