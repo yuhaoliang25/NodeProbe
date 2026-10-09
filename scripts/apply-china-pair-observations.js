@@ -77,6 +77,7 @@ function apply(){
         improved:x.improved===undefined?null:Boolean(x.improved),
         confirmationSuccessRate:acceptedMap.get(x.pairId)?.confirmationSuccessRate??null,
         confirmationAttempts:acceptedMap.get(x.pairId)?.confirmationAttempts??0,
+        confirmationLatencyMs:acceptedMap.get(x.pairId)?.confirmationLatencyMs??null,
         confirmed:Boolean(acceptedMap.get(x.pairId)),
         environment:d.probeEnvironment||'china-default'
       });
