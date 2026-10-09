@@ -1,16 +1,191 @@
 {
-  "generatedAt": "2026-10-09T02:18:40.395Z",
+  "generatedAt": "2026-10-09T02:29:30.068Z",
   "decayHalfLifeMs": 259200000,
-  "count": 1,
+  "count": 20,
   "definitions": {
     "pair": "China → relay → landing → target; experimental evidence only"
   },
+  "ranking": "time-decayed path success rate, then absolute confirmation latency, then measured download Mbps; no relay-relative improvement score",
   "pairs": [
+    {
+      "pairId": "34d7b60338593dc2",
+      "lastObservedAt": "2026-10-06T20:17:18.253Z",
+      "recentSuccessRate": 1,
+      "latencyMs": 1498,
+      "speedMbps": null,
+      "confirmedLatencyMs": null,
+      "relayEndpointId": "e74af45dd435ef8e"
+    },
+    {
+      "pairId": "944840b75e65ca9e",
+      "lastObservedAt": "2026-10-06T19:45:59.917Z",
+      "recentSuccessRate": 1,
+      "latencyMs": 1513,
+      "speedMbps": null,
+      "confirmedLatencyMs": null,
+      "relayEndpointId": "798243b16cf947df"
+    },
+    {
+      "pairId": "48563ade3c91a991",
+      "lastObservedAt": "2026-10-06T19:46:02.070Z",
+      "recentSuccessRate": 1,
+      "latencyMs": 1543,
+      "speedMbps": null,
+      "confirmedLatencyMs": null,
+      "relayEndpointId": "114833c9a2b71e41"
+    },
+    {
+      "pairId": "7a0bc6431834e519",
+      "lastObservedAt": "2026-10-06T19:15:20.795Z",
+      "recentSuccessRate": 1,
+      "latencyMs": 1606,
+      "speedMbps": null,
+      "confirmedLatencyMs": null,
+      "relayEndpointId": "351dcbb70d0afdd5"
+    },
+    {
+      "pairId": "70413a0803c44d62",
+      "lastObservedAt": "2026-10-06T19:15:20.197Z",
+      "recentSuccessRate": 1,
+      "latencyMs": 1698,
+      "speedMbps": null,
+      "confirmedLatencyMs": null,
+      "relayEndpointId": "351dcbb70d0afdd5"
+    },
     {
       "pairId": "eb6b2e11a95f7e4a",
       "lastObservedAt": "2026-10-06T15:35:38.460Z",
       "recentSuccessRate": 1,
+      "latencyMs": 1705,
+      "speedMbps": null,
+      "confirmedLatencyMs": null,
       "relayEndpointId": "6493b98e9afea31a"
+    },
+    {
+      "pairId": "124ea8c71faecd3d",
+      "lastObservedAt": "2026-10-06T19:46:01.806Z",
+      "recentSuccessRate": 1,
+      "latencyMs": 1707,
+      "speedMbps": null,
+      "confirmedLatencyMs": null,
+      "relayEndpointId": "114833c9a2b71e41"
+    },
+    {
+      "pairId": "b20db540283484ac",
+      "lastObservedAt": "2026-10-06T20:17:17.727Z",
+      "recentSuccessRate": 1,
+      "latencyMs": 1717,
+      "speedMbps": null,
+      "confirmedLatencyMs": null,
+      "relayEndpointId": "e74af45dd435ef8e"
+    },
+    {
+      "pairId": "4c600f839d4a4036",
+      "lastObservedAt": "2026-10-06T19:45:59.602Z",
+      "recentSuccessRate": 1,
+      "latencyMs": 2005,
+      "speedMbps": null,
+      "confirmedLatencyMs": null,
+      "relayEndpointId": "798243b16cf947df"
+    },
+    {
+      "pairId": "0956a667c8cb4fd8",
+      "lastObservedAt": "2026-10-06T19:46:03.180Z",
+      "recentSuccessRate": 1,
+      "latencyMs": 2265,
+      "speedMbps": null,
+      "confirmedLatencyMs": null,
+      "relayEndpointId": "114833c9a2b71e41"
+    },
+    {
+      "pairId": "c825f87718dde482",
+      "lastObservedAt": "2026-10-06T19:15:21.394Z",
+      "recentSuccessRate": 1,
+      "latencyMs": 2275,
+      "speedMbps": null,
+      "confirmedLatencyMs": null,
+      "relayEndpointId": "351dcbb70d0afdd5"
+    },
+    {
+      "pairId": "286ccc2b4c5085f4",
+      "lastObservedAt": "2026-10-06T20:17:19.236Z",
+      "recentSuccessRate": 1,
+      "latencyMs": 2291,
+      "speedMbps": null,
+      "confirmedLatencyMs": null,
+      "relayEndpointId": "e74af45dd435ef8e"
+    },
+    {
+      "pairId": "7f3bb3a134e52a29",
+      "lastObservedAt": "2026-10-06T19:46:00.870Z",
+      "recentSuccessRate": 1,
+      "latencyMs": 2308,
+      "speedMbps": null,
+      "confirmedLatencyMs": null,
+      "relayEndpointId": "798243b16cf947df"
+    },
+    {
+      "pairId": "18022e90dc7ce958",
+      "lastObservedAt": "2026-10-06T19:46:02.766Z",
+      "recentSuccessRate": 1,
+      "latencyMs": 2456,
+      "speedMbps": null,
+      "confirmedLatencyMs": null,
+      "relayEndpointId": "114833c9a2b71e41"
+    },
+    {
+      "pairId": "13c81c2f416a57fa",
+      "lastObservedAt": "2026-10-06T19:45:59.837Z",
+      "recentSuccessRate": 1,
+      "latencyMs": 2478,
+      "speedMbps": null,
+      "confirmedLatencyMs": null,
+      "relayEndpointId": "798243b16cf947df"
+    },
+    {
+      "pairId": "dfa6b844c6871a6e",
+      "lastObservedAt": "2026-10-06T20:17:18.251Z",
+      "recentSuccessRate": 1,
+      "latencyMs": 2513,
+      "speedMbps": null,
+      "confirmedLatencyMs": null,
+      "relayEndpointId": "e74af45dd435ef8e"
+    },
+    {
+      "pairId": "0a2c3aca281c8bad",
+      "lastObservedAt": "2026-10-06T20:17:17.299Z",
+      "recentSuccessRate": 1,
+      "latencyMs": 2669,
+      "speedMbps": null,
+      "confirmedLatencyMs": null,
+      "relayEndpointId": "e74af45dd435ef8e"
+    },
+    {
+      "pairId": "7c516bc9ef442d02",
+      "lastObservedAt": "2026-10-06T19:45:58.865Z",
+      "recentSuccessRate": 1,
+      "latencyMs": 2708,
+      "speedMbps": null,
+      "confirmedLatencyMs": null,
+      "relayEndpointId": "798243b16cf947df"
+    },
+    {
+      "pairId": "f1876d7ddc5ab543",
+      "lastObservedAt": "2026-10-06T19:46:00.979Z",
+      "recentSuccessRate": 1,
+      "latencyMs": 2723,
+      "speedMbps": null,
+      "confirmedLatencyMs": null,
+      "relayEndpointId": "114833c9a2b71e41"
+    },
+    {
+      "pairId": "6089e60776fc6e45",
+      "lastObservedAt": "2026-10-06T19:46:00.961Z",
+      "recentSuccessRate": 1,
+      "latencyMs": 3989,
+      "speedMbps": null,
+      "confirmedLatencyMs": null,
+      "relayEndpointId": "114833c9a2b71e41"
     }
   ]
 }
