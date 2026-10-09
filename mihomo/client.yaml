@@ -44,27 +44,26 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: 'd1f4a0d80288cf0b'
-  - name: '🇭🇰 香港 09'
-    password: 'null'
-    port: 443
-    server: 'fan.240104.xyz'
-    sni: 'fan.240104.xyz'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    endpoint-id: 'a2852a26d8d9ed35'
-  - name: '🇭🇰 香港 04'
-    port: 443
-    server: 'fan.240104.xyz'
+  - name: '🇺🇸US_81|744KB/s|R002-260618 01'
+    password: 'None'
+    port: 9002
+    server: '138.199.35.200'
     skip-cert-verify: true
-    sni: 'fan.240104.xyz'
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
-    endpoint-id: '2525753ed3d65e2e'
+    endpoint-id: '3bf4d0a5c1331334'
+  - name: '🇺🇸US_248|774KB/s|P002-260618 01'
+    password: 'None'
+    port: 9002
+    server: '138.199.35.216'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'a784549677cf0345'
   - name: '🇯🇵JP_41|290KB/s|R002-260618 01'
     port: 443
     server: 'fan.587475.xyz'
@@ -74,29 +73,29 @@ proxies:
     udp: true
     sni: 'fan.587475.xyz'
     endpoint-id: 'ac5a189a995d7c1d'
-  - name: '🇺🇸US_403|775KB/s|R002-260618 01'
-    port: 9002
-    server: '138.199.35.195'
-    skip-cert-verify: true
+  - name: '🇯🇵JP_4|254KB/s|R002-260618 01'
+    port: 443
+    server: 'fan.571589.xyz'
+    sni: 'fan.571589.xyz'
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
-    endpoint-id: '472b8b661b6c7482'
+    endpoint-id: '7a223d425bb0d505'
 proxy-groups:
   - name: 'PROXY'
     type: 'select'
     proxies:
       - '🇸🇬SG_38|247KB/s|R002-260618 01'
-      - '🇭🇰 香港 09'
-      - '🇭🇰 香港 04'
+      - '🇺🇸US_81|744KB/s|R002-260618 01'
+      - '🇺🇸US_248|774KB/s|P002-260618 01'
       - 'DIRECT'
   - name: 'CHATGPT'
     type: 'select'
     proxies:
-      - '🇸🇬SG_38|247KB/s|R002-260618 01'
       - '🇯🇵JP_41|290KB/s|R002-260618 01'
-      - '🇺🇸US_403|775KB/s|R002-260618 01'
+      - '🇸🇬SG_38|247KB/s|R002-260618 01'
+      - '🇯🇵JP_4|254KB/s|R002-260618 01'
   - name: 'STICKY'
     type: 'select'
     proxies:
