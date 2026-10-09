@@ -1,4 +1,13 @@
 proxies:
+  - name: '🇸🇬SG_38|247KB/s|R002-260618 01'
+    port: 443
+    server: '154.26.139.24'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'd1f4a0d80288cf0b'
   - name: '🇺🇸US_402|754KB/s|P002-260618 01'
     password: 'None'
     port: 9002
@@ -20,12 +29,3 @@ proxies:
     username: 'null'
     udp: true
     endpoint-id: 'ad0e30e92877753f'
-  - name: '🇸🇬SG_38|247KB/s|R002-260618 01'
-    port: 443
-    server: '154.26.139.24'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: 'd1f4a0d80288cf0b'

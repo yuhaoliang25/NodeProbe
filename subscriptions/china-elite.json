@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-10-09T00:56:43.059Z",
+  "generatedAt": "2026-10-09T01:42:43.765Z",
   "maxPaths": 3,
   "counts": {
     "eligibleExits": 206,
-    "chatgptEligibleExits": 114,
+    "chatgptEligibleExits": 115,
     "chatgptSelectedPaths": 3,
     "chatgptIncumbentPaths": 3,
     "selectedPaths": 3,
@@ -26,12 +26,12 @@
       "kind": "exit",
       "endpointId": "d1f4a0d80288cf0b",
       "name": "🇸🇬SG_38|247KB/s|R002-260618 01",
-      "score": 1600.1801693714729,
-      "recentSuccessRate": 0.9967801693714726,
-      "lifetimeSuccessRate": 0.992,
-      "observedRuns": 125,
-      "p95LatencyMs": 852,
-      "speedMbps": null
+      "score": 1944.0644597757744,
+      "recentSuccessRate": 0.9968116086364889,
+      "lifetimeSuccessRate": 0.9921259842519685,
+      "observedRuns": 127,
+      "p95LatencyMs": 848,
+      "speedMbps": 18.628434908755597
     },
     {
       "kind": "exit",
@@ -59,26 +59,26 @@
   "chatgptPaths": [
     {
       "kind": "chatgpt-incumbent",
+      "endpointId": "d1f4a0d80288cf0b",
+      "name": "🇸🇬SG_38|247KB/s|R002-260618 01",
+      "score": 1944.0644597757744,
+      "chatgptScore": 1169.523098564994,
+      "chatgptSuccessRate": 1
+    },
+    {
+      "kind": "chatgpt-incumbent",
       "endpointId": "07d9afb057a46178",
       "name": "🇺🇸US_402|754KB/s|P002-260618 01",
-      "score": 1145.9682407033674,
-      "chatgptScore": 1095.8,
+      "score": 1620.7615733240789,
+      "chatgptScore": 1150.5455537365326,
       "chatgptSuccessRate": 1
     },
     {
       "kind": "chatgpt-incumbent",
       "endpointId": "ad0e30e92877753f",
       "name": "🇺🇸US_201|822KB/s|P002-260618 01",
-      "score": 1230.5938548196048,
-      "chatgptScore": 1055,
-      "chatgptSuccessRate": 1
-    },
-    {
-      "kind": "chatgpt-incumbent",
-      "endpointId": "d1f4a0d80288cf0b",
-      "name": "🇸🇬SG_38|247KB/s|R002-260618 01",
-      "score": 1600.1801693714729,
-      "chatgptScore": 1102.8,
+      "score": 1547.7468411977036,
+      "chatgptScore": 1147.847878091103,
       "chatgptSuccessRate": 1
     }
   ]

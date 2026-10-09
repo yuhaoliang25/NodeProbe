@@ -97,9 +97,9 @@ proxy-groups:
   - name: 'CHATGPT'
     type: 'select'
     proxies:
+      - '🇸🇬SG_38|247KB/s|R002-260618 01'
       - '🇺🇸US_402|754KB/s|P002-260618 01'
       - '🇺🇸US_201|822KB/s|P002-260618 01'
-      - '🇸🇬SG_38|247KB/s|R002-260618 01'
   - name: 'STICKY'
     type: 'select'
     proxies:
