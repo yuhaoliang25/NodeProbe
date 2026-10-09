@@ -128,8 +128,11 @@ const pairPool=readJson('subscriptions/china-pair-pool.json',{});
 const assetNodes=Object.values(assets.nodes||{});
 const speedObservations=assetNodes.flatMap(node=>Array.isArray(node?.observations)?node.observations:[]);
 const latestSpeedValues=assetNodes.map(node=>{
-  const obs=(Array.isArray(node?.observations)?node.observations:[]).filter(o=>o?.speedSuccess===true&&Number.isFinite(Number(o.speedMbps))&&Number(o.speedMbps)>0);
-  return obs.length?Number(obs[obs.length-1].speedMbps):null;
+  const attempts=(Array.isArray(node?.observations)?node.observations:[]).filter(o=>o?.speedSuccess===true||o?.speedSuccess===false);
+  const latest=attempts[attempts.length-1];
+  if(!latest||latest.speedSuccess!==true)return null;
+  const speed=Number(latest.speedMbps);
+  return Number.isFinite(speed)&&speed>0?speed:null;
 }).filter(Number.isFinite).sort((a,b)=>a-b);
 const diagnostics={
   version:3,
