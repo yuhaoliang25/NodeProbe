@@ -94,7 +94,9 @@ if(mode==='pull-stable'){
     ['data/china-discovery-queue.json',DISCOVERY_QUEUE_REMOTE],
     ['data/china-pair-knowledge.json','nodeprobe-state/china-pair-knowledge.json'],
     ['data/china-probe-candidates.json',CANDIDATE_REMOTE],
-    ['data/china-relay-pair-candidates.json',PAIR_CANDIDATE_REMOTE],
+    ...(process.env.CHINA_PAIR_EXPLORATION==='1'
+      ? [['data/china-relay-pair-candidates.json',PAIR_CANDIDATE_REMOTE]]
+      : []),
     ['subscriptions/exit.yaml',PREFIX+'/exit.yaml'],
     ['subscriptions/elite.yaml',PREFIX+'/elite.yaml'],
     ['subscriptions/chatgpt.yaml',PREFIX+'/chatgpt.yaml'],
