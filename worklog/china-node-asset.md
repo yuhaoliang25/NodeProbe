@@ -1262,3 +1262,16 @@ firstObservedAt means the first NodeProbe observation, not the true publication 
 B2 observation 不再依赖“本地文件是否还存在”来判断是否可以删除。
 
 注意：B2 的历史版本仍需要 Bucket Lifecycle Rule 管理。Backblaze B2 默认保留旧版本；建议对 `nodeprobe-state/` 配置合适的旧版本生命周期，否则固定路径的每小时上传仍会积累历史版本。
+
+
+## 2026-10-09 暂停 Pair 探索
+
+当前中国出口节点池已足够使用，因此暂时停止新增 Pair 探索，避免继续消耗探测预算。此次是暂停而非删除：
+
+- 保留 Pair 探测、候选生成、证据应用、池生成和客户端配置的全部代码；
+- 保留 B2 中已有的 Pair knowledge、诊断和当前 Pair 输出；
+- China cycle 不再生成新的 Pair 候选，也不运行 `china-relay-probe`；
+- 周期仍会应用此前已产生但尚未处理的 Pair observations，并从已保存的知识状态生成当前 Pair 输出；
+- 默认不再向 B2 发布新的 Pair candidate feed；普通 China 节点维护、测速、出口池与订阅发布照常运行。
+
+恢复探索时，在 China 机器的 `/etc/nodeprobe/china.env` 设置 `CHINA_PAIR_EXPLORATION=1`，再运行 `scripts/china-cycle.sh`。恢复前无需重建 Pair 代码或清空历史知识。
