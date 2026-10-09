@@ -49,8 +49,16 @@ function p95(obs) {
 }
 
 function latestSpeed(node) {
-  const obs = recent(node).filter(x => Number.isFinite(Number(x.speedMbps)) && Number(x.speedMbps) > 0);
-  return obs.length ? Number(obs[obs.length - 1].speedMbps) : null;
+  // Ignore runs that did not enter the bounded speed-test lane, but honor the
+  // most recent actual speed attempt. A newer failed test must invalidate an
+  // older successful throughput measurement rather than leaving stale speed
+  // evidence in the ranking indefinitely.
+  const attempts = recent(node).filter(x => x.speedSuccess === true || x.speedSuccess === false);
+  if (!attempts.length) return null;
+  const latest = attempts[attempts.length - 1];
+  if (latest.speedSuccess !== true) return null;
+  const speed = Number(latest.speedMbps);
+  return Number.isFinite(speed) && speed > 0 ? speed : null;
 }
 
 function speedScore(node) {
