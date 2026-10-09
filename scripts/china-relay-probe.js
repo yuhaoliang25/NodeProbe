@@ -16,7 +16,7 @@ async function testPairSpeed(name){
     await selectPairProxy(name);
     const {spawnSync}=require('child_process');
     const result=spawnSync('curl',['--proxy','http://127.0.0.1:'+C.mixedPort,'--silent','--show-error','--location','--max-time',String(Math.ceil(C.speedTimeout/1000)),'--connect-timeout','5','--output','/dev/null','--write-out','%{http_code} %{size_download} %{time_total}',C.speedTarget],{encoding:'utf8',maxBuffer:1024*1024});
-    const parts=String(result.stdout||'').trim().split(/\\s+/);
+    const parts=String(result.stdout||'').trim().split(/\s+/);
     const httpCode=Number(parts[0]),bytes=Number(parts[1]),seconds=Number(parts[2]);
     if(result.status!==0)throw new Error(String(result.stderr||'curl failed').trim().slice(0,300));
     if(!Number.isFinite(bytes)||bytes<=0)throw new Error('speed test returned no body');
