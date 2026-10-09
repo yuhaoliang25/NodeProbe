@@ -27,16 +27,26 @@ for(const [pairId,p] of Object.entries(state.pairs||{})){
   const last=Date.parse(p.lastObservedAt||'');
   if(!Number.isFinite(last)||last<cutoff||!p.relay||!p.landing)continue;
   const obs=Array.isArray(p.observations)?p.observations:[];
-  const rate=timeDecayedEvidence(obs,now,C.decayHalfLifeMs,x=>x.success===true&&x.improved===true).rate;
+  const rate=timeDecayedEvidence(obs,now,C.decayHalfLifeMs,x=>x.success===true).rate;
   if(!obs.some(x=>x.confirmed))continue;
   if(rate<C.minSuccessRate)continue;
+  const recent=obs.filter(x=>x.success===true);
+  const median=values=>{const xs=values.filter(Number.isFinite).sort((a,b)=>a-b);return xs.length?xs[Math.floor(xs.length/2)]:null};
+  const latencyMs=median(recent.slice(-10).map(x=>x.screenLatencyMs));
+  const speedMbps=median(recent.slice(-10).map(x=>x.speedMbps));
+  const confirmedLatencyMs=median(recent.slice(-10).map(x=>x.confirmationLatencyMs));
+  // Rank paths on their own measured performance: stable confirmation rate,
+  // absolute latency, then absolute throughput. Relay-only baseline improvement
+  // is diagnostic only and never an admission/ranking criterion.
+  const latencyForRank=confirmedLatencyMs??latencyMs??Infinity;
+  const throughputForRank=speedMbps??0;
   const relayName='PAIR-RELAY-'+p.relayEndpointId;
   const pairName='PAIR-'+pairId;
   const relay={...p.relay,name:relayName};
   const landing={...p.landing,name:pairName,'dialer-proxy':relayName};
-  candidates.push({pairId,lastObservedAt:p.lastObservedAt,rate,relayEndpointId:p.relayEndpointId,landingEndpointId:p.landingEndpointId,relay,pair:landing});
+  candidates.push({pairId,lastObservedAt:p.lastObservedAt,rate,latencyMs,speedMbps,confirmedLatencyMs,latencyForRank,throughputForRank,relayEndpointId:p.relayEndpointId,landingEndpointId:p.landingEndpointId,relay,pair:landing});
 }
-candidates.sort((a,b)=>b.rate-a.rate||Date.parse(b.lastObservedAt)-Date.parse(a.lastObservedAt));
+candidates.sort((a,b)=>b.rate-a.rate||a.latencyForRank-b.latencyForRank||b.throughputForRank-a.throughputForRank||Date.parse(b.lastObservedAt)-Date.parse(a.lastObservedAt));
 const selected=candidates.slice(0,C.maxPairs);
 const proxies=[];const seen=new Set();
 for(const x of selected)for(const p of [x.relay,x.pair]){if(!seen.has(p.name)){seen.add(p.name);proxies.push(p)}}
@@ -47,6 +57,7 @@ fs.writeFileSync(path.join(path.dirname(C.outputFile),'china-pair-pool.json'),JS
   decayHalfLifeMs:C.decayHalfLifeMs,
   count:selected.length,
   definitions:{pair:'China → relay → landing → target; experimental evidence only'},
-  pairs:selected.map(x=>({pairId:x.pairId,lastObservedAt:x.lastObservedAt,recentSuccessRate:x.rate,relayEndpointId:x.relayEndpointId||null}))
+  ranking:'time-decayed path success rate, then absolute confirmation latency, then measured download Mbps; no relay-relative improvement score',
+  pairs:selected.map(x=>({pairId:x.pairId,lastObservedAt:x.lastObservedAt,recentSuccessRate:x.rate,latencyMs:x.latencyMs,speedMbps:x.speedMbps,confirmedLatencyMs:x.confirmedLatencyMs,relayEndpointId:x.relayEndpointId||null}))
 },null,2)+'\n');
 console.log(JSON.stringify({knownPairs:Object.keys(state.pairs||{}).length,selected:selected.length,proxies:proxies.length},null,2));
