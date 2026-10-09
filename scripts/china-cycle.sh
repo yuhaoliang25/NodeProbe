@@ -43,18 +43,19 @@ npm run china-assets
 npm run china-probe
 npm run china-apply
 
-# Relay/pair experiments are derived from the current persistent China asset
-# pool. As with ordinary candidates, the generated pair feed is a scheduling
-# artifact, not a once-only B2 work queue. Rebuild it every cycle so pair
-# evidence can evolve with the current China assets.
-npm run china-relay-candidates
-npm run china-relay-probe
+# Pair exploration is intentionally paused while the ordinary China exit
+# pool is sufficient. Keep all Pair code, knowledge and published outputs;
+# consume any already-produced Pair observations, but do not schedule or run
+# new Pair probes. Set CHINA_PAIR_EXPLORATION=1 to resume the experiment.
+export CHINA_PAIR_EXPLORATION="${CHINA_PAIR_EXPLORATION:-0}"
 npm run china-pair-apply
 
 # From this point onward the China machine owns the entire state transition.
 # No GitHub workflow is needed to apply observations or derive the next feed.
 npm run china-assets
-npm run china-relay-candidates
+if [ "$CHINA_PAIR_EXPLORATION" = "1" ]; then
+  npm run china-relay-candidates
+fi
 npm run china-pairs
 npm run china-pools
 npm run china-elite
