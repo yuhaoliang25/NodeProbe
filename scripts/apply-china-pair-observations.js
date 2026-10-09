@@ -40,7 +40,7 @@ function pairKey(x){return x.pairId||crypto.createHash('sha256').update(String(x
 function observationId(x,batchName){
   return crypto.createHash('sha256').update(JSON.stringify([
     batchName||null,x.pairId||null,x.relayEndpointId||null,x.landingEndpointId||null,
-    x.at||null,Boolean(x.success),x.latencyMs??null,x.baselineLatencyMs??null,Boolean(x.improved),
+    x.at||null,Boolean(x.success),x.latencyMs??null,x.speedSuccess??null,x.speedMbps??null,x.baselineLatencyMs??null,
   ])).digest('hex');
 }
 function apply(){
@@ -61,23 +61,28 @@ function apply(){
       p.relay=cfg.relay||p.relay||null;p.landing=cfg.landing||p.landing||null;
       p.lastObservedAt=x.at||d.generatedAt||now();
       p.lastScreenLatencyMs=x.latencyMs??null;
+      p.lastSpeedMbps=x.speedMbps??null;
+      p.lastSpeedSuccess=x.speedSuccess??null;
       p.lastBaselineLatencyMs=x.baselineLatencyMs??null;
-      p.lastImprovement=Boolean(x.improved);
+      p.lastImprovement=x.improved===undefined?null:Boolean(x.improved);
       p.observations.push({
         at:x.at||d.generatedAt||now(),
         success:Boolean(x.success),
         screenLatencyMs:x.latencyMs??null,
+        speedSuccess:x.speedSuccess??null,
+        speedMbps:x.speedMbps??null,
+        speedLatencyMs:x.speedLatencyMs??null,
         baselineLatencyMs:x.baselineLatencyMs??null,
-        improvement:x.improved&&x.baselineLatencyMs&&x.latencyMs?1-x.latencyMs/x.baselineLatencyMs:null,
-        improved:Boolean(x.improved),
+        improvement:x.improved!==undefined&&x.baselineLatencyMs&&x.latencyMs?1-x.latencyMs/x.baselineLatencyMs:null,
+        improved:x.improved===undefined?null:Boolean(x.improved),
         confirmationSuccessRate:acceptedMap.get(x.pairId)?.confirmationSuccessRate??null,
         confirmationAttempts:acceptedMap.get(x.pairId)?.confirmationAttempts??0,
         confirmed:Boolean(acceptedMap.get(x.pairId)),
         environment:d.probeEnvironment||'china-default'
       });
       p.observations=p.observations.slice(-C.retention);
-      if(x.success&&x.improved){p.successes=(p.successes||0)+1;p.lastSuccessAt=p.lastObservedAt;}
-      p.lastScreenSuccess=Boolean(x.success);p.lastImproved=Boolean(x.improved);
+      if(x.success){p.successes=(p.successes||0)+1;p.lastSuccessAt=p.lastObservedAt;}
+      p.lastScreenSuccess=Boolean(x.success);p.lastImproved=x.improved===undefined?null:Boolean(x.improved);
       state.pairs[key]=p;applied++;appliedIds.add(id);
     }
     if(b.name)seen.add(b.name);
