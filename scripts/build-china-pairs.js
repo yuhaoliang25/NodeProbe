@@ -46,7 +46,7 @@ for(const [pairId,p] of Object.entries(state.pairs||{})){
   const landing={...p.landing,name:pairName,'dialer-proxy':relayName};
   candidates.push({pairId,lastObservedAt:p.lastObservedAt,rate,latencyMs,speedMbps,confirmedLatencyMs,latencyForRank,throughputForRank,relayEndpointId:p.relayEndpointId,landingEndpointId:p.landingEndpointId,relay,pair:landing});
 }
-candidates.sort((a,b)=>b.rate-a.rate||a.latencyForRank-b.latencyForRank||b.throughputForRank-a.throughputForRank||Date.parse(b.lastObservedAt)-Date.parse(a.lastObservedAt));
+candidates.sort((a,b)=>a.latencyForRank-b.latencyForRank||a.latencyMs-b.latencyMs||b.throughputForRank-a.throughputForRank||b.rate-a.rate||Date.parse(b.lastObservedAt)-Date.parse(a.lastObservedAt));
 const selected=candidates.slice(0,C.maxPairs);
 const proxies=[];const seen=new Set();
 for(const x of selected)for(const p of [x.relay,x.pair]){if(!seen.has(p.name)){seen.add(p.name);proxies.push(p)}}
