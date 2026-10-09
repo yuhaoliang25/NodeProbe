@@ -35,6 +35,15 @@ rule-providers:
     interval: 86400
     url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs'
 proxies:
+  - name: '🇸🇬SG_38|247KB/s|R002-260618 01'
+    port: 443
+    server: '154.26.139.24'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'd1f4a0d80288cf0b'
   - name: '🇭🇰 香港 09'
     password: 'null'
     port: 443
@@ -56,15 +65,6 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '2525753ed3d65e2e'
-  - name: '🇸🇬SG_38|247KB/s|R002-260618 01'
-    port: 443
-    server: '154.26.139.24'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: 'd1f4a0d80288cf0b'
   - name: '🇺🇸US_402|754KB/s|P002-260618 01'
     password: 'None'
     port: 9002
@@ -90,9 +90,9 @@ proxy-groups:
   - name: 'PROXY'
     type: 'select'
     proxies:
+      - '🇸🇬SG_38|247KB/s|R002-260618 01'
       - '🇭🇰 香港 09'
       - '🇭🇰 香港 04'
-      - '🇸🇬SG_38|247KB/s|R002-260618 01'
       - 'DIRECT'
   - name: 'CHATGPT'
     type: 'select'
