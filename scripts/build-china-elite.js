@@ -99,9 +99,14 @@ function chatgptScore(node) {
   const successRate = Number(latest.chatgptSuccessRate);
   const latency = p95(latest.chatgptAttempts);
   const latencyPenalty = latency == null ? 0 : Math.min(250, latency / 20);
+  // Speed is a secondary preference within the ChatGPT-capable pool, not a
+  // capability gate. Keep its contribution bounded so a fast but less reliable
+  // exit cannot outrank the strict ChatGPT success-rate requirement.
+  const throughputScore = Math.min(100, Math.log2(1 + Math.max(0, latestSpeed(node) || 0)) * 15);
   return successRate * 1000 +
     Math.min(100, obs.length * 10) +
-    Math.min(50, Number(node.observedRuns || 0)) -
+    Math.min(50, Number(node.observedRuns || 0)) +
+    throughputScore -
     latencyPenalty;
 }
 
