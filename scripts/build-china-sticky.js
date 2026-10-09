@@ -41,6 +41,24 @@ function rate(observations) {
     : 0;
 }
 
+function latestSpeed(node) {
+  // Only the latest actual speed-test attempt counts. A failed newer attempt
+  // invalidates older successful throughput evidence; untested runs are ignored.
+  const attempts = (Array.isArray(node?.observations) ? node.observations : [])
+    .filter(x => x.speedSuccess === true || x.speedSuccess === false);
+  if (!attempts.length || attempts[attempts.length - 1].speedSuccess !== true) return null;
+  const speed = Number(attempts[attempts.length - 1].speedMbps);
+  return Number.isFinite(speed) && speed > 0 ? speed : null;
+}
+
+function speedBonus(node) {
+  const speed = latestSpeed(node);
+  if (speed == null) return 0;
+  // Throughput is only a small tie-breaker (at most 0.02 on the 0–1
+  // reliability scale), never a substitute for trustworthy/stable evidence.
+  return Math.min(0.02, Math.log2(1 + speed) * 0.003);
+}
+
 function wilsonLowerBound(successes, total, z = 1.96) {
   if (!total) return 0;
   const p = successes / total;
@@ -112,6 +130,8 @@ function stabilityRank(node, atMs) {
     lifetimeRate: total ? successes / total : 0,
     observedRuns: total,
     p95LatencyMs: p95,
+    speedMbps: latestSpeed(node),
+    speedBonus: speedBonus(node),
   };
 }
 
@@ -129,8 +149,8 @@ function compare(a, b, atMs, referenceServer = null) {
   const ar = continuityAdjustedScore(a, atMs, referenceServer);
   const br = continuityAdjustedScore(b, atMs, referenceServer);
   return (
-    (br.lowerBound + br.continuityBonus) -
-    (ar.lowerBound + ar.continuityBonus)
+    (br.lowerBound + br.speedBonus + br.continuityBonus) -
+    (ar.lowerBound + ar.speedBonus + ar.continuityBonus)
   ) ||
     br.decayedRate - ar.decayedRate ||
     br.recentRate - ar.recentRate ||
@@ -356,6 +376,8 @@ function main() {
       continuityScore: selectedContinuity.score,
       continuityRelation: selectedContinuity.relation,
       continuityBonus: selectedContinuity.score * IP_CONTINUITY_WEIGHT,
+      speedMbps: latestSpeed(selected),
+      speedBonus: speedBonus(selected),
     } : null,
     candidateCount: eligibleNodes.length,
     reason,
