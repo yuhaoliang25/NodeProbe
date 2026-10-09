@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-09T09:17:38.803Z",
+  "generatedAt": "2026-10-09T16:33:24.460Z",
   "decayHalfLifeMs": 259200000,
-  "count": 20,
+  "count": 19,
   "definitions": {
     "pair": "China → relay → landing → target; experimental evidence only"
   },
@@ -51,15 +51,6 @@
       "speedMbps": null,
       "confirmedLatencyMs": null,
       "relayEndpointId": "351dcbb70d0afdd5"
-    },
-    {
-      "pairId": "eb6b2e11a95f7e4a",
-      "lastObservedAt": "2026-10-06T15:35:38.460Z",
-      "recentSuccessRate": 1,
-      "latencyMs": 1705,
-      "speedMbps": null,
-      "confirmedLatencyMs": null,
-      "relayEndpointId": "6493b98e9afea31a"
     },
     {
       "pairId": "124ea8c71faecd3d",
