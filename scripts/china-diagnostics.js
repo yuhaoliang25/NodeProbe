@@ -125,8 +125,14 @@ const sticky=readJson(process.env.CHINA_STICKY_STATE_FILE||'data/china-sticky.js
 const eliteMeta=readJson('subscriptions/china-elite.json',{});
 const pools=readJson('subscriptions/china-pools.json',{});
 const pairPool=readJson('subscriptions/china-pair-pool.json',{});
+const assetNodes=Object.values(assets.nodes||{});
+const speedObservations=assetNodes.flatMap(node=>Array.isArray(node?.observations)?node.observations:[]);
+const latestSpeedValues=assetNodes.map(node=>{
+  const obs=(Array.isArray(node?.observations)?node.observations:[]).filter(o=>o?.speedSuccess===true&&Number.isFinite(Number(o.speedMbps))&&Number(o.speedMbps)>0);
+  return obs.length?Number(obs[obs.length-1].speedMbps):null;
+}).filter(Number.isFinite).sort((a,b)=>a-b);
 const diagnostics={
-  version:2,
+  version:3,
   generatedAt:new Date().toISOString(),
   releaseId:process.env.CHINA_RELEASE_ID||null,
   environment:process.env.CHINA_PROBE_ENV||null,
@@ -140,6 +146,13 @@ const diagnostics={
     categories:(candidates.candidates||[]).reduce((m,x)=>{const k=x.category||'unknown';m[k]=(m[k]||0)+1;return m;},{})
   },
   probe:probeSummary(probe,candidates),
+  speedPersistence:{
+    assetNodes:assetNodes.length,
+    nodesWithSuccessfulSpeed:latestSpeedValues.length,
+    retainedSuccessfulSpeedObservations:speedObservations.filter(o=>o?.speedSuccess===true&&Number.isFinite(Number(o.speedMbps))&&Number(o.speedMbps)>0).length,
+    medianLatestMbps:latestSpeedValues.length?percentile(latestSpeedValues,0.5):null,
+    maxLatestMbps:latestSpeedValues.length?Math.max(...latestSpeedValues):null
+  },
   subscriptions:{
     exit:readYamlProxies('subscriptions/exit.yaml').length,
     elite:readYamlProxies('subscriptions/elite.yaml').length,
