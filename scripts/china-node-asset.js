@@ -339,6 +339,14 @@ function updateNode(node, observation) {
     chatgptEligible: observation.chatgptEligible == null ? null : Boolean(observation.chatgptEligible),
     chatgptSuccessRate: observation.chatgptSuccessRate == null ? null : Number(observation.chatgptSuccessRate),
     chatgptAttempts: Array.isArray(observation.chatgptAttempts) ? observation.chatgptAttempts : [],
+    // Persist throughput evidence with the same run as the exit/stability
+    // result. Elite ranking reads speedMbps from these retained observations.
+    speedMbps: observation.speedMbps == null || !Number.isFinite(Number(observation.speedMbps))
+      ? null : Number(observation.speedMbps),
+    speedSuccess: observation.speedSuccess == null ? null : Boolean(observation.speedSuccess),
+    speedDownloadBytes: observation.speedDownloadBytes == null ? null : Number(observation.speedDownloadBytes),
+    speedElapsedMs: observation.speedElapsedMs == null ? null : Number(observation.speedElapsedMs),
+    speedError: observation.speedError || null,
   });
 
   if (node.observations.length > CONFIG.observationRetention) {
