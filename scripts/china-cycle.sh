@@ -48,6 +48,10 @@ npm run china-apply
 # consume any already-produced Pair observations, but do not schedule or run
 # new Pair probes. Set CHINA_PAIR_EXPLORATION=1 to resume the experiment.
 export CHINA_PAIR_EXPLORATION="${CHINA_PAIR_EXPLORATION:-0}"
+if [ "$CHINA_PAIR_EXPLORATION" = "1" ]; then
+  npm run china-relay-candidates
+  npm run china-relay-probe
+fi
 npm run china-pair-apply
 
 # From this point onward the China machine owns the entire state transition.
