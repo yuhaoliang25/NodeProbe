@@ -100,7 +100,7 @@ async function downloadSpeedViaMihomo(proxyName){
       CONFIG.speedTarget,
     ],{encoding:'utf8',maxBuffer:1024*1024});
     const elapsedMs=Math.max(1,Date.now()-started);
-    const parts=String(result.stdout||'').trim().split(/\\s+/);
+    const parts=String(result.stdout||'').trim().split(/\s+/);
     const httpCode=Number(parts[0]);
     const bytes=Number(parts[1]);
     const curlSeconds=Number(parts[2]);
