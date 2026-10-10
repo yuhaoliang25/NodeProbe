@@ -35,6 +35,16 @@ rule-providers:
     interval: 86400
     url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs'
 proxies:
+  - name: '🇺🇸US_402|754KB/s|P002-260618 01'
+    password: 'None'
+    port: 9002
+    server: '138.199.35.205'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '07d9afb057a46178'
   - name: '🇷🇴RO_39|952KB/s|R002-260618 01'
     port: 9002
     server: '193.176.84.34'
@@ -53,59 +63,49 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: 'd1f4a0d80288cf0b'
-  - name: '🇷🇴RO_40|1.4MB/s 01'
-    port: 9002
-    server: '193.176.84.34'
-    skip-cert-verify: true
-    sni: 'www.bing.com'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '75b73d9beb8c40e3'
-  - name: '🇺🇸US_42|776KB/s 01'
-    password: ''
-    port: 9002
-    server: '138.199.35.218'
-    skip-cert-verify: true
-    tls: true
-    type: 'http'
-    username: ''
-    udp: true
-    endpoint-id: '351dcbb70d0afdd5'
-  - name: '🇺🇸US_498|773KB/s|R002-260618 01'
+  - name: '🇺🇸US_618|676KB/s|P002-260618 01'
     password: 'None'
     port: 9002
-    server: '138.199.35.195'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '35ba5e76f13f0e5f'
-  - name: '🇺🇸US_402|754KB/s|P002-260618 01'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.205'
+    server: '138.199.35.199'
     skip-cert-verify: true
     sub_tag: 'P002-260618'
     tls: true
     type: 'http'
     udp: true
-    endpoint-id: '07d9afb057a46178'
+    endpoint-id: 'ce8b293a59a3c510'
+  - name: '🇺🇸US_623|703KB/s|P002-260618 01'
+    password: 'None'
+    port: 9002
+    server: '138.199.35.214'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'e74af45dd435ef8e'
+  - name: '🇺🇸US_406|724KB/s|R002-260618 01'
+    port: 9002
+    server: '138.199.35.197'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '0cbdf96915d24775'
 proxy-groups:
   - name: 'PROXY'
     type: 'select'
     proxies:
+      - '🇺🇸US_402|754KB/s|P002-260618 01'
       - '🇷🇴RO_39|952KB/s|R002-260618 01'
       - '🇸🇬SG_38|247KB/s|R002-260618 01'
-      - '🇷🇴RO_40|1.4MB/s 01'
       - 'DIRECT'
   - name: 'CHATGPT'
     type: 'select'
     proxies:
-      - '🇺🇸US_42|776KB/s 01'
-      - '🇺🇸US_498|773KB/s|R002-260618 01'
-      - '🇺🇸US_402|754KB/s|P002-260618 01'
+      - '🇺🇸US_618|676KB/s|P002-260618 01'
+      - '🇺🇸US_623|703KB/s|P002-260618 01'
+      - '🇺🇸US_406|724KB/s|R002-260618 01'
   - name: 'STICKY'
     type: 'select'
     proxies:
