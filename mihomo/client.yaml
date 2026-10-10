@@ -35,16 +35,6 @@ rule-providers:
     interval: 86400
     url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs'
 proxies:
-  - name: '🇺🇸US_402|754KB/s|P002-260618 01'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.205'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '07d9afb057a46178'
   - name: '🇷🇴RO_39|952KB/s|R002-260618 01'
     port: 9002
     server: '193.176.84.34'
@@ -54,15 +44,6 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: 'd0410c536c7ec6ce'
-  - name: '🇸🇬SG_38|247KB/s|R002-260618 01'
-    port: 443
-    server: '154.26.139.24'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: 'd1f4a0d80288cf0b'
   - name: '🇺🇸US_618|676KB/s|P002-260618 01'
     password: 'None'
     port: 9002
@@ -73,6 +54,24 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: 'ce8b293a59a3c510'
+  - name: '🇸🇬SG_38|247KB/s|R002-260618 01'
+    port: 443
+    server: '154.26.139.24'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'd1f4a0d80288cf0b'
+  - name: '🇺🇸US_406|724KB/s|R002-260618 01'
+    port: 9002
+    server: '138.199.35.197'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '0cbdf96915d24775'
   - name: '🇺🇸US_623|703KB/s|P002-260618 01'
     password: 'None'
     port: 9002
@@ -83,29 +82,30 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: 'e74af45dd435ef8e'
-  - name: '🇺🇸US_406|724KB/s|R002-260618 01'
+  - name: '🇺🇸US_402|754KB/s|P002-260618 01'
+    password: 'None'
     port: 9002
-    server: '138.199.35.197'
+    server: '138.199.35.205'
     skip-cert-verify: true
-    sub_tag: 'R002-260618'
+    sub_tag: 'P002-260618'
     tls: true
     type: 'http'
     udp: true
-    endpoint-id: '0cbdf96915d24775'
+    endpoint-id: '07d9afb057a46178'
 proxy-groups:
   - name: 'PROXY'
     type: 'select'
     proxies:
-      - '🇺🇸US_402|754KB/s|P002-260618 01'
       - '🇷🇴RO_39|952KB/s|R002-260618 01'
+      - '🇺🇸US_618|676KB/s|P002-260618 01'
       - '🇸🇬SG_38|247KB/s|R002-260618 01'
       - 'DIRECT'
   - name: 'CHATGPT'
     type: 'select'
     proxies:
       - '🇺🇸US_618|676KB/s|P002-260618 01'
-      - '🇺🇸US_623|703KB/s|P002-260618 01'
       - '🇺🇸US_406|724KB/s|R002-260618 01'
+      - '🇺🇸US_623|703KB/s|P002-260618 01'
   - name: 'STICKY'
     type: 'select'
     proxies:
