@@ -1282,15 +1282,15 @@ proxies:
     udp: true
     sni: 'fan.973511.xyz'
     endpoint-id: '31b4fe08df14792d'
-  - name: '🇺🇸US_691|124KB/s|R002-260618 01'
-    port: 7615
-    server: '47.90.206.169'
+  - name: '🇺🇸US_61|332KB/s|R002-260618 01'
+    port: 443
+    server: '38.28.193.188'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
-    endpoint-id: 'd3d97e8a4f270f45'
+    endpoint-id: '5b107f4a88d7b51f'
   - name: '🇫🇷FR_66|3.0MB/s|R002-260618 01'
     port: 443
     server: '141.94.16.4'
@@ -1429,15 +1429,6 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '5091c3c6a5632402'
-  - name: '🇮🇹IT_6|1.0MB/s|R002-260618 01'
-    port: 443
-    server: '109.116.41.154'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '7ae9c25547c29cee'
   - name: '🇺🇸US_201|822KB/s|P002-260618 01'
     password: 'null'
     port: 9002
