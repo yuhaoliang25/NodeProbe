@@ -1,14 +1,13 @@
 proxies:
-  - name: '🇺🇸US_618|676KB/s|P002-260618 01'
-    password: 'None'
+  - name: '🇺🇸US_196|813KB/s|R002-260618 01'
     port: 9002
-    server: '138.199.35.199'
+    server: '138.199.35.200'
     skip-cert-verify: true
-    sub_tag: 'P002-260618'
+    sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
-    endpoint-id: 'ce8b293a59a3c510'
+    endpoint-id: 'f48e1677a33b866f'
   - name: '🇺🇸US_406|724KB/s|R002-260618 01'
     port: 9002
     server: '138.199.35.197'
