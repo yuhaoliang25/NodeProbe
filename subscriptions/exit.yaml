@@ -1291,15 +1291,6 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: 'd3d97e8a4f270f45'
-  - name: '🇺🇸US_61|332KB/s|R002-260618 01'
-    port: 443
-    server: '38.28.193.188'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '5b107f4a88d7b51f'
   - name: '🇫🇷FR_66|3.0MB/s|R002-260618 01'
     port: 443
     server: '141.94.16.4'

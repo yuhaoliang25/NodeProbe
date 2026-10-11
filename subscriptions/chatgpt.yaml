@@ -1,31 +1,30 @@
 proxies:
-  - name: '🇺🇸US_468|748KB/s|P002-260618 01'
-    password: 'null'
-    port: 9002
-    server: '138.199.35.211'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    endpoint-id: '28d09934f9571e5e'
-  - name: '🇺🇸US_68|722KB/s 01'
-    password: ''
-    port: 9002
-    server: '138.199.35.205'
-    skip-cert-verify: true
-    tls: true
-    type: 'http'
-    username: ''
-    udp: true
-    endpoint-id: 'dbacf984d30f7bed'
-  - name: '🇺🇸US_403|775KB/s|R002-260618 01'
-    port: 9002
-    server: '138.199.35.195'
+  - name: '🇸🇬SG_38|247KB/s|R002-260618 01'
+    port: 443
+    server: '154.26.139.24'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
-    endpoint-id: '472b8b661b6c7482'
+    endpoint-id: 'd1f4a0d80288cf0b'
+  - name: '🇺🇸US_419|760KB/s|P002-260618 01'
+    password: 'None'
+    port: 9002
+    server: '138.199.35.217'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '6b557e660da4c5d8'
+  - name: '🇺🇸US_405|795KB/s|P002-260618 01'
+    password: 'None'
+    port: 9002
+    server: '138.199.35.202'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '5091c3c6a5632402'
