@@ -1,11 +1,10 @@
 proxies:
-  - name: '🇺🇸US_402|754KB/s|P002-260618 01'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.205'
+  - name: '🇸🇬SG_38|247KB/s|R002-260618 01'
+    port: 443
+    server: '154.26.139.24'
     skip-cert-verify: true
-    sub_tag: 'P002-260618'
+    sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
-    endpoint-id: '07d9afb057a46178'
+    endpoint-id: 'd1f4a0d80288cf0b'

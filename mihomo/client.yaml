@@ -44,54 +44,64 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: 'd1f4a0d80288cf0b'
-  - name: '🇺🇸US_402|754KB/s|P002-260618 01'
+  - name: '🇷🇴RO_7|1.5MB/s|R002-260618 01'
+    port: 9002
+    server: '193.176.84.27'
+    skip-cert-verify: true
+    sni: 'www.bing.com'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'a00ea0e0fa61be8d'
+  - delay: 1801
+    name: '🇷🇴RO_36|1.1MB/s|G001-260618 01'
+    port: 9002
+    server: '193.176.84.31'
+    skip-cert-verify: true
+    sub_tag: 'G001-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'c090b799e7c7fbd0'
+  - name: '🇺🇸US_62|756KB/s|P002-260618 01'
     password: 'None'
     port: 9002
-    server: '138.199.35.205'
+    server: '138.199.35.209'
     skip-cert-verify: true
     sub_tag: 'P002-260618'
     tls: true
     type: 'http'
     udp: true
-    endpoint-id: '07d9afb057a46178'
-  - name: '🇺🇸US_618|676KB/s|P002-260618 01'
-    password: 'None'
+    endpoint-id: '99b32b11e4aee1ba'
+  - name: '🇺🇸US_282|796KB/s 01'
+    password: ''
     port: 9002
-    server: '138.199.35.199'
+    server: '138.199.35.219'
     skip-cert-verify: true
-    sub_tag: 'P002-260618'
     tls: true
     type: 'http'
+    username: ''
     udp: true
-    endpoint-id: 'ce8b293a59a3c510'
-  - name: '🇺🇸US_199|694KB/s|P002-260618 01'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.206'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '978362ac67400cfe'
+    endpoint-id: '524b09514efc35f8'
 proxy-groups:
   - name: 'PROXY'
     type: 'select'
     proxies:
       - '🇸🇬SG_38|247KB/s|R002-260618 01'
-      - '🇺🇸US_402|754KB/s|P002-260618 01'
-      - '🇺🇸US_618|676KB/s|P002-260618 01'
+      - '🇷🇴RO_7|1.5MB/s|R002-260618 01'
+      - '🇷🇴RO_36|1.1MB/s|G001-260618 01'
       - 'DIRECT'
   - name: 'CHATGPT'
     type: 'select'
     proxies:
-      - '🇺🇸US_199|694KB/s|P002-260618 01'
       - '🇸🇬SG_38|247KB/s|R002-260618 01'
-      - '🇺🇸US_618|676KB/s|P002-260618 01'
+      - '🇺🇸US_62|756KB/s|P002-260618 01'
+      - '🇺🇸US_282|796KB/s 01'
   - name: 'STICKY'
     type: 'select'
     proxies:
-      - '🇺🇸US_402|754KB/s|P002-260618 01'
+      - '🇸🇬SG_38|247KB/s|R002-260618 01'
 rules:
   - 'DOMAIN-SUFFIX,x.com,STICKY'
   - 'DOMAIN-SUFFIX,twitter.com,STICKY'
