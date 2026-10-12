@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-12T15:51:24.135Z",
+  "generatedAt": "2026-10-12T23:11:35.018Z",
   "maxPaths": 3,
   "counts": {
     "eligibleExits": 215,
-    "chatgptEligibleExits": 125,
+    "chatgptEligibleExits": 128,
     "chatgptSelectedPaths": 3,
-    "chatgptIncumbentPaths": 2,
+    "chatgptIncumbentPaths": 3,
     "selectedPaths": 3,
     "publishedProxies": 3
   },
@@ -26,12 +26,12 @@
       "kind": "exit",
       "endpointId": "d1f4a0d80288cf0b",
       "name": "🇸🇬SG_38|247KB/s|R002-260618 01",
-      "score": 1928.1310231471111,
-      "recentSuccessRate": 0.9782155333723904,
-      "lifetimeSuccessRate": 0.9782608695652174,
-      "observedRuns": 230,
-      "p95LatencyMs": 872,
-      "speedMbps": 20.552946187762466
+      "score": 1881.2967389830872,
+      "recentSuccessRate": 0.979700848521763,
+      "lifetimeSuccessRate": 0.9795081967213115,
+      "observedRuns": 244,
+      "p95LatencyMs": 1524,
+      "speedMbps": 17.707208648908992
     },
     {
       "kind": "exit",
@@ -61,24 +61,24 @@
       "kind": "chatgpt-incumbent",
       "endpointId": "d1f4a0d80288cf0b",
       "name": "🇸🇬SG_38|247KB/s|R002-260618 01",
-      "score": 1928.1310231471111,
-      "chatgptScore": 1148.997197811021,
+      "score": 1881.2967389830872,
+      "chatgptScore": 1178.6328360188754,
       "chatgptSuccessRate": 1
     },
     {
       "kind": "chatgpt-incumbent",
-      "endpointId": "99b32b11e4aee1ba",
-      "name": "🇺🇸US_62|756KB/s|P002-260618 01",
-      "score": 1629.3713852708202,
-      "chatgptScore": 1118.6278360380406,
+      "endpointId": "9b36e6c23ad2f124",
+      "name": "🇺🇸US_197|805KB/s|R002-260618 01",
+      "score": 1758.6691756240893,
+      "chatgptScore": 1133.7472728926389,
       "chatgptSuccessRate": 1
     },
     {
-      "kind": "chatgpt-exploration",
-      "endpointId": "524b09514efc35f8",
-      "name": "🇺🇸US_282|796KB/s 01",
-      "score": 1485.973132457241,
-      "chatgptScore": 1122.9916779395458,
+      "kind": "chatgpt-incumbent",
+      "endpointId": "5ce2ab2aa170435e",
+      "name": "🇺🇸US_63|765KB/s|P002-260618 01",
+      "score": 1627.1292803050333,
+      "chatgptScore": 1107.6084160250261,
       "chatgptSuccessRate": 1
     }
   ]

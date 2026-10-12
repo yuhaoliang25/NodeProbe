@@ -64,26 +64,25 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: 'c090b799e7c7fbd0'
-  - name: '🇺🇸US_62|756KB/s|P002-260618 01'
+  - name: '🇺🇸US_197|805KB/s|R002-260618 01'
+    port: 9002
+    server: '138.199.35.207'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '9b36e6c23ad2f124'
+  - name: '🇺🇸US_63|765KB/s|P002-260618 01'
     password: 'None'
     port: 9002
-    server: '138.199.35.209'
+    server: '138.199.35.196'
     skip-cert-verify: true
     sub_tag: 'P002-260618'
     tls: true
     type: 'http'
     udp: true
-    endpoint-id: '99b32b11e4aee1ba'
-  - name: '🇺🇸US_282|796KB/s 01'
-    password: ''
-    port: 9002
-    server: '138.199.35.219'
-    skip-cert-verify: true
-    tls: true
-    type: 'http'
-    username: ''
-    udp: true
-    endpoint-id: '524b09514efc35f8'
+    endpoint-id: '5ce2ab2aa170435e'
 proxy-groups:
   - name: 'PROXY'
     type: 'select'
@@ -96,8 +95,8 @@ proxy-groups:
     type: 'select'
     proxies:
       - '🇸🇬SG_38|247KB/s|R002-260618 01'
-      - '🇺🇸US_62|756KB/s|P002-260618 01'
-      - '🇺🇸US_282|796KB/s 01'
+      - '🇺🇸US_197|805KB/s|R002-260618 01'
+      - '🇺🇸US_63|765KB/s|P002-260618 01'
   - name: 'STICKY'
     type: 'select'
     proxies:
