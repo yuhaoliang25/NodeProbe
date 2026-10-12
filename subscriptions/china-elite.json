@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-10-11T20:28:32.466Z",
+  "generatedAt": "2026-10-11T23:37:34.260Z",
   "maxPaths": 3,
   "counts": {
-    "eligibleExits": 222,
-    "chatgptEligibleExits": 125,
+    "eligibleExits": 223,
+    "chatgptEligibleExits": 126,
     "chatgptSelectedPaths": 3,
     "chatgptIncumbentPaths": 3,
     "selectedPaths": 3,
@@ -26,34 +26,34 @@
       "kind": "exit",
       "endpointId": "d1f4a0d80288cf0b",
       "name": "🇸🇬SG_38|247KB/s|R002-260618 01",
-      "score": 1878.488851206814,
-      "recentSuccessRate": 0.9486874335105109,
-      "lifetimeSuccessRate": 0.9792746113989638,
-      "observedRuns": 193,
+      "score": 1925.3385232320468,
+      "recentSuccessRate": 0.9668237087980398,
+      "lifetimeSuccessRate": 0.9798994974874372,
+      "observedRuns": 199,
       "p95LatencyMs": 928,
-      "speedMbps": 17.469224685237325
+      "speedMbps": 22.622067261061485
     },
     {
       "kind": "exit",
       "endpointId": "07d9afb057a46178",
       "name": "🇺🇸US_402|754KB/s|P002-260618 01",
-      "score": 1837.6000878323039,
+      "score": 1823.0217863770429,
       "recentSuccessRate": 1,
-      "lifetimeSuccessRate": 0.925531914893617,
-      "observedRuns": 188,
-      "p95LatencyMs": 1025,
-      "speedMbps": 9.93629098626879
+      "lifetimeSuccessRate": 0.9278350515463918,
+      "observedRuns": 194,
+      "p95LatencyMs": 1022,
+      "speedMbps": 8.530508938693792
     },
     {
       "kind": "exit",
-      "endpointId": "e05c9e916e92d98d",
-      "name": "🇷🇴RO_49|1021KB/s|Z001-260618 01",
-      "score": 1773.9848592925314,
+      "endpointId": "5091c3c6a5632402",
+      "name": "🇺🇸US_405|795KB/s|P002-260618 01",
+      "score": 1812.6581265561067,
       "recentSuccessRate": 1,
-      "lifetimeSuccessRate": 1,
-      "observedRuns": 21,
-      "p95LatencyMs": 1645,
-      "speedMbps": 7.817903820629141
+      "lifetimeSuccessRate": 0.8691588785046729,
+      "observedRuns": 107,
+      "p95LatencyMs": 1025,
+      "speedMbps": 10.248093534349687
     }
   ],
   "chatgptPaths": [
@@ -61,24 +61,24 @@
       "kind": "chatgpt-incumbent",
       "endpointId": "d1f4a0d80288cf0b",
       "name": "🇸🇬SG_38|247KB/s|R002-260618 01",
-      "score": 1878.488851206814,
-      "chatgptScore": 1176.3057709994039,
-      "chatgptSuccessRate": 1
-    },
-    {
-      "kind": "chatgpt-incumbent",
-      "endpointId": "6b557e660da4c5d8",
-      "name": "🇺🇸US_419|760KB/s|P002-260618 01",
-      "score": 1751.7904137889248,
-      "chatgptScore": 1151.1512972993446,
+      "score": 1925.3385232320468,
+      "chatgptScore": 1182.030949816929,
       "chatgptSuccessRate": 1
     },
     {
       "kind": "chatgpt-incumbent",
       "endpointId": "5091c3c6a5632402",
       "name": "🇺🇸US_405|795KB/s|P002-260618 01",
-      "score": 1731.6507031673555,
-      "chatgptScore": 1145.0353090329183,
+      "score": 1812.6581265561067,
+      "chatgptScore": 1151.4241288694568,
+      "chatgptSuccessRate": 1
+    },
+    {
+      "kind": "chatgpt-incumbent",
+      "endpointId": "6b557e660da4c5d8",
+      "name": "🇺🇸US_419|760KB/s|P002-260618 01",
+      "score": 1710.1232778462122,
+      "chatgptScore": 1140.670426154224,
       "chatgptSuccessRate": 1
     }
   ]

@@ -54,25 +54,6 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '07d9afb057a46178'
-  - name: '🇷🇴RO_49|1021KB/s|Z001-260618 01'
-    port: 9002
-    server: '193.176.84.21'
-    skip-cert-verify: true
-    sub_tag: 'Z001-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: 'e05c9e916e92d98d'
-  - name: '🇺🇸US_419|760KB/s|P002-260618 01'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.217'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '6b557e660da4c5d8'
   - name: '🇺🇸US_405|795KB/s|P002-260618 01'
     password: 'None'
     port: 9002
@@ -83,20 +64,30 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '5091c3c6a5632402'
+  - name: '🇺🇸US_419|760KB/s|P002-260618 01'
+    password: 'None'
+    port: 9002
+    server: '138.199.35.217'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '6b557e660da4c5d8'
 proxy-groups:
   - name: 'PROXY'
     type: 'select'
     proxies:
       - '🇸🇬SG_38|247KB/s|R002-260618 01'
       - '🇺🇸US_402|754KB/s|P002-260618 01'
-      - '🇷🇴RO_49|1021KB/s|Z001-260618 01'
+      - '🇺🇸US_405|795KB/s|P002-260618 01'
       - 'DIRECT'
   - name: 'CHATGPT'
     type: 'select'
     proxies:
       - '🇸🇬SG_38|247KB/s|R002-260618 01'
-      - '🇺🇸US_419|760KB/s|P002-260618 01'
       - '🇺🇸US_405|795KB/s|P002-260618 01'
+      - '🇺🇸US_419|760KB/s|P002-260618 01'
   - name: 'STICKY'
     type: 'select'
     proxies:
