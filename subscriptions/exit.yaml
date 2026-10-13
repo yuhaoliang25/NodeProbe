@@ -1473,6 +1473,16 @@ proxies:
     username: 'null'
     udp: true
     endpoint-id: 'f8df99716a85628c'
+  - name: '🇺🇸US_63|765KB/s|P002-260618 01'
+    password: 'None'
+    port: 9002
+    server: '138.199.35.196'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '5ce2ab2aa170435e'
   - name: '🇺🇸US_315|716KB/s|R002-260618 01'
     password: 'null'
     port: 9002
