@@ -44,6 +44,17 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: 'd1f4a0d80288cf0b'
+  - name: '🇺🇸US_64|794KB/s|R002-260618 01'
+    password: 'null'
+    port: 9002
+    server: '138.199.35.210'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    endpoint-id: 'b5f583d9c4ba0cfb'
   - name: '🇷🇴RO_7|1.5MB/s|R002-260618 01'
     port: 9002
     server: '193.176.84.27'
@@ -54,49 +65,30 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: 'a00ea0e0fa61be8d'
-  - delay: 1801
-    name: '🇷🇴RO_36|1.1MB/s|G001-260618 01'
-    port: 9002
-    server: '193.176.84.31'
-    skip-cert-verify: true
-    sub_tag: 'G001-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: 'c090b799e7c7fbd0'
-  - name: '🇯🇵JP_4|254KB/s|R002-260618 01'
-    port: 443
-    server: 'fan.571589.xyz'
-    sni: 'fan.571589.xyz'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '7a223d425bb0d505'
-  - name: '🇺🇸US_62|756KB/s|P002-260618 01'
+  - name: '🇺🇸US_301|766KB/s|P002-260618 01'
     password: 'None'
     port: 9002
-    server: '138.199.35.209'
+    server: '138.199.35.219'
     skip-cert-verify: true
     sub_tag: 'P002-260618'
     tls: true
     type: 'http'
     udp: true
-    endpoint-id: '99b32b11e4aee1ba'
+    endpoint-id: '9de4a3caca4fd09d'
 proxy-groups:
   - name: 'PROXY'
     type: 'select'
     proxies:
       - '🇸🇬SG_38|247KB/s|R002-260618 01'
+      - '🇺🇸US_64|794KB/s|R002-260618 01'
       - '🇷🇴RO_7|1.5MB/s|R002-260618 01'
-      - '🇷🇴RO_36|1.1MB/s|G001-260618 01'
       - 'DIRECT'
   - name: 'CHATGPT'
     type: 'select'
     proxies:
       - '🇸🇬SG_38|247KB/s|R002-260618 01'
-      - '🇯🇵JP_4|254KB/s|R002-260618 01'
-      - '🇺🇸US_62|756KB/s|P002-260618 01'
+      - '🇺🇸US_301|766KB/s|P002-260618 01'
+      - '🇺🇸US_64|794KB/s|R002-260618 01'
   - name: 'STICKY'
     type: 'select'
     proxies:
@@ -113,6 +105,7 @@ rules:
   - 'DOMAIN-SUFFIX,oaistatic.com,CHATGPT'
   - 'DOMAIN-SUFFIX,oaiusercontent.com,CHATGPT'
   - 'DOMAIN-SUFFIX,pokemonshowdown.com,DIRECT'
+  - 'DOMAIN-SUFFIX,psim.us,DIRECT'
   - 'DOMAIN-SUFFIX,services.googleapis.cn,PROXY'
   - 'RULE-SET,private_domain,DIRECT'
   - 'RULE-SET,private_ip,DIRECT,no-resolve'
