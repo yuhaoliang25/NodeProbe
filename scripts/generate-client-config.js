@@ -72,6 +72,7 @@ if (chatgpt.length) {
 }
 rules.push(
   // Application-specific policies must win before the geographic split.
+  'DOMAIN-SUFFIX,pokemonshowdown.com,DIRECT',
   'DOMAIN-SUFFIX,services.googleapis.cn,PROXY',
   'RULE-SET,private_domain,DIRECT',
   'RULE-SET,private_ip,DIRECT,no-resolve',
