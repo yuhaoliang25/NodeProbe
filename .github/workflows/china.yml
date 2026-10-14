@@ -278,17 +278,24 @@ jobs:
             }
             const parts = rule.split(',');
             const kind = parts[0];
-            const target = parts[parts.length - 1];
+            if (!kind || parts.length < 2) {
+              throw new Error('Invalid client config: malformed rule: ' + rule);
+            }
+
+            // RULE-SET has the form RULE-SET,<provider>,<policy>[,no-resolve].
+            // no-resolve is an option, not the routing policy.
+            let target;
             if (kind === 'RULE-SET') {
               const providerName = parts[1];
               if (!providerName || !Object.prototype.hasOwnProperty.call(doc['rule-providers'], providerName)) {
                 throw new Error('Invalid client config: rule references unknown rule-provider: ' + rule);
               }
+              target = parts[2];
+            } else {
+              target = parts[parts.length - 1];
             }
-            if (kind !== 'MATCH' && !kind) {
-              throw new Error('Invalid client config: malformed rule: ' + rule);
-            }
-            if (target && !builtins.has(target) && !proxyNames.has(target) && !groupNames.has(target)) {
+
+            if (!target || (!builtins.has(target) && !proxyNames.has(target) && !groupNames.has(target))) {
               throw new Error('Invalid client config: rule references unknown policy/group: ' + rule);
             }
           }
