@@ -20,10 +20,3 @@ proxies:
         Host: 'round-haze-8783.294.workers.dev'
     skip-cert-verify: false
     udp: true
-  - name: '🇷🇺_RU_俄罗斯'
-    type: 'ss'
-    server: 'ru.safepass.click'
-    port: 442
-    cipher: 'aes-128-gcm'
-    password: '6784aee2-0dfe-474f-8446-480259ff9918'
-    udp: true

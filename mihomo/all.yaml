@@ -25,13 +25,6 @@ proxies:
         Host: 'round-haze-8783.294.workers.dev'
     skip-cert-verify: false
     udp: true
-  - name: '🇷🇺_RU_俄罗斯'
-    type: 'ss'
-    server: 'ru.safepass.click'
-    port: 442
-    cipher: 'aes-128-gcm'
-    password: '6784aee2-0dfe-474f-8446-480259ff9918'
-    udp: true
 proxy-groups:
   - name: 'PROXY'
     type: 'select'
@@ -39,6 +32,5 @@ proxy-groups:
       - 'DIRECT'
       - 'SSR-美国-NF解锁自制剧-ChatGPT-TikTok-YouTube-107.151.182.253:8080'
       - '❓未知丨yoyapai.com_11'
-      - '🇷🇺_RU_俄罗斯'
 rules:
   - 'MATCH,PROXY'
