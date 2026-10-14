@@ -209,7 +209,7 @@ jobs:
           const required = [
             'RULE-SET,cn_domain,DIRECT',
             'RULE-SET,cn_ip,DIRECT,no-resolve',
-            'MATCH,PROXY'
+            'MATCH,DIRECT'
           ];
 
           for (const rule of required) {
