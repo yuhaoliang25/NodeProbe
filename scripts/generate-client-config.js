@@ -80,7 +80,7 @@ rules.push(
   'RULE-SET,cn_domain,DIRECT',
   'RULE-SET,cn_ip,DIRECT,no-resolve',
   'RULE-SET,geolocation_not_cn,PROXY',
-  'MATCH,DIRECT'
+  'MATCH,PROXY'
 );
 
 const config = {
