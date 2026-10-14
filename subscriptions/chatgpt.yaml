@@ -9,16 +9,6 @@ proxies:
     username: ''
     udp: true
     endpoint-id: '524b09514efc35f8'
-  - name: '🇺🇸US_301|766KB/s|P002-260618 01'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.219'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '9de4a3caca4fd09d'
   - name: '🇺🇸US_468|748KB/s|P002-260618 01'
     password: 'null'
     port: 9002
@@ -30,3 +20,13 @@ proxies:
     username: 'null'
     udp: true
     endpoint-id: '28d09934f9571e5e'
+  - name: '🇺🇸US_301|766KB/s|P002-260618 01'
+    password: 'None'
+    port: 9002
+    server: '138.199.35.219'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '9de4a3caca4fd09d'
