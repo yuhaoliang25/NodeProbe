@@ -182,7 +182,7 @@ jobs:
           );
           NODE
 
-      - name: Generate client config from published China subscriptions
+      - name: Generate and structurally validate client config
         run: |
           set -euo pipefail
           npm ci --ignore-scripts
@@ -192,73 +192,113 @@ jobs:
           const fs = require('fs');
           const yaml = require('js-yaml');
 
-          function loadProxies(file) {
-            const doc = yaml.load(fs.readFileSync(file, 'utf8'));
-            return Array.isArray(doc?.proxies) ? doc.proxies.filter(p => p && p.name) : [];
-          }
-
           const file = 'mihomo/client.yaml';
           const doc = yaml.load(fs.readFileSync(file, 'utf8'));
-          const sticky = loadProxies('subscriptions/sticky.yaml');
-          const chatgpt = loadProxies('subscriptions/chatgpt.yaml');
 
-          if (!doc || !Array.isArray(doc.rules)) {
-            throw new Error('Generated client.yaml has no rules array');
+          function requireObject(value, label) {
+            if (!value || typeof value !== 'object' || Array.isArray(value)) {
+              throw new Error('Invalid client config: ' + label + ' must be a mapping');
+            }
           }
-
-          const required = [
-            'RULE-SET,cn_domain,DIRECT',
-            'RULE-SET,cn_ip,DIRECT,no-resolve',
-            'MATCH,PROXY'
-          ];
-
-          for (const rule of required) {
-            if (!doc.rules.includes(rule)) {
-              throw new Error('Generated client.yaml missing required base rule: ' + rule);
+          function requireArray(value, label) {
+            if (!Array.isArray(value)) {
+              throw new Error('Invalid client config: ' + label + ' must be an array');
             }
           }
 
-          for (const name of ['cn_domain', 'cn_ip', 'private_domain', 'private_ip']) {
-            if (!doc['rule-providers'] || !doc['rule-providers'][name]) {
-              throw new Error('Generated client.yaml missing rule-provider: ' + name);
+          requireObject(doc, 'root');
+          for (const key of ['mixed-port', 'mode', 'proxies', 'proxy-groups', 'rules', 'rule-providers']) {
+            if (!(key in doc)) throw new Error('Invalid client config: missing ' + key);
+          }
+          if (!Number.isInteger(doc['mixed-port']) || doc['mixed-port'] < 1 || doc['mixed-port'] > 65535) {
+            throw new Error('Invalid client config: mixed-port must be a valid TCP/UDP port number');
+          }
+          requireArray(doc.proxies, 'proxies');
+          requireArray(doc['proxy-groups'], 'proxy-groups');
+          requireArray(doc.rules, 'rules');
+          requireObject(doc['rule-providers'], 'rule-providers');
+          if (doc.rules.length === 0) throw new Error('Invalid client config: rules must not be empty');
+
+          const proxyNames = new Set();
+          for (const [i, proxy] of doc.proxies.entries()) {
+            requireObject(proxy, 'proxies[' + i + ']');
+            if (typeof proxy.name !== 'string' || !proxy.name.trim()) {
+              throw new Error('Invalid client config: proxies[' + i + '] has no name');
+            }
+            if (proxyNames.has(proxy.name)) {
+              throw new Error('Invalid client config: duplicate proxy name ' + proxy.name);
+            }
+            proxyNames.add(proxy.name);
+            if (typeof proxy.type !== 'string' || !proxy.type.trim()) {
+              throw new Error('Invalid client config: proxy ' + proxy.name + ' has no type');
             }
           }
 
-          if (sticky.length) {
-            for (const rule of [
-              'DOMAIN-SUFFIX,x.com,STICKY',
-              'DOMAIN-SUFFIX,twitter.com,STICKY',
-              'DOMAIN-SUFFIX,t.co,STICKY',
-              'DOMAIN-SUFFIX,threads.com,STICKY',
-              'DOMAIN-SUFFIX,threads.net,STICKY'
-            ]) {
-              if (!doc.rules.includes(rule)) {
-                throw new Error('Generated client.yaml missing sticky rule: ' + rule);
+          const groupNames = new Set();
+          const groups = new Map();
+          for (const [i, group] of doc['proxy-groups'].entries()) {
+            requireObject(group, 'proxy-groups[' + i + ']');
+            if (typeof group.name !== 'string' || !group.name.trim()) {
+              throw new Error('Invalid client config: proxy-groups[' + i + '] has no name');
+            }
+            if (groupNames.has(group.name)) {
+              throw new Error('Invalid client config: duplicate proxy group ' + group.name);
+            }
+            groupNames.add(group.name);
+            if (typeof group.type !== 'string' || !group.type.trim()) {
+              throw new Error('Invalid client config: proxy group ' + group.name + ' has no type');
+            }
+            requireArray(group.proxies, 'proxy group ' + group.name + '.proxies');
+            groups.set(group.name, group);
+          }
+
+          const builtins = new Set(['DIRECT', 'REJECT', 'REJECT-DROP', 'PASS', 'COMPATIBLE']);
+          for (const [name, group] of groups) {
+            if (group.proxies.length === 0) {
+              throw new Error('Invalid client config: proxy group ' + name + ' has no members');
+            }
+            for (const member of group.proxies) {
+              if (typeof member !== 'string' ||
+                  (!proxyNames.has(member) && !groupNames.has(member) && !builtins.has(member))) {
+                throw new Error('Invalid client config: proxy group ' + name + ' references unknown member ' + member);
               }
             }
-            console.log('Validated X/Threads sticky policy: sticky proxies=' + sticky.length);
-          } else {
-            console.log('China sticky subscription is empty; X/Threads sticky rules are intentionally omitted for this publication.');
           }
 
-          if (chatgpt.length) {
-            for (const rule of [
-              'DOMAIN-SUFFIX,chatgpt.com,CHATGPT',
-              'DOMAIN-SUFFIX,chat.openai.com,CHATGPT',
-              'DOMAIN-SUFFIX,auth.openai.com,CHATGPT',
-              'DOMAIN-SUFFIX,oaistatic.com,CHATGPT',
-              'DOMAIN-SUFFIX,oaiusercontent.com,CHATGPT'
-            ]) {
-              if (!doc.rules.includes(rule)) {
-                throw new Error('Generated client.yaml missing ChatGPT rule: ' + rule);
+          for (const [name, provider] of Object.entries(doc['rule-providers'])) {
+            requireObject(provider, 'rule-provider ' + name);
+            if (!provider.type || !provider.behavior || !provider.url) {
+              throw new Error('Invalid client config: rule-provider ' + name + ' is missing type/behavior/url');
+            }
+          }
+
+          for (const [i, rule] of doc.rules.entries()) {
+            if (typeof rule !== 'string' || !rule.trim()) {
+              throw new Error('Invalid client config: rules[' + i + '] must be a non-empty string');
+            }
+            const parts = rule.split(',');
+            const kind = parts[0];
+            const target = parts[parts.length - 1];
+            if (kind === 'RULE-SET') {
+              const providerName = parts[1];
+              if (!providerName || !Object.prototype.hasOwnProperty.call(doc['rule-providers'], providerName)) {
+                throw new Error('Invalid client config: rule references unknown rule-provider: ' + rule);
               }
             }
-            console.log('Validated ChatGPT anti-risk policy: chatgpt proxies=' + chatgpt.length);
-          } else {
-            console.log('China ChatGPT subscription is empty; ChatGPT-specific rules are intentionally omitted for this publication.');
+            if (kind !== 'MATCH' && !kind) {
+              throw new Error('Invalid client config: malformed rule: ' + rule);
+            }
+            if (target && !builtins.has(target) && !proxyNames.has(target) && !groupNames.has(target)) {
+              throw new Error('Invalid client config: rule references unknown policy/group: ' + rule);
+            }
           }
 
-          console.log('Validated China client policy: CN DIRECT + proxy fallback');
+          console.log(
+            'Client config structurally valid: proxies=' + doc.proxies.length +
+            ', groups=' + doc['proxy-groups'].length +
+            ', ruleProviders=' + Object.keys(doc['rule-providers']).length +
+            ', rules=' + doc.rules.length
+          );
           NODE
 
       - name: Upload China diagnostics artifact
