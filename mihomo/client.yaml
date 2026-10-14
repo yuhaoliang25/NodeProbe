@@ -46,15 +46,6 @@ proxies:
     username: 'testuser1'
     udp: true
     endpoint-id: '0092f1512984d7cf'
-  - name: '🇸🇬SG_38|247KB/s|R002-260618 01'
-    port: 443
-    server: '154.26.139.24'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: 'd1f4a0d80288cf0b'
   - name: '🇷🇴RO_50|1.7MB/s|R002-260618 01'
     port: 9002
     server: '193.176.84.30'
@@ -64,42 +55,59 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '61b64672d9e4330e'
-  - name: '🇺🇸US_626|798KB/s|R002-260618 01'
-    password: 'null'
-    port: 9002
-    server: '138.199.35.198'
+  - name: '🇭🇰 香港 04'
+    port: 443
+    server: 'fan.240104.xyz'
     skip-cert-verify: true
-    sni: '138.199.35.198'
+    sni: 'fan.240104.xyz'
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
-    username: 'null'
     udp: true
-    endpoint-id: 'f8df99716a85628c'
-  - name: '🇺🇸US_309|791KB/s|P002-260618 01'
+    endpoint-id: '2525753ed3d65e2e'
+  - name: '🇸🇬SG_38|247KB/s|R002-260618 01'
+    port: 443
+    server: '154.26.139.24'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'd1f4a0d80288cf0b'
+  - name: '🇳🇱NL_58|1.6MB/s|R002-260618 01'
+    port: 443
+    server: '103.97.88.154'
+    skip-cert-verify: true
+    sni: '4a8c2906c96058315dffbc2b0e7ff19b-98005bea43f9ac33.apache-iv.com'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '9c35e4b4a187e58c'
+  - name: '🇺🇸US_486|721KB/s|P002-260618 01'
     password: 'None'
     port: 9002
-    server: '138.199.35.220'
+    server: '138.199.35.204'
     skip-cert-verify: true
     sub_tag: 'P002-260618'
     tls: true
     type: 'http'
     udp: true
-    endpoint-id: 'cc8428afcf80cbb0'
+    endpoint-id: '4686a98fb10918e7'
 proxy-groups:
   - name: 'PROXY'
     type: 'select'
     proxies:
       - '🇸🇬SG_12|648KB/s|R002-260618 01'
-      - '🇸🇬SG_38|247KB/s|R002-260618 01'
       - '🇷🇴RO_50|1.7MB/s|R002-260618 01'
+      - '🇭🇰 香港 04'
       - 'DIRECT'
   - name: 'CHATGPT'
     type: 'select'
     proxies:
       - '🇸🇬SG_38|247KB/s|R002-260618 01'
-      - '🇺🇸US_626|798KB/s|R002-260618 01'
-      - '🇺🇸US_309|791KB/s|P002-260618 01'
+      - '🇳🇱NL_58|1.6MB/s|R002-260618 01'
+      - '🇺🇸US_486|721KB/s|P002-260618 01'
   - name: 'STICKY'
     type: 'select'
     proxies:
@@ -123,4 +131,4 @@ rules:
   - 'RULE-SET,cn_domain,DIRECT'
   - 'RULE-SET,cn_ip,DIRECT,no-resolve'
   - 'RULE-SET,geolocation_not_cn,PROXY'
-  - 'MATCH,PROXY'
+  - 'MATCH,DIRECT'
