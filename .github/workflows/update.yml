@@ -199,14 +199,24 @@ jobs:
         run: |
           node - <<'NODE'
           const fs=require('fs'),yaml=require('js-yaml');
-          const d=yaml.load(fs.readFileSync('subscriptions/all.yaml','utf8'));
-          const p=d.proxies||[];
-          const cfg=yaml.load(fs.readFileSync('mihomo/config-template.yaml','utf8'));
-          cfg.proxies=p;
-          cfg['proxy-groups'][0].proxies=p.map(x=>x.name);
+          const d=yaml.load(fs.readFileSync('subscriptions/all.yaml','utf8'))||{};
+          const p=Array.isArray(d.proxies)?d.proxies.filter(x=>x&&x.name):[];
+          if (!p.length) throw new Error('subscriptions/all.yaml contains no usable proxies');
+          // This is an isolated probe config, not the published client config.
+          // Build it inline so CI does not depend on the removed config-template.yaml.
+          const cfg={
+            'mixed-port':7890,
+            'allow-lan':false,
+            mode:'rule',
+            'log-level':'warning',
+            'external-controller':'127.0.0.1:9090',
+            proxies:p,
+            'proxy-groups':[{name:'PROXY',type:'select',proxies:p.map(x=>x.name)}],
+            rules:['MATCH,PROXY']
+          };
           fs.mkdirSync('mihomo',{recursive:true});
           fs.writeFileSync('mihomo/config.yaml',yaml.dump(cfg,{lineWidth:-1,noRefs:true}));
-          console.log('nodes:',p.length);
+          console.log('Generated isolated probe config; nodes:',p.length);
           NODE
       - name: Validate Mihomo config
         run: |
