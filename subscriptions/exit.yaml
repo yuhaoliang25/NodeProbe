@@ -8,6 +8,15 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: 'e019d09aa7573606'
+  - name: '🇺🇸US_99|810KB/s|R002-260618 01'
+    port: 9002
+    server: '138.199.35.220'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '6493b98e9afea31a'
   - name: '🇺🇸US_42|776KB/s 01'
     password: ''
     port: 9002
@@ -1273,6 +1282,15 @@ proxies:
     udp: true
     sni: 'fan.973511.xyz'
     endpoint-id: '31b4fe08df14792d'
+  - name: '🇺🇸US_691|124KB/s|R002-260618 01'
+    port: 7615
+    server: '47.90.206.169'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'd3d97e8a4f270f45'
   - name: '🇺🇸US_61|332KB/s|R002-260618 01'
     port: 443
     server: '38.28.193.188'
@@ -1340,6 +1358,16 @@ proxies:
     udp: true
     sni: 'fan.587475.xyz'
     endpoint-id: 'ac5a189a995d7c1d'
+  - name: '🇺🇸US_68|695KB/s 01'
+    password: ''
+    port: 9002
+    server: '138.199.35.196'
+    skip-cert-verify: true
+    tls: true
+    type: 'http'
+    username: ''
+    udp: true
+    endpoint-id: '7202f34144e25fba'
   - name: '🇺🇸US_304|748KB/s|P002-260618 01'
     password: 'None'
     port: 9002
@@ -1527,6 +1555,16 @@ proxies:
     username: 'null'
     udp: true
     endpoint-id: '4b6dbe416aae5e5f'
+  - name: '🇺🇸US_68|722KB/s 01'
+    password: ''
+    port: 9002
+    server: '138.199.35.205'
+    skip-cert-verify: true
+    tls: true
+    type: 'http'
+    username: ''
+    udp: true
+    endpoint-id: 'dbacf984d30f7bed'
   - name: '🇺🇸US_187|781KB/s 01'
     password: ''
     port: 9002
