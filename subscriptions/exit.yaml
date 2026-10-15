@@ -1398,6 +1398,15 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '5091c3c6a5632402'
+  - name: '🇮🇹IT_6|1.0MB/s|R002-260618 01'
+    port: 443
+    server: '109.116.41.154'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '7ae9c25547c29cee'
   - name: '🇺🇸US_201|822KB/s|P002-260618 01'
     password: 'null'
     port: 9002

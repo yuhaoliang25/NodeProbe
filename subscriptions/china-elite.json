@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-10-15T20:18:37.784Z",
+  "generatedAt": "2026-10-15T22:53:05.996Z",
   "maxPaths": 3,
   "counts": {
-    "eligibleExits": 217,
+    "eligibleExits": 218,
     "chatgptEligibleExits": 154,
     "chatgptSelectedPaths": 3,
     "chatgptIncumbentPaths": 3,
@@ -26,19 +26,19 @@
       "kind": "exit",
       "endpointId": "d1f4a0d80288cf0b",
       "name": "🇸🇬SG_38|247KB/s|R002-260618 01",
-      "score": 1890.0472141053765,
-      "recentSuccessRate": 0.981166391247542,
-      "lifetimeSuccessRate": 0.981651376146789,
-      "observedRuns": 327,
-      "p95LatencyMs": 1070,
-      "speedMbps": 15.21704643976275
+      "score": 1931.953094952709,
+      "recentSuccessRate": 0.9820683485196997,
+      "lifetimeSuccessRate": 0.9819277108433735,
+      "observedRuns": 332,
+      "p95LatencyMs": 843,
+      "speedMbps": 19.942853752572002
     },
     {
       "kind": "exit",
       "endpointId": "1ad38a7e676afc40",
       "name": "🇺🇸US_494|762KB/s|P002-260618 01",
       "score": 1794.2416745303503,
-      "recentSuccessRate": 0.9852112265234014,
+      "recentSuccessRate": 0.9852112265234015,
       "lifetimeSuccessRate": 0.9545454545454546,
       "observedRuns": 22,
       "p95LatencyMs": 1121,
@@ -61,24 +61,24 @@
       "kind": "chatgpt-incumbent",
       "endpointId": "d1f4a0d80288cf0b",
       "name": "🇸🇬SG_38|247KB/s|R002-260618 01",
-      "score": 1890.0472141053765,
-      "chatgptScore": 1168.3415877720824,
+      "score": 1931.953094952709,
+      "chatgptScore": 1182.125792064623,
       "chatgptSuccessRate": 1
     },
     {
       "kind": "chatgpt-incumbent",
       "endpointId": "ac5a189a995d7c1d",
       "name": "🇯🇵JP_41|290KB/s|R002-260618 01",
-      "score": 1724.0326449868473,
-      "chatgptScore": 1144.438639050976,
+      "score": 1733.7800360086396,
+      "chatgptScore": 1151.7750303365256,
       "chatgptSuccessRate": 1
     },
     {
       "kind": "chatgpt-incumbent",
       "endpointId": "4e8e1c3187e3a404",
       "name": "🇺🇸US_314|857KB/s|R002-260618 01",
-      "score": 1509.7807022981763,
-      "chatgptScore": 1114.0402064223392,
+      "score": 1585.8013024749118,
+      "chatgptScore": 1136.0891023471574,
       "chatgptSuccessRate": 1
     }
   ]
