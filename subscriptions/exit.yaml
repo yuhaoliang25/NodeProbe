@@ -619,17 +619,6 @@ proxies:
     username: 'testuser1'
     udp: true
     endpoint-id: '9a7c2841627ed928'
-  - name: '🇸🇬SG_12|648KB/s|R002-260618 01'
-    password: 'e4b72b531a2d10900519'
-    port: 443
-    server: '146.70.29.45'
-    sni: '92461d2d.acsnet.co'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'testuser1'
-    udp: true
-    endpoint-id: '0092f1512984d7cf'
   - name: '🇷🇴RO_59|1.7MB/s|R002-260618 01'
     password: 'None'
     port: 9002
@@ -2162,16 +2151,6 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '99b32b11e4aee1ba'
-  - name: '🇳🇱NL_167|225KB/s|P002-260618 01'
-    password: 'None'
-    port: 443
-    server: '5.255.118.82'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '5785822f65964492'
   - name: '🇩🇪DE_11|2.9MB/s|R002-260618 01'
     port: 443
     server: '185.44.107.166'
