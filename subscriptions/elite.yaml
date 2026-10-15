@@ -10,17 +10,6 @@ proxies:
     username: 'testuser1'
     udp: true
     endpoint-id: '0092f1512984d7cf'
-  - name: '🇺🇸US_468|748KB/s|P002-260618 01'
-    password: 'null'
-    port: 9002
-    server: '138.199.35.211'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    endpoint-id: '28d09934f9571e5e'
   - delay: 2210
     name: '🇷🇴RO_48|1.2MB/s|G001-260618 01'
     port: 9002
@@ -31,3 +20,12 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '32e893781e4a97f8'
+  - name: '🇷🇴RO_50|1.7MB/s|R002-260618 01'
+    port: 9002
+    server: '193.176.84.30'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '61b64672d9e4330e'
