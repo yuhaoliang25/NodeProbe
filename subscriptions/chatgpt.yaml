@@ -17,13 +17,12 @@ proxies:
     udp: true
     sni: 'fan.587475.xyz'
     endpoint-id: 'ac5a189a995d7c1d'
-  - name: '🇺🇸US_490|770KB/s|R002-260618 01'
-    password: 'None'
+  - name: '🇺🇸US_314|857KB/s|R002-260618 01'
     port: 9002
-    server: '138.199.35.201'
+    server: '138.199.35.215'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
-    endpoint-id: '6a686b4cda81077c'
+    endpoint-id: '4e8e1c3187e3a404'
