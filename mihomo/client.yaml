@@ -35,33 +35,36 @@ rule-providers:
     interval: 86400
     url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs'
 proxies:
-  - name: '🇷🇴RO_50|1.7MB/s|R002-260618 01'
-    port: 9002
-    server: '193.176.84.30'
+  - name: '🇸🇬SG_38|247KB/s|R002-260618 01'
+    port: 443
+    server: '154.26.139.24'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
-    endpoint-id: '61b64672d9e4330e'
-  - name: '🇷🇴RO_77|720KB/s|R002-260618 01'
+    endpoint-id: 'd1f4a0d80288cf0b'
+  - name: '🇺🇸US_494|762KB/s|P002-260618 01'
+    password: 'null'
     port: 9002
-    server: '193.176.84.25'
+    server: '138.199.35.215'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    endpoint-id: '1ad38a7e676afc40'
+  - name: '🇺🇸US_490|770KB/s|R002-260618 01'
+    password: 'None'
+    port: 9002
+    server: '138.199.35.201'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
-    endpoint-id: '43fb51cc32fb89f3'
-  - name: '🇷🇴RO_42|1.0MB/s 01'
-    port: 9002
-    server: '193.176.84.39'
-    skip-cert-verify: true
-    sni: 'www.bing.com'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '3b375abcd2319a29'
+    endpoint-id: '6a686b4cda81077c'
   - name: '🇯🇵JP_41|290KB/s|R002-260618 01'
     port: 443
     server: 'fan.587475.xyz'
@@ -71,44 +74,24 @@ proxies:
     udp: true
     sni: 'fan.587475.xyz'
     endpoint-id: 'ac5a189a995d7c1d'
-  - name: '🇺🇸US_623|703KB/s|P002-260618 01'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.214'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: 'e74af45dd435ef8e'
-  - name: '🇺🇸US_297|497KB/s|P002-260618 01'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.211'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: 'e48111e2ecc2434c'
 proxy-groups:
   - name: 'PROXY'
     type: 'select'
     proxies:
-      - '🇷🇴RO_50|1.7MB/s|R002-260618 01'
-      - '🇷🇴RO_77|720KB/s|R002-260618 01'
-      - '🇷🇴RO_42|1.0MB/s 01'
+      - '🇸🇬SG_38|247KB/s|R002-260618 01'
+      - '🇺🇸US_494|762KB/s|P002-260618 01'
+      - '🇺🇸US_490|770KB/s|R002-260618 01'
       - 'DIRECT'
   - name: 'CHATGPT'
     type: 'select'
     proxies:
+      - '🇸🇬SG_38|247KB/s|R002-260618 01'
       - '🇯🇵JP_41|290KB/s|R002-260618 01'
-      - '🇺🇸US_623|703KB/s|P002-260618 01'
-      - '🇺🇸US_297|497KB/s|P002-260618 01'
+      - '🇺🇸US_494|762KB/s|P002-260618 01'
   - name: 'STICKY'
     type: 'select'
     proxies:
-      - '🇯🇵JP_41|290KB/s|R002-260618 01'
+      - '🇸🇬SG_38|247KB/s|R002-260618 01'
 rules:
   - 'DOMAIN-SUFFIX,x.com,STICKY'
   - 'DOMAIN-SUFFIX,twitter.com,STICKY'
