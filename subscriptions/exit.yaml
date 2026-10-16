@@ -2054,6 +2054,16 @@ proxies:
     udp: true
     sni: 'fan.132031.xyz'
     endpoint-id: 'd2e9c39519d8b7a4'
+  - name: '🇳🇱NL_287|777KB/s|R002-260618 01'
+    port: 443
+    server: '185.246.153.42'
+    skip-cert-verify: true
+    sni: '482c8436a1f7c908b48a1757abb5dd79-3791fb4df2db250b.apache-iv.com'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'e1c82204f654007f'
   - name: '🇺🇸US_765|333KB/s|R002-260618 01'
     password: 'null'
     port: 443
