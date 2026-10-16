@@ -1702,17 +1702,6 @@ proxies:
     username: 'null'
     udp: true
     endpoint-id: 'b5f583d9c4ba0cfb'
-  - name: '🇺🇸US_249|347KB/s|R002-260618 01'
-    password: 'null'
-    port: 443
-    server: 'fan.596189.xyz'
-    sni: 'fan.596189.xyz'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    endpoint-id: 'e73f9b00dc6db0bb'
   - name: '🇺🇸US_312|828KB/s 01'
     password: ''
     port: 9002
@@ -1893,6 +1882,15 @@ proxies:
     username: ''
     udp: true
     endpoint-id: 'ce5a8b35bec8f75c'
+  - name: '🇳🇱NL_221|3.8MB/s|R002-260618 01'
+    port: 443
+    server: '5.255.118.82'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '2a89310d810d8786'
   - name: '🇦🇺AU_2|373KB/s|R002-260618 01'
     password: 'None'
     port: 443
