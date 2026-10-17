@@ -1,24 +1,15 @@
 proxies:
-  - name: '🇸🇬SG_38|247KB/s|R002-260618 01'
-    port: 443
-    server: '154.26.139.24'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: 'd1f4a0d80288cf0b'
-  - name: '🇺🇸US_494|762KB/s|P002-260618 01'
+  - name: '🇭🇰 香港 09'
     password: 'null'
-    port: 9002
-    server: '138.199.35.215'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
+    port: 443
+    server: 'fan.240104.xyz'
+    sni: 'fan.240104.xyz'
+    sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     username: 'null'
     udp: true
-    endpoint-id: '1ad38a7e676afc40'
+    endpoint-id: 'a2852a26d8d9ed35'
   - name: '🇺🇸US_490|770KB/s|R002-260618 01'
     password: 'None'
     port: 9002
@@ -29,3 +20,12 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '6a686b4cda81077c'
+  - name: '🇸🇬SG_38|247KB/s|R002-260618 01'
+    port: 443
+    server: '154.26.139.24'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'd1f4a0d80288cf0b'

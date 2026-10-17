@@ -1,10 +1,10 @@
 proxies:
-  - name: '🇸🇬SG_38|247KB/s|R002-260618 01'
+  - name: '🇯🇵JP_41|290KB/s|R002-260618 01'
     port: 443
-    server: '154.26.139.24'
-    skip-cert-verify: true
+    server: 'fan.587475.xyz'
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
-    endpoint-id: 'd1f4a0d80288cf0b'
+    sni: 'fan.587475.xyz'
+    endpoint-id: 'ac5a189a995d7c1d'
