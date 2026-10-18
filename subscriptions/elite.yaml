@@ -1,31 +1,28 @@
 proxies:
-  - name: '🇳🇱NL_142|5.6MB/s|P002-260618 01'
-    password: ''
+  - name: '🇷🇴RO_77|720KB/s|R002-260618 01'
     port: 9002
-    server: '84.17.47.146'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    username: ''
-    udp: true
-    endpoint-id: '709db4aba6d49da5'
-  - delay: 1801
-    name: '🇷🇴RO_36|1.1MB/s|G001-260618 01'
-    port: 9002
-    server: '193.176.84.31'
-    skip-cert-verify: true
-    sub_tag: 'G001-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: 'c090b799e7c7fbd0'
-  - name: '🇷🇴RO_46|986KB/s|R002-260618 01'
-    port: 9002
-    server: '193.176.84.39'
+    server: '193.176.84.25'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
-    endpoint-id: 'e27b23f60f9728d3'
+    endpoint-id: '43fb51cc32fb89f3'
+  - name: '🇷🇴RO_42|1.0MB/s 01'
+    port: 9002
+    server: '193.176.84.39'
+    skip-cert-verify: true
+    sni: 'www.bing.com'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '3b375abcd2319a29'
+  - name: '🇳🇱NL_47|5.3MB/s|R002-260618 01'
+    port: 9002
+    server: '84.17.47.148'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '52d842f3e3cb5da5'
