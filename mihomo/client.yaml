@@ -35,15 +35,6 @@ rule-providers:
     interval: 86400
     url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs'
 proxies:
-  - name: '🇸🇬SG_38|247KB/s|R002-260618 01'
-    port: 443
-    server: '154.26.139.24'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: 'd1f4a0d80288cf0b'
   - name: '🇳🇱NL_142|5.6MB/s|P002-260618 01'
     password: ''
     port: 9002
@@ -65,16 +56,15 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: 'c090b799e7c7fbd0'
-  - name: '🇺🇸US_282|796KB/s 01'
-    password: ''
+  - name: '🇷🇴RO_46|986KB/s|R002-260618 01'
     port: 9002
-    server: '138.199.35.219'
+    server: '193.176.84.39'
     skip-cert-verify: true
+    sub_tag: 'R002-260618'
     tls: true
     type: 'http'
-    username: ''
     udp: true
-    endpoint-id: '524b09514efc35f8'
+    endpoint-id: 'e27b23f60f9728d3'
   - name: '🇯🇵JP_4|254KB/s|R002-260618 01'
     port: 443
     server: 'fan.571589.xyz'
@@ -84,6 +74,24 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '7a223d425bb0d505'
+  - name: '🇺🇸US_403|775KB/s|R002-260618 01'
+    port: 9002
+    server: '138.199.35.195'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '472b8b661b6c7482'
+  - name: '🇺🇸US_314|857KB/s|R002-260618 01'
+    port: 9002
+    server: '138.199.35.215'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '4e8e1c3187e3a404'
   - name: '🇳🇱NL_167|225KB/s|P002-260618 01'
     password: 'None'
     port: 443
@@ -98,16 +106,16 @@ proxy-groups:
   - name: 'PROXY'
     type: 'select'
     proxies:
-      - '🇸🇬SG_38|247KB/s|R002-260618 01'
       - '🇳🇱NL_142|5.6MB/s|P002-260618 01'
       - '🇷🇴RO_36|1.1MB/s|G001-260618 01'
+      - '🇷🇴RO_46|986KB/s|R002-260618 01'
       - 'DIRECT'
   - name: 'CHATGPT'
     type: 'select'
     proxies:
-      - '🇸🇬SG_38|247KB/s|R002-260618 01'
-      - '🇺🇸US_282|796KB/s 01'
       - '🇯🇵JP_4|254KB/s|R002-260618 01'
+      - '🇺🇸US_403|775KB/s|R002-260618 01'
+      - '🇺🇸US_314|857KB/s|R002-260618 01'
   - name: 'STICKY'
     type: 'select'
     proxies:
