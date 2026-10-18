@@ -1,15 +1,4 @@
 proxies:
-  - name: '🇭🇰 香港 09'
-    password: 'null'
-    port: 443
-    server: 'fan.240104.xyz'
-    sni: 'fan.240104.xyz'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    endpoint-id: 'a2852a26d8d9ed35'
   - name: '🇸🇬SG_38|247KB/s|R002-260618 01'
     port: 443
     server: '154.26.139.24'
@@ -30,3 +19,13 @@ proxies:
     username: ''
     udp: true
     endpoint-id: '709db4aba6d49da5'
+  - delay: 1801
+    name: '🇷🇴RO_36|1.1MB/s|G001-260618 01'
+    port: 9002
+    server: '193.176.84.31'
+    skip-cert-verify: true
+    sub_tag: 'G001-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'c090b799e7c7fbd0'
