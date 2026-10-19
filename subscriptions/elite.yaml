@@ -1,14 +1,4 @@
 proxies:
-  - name: '🇺🇸US_442|813KB/s 01'
-    password: ''
-    port: 9002
-    server: '138.199.35.217'
-    skip-cert-verify: true
-    tls: true
-    type: 'http'
-    username: ''
-    udp: true
-    endpoint-id: '114833c9a2b71e41'
   - name: '🇺🇸US_302|830KB/s|P002-260618 01'
     password: 'null'
     port: 9002
@@ -29,3 +19,13 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '4e8e1c3187e3a404'
+  - name: '🇺🇸US_442|813KB/s 01'
+    password: ''
+    port: 9002
+    server: '138.199.35.217'
+    skip-cert-verify: true
+    tls: true
+    type: 'http'
+    username: ''
+    udp: true
+    endpoint-id: '114833c9a2b71e41'
