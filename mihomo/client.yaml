@@ -53,64 +53,66 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '43fb51cc32fb89f3'
-  - name: '🇺🇸US_193|823KB/s|R002-260618 01'
-    port: 9002
-    server: '138.199.35.216'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: 'e087c3cbc4a41d54'
-  - name: '🇺🇸US_405|795KB/s|P002-260618 01'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.202'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '5091c3c6a5632402'
-  - name: '🇺🇸US_51|831KB/s|R002-260618 01'
+  - name: '🇺🇸US_626|798KB/s|R002-260618 01'
     password: 'null'
     port: 9002
-    server: '138.199.35.199'
+    server: '138.199.35.198'
     skip-cert-verify: true
+    sni: '138.199.35.198'
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     username: 'null'
     udp: true
-    endpoint-id: '4a897fd241ab7690'
-  - name: '🇺🇸US_301|766KB/s|P002-260618 01'
-    password: 'None'
+    endpoint-id: 'f8df99716a85628c'
+  - name: '🇺🇸US_302|830KB/s|P002-260618 01'
+    password: 'null'
     port: 9002
-    server: '138.199.35.219'
+    server: '138.199.35.207'
     skip-cert-verify: true
     sub_tag: 'P002-260618'
     tls: true
     type: 'http'
+    username: 'null'
     udp: true
-    endpoint-id: '9de4a3caca4fd09d'
+    endpoint-id: '427cf4d5d36f29a2'
+  - name: '🇺🇸US_442|813KB/s 01'
+    password: ''
+    port: 9002
+    server: '138.199.35.217'
+    skip-cert-verify: true
+    tls: true
+    type: 'http'
+    username: ''
+    udp: true
+    endpoint-id: '114833c9a2b71e41'
+  - name: '🇺🇸US_314|857KB/s|R002-260618 01'
+    port: 9002
+    server: '138.199.35.215'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '4e8e1c3187e3a404'
 proxy-groups:
   - name: 'PROXY'
     type: 'select'
     proxies:
       - '🇸🇬SG_38|247KB/s|R002-260618 01'
       - '🇷🇴RO_77|720KB/s|R002-260618 01'
-      - '🇺🇸US_193|823KB/s|R002-260618 01'
+      - '🇺🇸US_626|798KB/s|R002-260618 01'
       - 'DIRECT'
   - name: 'CHATGPT'
     type: 'select'
     proxies:
-      - '🇺🇸US_405|795KB/s|P002-260618 01'
-      - '🇺🇸US_51|831KB/s|R002-260618 01'
-      - '🇺🇸US_301|766KB/s|P002-260618 01'
+      - '🇸🇬SG_38|247KB/s|R002-260618 01'
+      - '🇺🇸US_302|830KB/s|P002-260618 01'
+      - '🇺🇸US_442|813KB/s 01'
   - name: 'STICKY'
     type: 'select'
     proxies:
-      - '🇸🇬SG_38|247KB/s|R002-260618 01'
+      - '🇺🇸US_314|857KB/s|R002-260618 01'
 rules:
   - 'DOMAIN-SUFFIX,x.com,STICKY'
   - 'DOMAIN-SUFFIX,twitter.com,STICKY'
