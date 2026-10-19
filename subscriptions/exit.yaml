@@ -27,17 +27,6 @@ proxies:
     username: ''
     udp: true
     endpoint-id: '351dcbb70d0afdd5'
-  - name: '🇭🇰 香港 09'
-    password: 'null'
-    port: 443
-    server: 'fan.240104.xyz'
-    sni: 'fan.240104.xyz'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    endpoint-id: 'a2852a26d8d9ed35'
   - name: '🇷🇴RO_23|752KB/s|P002-260618 01'
     port: 9002
     server: '193.176.84.37'
@@ -1714,17 +1703,6 @@ proxies:
     username: 'null'
     udp: true
     endpoint-id: 'b5f583d9c4ba0cfb'
-  - name: '🇺🇸US_249|347KB/s|R002-260618 01'
-    password: 'null'
-    port: 443
-    server: 'fan.596189.xyz'
-    sni: 'fan.596189.xyz'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    endpoint-id: 'e73f9b00dc6db0bb'
   - name: '🇺🇸US_312|828KB/s 01'
     password: ''
     port: 9002
