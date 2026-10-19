@@ -17,12 +17,12 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '43fb51cc32fb89f3'
-  - name: '🇷🇴RO_42|1.0MB/s 01'
+  - name: '🇺🇸US_193|823KB/s|R002-260618 01'
     port: 9002
-    server: '193.176.84.39'
+    server: '138.199.35.216'
     skip-cert-verify: true
-    sni: 'www.bing.com'
+    sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
-    endpoint-id: '3b375abcd2319a29'
+    endpoint-id: 'e087c3cbc4a41d54'
