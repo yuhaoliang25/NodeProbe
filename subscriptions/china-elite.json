@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-20T04:48:11.968Z",
+  "generatedAt": "2026-10-20T10:02:38.454Z",
   "maxPaths": 3,
   "counts": {
     "eligibleExits": 221,
@@ -26,8 +26,8 @@
       "kind": "exit",
       "endpointId": "114833c9a2b71e41",
       "name": "🇺🇸US_442|813KB/s 01",
-      "score": 1817.8176953971258,
-      "recentSuccessRate": 0.994214302206025,
+      "score": 1817.817695397126,
+      "recentSuccessRate": 0.9942143022060252,
       "lifetimeSuccessRate": 0.9545454545454546,
       "observedRuns": 44,
       "p95LatencyMs": 1048,
@@ -58,27 +58,27 @@
   ],
   "chatgptPaths": [
     {
-      "kind": "chatgpt-exploration",
-      "endpointId": "0cbdf96915d24775",
-      "name": "🇺🇸US_406|724KB/s|R002-260618 01",
-      "score": 1779.985220423099,
-      "chatgptScore": 1135.9637061020583,
+      "kind": "chatgpt-incumbent",
+      "endpointId": "71c2e2b3da6b6861",
+      "name": "🇺🇸US_292|767KB/s|R002-260618 01",
+      "score": 1588.7777420488649,
+      "chatgptScore": 1121.8728182598459,
+      "chatgptSuccessRate": 1
+    },
+    {
+      "kind": "chatgpt-incumbent",
+      "endpointId": "269ddeaf47fdd335",
+      "name": "🇺🇸US_646|716KB/s|P002-260618 01",
+      "score": 1679.5850732882254,
+      "chatgptScore": 1121.4860649603006,
       "chatgptSuccessRate": 1
     },
     {
       "kind": "chatgpt-exploration",
-      "endpointId": "b5f583d9c4ba0cfb",
-      "name": "🇺🇸US_64|794KB/s|R002-260618 01",
-      "score": 1711.422029413321,
-      "chatgptScore": 1132.206751238275,
-      "chatgptSuccessRate": 1
-    },
-    {
-      "kind": "chatgpt-exploration",
-      "endpointId": "28d09934f9571e5e",
-      "name": "🇺🇸US_468|748KB/s|P002-260618 01",
-      "score": 1733.019129495694,
-      "chatgptScore": 1130.827336047966,
+      "endpointId": "4a897fd241ab7690",
+      "name": "🇺🇸US_51|831KB/s|R002-260618 01",
+      "score": 1745.9459847548726,
+      "chatgptScore": 1133.5068226284725,
       "chatgptSuccessRate": 1
     }
   ]
