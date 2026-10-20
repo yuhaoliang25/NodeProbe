@@ -35,6 +35,25 @@ rule-providers:
     interval: 86400
     url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs'
 proxies:
+  - name: '🇸🇬SG_38|247KB/s|R002-260618 01'
+    port: 443
+    server: '154.26.139.24'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'd1f4a0d80288cf0b'
+  - name: '🇷🇴RO_52|227KB/s|R002-260618 01'
+    password: 'None'
+    port: 9002
+    server: '193.176.84.25'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'f98e7511bbafbbd1'
   - name: '🇺🇸US_442|813KB/s 01'
     password: ''
     port: 9002
@@ -45,56 +64,15 @@ proxies:
     username: ''
     udp: true
     endpoint-id: '114833c9a2b71e41'
-  - name: '🇷🇴RO_80|1.8MB/s|P002-260618 01'
-    password: 'None'
-    port: 9002
-    server: '193.176.84.17'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: 'f9b38c0aac04f412'
-  - name: '🇷🇴RO_8|1.8MB/s|Z001-260618 01'
-    port: 9002
-    server: '193.176.84.33'
-    skip-cert-verify: true
-    sub_tag: 'Z001-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '2a746874790eeed2'
-  - name: '🇺🇸US_756|719KB/s|R002-260618 01'
-    password: 'null'
-    port: 9002
-    server: '138.199.35.219'
-    skip-cert-verify: true
-    sni: '138.199.35.219'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    endpoint-id: '22f727a0eb6f5a4b'
-  - name: '🇺🇸US_193|823KB/s|R002-260618 01'
-    port: 9002
-    server: '138.199.35.216'
-    skip-cert-verify: true
+  - name: '🇯🇵JP_4|254KB/s|R002-260618 01'
+    port: 443
+    server: 'fan.571589.xyz'
+    sni: 'fan.571589.xyz'
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
-    endpoint-id: 'e087c3cbc4a41d54'
-  - name: '🇺🇸US_199|694KB/s|P002-260618 01'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.206'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '978362ac67400cfe'
+    endpoint-id: '7a223d425bb0d505'
   - name: '🇺🇸US_314|857KB/s|R002-260618 01'
     port: 9002
     server: '138.199.35.215'
@@ -108,16 +86,16 @@ proxy-groups:
   - name: 'PROXY'
     type: 'select'
     proxies:
+      - '🇸🇬SG_38|247KB/s|R002-260618 01'
+      - '🇷🇴RO_52|227KB/s|R002-260618 01'
       - '🇺🇸US_442|813KB/s 01'
-      - '🇷🇴RO_80|1.8MB/s|P002-260618 01'
-      - '🇷🇴RO_8|1.8MB/s|Z001-260618 01'
       - 'DIRECT'
   - name: 'CHATGPT'
     type: 'select'
     proxies:
-      - '🇺🇸US_756|719KB/s|R002-260618 01'
-      - '🇺🇸US_193|823KB/s|R002-260618 01'
-      - '🇺🇸US_199|694KB/s|P002-260618 01'
+      - '🇸🇬SG_38|247KB/s|R002-260618 01'
+      - '🇯🇵JP_4|254KB/s|R002-260618 01'
+      - '🇺🇸US_314|857KB/s|R002-260618 01'
   - name: 'STICKY'
     type: 'select'
     proxies:
