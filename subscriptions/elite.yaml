@@ -1,24 +1,4 @@
 proxies:
-  - name: '🇺🇸US_302|830KB/s|P002-260618 01'
-    password: 'null'
-    port: 9002
-    server: '138.199.35.207'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    endpoint-id: '427cf4d5d36f29a2'
-  - name: '🇺🇸US_314|857KB/s|R002-260618 01'
-    port: 9002
-    server: '138.199.35.215'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '4e8e1c3187e3a404'
   - name: '🇺🇸US_442|813KB/s 01'
     password: ''
     port: 9002
@@ -29,3 +9,22 @@ proxies:
     username: ''
     udp: true
     endpoint-id: '114833c9a2b71e41'
+  - name: '🇷🇴RO_80|1.8MB/s|P002-260618 01'
+    password: 'None'
+    port: 9002
+    server: '193.176.84.17'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'f9b38c0aac04f412'
+  - name: '🇷🇴RO_8|1.8MB/s|Z001-260618 01'
+    port: 9002
+    server: '193.176.84.33'
+    skip-cert-verify: true
+    sub_tag: 'Z001-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '2a746874790eeed2'
