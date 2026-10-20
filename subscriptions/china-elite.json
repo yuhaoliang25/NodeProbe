@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-10-20T10:02:38.454Z",
+  "generatedAt": "2026-10-20T14:48:43.836Z",
   "maxPaths": 3,
   "counts": {
-    "eligibleExits": 221,
+    "eligibleExits": 220,
     "chatgptEligibleExits": 152,
     "chatgptSelectedPaths": 3,
     "chatgptIncumbentPaths": 3,
@@ -26,8 +26,8 @@
       "kind": "exit",
       "endpointId": "114833c9a2b71e41",
       "name": "🇺🇸US_442|813KB/s 01",
-      "score": 1817.817695397126,
-      "recentSuccessRate": 0.9942143022060252,
+      "score": 1817.8176953971263,
+      "recentSuccessRate": 0.9942143022060255,
       "lifetimeSuccessRate": 0.9545454545454546,
       "observedRuns": 44,
       "p95LatencyMs": 1048,
@@ -59,26 +59,26 @@
   "chatgptPaths": [
     {
       "kind": "chatgpt-incumbent",
-      "endpointId": "71c2e2b3da6b6861",
-      "name": "🇺🇸US_292|767KB/s|R002-260618 01",
-      "score": 1588.7777420488649,
-      "chatgptScore": 1121.8728182598459,
-      "chatgptSuccessRate": 1
-    },
-    {
-      "kind": "chatgpt-incumbent",
-      "endpointId": "269ddeaf47fdd335",
-      "name": "🇺🇸US_646|716KB/s|P002-260618 01",
-      "score": 1679.5850732882254,
-      "chatgptScore": 1121.4860649603006,
+      "endpointId": "22f727a0eb6f5a4b",
+      "name": "🇺🇸US_756|719KB/s|R002-260618 01",
+      "score": 1490.6515994769316,
+      "chatgptScore": 1116.0000552008019,
       "chatgptSuccessRate": 1
     },
     {
       "kind": "chatgpt-exploration",
-      "endpointId": "4a897fd241ab7690",
-      "name": "🇺🇸US_51|831KB/s|R002-260618 01",
-      "score": 1745.9459847548726,
-      "chatgptScore": 1133.5068226284725,
+      "endpointId": "e087c3cbc4a41d54",
+      "name": "🇺🇸US_193|823KB/s|R002-260618 01",
+      "score": 1766.3354200401234,
+      "chatgptScore": 1119.0630642591204,
+      "chatgptSuccessRate": 1
+    },
+    {
+      "kind": "chatgpt-incumbent",
+      "endpointId": "978362ac67400cfe",
+      "name": "🇺🇸US_199|694KB/s|P002-260618 01",
+      "score": 1359.5295592152363,
+      "chatgptScore": 1093.85,
       "chatgptSuccessRate": 1
     }
   ]
