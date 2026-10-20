@@ -1,13 +1,4 @@
 proxies:
-  - name: '🇸🇬SG_38|247KB/s|R002-260618 01'
-    port: 443
-    server: '154.26.139.24'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: 'd1f4a0d80288cf0b'
   - name: '🇯🇵JP_4|254KB/s|R002-260618 01'
     port: 443
     server: 'fan.571589.xyz'
@@ -17,12 +8,22 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '7a223d425bb0d505'
-  - name: '🇺🇸US_314|857KB/s|R002-260618 01'
+  - name: '🇺🇸US_442|813KB/s 01'
+    password: ''
     port: 9002
-    server: '138.199.35.215'
+    server: '138.199.35.217'
+    skip-cert-verify: true
+    tls: true
+    type: 'http'
+    username: ''
+    udp: true
+    endpoint-id: '114833c9a2b71e41'
+  - name: '🇺🇸US_193|823KB/s|R002-260618 01'
+    port: 9002
+    server: '138.199.35.216'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
-    endpoint-id: '4e8e1c3187e3a404'
+    endpoint-id: 'e087c3cbc4a41d54'
