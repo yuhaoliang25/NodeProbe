@@ -1,14 +1,13 @@
 proxies:
-  - name: '🇷🇴RO_52|227KB/s|R002-260618 01'
-    password: 'None'
+  - name: '🇷🇴RO_44|1.6MB/s 01'
     port: 9002
-    server: '193.176.84.25'
+    server: '193.176.84.17'
     skip-cert-verify: true
-    sub_tag: 'R002-260618'
+    sni: 'www.bing.com'
     tls: true
     type: 'http'
     udp: true
-    endpoint-id: 'f98e7511bbafbbd1'
+    endpoint-id: '5d6ba4f8af25ab69'
   - name: '🇺🇸US_442|813KB/s 01'
     password: ''
     port: 9002
@@ -19,12 +18,12 @@ proxies:
     username: ''
     udp: true
     endpoint-id: '114833c9a2b71e41'
-  - name: '🇷🇴RO_77|720KB/s|R002-260618 01'
+  - name: '🇺🇸US_314|857KB/s|R002-260618 01'
     port: 9002
-    server: '193.176.84.25'
+    server: '138.199.35.215'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
-    endpoint-id: '43fb51cc32fb89f3'
+    endpoint-id: '4e8e1c3187e3a404'
