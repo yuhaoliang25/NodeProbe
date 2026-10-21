@@ -3,11 +3,20 @@ allow-lan: false
 mode: 'rule'
 log-level: 'warning'
 ipv6: false
-proxies: []
+proxies:
+  - name: 'SSR-美国-NF解锁自制剧-ChatGPT-TikTok-YouTube-107.151.182.253:8080'
+    type: 'ssr'
+    server: '107.151.182.253'
+    port: 8080
+    password: '14fFPrbezE3HDZzsMOr6'
+    cipher: 'rc4-md5'
+    protocol: 'origin'
+    obfs: 'plain'
 proxy-groups:
   - name: 'PROXY'
     type: 'select'
     proxies:
       - 'DIRECT'
+      - 'SSR-美国-NF解锁自制剧-ChatGPT-TikTok-YouTube-107.151.182.253:8080'
 rules:
   - 'MATCH,PROXY'
