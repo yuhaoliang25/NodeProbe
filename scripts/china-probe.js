@@ -419,6 +419,7 @@ async function main(){
       const stability=stabilityById.has(id)?stabilityResults.find(x=>x.endpointId===id)||null:null;
       return {
         endpointId:id,
+        category:candidateMeta.get(id)?.category||'unknown',
         proxy:p,
         at:trace[0]?.at||now(),
         // China asset lifecycle success means the node can actually provide
