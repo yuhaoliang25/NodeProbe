@@ -63,42 +63,85 @@ function readState(input) {
   return { source, value };
 }
 
+function generationFor(files) {
+  return sha256(Buffer.from(files
+    .map(file => file.key + ':' + file.sha256)
+    .join('\n'))).slice(0, 24);
+}
+
+function emitGeneration(dir, manifest, reused) {
+  const actualFiles = manifest.files.map(file => {
+    const bytes = fs.readFileSync(path.join(dir, file.file));
+    if (bytes.length !== file.size || sha256(bytes) !== file.sha256) {
+      throw new Error('Frozen publication snapshot failed integrity check: ' + file.file);
+    }
+    return file;
+  });
+  const generation = generationFor(actualFiles);
+  if (generation !== manifest.generation) {
+    throw new Error('Frozen publication snapshot generation does not match its manifest');
+  }
+  console.error('[china] publication snapshot ' + (reused ? 'reused' : 'frozen') +
+    ': ' + dir + ' generation=' + generation);
+  process.stdout.write(generation + '\n');
+}
+
 function freeze() {
   const dir = path.resolve(process.env.CHINA_PUBLICATION_SNAPSHOT_DIR ||
     ('data/china-publication-snapshots/' + (process.env.CHINA_RELEASE_ID || 'manual')));
   fs.mkdirSync(path.dirname(dir), { recursive: true });
-  // A snapshot is immutable for its release ID. Never silently replace it.
-  fs.mkdirSync(dir);
 
-  const files = [];
-  for (const input of INPUTS) {
-    const { source, value } = readState(input);
-    const bytes = Buffer.from(JSON.stringify(value, null, 2) + '\n');
-    const destination = path.join(dir, input.file);
-    fs.writeFileSync(destination, bytes, { flag: 'wx' });
-    files.push({
-      key: input.key,
-      source,
-      file: input.file,
-      size: bytes.length,
-      sha256: sha256(bytes),
-    });
+  // A failed publication can be retried with the same release ID. Reuse its
+  // complete immutable snapshot rather than accidentally capturing newer state.
+  if (fs.existsSync(dir)) {
+    const manifestFile = path.join(dir, 'snapshot.json');
+    if (!fs.existsSync(manifestFile)) {
+      throw new Error('Snapshot directory exists but is incomplete: ' + dir);
+    }
+    const manifest = JSON.parse(fs.readFileSync(manifestFile, 'utf8'));
+    if (manifest.version !== 1 || !Array.isArray(manifest.files) ||
+        manifest.files.length !== INPUTS.length) {
+      throw new Error('Invalid existing publication snapshot manifest: ' + manifestFile);
+    }
+    emitGeneration(dir, manifest, true);
+    return;
   }
 
-  const generation = sha256(Buffer.from(files
-    .map(file => file.key + ':' + file.sha256)
-    .join('\n'))).slice(0, 24);
-  const manifest = {
-    version: 1,
-    generation,
-    releaseId: process.env.CHINA_RELEASE_ID || null,
-    createdAt: new Date().toISOString(),
-    semantics: 'pre-observation publication inputs; immutable for this release ID',
-    files,
-  };
-  fs.writeFileSync(path.join(dir, 'snapshot.json'), JSON.stringify(manifest, null, 2) + '\n', { flag: 'wx' });
-  console.error('[china] publication snapshot frozen: ' + dir + ' generation=' + generation);
-  process.stdout.write(generation + '\n');
+  // Build in a temporary sibling directory so readers never see a partial
+  // snapshot. Rename publishes the completed directory atomically.
+  const tempDir = dir + '.tmp-' + process.pid;
+  fs.mkdirSync(tempDir);
+  try {
+    const files = [];
+    for (const input of INPUTS) {
+      const { source, value } = readState(input);
+      const bytes = Buffer.from(JSON.stringify(value, null, 2) + '\n');
+      fs.writeFileSync(path.join(tempDir, input.file), bytes, { flag: 'wx' });
+      files.push({
+        key: input.key,
+        source,
+        file: input.file,
+        size: bytes.length,
+        sha256: sha256(bytes),
+      });
+    }
+
+    const generation = generationFor(files);
+    const manifest = {
+      version: 1,
+      generation,
+      releaseId: process.env.CHINA_RELEASE_ID || null,
+      createdAt: new Date().toISOString(),
+      semantics: 'pre-observation publication inputs; immutable for this release ID',
+      files,
+    };
+    fs.writeFileSync(path.join(tempDir, 'snapshot.json'), JSON.stringify(manifest, null, 2) + '\n', { flag: 'wx' });
+    fs.renameSync(tempDir, dir);
+    emitGeneration(dir, manifest, false);
+  } catch (error) {
+    fs.rmSync(tempDir, { recursive: true, force: true });
+    throw error;
+  }
 }
 
 if (process.argv[2] !== 'freeze') {
