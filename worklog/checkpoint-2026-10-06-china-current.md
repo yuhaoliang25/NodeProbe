@@ -153,3 +153,37 @@ The important semantic distinction is now explicit:
     disappeared from Stable != dead
     selected for a run != consumed from discovery backlog
     recognized asset != discovery candidate
+
+
+---
+
+## 2026-10-22 — Hard separation: current observations vs client publication
+
+The authoritative architecture decision is recorded in [`architecture.md`](architecture.md), under **“2026-10-22 Architecture Decision — Observation and Publication Are Independent Lines”**.
+
+### Decision
+
+Each experiment tests a mixed batch of:
+- new discovery candidates; and
+- existing China assets selected for maintenance, recovery, incumbent checks, or deeper testing.
+
+The experiment produces this-run observations. Separately, client publication selects from persistent historical asset state. **The client generated for a run must not consider observations produced by that same run.**
+
+```
+Observation line:
+discover + schedule -> test -> this-run observations -> apply once to persistent history
+
+Publication line:
+frozen persistent-state snapshot -> Exit/Elite/ChatGPT/Sticky selection
+                              -> subscriptions -> client.yaml
+```
+
+These lines may execute in either order or in parallel, but publication must read a frozen, explicitly identified state snapshot. If this run's observations are applied to structured history, they become eligible only for a later publication generation—not the current run's client.
+
+### Implementation status
+
+This is an architecture decision, not a claim that code already implements it. Current `scripts/china-cycle.sh` applies observations before rebuilding the subscriptions and client from the mutated working state. That means the current implementation still permits same-cycle observation leakage into `client.yaml`.
+
+### Required follow-up
+
+Implement an immutable publication snapshot / generation boundary and add a regression test: modifying only the current experiment's observation batch must not change the client produced from the pre-run publication snapshot. Keep the last valid client release intact if observation or publication fails independently.
