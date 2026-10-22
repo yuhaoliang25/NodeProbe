@@ -53,16 +53,16 @@ function probeSummary(p, candidates){
     return Object.fromEntries(Object.entries(out).sort((a,b)=>b[1]-a[1]));
   };
   const speed=obs.filter(x=>Number.isFinite(Number(x.speedMbps))&&x.speedSuccess===true).map(x=>Number(x.speedMbps));
-  const categories=(candidates?.candidates||[]).reduce((m,x)=>{m[x.category||'unknown']=(m[x.category||'unknown']||0)+1;return m;},{});
+  // Probe observations describe the run that just finished. The candidate
+  // file may already have been regenerated for the *next* cycle, so do not join
+  // those two generations by endpointId.
+  const categories=obs.reduce((m,x)=>{const k=x.category||'unknown';m[k]=(m[k]||0)+1;return m;},{});
   const categoryOutcomes={};
-  for(const x of candidates?.candidates||[]){
-    const o=obs.find(y=>y.endpointId===x.endpointId);
-    const k=x.category||'unknown';
-    const row=categoryOutcomes[k]||(categoryOutcomes[k]={candidates:0,probed:0,success:0,reachable:0,stabilityEligible:0,speedTested:0});
-    row.candidates++;
-    if(!o)continue;
-    row.probed++;
-    if(o.success===true)row.success++;
+  for(const o of obs){
+    const k=o.category||'unknown';
+    const row=categoryOutcomes[k]||(categoryOutcomes[k]={tested:0,exitPass:0,reachable:0,stabilityEligible:0,speedTested:0});
+    row.tested++;
+    if(o.exitSuccess===true)row.exitPass++;
     if(o.reachabilitySuccess===true)row.reachable++;
     if(o.stabilityEligible===true)row.stabilityEligible++;
     if(o.speedSuccess===true)row.speedTested++;
@@ -221,4 +221,11 @@ const cleanedObservationBatches=cleanupTransient(process.env.CHINA_ASSET_FILE||'
 const cleanedPairObservationBatches=cleanupTransient(process.env.CHINA_PAIR_KNOWLEDGE_FILE||'data/china-pair-knowledge.json','processedBatches',process.env.CHINA_PAIR_OBSERVATION_DIR||'data/china-pair-observations');
 try{fs.unlinkSync(process.env.CHINA_OBSERVATION_FILE||'data/china-probe-observations.json');}catch{}
 try{fs.unlinkSync(process.env.CHINA_PAIR_OBSERVATION_FILE||'data/china-pair-observations.json');}catch{}
-console.log(`[china] diagnostics: assets=${diagnostics.assets.total} candidates=${diagnostics.candidates.total} probe=${diagnostics.probe?.candidates??0} reachable=${diagnostics.probe?.reachable??0} stability=${diagnostics.probe?.stabilityEligible??0} exit=${diagnostics.subscriptions.exit} elite=${diagnostics.subscriptions.elite} chatgpt=${diagnostics.subscriptions.chatgpt} pairs=${diagnostics.subscriptions.pairs}`);
+const probeCategories=diagnostics.probe?.categoryOutcomes||{};
+const newProbe=probeCategories.new||{tested:0,exitPass:0};
+console.log(
+  `[china] summary: assets=${diagnostics.assets.total} next-cycle=${diagnostics.candidates.total} `+
+  `probed=${diagnostics.probe?.candidates??0} new-probed=${newProbe.tested} new-exit-pass=${newProbe.exitPass} `+
+  `reachable=${diagnostics.probe?.reachable??0} exit-pass=${diagnostics.probe?.exitSuccess??0} stability=${diagnostics.probe?.stabilityEligible??0} `+
+  `subscriptions(exit/elite/chatgpt/pairs)=${diagnostics.subscriptions.exit}/${diagnostics.subscriptions.elite}/${diagnostics.subscriptions.chatgpt}/${diagnostics.subscriptions.pairs}`
+);
