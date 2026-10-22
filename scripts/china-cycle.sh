@@ -27,7 +27,7 @@ export CHINA_RELEASE_ID="${CHINA_RELEASE_ID:-$(date -u +%Y%m%dT%H%M%SZ)}"
 # Cheap gate before any B2 mutation, probing, or test execution. This catches
 # syntax errors, undefined variables, invalid runtime configuration, and any
 # module-supplied preflight checks before a long cycle can fail at the end.
-npm run china-preflight
+npm run --silent china-preflight
 
 # Local observation batches are the crash-safe handoff between probing and
 # application. They are consumed once and cleaned up locally after the resulting
@@ -37,11 +37,11 @@ npm run china-preflight
 # feed. The B2 candidate file is an exported runtime artifact, not a lock or
 # once-only work queue. Known China assets must continue to be maintained even
 # when the B2 candidate file has the same generatedAt as the previous cycle.
-npm run china-sync -- pull-stable || echo 'Global Stable unavailable; continuing from persistent China state.'
-npm run china-sync -- pull-discovery-queue || true
-npm run china-assets
-npm run china-probe
-npm run china-apply
+npm run --silent china-sync -- pull-stable || echo 'Global Stable unavailable; continuing from persistent China state.'
+npm run --silent china-sync -- pull-discovery-queue || true
+npm run --silent china-assets
+npm run --silent china-probe
+npm run --silent china-apply
 
 # Pair exploration is intentionally paused while the ordinary China exit
 # pool is sufficient. Keep all Pair code, knowledge and published outputs;
@@ -49,24 +49,24 @@ npm run china-apply
 # new Pair probes. Set CHINA_PAIR_EXPLORATION=1 to resume the experiment.
 export CHINA_PAIR_EXPLORATION="${CHINA_PAIR_EXPLORATION:-0}"
 if [ "$CHINA_PAIR_EXPLORATION" = "1" ]; then
-  npm run china-relay-candidates
-  npm run china-relay-probe
+  npm run --silent china-relay-candidates
+  npm run --silent china-relay-probe
 fi
-npm run china-pair-apply
+npm run --silent china-pair-apply
 
 # From this point onward the China machine owns the entire state transition.
 # No GitHub workflow is needed to apply observations or derive the next feed.
-npm run china-assets
+npm run --silent china-assets
 if [ "$CHINA_PAIR_EXPLORATION" = "1" ]; then
-  npm run china-relay-candidates
+  npm run --silent china-relay-candidates
 fi
-npm run china-pairs
-npm run china-pools
-npm run china-elite
-npm run china-sticky
-npm run client-config
-npm run china-diagnostics
+npm run --silent china-pairs
+npm run --silent china-pools
+npm run --silent china-elite
+npm run --silent china-sticky
+npm run --silent client-config
+npm run --silent china-diagnostics
 
 # Publish the completed state/results. release.json is uploaded last so the
 # GitHub publisher only observes a completed China generation.
-npm run china-sync -- publish-results
+npm run --silent china-sync -- publish-results
