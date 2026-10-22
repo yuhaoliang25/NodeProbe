@@ -464,7 +464,8 @@ async function main(){
       expected:CONFIG.expected,
       stages:{reachabilityTimeout:CONFIG.reachabilityTimeout,stage1Timeout:CONFIG.fastTimeout,deepRounds:CONFIG.deepRounds,stabilityRounds:CONFIG.stabilityRounds,stabilityAttempts:CONFIG.stabilityAttempts,speedTarget:CONFIG.speedTarget,speedBytes:CONFIG.speedBytes,speedTimeout:CONFIG.speedTimeout,speedMaxNodes:CONFIG.speedMaxNodes,chatgptTarget:CONFIG.chatgptTarget,chatgptExpected:CONFIG.chatgptExpected,chatgptAttempts:CONFIG.chatgptAttempts},
       observations:finalObservations,
-      attempts:observations,
+      // Keep all per-attempt evidence in the diagnostic stream, including stability rounds.
+      attempts:[...observations,...stabilityAttempts],
       stabilityResults,
     };
 
