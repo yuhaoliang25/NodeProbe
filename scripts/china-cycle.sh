@@ -24,10 +24,22 @@ export CHINA_MAX_NODES="${CHINA_MAX_NODES:-300}"
 export CHINA_PROBE_CONCURRENCY="${CHINA_PROBE_CONCURRENCY:-8}"
 export CHINA_RELEASE_ID="${CHINA_RELEASE_ID:-$(date -u +%Y%m%dT%H%M%SZ)}"
 
+# Capture the publication inputs before this cycle changes any persistent state.
+# Observation application continues against the live files; publication builders
+# later read only this immutable snapshot.
+ORIGINAL_CHINA_ASSET_FILE="${CHINA_ASSET_FILE:-data/china-node-assets.json}"
+ORIGINAL_CHINA_PAIR_KNOWLEDGE_FILE="${CHINA_PAIR_KNOWLEDGE_FILE:-data/china-pair-knowledge.json}"
+ORIGINAL_CHINA_STICKY_STATE_FILE="${CHINA_STICKY_STATE_FILE:-data/china-sticky.json}"
+export CHINA_PUBLICATION_SNAPSHOT_DIR="${CHINA_PUBLICATION_SNAPSHOT_DIR:-data/china-publication-snapshots/$CHINA_RELEASE_ID}"
+
 # Cheap gate before any B2 mutation, probing, or test execution. This catches
 # syntax errors, undefined variables, invalid runtime configuration, and any
 # module-supplied preflight checks before a long cycle can fail at the end.
 npm run --silent china-preflight
+
+CHINA_PUBLICATION_ASSET_GENERATION="$(node scripts/china-publication-snapshot.js freeze)"
+export CHINA_PUBLICATION_ASSET_GENERATION
+echo "[china] frozen publication asset generation: $CHINA_PUBLICATION_ASSET_GENERATION"
 
 # Local observation batches are the crash-safe handoff between probing and
 # application. They are consumed once and cleaned up locally after the resulting
@@ -61,11 +73,27 @@ if [ "$CHINA_PAIR_EXPLORATION" = "1" ]; then
   npm run --silent china-relay-candidates
 fi
 npm run --silent china-pairs
+# Subscription generation is pinned to the pre-run snapshot. Current-cycle
+# observations have already been applied to live state, but cannot affect this
+# cycle's client.yaml or its component subscriptions.
+export CHINA_ASSET_FILE="$CHINA_PUBLICATION_SNAPSHOT_DIR/china-node-assets.json"
+export CHINA_PAIR_KNOWLEDGE_FILE="$CHINA_PUBLICATION_SNAPSHOT_DIR/china-pair-knowledge.json"
+export CHINA_STICKY_STATE_FILE="$CHINA_PUBLICATION_SNAPSHOT_DIR/china-sticky.json"
 npm run --silent china-pools
 npm run --silent china-elite
 npm run --silent china-sticky
 npm run --silent client-config
+
+# Diagnostics describe both the latest observation state and the older frozen
+# publication inputs. Keep sticky selection state pinned to the same snapshot.
+export CHINA_ASSET_FILE="$ORIGINAL_CHINA_ASSET_FILE"
+export CHINA_PAIR_KNOWLEDGE_FILE="$ORIGINAL_CHINA_PAIR_KNOWLEDGE_FILE"
 npm run --silent china-diagnostics
+
+# Persist the continuity state resulting from this successful snapshot-based
+# publication. Do not update it before client generation and diagnostics succeed.
+cp "$CHINA_PUBLICATION_SNAPSHOT_DIR/china-sticky.json" "$ORIGINAL_CHINA_STICKY_STATE_FILE"
+export CHINA_STICKY_STATE_FILE="$ORIGINAL_CHINA_STICKY_STATE_FILE"
 
 # Publish the completed state/results. release.json is uploaded last so the
 # GitHub publisher only observes a completed China generation.
