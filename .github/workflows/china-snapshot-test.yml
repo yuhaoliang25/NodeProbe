@@ -1,0 +1,36 @@
+name: China publication snapshot tests
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/china-publication-snapshot.js'
+      - 'scripts/test-china-publication-snapshot.js'
+      - 'scripts/china-cycle.sh'
+      - 'scripts/china-diagnostics.js'
+      - 'scripts/china-b2-sync.js'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/china-snapshot-test.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  snapshot-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Check JavaScript syntax
+        run: npm run check
+      - name: Lint scripts
+        run: npm run lint
+      - name: Verify publication snapshot isolation
+        run: npm run test:china-publication-snapshot
