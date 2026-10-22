@@ -23,6 +23,7 @@ fi
 export CHINA_MAX_NODES="${CHINA_MAX_NODES:-300}"
 export CHINA_PROBE_CONCURRENCY="${CHINA_PROBE_CONCURRENCY:-8}"
 export CHINA_RELEASE_ID="${CHINA_RELEASE_ID:-$(date -u +%Y%m%dT%H%M%SZ)}"
+export CHINA_OBSERVATION_RUN_ID="${CHINA_OBSERVATION_RUN_ID:-$CHINA_RELEASE_ID}"
 
 # Capture the publication inputs before this cycle changes any persistent state.
 # Observation application continues against the live files; publication builders
@@ -98,3 +99,7 @@ export CHINA_STICKY_STATE_FILE="$ORIGINAL_CHINA_STICKY_STATE_FILE"
 # Publish the completed state/results. release.json is uploaded last so the
 # GitHub publisher only observes a completed China generation.
 npm run --silent china-sync -- publish-results
+
+# Keep the immutable snapshot if publishing failed (set -e exits before here),
+# otherwise remove the local intermediate after its generation ID is recorded.
+rm -rf -- "$CHINA_PUBLICATION_SNAPSHOT_DIR"
