@@ -56,6 +56,13 @@ try {
   // A different current observation batch must not participate in snapshot identity
   // or mutate the already-frozen inputs.
   writeJson(inputs.observations, { observations: [{ endpointId: 'old', success: false }] });
+  // A retry using the same release ID must reuse the original snapshot, even
+  // if live inputs have changed since the failed publication attempt.
+  assert.strictEqual(freeze(firstDir, inputs, 'run-a'), firstGeneration);
+  assert.strictEqual(
+    fs.readFileSync(path.join(firstDir, 'china-node-assets.json'), 'utf8'),
+    firstSnapshot,
+  );
   const secondDir = path.join(temp, 'snapshot-b');
   const secondGeneration = freeze(secondDir, inputs, 'run-b');
   assert.strictEqual(secondGeneration, firstGeneration);
