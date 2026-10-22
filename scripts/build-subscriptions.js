@@ -113,7 +113,7 @@ try{
 
  for(const entry of poolEntries){
    const id=entry.fingerprint||entry.proxy?.['endpoint-id'];
-   const p=entry.proxy?{...entry}:{};
+   const p=entry.proxy?{...entry.proxy}:{...entry};
    if(!id||!p.server||!p.port)continue;
    p['endpoint-id']=id;
    p._id=id;
