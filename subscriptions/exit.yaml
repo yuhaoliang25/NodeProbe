@@ -1136,6 +1136,16 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '0ae09a41f776c539'
+  - name: '🇫🇷FR_183|751KB/s|R002-260618 01'
+    port: 443
+    server: 'fan.132031.xyz'
+    skip-cert-verify: true
+    sni: 'fan.132031.xyz'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'eedf278594fece87'
   - name: '🇷🇴RO_66|849KB/s|P002-260618 01'
     password: 'None'
     port: 9002
@@ -2281,5 +2291,28 @@ proxies:
     servername: 'netherlands02.azotvpn.xyz'
     client-fingerprint: 'chrome'
     network: 'tcp'
+    udp: true
+    _poolOnly: true
+  - name: '🇳🇱NL_219|2.8MB/s|R002-260618 01'
+    password: 'null'
+    port: 9002
+    server: '84.17.47.147'
+    skip-cert-verify: true
+    sni: '84.17.47.147'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '❓Other_279|1.4MB/s|R002-260618 01'
+    password: 'null'
+    port: 9002
+    server: '193.176.84.26'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
     udp: true
     _poolOnly: true

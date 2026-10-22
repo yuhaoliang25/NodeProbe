@@ -35,45 +35,6 @@ rule-providers:
     interval: 86400
     url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs'
 proxies:
-  - name: '🇸🇬SG_38|247KB/s|R002-260618 01'
-    port: 443
-    server: '154.26.139.24'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: 'd1f4a0d80288cf0b'
-  - name: '🇺🇸US_486|721KB/s|P002-260618 01'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.204'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '4686a98fb10918e7'
-  - name: '🇺🇸US_199|694KB/s|P002-260618 01'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.206'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '978362ac67400cfe'
-  - name: '🇺🇸US_200|293KB/s|P002-260618 01'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.198'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '91b783c05ebd3e48'
   - name: '🇺🇸US_626|798KB/s|R002-260618 01'
     password: 'null'
     port: 9002
@@ -86,20 +47,50 @@ proxies:
     username: 'null'
     udp: true
     endpoint-id: 'f8df99716a85628c'
+  - name: '🇺🇸US_200|293KB/s|P002-260618 01'
+    password: 'None'
+    port: 9002
+    server: '138.199.35.198'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '91b783c05ebd3e48'
+  - name: '🇸🇬SG_38|247KB/s|R002-260618 01'
+    port: 443
+    server: '154.26.139.24'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'd1f4a0d80288cf0b'
+  - name: '🇺🇸US_729|701KB/s|P002-260618 01'
+    password: 'null'
+    port: 9002
+    server: '138.199.35.218'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
 proxy-groups:
   - name: 'PROXY'
     type: 'select'
     proxies:
+      - '🇺🇸US_626|798KB/s|R002-260618 01'
+      - '🇺🇸US_200|293KB/s|P002-260618 01'
       - '🇸🇬SG_38|247KB/s|R002-260618 01'
-      - '🇺🇸US_486|721KB/s|P002-260618 01'
-      - '🇺🇸US_199|694KB/s|P002-260618 01'
       - 'DIRECT'
   - name: 'CHATGPT'
     type: 'select'
     proxies:
       - '🇸🇬SG_38|247KB/s|R002-260618 01'
-      - '🇺🇸US_200|293KB/s|P002-260618 01'
       - '🇺🇸US_626|798KB/s|R002-260618 01'
+      - '🇺🇸US_729|701KB/s|P002-260618 01'
   - name: 'STICKY'
     type: 'select'
     proxies:
