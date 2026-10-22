@@ -182,8 +182,10 @@ These lines may execute in either order or in parallel, but publication must rea
 
 ### Implementation status
 
-This is an architecture decision, not a claim that code already implements it. Current `scripts/china-cycle.sh` applies observations before rebuilding the subscriptions and client from the mutated working state. That means the current implementation still permits same-cycle observation leakage into `client.yaml`.
+The first implementation is committed:
+- `scripts/china-publication-snapshot.js` freezes the pre-run asset, Pair knowledge, and Sticky continuity inputs under a release-scoped snapshot.
+- `scripts/china-cycle.sh` keeps probe/apply on live state but redirects all subscription/client builders to the frozen snapshot.
+- Diagnostics and the B2 release manifest distinguish the observation run, publication asset generation, and client release ID.
+- `npm run test:china-publication-snapshot` checks snapshot immutability and independence from the current observation batch.
 
-### Required follow-up
-
-Implement an immutable publication snapshot / generation boundary and add a regression test: modifying only the current experiment's observation batch must not change the client produced from the pre-run publication snapshot. Keep the last valid client release intact if observation or publication fails independently.
+The code has been committed, but the regression command and a full China-machine/B2 release have not yet been run. Treat production verification as pending; in particular, confirm that the downloaded release manifest and subscription hashes still agree and that the client is structurally valid.
