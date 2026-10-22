@@ -44,6 +44,26 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: 'd1f4a0d80288cf0b'
+  - name: '🇺🇸US_486|721KB/s|P002-260618 01'
+    password: 'None'
+    port: 9002
+    server: '138.199.35.204'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '4686a98fb10918e7'
+  - name: '🇺🇸US_200|293KB/s|P002-260618 01'
+    password: 'None'
+    port: 9002
+    server: '138.199.35.198'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '91b783c05ebd3e48'
   - name: '🇺🇸US_314|857KB/s|R002-260618 01'
     port: 9002
     server: '138.199.35.215'
@@ -68,8 +88,8 @@ proxy-groups:
     type: 'select'
     proxies:
       - '🇸🇬SG_38|247KB/s|R002-260618 01'
-      - '🇺🇸US_314|857KB/s|R002-260618 01'
-      - '🇺🇸US_305|801KB/s|P002-260618 01'
+      - '🇺🇸US_486|721KB/s|P002-260618 01'
+      - '🇺🇸US_200|293KB/s|P002-260618 01'
       - 'DIRECT'
   - name: 'CHATGPT'
     type: 'select'
@@ -77,7 +97,16 @@ proxy-groups:
       - '🇸🇬SG_38|247KB/s|R002-260618 01'
       - '🇺🇸US_314|857KB/s|R002-260618 01'
       - '🇺🇸US_305|801KB/s|P002-260618 01'
+  - name: 'STICKY'
+    type: 'select'
+    proxies:
+      - '🇸🇬SG_38|247KB/s|R002-260618 01'
 rules:
+  - 'DOMAIN-SUFFIX,x.com,STICKY'
+  - 'DOMAIN-SUFFIX,twitter.com,STICKY'
+  - 'DOMAIN-SUFFIX,t.co,STICKY'
+  - 'DOMAIN-SUFFIX,threads.com,STICKY'
+  - 'DOMAIN-SUFFIX,threads.net,STICKY'
   - 'DOMAIN-SUFFIX,chatgpt.com,CHATGPT'
   - 'DOMAIN-SUFFIX,chat.openai.com,CHATGPT'
   - 'DOMAIN-SUFFIX,auth.openai.com,CHATGPT'
