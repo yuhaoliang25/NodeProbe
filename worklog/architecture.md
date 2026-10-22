@@ -1241,3 +1241,122 @@ The resulting model is:
        persistent asset pool
 
 Source disappearance therefore means “not currently rediscovered”, not “already tested” and not “delete the pending work”.
+
+
+---
+
+# 2026-10-22 Architecture Decision — Observation and Publication Are Independent Lines
+
+This section supersedes any earlier wording that implies a China cycle's freshly produced observations may directly affect the `client.yaml` generated in that same cycle.
+
+## Core model
+
+Every China experiment is primarily a **measurement run**. Its candidate set deliberately mixes two populations:
+
+1. **New candidates** from the persistent discovery backlog / current Global Stable discovery feed.
+2. **Existing China assets** selected for maintenance, recovery, incumbent checks, or deeper testing.
+
+The run produces a new set of observations: what the probe measured about those endpoints during this run. An observation is a measurement result, not a publication decision.
+
+There are two independent logical lines:
+
+```
+LINE A — OBSERVATION / EXPERIMENT
+new discoveries ─┐
+                 ├─> candidate schedule ─> probe/test ─> this-run observations
+existing assets ─┘                                      │
+                                                       ▼
+                                          validate + apply once
+                                                       │
+                                                       ▼
+                                      persistent historical asset state
+                                                       │
+                                                       └── input to a FUTURE
+                                                           publication snapshot
+
+LINE B — SUBSCRIPTION / CLIENT GENERATION
+persistent asset state at snapshot boundary
+                 + selection policy
+                 + persistent route/incumbent state
+                 ─> exit / elite / chatgpt / sticky / pair outputs
+                 ─> client.yaml
+```
+
+The two lines may execute sequentially or concurrently at the orchestration level, but they must not share the current run's uncommitted observation as a direct input to publication.
+
+## Non-negotiable temporal boundary
+
+**A `client.yaml` generation must not consider observations produced by the experiment running in the same cycle.**
+
+There are two acceptable implementations:
+
+- Generate the client from a frozen, versioned snapshot of persistent state captured before the current experiment begins; or
+- Publish from the last completed persistent asset generation, while the current experiment writes observations and prepares the next generation separately.
+
+The snapshot must be explicit and immutable for the duration of client generation. Do not rely on an incidental shell-command order or on the current contents of a mutable working file.
+
+If the system requires an observation to be applied to the structured asset history before it can be used for selection, that is fine: **apply it to history for a later publication generation, not the current run's client output**. The client must use only the historical state available at its declared snapshot boundary.
+
+## Meaning of “historical”
+
+“Historical” means observations already committed to the persistent asset state before the publication snapshot was taken. It does not mean “whatever happens to be in the asset JSON when the generator starts.”
+
+The publication decision may use:
+- accumulated per-node observations and time-decayed evidence;
+- asset lifecycle / trust state;
+- persisted speed, stability and capability evidence;
+- existing Elite / ChatGPT / Sticky selection state where the policy calls for it;
+- the previous published subscription when incumbent continuity is intentional.
+
+It must not use:
+- the just-finished probe's transient observation snapshot;
+- current-run test results before they have crossed a later publication boundary;
+- current-run candidate membership as a proxy for node quality;
+- source-feed membership alone as evidence that a node belongs in the client.
+
+## Asset history and observation application
+
+An observation batch is applied exactly once to the persistent asset state. The observation line owns:
+- candidate scheduling for new and existing assets;
+- running tests and recording results;
+- batch identity / replay protection;
+- lifecycle transitions and historical statistics;
+- compact diagnostics for the run.
+
+After successful application, structured state becomes eligible for a **subsequent** publication snapshot. Raw observation snapshots and intermediate batch files remain transient and must not be uploaded as persistent history; retain only the intended structured asset history and useful diagnostics.
+
+## Publication line
+
+The publication line owns:
+- reading one declared persistent-state snapshot;
+- computing Exit, Elite, ChatGPT, Sticky and any enabled pair outputs;
+- validating the derived subscriptions;
+- generating and validating `mihomo/client.yaml`;
+- publishing a complete, internally consistent release.
+
+Selection-layer membership does not mutate asset trust. A node can be tested this cycle, have its result recorded, and still not affect the client generated from the pre-run snapshot. That is expected, not stale processing.
+
+## Orchestration and release identity
+
+The implementation may schedule these lines in either order or in parallel, provided the snapshot boundary is enforced. A release must record which persistent asset-state generation it used. The manifest / diagnostics should distinguish at least:
+- the observation run ID;
+- the persistent asset-state generation used for publication;
+- the client/subscription release ID.
+
+Do not label a client as being based on the just-completed observation run unless that run's observations were already part of the declared historical snapshot before publication started.
+
+## Current implementation gap
+
+At the time of this decision, `scripts/china-cycle.sh` runs `china-probe` → `china-apply` and then rebuilds pools / Elite / Sticky / `client.yaml` from the mutated working state. That ordering allows the current run's observations to affect the client generated later in the same cycle. It does **not yet satisfy** the temporal boundary above.
+
+This document records the required architecture; it does not claim that the current code already enforces it. A follow-up implementation must introduce a frozen publication snapshot or split the experiment and publication jobs around a persistent generation boundary, then add a test proving that changing only the current-run observation batch cannot change the current release's `client.yaml`.
+
+## Acceptance invariants
+
+1. New and existing assets both remain eligible for the observation workload according to the scheduler.
+2. Current-run observations are recorded once in structured history and cannot directly influence the current run's client.
+3. Publication reads one explicit, immutable persistent-state generation.
+4. The next publication may use the newly applied observations after they have become historical state.
+5. Observation failure does not corrupt or partially replace the last valid client release.
+6. Publication failure does not discard a successfully applied observation batch.
+7. Re-running publication against the same state snapshot and policy yields the same membership decision, except for explicitly documented time-dependent decay / expiry semantics.
