@@ -136,9 +136,8 @@ function apply(){
       if(error?.code!=='ENOENT')console.error(`[china] failed to remove processed observation batch ${batchName}: ${error.message}`);
     }
   }
-  try{fs.unlinkSync(CONFIG.observationFile);}catch(error){
-    if(error?.code!=='ENOENT')console.error(`[china] failed to remove observation snapshot: ${error.message}`);
-  }
+  // Keep the latest-run snapshot until china-diagnostics has summarized it.
+  // Diagnostics removes this transient file after writing the summary.
 
   console.log(JSON.stringify({
     observations:observations.length,
