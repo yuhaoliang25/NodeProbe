@@ -18,15 +18,6 @@ const PAIR_CANDIDATE_LOCAL=process.env.CHINA_RELAY_CANDIDATE_FILE||'data/china-r
 const ASSET_FILE=process.env.CHINA_ASSET_FILE||'data/china-node-assets.json';
 const PAIR_KNOWLEDGE_FILE=process.env.CHINA_PAIR_KNOWLEDGE_FILE||'data/china-pair-knowledge.json';
 
-function run(args,options){
-  const r=spawnSync(process.env.B2_BIN||'b2v4',args,{
-    stdio:'inherit',
-    env:process.env,
-    ...(options||{}),
-  });
-  if(r.error)throw r.error;
-  if(r.status!==0)process.exit(r.status||1);
-}
 function runQuiet(args){
   // Suppress verbose success output (progress bars and object metadata); retain diagnostics on failure.
   const r=spawnSync(process.env.B2_BIN||'b2v4',args,{encoding:'utf8',env:process.env});
