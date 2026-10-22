@@ -712,18 +712,20 @@ function selectCandidates() {
   saveState(state);
   saveCandidates(candidates, at);
 
-  console.log(JSON.stringify({
-    stable: stable.length,
-    discoveryBacklog: discoveryQueue.items.length,
-    candidates: candidates.length,
-    categories: candidates.reduce((m, x) => {
-      m[x.category] = (m[x.category] || 0) + 1;
-      return m;
-    }, {}),
-    chatgptIncumbents: candidates.filter(x => x.category === 'chatgpt-incumbent').length,
-    stateFile: CONFIG.stateFile,
-    candidateFile: CONFIG.candidateFile,
-  }, null, 2));
+  const categories = candidates.reduce((m, x) => {
+    m[x.category] = (m[x.category] || 0) + 1;
+    return m;
+  }, {});
+  const newCount = categories.new || 0;
+  console.log(
+    '[china-assets] stable=' + stable.length +
+    ' assets=' + Object.keys(state.nodes || {}).length +
+    ' scheduled=' + candidates.length +
+    ' new-to-probe=' + newCount +
+    ' maintenance=' + (candidates.length - newCount) +
+    ' discovery-backlog=' + discoveryQueue.items.length +
+    ' categories=' + Object.entries(categories).map(([k, v]) => k + ':' + v).join(',')
+  );
 }
 
 if (require.main === module) {
