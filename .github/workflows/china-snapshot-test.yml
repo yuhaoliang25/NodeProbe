@@ -28,8 +28,10 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
-      - name: Check JavaScript syntax
-        run: npm run check
+      - name: Check JavaScript and shell syntax
+        run: |
+          npm run check
+          bash -n scripts/china-cycle.sh
       - name: Lint scripts
         run: npm run lint
       - name: Verify publication snapshot isolation
