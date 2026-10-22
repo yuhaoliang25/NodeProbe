@@ -76,7 +76,11 @@ function restoreAssetState(){
   const remoteCount=Object.keys(remote.nodes).length;
   const localAt=Date.parse(local?.generatedAt||'')||0;
   const remoteAt=Date.parse(remote.generatedAt||'')||0;
-  const restore=!local||remoteCount>localCount||(remoteCount>=localCount&&remoteAt>localAt);
+  if(local&&remoteCount>localCount){
+    fs.unlinkSync(remoteTmp);
+    throw new Error('Local China asset inventory regressed (local='+localCount+', B2='+remoteCount+'). Refusing to publish a smaller inventory; recover/merge local state before retrying.');
+  }
+  const restore=!local||(remoteCount===localCount&&remoteAt>localAt);
   if(restore){
     fs.renameSync(remoteTmp,ASSET_FILE);
     console.log('[china] restored asset state from B2: local='+Math.max(0,localCount)+' remote='+remoteCount+
