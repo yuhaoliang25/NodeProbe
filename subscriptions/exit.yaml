@@ -2212,3 +2212,42 @@ proxies:
     username: 'null'
     udp: true
     _poolOnly: true
+  - name: '🇺🇸US_729|701KB/s|P002-260618 01'
+    password: 'null'
+    port: 9002
+    server: '138.199.35.218'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_103|1.7MB/s|P002-260618 01'
+    password: 'null'
+    port: 9002
+    server: '193.176.84.21'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇳🇱 荷兰_3EDL15'
+    server: 'netherlands02.azotvpn.xyz'
+    port: 443
+    type: 'vless'
+    uuid: 'a500be68-4ff6-433b-9968-472be69fab14'
+    tls: true
+    tfo: false
+    flow: 'xtls-rprx-vision'
+    skip-cert-verify: false
+    reality-opts:
+      public-key: 'ui9MLRYZIz7S6_1E4fZgoamwTypfQAMwJ1olxGcWomE'
+      short-id: 'fc70174007a393b4'
+    servername: 'netherlands02.azotvpn.xyz'
+    client-fingerprint: 'chrome'
+    network: 'tcp'
+    udp: true
+    _poolOnly: true
