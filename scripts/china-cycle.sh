@@ -73,13 +73,13 @@ npm run --silent china-assets
 if [ "$CHINA_PAIR_EXPLORATION" = "1" ]; then
   npm run --silent china-relay-candidates
 fi
-npm run --silent china-pairs
 # Subscription generation is pinned to the pre-run snapshot. Current-cycle
 # observations have already been applied to live state, but cannot affect this
 # cycle's client.yaml or its component subscriptions.
 export CHINA_ASSET_FILE="$CHINA_PUBLICATION_SNAPSHOT_DIR/china-node-assets.json"
 export CHINA_PAIR_KNOWLEDGE_FILE="$CHINA_PUBLICATION_SNAPSHOT_DIR/china-pair-knowledge.json"
 export CHINA_STICKY_STATE_FILE="$CHINA_PUBLICATION_SNAPSHOT_DIR/china-sticky.json"
+npm run --silent china-pairs
 npm run --silent china-pools
 npm run --silent china-elite
 npm run --silent china-sticky
@@ -93,6 +93,7 @@ npm run --silent china-diagnostics
 
 # Persist the continuity state resulting from this successful snapshot-based
 # publication. Do not update it before client generation and diagnostics succeed.
+mkdir -p "$(dirname "$ORIGINAL_CHINA_STICKY_STATE_FILE")"
 cp "$CHINA_PUBLICATION_SNAPSHOT_DIR/china-sticky.json" "$ORIGINAL_CHINA_STICKY_STATE_FILE"
 export CHINA_STICKY_STATE_FILE="$ORIGINAL_CHINA_STICKY_STATE_FILE"
 
