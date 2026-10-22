@@ -56,7 +56,7 @@ if(mode==='pull-stable'){
   console.log('[china] synced Stable discovery feed.');
 }else if(mode==='pull-candidates'){
   fs.mkdirSync(path.dirname(CANDIDATE_LOCAL),{recursive:true});
-  run(['file','download','b2://'+BUCKET+'/'+CANDIDATE_REMOTE,CANDIDATE_LOCAL]);
+  runQuiet(['file','download','b2://'+BUCKET+'/'+CANDIDATE_REMOTE,CANDIDATE_LOCAL]);
   if(!validateCandidateFile(CANDIDATE_LOCAL,'candidates')){
     try{fs.unlinkSync(CANDIDATE_LOCAL)}catch{}
     console.error('B2 China candidate feed is missing or invalid.');
@@ -69,12 +69,13 @@ if(mode==='pull-stable'){
     try{fs.unlinkSync(tmp)}catch{}
     // Never download directly over the live queue. A failed/partial download
     // must not leave a JSON file that the next china-assets invocation can read.
-    run(['file','download','b2://'+BUCKET+'/'+DISCOVERY_QUEUE_REMOTE,tmp]);
+    runQuiet(['file','download','b2://'+BUCKET+'/'+DISCOVERY_QUEUE_REMOTE,tmp]);
     const q=JSON.parse(fs.readFileSync(tmp,'utf8'));
     if(!q || typeof q!=='object' || !Array.isArray(q.items)){
       throw new Error('invalid discovery queue');
     }
     fs.renameSync(tmp,DISCOVERY_QUEUE_LOCAL);
+    console.log(`[china] synced discovery queue: items=${q.items.length}.`);
   }catch(error){
     try{fs.unlinkSync(tmp)}catch{}
     if(error && error.message && !String(error.message).includes('status 1')){
@@ -85,7 +86,7 @@ if(mode==='pull-stable'){
   }
  }else if(mode==='pull-pair-candidates'){
   fs.mkdirSync(path.dirname(PAIR_CANDIDATE_LOCAL),{recursive:true});
-  run(['file','download','b2://'+BUCKET+'/'+PAIR_CANDIDATE_REMOTE,PAIR_CANDIDATE_LOCAL]);
+  runQuiet(['file','download','b2://'+BUCKET+'/'+PAIR_CANDIDATE_REMOTE,PAIR_CANDIDATE_LOCAL]);
   if(!validateCandidateFile(PAIR_CANDIDATE_LOCAL,'pairs')){
     try{fs.unlinkSync(PAIR_CANDIDATE_LOCAL)}catch{}
     console.error('B2 China pair candidate feed is missing or invalid.');
