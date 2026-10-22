@@ -52,7 +52,8 @@ function validateCandidateFile(file, key){
 const mode=process.argv[2];
 if(mode==='pull-stable'){
   fs.mkdirSync(path.dirname(STABLE_LOCAL),{recursive:true});
-  run(['file','download','b2://'+BUCKET+'/'+STABLE_REMOTE,STABLE_LOCAL]);
+  runQuiet(['file','download','b2://'+BUCKET+'/'+STABLE_REMOTE,STABLE_LOCAL]);
+  console.log('[china] synced Stable discovery feed.');
 }else if(mode==='pull-candidates'){
   fs.mkdirSync(path.dirname(CANDIDATE_LOCAL),{recursive:true});
   run(['file','download','b2://'+BUCKET+'/'+CANDIDATE_REMOTE,CANDIDATE_LOCAL]);
