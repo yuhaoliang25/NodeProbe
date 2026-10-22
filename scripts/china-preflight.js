@@ -57,8 +57,25 @@ for (const file of jsFiles) {
   }
 }
 
-if (!run('undefined-variable lint', 'npm', ['run', 'lint', '--silent'])) {
-  ok = false;
+// Do not let a China-machine cycle block while npx tries to fetch ESLint
+// from the public npm registry. Run the lint only when ESLint is already
+// installed locally; the repository CI workflow remains responsible for the
+// full lint gate on every code change.
+const localEslint = path.join(ROOT, 'node_modules', '.bin', 'eslint');
+if (fs.existsSync(localEslint)) {
+  if (!run('undefined-variable lint (local ESLint)', localEslint, [
+    '--no-eslintrc',
+    '--env', 'node',
+    '--env', 'es6',
+    '--parser-options', '{"ecmaVersion":2022}',
+    '--rule', 'no-undef:error',
+    ...jsFiles,
+  ])) {
+    ok = false;
+  }
+} else {
+  console.warn('[china-preflight] ESLint is not installed locally; skipping network-dependent lint.');
+  console.warn('[china-preflight] Full undefined-variable lint must pass in GitHub Actions before deployment.');
 }
 
 const checks = [
