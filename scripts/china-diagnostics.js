@@ -2,6 +2,7 @@
 'use strict';
 
 const fs=require('fs');
+const crypto=require('crypto');
 const yaml=require('js-yaml');
 
 function readJson(file,fallback=null){
@@ -134,9 +135,15 @@ const latestSpeedValues=assetNodes.map(node=>{
   const speed=Number(latest.speedMbps);
   return Number.isFinite(speed)&&speed>0?speed:null;
 }).filter(Number.isFinite).sort((a,b)=>a-b);
+const liveAssetFile=process.env.CHINA_ASSET_FILE||'data/china-node-assets.json';
+let currentAssetStateSha256=null;
+try{currentAssetStateSha256=crypto.createHash('sha256').update(fs.readFileSync(liveAssetFile)).digest('hex');}catch{}
 const diagnostics={
-  version:3,
+  version:4,
   generatedAt:new Date().toISOString(),
+  observationRunId:process.env.CHINA_OBSERVATION_RUN_ID||process.env.CHINA_RELEASE_ID||null,
+  publicationAssetGeneration:process.env.CHINA_PUBLICATION_ASSET_GENERATION||null,
+  currentAssetStateSha256,
   releaseId:process.env.CHINA_RELEASE_ID||null,
   environment:process.env.CHINA_PROBE_ENV||null,
   assets:{
