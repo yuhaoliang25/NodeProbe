@@ -35,6 +35,15 @@ rule-providers:
     interval: 86400
     url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs'
 proxies:
+  - name: '🇸🇬SG_38|247KB/s|R002-260618 01'
+    port: 443
+    server: '154.26.139.24'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'd1f4a0d80288cf0b'
   - name: '🇺🇸US_486|721KB/s|P002-260618 01'
     password: 'None'
     port: 9002
@@ -55,25 +64,6 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '978362ac67400cfe'
-  - name: '🇺🇸US_282|796KB/s 01'
-    password: ''
-    port: 9002
-    server: '138.199.35.219'
-    skip-cert-verify: true
-    tls: true
-    type: 'http'
-    username: ''
-    udp: true
-    endpoint-id: '524b09514efc35f8'
-  - name: '🇸🇬SG_38|247KB/s|R002-260618 01'
-    port: 443
-    server: '154.26.139.24'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: 'd1f4a0d80288cf0b'
   - name: '🇺🇸US_200|293KB/s|P002-260618 01'
     password: 'None'
     port: 9002
@@ -100,9 +90,9 @@ proxy-groups:
   - name: 'PROXY'
     type: 'select'
     proxies:
+      - '🇸🇬SG_38|247KB/s|R002-260618 01'
       - '🇺🇸US_486|721KB/s|P002-260618 01'
       - '🇺🇸US_199|694KB/s|P002-260618 01'
-      - '🇺🇸US_282|796KB/s 01'
       - 'DIRECT'
   - name: 'CHATGPT'
     type: 'select'

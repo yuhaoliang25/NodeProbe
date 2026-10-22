@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-10-22T15:15:06.462Z",
+  "generatedAt": "2026-10-22T19:31:11.253Z",
   "maxPaths": 3,
   "counts": {
-    "eligibleExits": 224,
-    "chatgptEligibleExits": 85,
+    "eligibleExits": 227,
+    "chatgptEligibleExits": 87,
     "chatgptSelectedPaths": 3,
     "chatgptIncumbentPaths": 3,
     "selectedPaths": 3,
@@ -22,6 +22,17 @@
     "pairFallbackOnly": true
   },
   "paths": [
+    {
+      "kind": "exit",
+      "endpointId": "d1f4a0d80288cf0b",
+      "name": "🇸🇬SG_38|247KB/s|R002-260618 01",
+      "score": 1839.5878159090553,
+      "recentSuccessRate": 1,
+      "lifetimeSuccessRate": 1,
+      "observedRuns": 34,
+      "p95LatencyMs": 1150,
+      "speedMbps": 7.5066889290038015
+    },
     {
       "kind": "exit",
       "endpointId": "4686a98fb10918e7",
@@ -43,17 +54,6 @@
       "observedRuns": 5,
       "p95LatencyMs": 1059,
       "speedMbps": 9.625651205384203
-    },
-    {
-      "kind": "exit",
-      "endpointId": "524b09514efc35f8",
-      "name": "🇺🇸US_282|796KB/s 01",
-      "score": 1737.0195886812735,
-      "recentSuccessRate": 1,
-      "lifetimeSuccessRate": 1,
-      "observedRuns": 5,
-      "p95LatencyMs": 1062,
-      "speedMbps": 8.945161908548691
     }
   ],
   "chatgptPaths": [
@@ -61,25 +61,25 @@
       "kind": "chatgpt-incumbent",
       "endpointId": "d1f4a0d80288cf0b",
       "name": "🇸🇬SG_38|247KB/s|R002-260618 01",
-      "score": 1724.3295481449486,
-      "chatgptScore": 1143.9117902771777,
+      "score": 1839.5878159090553,
+      "chatgptScore": 1116.928965482948,
       "chatgptSuccessRate": 1
     },
     {
       "kind": "chatgpt-incumbent",
       "endpointId": "91b783c05ebd3e48",
       "name": "🇺🇸US_200|293KB/s|P002-260618 01",
-      "score": 1684.3779341210302,
-      "chatgptScore": 1085.0771126476932,
+      "score": 1729.645225121791,
+      "chatgptScore": 1114.4522297103358,
       "chatgptSuccessRate": 1
     },
     {
       "kind": "chatgpt-incumbent",
       "endpointId": "f8df99716a85628c",
       "name": "🇺🇸US_626|798KB/s|R002-260618 01",
-      "score": 1688.0968212347555,
-      "chatgptScore": 1075.9244039815164,
-      "chatgptSuccessRate": 1
+      "score": 1722.1621146740315,
+      "chatgptScore": 1113.599146501381,
+      "chatgptSuccessRate": 0.9666666666666666
     }
   ]
 }

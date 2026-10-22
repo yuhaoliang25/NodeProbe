@@ -38,6 +38,27 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '4e8e1c3187e3a404'
+  - name: '🇭🇰 香港 04'
+    port: 443
+    server: 'fan.240104.xyz'
+    skip-cert-verify: true
+    sni: 'fan.240104.xyz'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '2525753ed3d65e2e'
+  - name: '🇭🇰 香港 09'
+    password: 'null'
+    port: 443
+    server: 'fan.240104.xyz'
+    sni: 'fan.240104.xyz'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    endpoint-id: 'a2852a26d8d9ed35'
   - name: '🇷🇴RO_23|752KB/s|P002-260618 01'
     port: 9002
     server: '193.176.84.37'
@@ -2157,6 +2178,17 @@ proxies:
     username: 'null'
     udp: true
     endpoint-id: '94d1ad16d8c8e751'
+  - name: '🇫🇷FR_393|77KB/s|R002-260618 01'
+    password: 'null'
+    port: 443
+    server: 'fan.132031.xyz'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    sni: 'fan.132031.xyz'
+    endpoint-id: 'd2e9c39519d8b7a4'
   - name: '🇳🇱NL_287|777KB/s|R002-260618 01'
     port: 443
     server: '185.246.153.42'
