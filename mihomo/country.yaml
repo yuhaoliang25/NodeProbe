@@ -4,283 +4,149 @@ mode: 'rule'
 log-level: 'warning'
 ipv6: false
 proxies:
-  - cipher: 'aes-128-gcm'
-    name: '🇺🇸US_16|892KB/s 01'
-    password: 'shadowsocks'
-    port: 443
-    server: '37.19.198.160'
-    type: 'ss'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_471|1.0MB/s|K001-260618 01'
-    password: 'e4b72b531a2d10900519'
-    port: 443
-    server: '147.182.216.4'
-    skip-cert-verify: true
-    sub_tag: 'K001-260618'
-    tls: true
-    type: 'http'
-    username: 'testuser1'
-    udp: true
-    _poolOnly: true
-  - alterId: '0'
+  - alpn:
+      - ''
+    alterId: '0'
     cipher: 'auto'
-    name: '🇺🇸US_17|1.2MB/s 01'
-    network: 'tcp'
-    port: 18000
-    server: '38.91.107.49'
+    name: '🇺🇸US_450|65KB/s|M003-260806 01'
+    network: 'ws'
+    port: 8443
+    server: '172.67.161.144'
     skip-cert-verify: false
-    tls: false
+    sub_tag: 'M003-260806'
+    tls: true
     type: 'vmess'
     udp: true
-    uuid: 'f8c8dc3d-0d37-46b0-8b34-a7232882fcfe'
+    uuid: '60441548-b68e-43b2-8191-e3b884be4b3c'
+    ws-opts:
+      headers:
+        Host: 'v2ray1.dozapp.xyz'
+      path: '/lMnsZUN4/'
     xudp: true
     packet-encoding: 'xudp'
+    servername: 'v2ray1.dozapp.xyz'
     _poolOnly: true
-  - cipher: 'aes-128-gcm'
-    name: '🇯🇵JP_15|666KB/s|A004-260618 01'
-    password: 'shadowsocks'
+  - name: '🇯🇵 日本_SEK956'
+    server: 'tk1.high-speed-test-56424.me'
     port: 443
-    server: '149.22.87.240'
-    sub_tag: 'A004-260618'
-    type: 'ss'
+    type: 'vless'
+    uuid: '37615d66-5467-44a3-bc23-f2c3bef7f761'
+    tls: true
+    tfo: false
+    flow: 'xtls-rprx-vision'
+    skip-cert-verify: false
+    reality-opts:
+      public-key: 'p8VhFzvFOBAhWAEAeWmwDxT3xBSRsGYixqi0qnLFnBM'
+      short-id: '21270a66'
+    servername: 'aws.amazon.com'
+    client-fingerprint: 'chrome'
+    network: 'tcp'
     udp: true
     _poolOnly: true
   - cipher: 'aes-256-gcm'
-    name: '🇯🇵JP_35|351KB/s|A004-260618 01'
-    password: '3eOFeNssde7PYYMv'
-    port: 80
-    server: '84.247.155.196'
-    sub_tag: 'A004-260618'
-    type: 'ss'
-    udp: true
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    name: '🇸🇬SG_89|472KB/s|K001-260618 01'
-    network: 'ws'
-    port: 8443
-    server: '190.93.245.7'
-    sub_tag: 'K001-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '7967bf59-57e3-4cde-9898-527b0fe60022'
-    ws-opts:
-      headers:
-        Host: 'speed.dulacloud.store'
-        User-Agent: 'Mozilla/5.0 (Windows; U; Windows NT 6.1; de-DE) AppleWebKit/534.17 (KHTML, like Gecko) Chrome/10.0.649.0 Safari/534.17'
-      path: '/dula?Telegram-WangCai2fp=chrome'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'speed.dulacloud.store'
-    _poolOnly: true
-  - cipher: 'rc4-md5'
-    name: '🇸🇬SG_94|398KB/s|B007-260618 01'
-    password: '14fFPrbezE3HDZzsMOr6'
-    port: 8080
-    server: '68.183.227.4'
+    name: '🇰🇷KR_52|153KB/s|B007-260618 01'
+    password: 'Y6R9pAtvxxzmGC'
+    port: 9090
+    server: '141.164.45.187'
     sub_tag: 'B007-260618'
     type: 'ss'
     udp: true
     _poolOnly: true
-  - client-fingerprint: 'chrome'
-    encryption: 'none'
-    name: '🇸🇬SG_86|303KB/s|P002-260618 01'
-    network: 'ws'
-    port: 8443
-    server: '89.116.250.7'
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '7967bf59-57e3-4cde-9898-527b0fe60022'
-    ws-opts:
-      early-data-header-name: 'Sec-WebSocket-Protocol'
-      headers:
-        Host: 'speed.dulacloud.store'
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'
-      max-early-data: 2560
-      path: '/dula?Telegram-WangCai2'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'speed.dulacloud.store'
-    _poolOnly: true
-  - name: '🇬🇧GB_65|384KB/s|R002-260618 01'
-    port: 443
-    server: '84.17.50.193'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
+  - cipher: 'rc4-md5'
+    name: '🇸🇬SG_70|487KB/s|A004-260618 01'
+    password: '14fFPrbezE3HDZzsMOr6'
+    port: 8080
+    server: '68.183.227.45'
+    sub_tag: 'A004-260618'
+    type: 'ss'
     udp: true
     _poolOnly: true
   - client-fingerprint: 'chrome'
     encryption: 'none'
-    name: '🇸🇬SG_83|299KB/s|P002-260618 01'
+    name: '🇸🇬SG_93|265KB/s|M002-260618 01'
     network: 'ws'
     port: 8443
-    server: '45.12.30.7'
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '7967bf59-57e3-4cde-9898-527b0fe60022'
-    ws-opts:
-      early-data-header-name: 'Sec-WebSocket-Protocol'
-      headers:
-        Host: 'speed.dulacloud.store'
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36'
-      max-early-data: 2560
-      path: '/dula?Telegram-WangCai2'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'speed.dulacloud.store'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    encryption: 'none'
-    name: '🇸🇬SG_85|367KB/s|P002-260618 01'
-    network: 'ws'
-    port: 8443
-    server: '5.10.215.7'
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '7967bf59-57e3-4cde-9898-527b0fe60022'
-    ws-opts:
-      early-data-header-name: 'Sec-WebSocket-Protocol'
-      headers:
-        Host: 'speed.dulacloud.store'
-        User-Agent: 'Mozilla/5.0 (Linux; Android 5.1.1; A37fw Build/LMY47V) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.84 Mobile Safari/537.36'
-      max-early-data: 2560
-      path: '/dula?Telegram-WangCai2'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'speed.dulacloud.store'
-    _poolOnly: true
-  - name: '🇩🇪DE_13|500KB/s|R002-260618 01'
-    password: 'None'
-    port: 443
-    server: '87.249.132.97'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    encryption: 'none'
-    name: '🇸🇬SG_95|292KB/s|M002-260618 01'
-    network: 'ws'
-    port: 8443
-    server: '5.175.141.7'
+    server: '77.37.33.7'
     sub_tag: 'M002-260618'
     tls: true
     type: 'vless'
     udp: true
     uuid: '7967bf59-57e3-4cde-9898-527b0fe60022'
     ws-opts:
+      early-data-header-name: 'Sec-WebSocket-Protocol'
       headers:
         Host: 'speed.dulacloud.store'
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36'
+        User-Agent: 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.67 Safari/537.36'
+      max-early-data: 2560
       path: '/dula?Telegram-WangCai2'
     xudp: true
     packet-encoding: 'xudp'
     servername: 'speed.dulacloud.store'
     _poolOnly: true
-  - name: '🇩🇪DE_46|313KB/s|R002-260618 01'
-    port: 443
-    server: 'fan.973511.xyz'
-    sni: 'fan.973511.xyz'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
+  - cipher: 'rc4-md5'
+    name: '🇸🇬SG_68|544KB/s|A004-260618 01'
+    password: '14fFPrbezE3HDZzsMOr6'
+    port: 8080
+    server: '68.183.235.122'
+    sub_tag: 'A004-260618'
+    type: 'ss'
     udp: true
     _poolOnly: true
-  - encryption: 'none'
-    name: '🇫🇷FR_596|162KB/s|M002-260618 01'
+  - client-fingerprint: 'chrome'
+    encryption: 'none'
+    name: '🇸🇬SG_92|514KB/s|M002-260618 01'
+    network: 'ws'
+    port: 8443
+    server: '45.85.118.7'
+    sub_tag: 'M002-260618'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '7967bf59-57e3-4cde-9898-527b0fe60022'
+    ws-opts:
+      early-data-header-name: 'Sec-WebSocket-Protocol'
+      headers:
+        Host: 'speed.dulacloud.store'
+        User-Agent: 'Mozilla/5.0 (X11; Datanyze; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36'
+      max-early-data: 2560
+      path: '/dula?Telegram-WangCai2'
+    xudp: true
+    packet-encoding: 'xudp'
+    servername: 'speed.dulacloud.store'
+    _poolOnly: true
+  - name: '❓Other_103|1020KB/s|M002-260618 01'
     network: 'ws'
     port: 80
-    server: 'ov-france1.09vpn.com'
+    server: '57.129.41.216'
     sub_tag: 'M002-260618'
     type: 'vless'
     udp: true
-    uuid: 'f5c47e9c-914a-4a91-a81e-a5a77bc10fc1'
+    uuid: '18535741-e8b3-4b43-9348-785b55936751'
     ws-opts:
       headers:
-        Host: 'ov-france1.09vpn.com'
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36'
+        Host: 'ov-germany1.09vpn.com'
+        User-Agent: 'Mozilla/5.0 (Linux; Android 7.1.1; CPH1723 Build/N6F26Q) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.98 Mobile Safari/537.36'
       path: '/vless/'
     xudp: true
     packet-encoding: 'xudp'
+    servername: 'ov-germany1.09vpn.com'
     _poolOnly: true
-  - name: '🇫🇷FR_183|751KB/s|R002-260618 01'
-    port: 443
-    server: 'fan.132031.xyz'
-    skip-cert-verify: true
-    sni: 'fan.132031.xyz'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - cipher: 'chacha20-ietf-poly1305'
-    name: '🇳🇱NL_32|3.3MB/s|A004-260618 01'
-    password: 'oZIoA69Q8yhcQV8ka3Pa3A'
-    port: 8080
-    server: '82.38.31.7'
-    sub_tag: 'A004-260618'
-    type: 'ss'
-    udp: true
-    _poolOnly: true
-  - name: '🇳🇱NL_160|6.6MB/s|R002-260618 01'
-    port: 23856
-    server: '51.159.225.196'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - cipher: 'chacha20-ietf-poly1305'
-    name: '🇳🇱NL_27|7.0MB/s|A003-260618 01'
-    password: 'oZIoA69Q8yhcQV8ka3Pa3A'
-    port: 8080
-    server: '82.38.31.174'
-    sub_tag: 'A003-260618'
-    type: 'ss'
-    udp: true
-    _poolOnly: true
-  - cipher: 'rc4-md5'
-    name: '🇨🇦CA_1|1.3MB/s|A004-260618 01'
-    password: '14fFPrbezE3HDZzsMOr6'
-    port: 8080
-    server: '137.184.174.93'
-    sub_tag: 'A004-260618'
-    type: 'ss'
-    udp: true
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    encryption: 'none'
-    name: '🇸🇬SG_80|635KB/s|P002-260618 01'
+  - encryption: 'none'
+    name: '❓Other_281|481KB/s|M002-260618 01'
     network: 'ws'
-    port: 8443
-    server: '154.198.173.7'
-    sub_tag: 'P002-260618'
-    tls: true
+    port: 80
+    server: 'ov-germany1.09vpn.com'
+    sub_tag: 'M002-260618'
     type: 'vless'
     udp: true
-    uuid: '7967bf59-57e3-4cde-9898-527b0fe60022'
+    uuid: '18535741-e8b3-4b43-9348-785b55936751'
     ws-opts:
-      early-data-header-name: 'Sec-WebSocket-Protocol'
       headers:
-        Host: 'speed.dulacloud.store'
-        User-Agent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36'
-      max-early-data: 2560
-      path: '/dula?Telegram-WangCai2'
+        Host: 'ov-germany1.09vpn.com'
+        User-Agent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36'
+      path: '/vless/'
     xudp: true
     packet-encoding: 'xudp'
-    servername: 'speed.dulacloud.store'
     _poolOnly: true
 proxy-groups:
   - name: 'COUNTRY'
@@ -289,12 +155,8 @@ proxy-groups:
       - 'DIRECT'
       - 'US · United States'
       - 'JP · Japan'
+      - 'KR · South Korea'
       - 'SG · Singapore'
-      - 'GB · United Kingdom'
-      - 'DE · Germany'
-      - 'FR · France'
-      - 'NL · Netherlands'
-      - 'CA · Canada'
   - name: 'US · United States'
     type: 'url-test'
     url: 'https://www.google.com/generate_204'
@@ -302,9 +164,7 @@ proxy-groups:
     tolerance: 100
     lazy: false
     proxies:
-      - '🇺🇸US_16|892KB/s 01'
-      - '🇺🇸US_471|1.0MB/s|K001-260618 01'
-      - '🇺🇸US_17|1.2MB/s 01'
+      - '🇺🇸US_450|65KB/s|M003-260806 01'
   - name: 'JP · Japan'
     type: 'url-test'
     url: 'https://www.google.com/generate_204'
@@ -312,8 +172,15 @@ proxy-groups:
     tolerance: 100
     lazy: false
     proxies:
-      - '🇯🇵JP_15|666KB/s|A004-260618 01'
-      - '🇯🇵JP_35|351KB/s|A004-260618 01'
+      - '🇯🇵 日本_SEK956'
+  - name: 'KR · South Korea'
+    type: 'url-test'
+    url: 'https://www.google.com/generate_204'
+    interval: 300
+    tolerance: 100
+    lazy: false
+    proxies:
+      - '🇰🇷KR_52|153KB/s|B007-260618 01'
   - name: 'SG · Singapore'
     type: 'url-test'
     url: 'https://www.google.com/generate_204'
@@ -321,56 +188,9 @@ proxy-groups:
     tolerance: 100
     lazy: false
     proxies:
-      - '🇸🇬SG_89|472KB/s|K001-260618 01'
-      - '🇸🇬SG_94|398KB/s|B007-260618 01'
-      - '🇸🇬SG_86|303KB/s|P002-260618 01'
-      - '🇸🇬SG_83|299KB/s|P002-260618 01'
-      - '🇸🇬SG_85|367KB/s|P002-260618 01'
-      - '🇸🇬SG_95|292KB/s|M002-260618 01'
-      - '🇸🇬SG_80|635KB/s|P002-260618 01'
-  - name: 'GB · United Kingdom'
-    type: 'url-test'
-    url: 'https://www.google.com/generate_204'
-    interval: 300
-    tolerance: 100
-    lazy: false
-    proxies:
-      - '🇬🇧GB_65|384KB/s|R002-260618 01'
-  - name: 'DE · Germany'
-    type: 'url-test'
-    url: 'https://www.google.com/generate_204'
-    interval: 300
-    tolerance: 100
-    lazy: false
-    proxies:
-      - '🇩🇪DE_13|500KB/s|R002-260618 01'
-      - '🇩🇪DE_46|313KB/s|R002-260618 01'
-  - name: 'FR · France'
-    type: 'url-test'
-    url: 'https://www.google.com/generate_204'
-    interval: 300
-    tolerance: 100
-    lazy: false
-    proxies:
-      - '🇫🇷FR_596|162KB/s|M002-260618 01'
-      - '🇫🇷FR_183|751KB/s|R002-260618 01'
-  - name: 'NL · Netherlands'
-    type: 'url-test'
-    url: 'https://www.google.com/generate_204'
-    interval: 300
-    tolerance: 100
-    lazy: false
-    proxies:
-      - '🇳🇱NL_32|3.3MB/s|A004-260618 01'
-      - '🇳🇱NL_160|6.6MB/s|R002-260618 01'
-      - '🇳🇱NL_27|7.0MB/s|A003-260618 01'
-  - name: 'CA · Canada'
-    type: 'url-test'
-    url: 'https://www.google.com/generate_204'
-    interval: 300
-    tolerance: 100
-    lazy: false
-    proxies:
-      - '🇨🇦CA_1|1.3MB/s|A004-260618 01'
+      - '🇸🇬SG_70|487KB/s|A004-260618 01'
+      - '🇸🇬SG_93|265KB/s|M002-260618 01'
+      - '🇸🇬SG_68|544KB/s|A004-260618 01'
+      - '🇸🇬SG_92|514KB/s|M002-260618 01'
 rules:
   - 'MATCH,COUNTRY'
