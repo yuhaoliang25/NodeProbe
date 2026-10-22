@@ -4,6 +4,7 @@
 const fs=require('fs');
 const crypto=require('crypto');
 const yaml=require('js-yaml');
+const {timeDecayedEvidence}=require('./time-decay');
 
 function readJson(file,fallback=null){
   try{return JSON.parse(fs.readFileSync(file,'utf8'));}catch{return fallback;}
@@ -138,7 +139,8 @@ const latestSpeedValues=assetNodes.map(node=>{
 const liveAssetFile=process.env.CHINA_ASSET_FILE||'data/china-node-assets.json';
 let currentAssetStateSha256=null;
 try{currentAssetStateSha256=crypto.createHash('sha256').update(fs.readFileSync(liveAssetFile)).digest('hex');}catch{}
-function lifecycleReadiness(nodes){
+function lifecycleReadiness(nodes, atMs=Date.now()){
+  const halfLifeMs=Number(process.env.CHINA_ASSET_DECAY_HALF_LIFE_MS||72*60*60*1000);
   const rows=Object.values(nodes||{});
   const byState={};
   for(const n of rows){
@@ -147,8 +149,11 @@ function lifecycleReadiness(nodes){
       count:0,
       observedRuns:{min:null,median:null,max:null},
       successRate:{lt70:0,from70To89:0,from90:0,unknown:0},
+      timeDecayedRate:{lt70:0,from70To89:0,from90:0,unknown:0},
       failureStreak:{zero:0,oneToTwo:0,threeToFive:0,sixPlus:0},
-      meetsRunAndStreakPrerequisites:0
+      promotionBlockers:{noSuccesses:0,insufficientRuns:0,rateBelow90:0,failureStreakNonzero:0,terminalOrRecoveryState:0},
+      meetsRunAndStreakPrerequisites:0,
+      meetsTrustedPromotionConditions:0
     });
     row.count++;
     const runs=Number(n?.observedRuns);
@@ -162,15 +167,26 @@ function lifecycleReadiness(nodes){
     else if(rate<0.70)row.successRate.lt70++;
     else if(rate<0.90)row.successRate.from70To89++;
     else row.successRate.from90++;
+    const decayed=timeDecayedEvidence(obs,atMs,halfLifeMs).rate;
+    if(!obs.some(o=>Number.isFinite(Date.parse(o?.at))&&Date.parse(o.at)<=atMs))row.timeDecayedRate.unknown++;
+    else if(decayed<0.70)row.timeDecayedRate.lt70++;
+    else if(decayed<0.90)row.timeDecayedRate.from70To89++;
+    else row.timeDecayedRate.from90++;
+    if(!(Number(n?.successes)>0))row.promotionBlockers.noSuccesses++;
+    if(!(Number(n?.observedRuns)>=5))row.promotionBlockers.insufficientRuns++;
+    if(decayed<0.90)row.promotionBlockers.rateBelow90++;
+    if(Number(n?.failureStreak)!==0)row.promotionBlockers.failureStreakNonzero++;
+    if(['FORGOTTEN','UNTRUSTED','DEGRADED'].includes(state))row.promotionBlockers.terminalOrRecoveryState++;
     const streak=Number(n?.failureStreak)||0;
     if(streak===0)row.failureStreak.zero++;
     else if(streak<=2)row.failureStreak.oneToTwo++;
     else if(streak<=5)row.failureStreak.threeToFive++;
     else row.failureStreak.sixPlus++;
     if(Number(n?.observedRuns)>=5&&n?.successes>0&&n?.failureStreak===0&&n?.state!=='FORGOTTEN'){
-      // The exact promotion rate uses time-decayed evidence in china-node-asset.js.
-      // This field is intentionally a near-readiness counter, not a duplicate verdict.
       row.meetsRunAndStreakPrerequisites++;
+    }
+    if(Number(n?.observedRuns)>=5&&Number(n?.successes)>0&&Number(n?.failureStreak)===0&&decayed>=0.90&&!['FORGOTTEN','UNTRUSTED','DEGRADED'].includes(state)){
+      row.meetsTrustedPromotionConditions++;
     }
   }
   for(const row of Object.values(byState)){
