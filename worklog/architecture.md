@@ -1345,11 +1345,16 @@ The implementation may schedule these lines in either order or in parallel, prov
 
 Do not label a client as being based on the just-completed observation run unless that run's observations were already part of the declared historical snapshot before publication started.
 
-## Current implementation gap
+## Implementation status — snapshot boundary added
 
-At the time of this decision, `scripts/china-cycle.sh` runs `china-probe` → `china-apply` and then rebuilds pools / Elite / Sticky / `client.yaml` from the mutated working state. That ordering allows the current run's observations to affect the client generated later in the same cycle. It does **not yet satisfy** the temporal boundary above.
+The China cycle now freezes publication inputs before pulling discovery data or running probes. `scripts/china-publication-snapshot.js freeze` captures the persistent China asset state, Pair knowledge, and Sticky continuity state into a release-scoped snapshot and derives a content-based `publicationAssetGeneration`.
 
-This document records the required architecture; it does not claim that the current code already enforces it. A follow-up implementation must introduce a frozen publication snapshot or split the experiment and publication jobs around a persistent generation boundary, then add a test proving that changing only the current-run observation batch cannot change the current release's `client.yaml`.
+The cycle still applies observations to the live persistent state, but the subscription builders (`china-pairs`, pools, Elite/ChatGPT, Sticky, and client config) run with their state-file environment variables redirected to the frozen snapshot. Diagnostics then reads the updated live asset state while recording both the observation run ID and the publication generation. The B2 release manifest also records `observationRunId`, `publicationAssetGeneration`, and `clientReleaseId`; `release.json` remains the final uploaded completeness marker.
+
+A regression command, `npm run test:china-publication-snapshot`, checks that changing the current observation batch does not change snapshot generation/content, and that later mutation of live state cannot mutate an already-frozen snapshot.
+
+This is an implementation change, not yet evidence of a successful production cycle. The automated snapshot regression and repository checks still need to be run in an environment with the repository and dependencies; a China-machine cycle should then verify the full B2 release and generated client.
+
 
 ## Acceptance invariants
 
