@@ -179,8 +179,21 @@ async function main(){
     .filter(x=>x&&x.endpointId&&x.proxy&&x.proxy.name&&x.proxy.server&&x.proxy.port&&x.proxy.type);
   const selected=usable.slice(0,maxCandidates).map(x=>x.proxy);
   if(!selected.length)throw new Error('China candidate file contains no usable proxy candidates');
+  const selectedIds = new Set(usable.slice(0, maxCandidates).map(x => x.endpointId));
+  const categoryCounts = usable.slice(0, maxCandidates).reduce((m, x) => {
+    const category = x.category || 'unknown';
+    m[category] = (m[category] || 0) + 1;
+    return m;
+  }, {});
+  const newScheduled = categoryCounts.new || 0;
+  console.log(
+    '[china-probe] scheduled=' + selected.length +
+    ' new=' + newScheduled +
+    ' maintenance=' + (selected.length - newScheduled) +
+    ' categories=' + Object.entries(categoryCounts).map(([k, v]) => k + ':' + v).join(',')
+  );
   if(usable.length>selected.length){
-    console.log('[china-probe] candidate feed has '+usable.length+' usable nodes; limiting this probe run to '+selected.length+' (CHINA_MAX_NODES='+maxCandidates+')');
+    console.log('[china-probe] feed=' + usable.length + '; capped at ' + selected.length + ' (CHINA_MAX_NODES=' + maxCandidates + ')');
   }
 
   const dir=fs.mkdtempSync(path.join(os.tmpdir(),'nodeprobe-china-'));
@@ -454,19 +467,27 @@ async function main(){
       stabilityResults,
     };
 
-    console.log(JSON.stringify({
-      candidates:selected.length,
-      reachable:reachable.size,
-      exitCandidates:reachableProxies.length,
-      stage1Pass:firstPass.length,
-      stage1RetryPass:retryPass.size,
-      stage2Pass:stage2.filter(x=>x.success).length,
-      deepPass:deep.length,
-      attempts:observations.length,
-      finalObservations:finalObservations.length,
-      target:CONFIG.target,
-      environment:CONFIG.environment,
-    },null,2));
+    const byCategory = {};
+    for (const candidate of candidates) {
+      const category = candidate.category || 'unknown';
+      const row = byCategory[category] || (byCategory[category] = {scheduled:0, tested:0, exitPass:0, reachable:0});
+      row.scheduled++;
+      if (selectedIds.has(candidate.endpointId)) {
+        row.tested++;
+        const result = finalObservations.find(x => x.endpointId === candidate.endpointId);
+        if (result?.reachabilitySuccess) row.reachable++;
+        if (result?.exitSuccess) row.exitPass++;
+      }
+    }
+    const newResult = byCategory.new || {scheduled:0,tested:0,exitPass:0,reachable:0};
+    console.log(
+      '[china-probe] result: new tested=' + newResult.tested + '/' + newResult.scheduled +
+      ' reachable=' + newResult.reachable + ' exit-pass=' + newResult.exitPass +
+      ' | all tested=' + selected.length + '/' + candidates.length +
+      ' reachable=' + reachable.size + ' exit-pass=' + deep.length +
+      ' stability=' + stabilityEligibleIds.size + ' speed-tested=' + speedResults.length +
+      ' ChatGPT-pass=' + chatgptRows.filter(x=>x.success).length
+    );
 
     fs.mkdirSync(path.dirname(CONFIG.observationFile),{recursive:true});
     fs.writeFileSync(CONFIG.observationFile,JSON.stringify(payload,null,2)+'\n');
@@ -475,15 +496,9 @@ async function main(){
     const batchFile=path.join(CONFIG.observationDir,`${new Date().toISOString().replace(/[:.]/g,'-')}-${safeEnv}.json`);
     fs.writeFileSync(batchFile,JSON.stringify(payload,null,2)+'\n');
 
-    console.log(JSON.stringify({
-      candidates:selected.length,
-      successes:finalObservations.filter(x=>x.success).length,
-      failures:finalObservations.filter(x=>!x.success).length,
-      target:CONFIG.target,
-      environment:CONFIG.environment,
-      observationFile:CONFIG.observationFile,
-      batchFile,
-    },null,2));
+    console.log('[china-probe] observations saved: ' + finalObservations.length + ' nodes (' +
+      finalObservations.filter(x=>x.success).length + ' exit-pass, ' +
+      finalObservations.filter(x=>!x.success).length + ' exit-fail); batch=' + path.basename(batchFile));
   } finally {
     child.kill('SIGTERM');
     await sleep(300);
