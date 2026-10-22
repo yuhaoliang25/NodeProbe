@@ -138,6 +138,51 @@ const latestSpeedValues=assetNodes.map(node=>{
 const liveAssetFile=process.env.CHINA_ASSET_FILE||'data/china-node-assets.json';
 let currentAssetStateSha256=null;
 try{currentAssetStateSha256=crypto.createHash('sha256').update(fs.readFileSync(liveAssetFile)).digest('hex');}catch{}
+function lifecycleReadiness(nodes){
+  const rows=Object.values(nodes||{});
+  const byState={};
+  for(const n of rows){
+    const state=String(n?.state||'UNKNOWN');
+    const row=byState[state]||(byState[state]={
+      count:0,
+      observedRuns:{min:null,median:null,max:null},
+      successRate:{lt70:0,from70To89:0,from90:0,unknown:0},
+      failureStreak:{zero:0,oneToTwo:0,threeToFive:0,sixPlus:0},
+      trustedEligibleNow:0
+    });
+    row.count++;
+    const runs=Number(n?.observedRuns);
+    if(Number.isFinite(runs)){
+      row._runs||(row._runs=[]);
+      row._runs.push(runs);
+    }
+    const obs=Array.isArray(n?.observations)?n.observations:[];
+    const rate=obs.length?obs.reduce((sum,o)=>sum+(o?.success===true?1:0),0)/obs.length:null;
+    if(rate==null)row.successRate.unknown++;
+    else if(rate<0.70)row.successRate.lt70++;
+    else if(rate<0.90)row.successRate.from70To89++;
+    else row.successRate.from90++;
+    const streak=Number(n?.failureStreak)||0;
+    if(streak===0)row.failureStreak.zero++;
+    else if(streak<=2)row.failureStreak.oneToTwo++;
+    else if(streak<=5)row.failureStreak.threeToFive++;
+    else row.failureStreak.sixPlus++;
+    if(Number(n?.observedRuns)>=5&&n?.successes>0&&n?.failureStreak===0&&n?.state!=='FORGOTTEN'){
+      // The exact promotion rate uses time-decayed evidence in china-node-asset.js.
+      // This field is intentionally a near-readiness counter, not a duplicate verdict.
+      row.trustedEligibleNow++;
+    }
+  }
+  for(const row of Object.values(byState)){
+    const xs=(row._runs||[]).sort((a,b)=>a-b);
+    row.observedRuns.min=xs.length?xs[0]:null;
+    row.observedRuns.median=xs.length?percentile(xs,0.5):null;
+    row.observedRuns.max=xs.length?xs[xs.length-1]:null;
+    delete row._runs;
+  }
+  return byState;
+}
+
 const diagnostics={
   version:4,
   generatedAt:new Date().toISOString(),
@@ -151,6 +196,7 @@ const diagnostics={
     states:countStates(assets.nodes),
     trusted:Object.values(assets.nodes||{}).filter(n=>n?.state==='TRUSTED'&&n?.proxy).length
   },
+  lifecycleReadiness:lifecycleReadiness(assets.nodes),
   candidates:{
     total:Array.isArray(candidates.candidates)?candidates.candidates.length:0,
     categories:(candidates.candidates||[]).reduce((m,x)=>{const k=x.category||'unknown';m[k]=(m[k]||0)+1;return m;},{})
