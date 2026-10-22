@@ -28,10 +28,12 @@ function run(args,options){
   if(r.status!==0)process.exit(r.status||1);
 }
 function runQuiet(args){
+  // Suppress verbose success output (progress bars and object metadata); retain diagnostics on failure.
   const r=spawnSync(process.env.B2_BIN||'b2v4',args,{encoding:'utf8',env:process.env});
   if(r.error)throw r.error;
   if(r.status!==0){
     if(r.stderr)process.stderr.write(r.stderr);
+    if(r.stdout)process.stderr.write(r.stdout);
     throw new Error(`B2 command failed: ${args.join(' ')}`);
   }
 }
