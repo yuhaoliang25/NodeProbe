@@ -148,7 +148,7 @@ function lifecycleReadiness(nodes){
       observedRuns:{min:null,median:null,max:null},
       successRate:{lt70:0,from70To89:0,from90:0,unknown:0},
       failureStreak:{zero:0,oneToTwo:0,threeToFive:0,sixPlus:0},
-      trustedEligibleNow:0
+      meetsRunAndStreakPrerequisites:0
     });
     row.count++;
     const runs=Number(n?.observedRuns);
@@ -170,7 +170,7 @@ function lifecycleReadiness(nodes){
     if(Number(n?.observedRuns)>=5&&n?.successes>0&&n?.failureStreak===0&&n?.state!=='FORGOTTEN'){
       // The exact promotion rate uses time-decayed evidence in china-node-asset.js.
       // This field is intentionally a near-readiness counter, not a duplicate verdict.
-      row.trustedEligibleNow++;
+      row.meetsRunAndStreakPrerequisites++;
     }
   }
   for(const row of Object.values(byState)){
