@@ -122,9 +122,12 @@ if(mode==='pull-stable'){
     };
   });
   const manifest={
-    version:2,
+    version:3,
     generatedAt,
     releaseId,
+    clientReleaseId:releaseId,
+    observationRunId:process.env.CHINA_OBSERVATION_RUN_ID||releaseId,
+    publicationAssetGeneration:process.env.CHINA_PUBLICATION_ASSET_GENERATION||null,
     producer:'china-machine',
     files,
   };
