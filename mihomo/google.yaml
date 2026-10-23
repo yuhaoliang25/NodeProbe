@@ -4,36 +4,27 @@ mode: 'rule'
 log-level: 'warning'
 ipv6: false
 proxies:
-  - name: '🇺🇸US_479|579KB/s|R002-260618 01'
-    port: 443
-    server: '193.239.236.134'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇫🇷FR_1414|222KB/s|A004-260618 01'
+  - name: '🇫🇷FR_2055|438KB/s|K001-260618 01'
     network: 'ws'
-    port: 8080
-    server: '172.64.150.43'
-    sub_tag: 'A004-260618'
+    port: 2082
+    server: '104.18.35.86'
+    sub_tag: 'K001-260618'
     type: 'vless'
     udp: true
     uuid: 'e5cc16a6-ea42-46b2-82ae-ad2157e1641b'
     ws-opts:
       headers:
         Host: 'hhlfy.twiladaphne.ndjp.net'
-        User-Agent: 'Mozilla/5.0 (Windows NT 5.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36'
-      path: '/sg-melbi'
+        User-Agent: 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.67 Safari/537.36'
+      path: '/fp'
     xudp: true
     packet-encoding: 'xudp'
     servername: 'hhlfy.twiladaphne.ndjp.net'
     _poolOnly: true
-  - name: '🇫🇷FR_1406|388KB/s|A004-260618 01'
+  - name: '🇫🇷FR_2065|356KB/s|A004-260618 01'
     network: 'ws'
     port: 8080
-    server: '104.18.0.181'
+    server: '104.16.215.234'
     sub_tag: 'A004-260618'
     type: 'vless'
     udp: true
@@ -41,427 +32,117 @@ proxies:
     ws-opts:
       headers:
         Host: 'hhlfy.twiladaphne.ndjp.net'
-        User-Agent: 'Mozilla/5.0 (Linux; Android 6.0.1; CPH1607 Build/MMB29M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/63.0.3239.111 Mobile Safari/537.36'
-      path: '/'
-    xudp: true
-    packet-encoding: 'xudp'
-    _poolOnly: true
-  - name: '🇫🇷FR_1415|362KB/s|A004-260618 01'
-    network: 'ws'
-    port: 2082
-    server: '172.64.150.43'
-    sub_tag: 'A004-260618'
-    type: 'vless'
-    udp: true
-    uuid: 'e5cc16a6-ea42-46b2-82ae-ad2157e1641b'
-    ws-opts:
-      headers:
-        Host: 'hhlfy.twiladaphne.ndjp.net'
-        User-Agent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36'
-      path: '/'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'hhlfy.twiladaphne.ndjp.net'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    encryption: 'none'
-    name: '🇫🇷FR_2006|412KB/s|S004-260618 01'
-    network: 'ws'
-    port: 443
-    server: '172.66.0.162'
-    sub_tag: 'S004-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'd342d11e-d224-4463-b982-532309285094'
-    ws-opts:
-      headers:
-        Host: 'ccc.010304.xyz'
-        User-Agent: 'Mozilla/5.0 (Linux; Android 5.1; HUAWEI CUN-L22 Build/HUAWEICUN-L22; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/62.0.3202.84 Mobile Safari/537.36'
-      path: '/'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'ccc.010304.xyz'
-    _poolOnly: true
-  - name: '🇺🇸US_445|416KB/s|R002-260618 01'
-    port: 443
-    server: '198.44.135.27'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    name: '🇺🇸US_494|1.1MB/s|B007-260618 01'
-    network: 'tcp'
-    password: 'nwilryafgkyvuxauc8pz'
-    port: 50875
-    server: '69.164.240.85'
-    skip-cert-verify: true
-    sub_tag: 'B007-260618'
-    type: 'trojan'
-    udp: true
-    _poolOnly: true
-  - alpn:
-      - 'http/1.1'
-    client-fingerprint: 'chrome'
-    name: '🇫🇷FR_1435|2.9MB/s|M003-260806 01'
-    network: 'ws'
-    port: 443
-    server: 'www.speedtest.net'
-    sub_tag: 'M003-260806'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '495c7195-85b8-498a-bf20-2ea9ce9175b5'
-    ws-opts:
-      headers:
-        Host: 'snip.edgeoneai.cc.cd'
-        User-Agent: 'Mozilla/5.0 (Linux; Android 8.0.0; FIG-LX3 Build/HUAWEIFIG-LX3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36'
-      path: '/fdip=sstp://vpn:vpn@vpn748359672.opengw.net:1458?ed=2560#Telegram---bored_vpn'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'snip.edgeoneai.cc.cd'
-    _poolOnly: true
-  - name: '🇫🇷FR_2032|358KB/s|A004-260618 01'
-    network: 'ws'
-    port: 2082
-    server: '104.19.95.153'
-    sub_tag: 'A004-260618'
-    type: 'vless'
-    udp: true
-    uuid: 'e5cc16a6-ea42-46b2-82ae-ad2157e1641b'
-    ws-opts:
-      headers:
-        Host: 'hhlfy.twiladaphne.ndjp.net'
-        User-Agent: 'Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.67 Safari/537.36'
-      path: '/'
-    xudp: true
-    packet-encoding: 'xudp'
-    _poolOnly: true
-  - name: '🇺🇸US_425|560KB/s|R002-260618 01'
-    port: 9443
-    server: '198.44.135.19'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    encryption: 'none'
-    name: '🇫🇷FR_1434|562KB/s|S004-260618 01'
-    network: 'ws'
-    port: 443
-    server: '172.64.152.241'
-    sub_tag: 'S004-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'd342d11e-d224-4463-b982-532309285094'
-    ws-opts:
-      headers:
-        Host: 'ccc.010304.xyz'
-        User-Agent: 'Mozilla/5.0 (Linux; Android 6.0.1; SM-J700M Build/MMB29K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36'
+        User-Agent: 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131 Safari/537.36'
       path: '/fp=chrome'
     xudp: true
     packet-encoding: 'xudp'
-    servername: 'ccc.010304.xyz'
     _poolOnly: true
-  - client-fingerprint: 'chrome'
-    name: '🇺🇸US_498|1.2MB/s|C002-260622 01'
+  - name: '❓Other_46|841KB/s|R002-260618 01'
     network: 'tcp'
-    password: 'nwilryafgkyvuxauc8pz'
-    port: 50875
-    server: '69.164.240.85'
-    skip-cert-verify: true
-    sni: '69.164.240.85'
-    sub_tag: 'C002-260622'
+    password: 'Trojan@82164024'
+    port: 443
+    server: 'ca.tronsg.com'
+    sni: 'ca.tronsg.com'
+    sub_tag: 'R002-260618'
     type: 'trojan'
     udp: true
     _poolOnly: true
-  - name: '🇺🇸US_419|528KB/s|R002-260618 01'
-    port: 443
-    server: '12.202.180.118'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    encryption: 'none'
-    name: '🇫🇷FR_1423|748KB/s|S004-260618 01'
-    network: 'ws'
-    port: 443
-    server: '172.64.158.170'
-    sub_tag: 'S004-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'd342d11e-d224-4463-b982-532309285094'
-    ws-opts:
-      headers:
-        Host: 'ccc.010304.xyz'
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.104 Safari/537.36'
-      path: '/'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'ccc.010304.xyz'
-    _poolOnly: true
-  - name: '🇺🇸US_466|681KB/s|P002-260618 01'
-    port: 9443
-    server: '149.88.21.140'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - alpn:
-      - 'http/1.1'
-    client-fingerprint: 'chrome'
-    encryption: 'none'
-    name: '🇫🇷FR_1411|1.7MB/s|S004-260618 01'
-    network: 'ws'
-    port: 443
-    server: '188.114.97.6'
-    sub_tag: 'S004-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '495c7195-85b8-498a-bf20-2ea9ce9175b5'
-    ws-opts:
-      headers:
-        Host: 'snip.edgeoneai.cc.cd'
-        User-Agent: 'Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) Chrome/v1.0.0 Safari/538.1'
-      path: '/fdip=sstp://vpn:vpn@vpn748359672.opengw.net:1458?ed=2560#Telegram---mehrosaboran'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'snip.edgeoneai.cc.cd'
-    _poolOnly: true
-  - name: '🇨🇦CA_34|317KB/s|R002-260618 01'
-    port: 9443
-    server: '149.88.98.81'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    name: '🇫🇷FR_1432|387KB/s|T001-260618 01'
-    network: 'ws'
-    port: 443
-    server: 'cf.130519.xyz'
-    sub_tag: 'T001-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'd342d11e-d224-4463-b982-532309285094'
-    ws-opts:
-      headers:
-        Host: 'ccc.010304.xyz'
-        User-Agent: 'Mozilla/5.0 (X11; U; Linux x86_64; en-US) AppleWebKit/533.2 (KHTML, like Gecko) Chrome/5.0.342.1 Safari/533.2'
-      path: '/'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'ccc.010304.xyz'
-    _poolOnly: true
-  - name: '🇺🇸US_468|775KB/s|R002-260618 01'
-    port: 443
-    server: '45.63.38.134'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    name: '🇫🇷FR_2040|2.7MB/s|A004-260618 01'
-    network: 'ws'
-    port: 443
-    server: 'epam.com'
-    sub_tag: 'A004-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '8895be79-9817-4011-b81a-14a35a3d328e'
-    ws-opts:
-      headers:
-        Host: 'wallweb-boi.pages.dev'
-        User-Agent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36'
-      path: '/'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'wallweb-boi.pages.dev'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    encryption: 'none'
-    name: '🇫🇷FR_1436|977KB/s|P001-260618 01'
-    network: 'ws'
-    port: 443
-    server: 'ccc.010304.xyz'
-    sub_tag: 'P001-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'd342d11e-d224-4463-b982-532309285094'
-    ws-opts:
-      headers:
-        Host: ''
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.107 Safari/537.36'
-      path: '/'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'ccc.010304.xyz'
-    _poolOnly: true
-  - name: '🇺🇸US_490|360KB/s|R002-260618 01'
-    port: 443
-    server: '149.22.88.65'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - cipher: 'chacha20-ietf-poly1305'
-    name: '🇺🇸US_427|996KB/s|A004-260618 01'
-    password: '456c497e-02bc-4b46-883f-06747cabdfbd'
-    port: 2096
-    server: '107.172.219.230'
-    sub_tag: 'A004-260618'
-    type: 'ss'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_418|474KB/s|R002-260618 01'
-    port: 8443
-    server: '35.84.133.236'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - encryption: 'none'
-    name: '❓Other_80|809KB/s|M003-260806 01'
-    network: 'ws'
-    port: 80
-    server: '38.107.232.36'
-    sub_tag: 'M003-260806'
-    type: 'vless'
-    udp: true
-    uuid: '18cf8db1-9f86-43f7-baa0-382efb7f2dfa'
-    ws-opts:
-      headers:
-        Host: ''
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'
-      path: '/vless/'
-    xudp: true
-    packet-encoding: 'xudp'
-    _poolOnly: true
-  - name: '🇺🇸US_424|152KB/s|R002-260618 01'
-    port: 8443
-    server: '45.145.73.240'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - cipher: 'aes-256-gcm'
-    name: '🇳🇱NL_231|213KB/s|M003-260806 01'
-    password: 'iOaIXNsQXVIxwmkY'
-    port: 8388
-    server: '140.82.56.38'
-    sub_tag: 'M003-260806'
-    type: 'ss'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_423|86KB/s|R002-260618 01'
-    port: 443
-    server: '137.175.22.98'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_489|343KB/s|R002-260618 01'
-    port: 443
-    server: '137.175.22.56'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '❓Other_91|181KB/s|R002-260618 01'
-    port: 443
-    server: '38.28.185.224'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_491|796KB/s|R002-260618 01'
-    password: 'sni="goedkoopgeluid.icu"'
-    port: 443
-    server: 'goedkoopgeluid.icu'
-    skip-cert-verify: true
-    sni: 'goedkoopgeluid.icu'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'None'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_436|478KB/s|R002-260618 01'
-    port: 443
-    server: '96.5.129.85'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_446|112KB/s|R002-260618 01'
-    port: 443
-    server: '38.28.185.207'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - alpn:
-      - ''
-    alterId: '0'
-    cipher: 'auto'
-    http-opts:
-      headers:
-        Host:
-          - 'down-cdn.dingtalk.com'
-      path:
-        - '/3x'
-    name: '🇫🇮FI_91|386KB/s|B007-260618 01'
-    network: 'http'
-    port: 2053
-    server: '185.212.149.7'
-    skip-cert-verify: false
-    sub_tag: 'B007-260618'
-    tls: false
+  - name: '美国(yudou99.com 玉豆分享)_55'
     type: 'vmess'
+    server: 'us5-1.998998.best'
+    port: 443
+    uuid: '5504eaa8-1395-402f-8e0e-75ecd762e627'
+    alterId: 0
+    cipher: 'auto'
+    tls: true
+    skip-cert-verify: true
+    network: 'ws'
+    ws-opts:
+      path: '/androirfdsreoightrjh?ed=2560'
+      headers:
+        Host: 'server4.9966338.xyz'
     udp: true
-    uuid: 'aeb3c019-ae83-4677-af97-846baa787ad5'
+    _poolOnly: true
+  - cipher: 'aes-256-cfb'
+    name: '🇱🇹LT_3|2.2MB/s|A004-260618 01'
+    password: 'mwgRg9hRq3b4Qnwb'
+    port: 9068
+    server: '195.238.126.20'
+    sub_tag: 'A004-260618'
+    type: 'ss'
+    udp: true
+    _poolOnly: true
+  - cipher: 'aes-256-cfb'
+    name: '🇱🇹LT_1|1.8MB/s|A004-260618 01'
+    password: 'JCJpbRbQZNw9XFZG'
+    port: 9078
+    server: '195.238.126.20'
+    sub_tag: 'A004-260618'
+    type: 'ss'
+    udp: true
+    _poolOnly: true
+  - cipher: 'aes-256-cfb'
+    name: '🇱🇹LT_2|2.1MB/s|A004-260618 01'
+    password: '37Z4TFCYhfxcpc9Q'
+    port: 9086
+    server: '195.238.126.20'
+    sub_tag: 'A004-260618'
+    type: 'ss'
+    udp: true
+    _poolOnly: true
+  - cipher: 'aes-256-cfb'
+    name: '🇱🇹LT_4|2.2MB/s|A004-260618 01'
+    password: 'xaupMUvhptwxdDUg'
+    port: 9012
+    server: '195.238.126.20'
+    sub_tag: 'A004-260618'
+    type: 'ss'
+    udp: true
+    _poolOnly: true
+  - name: '🇩🇪DE_184|495KB/s|M002-260618 01'
+    network: 'ws'
+    port: 2052
+    server: '104.18.0.181'
+    sub_tag: 'M002-260618'
+    type: 'vless'
+    udp: true
+    uuid: '5744e593-1cc8-48fa-b8ca-57cd494fe35b'
+    ws-opts:
+      headers:
+        Host: 'eu02.123450908.xyz'
+        User-Agent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36'
+      path: '/rain1226'
     xudp: true
     packet-encoding: 'xudp'
     _poolOnly: true
-  - name: '🇬🇧GB_43|472KB/s|R002-260618 01'
-    port: 9443
-    server: '84.17.50.129'
+  - client-fingerprint: 'chrome'
+    name: '🇳🇱NL_352|1.5MB/s|S004-260618 01'
+    network: 'ws'
+    password: 'humanity'
+    port: 443
+    server: '190.93.245.148'
+    skip-cert-verify: false
+    sni: 'www.pleadcourt.org'
+    sub_tag: 'S004-260618'
+    type: 'trojan'
+    udp: true
+    ws-opts:
+      headers:
+        User-Agent: 'Mozilla/5.0 (Linux; Android 4.4.2; SM-G7102 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.84 Mobile Safari/537.36'
+      path: '/assignment'
+    _poolOnly: true
+  - cipher: 'aes-256-cfb'
+    name: '🇰🇷KR_101|526KB/s|A004-260618 01'
+    password: 'qwerREWQ@@'
+    port: 4652
+    server: '218.237.185.234'
+    sub_tag: 'A004-260618'
+    type: 'ss'
+    udp: true
+    _poolOnly: true
+  - name: '🇩🇪DE_202|1.2MB/s|R002-260618 01'
+    port: 443
+    server: '116.202.172.99'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
@@ -471,247 +152,11 @@ proxies:
   - alpn:
       - 'http/1.1'
     client-fingerprint: 'unsafe'
-    encryption: 'none'
-    name: '🇩🇪DE_173|1.9MB/s|S004-260618 01'
-    network: 'ws'
-    port: 443
-    server: '31.77.126.2'
-    sub_tag: 'S004-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '495c7195-85b8-498a-bf20-2ea9ce9175b5'
-    ws-opts:
-      headers:
-        Host: 'snip.edgeoneai.cc.cd'
-        User-Agent: 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36'
-      path: '/fdip=sstp://vpn:vpn@vpn748359672.opengw.net:1458'
-      early-data-header-name: 'Sec-WebSocket-Protocol'
-      max-early-data: 2560
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'snip.edgeoneai.cc.cd'
-    _poolOnly: true
-  - name: '🇬🇧GB_51|350KB/s|R002-260618 01'
-    port: 9443
-    server: '84.17.50.214'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇩🇪DE_168|1.2MB/s|R002-260618 01'
-    port: 80
-    server: '57.131.128.2'
-    sub_tag: 'R002-260618'
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇬🇧GB_42|510KB/s|R002-260618 01'
-    port: 443
-    server: '185.164.138.156'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_417|185KB/s|R002-260618 01'
-    port: 443
-    server: '38.28.185.222'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇮🇪IE_17|674KB/s|R002-260618 01'
-    port: 9443
-    server: '149.88.96.12'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇳🇱NL_265|1.7MB/s|R002-260618 01'
-    port: 443
-    server: '185.93.106.214'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇳🇱NL_244|3.5MB/s|R002-260618 01'
-    password: 'null'
-    port: 9002
-    server: '84.17.47.149'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    _poolOnly: true
-  - alpn:
-      - ''
-    alterId: '0'
-    cipher: 'auto'
-    http-opts:
-      headers:
-        Host:
-          - 'down-cdn.dingtalk.com'
-      path:
-        - '/3x'
-    name: '❓Other_79|240KB/s|S004-260618 01'
-    network: 'http'
-    port: 52080
-    server: '185.212.149.7'
-    skip-cert-verify: false
-    sub_tag: 'S004-260618'
-    tls: false
-    type: 'vmess'
-    udp: true
-    uuid: 'ec3c8b97-f308-4fee-aa16-95e2c7595acd'
-    xudp: true
-    packet-encoding: 'xudp'
-    _poolOnly: true
-  - name: '🇳🇱NL_248|1.0MB/s|R002-260618 01'
-    port: 443
-    server: '161.129.60.66'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇩🇪DE_167|492KB/s|R002-260618 01'
-    port: 443
-    server: '152.233.20.206'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇩🇪DE_139|429KB/s|R002-260618 01'
-    port: 9443
-    server: '79.127.156.177'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇩🇪DE_127|690KB/s|R002-260618 01'
-    port: 9443
-    server: '213.177.229.161'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇳🇱NL_247|667KB/s|R002-260618 01'
-    port: 9443
-    server: '149.36.51.157'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇩🇪DE_170|609KB/s|R002-260618 01'
-    port: 443
-    server: '213.177.229.161'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - cipher: 'chacha20-ietf-poly1305'
-    name: '🇳🇱NL_263|2.2MB/s|A004-260618 01'
-    password: 'oZIoA69Q8yhcQV8ka3Pa3A'
-    port: 8080
-    server: '82.38.31.54'
-    sub_tag: 'A004-260618'
-    type: 'ss'
-    udp: true
-    _poolOnly: true
-  - name: '🇨🇿CZ_7|614KB/s|R002-260618 01'
-    port: 9443
-    server: '152.233.16.174'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - cipher: 'aes-256-gcm'
-    name: '🇩🇪DE_193|4.4MB/s|A004-260618 01'
-    password: 'Y6R9pAtvxxzmGC'
-    port: 5000
-    server: '213.202.208.199'
-    sub_tag: 'A004-260618'
-    type: 'ss'
-    udp: true
-    _poolOnly: true
-  - name: '🇧🇬BG_14|419KB/s|R002-260618 01'
-    port: 9443
-    server: '169.150.237.1'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇫🇮FI_85|129KB/s|R002-260618 01'
-    port: 8080
-    server: '65.109.179.56'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    encryption: 'none'
-    name: '🇩🇪DE_136|364KB/s|B007-260618 01'
-    network: 'ws'
-    port: 443
-    server: '157.230.101.36'
-    sub_tag: 'B007-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'd342d11e-d224-4463-b982-532309285094'
-    ws-opts:
-      headers:
-        Host: 'ccc.010304.xyz'
-        User-Agent: 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.112 Safari/537.36'
-      path: '/'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'ccc.010304.xyz'
-    _poolOnly: true
-  - name: '🇳🇱NL_241|408KB/s|R002-260618 01'
-    port: 9090
-    server: '185.53.129.141'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - client-fingerprint: 'unsafe'
-    name: '🇳🇱NL_285|2.9MB/s|S004-260618 01'
+    name: '🇳🇱NL_334|3.7MB/s|S004-260618 01'
     network: 'ws'
     password: 'humanity'
     port: 443
-    server: '188.114.97.1'
+    server: '188.114.97.7'
     skip-cert-verify: false
     sni: 'www.pleadcourt.org'
     sub_tag: 'S004-260618'
@@ -719,848 +164,33 @@ proxies:
     udp: true
     ws-opts:
       headers:
-        User-Agent: 'Mozilla/5.0 (Linux; Android 6.0; CAM-L21 Build/HUAWEICAM-L21; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/62.0.3202.84 Mobile Safari/537.36'
+        User-Agent: 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36'
       path: '/assignment'
     _poolOnly: true
-  - name: '🇱🇺LU_1|826KB/s|R002-260618 01'
+  - name: '🇳🇱NL_358|1.3MB/s|R002-260618 01'
     port: 443
-    server: '185.221.132.242'
+    server: '5.255.125.188'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
     _poolOnly: true
-  - client-fingerprint: 'chrome'
-    name: '🇸🇬SG_86|353KB/s|A001-260618 01'
-    password: 'e26a229d-e8f2-4ff9-8c7d-58a9d83ee437'
-    port: 8886
-    server: '139.180.146.200'
-    skip-cert-verify: true
-    sni: '139.180.146.200'
-    sub_tag: 'A001-260618'
-    type: 'trojan'
-    udp: true
-    network: 'tcp'
-    _poolOnly: true
-  - name: '🇩🇪DE_162|1.0MB/s|R002-260618 01'
-    port: 443
-    server: '217.92.132.233'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    name: '🇸🇬SG_77|804KB/s|A004-260618 01'
-    network: 'tcp'
-    password: 'e26a229d-e8f2-4ff9-8c7d-58a9d83ee437'
-    port: 8886
-    server: '139.180.146.200'
-    skip-cert-verify: true
-    sub_tag: 'A004-260618'
-    type: 'trojan'
-    udp: true
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    name: '🇧🇬BG_12|390KB/s|P002-260618 01'
-    network: 'ws'
-    port: 443
-    server: '155.103.71.142'
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'd342d11e-d224-4463-b982-532309285094'
-    ws-opts:
-      headers:
-        Host: 'ccc.010304.xyz'
-      path: '/fp=chrome'
-    servername: 'ccc.010304.xyz'
-    _poolOnly: true
-  - name: '🇷🇴RO_82|254KB/s|R002-260618 01'
-    port: 9443
-    server: '135.136.1.2'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇷🇴RO_83|512KB/s|R002-260618 01'
-    port: 9443
-    server: '169.150.199.1'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - alpn:
-      - 'h3'
-      - 'h2'
-      - 'http/1.1'
-    client-fingerprint: 'chrome'
-    encryption: 'none'
-    name: '🇩🇪DE_134|1.4MB/s|S004-260618 01'
-    network: 'ws'
-    port: 2083
-    server: 'sino.bestsellers1.site'
-    sub_tag: 'S004-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '7858128a-6b5e-4f86-9bff-52c1f1e6439d'
-    ws-opts:
-      headers:
-        Host: ''
-        User-Agent: 'Mozilla/5.0 (Windows NT 5.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36'
-      path: '/'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'sino.bestsellers1.site'
-    _poolOnly: true
-  - name: '🇫🇷FR_2015|97KB/s|R002-260618 01'
-    port: 443
-    server: '62.210.147.2'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇦🇱AL_5|362KB/s|R002-260618 01'
-    port: 9443
-    server: '31.171.154.66'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇧🇦BA_1|650KB/s|R002-260618 01'
-    port: 9443
-    server: '185.164.35.16'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇦🇱AL_3|594KB/s|K001-260618 01'
-    password: ''
-    port: 9443
-    server: '31.171.155.210'
-    skip-cert-verify: true
-    sub_tag: 'K001-260618'
-    tls: true
-    type: 'http'
-    username: ''
-    udp: true
-    _poolOnly: true
-  - alterId: 0
-    cipher: 'auto'
-    name: '🇵🇱PL_45|237KB/s|M003-260806 01'
-    network: 'ws'
-    port: 443
-    server: 'mix2.998998.best'
-    skip-cert-verify: false
-    sub_tag: 'M003-260806'
-    tls: true
-    type: 'vmess'
-    udp: true
-    uuid: '5504eaa8-1395-402f-8e0e-75ecd762e627'
-    ws-opts:
-      early-data-header-name: 'Sec-WebSocket-Protocol'
-      headers:
-        Host: 'server10.9966338.xyz'
-      max-early-data: 2560
-      path: '/rthiugoyretdsuigg'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'server10.9966338.xyz'
-    _poolOnly: true
-  - name: '🇸🇬SG_93|339KB/s|R002-260618 01'
-    port: 9443
-    server: '152.233.9.239'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    name: '🇸🇬SG_64|383KB/s|A004-260618 01'
-    network: 'ws'
-    port: 2096
-    server: '139.162.27.96'
-    sub_tag: 'A004-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '6e59d5c5-7aa3-4c36-a4c4-e3b899525ed2'
-    ws-opts:
-      headers:
-        Host: 'free-server.techsonic.dev'
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36'
-      path: '/free-server.techsonic.dev'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'free-server.techsonic.dev'
-    _poolOnly: true
-  - name: '🇸🇬SG_72|231KB/s|R002-260618 01'
-    port: 9090
-    server: '128.199.121.61'
-    sub_tag: 'R002-260618'
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - encryption: 'none'
-    name: '🇻🇳VN_2|271KB/s|M003-260806 01'
-    network: 'tcp'
-    port: 2086
-    server: '150.95.109.109'
-    sub_tag: 'M003-260806'
-    type: 'vless'
-    udp: true
-    uuid: 'b83faafc-cbb7-4655-99d4-2c4c39a49d1b'
-    xudp: true
-    packet-encoding: 'xudp'
-    _poolOnly: true
-  - alterId: '0'
-    cipher: 'auto'
-    name: '🇳🇱NL_235|70KB/s|M003-260806 01'
-    network: 'ws'
-    port: 443
-    server: 'uk3-2.998998.best'
-    skip-cert-verify: false
-    sub_tag: 'M003-260806'
-    tls: true
-    type: 'vmess'
-    udp: true
-    uuid: '5504eaa8-1395-402f-8e0e-75ecd762e627'
-    ws-opts:
-      headers:
-        Host: 'server22.9966338.xyz'
-      path: '/serhrdftshg'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'server22.9966338.xyz'
-    _poolOnly: true
-  - alterId: '0'
-    cipher: 'auto'
-    name: '🇰🇿KZ_4|328KB/s|M002-260618 01'
-    network: 'ws'
-    port: 80
-    server: '3h-kazakhstan1.09vpn.com'
-    skip-cert-verify: false
-    sub_tag: 'M002-260618'
-    tls: false
-    type: 'vmess'
-    udp: true
-    uuid: '567f4be5-12ab-42e1-b8d9-db6fd1fdd31c'
-    ws-opts:
-      headers:
-        Host: '3h-kazakhstan1.09vpn.com'
-      path: '/vmess/'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'wrmelmwxlf.gktevlrqznwqqozy.fabpfs66gizmnojhcvqxwl.kytrcfzqla87gvgvs6c7kjnrubuh.cc'
-    _poolOnly: true
-  - name: '🇮🇩ID_10|550KB/s|R002-260618 01'
-    port: 443
-    server: '103.86.117.202'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_429|77KB/s|P002-260618 01'
-    network: 'ws'
-    password: '5504eaa8-1395-402f-8e0e-75ecd762e627'
-    port: 443
-    server: 'us3-2.998998.best'
-    skip-cert-verify: true
-    sni: 'nat3.xxai.dpdns.org'
-    sub_tag: 'P002-260618'
-    type: 'trojan'
-    udp: true
-    ws-opts:
-      headers:
-        Host: 'nat3.xxai.dpdns.org'
-      path: '/anyway'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    name: '🇸🇬SG_73|495KB/s|A004-260618 01'
-    network: 'ws'
-    port: 627
-    server: '142.91.101.39'
-    sub_tag: 'A004-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '3f87daa8-3af8-40a0-b655-127911e008dc'
-    ws-opts:
-      headers:
-        Host: '7nnoiou0z.3xn99hzq2sh7iekktpkeq7rofs3qc8iohrqs4pb9p.workers.dev'
-        User-Agent: 'Mozilla/5.0 (Linux; Android 6.0.1; SM-G532M Build/MMB29T; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/55.0.2883.91 Mobile Safari/537.36'
-      path: '/@Marisa_kristi'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: '7nnoiou0z.3xn99hzq2sh7iekktpkeq7rofs3qc8iohrqs4pb9p.workers.dev'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    name: '🇳🇱NL_247|2.1MB/s|B007-260618 01'
-    network: 'ws'
-    password: 'humanity'
-    port: 443
-    server: '104.16.6.70'
-    skip-cert-verify: false
-    sni: 'www.pleadcourt.org'
-    sub_tag: 'B007-260618'
-    type: 'trojan'
-    udp: true
-    ws-opts:
-      headers:
-        User-Agent: 'Mozilla/5.0 (Linux; Android 7.0; Redmi Note 4 Build/NRD90M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.111 Mobile Safari/537.36'
-      path: '/assignment'
-    _poolOnly: true
-  - name: '🇮🇳IN_50|341KB/s|R002-260618 01'
-    port: 443
-    server: '110.173.188.221'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    name: '🇳🇱NL_269|4.3MB/s|B007-260618 01'
-    network: 'ws'
-    password: 'humanity'
-    port: 443
-    server: '188.114.97.3'
-    skip-cert-verify: false
-    sni: 'www.pleadcourt.org'
-    sub_tag: 'B007-260618'
-    type: 'trojan'
-    udp: true
-    ws-opts:
-      headers:
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.107 Safari/537.36'
-      path: '/assignment'
-    _poolOnly: true
-  - alterId: 0
-    cipher: 'auto'
-    name: '🇪🇪EE_25|149KB/s|S004-260618 01'
-    network: 'ws'
-    port: 443
-    server: 'eu3.998998.best'
-    skip-cert-verify: false
-    sub_tag: 'S004-260618'
-    tls: true
-    type: 'vmess'
-    udp: true
-    uuid: '5504eaa8-1395-402f-8e0e-75ecd762e627'
-    ws-opts:
-      headers:
-        Host: 'server40.9966338.xyz'
-      path: '/aiaiai'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'server40.9966338.xyz'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    name: '❓Other_92|242KB/s|S001-260618 01'
-    network: 'ws'
-    password: '5504eaa8-1395-402f-8e0e-75ecd762e627'
-    port: 443
-    server: 'jp3.998998.best'
-    skip-cert-verify: false
-    sni: 'nat11.outsidemyheart.space'
-    sub_tag: 'S001-260618'
-    type: 'trojan'
-    udp: true
-    ws-opts:
-      headers:
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.101 Safari/537.36'
-      path: '/w4e5yh0p945y3'
-      early-data-header-name: 'Sec-WebSocket-Protocol'
-      max-early-data: 2560
-    _poolOnly: true
-  - name: 'DE德国(mibei77.com 米贝节点分享)_8'
-    type: 'vless'
-    server: 'ge-s-1.pythonmakemigreat.wiki'
-    port: 443
-    uuid: 'f8d52ece-fad4-478d-875d-df6eed3befa7'
-    servername: 'ge-s-1.pythonmakemigreat.wiki'
-    tls: true
-    flow: 'xtls-rprx-vision'
-    client-fingerprint: 'chrome'
-    reality-opts:
-      public-key: '5fkwwCKZzMsE6Eb_b3iqluu-1AWIfnYl-p0N3EL9Al8'
-      short-id: '2c9a2790ad5900b2'
-    skip-cert-verify: true
-    udp: true
-    _poolOnly: true
-  - name: '🇫🇮FI_87|2.0MB/s|A004-260618 01'
-    network: 'tcp'
-    port: 2052
-    server: 'edge10.cyrionflare.com'
-    sub_tag: 'A004-260618'
-    type: 'vless'
-    udp: true
-    uuid: '1a8ecc41-6e62-431b-8eca-87c2fa4dc286'
-    xudp: true
-    packet-encoding: 'xudp'
-    _poolOnly: true
-  - name: '🇺🇸US_469|226KB/s|R002-260618 01'
-    port: 44499
-    server: '45.61.188.134'
-    sub_tag: 'R002-260618'
-    type: 'socks5'
-    udp: true
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    name: '🇯🇵JP_158|84KB/s|A004-260618 01'
-    network: 'ws'
-    port: 443
-    server: '104.16.10.48'
-    sub_tag: 'A004-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
-    ws-opts:
-      headers:
-        Host: 'jp3.yohototo.top'
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'
-      path: '/tyxyws'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'jp3.yohototo.top'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    name: '🇯🇵JP_155|183KB/s|A004-260618 01'
-    network: 'ws'
-    port: 443
-    server: '104.16.10.234'
-    sub_tag: 'A004-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
-    ws-opts:
-      headers:
-        Host: 'jp3.yohototo.top'
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'
-      path: '/tyxyws'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'jp3.yohototo.top'
-    _poolOnly: true
-  - name: '🇧🇩BD_1|314KB/s|R002-260618 01'
-    port: 9090
-    server: '202.4.123.220'
-    sub_tag: 'R002-260618'
-    type: 'socks5'
-    udp: true
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    name: '🇸🇬SG_106|410KB/s|A004-260618 01'
-    network: 'tcp'
-    password: 'WvH8ooM9hom4KOOJHFJz1x5umE0aV4R0'
-    port: 443
-    server: '43.156.36.253'
-    skip-cert-verify: true
-    sub_tag: 'A004-260618'
-    type: 'trojan'
-    udp: true
-    _poolOnly: true
-  - client-fingerprint: 'unsafe'
-    name: '🇳🇱NL_249|1.8MB/s|B007-260618 01'
-    network: 'ws'
-    password: 'humanity'
-    port: 443
-    server: '172.64.145.133'
-    skip-cert-verify: false
-    sni: 'www.pleadcourt.org'
-    sub_tag: 'B007-260618'
-    type: 'trojan'
-    udp: true
-    ws-opts:
-      headers:
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36'
-      path: '/assignment'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    name: '🇫🇮FI_69|664KB/s|K001-260618 01'
-    network: 'ws'
-    port: 443
-    server: '77.110.97.245'
-    sub_tag: 'K001-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'd342d11e-d224-4463-b982-532309285094'
-    ws-opts:
-      headers:
-        Host: 'ccc.010304.xyz'
-        User-Agent: 'Mozilla/5.0 (X11; Linux i686) AppleWebKit/534.30 (KHTML, like Gecko) Chrome/12.0.742.100 Safari/534.30'
-      path: '/fp=chrome'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'ccc.010304.xyz'
-    _poolOnly: true
-  - client-fingerprint: 'unsafe'
-    name: '🇳🇱NL_283|1.1MB/s|S004-260618 01'
-    network: 'ws'
-    password: 'humanity'
-    port: 443
-    server: '46.225.77.98'
-    skip-cert-verify: false
-    sni: 'www.pleadcourt.org'
-    sub_tag: 'S004-260618'
-    type: 'trojan'
-    udp: true
-    ws-opts:
-      headers:
-        User-Agent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'
-      path: '/assignment'
-    _poolOnly: true
-  - alpn:
-      - 'http/1.1'
-    client-fingerprint: 'chrome'
-    name: '🇳🇱NL_282|1.8MB/s|B007-260618 01'
-    network: 'ws'
-    password: 'humanity'
-    port: 443
-    server: '188.226.181.61'
-    skip-cert-verify: false
-    sni: 'www.pleadcourt.org'
-    sub_tag: 'B007-260618'
-    type: 'trojan'
-    udp: true
-    ws-opts:
-      headers:
-        User-Agent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.89 Safari/537.36'
-      path: '/assignment'
-    _poolOnly: true
-  - name: '🇸🇬SG_92|318KB/s|R002-260618 01'
-    port: 443
-    server: '156.146.56.97'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    name: '🇯🇵JP_120|111KB/s|A004-260618 01'
-    network: 'ws'
-    port: 443
-    server: '104.21.70.228'
-    sub_tag: 'A004-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
-    ws-opts:
-      headers:
-        Host: 'jp3.yohototo.top'
-        User-Agent: 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.112 Safari/537.36'
-      path: '/tyxyws'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'jp3.yohototo.top'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    name: '🇯🇵JP_127|92KB/s|A004-260618 01'
-    network: 'ws'
-    port: 443
-    server: '104.16.10.135'
-    sub_tag: 'A004-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
-    ws-opts:
-      headers:
-        Host: 'jp3.yohototo.top'
-        User-Agent: 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36'
-      path: '/tyxyws'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'jp3.yohototo.top'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    name: '🇳🇱NL_276|1.9MB/s|B007-260618 01'
-    network: 'ws'
-    password: 'humanity'
-    port: 443
-    server: '188.114.97.5'
-    skip-cert-verify: false
-    sni: 'www.pleadcourt.org'
-    sub_tag: 'B007-260618'
-    type: 'trojan'
-    udp: true
-    ws-opts:
-      headers:
-        User-Agent: 'Mozilla/5.0 (Linux; Android 5.1.1; SM-J111M Build/LMY47V) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36'
-      path: '/assignment'
-    _poolOnly: true
-  - client-fingerprint: 'unsafe'
-    encryption: 'none'
-    name: '🇯🇵JP_101|143KB/s|M002-260618 01'
-    network: 'ws'
-    port: 443
-    server: '104.17.50.53'
-    sub_tag: 'M002-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
-    ws-opts:
-      headers:
-        Host: 'jp3.yohototo.top'
-        User-Agent: 'Mozilla/5.0 (Linux; Android 7.1.2; Redmi 4X Build/N2G47H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.111 Mobile Safari/537.36'
-      path: '/tyxyws'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'jp3.yohototo.top'
-    _poolOnly: true
-  - client-fingerprint: 'unsafe'
-    encryption: 'none'
-    name: '🇯🇵JP_125|91KB/s|M002-260618 01'
-    network: 'ws'
-    port: 443
-    server: '104.27.46.35'
-    sub_tag: 'M002-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
-    ws-opts:
-      headers:
-        Host: 'jp3.yohototo.top'
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.109 Safari/537.36'
-      path: '/tyxyws'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'jp3.yohototo.top'
-    _poolOnly: true
-  - name: '🇩🇪DE_126|1.7MB/s|R002-260618 01'
-    port: 443
-    server: '37.203.35.53'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇩🇪DE_174|1.1MB/s|M002-260618 01'
-    network: 'ws'
-    port: 2052
-    server: 'undef.network'
-    sub_tag: 'M002-260618'
-    type: 'vless'
-    udp: true
-    uuid: 'aa5d861a-7799-41a7-bdf4-7a6414cf98fd'
-    ws-opts:
-      headers:
-        Host: 'uwu.blueknightnet.qzz.io'
-        User-Agent: 'Mozilla/5.0 (Linux; Android 8.0.0; FIG-LX3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.80 Mobile Safari/537.36'
-      path: '/@BlueKnight_net--@BlueKnight_net'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'undef.network'
-    _poolOnly: true
-  - cipher: 'chacha20-ietf-poly1305'
-    name: '🇳🇱NL_258|4.3MB/s|A004-260618 01'
-    password: 'k1dBOmOB4oqi7Ump37a1bQ'
-    port: 8080
-    server: '82.38.31.178'
-    sub_tag: 'A004-260618'
-    type: 'ss'
-    udp: true
-    _poolOnly: true
-  - client-fingerprint: 'unsafe'
-    encryption: 'none'
-    name: '🇯🇵JP_161|105KB/s|M002-260618 01'
-    network: 'ws'
-    port: 443
-    server: '104.19.33.25'
-    sub_tag: 'M002-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
-    ws-opts:
-      headers:
-        Host: 'jp3.yohototo.top'
-        User-Agent: 'Mozilla/5.0 (Linux; Android 7.0; SM-J710F Build/NRD90M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.84 Mobile Safari/537.36'
-      path: '/tyxyws'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'jp3.yohototo.top'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    name: '🇳🇱NL_273|744KB/s|B007-260618 01'
-    network: 'ws'
-    password: 'humanity'
-    port: 443
-    server: '192.145.30.27'
-    skip-cert-verify: false
-    sni: 'www.pleadcourt.org'
-    sub_tag: 'B007-260618'
-    type: 'trojan'
-    udp: true
-    ws-opts:
-      headers:
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36'
-      path: '/assignment'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    name: '🇯🇵JP_103|165KB/s|A004-260618 01'
-    network: 'ws'
-    port: 443
-    server: '104.16.111.195'
-    sub_tag: 'A004-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
-    ws-opts:
-      headers:
-        Host: 'jp3.yohototo.top'
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36'
-      path: '/tyxyws'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'jp3.yohototo.top'
-    _poolOnly: true
-  - alpn:
-      - 'h2'
-    client-fingerprint: 'chrome'
-    encryption: 'none'
-    name: '🇩🇪DE_175|1.7MB/s|M002-260618 01'
-    network: 'ws'
-    port: 2053
-    server: 'undef.network'
-    sub_tag: 'M002-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'aa5d861a-7799-41a7-bdf4-7a6414cf98fd'
-    ws-opts:
-      headers:
-        Host: 'uwu.blueknightnet.qzz.io'
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36'
-      path: '/@BlueKnight_net--@BlueKnight_net--@BlueKnight_net--@BlueKnight_net--@BlueKnight_net--@BlueKnight_net'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'uwu.blueknightnet.qzz.io'
-    _poolOnly: true
-  - cipher: 'chacha20-ietf-poly1305'
-    name: '🇷🇴RO_99|1.5MB/s|M003-260806 01'
-    password: 'U83u9OGpvSatIUW7LsWffr'
-    port: 64546
-    server: '194.68.44.42'
-    sub_tag: 'M003-260806'
-    type: 'ss'
-    udp: true
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    name: '❓Other_73|411KB/s|M002-260618 01'
-    network: 'ws'
-    port: 2053
-    server: 'hikvision-plus.com'
-    sub_tag: 'M002-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'aa5d861a-7799-41a7-bdf4-7a6414cf98fd'
-    ws-opts:
-      headers:
-        Host: 'uwu.blueknightnet.qzz.io'
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131 Safari/537.36'
-      path: '/@BlueKnight_net--@BlueKnight_net--@BlueKnight_net--@BlueKnight_net--@BlueKnight_net--@BlueKnight_net'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'uwu.blueknightnet.qzz.io'
-    _poolOnly: true
-  - cipher: 'aes-256-gcm'
-    name: '🇹🇭TH_3|483KB/s|B007-260618 01'
-    password: 'sxajCTwrlK0zl+zmHpX0p0jXIfatnzlLzWlSQ950L1c='
-    port: 52351
-    server: 'pphfree2.mvpnpvpn.de5.net'
-    sub_tag: 'B007-260618'
-    type: 'ss'
-    udp: true
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    name: '🇩🇪DE_110|721KB/s|M002-260618 01'
-    network: 'ws'
-    port: 2053
-    server: 'freesocks.work'
-    sub_tag: 'M002-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'e3fb01b6-69b4-41d7-babf-696d992de194'
-    ws-opts:
-      headers:
-        Host: 'uwu.blueknightnet.qzz.io'
-        User-Agent: 'Mozilla/5.0 (Windows NT 5.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'
-      path: '/@BlueKnight_net--@BlueKnight_net--@BlueKnight_net--@BlueKnight_net--@BlueKnight_net--@BlueKnight_net'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'uwu.blueknightnet.qzz.io'
-    _poolOnly: true
-  - cipher: 'chacha20-ietf-poly1305'
-    name: '🇩🇪DE_125|1.5MB/s|B007-260618 01'
-    password: 'NcAXc0UZI6yQJE1p8QmOv8'
-    port: 8388
-    server: '57.129.113.16'
-    sub_tag: 'B007-260618'
-    type: 'ss'
-    udp: true
-    _poolOnly: true
-  - alpn:
-      - 'http/1.1'
-      - 'h2'
-    client-fingerprint: 'firefox'
-    encryption: 'none'
-    name: '🇷🇺RU_10|345KB/s|S001-260618 01'
-    network: 'xhttp'
-    port: 2053
-    server: '78.159.246.85'
-    sub_tag: 'S001-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '6a2aff19-ff1f-4a13-96c8-a4d8986a9699'
-    xhttp-opts:
-      host: 'fitindoor.net'
-      mode: 'auto'
-      path: '/api/v1/upload'
-      reuse-settings:
-        c-max-reuse-times: '64-128'
-        h-keep-alive-period: 0
-        h-max-request-times: '0'
-        h-max-reusable-secs: '0'
-        max-concurrency: '16-32'
-        max-connections: '0'
-      x-padding-bytes: '100-1000'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'fitindoor.net'
-    _poolOnly: true
-  - name: '🇪🇪EE_24|1.5MB/s|R002-260618 01'
+  - name: '🇪🇪EE_29|2.0MB/s|R002-260618 01'
     password: '9jkvAVV-9ufV6IGd'
-    port: 27402
+    port: 44008
+    server: 'chalo-ru.nexorcdn.com'
+    skip-cert-verify: true
+    sni: 'chalo-ru.nexorcdn.com'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'ef37886e2aacd6fa622e3de3810299c2'
+    udp: true
+    _poolOnly: true
+  - name: '🇪🇪EE_32|1.5MB/s|R002-260618 01'
+    password: '9jkvAVV-9ufV6IGd'
+    port: 36774
     server: 'chalo-ru.nexorcdn.com'
     skip-cert-verify: true
     sni: 'chalo-ru.nexorcdn.com'
@@ -1572,12 +202,12 @@ proxies:
     _poolOnly: true
   - alpn:
       - 'http/1.1'
-    client-fingerprint: 'chrome'
-    name: '🇳🇱NL_263|3.8MB/s|S004-260618 01'
+    client-fingerprint: 'unsafe'
+    name: '🇳🇱NL_336|451KB/s|S004-260618 01'
     network: 'ws'
     password: 'humanity'
     port: 443
-    server: '104.17.44.17'
+    server: '45.38.3.25'
     skip-cert-verify: false
     sni: 'www.pleadcourt.org'
     sub_tag: 'S004-260618'
@@ -1585,99 +215,351 @@ proxies:
     udp: true
     ws-opts:
       headers:
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'
+        User-Agent: 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.143 Safari/537.36'
       path: '/assignment'
     _poolOnly: true
-  - alpn:
-      - 'h2'
-      - 'http/1.1'
-    client-fingerprint: 'chrome'
-    encryption: 'none'
-    name: '🇷🇺RU_14|814KB/s|S004-260618 01'
-    network: 'xhttp'
-    port: 2053
-    server: 'fitindoor.net'
-    sub_tag: 'S004-260618'
-    tls: true
+  - name: '❓未知丨yoyapai.com_1-pool-2c2f6ea349ce782c'
     type: 'vless'
-    udp: true
-    uuid: '95a608b6-bff1-4e10-bb61-0a39f221bb7d'
-    xhttp-opts:
-      host: 'fitindoor.net'
-      mode: 'auto'
-      path: '/api/v1/upload'
-      reuse-settings:
-        c-max-reuse-times: '64-128'
-        max-concurrency: '16-32'
-        max-connections: '0'
-      sc-max-each-post-bytes: 1000000
-      sc-min-posts-interval-ms: 30
-      x-padding-bytes: '100-1000'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'fitindoor.net'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    name: '🇳🇱NL_270|1.1MB/s|B007-260618 01'
-    network: 'ws'
-    password: 'humanity'
+    server: 'dey.lnmarketplace.net'
     port: 443
-    server: '94.158.219.126'
+    uuid: '3536e1fa-0850-44d1-b123-925ce12476cf'
+    network: 'xhttp'
+    servername: 'dey.lnmarketplace.net'
+    tls: true
+    client-fingerprint: 'chrome'
+    alpn:
+      - 'h2'
+    xhttp-opts:
+      path: '/kavir'
+      host: 'dey.lnmarketplace.net'
+      mode: 'stream-one'
     skip-cert-verify: false
-    sni: 'www.pleadcourt.org'
-    sub_tag: 'B007-260618'
-    type: 'trojan'
     udp: true
-    ws-opts:
-      headers:
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'
-      path: '/assignment'
     _poolOnly: true
-  - client-fingerprint: 'chrome'
-    name: '🇯🇵JP_117|578KB/s|A004-260618 01'
-    network: 'tcp'
-    password: 'e26a229d-e8f2-4ff9-8c7d-58a9d83ee437'
-    port: 8886
-    server: '45.32.52.173'
+  - name: '🇪🇪EE_30|551KB/s|R002-260618 01'
+    port: 9443
+    server: '192.159.101.174'
     skip-cert-verify: true
-    sub_tag: 'A004-260618'
-    type: 'trojan'
-    udp: true
-    _poolOnly: true
-  - name: '🇻🇪VE_1|256KB/s|R002-260618 01'
-    port: 999
-    server: '200.59.191.27'
     sub_tag: 'R002-260618'
+    tls: true
     type: 'http'
     udp: true
     _poolOnly: true
   - client-fingerprint: 'chrome'
-    name: '🇩🇪DE_126|867KB/s|M002-260618 01'
+    name: '🇳🇱NL_353|2.6MB/s|S004-260618 01'
     network: 'ws'
-    port: 2053
-    server: 'hikvision-plus.com'
+    password: 'humanity'
+    port: 443
+    server: '108.162.194.134'
+    skip-cert-verify: false
+    sni: 'www.pleadcourt.org'
+    sub_tag: 'S004-260618'
+    type: 'trojan'
+    udp: true
+    ws-opts:
+      headers:
+        User-Agent: 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'
+      path: '/assignment'
+    _poolOnly: true
+  - client-fingerprint: 'chrome'
+    name: '🇫🇷FR_97|583KB/s|M003-260806 01'
+    network: 'ws'
+    password: 'humanity'
+    port: 443
+    server: '193.239.160.134'
+    skip-cert-verify: false
+    sni: 'www.calmlunch.com'
+    sub_tag: 'M003-260806'
+    type: 'trojan'
+    udp: true
+    ws-opts:
+      headers:
+        User-Agent: 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36'
+      path: '/assignment'
+    _poolOnly: true
+  - client-fingerprint: 'unsafe'
+    name: '🇳🇱NL_343|3.8MB/s|S004-260618 01'
+    network: 'ws'
+    password: 'humanity'
+    port: 443
+    server: '188.114.97.8'
+    skip-cert-verify: false
+    sni: 'www.pleadcourt.org'
+    sub_tag: 'S004-260618'
+    type: 'trojan'
+    udp: true
+    ws-opts:
+      headers:
+        User-Agent: 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36'
+      path: '/assignment'
+    _poolOnly: true
+  - type: 'vmess'
+    name: '美国 CloudFlare节点'
+    server: 'eu3.998998.best'
+    port: 443
+    uuid: '5504eaa8-1395-402f-8e0e-75ecd762e627'
+    alterId: 0
+    cipher: 'auto'
+    tls: true
+    sni: 'server40.9966338.xyz'
+    network: 'ws'
+    ws-opts:
+      path: '/aiaiai'
+      headers:
+        Host: 'server40.9966338.xyz'
+    _poolOnly: true
+  - name: '🇩🇪_DE_德国->🇱🇰_LK_斯里兰卡'
+    type: 'vless'
+    server: 'free.sahanwickramasinghe.me'
+    port: 80
+    uuid: 'fcdb24e3-5e66-4c45-b89e-ac9441f4dcda'
+    network: 'ws'
+    tls: false
+    ws-opts:
+      path: '/'
+      headers:
+        Host: 'free.sahanwickramasinghe.me'
+    skip-cert-verify: true
+    udp: true
+    _poolOnly: true
+  - alpn:
+      - 'http/1.1'
+    client-fingerprint: 'unsafe'
+    name: '🇳🇱NL_316|241KB/s|S004-260618 01'
+    network: 'ws'
+    password: 'humanity'
+    port: 443
+    server: '131.196.254.151'
+    skip-cert-verify: false
+    sni: 'www.pleadcourt.org'
+    sub_tag: 'S004-260618'
+    type: 'trojan'
+    udp: true
+    ws-opts:
+      headers:
+        User-Agent: 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36'
+      path: '/assignment'
+    _poolOnly: true
+  - type: 'vless'
+    name: '美国+CloudFlare节点-458af516e04db375'
+    server: '104.16.111.102'
+    port: 443
+    tls: true
+    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
+    network: 'ws'
+    sni: 'jp3.yohototo.top'
+    ws-opts:
+      path: '/tyxyws'
+      headers:
+        Host: 'jp3.yohototo.top'
+    _poolOnly: true
+  - client-fingerprint: 'firefox'
+    name: '🇯🇵JP_176|193KB/s|A004-260618 01'
+    network: 'ws'
+    port: 443
+    server: '43.170.8.95'
+    sub_tag: 'A004-260618'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
+    ws-opts:
+      headers:
+        Host: 'jp3.yohototo.top'
+        User-Agent: 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36'
+      path: '/tyxyws'
+    xudp: true
+    packet-encoding: 'xudp'
+    servername: 'jp3.yohototo.top'
+    _poolOnly: true
+  - client-fingerprint: 'chrome'
+    name: '🇫🇷FR_176|1018KB/s|M003-260806 01'
+    network: 'ws'
+    password: 'humanity'
+    port: 443
+    server: '185.36.141.81'
+    skip-cert-verify: false
+    sni: 'www.calmlunch.com'
+    sub_tag: 'M003-260806'
+    type: 'trojan'
+    udp: true
+    ws-opts:
+      headers:
+        User-Agent: 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'
+      path: '/assignment'
+    _poolOnly: true
+  - client-fingerprint: 'unsafe'
+    name: '🇳🇱NL_318|1.2MB/s|S004-260618 01'
+    network: 'ws'
+    password: 'humanity'
+    port: 443
+    server: '185.22.172.249'
+    skip-cert-verify: false
+    sni: 'www.pleadcourt.org'
+    sub_tag: 'S004-260618'
+    type: 'trojan'
+    udp: true
+    ws-opts:
+      headers:
+        User-Agent: 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.85 Safari/537.36'
+      path: '/assignment'
+    _poolOnly: true
+  - client-fingerprint: 'chrome'
+    name: '🇸🇬SG_99|708KB/s|M002-260618 01'
+    network: 'ws'
+    password: '5504eaa8-1395-402f-8e0e-75ecd762e627'
+    port: 443
+    server: 'sg2.998998.best'
+    skip-cert-verify: false
+    sni: 'nat6.outsidemyheart.space'
+    sub_tag: 'M002-260618'
+    type: 'trojan'
+    udp: true
+    ws-opts:
+      headers:
+        User-Agent: 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36'
+      path: '/eriujtheriughwiue'
+      early-data-header-name: 'Sec-WebSocket-Protocol'
+      max-early-data: 2560
+    _poolOnly: true
+  - alpn:
+      - 'http/1.1'
+    client-fingerprint: 'unsafe'
+    name: '🇳🇱NL_328|769KB/s|S004-260618 01'
+    network: 'ws'
+    password: 'humanity'
+    port: 443
+    server: '83.217.222.170'
+    skip-cert-verify: false
+    sni: 'www.pleadcourt.org'
+    sub_tag: 'S004-260618'
+    type: 'trojan'
+    udp: true
+    ws-opts:
+      headers:
+        User-Agent: 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.94 Safari/537.36'
+      path: '/assignment'
+    _poolOnly: true
+  - client-fingerprint: 'chrome'
+    name: '🇯🇵JP_175|71KB/s|A004-260618 01'
+    network: 'ws'
+    port: 443
+    server: '104.18.42.98'
+    sub_tag: 'A004-260618'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
+    ws-opts:
+      headers:
+        Host: 'jp3.yohototo.top'
+        User-Agent: 'Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'
+      path: '/tyxyws'
+    xudp: true
+    packet-encoding: 'xudp'
+    servername: 'jp3.yohototo.top'
+    _poolOnly: true
+  - client-fingerprint: 'chrome'
+    name: '🇯🇵JP_164|85KB/s|A004-260618 01'
+    network: 'ws'
+    port: 443
+    server: '104.16.10.63'
+    sub_tag: 'A004-260618'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
+    ws-opts:
+      headers:
+        Host: 'jp3.yohototo.top'
+        User-Agent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'
+      path: '/tyxyws'
+    xudp: true
+    packet-encoding: 'xudp'
+    servername: 'jp3.yohototo.top'
+    _poolOnly: true
+  - client-fingerprint: 'unsafe'
+    name: '🇳🇱NL_345|361KB/s|S004-260618 01'
+    network: 'ws'
+    password: 'humanity'
+    port: 443
+    server: '219.76.13.177'
+    skip-cert-verify: false
+    sni: 'www.pleadcourt.org'
+    sub_tag: 'S004-260618'
+    type: 'trojan'
+    udp: true
+    ws-opts:
+      headers:
+        User-Agent: 'Mozilla/5.0 (Linux; Android 7.0; TRT-LX3 Build/HUAWEITRT-LX3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36'
+      path: '/assignment'
+    _poolOnly: true
+  - client-fingerprint: 'chrome'
+    encryption: 'none'
+    name: '❓Other_50|349KB/s|M002-260618 01'
+    network: 'ws'
+    port: 443
+    server: '104.21.3.219'
     sub_tag: 'M002-260618'
     tls: true
     type: 'vless'
     udp: true
-    uuid: 'e3fb01b6-69b4-41d7-babf-696d992de194'
+    uuid: '8be461cb-a0df-47cf-bc0d-4d9e6a22fa74'
     ws-opts:
       headers:
-        Host: 'uwu.blueknightnet.qzz.io'
-        User-Agent: 'Mozilla/5.0 (Linux; Android 5.1.1; SM-J111M Build/LMY47V) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36'
-      path: '/@BlueKnight_net--@BlueKnight_net--@BlueKnight_net--@BlueKnight_net--@BlueKnight_net--@BlueKnight_net'
+        Host: 'ccs2g.pai50288.uk'
+        User-Agent: 'Mozilla/5.0 (Linux; Android 7.0; SM-G610M Build/NRD90M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36'
+      path: '/pai50288'
     xudp: true
     packet-encoding: 'xudp'
-    servername: 'uwu.blueknightnet.qzz.io'
+    servername: 'ccs2g.pai50288.uk'
+    _poolOnly: true
+  - client-fingerprint: 'unsafe'
+    encryption: 'none'
+    name: '🇯🇵JP_166|233KB/s|M002-260618 01'
+    network: 'ws'
+    port: 443
+    server: '104.17.50.227'
+    sub_tag: 'M002-260618'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
+    ws-opts:
+      headers:
+        Host: 'jp3.yohototo.top'
+        User-Agent: 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36'
+      path: '/tyxyws'
+    xudp: true
+    packet-encoding: 'xudp'
+    servername: 'jp3.yohototo.top'
+    _poolOnly: true
+  - alpn:
+      - 'http/1.1'
+    client-fingerprint: 'unsafe'
+    name: '🇳🇱NL_347|1.9MB/s|S004-260618 01'
+    network: 'ws'
+    password: 'humanity'
+    port: 443
+    server: '144.31.195.61'
+    skip-cert-verify: false
+    sni: 'www.pleadcourt.org'
+    sub_tag: 'S004-260618'
+    type: 'trojan'
+    udp: true
+    ws-opts:
+      headers:
+        User-Agent: 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'
+      path: '/assignment'
     _poolOnly: true
   - alterId: '0'
     cipher: 'auto'
-    name: '🇺🇸US_500|1.1MB/s|M002-260618 01'
+    name: '🇺🇸US_512|842KB/s|S004-260618 01'
     network: 'ws'
     port: 443
-    server: 'cf.0sm.com'
+    server: 'cf.090227.xyz'
     skip-cert-verify: false
-    sub_tag: 'M002-260618'
+    sub_tag: 'S004-260618'
     tls: true
     type: 'vmess'
     udp: true
@@ -1692,411 +574,173 @@ proxies:
     packet-encoding: 'xudp'
     servername: 'vmess.lbw666.dpdns.org'
     _poolOnly: true
-  - client-fingerprint: 'chrome'
-    name: '🇬🇧GB_48|889KB/s|A004-260618 01'
-    network: 'raw'
-    port: 8443
-    server: 'node-uk.connectsuite.org'
-    sub_tag: 'A004-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'c08f0056-7a6d-4931-813b-aaa3cdd00aed'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'node-uk.connectsuite.org'
-    _poolOnly: true
-  - name: '🇪🇸ES_28|747KB/s|R002-260618 01'
-    port: 2222
-    server: '185.226.195.251'
+  - name: '🇻🇪VE_2|362KB/s|R002-260618 01'
+    port: 999
+    server: '38.121.212.134'
     sub_tag: 'R002-260618'
     type: 'http'
     udp: true
     _poolOnly: true
-  - alpn:
-      - 'h2'
-    client-fingerprint: 'chrome'
-    encryption: 'none'
-    name: '🇩🇪DE_144|281KB/s|M003-260806 01'
+  - alterId: '0'
+    cipher: 'auto'
+    name: '🇺🇸US_505|1.0MB/s|S004-260618 01'
     network: 'ws'
-    port: 2053
-    server: 'cctvhikvision.center'
-    sub_tag: 'M003-260806'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'aa5d861a-7799-41a7-bdf4-7a6414cf98fd'
-    ws-opts:
-      headers:
-        Host: 'uwu.blueknightnet.qzz.io'
-        User-Agent: 'Mozilla/5.0 (Linux; Android 5.1.1; A37fw Build/LMY47V) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.84 Mobile Safari/537.36'
-      path: '/@BlueKnight_net--@BlueKnight_net--@BlueKnight_net--@BlueKnight_net--@BlueKnight_net--@BlueKnight_net'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'uwu.blueknightnet.qzz.io'
-    _poolOnly: true
-  - encryption: 'none'
-    name: '❓Other_40|2.2MB/s|S004-260618 01'
-    network: 'ws'
-    port: 2052
-    server: '172.67.181.232'
-    sub_tag: 'S004-260618'
-    type: 'vless'
-    udp: true
-    uuid: 'e3fb01b6-69b4-41d7-babf-696d992de194'
-    ws-opts:
-      headers:
-        Host: 'uwu.blueknightnet.qzz.io'
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36'
-      path: '/@BlueKnight_net--@BlueKnight_net?ed#Telegram---PLANB_NET---PLANB_NET---PLANB_NET---PLANB_NET'
-    xudp: true
-    packet-encoding: 'xudp'
-    _poolOnly: true
-  - alpn:
-      - 'h2'
-    client-fingerprint: 'chrome'
-    encryption: 'none'
-    name: '🇩🇪DE_152|411KB/s|S004-260618 01'
-    network: 'ws'
-    port: 2053
-    server: '172.67.181.232'
-    sub_tag: 'S004-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'e3fb01b6-69b4-41d7-babf-696d992de194'
-    ws-opts:
-      headers:
-        Host: 'uwu.blueknightnet.qzz.io'
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.76 Safari/537.36'
-      path: '/@BlueKnight_net--@BlueKnight_net--@BlueKnight_net--@BlueKnight_net--@BlueKnight_net--@BlueKnight_net'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'uwu.blueknightnet.qzz.io'
-    _poolOnly: true
-  - name: '🇩🇪 德国_A9G90L'
-    server: '172.64.229.129'
-    port: 2052
-    type: 'vless'
-    uuid: '5744e593-1cc8-48fa-b8ca-57cd494fe35b'
-    tls: false
-    tfo: false
+    port: 443
+    server: 'cf.877771.xyz'
     skip-cert-verify: false
-    network: 'ws'
-    ws-opts:
-      path: '/rain1226'
-      headers:
-        Host: 'eu02.123450908.xyz'
-    udp: true
-    _poolOnly: true
-  - name: '8元老牌专线机场：cczzuu.top-9bfddae3ad813459'
-    server: '47.244.120.197'
-    port: 36703
+    sub_tag: 'S004-260618'
+    tls: true
     type: 'vmess'
     udp: true
-    uuid: '45b83519-9c4f-4052-a11b-02e017b636d4'
-    alterId: 0
-    cipher: 'auto'
-    tls: false
-    skip-cert-verify: false
-    network: 'ws'
+    uuid: '0cf6d970-3f1d-4aae-a989-92a8f76ae3db'
     ws-opts:
-      path: '/arki'
+      early-data-header-name: 'Sec-WebSocket-Protocol'
       headers:
-        Host: '47.244.120.197'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    name: '🇳🇱NL_277|877KB/s|B007-260618 01'
-    network: 'ws'
-    password: 'humanity'
-    port: 443
-    server: '46.62.204.134'
-    skip-cert-verify: false
-    sni: 'www.pleadcourt.org'
-    sub_tag: 'B007-260618'
-    type: 'trojan'
-    udp: true
-    ws-opts:
-      headers:
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36'
-      path: '/assignment'
-    _poolOnly: true
-  - name: '🇩🇪DE_165|576KB/s|A004-260618 01'
-    network: 'ws'
-    port: 2052
-    server: '172.64.150.43'
-    sub_tag: 'A004-260618'
-    type: 'vless'
-    udp: true
-    uuid: '5744e593-1cc8-48fa-b8ca-57cd494fe35b'
-    ws-opts:
-      headers:
-        Host: 'eu02.123450908.xyz'
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'
-      path: '/rain1226'
+        Host: 'vmess.lbw666.dpdns.org'
+      max-early-data: 2048
+      path: '/ws'
     xudp: true
     packet-encoding: 'xudp'
-    servername: 'eu02.123450908.xyz'
+    servername: 'vmess.lbw666.dpdns.org'
     _poolOnly: true
-  - name: '🇪🇨EC_2|438KB/s|R002-260618 01'
-    port: 999
-    server: '179.60.189.81'
+  - alterId: '0'
+    cipher: 'auto'
+    name: '🇺🇸US_509|1.1MB/s|S004-260618 01'
+    network: 'ws'
+    port: 80
+    server: 'cf.0sm.com'
+    skip-cert-verify: false
+    sub_tag: 'S004-260618'
+    tls: false
+    type: 'vmess'
+    udp: true
+    uuid: '0cf6d970-3f1d-4aae-a989-92a8f76ae3db'
+    ws-opts:
+      early-data-header-name: 'Sec-WebSocket-Protocol'
+      headers:
+        Host: 'vmess.lbw666.dpdns.org'
+      max-early-data: 2048
+      path: '/ws'
+    xudp: true
+    packet-encoding: 'xudp'
+    _poolOnly: true
+  - name: '🇲🇽MX_3|121KB/s|R002-260618 01'
+    port: 9999
+    server: '170.78.210.120'
     sub_tag: 'R002-260618'
     type: 'http'
     udp: true
     _poolOnly: true
-  - client-fingerprint: 'chrome'
-    name: '🇯🇵JP_102|290KB/s|A004-260618 01'
+  - alterId: '0'
+    cipher: 'auto'
+    name: '🇺🇸US_504|1.2MB/s|S004-260618 01'
     network: 'ws'
     port: 443
-    server: '104.16.10.56'
-    sub_tag: 'A004-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
-    ws-opts:
-      headers:
-        Host: 'jp3.yohototo.top'
-        User-Agent: 'Mozilla/5.0 (X11; Linux i686) AppleWebKit/534.30 (KHTML, like Gecko) Chrome/12.0.742.100 Safari/534.30'
-      path: '/tyxyws'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'jp3.yohototo.top'
-    _poolOnly: true
-  - client-fingerprint: 'unsafe'
-    name: '🇳🇱NL_289|4.5MB/s|S004-260618 01'
-    network: 'ws'
-    password: 'humanity'
-    port: 443
-    server: '188.114.97.4'
+    server: '172.66.203.67'
     skip-cert-verify: false
-    sni: 'www.pleadcourt.org'
     sub_tag: 'S004-260618'
-    type: 'trojan'
+    tls: true
+    type: 'vmess'
     udp: true
+    uuid: '0cf6d970-3f1d-4aae-a989-92a8f76ae3db'
     ws-opts:
+      early-data-header-name: 'Sec-WebSocket-Protocol'
       headers:
-        User-Agent: 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'
-      path: '/assignment'
+        Host: 'vmess.lbw666.dpdns.org'
+      max-early-data: 2048
+      path: '/ws'
+    xudp: true
+    packet-encoding: 'xudp'
+    servername: 'vmess.lbw666.dpdns.org'
     _poolOnly: true
-  - client-fingerprint: 'unsafe'
-    name: '🇳🇱NL_292|1.2MB/s|B007-260618 01'
+  - alpn:
+      - 'null'
+    alterId: '0'
+    cipher: 'auto'
+    name: '🇺🇸US_513|927KB/s|S004-260618 01'
     network: 'ws'
-    password: 'humanity'
     port: 443
-    server: '31.57.190.34'
+    server: '172.64.229.21'
     skip-cert-verify: false
-    sni: 'www.pleadcourt.org'
-    sub_tag: 'B007-260618'
-    type: 'trojan'
+    sub_tag: 'S004-260618'
+    tls: true
+    type: 'vmess'
     udp: true
+    uuid: '0cf6d970-3f1d-4aae-a989-92a8f76ae3db'
     ws-opts:
+      early-data-header-name: 'Sec-WebSocket-Protocol'
       headers:
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'
-      path: '/assignment'
+        Host: 'vmess.lbw666.dpdns.org'
+      max-early-data: 2048
+      path: '/ws'
+    xudp: true
+    packet-encoding: 'xudp'
+    servername: 'vmess.lbw666.dpdns.org'
     _poolOnly: true
-  - name: '❓Other_75|144KB/s|R002-260618 01'
-    port: 11080
-    server: '188.17.153.86'
+  - name: '🇲🇽MX_2|756KB/s|R002-260618 01'
+    port: 999
+    server: '200.225.60.15'
     sub_tag: 'R002-260618'
-    type: 'socks5'
+    type: 'http'
     udp: true
     _poolOnly: true
-  - client-fingerprint: 'chrome'
-    name: '🇯🇵JP_174|138KB/s|A004-260618 01'
-    network: 'ws'
-    port: 443
-    server: '104.16.10.22'
-    sub_tag: 'A004-260618'
-    tls: true
-    type: 'vless'
+  - name: '🇨🇴CO_1|103KB/s|R002-260618 01'
+    port: 8081
+    server: '200.10.31.42'
+    sub_tag: 'R002-260618'
+    type: 'http'
     udp: true
-    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
-    ws-opts:
-      headers:
-        Host: 'jp3.yohototo.top'
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.65 Safari/537.36'
-      path: '/tyxyws'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'jp3.yohototo.top'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    name: '🇵🇱PL_31|213KB/s|B007-260618 01'
-    password: 'Trojan@82164024'
-    port: 443
-    server: '92.118.150.146'
-    skip-cert-verify: false
-    sni: 'pl.tronsg.com'
-    sub_tag: 'B007-260618'
-    type: 'trojan'
-    udp: true
-    network: 'tcp'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    name: '🇯🇵JP_160|143KB/s|A004-260618 01'
-    network: 'ws'
-    port: 443
-    server: '104.18.153.10'
-    sub_tag: 'A004-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
-    ws-opts:
-      headers:
-        Host: 'jp3.yohototo.top'
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36'
-      path: '/tyxyws'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'jp3.yohototo.top'
     _poolOnly: true
 proxy-groups:
   - name: 'PROXY'
     type: 'select'
     proxies:
       - 'DIRECT'
-      - '🇺🇸US_479|579KB/s|R002-260618 01'
-      - '🇫🇷FR_1414|222KB/s|A004-260618 01'
-      - '🇫🇷FR_1406|388KB/s|A004-260618 01'
-      - '🇫🇷FR_1415|362KB/s|A004-260618 01'
-      - '🇫🇷FR_2006|412KB/s|S004-260618 01'
-      - '🇺🇸US_445|416KB/s|R002-260618 01'
-      - '🇺🇸US_494|1.1MB/s|B007-260618 01'
-      - '🇫🇷FR_1435|2.9MB/s|M003-260806 01'
-      - '🇫🇷FR_2032|358KB/s|A004-260618 01'
-      - '🇺🇸US_425|560KB/s|R002-260618 01'
-      - '🇫🇷FR_1434|562KB/s|S004-260618 01'
-      - '🇺🇸US_498|1.2MB/s|C002-260622 01'
-      - '🇺🇸US_419|528KB/s|R002-260618 01'
-      - '🇫🇷FR_1423|748KB/s|S004-260618 01'
-      - '🇺🇸US_466|681KB/s|P002-260618 01'
-      - '🇫🇷FR_1411|1.7MB/s|S004-260618 01'
-      - '🇨🇦CA_34|317KB/s|R002-260618 01'
-      - '🇫🇷FR_1432|387KB/s|T001-260618 01'
-      - '🇺🇸US_468|775KB/s|R002-260618 01'
-      - '🇫🇷FR_2040|2.7MB/s|A004-260618 01'
-      - '🇫🇷FR_1436|977KB/s|P001-260618 01'
-      - '🇺🇸US_490|360KB/s|R002-260618 01'
-      - '🇺🇸US_427|996KB/s|A004-260618 01'
-      - '🇺🇸US_418|474KB/s|R002-260618 01'
-      - '❓Other_80|809KB/s|M003-260806 01'
-      - '🇺🇸US_424|152KB/s|R002-260618 01'
-      - '🇳🇱NL_231|213KB/s|M003-260806 01'
-      - '🇺🇸US_423|86KB/s|R002-260618 01'
-      - '🇺🇸US_489|343KB/s|R002-260618 01'
-      - '❓Other_91|181KB/s|R002-260618 01'
-      - '🇺🇸US_491|796KB/s|R002-260618 01'
-      - '🇺🇸US_436|478KB/s|R002-260618 01'
-      - '🇺🇸US_446|112KB/s|R002-260618 01'
-      - '🇫🇮FI_91|386KB/s|B007-260618 01'
-      - '🇬🇧GB_43|472KB/s|R002-260618 01'
-      - '🇩🇪DE_173|1.9MB/s|S004-260618 01'
-      - '🇬🇧GB_51|350KB/s|R002-260618 01'
-      - '🇩🇪DE_168|1.2MB/s|R002-260618 01'
-      - '🇬🇧GB_42|510KB/s|R002-260618 01'
-      - '🇺🇸US_417|185KB/s|R002-260618 01'
-      - '🇮🇪IE_17|674KB/s|R002-260618 01'
-      - '🇳🇱NL_265|1.7MB/s|R002-260618 01'
-      - '🇳🇱NL_244|3.5MB/s|R002-260618 01'
-      - '❓Other_79|240KB/s|S004-260618 01'
-      - '🇳🇱NL_248|1.0MB/s|R002-260618 01'
-      - '🇩🇪DE_167|492KB/s|R002-260618 01'
-      - '🇩🇪DE_139|429KB/s|R002-260618 01'
-      - '🇩🇪DE_127|690KB/s|R002-260618 01'
-      - '🇳🇱NL_247|667KB/s|R002-260618 01'
-      - '🇩🇪DE_170|609KB/s|R002-260618 01'
-      - '🇳🇱NL_263|2.2MB/s|A004-260618 01'
-      - '🇨🇿CZ_7|614KB/s|R002-260618 01'
-      - '🇩🇪DE_193|4.4MB/s|A004-260618 01'
-      - '🇧🇬BG_14|419KB/s|R002-260618 01'
-      - '🇫🇮FI_85|129KB/s|R002-260618 01'
-      - '🇩🇪DE_136|364KB/s|B007-260618 01'
-      - '🇳🇱NL_241|408KB/s|R002-260618 01'
-      - '🇳🇱NL_285|2.9MB/s|S004-260618 01'
-      - '🇱🇺LU_1|826KB/s|R002-260618 01'
-      - '🇸🇬SG_86|353KB/s|A001-260618 01'
-      - '🇩🇪DE_162|1.0MB/s|R002-260618 01'
-      - '🇸🇬SG_77|804KB/s|A004-260618 01'
-      - '🇧🇬BG_12|390KB/s|P002-260618 01'
-      - '🇷🇴RO_82|254KB/s|R002-260618 01'
-      - '🇷🇴RO_83|512KB/s|R002-260618 01'
-      - '🇩🇪DE_134|1.4MB/s|S004-260618 01'
-      - '🇫🇷FR_2015|97KB/s|R002-260618 01'
-      - '🇦🇱AL_5|362KB/s|R002-260618 01'
-      - '🇧🇦BA_1|650KB/s|R002-260618 01'
-      - '🇦🇱AL_3|594KB/s|K001-260618 01'
-      - '🇵🇱PL_45|237KB/s|M003-260806 01'
-      - '🇸🇬SG_93|339KB/s|R002-260618 01'
-      - '🇸🇬SG_64|383KB/s|A004-260618 01'
-      - '🇸🇬SG_72|231KB/s|R002-260618 01'
-      - '🇻🇳VN_2|271KB/s|M003-260806 01'
-      - '🇳🇱NL_235|70KB/s|M003-260806 01'
-      - '🇰🇿KZ_4|328KB/s|M002-260618 01'
-      - '🇮🇩ID_10|550KB/s|R002-260618 01'
-      - '🇺🇸US_429|77KB/s|P002-260618 01'
-      - '🇸🇬SG_73|495KB/s|A004-260618 01'
-      - '🇳🇱NL_247|2.1MB/s|B007-260618 01'
-      - '🇮🇳IN_50|341KB/s|R002-260618 01'
-      - '🇳🇱NL_269|4.3MB/s|B007-260618 01'
-      - '🇪🇪EE_25|149KB/s|S004-260618 01'
-      - '❓Other_92|242KB/s|S001-260618 01'
-      - 'DE德国(mibei77.com 米贝节点分享)_8'
-      - '🇫🇮FI_87|2.0MB/s|A004-260618 01'
-      - '🇺🇸US_469|226KB/s|R002-260618 01'
-      - '🇯🇵JP_158|84KB/s|A004-260618 01'
-      - '🇯🇵JP_155|183KB/s|A004-260618 01'
-      - '🇧🇩BD_1|314KB/s|R002-260618 01'
-      - '🇸🇬SG_106|410KB/s|A004-260618 01'
-      - '🇳🇱NL_249|1.8MB/s|B007-260618 01'
-      - '🇫🇮FI_69|664KB/s|K001-260618 01'
-      - '🇳🇱NL_283|1.1MB/s|S004-260618 01'
-      - '🇳🇱NL_282|1.8MB/s|B007-260618 01'
-      - '🇸🇬SG_92|318KB/s|R002-260618 01'
-      - '🇯🇵JP_120|111KB/s|A004-260618 01'
-      - '🇯🇵JP_127|92KB/s|A004-260618 01'
-      - '🇳🇱NL_276|1.9MB/s|B007-260618 01'
-      - '🇯🇵JP_101|143KB/s|M002-260618 01'
-      - '🇯🇵JP_125|91KB/s|M002-260618 01'
-      - '🇩🇪DE_126|1.7MB/s|R002-260618 01'
-      - '🇩🇪DE_174|1.1MB/s|M002-260618 01'
-      - '🇳🇱NL_258|4.3MB/s|A004-260618 01'
-      - '🇯🇵JP_161|105KB/s|M002-260618 01'
-      - '🇳🇱NL_273|744KB/s|B007-260618 01'
-      - '🇯🇵JP_103|165KB/s|A004-260618 01'
-      - '🇩🇪DE_175|1.7MB/s|M002-260618 01'
-      - '🇷🇴RO_99|1.5MB/s|M003-260806 01'
-      - '❓Other_73|411KB/s|M002-260618 01'
-      - '🇹🇭TH_3|483KB/s|B007-260618 01'
-      - '🇩🇪DE_110|721KB/s|M002-260618 01'
-      - '🇩🇪DE_125|1.5MB/s|B007-260618 01'
-      - '🇷🇺RU_10|345KB/s|S001-260618 01'
-      - '🇪🇪EE_24|1.5MB/s|R002-260618 01'
-      - '🇳🇱NL_263|3.8MB/s|S004-260618 01'
-      - '🇷🇺RU_14|814KB/s|S004-260618 01'
-      - '🇳🇱NL_270|1.1MB/s|B007-260618 01'
-      - '🇯🇵JP_117|578KB/s|A004-260618 01'
-      - '🇻🇪VE_1|256KB/s|R002-260618 01'
-      - '🇩🇪DE_126|867KB/s|M002-260618 01'
-      - '🇺🇸US_500|1.1MB/s|M002-260618 01'
-      - '🇬🇧GB_48|889KB/s|A004-260618 01'
-      - '🇪🇸ES_28|747KB/s|R002-260618 01'
-      - '🇩🇪DE_144|281KB/s|M003-260806 01'
-      - '❓Other_40|2.2MB/s|S004-260618 01'
-      - '🇩🇪DE_152|411KB/s|S004-260618 01'
-      - '🇩🇪 德国_A9G90L'
-      - '8元老牌专线机场：cczzuu.top-9bfddae3ad813459'
-      - '🇳🇱NL_277|877KB/s|B007-260618 01'
-      - '🇩🇪DE_165|576KB/s|A004-260618 01'
-      - '🇪🇨EC_2|438KB/s|R002-260618 01'
-      - '🇯🇵JP_102|290KB/s|A004-260618 01'
-      - '🇳🇱NL_289|4.5MB/s|S004-260618 01'
-      - '🇳🇱NL_292|1.2MB/s|B007-260618 01'
-      - '❓Other_75|144KB/s|R002-260618 01'
-      - '🇯🇵JP_174|138KB/s|A004-260618 01'
-      - '🇵🇱PL_31|213KB/s|B007-260618 01'
-      - '🇯🇵JP_160|143KB/s|A004-260618 01'
+      - '🇫🇷FR_2055|438KB/s|K001-260618 01'
+      - '🇫🇷FR_2065|356KB/s|A004-260618 01'
+      - '❓Other_46|841KB/s|R002-260618 01'
+      - '美国(yudou99.com 玉豆分享)_55'
+      - '🇱🇹LT_3|2.2MB/s|A004-260618 01'
+      - '🇱🇹LT_1|1.8MB/s|A004-260618 01'
+      - '🇱🇹LT_2|2.1MB/s|A004-260618 01'
+      - '🇱🇹LT_4|2.2MB/s|A004-260618 01'
+      - '🇩🇪DE_184|495KB/s|M002-260618 01'
+      - '🇳🇱NL_352|1.5MB/s|S004-260618 01'
+      - '🇰🇷KR_101|526KB/s|A004-260618 01'
+      - '🇩🇪DE_202|1.2MB/s|R002-260618 01'
+      - '🇳🇱NL_334|3.7MB/s|S004-260618 01'
+      - '🇳🇱NL_358|1.3MB/s|R002-260618 01'
+      - '🇪🇪EE_29|2.0MB/s|R002-260618 01'
+      - '🇪🇪EE_32|1.5MB/s|R002-260618 01'
+      - '🇳🇱NL_336|451KB/s|S004-260618 01'
+      - '❓未知丨yoyapai.com_1-pool-2c2f6ea349ce782c'
+      - '🇪🇪EE_30|551KB/s|R002-260618 01'
+      - '🇳🇱NL_353|2.6MB/s|S004-260618 01'
+      - '🇫🇷FR_97|583KB/s|M003-260806 01'
+      - '🇳🇱NL_343|3.8MB/s|S004-260618 01'
+      - '美国 CloudFlare节点'
+      - '🇩🇪_DE_德国->🇱🇰_LK_斯里兰卡'
+      - '🇳🇱NL_316|241KB/s|S004-260618 01'
+      - '美国+CloudFlare节点-458af516e04db375'
+      - '🇯🇵JP_176|193KB/s|A004-260618 01'
+      - '🇫🇷FR_176|1018KB/s|M003-260806 01'
+      - '🇳🇱NL_318|1.2MB/s|S004-260618 01'
+      - '🇸🇬SG_99|708KB/s|M002-260618 01'
+      - '🇳🇱NL_328|769KB/s|S004-260618 01'
+      - '🇯🇵JP_175|71KB/s|A004-260618 01'
+      - '🇯🇵JP_164|85KB/s|A004-260618 01'
+      - '🇳🇱NL_345|361KB/s|S004-260618 01'
+      - '❓Other_50|349KB/s|M002-260618 01'
+      - '🇯🇵JP_166|233KB/s|M002-260618 01'
+      - '🇳🇱NL_347|1.9MB/s|S004-260618 01'
+      - '🇺🇸US_512|842KB/s|S004-260618 01'
+      - '🇻🇪VE_2|362KB/s|R002-260618 01'
+      - '🇺🇸US_505|1.0MB/s|S004-260618 01'
+      - '🇺🇸US_509|1.1MB/s|S004-260618 01'
+      - '🇲🇽MX_3|121KB/s|R002-260618 01'
+      - '🇺🇸US_504|1.2MB/s|S004-260618 01'
+      - '🇺🇸US_513|927KB/s|S004-260618 01'
+      - '🇲🇽MX_2|756KB/s|R002-260618 01'
+      - '🇨🇴CO_1|103KB/s|R002-260618 01'
 rules:
   - 'MATCH,PROXY'
