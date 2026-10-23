@@ -44,6 +44,24 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: 'd1f4a0d80288cf0b'
+  - name: '🇫🇷FR_2058|2.0MB/s|R002-260618 01'
+    port: 443
+    server: '172.64.68.89'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇫🇷FR_2083|1.8MB/s|R002-260618 01'
+    port: 443
+    server: '172.64.69.89'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
   - name: '🇺🇸US_626|798KB/s|R002-260618 01'
     password: 'null'
     port: 9002
@@ -56,40 +74,31 @@ proxies:
     username: 'null'
     udp: true
     endpoint-id: 'f8df99716a85628c'
-  - name: 'HK香港(mibei77.com 米贝节点分享)_12-source-41447db523bef660'
-    type: 'anytls'
-    server: '654968169.df6h451rh.xin'
-    port: 443
-    password: '0324fbc29561'
+  - name: '🇺🇸US_729|701KB/s|P002-260618 01'
+    password: 'null'
+    port: 9002
+    server: '138.199.35.218'
     skip-cert-verify: true
-    tls: true
-    udp: true
-    client-fingerprint: 'chrome'
-    _poolOnly: true
-  - name: '🇫🇷FR_183|751KB/s|R002-260618 01'
-    port: 443
-    server: 'fan.132031.xyz'
-    skip-cert-verify: true
-    sni: 'fan.132031.xyz'
-    sub_tag: 'R002-260618'
+    sub_tag: 'P002-260618'
     tls: true
     type: 'http'
+    username: 'null'
     udp: true
-    endpoint-id: 'eedf278594fece87'
+    _poolOnly: true
 proxy-groups:
   - name: 'PROXY'
     type: 'select'
     proxies:
       - '🇸🇬SG_38|247KB/s|R002-260618 01'
-      - '🇺🇸US_626|798KB/s|R002-260618 01'
-      - 'HK香港(mibei77.com 米贝节点分享)_12-source-41447db523bef660'
+      - '🇫🇷FR_2058|2.0MB/s|R002-260618 01'
+      - '🇫🇷FR_2083|1.8MB/s|R002-260618 01'
       - 'DIRECT'
   - name: 'CHATGPT'
     type: 'select'
     proxies:
       - '🇸🇬SG_38|247KB/s|R002-260618 01'
       - '🇺🇸US_626|798KB/s|R002-260618 01'
-      - '🇫🇷FR_183|751KB/s|R002-260618 01'
+      - '🇺🇸US_729|701KB/s|P002-260618 01'
   - name: 'STICKY'
     type: 'select'
     proxies:

@@ -8,25 +8,21 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: 'd1f4a0d80288cf0b'
-  - name: '🇺🇸US_626|798KB/s|R002-260618 01'
-    password: 'null'
-    port: 9002
-    server: '138.199.35.198'
+  - name: '🇫🇷FR_2058|2.0MB/s|R002-260618 01'
+    port: 443
+    server: '172.64.68.89'
     skip-cert-verify: true
-    sni: '138.199.35.198'
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
-    username: 'null'
     udp: true
-    endpoint-id: 'f8df99716a85628c'
-  - name: 'HK香港(mibei77.com 米贝节点分享)_12-source-41447db523bef660'
-    type: 'anytls'
-    server: '654968169.df6h451rh.xin'
+    _poolOnly: true
+  - name: '🇫🇷FR_2083|1.8MB/s|R002-260618 01'
     port: 443
-    password: '0324fbc29561'
+    server: '172.64.69.89'
     skip-cert-verify: true
+    sub_tag: 'R002-260618'
     tls: true
+    type: 'http'
     udp: true
-    client-fingerprint: 'chrome'
     _poolOnly: true
