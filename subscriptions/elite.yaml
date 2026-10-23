@@ -17,12 +17,14 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇫🇷FR_2083|1.8MB/s|R002-260618 01'
-    port: 443
-    server: '172.64.69.89'
-    skip-cert-verify: true
+  - name: '🇰🇷KR_45|524KB/s|R002-260618 01'
+    password: 'bb85e074-b0c2-11ea-ad28-f23c913c8d2b'
+    port: 31433
+    server: '783f6643-tcev40-th02zb-m0b9.kr.oshuawei.com'
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
+    username: 'bb85e074-b0c2-11ea-ad28-f23c913c8d2b'
     udp: true
+    sni: '783f6643-tcev40-th02zb-m0b9.kr.oshuawei.com'
     _poolOnly: true
