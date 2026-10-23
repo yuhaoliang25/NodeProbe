@@ -4,124 +4,395 @@ mode: 'rule'
 log-level: 'warning'
 ipv6: false
 proxies:
-  - name: '🇺🇸US_452|351KB/s|R002-260618 01'
-    port: 443
-    server: '137.175.22.40'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '美国(yudou789.top 玉豆分享)_31-f4853adac1ab17f8'
-    type: 'anytls'
-    server: 'anytls2.864106.xyz'
-    port: 19000
-    password: 'github.com/Alvin9999-newpac/fanqiang'
-    sni: 'anytls2.864106.xyz'
-    skip-cert-verify: true
-    tls: true
-    udp: true
-    _poolOnly: true
-  - name: '🇫🇷FR_1569|678KB/s|M002-260618 01'
+  - name: '🇫🇷FR_329|5.8MB/s|S001-260618 [58438228b03a]'
+    alpn:
+      - 'http/1.1'
+    client-fingerprint: 'chrome'
     network: 'ws'
-    port: 8080
-    server: '172.67.71.187'
-    sub_tag: 'M002-260618'
+    port: 443
+    server: '172.67.118.45'
+    sub_tag: 'S001-260618'
+    tls: true
     type: 'vless'
     udp: true
-    uuid: 'e5cc16a6-ea42-46b2-82ae-ad2157e1641b'
+    uuid: '495c7195-85b8-498a-bf20-2ea9ce9175b5'
     ws-opts:
       headers:
-        Host: 'hhlfy.twiladaphne.ndjp.net'
-        User-Agent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36'
-      path: '/sg-melbi'
+        Host: 'snip.edgeoneai.cc.cd'
+        User-Agent: 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36'
+      path: '/fdip#TELEGRAM--MARAMBASHI--MARAMBASHI--MARAMBASHI--MARAMBASHI'
+      early-data-header-name: 'Sec-WebSocket-Protocol'
+      max-early-data: 2560
     xudp: true
     packet-encoding: 'xudp'
-    servername: 'hhlfy.twiladaphne.ndjp.net'
+    servername: 'snip.edgeoneai.cc.cd'
     _poolOnly: true
-  - name: '🇰🇷KR_45|524KB/s|R002-260618 01'
-    password: 'bb85e074-b0c2-11ea-ad28-f23c913c8d2b'
-    port: 31433
-    server: '783f6643-tcev40-th02zb-m0b9.kr.oshuawei.com'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'bb85e074-b0c2-11ea-ad28-f23c913c8d2b'
-    udp: true
-    sni: '783f6643-tcev40-th02zb-m0b9.kr.oshuawei.com'
-    _poolOnly: true
-  - name: '🇰🇷KR_38|383KB/s|R002-260618 01'
-    password: 'Og%3D%3D'
-    port: 1090
-    server: '121.169.46.116'
-    sub_tag: 'R002-260618'
-    type: 'socks5'
-    udp: true
-    username: 'Og%3D%3D'
-    _poolOnly: true
-  - name: '🇸🇬SG_77|828KB/s|R002-260618 01'
-    port: 9090
-    server: '152.42.170.187'
-    sub_tag: 'R002-260618'
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇬🇧GB_53|323KB/s|R002-260618 01'
-    port: 8443
-    server: '77.221.136.60'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - type: 'trojan'
-    name: '乌克兰+V2CROSS.COMhysteria2://H7mP2xY9kJ4nQ8wR5tF6vB3z@vpn-au-001.fastervpn.world:443?insecure=1&security=tls&sni=vpn-au-001.fastervpn.world#澳大利亚+新南威尔士州悉尼Amazon数据中心'
-    server: '82.117.245.125'
-    port: 2053
-    tls: true
-    password: 'humanity'
-    network: 'ws'
-    sni: 'www.calmlunch.com'
-    ws-opts:
-      path: '/assignment'
-    _poolOnly: true
-  - name: '🇩🇪DE_154|1.2MB/s|R002-260618 01'
-    port: 8443
-    server: '188.120.225.125'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇨🇦CA_44|709KB/s|M002-260618 01'
+  - name: '🇺🇸US_504|843KB/s|A004-260618 [55d379d67daa]'
+    client-fingerprint: 'chrome'
     network: 'tcp'
-    port: 8080
-    server: 'milo.rubinaz.xyz'
-    sub_tag: 'M002-260618'
+    password: 'dba20dcb635e430fa4d3bfc303a149d2'
+    port: 443
+    server: '216.106.186.32'
+    skip-cert-verify: false
+    sni: 'blog.findlocaljobnetworkandbuildcommunityconnections.com'
+    sub_tag: 'A004-260618'
+    type: 'trojan'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_533|664KB/s|P002-260618 [c3c3d303bffe]'
+    password: 'None'
+    port: 8443
+    server: '44.248.167.117'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇯🇵JP_70|563KB/s|M003-260806 [9b791f0e32b7]'
+    client-fingerprint: 'chrome'
+    network: 'ws'
+    port: 443
+    server: '45.95.212.186'
+    sub_tag: 'M003-260806'
+    tls: true
     type: 'vless'
     udp: true
-    uuid: '6bceb548-d9b6-461f-8e37-a5a7fbcdc2c8'
+    uuid: '495c7195-85b8-498a-bf20-2ea9ce9175b5'
+    ws-opts:
+      headers:
+        Host: 'snip.edgeoneai.cc.cd'
+        User-Agent: 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'
+      path: '/fp=chrome'
+    xudp: true
+    packet-encoding: 'xudp'
+    servername: 'snip.edgeoneai.cc.cd'
+    _poolOnly: true
+  - client-fingerprint: 'chrome'
+    name: '🇯🇵JP_116|86KB/s|C001-260618 01'
+    network: 'tcp'
+    password: 'e26a229d-e8f2-4ff9-8c7d-58a9d83ee437'
+    port: 8886
+    server: '45.32.52.173'
+    skip-cert-verify: true
+    sni: '45.32.52.173'
+    sub_tag: 'C001-260618'
+    type: 'trojan'
+    udp: true
+    _poolOnly: true
+  - name: '🇯🇵JP_71|381KB/s|M003-260806 [584c0299102c]'
+    client-fingerprint: 'chrome'
+    network: 'ws'
+    port: 443
+    server: '84.247.155.106'
+    sub_tag: 'M003-260806'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '495c7195-85b8-498a-bf20-2ea9ce9175b5'
+    ws-opts:
+      headers:
+        Host: 'snip.edgeoneai.cc.cd'
+        User-Agent: 'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36'
+      path: '/fdip=sstp://vpn:vpn@public-vpn-200.opengw.net:443'
+    xudp: true
+    packet-encoding: 'xudp'
+    servername: 'snip.edgeoneai.cc.cd'
+    _poolOnly: true
+  - name: '🇰🇷KR_59|592KB/s|A001-260618 [090ef0fbaa19]'
+    client-fingerprint: 'chrome'
+    network: 'ws'
+    port: 443
+    server: '193.122.115.184'
+    sub_tag: 'A001-260618'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '495c7195-85b8-498a-bf20-2ea9ce9175b5'
+    ws-opts:
+      headers:
+        Host: 'snip.edgeoneai.cc.cd'
+        User-Agent: 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) AppleWebKit/534.3 (KHTML, like Gecko) Chrome/6.0.472.63 Safari/534.3'
+      path: '/fp=chrome'
+    xudp: true
+    packet-encoding: 'xudp'
+    servername: 'snip.edgeoneai.cc.cd'
+    _poolOnly: true
+  - name: '8元老牌专线机场：cczzuu.top-069a03f547b929e8'
+    server: '121.169.46.116'
+    port: 1090
+    type: 'socks5'
+    udp: true
+    username: 'Og'
+    password: 'Og'
+    _poolOnly: true
+  - name: '🇰🇷KR_58|540KB/s|A001-260618 [1f56c7ba8420]'
+    client-fingerprint: 'chrome'
+    network: 'ws'
+    port: 443
+    server: '64.176.230.50'
+    sub_tag: 'A001-260618'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '495c7195-85b8-498a-bf20-2ea9ce9175b5'
+    ws-opts:
+      headers:
+        Host: 'snip.edgeoneai.cc.cd'
+        User-Agent: 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.112 Safari/537.36'
+      path: '/fp=chrome'
+    xudp: true
+    packet-encoding: 'xudp'
+    servername: 'snip.edgeoneai.cc.cd'
+    _poolOnly: true
+  - name: '🇸🇬SG_101|899KB/s|A004-260618 [7f1746c4ae6d]'
+    cipher: 'rc4-md5'
+    password: '14fFPrbezE3HDZzsMOr6'
+    port: 8080
+    server: '68.183.235.240'
+    sub_tag: 'A004-260618'
+    type: 'ss'
+    udp: true
+    _poolOnly: true
+  - name: 'SG新加坡(mibei77.com 米贝节点分享)-source-54aec2f469c5ab55'
+    type: 'vless'
+    server: '134.185.81.5'
+    port: 47881
+    uuid: '59b203b2-b1bc-4e9c-a9e5-ccb8f691bf72'
+    servername: 'www.tesla.com'
+    tls: true
+    flow: 'xtls-rprx-vision'
+    client-fingerprint: 'chrome'
+    reality-opts:
+      public-key: '6XmXX1QXGodmtqU37Zx9CDHnCnPtonRdq8ieLmt__g4'
+      short-id: '38d72071'
+    skip-cert-verify: true
+    udp: true
+    _poolOnly: true
+  - name: '🇸🇬SG_74|567KB/s|R002-260618 [f6d9216b38e2]'
+    password: 'None'
+    port: 9090
+    server: '128.199.254.13'
+    sub_tag: 'R002-260618'
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇬🇧GB_42|6.0MB/s|A004-260618 [7ec4db56ed2f]'
+    cipher: 'rc4-md5'
+    password: '14fFPrbezE3HDZzsMOr6'
+    port: 8080
+    server: '98.98.142.161'
+    sub_tag: 'A004-260618'
+    type: 'ss'
+    udp: true
+    _poolOnly: true
+  - name: '🇩🇪DE_170|2.8MB/s|F003-260618 [283704ab7ebe]'
+    client-fingerprint: 'chrome'
+    encryption: 'none'
+    network: 'ws'
+    port: 2053
+    server: '109.120.186.137'
+    sub_tag: 'F003-260618'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '495c7195-85b8-498a-bf20-2ea9ce9175b5'
+    ws-opts:
+      headers:
+        Host: 'snip.edgeoneai.cc.cd'
+        User-Agent: 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'
+      path: '/fp=unsafe'
+    xudp: true
+    packet-encoding: 'xudp'
+    servername: 'snip.edgeoneai.cc.cd'
+    _poolOnly: true
+  - name: '🇬🇧GB_41|5.3MB/s|A004-260618 [65ca694663d7]'
+    cipher: 'rc4-md5'
+    password: '14fFPrbezE3HDZzsMOr6'
+    port: 8080
+    server: '98.98.207.163'
+    sub_tag: 'A004-260618'
+    type: 'ss'
+    udp: true
+    _poolOnly: true
+  - name: '🇩🇪DE_169|506KB/s|A004-260618 [fb223ebd154b]'
+    network: 'raw'
+    port: 20000
+    server: 'test.wecantos.site'
+    sub_tag: 'A004-260618'
+    type: 'vless'
+    udp: true
+    uuid: 'ca59a503-db23-44af-9879-49747d8da98f'
     xudp: true
     packet-encoding: 'xudp'
     _poolOnly: true
-  - name: '🇨🇦CA_44|421KB/s|R002-260618 01'
+  - name: '🇩🇪DE_227|5.2MB/s|P002-260618 [c242c75d0a6f]'
+    password: 'None'
     port: 443
-    server: '206.223.183.16'
+    server: '213.109.163.119'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇩🇪DE_207|1.0MB/s|A004-260618 [1875399103a9]'
+    client-fingerprint: 'chrome'
+    network: 'tcp'
+    password: '4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA'
+    port: 443
+    server: 'de12.dedushka.top'
+    skip-cert-verify: false
+    sni: 'de12.dedushka.top'
+    sub_tag: 'A004-260618'
+    type: 'trojan'
+    udp: true
+    _poolOnly: true
+  - name: '🇫🇷FR_364|1.9MB/s|K001-260618 [9609525282db]'
+    password: 'None'
+    port: 443
+    server: '82.66.235.221'
+    skip-cert-verify: true
+    sub_tag: 'K001-260618'
+    tls: true
+    type: 'http'
+    username: ''
+    udp: true
+    _poolOnly: true
+  - name: '🇫🇷FR_347|368KB/s|A001-260618 [9047e6c87391]'
+    client-fingerprint: 'chrome'
+    network: 'ws'
+    port: 443
+    server: '103.114.201.154'
+    sub_tag: 'A001-260618'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '495c7195-85b8-498a-bf20-2ea9ce9175b5'
+    ws-opts:
+      headers:
+        Host: 'snip.edgeoneai.cc.cd'
+        User-Agent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36'
+      path: '/fp=chrome'
+    xudp: true
+    packet-encoding: 'xudp'
+    servername: 'snip.edgeoneai.cc.cd'
+    _poolOnly: true
+  - name: '🇫🇷FR_358|1.0MB/s|K001-260618 [af44a4a293e5]'
+    password: 'None'
+    port: 8081
+    server: '31.32.19.111'
+    skip-cert-verify: true
+    sub_tag: 'K001-260618'
+    tls: true
+    type: 'http'
+    username: ''
+    udp: true
+    _poolOnly: true
+  - client-fingerprint: 'chrome'
+    encryption: 'none'
+    name: '🇫🇷FR_1612|601KB/s|M002-260618 01'
+    network: 'ws'
+    port: 443
+    server: '188.164.248.216'
+    sub_tag: 'M002-260618'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: 'd342d11e-d224-4463-b982-532309285094'
+    ws-opts:
+      headers:
+        Host: 'ccc.010304.xyz'
+        User-Agent: 'Mozilla/5.0 (Linux; Android 4.4.2; SM-G7102 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.84 Mobile Safari/537.36'
+      path: '/'
+    xudp: true
+    packet-encoding: 'xudp'
+    servername: 'ccc.010304.xyz'
+    _poolOnly: true
+  - cipher: 'chacha20-ietf-poly1305'
+    name: '🇳🇱NL_224|4.1MB/s|A004-260618 01'
+    password: 'oZIoA69Q8yhcQV8ka3Pa3A'
+    port: 443
+    server: '82.38.31.159'
+    sub_tag: 'A004-260618'
+    type: 'ss'
+    udp: true
+    _poolOnly: true
+  - name: '🇳🇱NL_325|6.3MB/s|P002-260618 [111aaa619f5f]'
+    password: 'None'
+    port: 9002
+    server: '84.17.47.123'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '❓Other_76|561KB/s|R002-260618 01'
+    port: 443
+    server: '142.44.210.129'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇭🇰 香港 14'
+  - name: 'TW台湾(mibei77.com 米贝节点分享)-source-290498e876c518be'
+    type: 'anytls'
+    server: '684616s4.df6h451rh.xin'
     port: 443
-    server: '43.155.62.157'
-    sub_tag: 'R002-260618'
-    type: 'http'
+    password: '0324fbc29561'
+    sni: 'px.ads.linkedin.com'
+    alpn:
+      - 'http/1.1'
+    skip-cert-verify: true
+    tls: true
     udp: true
+    client-fingerprint: 'chrome'
+    _poolOnly: true
+  - name: 'HK香港(mibei77.com 米贝节点分享)_9-source-8593c0487f4b7967'
+    type: 'vless'
+    server: '38.22.88.248'
+    port: 27509
+    uuid: '29d23018-3265-494c-b9fe-e320b619b1e2'
+    servername: 'www.suffolk.edu'
+    tls: true
+    flow: 'xtls-rprx-vision'
+    client-fingerprint: 'chrome'
+    reality-opts:
+      public-key: 'nseaofwmjSciWUI2ZOXft9lUJutKvKEDUc-aSpE3e1M'
+      short-id: '6ba85179e30d4fc2'
+    skip-cert-verify: true
+    udp: true
+    _poolOnly: true
+  - name: 'HK香港(mibei77.com 米贝节点分享)_12-source-4916e8a6d10d601e'
+    type: 'anytls'
+    server: '654968169.df6h451rh.xin'
+    port: 443
+    password: '0324fbc29561'
+    sni: '127.0.0.1'
+    skip-cert-verify: true
+    tls: true
+    udp: true
+    _poolOnly: true
+  - name: '🇭🇰HK_92|615KB/s|K001-260618 [474f98fceaa3]'
+    client-fingerprint: 'chrome'
+    network: 'ws'
+    port: 443
+    server: '172.93.188.25'
+    sub_tag: 'K001-260618'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '495c7195-85b8-498a-bf20-2ea9ce9175b5'
+    ws-opts:
+      headers:
+        Host: 'snip.edgeoneai.cc.cd'
+        User-Agent: 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'
+      path: '/fdip=sstp://vpn:vpn@public-vpn-200.opengw.net:443?ed=2560fp=chromefp=chromefp=chrome'
+    xudp: true
+    packet-encoding: 'xudp'
+    servername: 'snip.edgeoneai.cc.cd'
     _poolOnly: true
 proxy-groups:
   - name: 'COUNTRY'
@@ -129,12 +400,13 @@ proxy-groups:
     proxies:
       - 'DIRECT'
       - 'US · United States'
+      - 'JP · Japan'
       - 'KR · South Korea'
       - 'SG · Singapore'
       - 'GB · United Kingdom'
       - 'DE · Germany'
       - 'FR · France'
-      - 'CA · Canada'
+      - 'NL · Netherlands'
       - 'HK · Hong Kong'
   - name: 'US · United States'
     type: 'url-test'
@@ -143,7 +415,18 @@ proxy-groups:
     tolerance: 100
     lazy: false
     proxies:
-      - '🇺🇸US_452|351KB/s|R002-260618 01'
+      - '🇺🇸US_504|843KB/s|A004-260618 [55d379d67daa]'
+      - '🇺🇸US_533|664KB/s|P002-260618 [c3c3d303bffe]'
+  - name: 'JP · Japan'
+    type: 'url-test'
+    url: 'https://www.google.com/generate_204'
+    interval: 300
+    tolerance: 100
+    lazy: false
+    proxies:
+      - '🇯🇵JP_70|563KB/s|M003-260806 [9b791f0e32b7]'
+      - '🇯🇵JP_116|86KB/s|C001-260618 01'
+      - '🇯🇵JP_71|381KB/s|M003-260806 [584c0299102c]'
   - name: 'KR · South Korea'
     type: 'url-test'
     url: 'https://www.google.com/generate_204'
@@ -151,8 +434,8 @@ proxy-groups:
     tolerance: 100
     lazy: false
     proxies:
-      - '🇰🇷KR_45|524KB/s|R002-260618 01'
-      - '🇰🇷KR_38|383KB/s|R002-260618 01'
+      - '🇰🇷KR_59|592KB/s|A001-260618 [090ef0fbaa19]'
+      - '🇰🇷KR_58|540KB/s|A001-260618 [1f56c7ba8420]'
   - name: 'SG · Singapore'
     type: 'url-test'
     url: 'https://www.google.com/generate_204'
@@ -160,7 +443,8 @@ proxy-groups:
     tolerance: 100
     lazy: false
     proxies:
-      - '🇸🇬SG_77|828KB/s|R002-260618 01'
+      - '🇸🇬SG_101|899KB/s|A004-260618 [7f1746c4ae6d]'
+      - '🇸🇬SG_74|567KB/s|R002-260618 [f6d9216b38e2]'
   - name: 'GB · United Kingdom'
     type: 'url-test'
     url: 'https://www.google.com/generate_204'
@@ -168,7 +452,8 @@ proxy-groups:
     tolerance: 100
     lazy: false
     proxies:
-      - '🇬🇧GB_53|323KB/s|R002-260618 01'
+      - '🇬🇧GB_42|6.0MB/s|A004-260618 [7ec4db56ed2f]'
+      - '🇬🇧GB_41|5.3MB/s|A004-260618 [65ca694663d7]'
   - name: 'DE · Germany'
     type: 'url-test'
     url: 'https://www.google.com/generate_204'
@@ -176,7 +461,10 @@ proxy-groups:
     tolerance: 100
     lazy: false
     proxies:
-      - '🇩🇪DE_154|1.2MB/s|R002-260618 01'
+      - '🇩🇪DE_170|2.8MB/s|F003-260618 [283704ab7ebe]'
+      - '🇩🇪DE_169|506KB/s|A004-260618 [fb223ebd154b]'
+      - '🇩🇪DE_227|5.2MB/s|P002-260618 [c242c75d0a6f]'
+      - '🇩🇪DE_207|1.0MB/s|A004-260618 [1875399103a9]'
   - name: 'FR · France'
     type: 'url-test'
     url: 'https://www.google.com/generate_204'
@@ -184,16 +472,20 @@ proxy-groups:
     tolerance: 100
     lazy: false
     proxies:
-      - '🇫🇷FR_1569|678KB/s|M002-260618 01'
-  - name: 'CA · Canada'
+      - '🇫🇷FR_329|5.8MB/s|S001-260618 [58438228b03a]'
+      - '🇫🇷FR_364|1.9MB/s|K001-260618 [9609525282db]'
+      - '🇫🇷FR_347|368KB/s|A001-260618 [9047e6c87391]'
+      - '🇫🇷FR_358|1.0MB/s|K001-260618 [af44a4a293e5]'
+      - '🇫🇷FR_1612|601KB/s|M002-260618 01'
+  - name: 'NL · Netherlands'
     type: 'url-test'
     url: 'https://www.google.com/generate_204'
     interval: 300
     tolerance: 100
     lazy: false
     proxies:
-      - '🇨🇦CA_44|709KB/s|M002-260618 01'
-      - '🇨🇦CA_44|421KB/s|R002-260618 01'
+      - '🇳🇱NL_224|4.1MB/s|A004-260618 01'
+      - '🇳🇱NL_325|6.3MB/s|P002-260618 [111aaa619f5f]'
   - name: 'HK · Hong Kong'
     type: 'url-test'
     url: 'https://www.google.com/generate_204'
@@ -201,6 +493,6 @@ proxy-groups:
     tolerance: 100
     lazy: false
     proxies:
-      - '🇭🇰 香港 14'
+      - '🇭🇰HK_92|615KB/s|K001-260618 [474f98fceaa3]'
 rules:
   - 'MATCH,COUNTRY'
