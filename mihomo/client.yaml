@@ -35,6 +35,71 @@ rule-providers:
     interval: 86400
     url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs'
 proxies:
+  - name: '🇫🇷FR_341|2.0MB/s|S004-260618 [542a4e0b260b]'
+    alpn:
+      - 'http/1.1'
+    client-fingerprint: 'chrome'
+    network: 'ws'
+    port: 443
+    server: '104.17.3.81'
+    sub_tag: 'S004-260618'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '495c7195-85b8-498a-bf20-2ea9ce9175b5'
+    ws-opts:
+      headers:
+        Host: 'snip.edgeoneai.cc.cd'
+        User-Agent: 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36'
+      path: '/fdip#TELEGRAM--MARAMBASHI--MARAMBASHI--MARAMBASHI--MARAMBASHI'
+      early-data-header-name: 'Sec-WebSocket-Protocol'
+      max-early-data: 2560
+    xudp: true
+    packet-encoding: 'xudp'
+    servername: 'snip.edgeoneai.cc.cd'
+    _poolOnly: true
+  - name: '🇫🇷FR_334|6.8MB/s|S001-260618 [34528c8e3a6d]'
+    alpn:
+      - 'http/1.1'
+    client-fingerprint: 'unsafe'
+    encryption: 'none'
+    network: 'ws'
+    port: 443
+    server: '172.64.153.61'
+    sub_tag: 'S001-260618'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '495c7195-85b8-498a-bf20-2ea9ce9175b5'
+    ws-opts:
+      headers:
+        Host: 'snip.edgeoneai.cc.cd'
+        User-Agent: 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/534.7 (KHTML, like Gecko) Chrome/7.0.517.44 Safari/534.7'
+      path: '/fdip'
+    xudp: true
+    packet-encoding: 'xudp'
+    servername: 'snip.edgeoneai.cc.cd'
+    _poolOnly: true
+  - name: '🇫🇷FR_378|2.5MB/s|F003-260618 [859633a8bcef]'
+    client-fingerprint: 'chrome'
+    encryption: 'none'
+    network: 'ws'
+    port: 443
+    server: '104.18.46.214'
+    sub_tag: 'F003-260618'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '495c7195-85b8-498a-bf20-2ea9ce9175b5'
+    ws-opts:
+      headers:
+        Host: 'snip.edgeoneai.cc.cd'
+        User-Agent: 'Mozilla/5.0 (X11; Datanyze; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36'
+      path: '/'
+    xudp: true
+    packet-encoding: 'xudp'
+    servername: 'snip.edgeoneai.cc.cd'
+    _poolOnly: true
   - name: '🇸🇬SG_38|247KB/s|R002-260618 01'
     port: 443
     server: '154.26.139.24'
@@ -44,26 +109,6 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: 'd1f4a0d80288cf0b'
-  - name: '🇫🇷FR_2058|2.0MB/s|R002-260618 01'
-    port: 443
-    server: '172.64.68.89'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇰🇷KR_45|524KB/s|R002-260618 01'
-    password: 'bb85e074-b0c2-11ea-ad28-f23c913c8d2b'
-    port: 31433
-    server: '783f6643-tcev40-th02zb-m0b9.kr.oshuawei.com'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'bb85e074-b0c2-11ea-ad28-f23c913c8d2b'
-    udp: true
-    sni: '783f6643-tcev40-th02zb-m0b9.kr.oshuawei.com'
-    _poolOnly: true
   - name: '🇺🇸US_626|798KB/s|R002-260618 01'
     password: 'null'
     port: 9002
@@ -91,9 +136,9 @@ proxy-groups:
   - name: 'PROXY'
     type: 'select'
     proxies:
-      - '🇸🇬SG_38|247KB/s|R002-260618 01'
-      - '🇫🇷FR_2058|2.0MB/s|R002-260618 01'
-      - '🇰🇷KR_45|524KB/s|R002-260618 01'
+      - '🇫🇷FR_341|2.0MB/s|S004-260618 [542a4e0b260b]'
+      - '🇫🇷FR_334|6.8MB/s|S001-260618 [34528c8e3a6d]'
+      - '🇫🇷FR_378|2.5MB/s|F003-260618 [859633a8bcef]'
       - 'DIRECT'
   - name: 'CHATGPT'
     type: 'select'
