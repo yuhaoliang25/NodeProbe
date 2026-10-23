@@ -2276,6 +2276,16 @@ proxies:
     username: 'null'
     udp: true
     _poolOnly: true
+  - name: 'HK香港(mibei77.com 米贝节点分享)_12-source-41447db523bef660'
+    type: 'anytls'
+    server: '654968169.df6h451rh.xin'
+    port: 443
+    password: '0324fbc29561'
+    skip-cert-verify: true
+    tls: true
+    udp: true
+    client-fingerprint: 'chrome'
+    _poolOnly: true
   - name: '🇳🇱 荷兰_3EDL15'
     server: 'netherlands02.azotvpn.xyz'
     port: 443

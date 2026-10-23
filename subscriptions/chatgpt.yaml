@@ -20,14 +20,13 @@ proxies:
     username: 'null'
     udp: true
     endpoint-id: 'f8df99716a85628c'
-  - name: '🇺🇸US_729|701KB/s|P002-260618 01'
-    password: 'null'
-    port: 9002
-    server: '138.199.35.218'
+  - name: '🇫🇷FR_183|751KB/s|R002-260618 01'
+    port: 443
+    server: 'fan.132031.xyz'
     skip-cert-verify: true
-    sub_tag: 'P002-260618'
+    sni: 'fan.132031.xyz'
+    sub_tag: 'R002-260618'
     tls: true
     type: 'http'
-    username: 'null'
     udp: true
-    _poolOnly: true
+    endpoint-id: 'eedf278594fece87'
