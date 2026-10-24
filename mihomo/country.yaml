@@ -4,155 +4,396 @@ mode: 'rule'
 log-level: 'warning'
 ipv6: false
 proxies:
-  - alpn:
-      - 'http/1.1'
-    client-fingerprint: 'chrome'
-    encryption: 'none'
-    name: '🇫🇷FR_107|219KB/s|B007-260618 01'
-    network: 'ws'
-    port: 443
-    server: '188.114.98.0'
-    sub_tag: 'B007-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '495c7195-85b8-498a-bf20-2ea9ce9175b5'
-    ws-opts:
-      headers:
-        Host: 'snip.edgeoneai.cc.cd'
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36'
-      path: '/?TELEGRAM-TOOTFFARANGI'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'snip.edgeoneai.cc.cd'
-    _poolOnly: true
-  - name: '🇺🇸US_479|658KB/s|R002-260618 01'
-    port: 443
-    server: '149.88.21.140'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US-66.23.203.21-145'
-    server: '66.23.203.21'
-    port: 59689
-    type: 'trojan'
-    password: 'ae7eb4dwyaz25pxwgq59'
-    skip-cert-verify: true
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    name: '每天更新免费节点：v2rayclashfree.com-21bd48b324b542a0'
-    network: 'ws'
-    port: 443
-    server: '139.162.84.224'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '495c7195-85b8-498a-bf20-2ea9ce9175b5'
-    ws-opts:
-      headers:
-        Host: 'snip.edgeoneai.cc.cd'
-        User-Agent: 'Mozilla/5.0 (Linux; Android 7.1.1; CPH1723 Build/N6F26Q) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.98 Mobile Safari/537.36'
-      path: '/fdip=sstp://vpn:vpn@public-vpn-200.opengw.net:443fp=chrome'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'snip.edgeoneai.cc.cd'
-    _poolOnly: true
-  - cipher: 'aes-256-gcm'
-    name: '❓Other_46|578KB/s|M002-260618 01'
-    password: 'Y6R9pAtvxxzmGC'
-    port: 5001
-    server: '141.164.45.187'
-    sub_tag: 'M002-260618'
+  - cipher: 'rc4-md5'
+    name: '🇺🇸US_463|908KB/s|A004-260618 01'
+    password: '14fFPrbezE3HDZzsMOr6'
+    port: 8080
+    server: '107.151.182.253'
+    sub_tag: 'A004-260618'
     type: 'ss'
     udp: true
     _poolOnly: true
-  - name: 'SG新加坡(mibei77.com 米贝节点分享)_13'
-    type: 'vless'
-    server: '511.150333.xyz'
-    port: 21001
-    uuid: '41b1c169-5905-4d98-b6a6-56896c25737c'
-    servername: 'www.cloudflare.com'
-    tls: true
-    client-fingerprint: 'chrome'
-    reality-opts:
-      public-key: 'HZwHZBP3x4Yo4UQiHcypRJIU_UdZY5OAapQM8RUqVAU'
-      short-id: 'ab39fc68ab3dee81'
-    skip-cert-verify: true
-    udp: true
-    _poolOnly: true
-  - name: '❓未知丨yoyapai.com_1-39d7aa3229e15a91'
-    type: 'vless'
-    server: 'sg2-8sb.6121999.dpdns.org'
-    port: 19825
-    uuid: '2d1ad594-80a4-4bfb-87a6-038e39701f51'
-    servername: 'sg2-8sb.6121999.dpdns.org'
-    tls: true
-    flow: 'xtls-rprx-vision'
-    client-fingerprint: 'chrome'
-    reality-opts:
-      public-key: 'GvvkY8xYb9QjvwvzYq_uNC4tOGd0DCxRnz6770-xgkI'
-      short-id: '6ba85179e30d4fc2'
-    skip-cert-verify: false
-    udp: true
-    _poolOnly: true
-  - name: '🇬🇧GB_9|835KB/s|P002-260618 01'
+  - name: '🇫🇷FR_350|1010KB/s|A004-260618 01'
     network: 'ws'
-    port: 14430
-    server: '193.188.21.253'
-    sub_tag: 'P002-260618'
-    tls: false
+    port: 2082
+    server: '104.17.162.11'
+    sub_tag: 'A004-260618'
     type: 'vless'
     udp: true
-    uuid: '57f7772d-f5d6-4d8f-992d-5fa5e0d6da55'
+    uuid: 'e5cc16a6-ea42-46b2-82ae-ad2157e1641b'
     ws-opts:
       headers:
-        Host: '193.188.21.253'
-      path: '/vless'
-    servername: '193.188.21.253'
-    _poolOnly: true
-  - name: '🇫🇷FR_1863|96KB/s|R002-260618 01'
-    port: 443
-    server: '62.210.70.194'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
+        Host: 'hhlfy.twiladaphne.ndjp.net'
+        User-Agent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'
+      path: '/'
+    xudp: true
+    packet-encoding: 'xudp'
     _poolOnly: true
   - client-fingerprint: 'chrome'
-    name: '🇫🇷FR_1389|1.0MB/s|A003-260618 01'
+    name: '🇺🇸US_492|1007KB/s|C002-260622 01'
+    network: 'tcp'
+    password: 'ae7eb4dwyaz25pxwgq59'
+    port: 59689
+    server: '66.23.203.21'
+    skip-cert-verify: true
+    sni: '66.23.203.21'
+    sub_tag: 'C002-260622'
+    type: 'trojan'
+    udp: true
+    _poolOnly: true
+  - client-fingerprint: 'unsafe'
+    name: '🇯🇵JP_63|81KB/s|M002-260618 01'
+    network: 'ws'
+    port: 8443
+    server: '154.31.114.162'
+    sub_tag: 'M002-260618'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
+    ws-opts:
+      headers:
+        Host: 'jp3.yohototo.top'
+        User-Agent: 'Mozilla/5.0 (Windows NT 6.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36'
+      path: '/tyxyws'
+    xudp: true
+    packet-encoding: 'xudp'
+    servername: 'jp3.yohototo.top'
+    _poolOnly: true
+  - name: '🇯🇵 日本_K1XKAD'
+    server: '154.36.158.197'
+    port: 8388
+    type: 'ss'
+    udp: true
+    cipher: 'aes-256-gcm'
+    password: 'BeaUf9c0AEWH40Pu'
+    _poolOnly: true
+  - name: '🇯🇵JP_96|427KB/s|A001-260618 [23dee695c65e]'
+    client-fingerprint: 'chrome'
+    network: 'ws'
+    port: 443
+    server: '60.130.209.253'
+    sub_tag: 'A001-260618'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '495c7195-85b8-498a-bf20-2ea9ce9175b5'
+    ws-opts:
+      headers:
+        Host: 'snip.edgeoneai.cc.cd'
+        User-Agent: 'Mozilla/5.0 (Linux; Android 6.0.1; SM-G532M Build/MMB29T; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/55.0.2883.91 Mobile Safari/537.36'
+      path: '/fp=chrome'
+    xudp: true
+    packet-encoding: 'xudp'
+    servername: 'snip.edgeoneai.cc.cd'
+    _poolOnly: true
+  - client-fingerprint: 'chrome'
+    encryption: 'none'
+    name: '🇰🇷KR_69|548KB/s|M003-260806 01'
+    network: 'ws'
+    port: 443
+    server: '146.56.45.96'
+    sub_tag: 'M003-260806'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '495c7195-85b8-498a-bf20-2ea9ce9175b5'
+    ws-opts:
+      headers:
+        Host: 'snip.edgeoneai.cc.cd'
+        User-Agent: 'Mozilla/5.0 (Linux; Android 7.0; SM-G570M Build/NRD90M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36'
+      path: '/fdip=sstp://vpn:vpn@public-vpn-200.opengw.net:443'
+    xudp: true
+    packet-encoding: 'xudp'
+    servername: 'snip.edgeoneai.cc.cd'
+    _poolOnly: true
+  - name: 'US美国(mibei77.com 米贝节点分享)_48-2398c7e7b7c6fd5f'
+    type: 'anytls'
+    server: 'svip.skycon808.com'
+    port: 60005
+    password: '13f0acfa-38c1-4e82-a758-583aa31740df'
+    sni: '127.0.0.1'
+    skip-cert-verify: true
+    tls: true
+    udp: true
+    _poolOnly: true
+  - alpn:
+      - ''
+    alterId: 0
+    cipher: 'auto'
+    name: '🇰🇷KR_72|461KB/s|P002-260618 01'
+    network: 'ws'
+    port: 443
+    server: 'seoul02.zgjok.com'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'vmess'
+    udp: true
+    uuid: '1a1e5196-eab4-4772-9012-65c27f19a524'
+    ws-opts:
+      headers:
+        Host: 'seoul02.zgjok.com'
+      path: '/'
+    servername: 'seoul02.zgjok.com'
+    _poolOnly: true
+  - name: '🇸🇬SG_81|569KB/s 01'
+    password: '1234'
+    port: 2080
+    server: '18.143.144.220'
+    skip-cert-verify: true
+    type: 'http'
+    username: '1234'
+    udp: true
+    _poolOnly: true
+  - name: '🇸🇬 新加坡_70GN1N'
+    server: '45.132.75.213'
+    port: 2053
+    type: 'vless'
+    uuid: 'f46182d1-e13b-47d3-97e2-fa5426a93e7c'
+    tls: true
+    tfo: false
+    skip-cert-verify: false
+    reality-opts:
+      public-key: 'TpWeZocgNOygOhMo0l7oJawPu7STkn9D-SOa0UppcyY'
+      short-id: 'cd7e85995ae2afc9'
+    servername: 'www.cloudflare.com'
+    client-fingerprint: 'chrome'
+    network: 'tcp'
+    udp: true
+    _poolOnly: true
+  - name: '🇸🇬SG_96|675KB/s|R002-260618 01'
+    password: '8888'
+    port: 1080
+    server: '47.236.168.243'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    type: 'socks5'
+    username: '8888'
+    udp: true
+    _poolOnly: true
+  - client-fingerprint: 'unsafe'
+    encryption: 'none'
+    name: '🇬🇧GB_38|3.1MB/s|S004-260618 01'
+    network: 'ws'
+    port: 443
+    server: '143.110.171.182'
+    sub_tag: 'S004-260618'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '495c7195-85b8-498a-bf20-2ea9ce9175b5'
+    ws-opts:
+      headers:
+        Host: 'snip.edgeoneai.cc.cd'
+        User-Agent: 'Mozilla/5.0 (Linux; Android 7.0; TRT-LX2 Build/HUAWEITRT-LX2; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/59.0.3071.125 Mobile Safari/537.36'
+      path: '/fdip=sstp://vpn:vpn@public-vpn-200.opengw.net:443'
+    xudp: true
+    packet-encoding: 'xudp'
+    servername: 'snip.edgeoneai.cc.cd'
+    _poolOnly: true
+  - alpn:
+      - 'http/1.1'
+    client-fingerprint: 'unsafe'
+    name: '🇳🇱NL_327|1.5MB/s|S004-260618 01-8cf71fe9f0f7b66d'
     network: 'ws'
     password: 'humanity'
     port: 443
-    server: '185.225.68.232'
+    server: '57.128.183.108'
     skip-cert-verify: false
-    sni: 'www.calmlunch.com'
-    sub_tag: 'A003-260618'
+    sni: 'www.pleadcourt.org'
+    sub_tag: 'S004-260618'
     type: 'trojan'
     udp: true
     ws-opts:
       headers:
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36'
+        User-Agent: 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36'
       path: '/assignment'
     _poolOnly: true
-  - name: 'NL荷兰(mibei77.com 米贝节点分享)_12'
-    type: 'vless'
-    server: '31.59.217.164'
-    port: 443
-    uuid: '4b09d40d-e36a-47c3-baa4-e6bf551b3183'
-    servername: 'www.adobe.com'
-    tls: true
-    flow: 'xtls-rprx-vision'
+  - alterId: 0
+    cipher: 'auto'
+    name: '🇩🇪DE_140|2.6MB/s|B007-260618 01'
+    network: 'tcp'
+    port: 22366
+    server: '31.76.11.83'
+    skip-cert-verify: false
+    sub_tag: 'B007-260618'
+    tls: false
+    type: 'vmess'
+    udp: true
+    uuid: '632cfa69-ae00-49d1-81e0-554979d1e9fa'
+    xudp: true
+    packet-encoding: 'xudp'
+    _poolOnly: true
+  - alpn:
+      - 'h3'
+      - 'h2'
+      - 'http/1.1'
     client-fingerprint: 'chrome'
-    reality-opts:
-      public-key: 'kOkILS7UXUQDNPLYn4SQ65kMIWKXNOttV5Kddw4ZqTo'
-      short-id: '1625a2a79d01328f'
+    name: '🇩🇪DE_137|1.7MB/s|M002-260618 01'
+    network: 'ws'
+    port: 2083
+    server: '91.107.247.173'
+    sub_tag: 'M002-260618'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '7858128a-6b5e-4f86-9bff-52c1f1e6439d'
+    ws-opts:
+      headers:
+        Host: ''
+        User-Agent: 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36'
+      path: '/'
+    xudp: true
+    packet-encoding: 'xudp'
+    servername: 'sino.bestsellers1.site'
+    _poolOnly: true
+  - name: 'FR法国(mibei77.com 米贝节点分享)_1-b79b1c1cbd9229f8'
+    type: 'vless'
+    server: '138.124.70.41'
+    port: 14430
+    uuid: '6cc745e3-4eb9-46c8-a4a1-85dee7b87edc'
+    network: 'ws'
+    servername: '138.124.70.41'
+    tls: false
+    client-fingerprint: 'chrome'
+    ws-opts:
+      path: '/vless'
+      headers:
+        Host: '138.124.70.41'
     skip-cert-verify: true
     udp: true
+    _poolOnly: true
+  - encryption: 'none'
+    name: '🇫🇷FR_209|2.8MB/s|M003-260806 01'
+    network: 'ws'
+    port: 80
+    server: '152.228.162.19'
+    sub_tag: 'M003-260806'
+    type: 'vless'
+    udp: true
+    uuid: '5ce84688-f535-46ad-a512-37b17becf6ea'
+    ws-opts:
+      headers:
+        Host: 'akamaized.net'
+        User-Agent: 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.67 Safari/537.36'
+      path: '/vless/'
+    xudp: true
+    packet-encoding: 'xudp'
+    _poolOnly: true
+  - name: '🇫🇷FR_253|1.4MB/s|M003-260806 01'
+    network: 'ws'
+    port: 14430
+    server: '185.253.116.33'
+    sub_tag: 'M003-260806'
+    type: 'vless'
+    udp: true
+    uuid: 'aee7ae19-672f-49d8-8a92-aa7cdfc89f89'
+    ws-opts:
+      headers:
+        Host: '185.253.116.33'
+        User-Agent: 'Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36'
+      path: '/vless'
+    xudp: true
+    packet-encoding: 'xudp'
+    servername: '185.253.116.33'
+    _poolOnly: true
+  - name: '🇳🇱 荷兰_O1XEID'
+    server: '178.83.185.156'
+    port: 8080
+    type: 'ss'
+    udp: true
+    cipher: 'chacha20-ietf-poly1305'
+    password: 'oZIoA69Q8yhcQV8ka3Pa3A'
+    _poolOnly: true
+  - cipher: 'chacha20-ietf-poly1305'
+    name: '🇳🇱NL_304|7.4MB/s|A004-260618 01'
+    password: 'k1dBOmOB4oqi7Ump37a1bQ'
+    port: 8080
+    server: '82.38.31.220'
+    sub_tag: 'A004-260618'
+    type: 'ss'
+    udp: true
+    _poolOnly: true
+  - name: '🇨🇦CA_41|1.3MB/s|A004-260618 [ac4afab0588b]'
+    client-fingerprint: 'chrome'
+    network: 'tcp'
+    password: 'Trojan@82164024'
+    port: 443
+    server: '155.138.138.2'
+    skip-cert-verify: true
+    sni: 'ca.tronsg.com'
+    sub_tag: 'A004-260618'
+    type: 'trojan'
+    udp: true
+    _poolOnly: true
+  - name: 'IN印度(mibei77.com 米贝节点分享)'
+    type: 'vless'
+    server: '13.140.56.100'
+    port: 14430
+    uuid: '68512eac-cd53-4de3-8d1e-08f6e04af1a9'
+    network: 'ws'
+    servername: '13.140.56.100'
+    tls: false
+    client-fingerprint: 'chrome'
+    ws-opts:
+      path: '/vless'
+      headers:
+        Host: '13.140.56.100'
+    skip-cert-verify: true
+    udp: true
+    _poolOnly: true
+  - name: 'TW台湾(mibei77.com 米贝节点分享)_4'
+    type: 'anytls'
+    server: 'er8u54dh.df6h451rh.xin'
+    port: 443
+    password: '0324fbc29561'
+    sni: 'px.ads.linkedin.com'
+    alpn:
+      - 'http/1.1'
+    skip-cert-verify: true
+    tls: true
+    udp: true
+    client-fingerprint: 'chrome'
+    _poolOnly: true
+  - name: '🇭🇰 香港 18-pool-3ecdf2883fc56e42'
+    port: 3128
+    server: '119.28.24.235'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '香港(mibei77.com 米贝节点分享)'
+    type: 'anytls'
+    server: '654968169.df6h451rh.xin'
+    port: 443
+    password: '0324fbc29561'
+    sni: 'images.ctfassets.net'
+    skip-cert-verify: true
+    tls: true
+    udp: true
+    client-fingerprint: 'chrome'
+    _poolOnly: true
+  - client-fingerprint: 'chrome'
+    name: '🇭🇰 香港 13-pool-a10226776bd2cf23'
+    network: 'ws'
+    port: 443
+    server: '103.38.236.248'
+    sub_tag: 'A001-260618'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '495c7195-85b8-498a-bf20-2ea9ce9175b5'
+    ws-opts:
+      headers:
+        Host: 'snip.edgeoneai.cc.cd'
+        User-Agent: 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'
+      path: '/fdip=sstp://vpn:vpn@public-vpn-200.opengw.net:443'
+    xudp: true
+    packet-encoding: 'xudp'
+    servername: 'snip.edgeoneai.cc.cd'
     _poolOnly: true
 proxy-groups:
   - name: 'COUNTRY'
@@ -160,8 +401,15 @@ proxy-groups:
     proxies:
       - 'DIRECT'
       - 'US · United States'
+      - 'JP · Japan'
+      - 'KR · South Korea'
+      - 'SG · Singapore'
       - 'GB · United Kingdom'
+      - 'DE · Germany'
       - 'FR · France'
+      - 'NL · Netherlands'
+      - 'CA · Canada'
+      - 'HK · Hong Kong'
   - name: 'US · United States'
     type: 'url-test'
     url: 'https://www.google.com/generate_204'
@@ -169,8 +417,37 @@ proxy-groups:
     tolerance: 100
     lazy: false
     proxies:
-      - '🇺🇸US_479|658KB/s|R002-260618 01'
-      - '🇺🇸US-66.23.203.21-145'
+      - '🇺🇸US_463|908KB/s|A004-260618 01'
+      - '🇺🇸US_492|1007KB/s|C002-260622 01'
+  - name: 'JP · Japan'
+    type: 'url-test'
+    url: 'https://www.google.com/generate_204'
+    interval: 300
+    tolerance: 100
+    lazy: false
+    proxies:
+      - '🇯🇵JP_63|81KB/s|M002-260618 01'
+      - '🇯🇵 日本_K1XKAD'
+      - '🇯🇵JP_96|427KB/s|A001-260618 [23dee695c65e]'
+  - name: 'KR · South Korea'
+    type: 'url-test'
+    url: 'https://www.google.com/generate_204'
+    interval: 300
+    tolerance: 100
+    lazy: false
+    proxies:
+      - '🇰🇷KR_69|548KB/s|M003-260806 01'
+      - '🇰🇷KR_72|461KB/s|P002-260618 01'
+  - name: 'SG · Singapore'
+    type: 'url-test'
+    url: 'https://www.google.com/generate_204'
+    interval: 300
+    tolerance: 100
+    lazy: false
+    proxies:
+      - '🇸🇬SG_81|569KB/s 01'
+      - '🇸🇬 新加坡_70GN1N'
+      - '🇸🇬SG_96|675KB/s|R002-260618 01'
   - name: 'GB · United Kingdom'
     type: 'url-test'
     url: 'https://www.google.com/generate_204'
@@ -178,7 +455,16 @@ proxy-groups:
     tolerance: 100
     lazy: false
     proxies:
-      - '🇬🇧GB_9|835KB/s|P002-260618 01'
+      - '🇬🇧GB_38|3.1MB/s|S004-260618 01'
+  - name: 'DE · Germany'
+    type: 'url-test'
+    url: 'https://www.google.com/generate_204'
+    interval: 300
+    tolerance: 100
+    lazy: false
+    proxies:
+      - '🇩🇪DE_140|2.6MB/s|B007-260618 01'
+      - '🇩🇪DE_137|1.7MB/s|M002-260618 01'
   - name: 'FR · France'
     type: 'url-test'
     url: 'https://www.google.com/generate_204'
@@ -186,8 +472,35 @@ proxy-groups:
     tolerance: 100
     lazy: false
     proxies:
-      - '🇫🇷FR_107|219KB/s|B007-260618 01'
-      - '🇫🇷FR_1863|96KB/s|R002-260618 01'
-      - '🇫🇷FR_1389|1.0MB/s|A003-260618 01'
+      - '🇫🇷FR_350|1010KB/s|A004-260618 01'
+      - '🇫🇷FR_209|2.8MB/s|M003-260806 01'
+      - '🇫🇷FR_253|1.4MB/s|M003-260806 01'
+  - name: 'NL · Netherlands'
+    type: 'url-test'
+    url: 'https://www.google.com/generate_204'
+    interval: 300
+    tolerance: 100
+    lazy: false
+    proxies:
+      - '🇳🇱NL_327|1.5MB/s|S004-260618 01-8cf71fe9f0f7b66d'
+      - '🇳🇱 荷兰_O1XEID'
+      - '🇳🇱NL_304|7.4MB/s|A004-260618 01'
+  - name: 'CA · Canada'
+    type: 'url-test'
+    url: 'https://www.google.com/generate_204'
+    interval: 300
+    tolerance: 100
+    lazy: false
+    proxies:
+      - '🇨🇦CA_41|1.3MB/s|A004-260618 [ac4afab0588b]'
+  - name: 'HK · Hong Kong'
+    type: 'url-test'
+    url: 'https://www.google.com/generate_204'
+    interval: 300
+    tolerance: 100
+    lazy: false
+    proxies:
+      - '🇭🇰 香港 18-pool-3ecdf2883fc56e42'
+      - '🇭🇰 香港 13-pool-a10226776bd2cf23'
 rules:
   - 'MATCH,COUNTRY'
