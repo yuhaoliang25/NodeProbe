@@ -8,16 +8,29 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: 'd1f4a0d80288cf0b'
-  - name: '🇺🇸US_200|293KB/s|P002-260618 01'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.198'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
+  - name: '🇫🇷FR_341|2.0MB/s|S004-260618 [542a4e0b260b]'
+    alpn:
+      - 'http/1.1'
+    client-fingerprint: 'chrome'
+    network: 'ws'
+    port: 443
+    server: '104.17.3.81'
+    sub_tag: 'S004-260618'
     tls: true
-    type: 'http'
+    type: 'vless'
     udp: true
-    endpoint-id: '91b783c05ebd3e48'
+    uuid: '495c7195-85b8-498a-bf20-2ea9ce9175b5'
+    ws-opts:
+      headers:
+        Host: 'snip.edgeoneai.cc.cd'
+        User-Agent: 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36'
+      path: '/fdip#TELEGRAM--MARAMBASHI--MARAMBASHI--MARAMBASHI--MARAMBASHI'
+      early-data-header-name: 'Sec-WebSocket-Protocol'
+      max-early-data: 2560
+    xudp: true
+    packet-encoding: 'xudp'
+    servername: 'snip.edgeoneai.cc.cd'
+    _poolOnly: true
   - name: '🇺🇸US_729|701KB/s|P002-260618 01'
     password: 'null'
     port: 9002
