@@ -1125,16 +1125,6 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '0ae09a41f776c539'
-  - name: '🇫🇷FR_183|751KB/s|R002-260618 01'
-    port: 443
-    server: 'fan.132031.xyz'
-    skip-cert-verify: true
-    sni: 'fan.132031.xyz'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: 'eedf278594fece87'
   - name: '🇷🇴RO_66|849KB/s|P002-260618 01'
     password: 'None'
     port: 9002
@@ -3589,6 +3579,16 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
+  - name: 'HK香港(mibei77.com 米贝节点分享)_12-source-4916e8a6d10d601e'
+    type: 'anytls'
+    server: '654968169.df6h451rh.xin'
+    port: 443
+    password: '0324fbc29561'
+    sni: '127.0.0.1'
+    skip-cert-verify: true
+    tls: true
+    udp: true
+    _poolOnly: true
   - name: '🇩🇪DE_227|5.2MB/s|P002-260618 [c242c75d0a6f]'
     password: 'None'
     port: 443
@@ -3744,5 +3744,29 @@ proxies:
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇪🇪EE_29|2.0MB/s|R002-260618 01'
+    password: '9jkvAVV-9ufV6IGd'
+    port: 44008
+    server: 'chalo-ru.nexorcdn.com'
+    skip-cert-verify: true
+    sni: 'chalo-ru.nexorcdn.com'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'ef37886e2aacd6fa622e3de3810299c2'
+    udp: true
+    _poolOnly: true
+  - name: '🇪🇪EE_32|1.5MB/s|R002-260618 01'
+    password: '9jkvAVV-9ufV6IGd'
+    port: 36774
+    server: 'chalo-ru.nexorcdn.com'
+    skip-cert-verify: true
+    sni: 'chalo-ru.nexorcdn.com'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'ef37886e2aacd6fa622e3de3810299c2'
     udp: true
     _poolOnly: true

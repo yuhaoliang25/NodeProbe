@@ -89,6 +89,17 @@ proxies:
     packet-encoding: 'xudp'
     servername: 'snip.edgeoneai.cc.cd'
     _poolOnly: true
+  - name: '🇺🇸US_729|701KB/s|P002-260618 01'
+    password: 'null'
+    port: 9002
+    server: '138.199.35.218'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
   - name: '🇺🇸US_626|798KB/s|R002-260618 01'
     password: 'null'
     port: 9002
@@ -101,17 +112,6 @@ proxies:
     username: 'null'
     udp: true
     endpoint-id: 'f8df99716a85628c'
-  - name: '🇺🇸US_729|701KB/s|P002-260618 01'
-    password: 'null'
-    port: 9002
-    server: '138.199.35.218'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    _poolOnly: true
 proxy-groups:
   - name: 'PROXY'
     type: 'select'
@@ -124,8 +124,8 @@ proxy-groups:
     type: 'select'
     proxies:
       - '🇸🇬SG_38|247KB/s|R002-260618 01'
-      - '🇺🇸US_626|798KB/s|R002-260618 01'
       - '🇺🇸US_729|701KB/s|P002-260618 01'
+      - '🇺🇸US_626|798KB/s|R002-260618 01'
   - name: 'STICKY'
     type: 'select'
     proxies:
