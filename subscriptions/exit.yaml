@@ -1034,6 +1034,17 @@ proxies:
     username: 'null'
     udp: true
     endpoint-id: '7085e434dab8b9e1'
+  - name: '🇳🇱NL_285|1.1MB/s|P002-260618 01'
+    password: 'null'
+    port: 443
+    server: '185.140.209.235'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    endpoint-id: 'b1b69e8bf091d5cf'
   - name: '🇷🇴RO_96|891KB/s|R002-260618 01'
     password: 'null'
     port: 9002
@@ -2235,6 +2246,18 @@ proxies:
     udp: true
     client-fingerprint: 'chrome'
     _poolOnly: true
+  - name: '🇳🇱NL_219|2.8MB/s|R002-260618 01'
+    password: 'null'
+    port: 9002
+    server: '84.17.47.147'
+    skip-cert-verify: true
+    sni: '84.17.47.147'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
   - name: '❓Other_279|1.4MB/s|R002-260618 01'
     password: 'null'
     port: 9002
@@ -3005,29 +3028,6 @@ proxies:
     packet-encoding: 'xudp'
     servername: 'snip.edgeoneai.cc.cd'
     _poolOnly: true
-  - name: '🇫🇷FR_341|2.0MB/s|S004-260618 [542a4e0b260b]'
-    alpn:
-      - 'http/1.1'
-    client-fingerprint: 'chrome'
-    network: 'ws'
-    port: 443
-    server: '104.17.3.81'
-    sub_tag: 'S004-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '495c7195-85b8-498a-bf20-2ea9ce9175b5'
-    ws-opts:
-      headers:
-        Host: 'snip.edgeoneai.cc.cd'
-        User-Agent: 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36'
-      path: '/fdip#TELEGRAM--MARAMBASHI--MARAMBASHI--MARAMBASHI--MARAMBASHI'
-      early-data-header-name: 'Sec-WebSocket-Protocol'
-      max-early-data: 2560
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'snip.edgeoneai.cc.cd'
-    _poolOnly: true
   - name: '🇫🇷FR_379|1.6MB/s|F003-260618 [d50f3861211c]'
     client-fingerprint: 'chrome'
     encryption: 'none'
@@ -3329,25 +3329,6 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇩🇪DE_178|2.4MB/s|A001-260618 [9b6a987f44c5]'
-    client-fingerprint: 'chrome'
-    network: 'ws'
-    port: 8443
-    server: '185.208.172.85'
-    sub_tag: 'A001-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '495c7195-85b8-498a-bf20-2ea9ce9175b5'
-    ws-opts:
-      headers:
-        Host: 'snip.edgeoneai.cc.cd'
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.112 Safari/537.36'
-      path: '/fdip=sstp://vpn:vpn@public-vpn-200.opengw.net:443fp=chrome'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'snip.edgeoneai.cc.cd'
-    _poolOnly: true
   - name: '🇫🇷FR_358|1.0MB/s|K001-260618 [af44a4a293e5]'
     password: 'None'
     port: 8081
@@ -3473,25 +3454,6 @@ proxies:
     type: 'http'
     username: ''
     udp: true
-    _poolOnly: true
-  - name: '🇳🇱NL_329|4.6MB/s|K001-260618 [73a7c815d992]'
-    client-fingerprint: 'chrome'
-    network: 'ws'
-    port: 443
-    server: '185.186.246.8'
-    sub_tag: 'K001-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '495c7195-85b8-498a-bf20-2ea9ce9175b5'
-    ws-opts:
-      headers:
-        Host: 'snip.edgeoneai.cc.cd'
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'
-      path: '/fp=chrome'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'snip.edgeoneai.cc.cd'
     _poolOnly: true
   - name: '🇩🇪DE_205|5.1MB/s|A001-260618 [8ced80108d38]'
     client-fingerprint: 'chrome'
@@ -3750,6 +3712,15 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
+  - name: '🇳🇱NL_265|1.7MB/s|R002-260618 01'
+    port: 443
+    server: '185.93.106.214'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
   - name: '🇳🇱NL_244|3.5MB/s|R002-260618 01'
     password: 'null'
     port: 9002
@@ -3840,4 +3811,23 @@ proxies:
     xudp: true
     packet-encoding: 'xudp'
     servername: 'go.iranfree.de5.net'
+    _poolOnly: true
+  - name: '🇮🇹IT_25|1.1MB/s|R002-260618 01'
+    port: 443
+    server: '93.42.177.250'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇮🇹IT_26|555KB/s|R002-260618 01'
+    password: 'None'
+    port: 443
+    server: '93.42.177.250'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
     _poolOnly: true
