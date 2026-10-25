@@ -17,7 +17,57 @@ const PAIR_CANDIDATE_REMOTE=PREFIX+'/pair-candidates.json';
 const PAIR_CANDIDATE_LOCAL=process.env.CHINA_RELAY_CANDIDATE_FILE||'data/china-relay-pair-candidates.json';
 const ASSET_FILE=process.env.CHINA_ASSET_FILE||'data/china-node-assets.json';
 const PAIR_KNOWLEDGE_FILE=process.env.CHINA_PAIR_KNOWLEDGE_FILE||'data/china-pair-knowledge.json';
+const USAGE_FILE=process.env.CHINA_B2_USAGE_FILE||'data/.b2-usage-local.json';
 
+function readUsage(){
+  try{return JSON.parse(fs.readFileSync(USAGE_FILE,'utf8'));}catch{return {};}
+}
+function writeUsage(value){
+  fs.mkdirSync(path.dirname(USAGE_FILE),{recursive:true});
+  fs.writeFileSync(USAGE_FILE,JSON.stringify(value));
+}
+function recordB2Usage(args){
+  if(args[0]!=='file'||!['download','upload'].includes(args[1]))return;
+  const op=args[1];
+  const local=args[3];
+  let bytes=0;
+  try{bytes=fs.statSync(local).size;}catch{}
+  const day=new Date().toISOString().slice(0,10);
+  const runId=process.env.CHINA_RELEASE_ID||'unknown';
+  const usage=readUsage();
+  if(usage.day!==day){
+    usage.day=day;
+    usage.daily={downloadBytes:0,uploadBytes:0,downloads:0,uploads:0};
+  }
+  if(!usage.daily)usage.daily={downloadBytes:0,uploadBytes:0,downloads:0,uploads:0};
+  if(usage.runId!==runId){
+    usage.runId=runId;
+    usage.run={downloadBytes:0,uploadBytes:0,downloads:0,uploads:0};
+  }
+  if(!usage.run)usage.run={downloadBytes:0,uploadBytes:0,downloads:0,uploads:0};
+  const bytesKey=op+'Bytes';
+  const countKey=op==='download'?'downloads':'uploads';
+  usage.daily[bytesKey]=(usage.daily[bytesKey]||0)+bytes;
+  usage.daily[countKey]=(usage.daily[countKey]||0)+1;
+  usage.run[bytesKey]=(usage.run[bytesKey]||0)+bytes;
+  usage.run[countKey]=(usage.run[countKey]||0)+1;
+  writeUsage(usage);
+}
+function fmtBytes(bytes){
+  if(bytes<1024)return bytes+' B';
+  if(bytes<1024*1024)return (bytes/1024).toFixed(1)+' KiB';
+  return (bytes/(1024*1024)).toFixed(2)+' MiB';
+}
+function printUsageSummary(){
+  const usage=readUsage();
+  const run=usage.run||{};
+  const daily=usage.daily||{};
+  console.log('[B2 usage] China cycle download='+fmtBytes(run.downloadBytes||0)+' ('+(run.downloads||0)+')'+
+    ' upload='+fmtBytes(run.uploadBytes||0)+' ('+(run.uploads||0)+')'+
+    ' | UTC day '+(usage.day||new Date().toISOString().slice(0,10))+
+    ' download='+fmtBytes(daily.downloadBytes||0)+' upload='+fmtBytes(daily.uploadBytes||0)+
+    ' ops='+(daily.downloads||0)+'/'+(daily.uploads||0));
+}
 function runQuiet(args){
   // Suppress verbose success output (progress bars and object metadata); retain diagnostics on failure.
   const r=spawnSync(process.env.B2_BIN||'b2v4',args,{encoding:'utf8',env:process.env});
@@ -27,6 +77,7 @@ function runQuiet(args){
     if(r.stdout)process.stderr.write(r.stdout);
     throw new Error(`B2 command failed: ${args.join(' ')}`);
   }
+  recordB2Usage(args);
 }
 function usage(){
   console.log('usage: node scripts/china-b2-sync.js pull-stable | pull-candidates | pull-discovery-queue | pull-pair-candidates | publish-results');
@@ -196,6 +247,7 @@ if(mode==='restore-asset-state'){
     try{fs.unlinkSync(localDiagnosticHistory);}catch{}
   }
 
+  printUsageSummary();
   console.log(`[china] publish complete: ${outputs.length} result files + release manifest (releaseId=${releaseId||'none'})`);
 }
 else{
