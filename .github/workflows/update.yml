@@ -547,4 +547,4 @@ jobs:
 
       - name: Summarize B2 transfer usage
         if: always()
-        run: node scripts/b2-usage.js summary data/node-discovery-queue.json data/sources.json data/discovery-state.json data/source-evolution.json data/source-history.json data/source-reputation.json data/node-pool.json data/history.json data/stability.json data/stability-history.json data/ip-geolocation.json data/country-pool.json subscriptions/stable.yaml
+        run: node scripts/b2-usage.js summary data/node-discovery-queue.json data/sources.json data/discovery-state.json data/source-evolution.json data/source-history.json data/source-reputation.json data/node-pool.json data/history.json data/stability.json data/stability-history.json data/ip-geolocation.json data/country-pool.json subscriptions/stable.yaml data/node-discovery-queue.json
