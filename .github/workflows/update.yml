@@ -160,6 +160,9 @@ jobs:
           source: nodeprobe-state/country-pool.json
           destination: data/country-pool.json
 
+      - name: Snapshot B2 download usage
+        run: node scripts/b2-usage.js snapshot-downloads data/sources.json data/discovery-state.json data/source-evolution.json data/source-history.json data/source-reputation.json data/node-pool.json data/node-discovery-queue.json data/history.json data/stability.json data/stability-history.json data/ip-geolocation.json data/country-pool.json
+
       - name: Discover public sources
         env:
           GITHUB_TOKEN: ${{ github.token }}
@@ -541,3 +544,7 @@ jobs:
 
           echo "Failed to push generated subscriptions after 3 attempts."
           exit 1
+
+      - name: Summarize B2 transfer usage
+        if: always()
+        run: node scripts/b2-usage.js summary data/node-discovery-queue.json data/sources.json data/discovery-state.json data/source-evolution.json data/source-history.json data/source-reputation.json data/node-pool.json data/history.json data/stability.json data/stability-history.json data/ip-geolocation.json data/country-pool.json subscriptions/stable.yaml
