@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-10-24T18:39:02.190Z",
+  "generatedAt": "2026-10-25T00:27:25.911Z",
   "maxPaths": 3,
   "counts": {
-    "eligibleExits": 368,
-    "chatgptEligibleExits": 223,
+    "eligibleExits": 371,
+    "chatgptEligibleExits": 225,
     "chatgptSelectedPaths": 3,
     "chatgptIncumbentPaths": 3,
     "selectedPaths": 3,
@@ -26,23 +26,23 @@
       "kind": "exit",
       "endpointId": "d1f4a0d80288cf0b",
       "name": "🇸🇬SG_38|247KB/s|R002-260618 01",
-      "score": 1932.5226870516226,
+      "score": 1959.6826589920186,
       "recentSuccessRate": 1,
       "lifetimeSuccessRate": 1,
-      "observedRuns": 124,
-      "p95LatencyMs": 1067,
-      "speedMbps": 17.35891111022388
+      "observedRuns": 135,
+      "p95LatencyMs": 1019,
+      "speedMbps": 21.751791395970155
     },
     {
       "kind": "exit",
-      "endpointId": "e9930537ed05e3dc",
-      "name": "🇫🇷FR_329|5.8MB/s|S001-260618 [58438228b03a]",
-      "score": 1922.463633115569,
+      "endpointId": "3ecdf2883fc56e42",
+      "name": "🇭🇰 香港 18-pool-3ecdf2883fc56e42",
+      "score": 1956.0196028370353,
       "recentSuccessRate": 1,
       "lifetimeSuccessRate": 1,
-      "observedRuns": 6,
-      "p95LatencyMs": 373,
-      "speedMbps": 34.23458737479769
+      "observedRuns": 5,
+      "p95LatencyMs": 252,
+      "speedMbps": 45.69658155297547
     },
     {
       "kind": "exit",
@@ -61,24 +61,24 @@
       "kind": "chatgpt-incumbent",
       "endpointId": "d1f4a0d80288cf0b",
       "name": "🇸🇬SG_38|247KB/s|R002-260618 01",
-      "score": 1932.5226870516226,
-      "chatgptScore": 1166.526128822179,
+      "score": 1959.6826589920186,
+      "chatgptScore": 1185.1686235610034,
       "chatgptSuccessRate": 1
     },
     {
       "kind": "chatgpt-incumbent",
-      "endpointId": "5e0f54ac5711158e",
-      "name": "🇫🇷FR_341|2.0MB/s|S004-260618 [542a4e0b260b]",
-      "score": 1916.4738562311877,
-      "chatgptScore": 1166.2653251346458,
+      "endpointId": "290498e876c518be",
+      "name": "TW台湾(mibei77.com 米贝节点分享)-source-290498e876c518be",
+      "score": 1734.788518984172,
+      "chatgptScore": 1129.2450377108141,
       "chatgptSuccessRate": 1
     },
     {
       "kind": "chatgpt-incumbent",
       "endpointId": "f8df99716a85628c",
       "name": "🇺🇸US_626|798KB/s|R002-260618 01",
-      "score": 1803.2885036607313,
-      "chatgptScore": 1118.854094436387,
+      "score": 1818.4336320379555,
+      "chatgptScore": 1121.7781810071165,
       "chatgptSuccessRate": 1
     }
   ]

@@ -8,28 +8,18 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: 'd1f4a0d80288cf0b'
-  - name: '🇫🇷FR_341|2.0MB/s|S004-260618 [542a4e0b260b]'
+  - name: 'TW台湾(mibei77.com 米贝节点分享)-source-290498e876c518be'
+    type: 'anytls'
+    server: '684616s4.df6h451rh.xin'
+    port: 443
+    password: '0324fbc29561'
+    sni: 'px.ads.linkedin.com'
     alpn:
       - 'http/1.1'
-    client-fingerprint: 'chrome'
-    network: 'ws'
-    port: 443
-    server: '104.17.3.81'
-    sub_tag: 'S004-260618'
+    skip-cert-verify: true
     tls: true
-    type: 'vless'
     udp: true
-    uuid: '495c7195-85b8-498a-bf20-2ea9ce9175b5'
-    ws-opts:
-      headers:
-        Host: 'snip.edgeoneai.cc.cd'
-        User-Agent: 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36'
-      path: '/fdip#TELEGRAM--MARAMBASHI--MARAMBASHI--MARAMBASHI--MARAMBASHI'
-      early-data-header-name: 'Sec-WebSocket-Protocol'
-      max-early-data: 2560
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'snip.edgeoneai.cc.cd'
+    client-fingerprint: 'chrome'
     _poolOnly: true
   - name: '🇺🇸US_626|798KB/s|R002-260618 01'
     password: 'null'

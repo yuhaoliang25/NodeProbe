@@ -44,28 +44,14 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: 'd1f4a0d80288cf0b'
-  - name: '🇫🇷FR_329|5.8MB/s|S001-260618 [58438228b03a]'
-    alpn:
-      - 'http/1.1'
-    client-fingerprint: 'chrome'
-    network: 'ws'
-    port: 443
-    server: '172.67.118.45'
-    sub_tag: 'S001-260618'
+  - name: '🇭🇰 香港 18-pool-3ecdf2883fc56e42'
+    port: 3128
+    server: '119.28.24.235'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
     tls: true
-    type: 'vless'
+    type: 'http'
     udp: true
-    uuid: '495c7195-85b8-498a-bf20-2ea9ce9175b5'
-    ws-opts:
-      headers:
-        Host: 'snip.edgeoneai.cc.cd'
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36'
-      path: '/fdip#TELEGRAM--MARAMBASHI--MARAMBASHI--MARAMBASHI--MARAMBASHI'
-      early-data-header-name: 'Sec-WebSocket-Protocol'
-      max-early-data: 2560
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'snip.edgeoneai.cc.cd'
     _poolOnly: true
   - name: '🇫🇷FR_334|6.8MB/s|S001-260618 [34528c8e3a6d]'
     alpn:
@@ -89,28 +75,18 @@ proxies:
     packet-encoding: 'xudp'
     servername: 'snip.edgeoneai.cc.cd'
     _poolOnly: true
-  - name: '🇫🇷FR_341|2.0MB/s|S004-260618 [542a4e0b260b]'
+  - name: 'TW台湾(mibei77.com 米贝节点分享)-source-290498e876c518be'
+    type: 'anytls'
+    server: '684616s4.df6h451rh.xin'
+    port: 443
+    password: '0324fbc29561'
+    sni: 'px.ads.linkedin.com'
     alpn:
       - 'http/1.1'
-    client-fingerprint: 'chrome'
-    network: 'ws'
-    port: 443
-    server: '104.17.3.81'
-    sub_tag: 'S004-260618'
+    skip-cert-verify: true
     tls: true
-    type: 'vless'
     udp: true
-    uuid: '495c7195-85b8-498a-bf20-2ea9ce9175b5'
-    ws-opts:
-      headers:
-        Host: 'snip.edgeoneai.cc.cd'
-        User-Agent: 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36'
-      path: '/fdip#TELEGRAM--MARAMBASHI--MARAMBASHI--MARAMBASHI--MARAMBASHI'
-      early-data-header-name: 'Sec-WebSocket-Protocol'
-      max-early-data: 2560
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'snip.edgeoneai.cc.cd'
+    client-fingerprint: 'chrome'
     _poolOnly: true
   - name: '🇺🇸US_626|798KB/s|R002-260618 01'
     password: 'null'
@@ -129,14 +105,14 @@ proxy-groups:
     type: 'select'
     proxies:
       - '🇸🇬SG_38|247KB/s|R002-260618 01'
-      - '🇫🇷FR_329|5.8MB/s|S001-260618 [58438228b03a]'
+      - '🇭🇰 香港 18-pool-3ecdf2883fc56e42'
       - '🇫🇷FR_334|6.8MB/s|S001-260618 [34528c8e3a6d]'
       - 'DIRECT'
   - name: 'CHATGPT'
     type: 'select'
     proxies:
       - '🇸🇬SG_38|247KB/s|R002-260618 01'
-      - '🇫🇷FR_341|2.0MB/s|S004-260618 [542a4e0b260b]'
+      - 'TW台湾(mibei77.com 米贝节点分享)-source-290498e876c518be'
       - '🇺🇸US_626|798KB/s|R002-260618 01'
   - name: 'STICKY'
     type: 'select'
