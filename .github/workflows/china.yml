@@ -119,6 +119,9 @@ jobs:
           source: nodeprobe-state/china/china-pair-pool.json
           destination: subscriptions/china-pair-pool.json
 
+      - name: Snapshot B2 download usage
+        run: node scripts/b2-usage.js snapshot-downloads data/china-release.json data/china-diagnostics.json subscriptions/exit.yaml subscriptions/chatgpt.yaml subscriptions/sticky.yaml subscriptions/elite.yaml subscriptions/china-elite.json subscriptions/pairs.yaml subscriptions/china-pools.json subscriptions/china-pair-pool.json
+
       - name: Verify China release consistency
         run: |
           set -euo pipefail
@@ -343,3 +346,7 @@ jobs:
 
           echo "Failed to publish China subscriptions after 3 attempts."
           exit 1
+
+      - name: Summarize B2 transfer usage
+        if: always()
+        run: node scripts/b2-usage.js downloads-only data/china-release.json data/china-diagnostics.json subscriptions/exit.yaml subscriptions/chatgpt.yaml subscriptions/sticky.yaml subscriptions/elite.yaml subscriptions/china-elite.json subscriptions/pairs.yaml subscriptions/china-pools.json subscriptions/china-pair-pool.json
