@@ -44,27 +44,23 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇫🇷FR_334|6.8MB/s|S001-260618 [34528c8e3a6d]'
-    alpn:
-      - 'http/1.1'
-    client-fingerprint: 'unsafe'
-    encryption: 'none'
-    network: 'ws'
+  - name: '🇸🇬SG_38|247KB/s|R002-260618 01'
     port: 443
-    server: '172.64.153.61'
-    sub_tag: 'S001-260618'
+    server: '154.26.139.24'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
     tls: true
-    type: 'vless'
+    type: 'http'
     udp: true
-    uuid: '495c7195-85b8-498a-bf20-2ea9ce9175b5'
-    ws-opts:
-      headers:
-        Host: 'snip.edgeoneai.cc.cd'
-        User-Agent: 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/534.7 (KHTML, like Gecko) Chrome/7.0.517.44 Safari/534.7'
-      path: '/fdip'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'snip.edgeoneai.cc.cd'
+    endpoint-id: 'd1f4a0d80288cf0b'
+  - name: '🇫🇷FR_2058|2.0MB/s|R002-260618 01'
+    port: 443
+    server: '172.64.68.89'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
     _poolOnly: true
   - name: '🇫🇷FR_378|2.5MB/s|F003-260618 [859633a8bcef]'
     client-fingerprint: 'chrome'
@@ -86,15 +82,6 @@ proxies:
     packet-encoding: 'xudp'
     servername: 'snip.edgeoneai.cc.cd'
     _poolOnly: true
-  - name: '🇸🇬SG_38|247KB/s|R002-260618 01'
-    port: 443
-    server: '154.26.139.24'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: 'd1f4a0d80288cf0b'
   - name: '🇺🇸US_729|701KB/s|P002-260618 01'
     password: 'null'
     port: 9002
@@ -111,14 +98,14 @@ proxy-groups:
     type: 'select'
     proxies:
       - '🇭🇰 香港 18-pool-3ecdf2883fc56e42'
-      - '🇫🇷FR_334|6.8MB/s|S001-260618 [34528c8e3a6d]'
-      - '🇫🇷FR_378|2.5MB/s|F003-260618 [859633a8bcef]'
+      - '🇸🇬SG_38|247KB/s|R002-260618 01'
+      - '🇫🇷FR_2058|2.0MB/s|R002-260618 01'
       - 'DIRECT'
   - name: 'CHATGPT'
     type: 'select'
     proxies:
       - '🇸🇬SG_38|247KB/s|R002-260618 01'
-      - '🇫🇷FR_334|6.8MB/s|S001-260618 [34528c8e3a6d]'
+      - '🇫🇷FR_378|2.5MB/s|F003-260618 [859633a8bcef]'
       - '🇺🇸US_729|701KB/s|P002-260618 01'
   - name: 'STICKY'
     type: 'select'
