@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-10-25T00:27:25.911Z",
+  "generatedAt": "2026-10-25T05:14:00.447Z",
   "maxPaths": 3,
   "counts": {
-    "eligibleExits": 371,
-    "chatgptEligibleExits": 225,
+    "eligibleExits": 368,
+    "chatgptEligibleExits": 230,
     "chatgptSelectedPaths": 3,
     "chatgptIncumbentPaths": 3,
     "selectedPaths": 3,
@@ -24,17 +24,6 @@
   "paths": [
     {
       "kind": "exit",
-      "endpointId": "d1f4a0d80288cf0b",
-      "name": "🇸🇬SG_38|247KB/s|R002-260618 01",
-      "score": 1959.6826589920186,
-      "recentSuccessRate": 1,
-      "lifetimeSuccessRate": 1,
-      "observedRuns": 135,
-      "p95LatencyMs": 1019,
-      "speedMbps": 21.751791395970155
-    },
-    {
-      "kind": "exit",
       "endpointId": "3ecdf2883fc56e42",
       "name": "🇭🇰 香港 18-pool-3ecdf2883fc56e42",
       "score": 1956.0196028370353,
@@ -43,6 +32,17 @@
       "observedRuns": 5,
       "p95LatencyMs": 252,
       "speedMbps": 45.69658155297547
+    },
+    {
+      "kind": "exit",
+      "endpointId": "d1f4a0d80288cf0b",
+      "name": "🇸🇬SG_38|247KB/s|R002-260618 01",
+      "score": 1947.3187041658318,
+      "recentSuccessRate": 1,
+      "lifetimeSuccessRate": 1,
+      "observedRuns": 144,
+      "p95LatencyMs": 865,
+      "speedMbps": 18.12130127252308
     },
     {
       "kind": "exit",
@@ -61,24 +61,24 @@
       "kind": "chatgpt-incumbent",
       "endpointId": "d1f4a0d80288cf0b",
       "name": "🇸🇬SG_38|247KB/s|R002-260618 01",
-      "score": 1959.6826589920186,
-      "chatgptScore": 1185.1686235610034,
-      "chatgptSuccessRate": 1
-    },
-    {
-      "kind": "chatgpt-incumbent",
-      "endpointId": "290498e876c518be",
-      "name": "TW台湾(mibei77.com 米贝节点分享)-source-290498e876c518be",
-      "score": 1734.788518984172,
-      "chatgptScore": 1129.2450377108141,
+      "score": 1947.3187041658318,
+      "chatgptScore": 1179.5566320310936,
       "chatgptSuccessRate": 1
     },
     {
       "kind": "chatgpt-incumbent",
       "endpointId": "f8df99716a85628c",
       "name": "🇺🇸US_626|798KB/s|R002-260618 01",
-      "score": 1818.4336320379555,
-      "chatgptScore": 1121.7781810071165,
+      "score": 1789.9762383178793,
+      "chatgptScore": 1116.7611696846025,
+      "chatgptSuccessRate": 1
+    },
+    {
+      "kind": "chatgpt-incumbent",
+      "endpointId": "1053114a26f4986c",
+      "name": "🇫🇷FR_379|1.6MB/s|F003-260618 [d50f3861211c]",
+      "score": 1060.6606399515865,
+      "chatgptScore": 1096.3037051424562,
       "chatgptSuccessRate": 1
     }
   ]

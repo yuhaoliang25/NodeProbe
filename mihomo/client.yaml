@@ -35,15 +35,6 @@ rule-providers:
     interval: 86400
     url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs'
 proxies:
-  - name: '🇸🇬SG_38|247KB/s|R002-260618 01'
-    port: 443
-    server: '154.26.139.24'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: 'd1f4a0d80288cf0b'
   - name: '🇭🇰 香港 18-pool-3ecdf2883fc56e42'
     port: 3128
     server: '119.28.24.235'
@@ -53,6 +44,15 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
+  - name: '🇸🇬SG_38|247KB/s|R002-260618 01'
+    port: 443
+    server: '154.26.139.24'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'd1f4a0d80288cf0b'
   - name: '🇫🇷FR_334|6.8MB/s|S001-260618 [34528c8e3a6d]'
     alpn:
       - 'http/1.1'
@@ -75,19 +75,6 @@ proxies:
     packet-encoding: 'xudp'
     servername: 'snip.edgeoneai.cc.cd'
     _poolOnly: true
-  - name: 'TW台湾(mibei77.com 米贝节点分享)-source-290498e876c518be'
-    type: 'anytls'
-    server: '684616s4.df6h451rh.xin'
-    port: 443
-    password: '0324fbc29561'
-    sni: 'px.ads.linkedin.com'
-    alpn:
-      - 'http/1.1'
-    skip-cert-verify: true
-    tls: true
-    udp: true
-    client-fingerprint: 'chrome'
-    _poolOnly: true
   - name: '🇺🇸US_626|798KB/s|R002-260618 01'
     password: 'null'
     port: 9002
@@ -100,20 +87,40 @@ proxies:
     username: 'null'
     udp: true
     endpoint-id: 'f8df99716a85628c'
+  - name: '🇫🇷FR_379|1.6MB/s|F003-260618 [d50f3861211c]'
+    client-fingerprint: 'chrome'
+    encryption: 'none'
+    network: 'ws'
+    port: 443
+    server: '104.17.69.244'
+    sub_tag: 'F003-260618'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '495c7195-85b8-498a-bf20-2ea9ce9175b5'
+    ws-opts:
+      headers:
+        Host: 'snip.edgeoneai.cc.cd'
+        User-Agent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36'
+      path: '/'
+    xudp: true
+    packet-encoding: 'xudp'
+    servername: 'snip.edgeoneai.cc.cd'
+    _poolOnly: true
 proxy-groups:
   - name: 'PROXY'
     type: 'select'
     proxies:
-      - '🇸🇬SG_38|247KB/s|R002-260618 01'
       - '🇭🇰 香港 18-pool-3ecdf2883fc56e42'
+      - '🇸🇬SG_38|247KB/s|R002-260618 01'
       - '🇫🇷FR_334|6.8MB/s|S001-260618 [34528c8e3a6d]'
       - 'DIRECT'
   - name: 'CHATGPT'
     type: 'select'
     proxies:
       - '🇸🇬SG_38|247KB/s|R002-260618 01'
-      - 'TW台湾(mibei77.com 米贝节点分享)-source-290498e876c518be'
       - '🇺🇸US_626|798KB/s|R002-260618 01'
+      - '🇫🇷FR_379|1.6MB/s|F003-260618 [d50f3861211c]'
   - name: 'STICKY'
     type: 'select'
     proxies:
