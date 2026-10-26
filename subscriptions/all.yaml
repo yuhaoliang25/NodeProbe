@@ -1,19 +1,11 @@
 proxies:
-  - name: 'SSR-美国-NF解锁自制剧-ChatGPT-TikTok-YouTube-107.151.182.253:8080'
-    type: 'ssr'
-    server: '107.151.182.253'
-    port: 8080
-    password: '14fFPrbezE3HDZzsMOr6'
-    cipher: 'rc4-md5'
-    protocol: 'origin'
-    obfs: 'plain'
-    _poolOnly: true
   - name: 'SS-加拿大>英国-NF解锁英国地区非自制剧-ChatGPT-144.217.164.29:12000'
     type: 'ss'
     server: '144.217.164.29'
     port: 12000
     password: '8JCsPssfgS8tiRwiMlhARg=='
     cipher: 'aes-256-gcm'
+    _poolOnly: true
   - name: 'VMESS-未知>德国-NF解锁印度地区非自制剧-ChatGPT-TikTok-YouTube-547.rtxconfigz.shop:8080'
     type: 'vmess'
     server: '547.rtxconfigz.shop'
@@ -30,6 +22,7 @@ proxies:
       path: '/@Malinda6104'
       headers:
         HOST: 'node4.rtxconfigz.com'
+    _poolOnly: true
   - name: 'VMESS-美国>日本-NF解锁日本地区非自制剧-ChatGPT-YouTube-t1.620720.xyz:8443'
     type: 'vmess'
     server: 't1.620720.xyz'
@@ -46,18 +39,21 @@ proxies:
       path: '/'
       headers:
         Host: 't1.620720.xyz'
+    _poolOnly: true
   - name: 'SS-阿塞拜疆-NF解锁加拿大地区非自制剧-ChatGPT-TikTok-YouTube-45.154.204.7:990'
     type: 'ss'
     server: '45.154.204.7'
     port: 990
     password: 'ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44='
     cipher: 'chacha20-ietf-poly1305'
+    _poolOnly: true
   - name: 'SS-英国-NF解锁自制剧-ChatGPT-TikTok-146.19.49.251:443'
     type: 'ss'
     server: '146.19.49.251'
     port: 443
     password: 'ODfxioK0VkKxTdpVQJ4rv8HglAu0vzv6'
     cipher: 'chacha20-ietf-poly1305'
+    _poolOnly: true
   - name: 'VMESS-加拿大-NF解锁加拿大地区非自制剧-ChatGPT-TikTok-YouTube-15.235.41.200:80'
     type: 'vmess'
     server: '15.235.41.200'
@@ -71,18 +67,21 @@ proxies:
     skip-cert-verify: true
     ws-opts:
       path: '/IOebhLMhl1CTbFHbL95myfRX2'
+    _poolOnly: true
   - name: 'SS-美国-NF解锁自制剧-ChatGPT-TikTok-YouTube-71.19.148.143:443'
     type: 'ss'
     server: '71.19.148.143'
     port: 443
     password: 'p78naCf2EfOlRSLTX0wFVx'
     cipher: 'chacha20-ietf-poly1305'
+    _poolOnly: true
   - name: 'SS-美国-NF解锁加拿大地区非自制剧-ChatGPT-TikTok-YouTube-23.95.76.59:990'
     type: 'ss'
     server: '23.95.76.59'
     port: 990
     password: 'ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44='
     cipher: 'chacha20-ietf-poly1305'
+    _poolOnly: true
   - name: 'VMESS-加拿大-NF解锁加拿大地区非自制剧-ChatGPT-TikTok-YouTube-51.79.102.253:80'
     type: 'vmess'
     server: '51.79.102.253'
@@ -99,30 +98,44 @@ proxies:
       path: '/IOebhLMhl1CTbFHbL95myfRX2'
       headers:
         HOST: 'wrmelmwxlf.gktevlrqznwqqozy.fabpfs66gizmnojhcvqxwl.kytrcfzqla87gvgvs6c7kjnrubuh.cc'
+    _poolOnly: true
+  - name: 'SSR-美国-NF解锁自制剧-ChatGPT-TikTok-YouTube-107.151.182.253:8080'
+    type: 'ssr'
+    server: '107.151.182.253'
+    port: 8080
+    password: '14fFPrbezE3HDZzsMOr6'
+    cipher: 'rc4-md5'
+    protocol: 'origin'
+    obfs: 'plain'
+    _poolOnly: true
   - name: 'SS-美国-NF解锁自制剧-ChatGPT-TikTok-YouTube-92.118.112.101:9483'
     type: 'ss'
     server: '92.118.112.101'
     port: 9483
     password: 'qFvn2fNEvBgM5knffrN96q'
     cipher: 'chacha20-ietf-poly1305'
+    _poolOnly: true
   - name: 'SS-美国-NF解锁自制剧-ChatGPT-TikTok-YouTube-15.204.247.49:12000'
     type: 'ss'
     server: '15.204.247.49'
     port: 12000
     password: '8JCsPssfgS8tiRwiMlhARg=='
     cipher: 'aes-256-gcm'
+    _poolOnly: true
   - name: 'SS-美国-NF解锁自制剧-ChatGPT-TikTok-YouTube-pupas-shirting-unsung.freesocks.work:443'
     type: 'ss'
     server: 'pupas-shirting-unsung.freesocks.work'
     port: 443
     password: 'p78naCf2EfOlRSLTX0wFVx'
     cipher: 'chacha20-ietf-poly1305'
+    _poolOnly: true
   - name: 'SS-英国-NF解锁加拿大地区非自制剧-ChatGPT-TikTok-YouTube-79.127.233.170:990'
     type: 'ss'
     server: '79.127.233.170'
     port: 990
     password: 'f8f7aCzcPKbsF8p3'
     cipher: 'chacha20-ietf-poly1305'
+    _poolOnly: true
   - name: 'VMESS-美国-NF解锁自制剧-ChatGPT-TikTok-YouTube-v2ray.codefyinc.com:443'
     type: 'vmess'
     server: 'v2ray.codefyinc.com'
@@ -138,12 +151,14 @@ proxies:
       path: '/vmessws'
       headers:
         Host: 'v2ray.codefyinc.com'
+    _poolOnly: true
   - name: 'SS-美国-NF解锁自制剧-ChatGPT-TikTok-YouTube-23.95.75.146:443'
     type: 'ss'
     server: '23.95.75.146'
     port: 443
     password: 'NDRySIABARbErNIVsCNVkyYAHiBzhveT'
     cipher: 'chacha20-ietf-poly1305'
+    _poolOnly: true
   - name: 'VMESS-美国-NF解锁自制剧-ChatGPT-TikTok-YouTube-198.23.174.168:20086'
     type: 'vmess'
     server: '198.23.174.168'
@@ -157,6 +172,7 @@ proxies:
     skip-cert-verify: true
     ws-opts:
       path: '/'
+    _poolOnly: true
   - name: 'SSR-英国-NF解锁加拿大地区非自制剧-ChatGPT-TikTok-YouTube-79.127.233.170:989'
     type: 'ssr'
     server: '79.127.233.170'
@@ -165,6 +181,7 @@ proxies:
     cipher: 'aes-256-cfb'
     protocol: 'origin'
     obfs: 'plain'
+    _poolOnly: true
   - name: 'VMESS-美国-NF解锁自制剧-ChatGPT-TikTok-YouTube-cg1c07.waimaojd.com:443'
     type: 'vmess'
     server: 'cg1c07.waimaojd.com'
@@ -181,6 +198,7 @@ proxies:
       path: '/api/v1/graphql'
       headers:
         Host: 'cg1c07.waimaojd.com'
+    _poolOnly: true
   - name: 'VMESS-美国>德国-NF解锁印度地区非自制剧-ChatGPT-TikTok-YouTube-support.zoom.us:8080'
     type: 'vmess'
     server: 'support.zoom.us'
@@ -197,6 +215,7 @@ proxies:
       path: '/@Malinda6104'
       headers:
         HOST: 'node4.rtxconfigz.com'
+    _poolOnly: true
   - name: 'VMESS-美国-NF解锁自制剧-ChatGPT-TikTok-YouTube-209.126.84.189:443'
     type: 'vmess'
     server: '209.126.84.189'
@@ -212,6 +231,7 @@ proxies:
       path: '/vmessws'
       headers:
         Host: '209.126.84.189'
+    _poolOnly: true
   - name: 'VMESS-未知>澳大利亚-NF解锁澳大利亚自制剧-ChatGPT-TikTok-YouTube-sy4.620720.xyz:443'
     type: 'vmess'
     server: 'sy4.620720.xyz'
@@ -228,12 +248,14 @@ proxies:
       path: '/'
       headers:
         Host: 'sy4.620720.xyz'
+    _poolOnly: true
   - name: 'SS-美国-NF解锁自制剧-ChatGPT-TikTok-YouTube-107.175.87.207:10011'
     type: 'ss'
     server: '107.175.87.207'
     port: 10011
     password: '86039b71-ba82-4ca8-838e-87086ae666de'
     cipher: 'chacha20-ietf-poly1305'
+    _poolOnly: true
   - name: 'VMESS-美国-NF解锁自制剧-ChatGPT-TikTok-YouTube-cg1c01.waimaojd.com:443'
     type: 'vmess'
     server: 'cg1c01.waimaojd.com'
@@ -250,6 +272,7 @@ proxies:
       path: '/api/v1/graphql'
       headers:
         Host: 'cg1c01.waimaojd.com'
+    _poolOnly: true
   - name: 'VMESS-美国-ChatGPT-TikTok-YouTube-cg1c04.waimaojd.com:443'
     type: 'vmess'
     server: 'cg1c04.waimaojd.com'
@@ -267,6 +290,7 @@ proxies:
       path: '/api/v1/graphql'
       headers:
         HOST: 'cg1c04.waimaojd.com'
+    _poolOnly: true
   - name: 'VMESS-美国-ChatGPT-TikTok-YouTube-cg1c14.waimaojd.com:443'
     type: 'vmess'
     server: 'cg1c14.waimaojd.com'
@@ -284,3 +308,4 @@ proxies:
       path: '/api/v1/graphql'
       headers:
         HOST: 'cg1c14.waimaojd.com'
+    _poolOnly: true
