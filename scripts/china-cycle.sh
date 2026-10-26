@@ -33,6 +33,10 @@ ORIGINAL_CHINA_PAIR_KNOWLEDGE_FILE="${CHINA_PAIR_KNOWLEDGE_FILE:-data/china-pair
 ORIGINAL_CHINA_STICKY_STATE_FILE="${CHINA_STICKY_STATE_FILE:-data/china-sticky.json}"
 export CHINA_PUBLICATION_SNAPSHOT_DIR="${CHINA_PUBLICATION_SNAPSHOT_DIR:-data/china-publication-snapshots/$CHINA_RELEASE_ID}"
 
+# Recover the local asset inventory only when it is missing, malformed,
+# unreadable, schema-invalid, or empty. Normal cycles never download it from B2.
+npm run --silent china-sync -- restore-asset-if-needed
+
 # Cheap gate before any B2 mutation, probing, or test execution. This catches
 # syntax errors, undefined variables, invalid runtime configuration, and any
 # module-supplied preflight checks before a long cycle can fail at the end.
