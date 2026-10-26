@@ -80,7 +80,38 @@ function runQuiet(args){
   recordB2Usage(args);
 }
 function usage(){
-  console.log('usage: node scripts/china-b2-sync.js pull-stable | pull-candidates | pull-discovery-queue | pull-pair-candidates | publish-results');
+  console.log('usage: node scripts/china-b2-sync.js restore-asset-if-needed | pull-stable | pull-candidates | pull-discovery-queue | pull-pair-candidates | publish-results');
+}
+function validateAssetState(file){
+  try{
+    const value=JSON.parse(fs.readFileSync(file,'utf8'));
+    return Boolean(value && typeof value==='object' && !Array.isArray(value)
+      && value.nodes && typeof value.nodes==='object' && !Array.isArray(value.nodes)
+      && Object.keys(value.nodes).length>0);
+  }catch{
+    return false;
+  }
+}
+function restoreAssetStateIfNeeded(){
+  // The local China inventory is authoritative during normal operation.
+  // Only consult B2 when the local file is missing, unreadable, malformed,
+  // has the wrong schema, or contains no assets.
+  if(validateAssetState(ASSET_FILE)){
+    console.log('[china] local asset inventory valid; skipping B2 restore.');
+    return;
+  }
+  console.warn('[china] local asset inventory missing/invalid/empty; attempting B2 recovery.');
+  fs.mkdirSync(path.dirname(ASSET_FILE),{recursive:true});
+  const tmp=ASSET_FILE+'.'+process.pid+'.restore.tmp';
+  try{try{fs.unlinkSync(tmp)}catch{}
+    runQuiet(['file','download','b2://'+BUCKET+'/nodeprobe-state/china-node-assets.json',tmp]);
+    if(!validateAssetState(tmp)) throw new Error('remote China asset inventory is invalid or empty');
+    fs.renameSync(tmp,ASSET_FILE);
+    console.log('[china] restored local asset inventory from B2: nodes='+Object.keys(JSON.parse(fs.readFileSync(ASSET_FILE,'utf8')).nodes).length);
+  }catch(error){
+    try{fs.unlinkSync(tmp)}catch{}
+    throw new Error('Unable to recover invalid local China asset inventory from B2: '+error.message);
+  }
 }
 function validateCandidateFile(file, key){
   try{
@@ -93,7 +124,9 @@ function validateCandidateFile(file, key){
 }
 const mode=process.argv[2];
 
-if(mode==='pull-stable'){
+if(mode==='restore-asset-if-needed'){
+  restoreAssetStateIfNeeded();
+}else if(mode==='pull-stable'){
   fs.mkdirSync(path.dirname(STABLE_LOCAL),{recursive:true});
   runQuiet(['file','download','b2://'+BUCKET+'/'+STABLE_REMOTE,STABLE_LOCAL]);
   console.log('[china] synced Stable discovery feed.');
