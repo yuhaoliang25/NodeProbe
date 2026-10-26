@@ -35,15 +35,6 @@ rule-providers:
     interval: 86400
     url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs'
 proxies:
-  - name: '🇭🇰 香港 18-pool-3ecdf2883fc56e42'
-    port: 3128
-    server: '119.28.24.235'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
   - name: '🇸🇬SG_38|247KB/s|R002-260618 01'
     port: 443
     server: '154.26.139.24'
@@ -62,25 +53,15 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇫🇷FR_378|2.5MB/s|F003-260618 [859633a8bcef]'
-    client-fingerprint: 'chrome'
-    encryption: 'none'
-    network: 'ws'
+  - name: 'HK香港(mibei77.com 米贝节点分享)_12-source-41447db523bef660'
+    type: 'anytls'
+    server: '654968169.df6h451rh.xin'
     port: 443
-    server: '104.18.46.214'
-    sub_tag: 'F003-260618'
+    password: '0324fbc29561'
+    skip-cert-verify: true
     tls: true
-    type: 'vless'
     udp: true
-    uuid: '495c7195-85b8-498a-bf20-2ea9ce9175b5'
-    ws-opts:
-      headers:
-        Host: 'snip.edgeoneai.cc.cd'
-        User-Agent: 'Mozilla/5.0 (X11; Datanyze; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36'
-      path: '/'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'snip.edgeoneai.cc.cd'
+    client-fingerprint: 'chrome'
     _poolOnly: true
   - name: '🇺🇸US_729|701KB/s|P002-260618 01'
     password: 'null'
@@ -93,20 +74,30 @@ proxies:
     username: 'null'
     udp: true
     _poolOnly: true
+  - name: '🇺🇸US_200|293KB/s|P002-260618 01'
+    password: 'None'
+    port: 9002
+    server: '138.199.35.198'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '91b783c05ebd3e48'
 proxy-groups:
   - name: 'PROXY'
     type: 'select'
     proxies:
-      - '🇭🇰 香港 18-pool-3ecdf2883fc56e42'
       - '🇸🇬SG_38|247KB/s|R002-260618 01'
       - '🇫🇷FR_2058|2.0MB/s|R002-260618 01'
+      - 'HK香港(mibei77.com 米贝节点分享)_12-source-41447db523bef660'
       - 'DIRECT'
   - name: 'CHATGPT'
     type: 'select'
     proxies:
       - '🇸🇬SG_38|247KB/s|R002-260618 01'
-      - '🇫🇷FR_378|2.5MB/s|F003-260618 [859633a8bcef]'
       - '🇺🇸US_729|701KB/s|P002-260618 01'
+      - '🇺🇸US_200|293KB/s|P002-260618 01'
   - name: 'STICKY'
     type: 'select'
     proxies:

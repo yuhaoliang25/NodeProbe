@@ -2558,15 +2558,6 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇫🇷FR_2173|2.2MB/s|R002-260618 01'
-    port: 8090
-    server: '82.96.128.175'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
   - name: '🇫🇮FI_89|1.9MB/s|R002-260618 01'
     port: 8443
     server: '198.105.124.180'
@@ -2588,6 +2579,15 @@ proxies:
   - name: '🇺🇸US_508|588KB/s|R002-260618 01'
     port: 443
     server: '71.43.26.234'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_523|698KB/s|R002-260618 01'
+    port: 8090
+    server: '24.142.229.178'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
@@ -2895,15 +2895,6 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇺🇸US_493|646KB/s|R002-260618 01'
-    port: 8090
-    server: '50.184.176.222'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
   - name: '🇷🇴RO_87|1.4MB/s|R002-260618 01'
     password: 'null'
     port: 9002
@@ -2980,159 +2971,6 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇫🇷FR_353|3.6MB/s|K001-260618 [f5ce307a1cab]'
-    client-fingerprint: 'chrome'
-    network: 'ws'
-    port: 443
-    server: '104.18.33.121'
-    sub_tag: 'K001-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '495c7195-85b8-498a-bf20-2ea9ce9175b5'
-    ws-opts:
-      headers:
-        Host: 'snip.edgeoneai.cc.cd'
-        User-Agent: 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36'
-      path: '/fp=chrome'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'snip.edgeoneai.cc.cd'
-    _poolOnly: true
-  - name: '🇫🇷FR_355|3.6MB/s|K001-260618 [fa27fd6a5d25]'
-    client-fingerprint: 'chrome'
-    network: 'ws'
-    port: 443
-    server: '104.18.89.52'
-    sub_tag: 'K001-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '495c7195-85b8-498a-bf20-2ea9ce9175b5'
-    ws-opts:
-      headers:
-        Host: 'snip.edgeoneai.cc.cd'
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'
-      path: '/fdip=sstp://vpn:vpn@public-vpn-200.opengw.net:443fp=chrome'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'snip.edgeoneai.cc.cd'
-    _poolOnly: true
-  - name: '🇫🇷FR_382|4.8MB/s|K001-260618 [84cc74078db7]'
-    client-fingerprint: 'chrome'
-    network: 'ws'
-    port: 443
-    server: '104.16.250.207'
-    sub_tag: 'K001-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '495c7195-85b8-498a-bf20-2ea9ce9175b5'
-    ws-opts:
-      headers:
-        Host: 'snip.edgeoneai.cc.cd'
-        User-Agent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'
-      path: '/fp=chrome'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'snip.edgeoneai.cc.cd'
-    _poolOnly: true
-  - name: '🇫🇷FR_357|6.3MB/s|A001-260618 [6819235790cd]'
-    client-fingerprint: 'chrome'
-    network: 'ws'
-    port: 443
-    server: '104.17.29.46'
-    sub_tag: 'A001-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '495c7195-85b8-498a-bf20-2ea9ce9175b5'
-    ws-opts:
-      headers:
-        Host: 'snip.edgeoneai.cc.cd'
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36'
-      path: '/fp=chrome'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'snip.edgeoneai.cc.cd'
-    _poolOnly: true
-  - name: '🇫🇷FR_351|5.2MB/s|K001-260618 [af10cfedacce]'
-    client-fingerprint: 'chrome'
-    network: 'ws'
-    port: 443
-    server: '104.26.8.117'
-    sub_tag: 'K001-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '495c7195-85b8-498a-bf20-2ea9ce9175b5'
-    ws-opts:
-      headers:
-        Host: 'snip.edgeoneai.cc.cd'
-        User-Agent: 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/534.10 (KHTML, like Gecko) Chrome/8.0.552.237 Safari/534.10'
-      path: '/fp=chrome'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'snip.edgeoneai.cc.cd'
-    _poolOnly: true
-  - name: '🇫🇷FR_354|2.4MB/s|K001-260618 [daa01f6b781f]'
-    client-fingerprint: 'chrome'
-    network: 'ws'
-    port: 443
-    server: '104.19.53.46'
-    sub_tag: 'K001-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '495c7195-85b8-498a-bf20-2ea9ce9175b5'
-    ws-opts:
-      headers:
-        Host: 'snip.edgeoneai.cc.cd'
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'
-      path: '/fp=chrome'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'snip.edgeoneai.cc.cd'
-    _poolOnly: true
-  - name: '🇫🇷FR_375|3.2MB/s|F003-260618 [39e23dd153c3]'
-    client-fingerprint: 'chrome'
-    encryption: 'none'
-    network: 'ws'
-    port: 443
-    server: '104.17.162.3'
-    sub_tag: 'F003-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '495c7195-85b8-498a-bf20-2ea9ce9175b5'
-    ws-opts:
-      headers:
-        Host: 'snip.edgeoneai.cc.cd'
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36'
-      path: '/fp=chrome'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'snip.edgeoneai.cc.cd'
-    _poolOnly: true
-  - name: '🇫🇷FR_383|5.1MB/s|K001-260618 [59fe0a60d521]'
-    client-fingerprint: 'chrome'
-    network: 'ws'
-    port: 443
-    server: '104.16.105.166'
-    sub_tag: 'K001-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '495c7195-85b8-498a-bf20-2ea9ce9175b5'
-    ws-opts:
-      headers:
-        Host: 'snip.edgeoneai.cc.cd'
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'
-      path: '/fp=chrome'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'snip.edgeoneai.cc.cd'
-    _poolOnly: true
   - name: '🇺🇸US_467|666KB/s|R002-260618 01'
     port: 8443
     server: '44.229.69.166'
@@ -3169,25 +3007,6 @@ proxies:
     tls: true
     type: 'http'
     udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_526|747KB/s|K001-260618 [1d7711388307]'
-    client-fingerprint: 'chrome'
-    network: 'ws'
-    port: 443
-    server: '162.35.169.69'
-    sub_tag: 'K001-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '495c7195-85b8-498a-bf20-2ea9ce9175b5'
-    ws-opts:
-      headers:
-        Host: 'snip.edgeoneai.cc.cd'
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'
-      path: '/fp=chromefp=chrome'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'snip.edgeoneai.cc.cd'
     _poolOnly: true
   - name: '🇺🇸US_445|479KB/s|R002-260618 01'
     port: 443
@@ -3258,63 +3077,6 @@ proxies:
     type: 'http'
     username: ''
     udp: true
-    _poolOnly: true
-  - name: '🇨🇾CY_3|1.6MB/s|M003-260806 [256656b1eded]'
-    client-fingerprint: 'chrome'
-    network: 'ws'
-    port: 443
-    server: '213.111.177.107'
-    sub_tag: 'M003-260806'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '495c7195-85b8-498a-bf20-2ea9ce9175b5'
-    ws-opts:
-      headers:
-        Host: 'snip.edgeoneai.cc.cd'
-        User-Agent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36'
-      path: '/fp=chrome'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'snip.edgeoneai.cc.cd'
-    _poolOnly: true
-  - name: '🇵🇱PL_40|883KB/s|A001-260618 [f1b8792f883a]'
-    client-fingerprint: 'chrome'
-    network: 'ws'
-    port: 443
-    server: '157.22.128.7'
-    sub_tag: 'A001-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '495c7195-85b8-498a-bf20-2ea9ce9175b5'
-    ws-opts:
-      headers:
-        Host: 'snip.edgeoneai.cc.cd'
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36'
-      path: '/fdip=sstp://vpn:vpn@vpn748359672.opengw.net:1458?ed=2560fp=chromefp=chrome'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'snip.edgeoneai.cc.cd'
-    _poolOnly: true
-  - name: '🇰🇬KG_3|457KB/s|K001-260618 [9b8bc5c25095]'
-    client-fingerprint: 'chrome'
-    network: 'ws'
-    port: 2053
-    server: '188.240.213.98'
-    sub_tag: 'K001-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '495c7195-85b8-498a-bf20-2ea9ce9175b5'
-    ws-opts:
-      headers:
-        Host: 'snip.edgeoneai.cc.cd'
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36'
-      path: '/fp=chrome'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'snip.edgeoneai.cc.cd'
     _poolOnly: true
   - name: '🇺🇸US_432|174KB/s|R002-260618 01'
     port: 443
@@ -3395,25 +3157,6 @@ proxies:
     username: ''
     udp: true
     _poolOnly: true
-  - name: '🇸🇪SE_14|1.5MB/s|A001-260618 [8b829484d1cd]'
-    client-fingerprint: 'chrome'
-    network: 'ws'
-    port: 443
-    server: '13.143.182.82'
-    sub_tag: 'A001-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '495c7195-85b8-498a-bf20-2ea9ce9175b5'
-    ws-opts:
-      headers:
-        Host: 'snip.edgeoneai.cc.cd'
-        User-Agent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'
-      path: '/fp=chrome'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'snip.edgeoneai.cc.cd'
-    _poolOnly: true
   - name: '🇮🇩ID_2|688KB/s|R002-260618 [ec91e15d058c]'
     port: 443
     server: '103.86.116.118'
@@ -3444,6 +3187,15 @@ proxies:
     username: 'null'
     udp: true
     _poolOnly: true
+  - name: '🇺🇸US_446|499KB/s|R002-260618 01'
+    port: 8090
+    server: '98.101.229.212'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
   - name: '🇩🇪DE_227|5.2MB/s|P002-260618 [c242c75d0a6f]'
     password: 'None'
     port: 443
@@ -3453,26 +3205,6 @@ proxies:
     tls: true
     type: 'http'
     udp: true
-    _poolOnly: true
-  - name: '🇳🇱NL_327|2.3MB/s|F003-260618 [f56dc386ff28]'
-    client-fingerprint: 'chrome'
-    encryption: 'none'
-    network: 'ws'
-    port: 8443
-    server: '31.192.239.107'
-    sub_tag: 'F003-260618'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '495c7195-85b8-498a-bf20-2ea9ce9175b5'
-    ws-opts:
-      headers:
-        Host: 'snip.edgeoneai.cc.cd'
-        User-Agent: 'Mozilla/5.0 (X11; Datanyze; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36'
-      path: '/'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'snip.edgeoneai.cc.cd'
     _poolOnly: true
   - name: '🇩🇪DE_94|2.5MB/s|R002-260618 01'
     port: 443
