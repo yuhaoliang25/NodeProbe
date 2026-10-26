@@ -92,59 +92,8 @@ function validateCandidateFile(file, key){
   }
 }
 const mode=process.argv[2];
-function readAssetState(file){
-  try{
-    const value=JSON.parse(fs.readFileSync(file,'utf8'));
-    if(!value||typeof value!=='object'||!value.nodes||typeof value.nodes!=='object'||Array.isArray(value.nodes))return null;
-    return value;
-  }catch{return null;}
-}
-function restoreAssetState(){
-  const local=readAssetState(ASSET_FILE);
-  const remoteTmp=ASSET_FILE+'.'+process.pid+'.remote.tmp';
-  fs.mkdirSync(path.dirname(ASSET_FILE),{recursive:true});
-  try{fs.unlinkSync(remoteTmp)}catch{}
-  try{
-    runQuiet(['file','download','b2://'+BUCKET+'/nodeprobe-state/china-node-assets.json',remoteTmp]);
-  }catch(error){
-    try{fs.unlinkSync(remoteTmp)}catch{}
-    if(local){
-      console.warn('[china] could not read remote asset backup; keeping valid local state.');
-      return;
-    }
-    throw new Error('China asset state is missing/invalid locally and the B2 backup could not be downloaded: '+error.message);
-  }
-  const remote=readAssetState(remoteTmp);
-  if(!remote){
-    try{fs.unlinkSync(remoteTmp)}catch{}
-    if(local){
-      console.warn('[china] remote asset backup is invalid; keeping valid local state.');
-      return;
-    }
-    throw new Error('China asset state is missing/invalid locally and the B2 backup is invalid.');
-  }
-  const localCount=local?Object.keys(local.nodes).length:-1;
-  const remoteCount=Object.keys(remote.nodes).length;
-  const localAt=Date.parse(local?.generatedAt||'')||0;
-  const remoteAt=Date.parse(remote.generatedAt||'')||0;
-  if(local&&remoteCount>localCount){
-    fs.unlinkSync(remoteTmp);
-    throw new Error('Local China asset inventory regressed (local='+localCount+', B2='+remoteCount+'). Refusing to publish a smaller inventory; recover/merge local state before retrying.');
-  }
-  const restore=!local||(remoteCount===localCount&&remoteAt>localAt);
-  if(restore){
-    fs.renameSync(remoteTmp,ASSET_FILE);
-    console.log('[china] restored asset state from B2: local='+Math.max(0,localCount)+' remote='+remoteCount+
-      ' localGeneratedAt='+(local?.generatedAt||'none')+' remoteGeneratedAt='+(remote.generatedAt||'none'));
-  }else{
-    fs.unlinkSync(remoteTmp);
-    console.log('[china] keeping local asset state: local='+localCount+' remote='+remoteCount+
-      ' localGeneratedAt='+(local?.generatedAt||'none')+' remoteGeneratedAt='+(remote.generatedAt||'none'));
-  }
-}
-if(mode==='restore-asset-state'){
-  restoreAssetState();
-}else if(mode==='pull-stable'){
+
+if(mode==='pull-stable'){
   fs.mkdirSync(path.dirname(STABLE_LOCAL),{recursive:true});
   runQuiet(['file','download','b2://'+BUCKET+'/'+STABLE_REMOTE,STABLE_LOCAL]);
   console.log('[china] synced Stable discovery feed.');
