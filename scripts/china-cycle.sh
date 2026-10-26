@@ -38,11 +38,9 @@ export CHINA_PUBLICATION_SNAPSHOT_DIR="${CHINA_PUBLICATION_SNAPSHOT_DIR:-data/ch
 # module-supplied preflight checks before a long cycle can fail at the end.
 npm run --silent china-preflight
 
-# Restore or reconcile the persistent local asset inventory against B2 before
-# freezing this cycle's publication inputs. The node inventory is monotonic:
-# ordinary lifecycle transitions do not delete endpoint records.
-npm run --silent china-sync -- restore-asset-state
-
+# The China machine's local asset inventory is authoritative. Do not download
+# or compare the full asset file from B2 on every cycle; B2 is only a publication
+# destination for this state.
 CHINA_PUBLICATION_ASSET_GENERATION="$(node scripts/china-publication-snapshot.js freeze)"
 export CHINA_PUBLICATION_ASSET_GENERATION
 echo "[china] frozen publication asset generation: $CHINA_PUBLICATION_ASSET_GENERATION"
