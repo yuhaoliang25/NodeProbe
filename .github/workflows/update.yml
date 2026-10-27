@@ -172,7 +172,7 @@ jobs:
       - name: Build candidate subscription
         env:
           NODE_CANDIDATE_LIMIT: '1500'
-          NODE_DEAD_RECHECK_LIMIT: '5000'
+          NODE_DEAD_RECHECK_LIMIT: '50'
         run: npm run build
       - name: Save discovery backlog after candidate allocation
         if: success()
@@ -265,6 +265,14 @@ jobs:
           TEST_EXPECTED: '204'
           GOOGLE_TEST_URL: https://www.google.com/generate_204
         run: node scripts/test-google.js
+      - name: Upload detailed health-test diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: health-test-detailed
+          path: reports/health-test/detailed.json
+          if-no-files-found: ignore
+          retention-days: 7
       - name: Detect node countries from server IPs
         env:
           GEO_MAX_NODES: '1000'
@@ -341,7 +349,7 @@ jobs:
       - name: Rebuild filtered subscriptions (final Best)
         env:
           NODE_CANDIDATE_LIMIT: '1500'
-          NODE_DEAD_RECHECK_LIMIT: '5000'
+          NODE_DEAD_RECHECK_LIMIT: '50'
         run: node scripts/build-subscriptions.js
       - name: Convert final subscriptions to importable Mihomo configs
         run: node scripts/convert-subscriptions.js
