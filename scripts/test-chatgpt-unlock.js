@@ -234,10 +234,17 @@ async function probeBrowser(browser, proxyName) {
   } catch (e) {
     navigationError = navigationError || String(e && e.message || e).slice(0, 240);
   }
-  const text = pageData.bodyText.toLowerCase();
-  const challenge = /just a moment|verify you are human|enable javascript and cookies to continue|unusual activity|sorry, you have been blocked|cf-chl-|captcha/.test(text);
-  const regionRestriction = /unsupported country|not available in your country|country or region not supported|not available in your region/.test(text);
-  const titleLooksRight = /chatgpt/i.test(pageData.title);
+  // Cloudflare challenge pages can expose a useful title while body.innerText is empty.
+  // Classify from both title and body, and retain explicit body-availability diagnostics.
+  const title = String(pageData.title || '').trim();
+  const bodyText = String(pageData.bodyText || '').trim();
+  const signals = (title + ' ' + bodyText).toLowerCase();
+  const bodyTextAvailable = bodyText.length > 0;
+  const challengeTitle = /just a moment|attention required|security check/i.test(title);
+  const challengeBody = /just a moment|verify you are human|enable javascript and cookies to continue|unusual activity|sorry, you have been blocked|cf-chl-|captcha/.test(bodyText.toLowerCase());
+  const challenge = challengeTitle || challengeBody || /cf-chl-|captcha/.test(signals);
+  const regionRestriction = /unsupported country|not available in your country|country or region not supported|not available in your region/.test(signals);
+  const titleLooksRight = /chatgpt/i.test(title);
   const renderedLanding = responseStatus === 200 && titleLooksRight && !challenge && !regionRestriction &&
     (pageData.hasMain || pageData.hasLoginControl || pageData.hasComposer) &&
     /chatgpt|openai|log in|sign up|登录|注册/i.test(pageData.bodyText);
@@ -255,8 +262,11 @@ async function probeBrowser(browser, proxyName) {
     // Anonymous landing-page rendering is not proof that a logged-in user can start a conversation.
     authenticatedChatVerified: false,
     challengeSuspected: Boolean(challenge),
+    challengeSignal: challengeTitle ? 'title' : challengeBody ? 'body' : challenge ? 'other' : null,
     regionRestrictionSuspected: Boolean(regionRestriction),
-    title: pageData.title || null,
+    bodyTextAvailable,
+    bodyTextLength: bodyText.length,
+    title: title || null,
     effectiveUrl: pageData.url || null,
     hasMain: pageData.hasMain,
     hasLoginControl: pageData.hasLoginControl,
@@ -322,6 +332,7 @@ async function run() {
     browserChallengePages: rows.filter(x => x.chatgptBrowser?.classification === 'browser_challenge_page').length,
     browserRegionRestrictions: rows.filter(x => x.chatgptBrowser?.classification === 'browser_region_restriction').length,
     browserNavigationErrors: rows.filter(x => x.chatgptBrowser?.classification === 'browser_navigation_error').length,
+    browserEmptyBodies: rows.filter(x => x.chatgptBrowser && !x.chatgptBrowser.bodyTextAvailable).length,
     chatgptHttp403: rows.filter(x => x.chatgptWeb?.status === 403).length,
     chatgptHttp403Challenge: rows.filter(x => x.chatgptWeb?.classification === 'http_403_challenge_page').length,
     chatgptHttp200: rows.filter(x => x.chatgptWeb?.status === 200).length,
@@ -343,6 +354,7 @@ async function run() {
     browserChallengePages: summary.browserChallengePages,
     browserRegionRestrictions: summary.browserRegionRestrictions,
     browserNavigationErrors: summary.browserNavigationErrors,
+    browserEmptyBodies: summary.browserEmptyBodies,
     http403: summary.chatgptHttp403,
     http403Challenge: summary.chatgptHttp403Challenge,
     http200: summary.chatgptHttp200,
