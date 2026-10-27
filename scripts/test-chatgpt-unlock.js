@@ -78,13 +78,13 @@ function classifyApi(result) {
 }
 function isHongKongProxy(proxy) {
   const name = String(proxy?.name || '');
-  if (/香港|hong[\\s_-]*kong/i.test(name)) return true;
-  const flag = name.match(/[\\u{1F1E6}-\\u{1F1FF}]{2}/u)?.[0];
+  if (/香港|hong[\s_-]*kong/i.test(name)) return true;
+  const flag = name.match(/[\u{1F1E6}-\u{1F1FF}]{2}/u)?.[0];
   if (flag) {
     const code = [...flag].map(ch => String.fromCharCode(ch.codePointAt(0) - 0x1F1E6 + 65)).join('');
     if (code === 'HK') return true;
   }
-  return /(?:^|[^A-Za-z])HK_\\d+(?:\\||$)/.test(name);
+  return /(?:^|[^A-Za-z])HK_\\d+(?:\||$)/.test(name);
 }
 function latestGoodObservation(node) {
   const observations = Array.isArray(node?.observations) ? node.observations : [];
@@ -155,7 +155,7 @@ function prepare() {
       speedMbps: x.observation.speedSuccess === true ? x.observation.speedMbps ?? null : null,
     })),
     proxies,
-  }, null, 2) + '\\n');
+  }, null, 2) + '\n');
 
   const names = proxies.map(p => p.name);
   const config = {
