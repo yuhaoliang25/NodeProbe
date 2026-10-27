@@ -249,14 +249,28 @@ jobs:
             }
             const reported=Number(match[1]);
             const proxies=Array.isArray(cfg.proxies)?cfg.proxies:[];
-            // Mihomo versions differ in whether this diagnostic index is
-            // zero- or one-based. Prefer the reported index if it exists;
-            // if it doesn't, fall back to the one-based interpretation.
-            let index=reported>=0&&reported<proxies.length?reported:reported-1;
+            // Prefer identifying the exact endpoint from Mihomo's error text;
+            // its displayed proxy index can vary by version / indexing base.
+            const endpoint=match[2].match(/^([a-z0-9_-]+)\\s+(\\[[^\\]]+\\]|[^:\\s]+):(\\d+)\\b/i);
+            let index=-1;
+            if(endpoint){
+              const [,type,server,port]=endpoint;
+              const normalizedServer=server.startsWith('[')?server.slice(1,-1):server;
+              const matches=[];
+              proxies.forEach((p,i)=>{
+                const sameServer=String(p.server||'').replace(/^\\[|\\]$/g,'')===normalizedServer;
+                if(String(p.type||'').toLowerCase()===type.toLowerCase()&&sameServer&&String(p.port)===port)matches.push(i);
+              });
+              if(matches.length===1)index=matches[0];
+              else if(matches.length>1)throw new Error('Ambiguous invalid endpoint from Mihomo error: '+match[2]);
+            }
+            // Fallback to the usual one-based diagnostic index only when the
+            // error text does not identify a unique endpoint.
+            if(index<0)index=reported-1;
             if(index<0||index>=proxies.length)throw new Error('Reported invalid proxy index is out of range: '+reported);
             const [bad]=proxies.splice(index,1);
             if(!bad)throw new Error('Could not remove reported invalid proxy at index '+index);
-            removed.push({name:bad.name||'(unnamed)',reason:match[2],reportedIndex:reported});
+            removed.push({name:bad.name||'(unnamed)',type:bad.type,server:bad.server,port:bad.port,reason:match[2],reportedIndex:reported});
             const group=(cfg['proxy-groups']||[]).find(g=>g.name==='PROXY');
             if(group&&Array.isArray(group.proxies))group.proxies=group.proxies.filter(name=>name!==bad.name);
             fs.writeFileSync(file,yaml.dump(cfg,{lineWidth:-1,noRefs:true}));
