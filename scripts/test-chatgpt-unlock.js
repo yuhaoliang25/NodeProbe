@@ -217,7 +217,7 @@ async function probeBrowser(browser, proxyName) {
     const url = response.url();
     let parsed;
     try { parsed = new URL(url); } catch { return; }
-    if ((/cloudflare\\.com$/i.test(parsed.hostname) || /chatgpt\\.com$/i.test(parsed.hostname) || /openai\\.com$/i.test(parsed.hostname)) && networkResponses.length < 30) {
+    if ((/cloudflare\.com$/i.test(parsed.hostname) || /chatgpt\.com$/i.test(parsed.hostname) || /openai\.com$/i.test(parsed.hostname)) && networkResponses.length < 30) {
       networkResponses.push({ host: parsed.hostname, path: parsed.pathname.slice(0, 120), status: response.status(), resourceType: response.request().resourceType() });
     }
   });
