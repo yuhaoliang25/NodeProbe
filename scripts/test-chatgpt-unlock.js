@@ -36,12 +36,12 @@ async function apiJson(url, options = {}) {
 }
 function curl(url) {
   const r = spawnSync('curl', [
-    '--silent', '--show-error', '--location', '--max-time', '12',
-    '--connect-timeout', '6', '--proxy', PROXY,
+    '--silent', '--show-error', '--location', '--max-time', '8',
+    '--connect-timeout', '3', '--proxy', PROXY,
     '--user-agent', 'NodeProbe-ChatGPT-Unlock-Test/1.0',
     '--output', '-', '--write-out', '\n__NODEPROBE_META__:%{http_code}|%{content_type}|%{url_effective}',
     url,
-  ], { encoding: 'utf8', timeout: 15000, maxBuffer: 3 * 1024 * 1024 });
+  ], { encoding: 'utf8', timeout: 10000, maxBuffer: 3 * 1024 * 1024 });
   if (r.error) return { status: 0, body: '', error: r.error.message };
   const text = r.stdout || '';
   const marker = '\n__NODEPROBE_META__:';
@@ -204,15 +204,15 @@ function prepare() {
 async function probeBrowser(browser, proxyName) {
   const context = await browser.newContext({ locale: 'en-US', serviceWorkers: 'block' });
   const page = await context.newPage();
-  page.setDefaultNavigationTimeout(20000);
+  page.setDefaultNavigationTimeout(12000);
   page.setDefaultTimeout(5000);
   let responseStatus = 0;
   let navigationError = null;
   try {
-    const response = await page.goto('https://chatgpt.com/', { waitUntil: 'domcontentloaded', timeout: 20000 });
+    const response = await page.goto('https://chatgpt.com/', { waitUntil: 'domcontentloaded', timeout: 12000 });
     responseStatus = response ? response.status() : 0;
     // Give client-side JavaScript time to hydrate and expose the actual landing UI.
-    await page.waitForTimeout(5000);
+    await page.waitForTimeout(2500);
   } catch (e) {
     navigationError = String(e && e.message || e).slice(0, 240);
   }
