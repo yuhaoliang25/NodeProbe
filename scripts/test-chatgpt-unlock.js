@@ -217,15 +217,33 @@ async function probeBrowser(browser, proxyName) {
   } catch (e) {
     navigationError = String(e && e.message || e).slice(0, 240);
   }
-  let pageData = { title: '', url: page.url(), bodyText: '', hasMain: false, hasLoginControl: false, hasComposer: false };
+  let pageData = {
+    title: '', url: page.url(), readyState: null, bodyText: '',
+    bodyTextContentLength: 0, htmlLength: 0, bodyHtmlLength: 0,
+    scriptCount: 0, iframeCount: 0, formCount: 0, inputCount: 0,
+    challengeElementCount: 0, hasMain: false, hasLoginControl: false, hasComposer: false,
+  };
   try {
     pageData = await page.evaluate(() => {
-      const bodyText = (document.body?.innerText || '').replace(/\s+/g, ' ').trim().slice(0, 1200);
+      const body = document.body;
+      const bodyText = (body?.innerText || '').replace(/\s+/g, ' ').trim().slice(0, 1200);
       const controls = [...document.querySelectorAll('button, a')].map(el => (el.innerText || el.getAttribute('aria-label') || '').trim().toLowerCase());
+      const challengeElements = document.querySelectorAll(
+        '[id*="challenge" i], [class*="challenge" i], #challenge-form, [name*="captcha" i], iframe[src*="challenge" i]'
+      );
       return {
         title: document.title || '',
         url: location.href,
+        readyState: document.readyState,
         bodyText,
+        bodyTextContentLength: (body?.textContent || '').trim().length,
+        htmlLength: document.documentElement?.outerHTML?.length || 0,
+        bodyHtmlLength: body?.innerHTML?.length || 0,
+        scriptCount: document.scripts.length,
+        iframeCount: document.querySelectorAll('iframe').length,
+        formCount: document.querySelectorAll('form').length,
+        inputCount: document.querySelectorAll('input').length,
+        challengeElementCount: challengeElements.length,
         hasMain: Boolean(document.querySelector('main, [role="main"]')),
         hasLoginControl: controls.some(t => /^(log in|sign up|登录|注册)$/.test(t)),
         hasComposer: Boolean(document.querySelector('textarea, [contenteditable="true"], [data-testid*="composer"]')),
@@ -266,6 +284,15 @@ async function probeBrowser(browser, proxyName) {
     regionRestrictionSuspected: Boolean(regionRestriction),
     bodyTextAvailable,
     bodyTextLength: bodyText.length,
+    bodyTextContentLength: pageData.bodyTextContentLength || 0,
+    htmlLength: pageData.htmlLength || 0,
+    bodyHtmlLength: pageData.bodyHtmlLength || 0,
+    readyState: pageData.readyState || null,
+    scriptCount: pageData.scriptCount || 0,
+    iframeCount: pageData.iframeCount || 0,
+    formCount: pageData.formCount || 0,
+    inputCount: pageData.inputCount || 0,
+    challengeElementCount: pageData.challengeElementCount || 0,
     title: title || null,
     effectiveUrl: pageData.url || null,
     hasMain: pageData.hasMain,
@@ -332,7 +359,10 @@ async function run() {
     browserChallengePages: rows.filter(x => x.chatgptBrowser?.classification === 'browser_challenge_page').length,
     browserRegionRestrictions: rows.filter(x => x.chatgptBrowser?.classification === 'browser_region_restriction').length,
     browserNavigationErrors: rows.filter(x => x.chatgptBrowser?.classification === 'browser_navigation_error').length,
-    browserEmptyBodies: rows.filter(x => x.chatgptBrowser && !x.chatgptBrowser.bodyTextAvailable).length,
+    // Count empty text only when the browser received an HTTP response; navigation failures are separate.
+    browserEmptyBodies: rows.filter(x => x.chatgptBrowser && x.chatgptBrowser.status > 0 && !x.chatgptBrowser.bodyTextAvailable).length,
+    browserEmptyDomBodies: rows.filter(x => x.chatgptBrowser && x.chatgptBrowser.status > 0 && (x.chatgptBrowser.bodyHtmlLength || 0) === 0).length,
+    browserResponsesWithHtmlButNoText: rows.filter(x => x.chatgptBrowser && x.chatgptBrowser.status > 0 && (x.chatgptBrowser.bodyHtmlLength || 0) > 0 && !x.chatgptBrowser.bodyTextAvailable).length,
     chatgptHttp403: rows.filter(x => x.chatgptWeb?.status === 403).length,
     chatgptHttp403Challenge: rows.filter(x => x.chatgptWeb?.classification === 'http_403_challenge_page').length,
     chatgptHttp200: rows.filter(x => x.chatgptWeb?.status === 200).length,
@@ -355,6 +385,8 @@ async function run() {
     browserRegionRestrictions: summary.browserRegionRestrictions,
     browserNavigationErrors: summary.browserNavigationErrors,
     browserEmptyBodies: summary.browserEmptyBodies,
+    browserEmptyDomBodies: summary.browserEmptyDomBodies,
+    browserResponsesWithHtmlButNoText: summary.browserResponsesWithHtmlButNoText,
     http403: summary.chatgptHttp403,
     http403Challenge: summary.chatgptHttp403Challenge,
     http200: summary.chatgptHttp200,
