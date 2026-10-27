@@ -35,6 +35,12 @@ function valid(p){
   if(p['reality-opts']){
     const o=p['reality-opts'];
     if(!['vless','vmess','trojan'].includes(t)||typeof o!=='object'||!o['public-key'])return false;
+    // Mihomo requires a 32-byte X25519 public key. Public VLESS links commonly
+    // use unpadded base64url, while YAML feeds may use padded standard Base64.
+    // Reject malformed values here instead of letting one source batch poison
+    // the whole generated Mihomo config.
+    const publicKey=String(o['public-key']);
+    if(!/^[A-Za-z0-9+/_-]{43}=?$/.test(publicKey)||Buffer.from(publicKey,'base64').length!==32)return false;
     if(o['short-id']!==undefined&&(!/^[0-9a-fA-F]{2,16}$/.test(String(o['short-id']))||String(o['short-id']).length%2))return false;
   }
   return true;
