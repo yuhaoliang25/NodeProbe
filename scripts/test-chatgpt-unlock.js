@@ -38,25 +38,50 @@ function curl(url) {
     '--silent', '--show-error', '--location', '--max-time', '12',
     '--connect-timeout', '6', '--proxy', PROXY,
     '--user-agent', 'NodeProbe-ChatGPT-Unlock-Test/1.0',
-    '--output', '-', '--write-out', '\n__NODEPROBE_STATUS__:%{http_code}',
+    '--output', '-', '--write-out', '\n__NODEPROBE_META__:%{http_code}|%{content_type}|%{url_effective}',
     url,
   ], { encoding: 'utf8', timeout: 15000, maxBuffer: 3 * 1024 * 1024 });
   if (r.error) return { status: 0, body: '', error: r.error.message };
   const text = r.stdout || '';
-  const marker = '\n__NODEPROBE_STATUS__:';
+  const marker = '\n__NODEPROBE_META__:';
   const at = text.lastIndexOf(marker);
   const body = at >= 0 ? text.slice(0, at) : text;
-  const status = at >= 0 ? Number(text.slice(at + marker.length).trim()) || 0 : 0;
-  return { status, body: body.slice(0, 2 * 1024 * 1024), error: r.status === 0 ? null : (r.stderr || ('curl exit ' + r.status)).trim().slice(0, 300) };
+  const meta = at >= 0 ? text.slice(at + marker.length).trim().split('|') : [];
+  const status = Number(meta[0]) || 0;
+  return {
+    status,
+    contentType: meta[1] || null,
+    effectiveUrl: meta[2] || null,
+    body: body.slice(0, 2 * 1024 * 1024),
+    error: r.status === 0 ? null : (r.stderr || ('curl exit ' + r.status)).trim().slice(0, 300),
+  };
 }
 function classifyPage(result) {
   const body = result.body.toLowerCase();
-  const challenge = /just a moment|verify you are human|cf-chl-|captcha|unusual activity|unsupported country|not available in your country|country or region not supported|vpn.*blocked/.test(body);
+  const challenge = /just a moment|verify you are human|cf-chl-|captcha|unusual activity|unsupported country|not available in your country|country or region not supported|vpn.{0,30}blocked/.test(body);
   const hasAppHints = /chatgpt|openai|__next|application\/json/.test(body);
+  const title = (result.body.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1] || '')
+    .replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 160);
+  const snippet = result.body.replace(/<script[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ').replace(/&nbsp;|&#160;/gi, ' ')
+    .replace(/&amp;/gi, '&').replace(/\s+/g, ' ').trim().slice(0, 300);
+  let classification = 'other';
+  if (result.status === 0) classification = 'connection_error';
+  else if (result.status === 403) classification = 'http_403_forbidden';
+  else if (result.status === 429) classification = 'http_429_rate_limited';
+  else if (challenge) classification = 'challenge_or_restriction_page';
+  else if (result.status === 200 && hasAppHints) classification = 'http_200_app_page';
+  else if (result.status === 200) classification = 'http_200_unverified_page';
   return {
     status: result.status,
+    contentType: result.contentType,
+    effectiveUrl: result.effectiveUrl,
+    classification,
     accessible: result.status === 200 && !challenge && hasAppHints,
     challengeOrRestrictionSuspected: challenge,
+    pageTitle: title || null,
+    responseSnippet: snippet || null,
     error: result.error,
   };
 }
