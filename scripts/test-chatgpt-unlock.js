@@ -5,6 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const { spawnSync } = require('child_process');
 const yaml = require('js-yaml');
+const { chromium } = require('playwright');
 
 const API = process.env.MIHOMO_API || 'http://127.0.0.1:9090';
 const PROXY = process.env.TEST_PROXY || 'http://127.0.0.1:7890';
@@ -200,9 +201,77 @@ function prepare() {
   console.log('[chatgpt-test] selection=recent successful exits; TRUSTED preferred; Hong Kong excluded');
   console.log('[chatgpt-test] endpoints: Cloudflare trace, ChatGPT web, unauthenticated OpenAI API /v1/models');
 }
+async function probeBrowser(browser, proxyName) {
+  const context = await browser.newContext({ locale: 'en-US', serviceWorkers: 'block' });
+  const page = await context.newPage();
+  page.setDefaultNavigationTimeout(20000);
+  page.setDefaultTimeout(5000);
+  let responseStatus = 0;
+  let navigationError = null;
+  try {
+    const response = await page.goto('https://chatgpt.com/', { waitUntil: 'domcontentloaded', timeout: 20000 });
+    responseStatus = response ? response.status() : 0;
+    // Give client-side JavaScript time to hydrate and expose the actual landing UI.
+    await page.waitForTimeout(5000);
+  } catch (e) {
+    navigationError = String(e && e.message || e).slice(0, 240);
+  }
+  let pageData = { title: '', url: page.url(), bodyText: '', hasMain: false, hasLoginControl: false, hasComposer: false };
+  try {
+    pageData = await page.evaluate(() => {
+      const bodyText = (document.body?.innerText || '').replace(/\\s+/g, ' ').trim().slice(0, 1200);
+      const controls = [...document.querySelectorAll('button, a')].map(el => (el.innerText || el.getAttribute('aria-label') || '').trim().toLowerCase());
+      return {
+        title: document.title || '',
+        url: location.href,
+        bodyText,
+        hasMain: Boolean(document.querySelector('main, [role="main"]')),
+        hasLoginControl: controls.some(t => /^(log in|sign up|登录|注册)$/.test(t)),
+        hasComposer: Boolean(document.querySelector('textarea, [contenteditable="true"], [data-testid*="composer"]')),
+      };
+    });
+  } catch (e) {
+    navigationError = navigationError || String(e && e.message || e).slice(0, 240);
+  }
+  const text = pageData.bodyText.toLowerCase();
+  const challenge = /just a moment|verify you are human|enable javascript and cookies to continue|unusual activity|sorry, you have been blocked|cf-chl-|captcha/.test(text);
+  const regionRestriction = /unsupported country|not available in your country|country or region not supported|not available in your region/.test(text);
+  const titleLooksRight = /chatgpt/i.test(pageData.title);
+  const renderedLanding = responseStatus === 200 && titleLooksRight && !challenge && !regionRestriction &&
+    (pageData.hasMain || pageData.hasLoginControl || pageData.hasComposer) &&
+    /chatgpt|openai|log in|sign up|登录|注册/i.test(pageData.bodyText);
+  await context.close();
+  return {
+    status: responseStatus,
+    classification: navigationError ? 'browser_navigation_error' :
+      challenge ? 'browser_challenge_page' :
+      regionRestriction ? 'browser_region_restriction' :
+      renderedLanding ? 'browser_landing_rendered' :
+      responseStatus === 403 ? 'browser_http_403' :
+      responseStatus === 429 ? 'browser_http_429' :
+      responseStatus === 200 ? 'browser_200_unverified' : 'browser_unavailable',
+    landingPageRendered: Boolean(renderedLanding),
+    // Anonymous landing-page rendering is not proof that a logged-in user can start a conversation.
+    authenticatedChatVerified: false,
+    challengeSuspected: Boolean(challenge),
+    regionRestrictionSuspected: Boolean(regionRestriction),
+    title: pageData.title || null,
+    effectiveUrl: pageData.url || null,
+    hasMain: pageData.hasMain,
+    hasLoginControl: pageData.hasLoginControl,
+    hasComposer: pageData.hasComposer,
+    bodySnippet: pageData.bodyText || null,
+    error: navigationError,
+  };
+}
 async function run() {
   const selection = JSON.parse(fs.readFileSync(SELECTED, 'utf8'));
   const rows = [];
+  const browser = await chromium.launch({
+    headless: true,
+    proxy: { server: PROXY },
+    args: ['--no-sandbox', '--disable-dev-shm-usage'],
+  });
   for (let i = 0; i < selection.proxies.length; i++) {
     const p = selection.proxies[i];
     const row = { name: p.name, testedAt: new Date().toISOString() };
@@ -221,6 +290,7 @@ async function run() {
 
       const page = curl('https://chatgpt.com/');
       row.chatgptWeb = classifyPage(page);
+      row.chatgptBrowser = await probeBrowser(browser, p.name);
 
       const api = curl('https://api.openai.com/v1/models');
       row.openaiApi = classifyApi(api);
@@ -233,11 +303,13 @@ async function run() {
       ' trace=' + (row.cloudflare?.status ?? 'skip') +
       ' traceErr=' + compactError(row.cloudflare?.error) +
       ' web=' + (row.chatgptWeb?.accessible ? 'accessible' : (row.chatgptWeb?.status ?? 'skip')) +
+      ' browser=' + (row.chatgptBrowser?.classification || 'skip') +
       ' webErr=' + compactError(row.chatgptWeb?.error) +
       ' api=' + (row.openaiApi?.authRejectedAsExpected ? '401-auth' : (row.openaiApi?.status ?? 'skip')) +
       ' apiErr=' + compactError(row.openaiApi?.error) +
       ' region=' + (row.cloudflare?.region || '?') + ' | ' + p.name);
   }
+  await browser.close();
   const summary = {
     generatedAt: new Date().toISOString(),
     source: selection.source,
@@ -245,6 +317,10 @@ async function run() {
     testedCount: rows.length,
     regionRecognized: rows.filter(x => x.cloudflare?.traceRecognized).length,
     chatgptWebAccessible: rows.filter(x => x.chatgptWeb?.accessible).length,
+    browserLandingRendered: rows.filter(x => x.chatgptBrowser?.landingPageRendered).length,
+    browserChallengePages: rows.filter(x => x.chatgptBrowser?.classification === 'browser_challenge_page').length,
+    browserRegionRestrictions: rows.filter(x => x.chatgptBrowser?.classification === 'browser_region_restriction').length,
+    browserNavigationErrors: rows.filter(x => x.chatgptBrowser?.classification === 'browser_navigation_error').length,
     chatgptHttp403: rows.filter(x => x.chatgptWeb?.status === 403).length,
     chatgptHttp403Challenge: rows.filter(x => x.chatgptWeb?.classification === 'http_403_challenge_page').length,
     chatgptHttp200: rows.filter(x => x.chatgptWeb?.status === 200).length,
@@ -262,6 +338,10 @@ async function run() {
     source: summary.source, tested: summary.testedCount,
     regionRecognized: summary.regionRecognized,
     webAccessible: summary.chatgptWebAccessible,
+    browserLandingRendered: summary.browserLandingRendered,
+    browserChallengePages: summary.browserChallengePages,
+    browserRegionRestrictions: summary.browserRegionRestrictions,
+    browserNavigationErrors: summary.browserNavigationErrors,
     http403: summary.chatgptHttp403,
     http403Challenge: summary.chatgptHttp403Challenge,
     http200: summary.chatgptHttp200,
