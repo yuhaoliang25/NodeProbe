@@ -261,11 +261,20 @@ jobs:
                 const sameServer=String(p.server||'').replace(/^\[|\]$/g,'')===normalizedServer;
                 if(String(p.type||'').toLowerCase()===type.toLowerCase()&&sameServer&&String(p.port)===port)matches.push(i);
               });
+              // Duplicate endpoint tuples can exist with different names or
+              // credentials. Use Mihomo's reported index to disambiguate when
+              // it points at one of the endpoint matches.
               if(matches.length===1)index=matches[0];
-              else if(matches.length>1)throw new Error('Ambiguous invalid endpoint from Mihomo error: '+match[2]);
+              else if(matches.length>1) {
+                const oneBased=reported-1;
+                const zeroBased=reported;
+                if(matches.includes(oneBased))index=oneBased;
+                else if(matches.includes(zeroBased))index=zeroBased;
+                else throw new Error('Ambiguous invalid endpoint; reported proxy index does not match endpoint: '+match[2]);
+              }
             }
-            // Fallback to the usual one-based diagnostic index only when the
-            // error text does not identify a unique endpoint.
+            // Fall back to the usual one-based diagnostic index only when
+            // the error text does not identify a matching endpoint.
             if(index<0)index=reported-1;
             if(index<0||index>=proxies.length)throw new Error('Reported invalid proxy index is out of range: '+reported);
             const [bad]=proxies.splice(index,1);
