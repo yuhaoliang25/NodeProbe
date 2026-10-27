@@ -219,7 +219,7 @@ async function probeBrowser(browser, proxyName) {
   let pageData = { title: '', url: page.url(), bodyText: '', hasMain: false, hasLoginControl: false, hasComposer: false };
   try {
     pageData = await page.evaluate(() => {
-      const bodyText = (document.body?.innerText || '').replace(/\\s+/g, ' ').trim().slice(0, 1200);
+      const bodyText = (document.body?.innerText || '').replace(/\s+/g, ' ').trim().slice(0, 1200);
       const controls = [...document.querySelectorAll('button, a')].map(el => (el.innerText || el.getAttribute('aria-label') || '').trim().toLowerCase());
       return {
         title: document.title || '',
