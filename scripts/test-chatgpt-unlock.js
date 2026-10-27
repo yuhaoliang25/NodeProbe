@@ -330,7 +330,7 @@ async function run() {
     chatgptRestrictionSuspected: rows.filter(x => x.chatgptWeb?.challengeOrRestrictionSuspected).length,
     openaiApiApplicationResponse: rows.filter(x => x.openaiApi?.appLayerResponse).length,
     openaiApiExpectedAuthRejection: rows.filter(x => x.openaiApi?.authRejectedAsExpected).length,
-    note: 'Anonymous network indicators only; this does not verify account login or a real ChatGPT conversation.',
+    note: 'HTTP curl checks do not execute JavaScript; browserLandingRendered means the anonymous ChatGPT landing UI rendered, not that account login or a real conversation works.',
     results: rows,
   };
   fs.writeFileSync(path.join(OUT, 'results.json'), JSON.stringify(summary, null, 2) + '\n');
