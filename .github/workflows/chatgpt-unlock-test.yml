@@ -1,0 +1,99 @@
+name: ChatGPT Unlock Probe (Experimental)
+
+on:
+  workflow_dispatch:
+    inputs:
+      max_nodes:
+        description: "Maximum nodes to test (1-100)"
+        required: true
+        default: "30"
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      TEST_MAX_NODES: ${{ inputs.max_nodes }}
+      MIHOMO_API: http://127.0.0.1:9090
+      TEST_PROXY: http://127.0.0.1:7890
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund --fetch-timeout=30000 --fetch-retries=1
+
+      - name: Prepare test directories
+        run: mkdir -p data reports/chatgpt-unlock mihomo
+
+      - name: Download current Stable feed from B2
+        continue-on-error: true
+        uses: backblaze-labs/b2-action@v1
+        with:
+          action: download
+          application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          application-key: ${{ secrets.B2_APPLICATION_KEY }}
+          bucket: nodeprobe
+          source: nodeprobe-state/china/stable.yaml
+          destination: data/stable.yaml
+
+      - name: Prepare isolated Mihomo test config
+        run: node scripts/test-chatgpt-unlock.js prepare
+
+      - name: Install Mihomo
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          asset=$(curl -fsSL -H "Authorization: Bearer $GH_TOKEN" https://api.github.com/repos/MetaCubeX/mihomo/releases/latest | jq -r '.assets[] | select(.name | test("^mihomo-linux-amd64-v[0-9][^-]*\\.gz$")) | .browser_download_url' | head -1)
+          test -n "$asset"
+          curl -fsSL --retry 3 "$asset" -o mihomo/mihomo.gz
+          gunzip -f mihomo/mihomo.gz
+          chmod +x mihomo/mihomo
+
+      - name: Validate Mihomo config
+        run: mihomo/mihomo -t -d mihomo -f mihomo/chatgpt-test-config.yaml
+
+      - name: Start isolated Mihomo
+        run: |
+          set -euo pipefail
+          mihomo/mihomo -d mihomo -f mihomo/chatgpt-test-config.yaml > mihomo/chatgpt-test.log 2>&1 &
+          pid=$!
+          echo "$pid" > mihomo/chatgpt-test.pid
+          for i in $(seq 1 30); do
+            if ! kill -0 "$pid" 2>/dev/null; then
+              cat mihomo/chatgpt-test.log || true
+              exit 1
+            fi
+            if curl -fsS --max-time 2 http://127.0.0.1:9090/version >/dev/null 2>&1; then
+              echo "Mihomo API ready."
+              exit 0
+            fi
+            sleep 1
+          done
+          cat mihomo/chatgpt-test.log || true
+          exit 1
+
+      - name: Probe ChatGPT web and OpenAI API anonymously
+        run: node scripts/test-chatgpt-unlock.js
+
+      - name: Upload experiment results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: chatgpt-unlock-probe-${{ github.run_id }}
+          path: |
+            reports/chatgpt-unlock/
+            mihomo/chatgpt-test.log
+          if-no-files-found: warn
+          retention-days: 14
