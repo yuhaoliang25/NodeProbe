@@ -84,7 +84,7 @@ function isHongKongProxy(proxy) {
     const code = [...flag].map(ch => String.fromCharCode(ch.codePointAt(0) - 0x1F1E6 + 65)).join('');
     if (code === 'HK') return true;
   }
-  return /(?:^|[^A-Za-z])HK_\\d+(?:\||$)/.test(name);
+  return /(?:^|[^A-Za-z])HK_\d+(?:\||$)/.test(name);
 }
 function latestGoodObservation(node) {
   const observations = Array.isArray(node?.observations) ? node.observations : [];
