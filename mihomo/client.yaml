@@ -35,15 +35,6 @@ rule-providers:
     interval: 86400
     url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs'
 proxies:
-  - name: '🇭🇰 香港 18-pool-3ecdf2883fc56e42'
-    port: 3128
-    server: '119.28.24.235'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
   - name: '🇸🇬SG_38|247KB/s|R002-260618 01'
     port: 443
     server: '154.26.139.24'
@@ -53,20 +44,20 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: 'd1f4a0d80288cf0b'
-  - name: '🇫🇷FR_2058|2.0MB/s|R002-260618 01'
+  - name: '🇮🇩ID_10|550KB/s|R002-260618 01'
     port: 443
-    server: '172.64.68.89'
+    server: '103.86.117.202'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇮🇩ID_10|550KB/s|R002-260618 01'
-    port: 443
-    server: '103.86.117.202'
+  - name: '🇭🇰 香港 18-pool-3ecdf2883fc56e42'
+    port: 3128
+    server: '119.28.24.235'
     skip-cert-verify: true
-    sub_tag: 'R002-260618'
+    sub_tag: 'P002-260618'
     tls: true
     type: 'http'
     udp: true
@@ -84,16 +75,16 @@ proxy-groups:
   - name: 'PROXY'
     type: 'select'
     proxies:
-      - '🇭🇰 香港 18-pool-3ecdf2883fc56e42'
       - '🇸🇬SG_38|247KB/s|R002-260618 01'
-      - '🇫🇷FR_2058|2.0MB/s|R002-260618 01'
+      - '🇮🇩ID_10|550KB/s|R002-260618 01'
+      - '🇭🇰 香港 18-pool-3ecdf2883fc56e42'
       - 'DIRECT'
   - name: 'CHATGPT'
     type: 'select'
     proxies:
       - '🇮🇩ID_10|550KB/s|R002-260618 01'
-      - '🇮🇩ID_2|688KB/s|R002-260618 [ec91e15d058c]'
       - '🇸🇬SG_38|247KB/s|R002-260618 01'
+      - '🇮🇩ID_2|688KB/s|R002-260618 [ec91e15d058c]'
   - name: 'STICKY'
     type: 'select'
     proxies:
