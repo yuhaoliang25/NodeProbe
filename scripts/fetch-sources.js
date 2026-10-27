@@ -10,11 +10,22 @@ function sourceId(url){
   return 'dynamic-'+crypto.createHash('sha256').update(url).digest('hex').slice(0,12);
 }
 
-const dynamicSources=(dynamicState.sources||[])
+const dueDynamicSources=(dynamicState.sources||[])
   .filter(s=>s.url&&!seedUrls.has(s.url))
   // Dead sources are not deleted: once their long retry interval expires,
   // probe them again so a revived source can return to the pool.
-  .filter(s=>!s.nextProbeAt||Date.parse(s.nextProbeAt)<=Date.now())
+  .filter(s=>!s.nextProbeAt||Date.parse(s.nextProbeAt)<=Date.now());
+// Do not let older due sources starve freshly discovered candidates. The
+// fetch budget is bounded, so prioritize never-fetched candidates before the
+// existing retry queue; unselected candidates remain due for the next run.
+const freshCandidates=dueDynamicSources.filter(s=>s.status==='candidate'&&!s.reputation);
+dueDynamicSources.sort((a,b)=>{
+  const freshA=a.status==='candidate'&&!a.reputation?1:0;
+  const freshB=b.status==='candidate'&&!b.reputation?1:0;
+  return freshB-freshA||Date.parse(a.firstSeen||0)-Date.parse(b.firstSeen||0);
+});
+console.log('dynamic source fetch queue:',dueDynamicSources.length,'due;',freshCandidates.length,'fresh candidates prioritized;',Math.min(25,dueDynamicSources.length),'will fetch');
+const dynamicSources=dueDynamicSources
   .slice(0,25)
   .map(s=>({
     name:s.name||sourceId(s.url),
