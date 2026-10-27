@@ -19,9 +19,14 @@ const poolBy=new Map((pool.nodes||[]).map(x=>[x.fingerprint,x]));
 const healthBy=new Map((health.results||[]).map(x=>[x.fingerprint||x.name,x]));
 const detailedBy=new Map((detailed.results||[]).map(x=>[x.fingerprint||x.name,x]));
 const histBy=new Map();
-for(const batch of history) for(const r of batch.results||[]) if(r.fingerprint){
-  if(!histBy.has(r.fingerprint))histBy.set(r.fingerprint,[]);
-  histBy.get(r.fingerprint).push({generatedAt:batch.generatedAt,name:r.name,rounds:r.rounds,successes:r.successes,successRate:r.successRate,avgLatency:r.avgLatency,p95Latency:r.p95Latency,delays:r.delays,stage1Flaky:r.stage1Flaky});
+for(const batch of history) {
+  // The current health report is already persisted in history.json. Keep the
+  // audit's historical section strictly prior-run evidence, matching selection.
+  if(batch.generatedAt===health.generatedAt)continue;
+  for(const r of batch.results||[]) if(r.fingerprint){
+    if(!histBy.has(r.fingerprint))histBy.set(r.fingerprint,[]);
+    histBy.get(r.fingerprint).push({generatedAt:batch.generatedAt,name:r.name,rounds:r.rounds,successes:r.successes,successRate:r.successRate,avgLatency:r.avgLatency,p95Latency:r.p95Latency,delays:r.delays,stage1Flaky:r.stage1Flaky});
+  }
 }
 function eligibility(r){
  if(!r)return null;
