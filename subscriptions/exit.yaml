@@ -168,17 +168,6 @@ proxies:
     username: 'testuser1'
     udp: true
     endpoint-id: '989e3a7d477a623c'
-  - name: '🇺🇸US_325|1.2MB/s|R002-260618 01'
-    password: 'e4b72b531a2d10900519'
-    port: 443
-    server: '147.182.216.4'
-    sni: '93b6d804.acsnet.co'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'testuser1'
-    udp: true
-    endpoint-id: '9a7c2841627ed928'
   - name: '🇷🇴RO_59|1.7MB/s|R002-260618 01'
     password: 'None'
     port: 9002
@@ -327,17 +316,6 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: 'fb2a0aead2bd06ff'
-  - name: '🇺🇸US_471|1.0MB/s|K001-260618 01'
-    password: 'e4b72b531a2d10900519'
-    port: 443
-    server: '147.182.216.4'
-    skip-cert-verify: true
-    sub_tag: 'K001-260618'
-    tls: true
-    type: 'http'
-    username: 'testuser1'
-    udp: true
-    endpoint-id: 'f81d579691387f2d'
   - name: '🇳🇱NL_215|3.1MB/s|K001-260618 01'
     password: 'null'
     port: 23856
@@ -672,16 +650,6 @@ proxies:
     type: 'http'
     username: 'null'
     udp: true
-    _poolOnly: true
-  - name: 'HK香港(mibei77.com 米贝节点分享)_12-source-41447db523bef660'
-    type: 'anytls'
-    server: '654968169.df6h451rh.xin'
-    port: 443
-    password: '0324fbc29561'
-    skip-cert-verify: true
-    tls: true
-    udp: true
-    client-fingerprint: 'chrome'
     _poolOnly: true
   - name: '🇳🇱NL_219|2.8MB/s|R002-260618 01'
     password: 'null'
@@ -1474,16 +1442,6 @@ proxies:
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: 'HK香港(mibei77.com 米贝节点分享)_12-source-4916e8a6d10d601e'
-    type: 'anytls'
-    server: '654968169.df6h451rh.xin'
-    port: 443
-    password: '0324fbc29561'
-    sni: '127.0.0.1'
-    skip-cert-verify: true
-    tls: true
     udp: true
     _poolOnly: true
   - name: '🇳🇱NL_239|1.8MB/s|P002-260618 01'
