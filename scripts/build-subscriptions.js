@@ -331,9 +331,15 @@ try{
  const h=JSON.parse(fs.readFileSync('data/health.json','utf8'));
  const history=JSON.parse(fs.readFileSync('data/history.json','utf8'));
  const hist={};
- for(const batch of history) for(const r of batch.results) if(r.fingerprint){
-   const x=hist[r.fingerprint]??={tests:0,successes:0,latencies:[]};
-   x.tests+=r.rounds; x.successes+=r.successes; x.latencies.push(...r.delays.filter(v=>v>0));
+ // history.json includes the health report written earlier in this same run.
+ // Exclude it here: the current result is evaluated separately by stableEligible/
+ // bestEligible and must not satisfy (or block) the historical-evidence gate.
+ for(const batch of history){
+   if(batch.generatedAt===h.generatedAt)continue;
+   for(const r of batch.results||[]) if(r.fingerprint){
+     const x=hist[r.fingerprint]??={tests:0,successes:0,latencies:[]};
+     x.tests+=r.rounds; x.successes+=r.successes; x.latencies.push(...(r.delays||[]).filter(v=>v>0));
+   }
  }
  const metrics=new Map(Object.entries(hist).map(([id,x])=>{
    const s=[...x.latencies].sort((a,b)=>a-b), p=q=>s.length?s[Math.min(s.length-1,Math.ceil(s.length*q)-1)]:null;
@@ -360,6 +366,7 @@ try{
  for(const [id,x] of Object.entries(hist)){
    const observations=[];
    for(const batch of history) {
+     if(batch.generatedAt===h.generatedAt)continue;
      const at=batch.generatedAt||batch.at||batch.timestamp;
      for(const r of batch.results||[]) if(r.fingerprint===id&&Array.isArray(r.delays)){
        for(const delay of r.delays) observations.push({at,success:Number(delay)>0,latencyMs:Number(delay)});
