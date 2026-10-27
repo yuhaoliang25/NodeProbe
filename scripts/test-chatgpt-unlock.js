@@ -58,7 +58,7 @@ function curl(url) {
 }
 function classifyPage(result) {
   const body = result.body.toLowerCase();
-  const challenge = /just a moment|verify you are human|cf-chl-|captcha|unusual activity|unsupported country|not available in your country|country or region not supported|vpn.{0,30}blocked/.test(body);
+  const challenge = /just a moment|verify you are human|cf-chl-|captcha|unusual activity|unsupported country|not available in your country|country or region not supported|vpn.{0,30}blocked|enable javascript and cookies to continue/.test(body);
   const hasAppHints = /chatgpt|openai|__next|application\/json/.test(body);
   const title = (result.body.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1] || '')
     .replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 160);
@@ -68,17 +68,18 @@ function classifyPage(result) {
     .replace(/&amp;/gi, '&').replace(/\s+/g, ' ').trim().slice(0, 300);
   let classification = 'other';
   if (result.status === 0) classification = 'connection_error';
+  else if (challenge) classification = result.status === 403 ? 'http_403_challenge_page' : 'challenge_or_restriction_page';
   else if (result.status === 403) classification = 'http_403_forbidden';
   else if (result.status === 429) classification = 'http_429_rate_limited';
-  else if (challenge) classification = 'challenge_or_restriction_page';
-  else if (result.status === 200 && hasAppHints) classification = 'http_200_app_page';
+  else if (result.status === 200 && hasAppHints) classification = 'http_200_app_shell_unverified';
   else if (result.status === 200) classification = 'http_200_unverified_page';
   return {
     status: result.status,
     contentType: result.contentType,
     effectiveUrl: result.effectiveUrl,
     classification,
-    accessible: result.status === 200 && !challenge && hasAppHints,
+    // curl does not execute JavaScript; an HTTP 200 app shell is not proof that the UI rendered.
+    accessible: false,
     challengeOrRestrictionSuspected: challenge,
     pageTitle: title || null,
     responseSnippet: snippet || null,
@@ -245,9 +246,10 @@ async function run() {
     regionRecognized: rows.filter(x => x.cloudflare?.traceRecognized).length,
     chatgptWebAccessible: rows.filter(x => x.chatgptWeb?.accessible).length,
     chatgptHttp403: rows.filter(x => x.chatgptWeb?.status === 403).length,
+    chatgptHttp403Challenge: rows.filter(x => x.chatgptWeb?.classification === 'http_403_challenge_page').length,
     chatgptHttp200: rows.filter(x => x.chatgptWeb?.status === 200).length,
     chatgptHttp200Challenge: rows.filter(x => x.chatgptWeb?.status === 200 && x.chatgptWeb?.challengeOrRestrictionSuspected).length,
-    chatgptHttp200Unverified: rows.filter(x => x.chatgptWeb?.classification === 'http_200_unverified_page').length,
+    chatgptHttp200Unverified: rows.filter(x => ['http_200_unverified_page', 'http_200_app_shell_unverified'].includes(x.chatgptWeb?.classification)).length,
     chatgptConnectionErrors: rows.filter(x => x.chatgptWeb?.classification === 'connection_error').length,
     chatgptRestrictionSuspected: rows.filter(x => x.chatgptWeb?.challengeOrRestrictionSuspected).length,
     openaiApiApplicationResponse: rows.filter(x => x.openaiApi?.appLayerResponse).length,
@@ -261,6 +263,7 @@ async function run() {
     regionRecognized: summary.regionRecognized,
     webAccessible: summary.chatgptWebAccessible,
     http403: summary.chatgptHttp403,
+    http403Challenge: summary.chatgptHttp403Challenge,
     http200: summary.chatgptHttp200,
     http200Challenge: summary.chatgptHttp200Challenge,
     http200Unverified: summary.chatgptHttp200Unverified,
