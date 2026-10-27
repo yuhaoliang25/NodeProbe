@@ -33,6 +33,11 @@ jobs:
       - name: Install dependencies
         run: npm ci --no-audit --no-fund --fetch-timeout=30000 --fetch-retries=1
 
+      - name: Install Playwright Chromium for browser-level verification
+        run: |
+          npm install --no-save --package-lock=false playwright
+          npx playwright install --with-deps chromium
+
       - name: Prepare test directories
         run: mkdir -p data reports/chatgpt-unlock mihomo
 
@@ -86,7 +91,7 @@ jobs:
           cat mihomo/chatgpt-test.log || true
           exit 1
 
-      - name: Probe ChatGPT web and OpenAI API anonymously
+      - name: Probe ChatGPT web and OpenAI API anonymously (HTTP + JavaScript browser)
         run: node scripts/test-chatgpt-unlock.js
 
       - name: Upload experiment results
