@@ -279,7 +279,14 @@ jobs:
             if(index<0||index>=proxies.length)throw new Error('Reported invalid proxy index is out of range: '+reported);
             const [bad]=proxies.splice(index,1);
             if(!bad)throw new Error('Could not remove reported invalid proxy at index '+index);
-            removed.push({name:bad.name||'(unnamed)',type:bad.type,server:bad.server,port:bad.port,reason:match[2],reportedIndex:reported});
+            // Keep the actual parser error in the Actions log. Previously only
+            // the final exclusion-limit error was visible, hiding whether the
+            // same endpoint was being reported repeatedly or many nodes failed.
+            console.error('Mihomo rejected proxy:',JSON.stringify({
+              reportedIndex:reported,selectedIndex:index,name:bad.name||'(unnamed)',
+              type:bad.type,server:bad.server,port:bad.port,error:match[2]
+            }));
+            removed.push({name:bad.name||'(unnamed)',type:bad.type,server:bad.server,port:bad.port,reason:match[2],reportedIndex:reported,selectedIndex:index});
             const group=(cfg['proxy-groups']||[]).find(g=>g.name==='PROXY');
             if(group&&Array.isArray(group.proxies))group.proxies=group.proxies.filter(name=>name!==bad.name);
             fs.writeFileSync(file,yaml.dump(cfg,{lineWidth:-1,noRefs:true}));
