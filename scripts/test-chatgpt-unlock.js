@@ -137,7 +137,7 @@ async function run() {
       row.probeError = String(e && e.message || e).slice(0, 300);
     }
     rows.push(row);
-    const compactError = value => value ? String(value).replace(/\\s+/g, ' ').slice(0, 100) : '-';
+    const compactError = value => value ? String(value).replace(/\s+/g, ' ').slice(0, 100) : '-';
     console.log('[chatgpt-test] ' + (i + 1) + '/' + selection.proxies.length +
       ' trace=' + (row.cloudflare?.status ?? 'skip') +
       ' traceErr=' + compactError(row.cloudflare?.error) +
