@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/* global document, location */
 'use strict';
 
 const fs = require('fs');
