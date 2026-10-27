@@ -76,24 +76,88 @@ function classifyApi(result) {
     error: result.error,
   };
 }
-async function prepare() {
+function isHongKongProxy(proxy) {
+  const name = String(proxy?.name || '');
+  if (/香港|hong[\\s_-]*kong/i.test(name)) return true;
+  const flag = name.match(/[\\u{1F1E6}-\\u{1F1FF}]{2}/u)?.[0];
+  if (flag) {
+    const code = [...flag].map(ch => String.fromCharCode(ch.codePointAt(0) - 0x1F1E6 + 65)).join('');
+    if (code === 'HK') return true;
+  }
+  return /(?:^|[^A-Za-z])HK_\\d+(?:\\||$)/.test(name);
+}
+function latestGoodObservation(node) {
+  const observations = Array.isArray(node?.observations) ? node.observations : [];
+  const cutoff = Date.now() - 7 * 24 * 60 * 60 * 1000;
+  for (let i = observations.length - 1; i >= 0; i--) {
+    const obs = observations[i];
+    const at = Date.parse(obs?.at || '');
+    if (!Number.isFinite(at) || at < cutoff) continue;
+    if (obs.success === true && obs.exitSuccess === true) return obs;
+  }
+  return null;
+}
+function assetScore(node, observation) {
+  const trusted = node.state === 'TRUSTED' ? 100000 : 0;
+  const stateScore = node.state === 'PROBATION' ? 20000 : node.state === 'DEGRADED' ? 5000 : 0;
+  const reliability = Number(node.observedRuns) > 0 ? (Number(node.successes || 0) / Number(node.observedRuns)) * 1000 : 0;
+  const speed = Number(observation.speedSuccess === true ? observation.speedMbps : 0);
+  const speedScore = Number.isFinite(speed) && speed > 0 ? Math.min(500, Math.log2(1 + speed) * 50) : 0;
+  const latency = Number(observation.latencyMs);
+  const latencyScore = Number.isFinite(latency) && latency > 0 ? Math.max(0, 500 - latency / 10) : 0;
+  const ageHours = Math.max(0, (Date.now() - Date.parse(observation.at)) / 3600000);
+  const freshnessScore = Math.max(0, 200 - ageHours);
+  return trusted + stateScore + reliability + speedScore + latencyScore + freshnessScore;
+}
+function prepare() {
   fs.mkdirSync(OUT, { recursive: true });
   fs.mkdirSync('data', { recursive: true });
   fs.mkdirSync('mihomo', { recursive: true });
-  const stable = readProxies('data/stable.yaml');
-  const checkedIn = readProxies('mihomo/all.yaml');
-  const source = stable.length ? 'B2 stable.yaml' : 'repository mihomo/all.yaml fallback';
-  const available = stable.length ? stable : checkedIn;
-  if (!available.length) throw new Error('No usable proxies in B2 stable.yaml or mihomo/all.yaml');
-  const selected = evenlySample(available, MAX_NODES);
+
+  const assetFile = 'data/china-node-assets.json';
+  if (!fs.existsSync(assetFile)) throw new Error('China asset pool missing: ' + assetFile + '; refusing to fall back to unrelated repository nodes.');
+  const state = JSON.parse(fs.readFileSync(assetFile, 'utf8'));
+  if (!state || typeof state.nodes !== 'object' || !state.nodes) throw new Error('China asset pool has invalid schema: expected nodes object.');
+
+  const candidates = [];
+  for (const node of Object.values(state.nodes)) {
+    const proxy = node?.proxy;
+    if (!proxy?.name || !proxy?.type || !proxy?.server || !proxy?.port || isHongKongProxy(proxy)) continue;
+    const observation = latestGoodObservation(node);
+    if (!observation) continue;
+    candidates.push({
+      proxy,
+      endpointId: node.endpointId || null,
+      state: node.state || 'UNKNOWN',
+      observation,
+      score: assetScore(node, observation),
+    });
+  }
+  candidates.sort((a, b) => b.score - a.score || a.proxy.name.localeCompare(b.proxy.name));
+  const selected = candidates.slice(0, MAX_NODES);
+  if (!selected.length) {
+    throw new Error('No eligible China asset nodes: require a non-Hong-Kong proxy with a successful exit observation within the last 7 days.');
+  }
+  const proxies = selected.map(x => x.proxy);
   fs.writeFileSync(SELECTED, JSON.stringify({
     generatedAt: new Date().toISOString(),
-    source,
-    availableCount: available.length,
-    selectedCount: selected.length,
-    proxies: selected,
-  }, null, 2) + '\n');
-  const names = selected.map(p => p.name);
+    source: 'B2 China Asset Pool (nodeprobe-state/china-node-assets.json)',
+    availableCount: candidates.length,
+    selectedCount: proxies.length,
+    selectionPolicy: 'rank recent successful exit observations; prefer TRUSTED assets, reliability, measured speed, lower latency and freshness; exclude Hong Kong',
+    selected: selected.map(x => ({
+      name: x.proxy.name,
+      endpointId: x.endpointId,
+      state: x.state,
+      score: Math.round(x.score * 100) / 100,
+      observedAt: x.observation.at,
+      latencyMs: x.observation.latencyMs ?? null,
+      speedMbps: x.observation.speedSuccess === true ? x.observation.speedMbps ?? null : null,
+    })),
+    proxies,
+  }, null, 2) + '\\n');
+
+  const names = proxies.map(p => p.name);
   const config = {
     'mixed-port': 7890,
     'allow-lan': false,
@@ -101,12 +165,13 @@ async function prepare() {
     'log-level': 'warning',
     ipv6: false,
     'external-controller': '127.0.0.1:9090',
-    proxies: selected,
+    proxies,
     'proxy-groups': [{ name: 'PROBE', type: 'select', proxies: names }],
     rules: ['MATCH,PROBE'],
   };
   fs.writeFileSync(CONFIG_OUT, yaml.dump(config, { lineWidth: -1, noRefs: true }));
-  console.log('[chatgpt-test] source=' + source + ' available=' + available.length + ' selected=' + selected.length);
+  console.log('[chatgpt-test] source=China Asset Pool candidates=' + candidates.length + ' selected=' + proxies.length);
+  console.log('[chatgpt-test] selection=recent successful exits; TRUSTED preferred; Hong Kong excluded');
   console.log('[chatgpt-test] endpoints: Cloudflare trace, ChatGPT web, unauthenticated OpenAI API /v1/models');
 }
 async function run() {
@@ -171,6 +236,6 @@ async function run() {
   }));
 }
 (async () => {
-  if (process.argv[2] === 'prepare') await prepare();
+  if (process.argv[2] === 'prepare') prepare();
   else await run();
 })().catch(e => { console.error('[chatgpt-test] FATAL:', e); process.exit(1); });
