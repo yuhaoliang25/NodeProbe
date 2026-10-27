@@ -260,11 +260,18 @@ function main(){
   const runs=[...(evolution.runs||[]),snapshot].slice(-30);
   fs.writeFileSync(EVOLUTION,JSON.stringify({version:1,generatedAt:now,runs},null,2));
 
-  const stable=ordered.filter(x=>x.status==='stable').length;
-  const active=ordered.filter(x=>x.status==='active').length;
-  const stale=ordered.filter(x=>x.status==='stale').length;
-  const dead=ordered.filter(x=>x.status==='dead').length;
-  console.log('node pool:',ordered.length,'stable',stable,'active',active,'stale',stale,'dead',dead);
+  const statusCounts=Object.fromEntries(['new','probation','active','stable','stale','dead'].map(status=>[
+    status,ordered.filter(x=>x.status===status).length
+  ]));
+  const healthyRunCounts={
+    zero:ordered.filter(x=>Number(x.healthyRuns||0)===0).length,
+    one:ordered.filter(x=>Number(x.healthyRuns||0)===1).length,
+    twoToFive:ordered.filter(x=>Number(x.healthyRuns||0)>=2&&Number(x.healthyRuns||0)<6).length,
+    sixPlus:ordered.filter(x=>Number(x.healthyRuns||0)>=6).length
+  };
+  console.log('node pool:',ordered.length,
+    ...Object.entries(statusCounts).flatMap(([status,count])=>[status,count]));
+  console.log('node pool healthy-run streaks:',JSON.stringify(healthyRunCounts));
   console.log('source evolution:',Object.keys(snapshot.sources).length,'sources observed');
 }
 
