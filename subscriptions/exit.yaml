@@ -207,15 +207,13 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '096c3c8668fe13c3'
-  - name: '🇳🇱NL_73|2.8MB/s|R002-260618 01'
-    port: 443
-    server: '51.158.243.91'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
+  - name: 'NL - zhuhai.uk 02'
     type: 'http'
-    udp: true
-    endpoint-id: 'c0393ab4e4fba80d'
+    server: '51.158.243.91'
+    port: 443
+    tls: true
+    skip-cert-verify: true
+    _poolOnly: true
   - name: '🇵🇱PL_2|2.5MB/s|R002-260618 01'
     port: 443
     server: '151.115.54.133'
@@ -825,14 +823,12 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇩🇪DE_202|1.8MB/s|R002-260618 01'
-    port: 9002
-    server: '158.173.154.5'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
+  - name: 'DE - zhuhai.uk'
     type: 'http'
-    udp: true
+    server: '158.173.154.5'
+    port: 9002
+    tls: true
+    skip-cert-verify: true
     _poolOnly: true
   - name: '🇩🇪DE_204|2.4MB/s|R002-260618 01'
     port: 9002
@@ -956,6 +952,15 @@ proxies:
   - name: '🇺🇸US_523|698KB/s|R002-260618 01'
     port: 8090
     server: '24.142.229.178'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_521|454KB/s|R002-260618 01'
+    port: 8090
+    server: '50.76.211.251'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
@@ -1321,14 +1326,12 @@ proxies:
     username: ''
     udp: true
     _poolOnly: true
-  - name: '🇫🇷FR_1594|704KB/s|R002-260618 01'
-    port: 8081
-    server: '31.32.19.111'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
+  - name: 'FR - zhuhai.uk'
     type: 'http'
-    udp: true
+    server: '31.32.19.111'
+    port: 8081
+    tls: true
+    skip-cert-verify: true
     _poolOnly: true
   - name: '🇱🇻LV_24|2.4MB/s|K001-260618 [e8d4b41ce864]'
     password: 'None'
@@ -1350,14 +1353,12 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇺🇸US_441|832KB/s|R002-260618 01'
-    port: 443
-    server: '23.133.176.14'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
+  - name: 'US - zhuhai.uk 03'
     type: 'http'
-    udp: true
+    server: '23.133.176.14'
+    port: 443
+    tls: true
+    skip-cert-verify: true
     _poolOnly: true
   - name: '🇺🇸US_439|751KB/s|R002-260618 01'
     port: 443
@@ -1677,19 +1678,6 @@ proxies:
     server: 'svip.skycon808.com'
     port: 60005
     password: '13f0acfa-38c1-4e82-a758-583aa31740df'
-    skip-cert-verify: true
-    tls: true
-    udp: true
-    client-fingerprint: 'chrome'
-    _poolOnly: true
-  - name: 'HK香港(mibei77.com 米贝节点分享)_4'
-    type: 'anytls'
-    server: '56481.df6h451rh.xin'
-    port: 443
-    password: '0324fbc29561'
-    sni: 'images.ctfassets.net'
-    alpn:
-      - 'http/1.1'
     skip-cert-verify: true
     tls: true
     udp: true
