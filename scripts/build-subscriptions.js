@@ -5,12 +5,32 @@ const fs=require('fs'),yaml=require('js-yaml'),crypto=require('crypto');
 const {timeDecayWeight,timeDecayedEvidence}=require('./time-decay');
 const raw=JSON.parse(fs.readFileSync('data/raw-sources.json','utf8'));
 const proxies=[],seen=new Set(),usedNames=new Set(),sourcesById=new Map();
+let invalidProxyCount=0,invalidSS2022KeyCount=0;
 function valid(p){
   if(!p||typeof p!=='object'||!p.name||!p.server||!p.port||!p.type)return false;
   const port=Number(p.port); if(!Number.isInteger(port)||port<1||port>65535)return false;
   const t=String(p.type).toLowerCase();
   if(['vless','vmess'].includes(t)&&(!p.uuid||!/^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$/.test(String(p.uuid))))return false;
-  if(t==='shadowsocks'&&!p.cipher)return false;
+  if(['ss','shadowsocks'].includes(t)){
+    if(!p.cipher)return false;
+    // Shadowsocks 2022 requires a canonical Base64 key of the cipher's exact
+    // byte length. A malformed feed entry must not invalidate the whole config.
+    const cipher=String(p.cipher).toLowerCase();
+    const keyBytes=cipher==='2022-blake3-aes-128-gcm'?16:
+      cipher==='2022-blake3-aes-256-gcm'?32:0;
+    if(keyBytes){
+      const key=String(p.password||'');
+      if(!/^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/.test(key)){
+        invalidSS2022KeyCount++;
+        return false;
+      }
+      const decoded=Buffer.from(key,'base64');
+      if(decoded.length!==keyBytes||decoded.toString('base64')!==key){
+        invalidSS2022KeyCount++;
+        return false;
+      }
+    }
+  }
   if(t==='trojan'&&!p.password)return false;
   if(p['reality-opts']){
     const o=p['reality-opts'];
@@ -90,6 +110,7 @@ for(const p of proxies){
   const list=sourcesById.get(p._id)||[p._source];
   p._sources=[...new Set(list)];
 }
+console.log('source proxy validation:',proxies.length,'accepted;',invalidProxyCount,'invalid entries skipped;',invalidSS2022KeyCount,'invalid Shadowsocks 2022 keys');
 // Snapshot only current Source discovery membership before historical Node Pool
 // entries are merged; pool-only nodes must never reintroduce stale sources.
 const currentSourceMembership=new Map([...sourcesById].map(([id,list])=>[id,[...new Set(list||[])]]));
