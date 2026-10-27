@@ -3,7 +3,414 @@ allow-lan: false
 mode: 'rule'
 log-level: 'warning'
 ipv6: false
-proxies: []
+proxies:
+  - client-fingerprint: 'chrome'
+    flow: 'xtls-rprx-vision'
+    name: 'vless-1828294368'
+    network: 'raw'
+    port: 443
+    reality-opts:
+      public-key: 'StPbcmBuzpuYUfa4oZ5SI3Bq1OSF_-oU1vp2AcyvQVE'
+      short-id: '19296c9f1bf9c7b1'
+    server: '195.123.240.65'
+    servername: 'www.cloudflare.com'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: 'ce18d0eb-5c71-41f9-96e5-1632e22456e4'
+    _poolOnly: true
+  - name: 'hysteria2-1827145632'
+    password: 'bce6c821-200d-421f-bf3d-7159e5246ea0'
+    port: 33333
+    server: '155.248.209.237'
+    skip-cert-verify: true
+    sni: '155.248.209.237'
+    type: 'hysteria2'
+    _poolOnly: true
+  - name: 'trojan-1832868058'
+    password: 'ae7eb4dwyaz25pxwgq59'
+    port: 59689
+    server: '66.23.203.21'
+    skip-cert-verify: true
+    sni: '66.23.203.21'
+    type: 'trojan'
+    udp: true
+    _poolOnly: true
+  - client-fingerprint: 'chrome'
+    flow: 'xtls-rprx-vision'
+    name: 'vless-1827150616'
+    network: 'tcp'
+    port: 443
+    reality-opts:
+      public-key: 'p8VhFzvFOBAhWAEAeWmwDxT3xBSRsGYixqi0qnLFnBM'
+      short-id: '21270a66'
+    server: 'tk1.high-speed-test-56424.me'
+    servername: 'aws.amazon.com'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '37615d66-5467-44a3-bc23-f2c3bef7f761'
+    _poolOnly: true
+  - name: 'hysteria2-1827145136'
+    password: 'u63SxILNwtrQZ7Y1ZrFaZfsA'
+    port: 8443
+    server: '8.211.175.236'
+    skip-cert-verify: true
+    sni: ''
+    type: 'hysteria2'
+    _poolOnly: true
+  - cipher: 'aes-128-gcm'
+    name: 'shadowsocks-1827146270'
+    password: 'shadowsocks'
+    port: 443
+    server: '149.22.87.240'
+    type: 'ss'
+    udp: true
+    _poolOnly: true
+  - alterId: 0
+    cipher: 'auto'
+    name: 'vmess-1827160952'
+    network: 'raw'
+    port: 443
+    server: '140.238.2.250'
+    type: 'vmess'
+    udp: true
+    uuid: '41a7089a-040b-4538-8b8d-010902405bde'
+    _poolOnly: true
+  - name: 'hysteria2-1827727762'
+    password: '1beb216e3f60aea9555dae60d219a5ca'
+    port: 50160
+    server: '152.69.231.175'
+    skip-cert-verify: false
+    sni: '152-69-231-175.liao.kdns.fr'
+    type: 'hysteria2'
+    _poolOnly: true
+  - client-fingerprint: 'chrome'
+    flow: 'xtls-rprx-vision'
+    name: 'vless-1827153005'
+    network: 'tcp'
+    port: 13672
+    reality-opts:
+      public-key: 'k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0'
+      short-id: '48050fab'
+    server: '3.39.4.109'
+    servername: 'www.apple.com'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '814bd064-544d-4255-a070-5705c03f6da9'
+    _poolOnly: true
+  - alterId: 0
+    cipher: 'auto'
+    name: 'vmess-1828150806'
+    network: 'raw'
+    port: 18000
+    server: '149.88.23.202'
+    type: 'vmess'
+    udp: true
+    uuid: 'f8c8dc3d-0d37-46b0-8b34-a7232882fcfe'
+    _poolOnly: true
+  - name: 'hysteria2-1827145601'
+    password: 'f87376e17da040ed04c9665ce8972930'
+    port: 50160
+    server: '138.2.73.238'
+    skip-cert-verify: true
+    sni: '138.2.73.238'
+    type: 'hysteria2'
+    _poolOnly: true
+  - name: 'trojan-1827149167'
+    password: 'e26a229d-e8f2-4ff9-8c7d-58a9d83ee437'
+    port: 8886
+    server: '139.180.146.200'
+    skip-cert-verify: true
+    sni: ''
+    type: 'trojan'
+    udp: true
+    _poolOnly: true
+  - client-fingerprint: 'chrome'
+    name: 'vless-1827145802'
+    network: 'tcp'
+    port: 2053
+    reality-opts:
+      public-key: 'xPEBx4wUmwAAv4ikUALNBf5wH6TRhyeQ0Q2pcNELsV0'
+      short-id: 'd051f678212f9d54'
+    server: '51.89.194.151'
+    servername: 'www.apple.com'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '8e790f25-1d71-4601-9fb0-d503931dcfca'
+    _poolOnly: true
+  - cipher: 'aes-256-gcm'
+    name: 'shadowsocks-1827146621'
+    password: 'RexnBgU7EV5ADxG'
+    port: 7001
+    server: '94.156.250.148'
+    type: 'ss'
+    udp: true
+    _poolOnly: true
+  - client-fingerprint: 'firefox'
+    name: 'vless-1843512943'
+    network: 'raw'
+    port: 2053
+    reality-opts:
+      public-key: 'xPEBx4wUmwAAv4ikUALNBf5wH6TRhyeQ0Q2pcNELsV0'
+      short-id: 'd051f678212f9d54'
+    server: '51.89.194.151'
+    servername: 'www.apple.com'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '8e790f25-1d71-4601-9fb0-d503931dcfca'
+    _poolOnly: true
+  - client-fingerprint: 'firefox'
+    name: 'vless-1827402103'
+    network: 'tcp'
+    port: 2053
+    reality-opts:
+      public-key: 'jeS6Zu-p1Gf6GtraIAbpgQoSeT26Xq3GqgqVxccbVhY'
+      short-id: '4d14da19b19cfc8c'
+    server: '162.55.242.208'
+    servername: 'www.cloudflare.com'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '659ffdfa-47d2-47d7-af40-5afe0907eead'
+    _poolOnly: true
+  - name: 'hysteria2-1827145665'
+    password: 'mkL3AfdSZIpTWRB9TcWPn9vywPGN89MRHg3ToRDj'
+    port: 443
+    server: '64.188.98.171'
+    skip-cert-verify: true
+    sni: 'germany3.h2corp.local'
+    type: 'hysteria2'
+    _poolOnly: true
+  - cipher: 'aes-256-gcm'
+    name: 'shadowsocks-1827147685'
+    password: 'Y6R9pAtvxxzmGC'
+    port: 5000
+    server: '213.202.208.199'
+    type: 'ss'
+    udp: true
+    _poolOnly: true
+  - client-fingerprint: 'chrome'
+    name: 'vless-1827154441'
+    network: 'tcp'
+    port: 2053
+    reality-opts:
+      public-key: 'g63cT3uI0Y5iUtj3m__RYz7nmR1eIK4AYikdnZCl63w'
+      short-id: 'bfe58beb41f1d09f'
+    server: '51.77.217.70'
+    servername: 'www.apple.com'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: 'bf16ee0c-8b3c-41e4-ab3a-8b48033c404e'
+    _poolOnly: true
+  - name: 'hysteria2-1827145430'
+    password: 'github.com/Alvin9999-newpac/fanqiang'
+    port: 43115
+    server: '62.210.147.2'
+    skip-cert-verify: true
+    sni: 'www.microsoft.com'
+    type: 'hysteria2'
+    _poolOnly: true
+  - client-fingerprint: 'chrome'
+    flow: 'xtls-rprx-vision'
+    name: 'vless-1827147710'
+    network: 'tcp'
+    port: 443
+    reality-opts:
+      public-key: '7LSzvilTVKGMtBDuKGeMrLtlhY7tQf5YcG566dEgO0I'
+      short-id: 'b390e0a721d242b0'
+    server: '137.74.16.237'
+    servername: 'www.icloud.com'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: 'aaec4e42-a095-44b6-a239-f16d234a0798'
+    _poolOnly: true
+  - client-fingerprint: 'firefox'
+    flow: 'xtls-rprx-vision'
+    name: 'vless-1828371278'
+    network: 'raw'
+    port: 443
+    reality-opts:
+      public-key: 'vnjp7zIK2H3CGdjSis_79KXqS6IG-opmpbETPUD-EC8'
+      short-id: '15affa0af66dfc79'
+    server: '130.12.242.106'
+    servername: 'deepl.com'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: 'bc058e69-0444-4c7b-98da-bd67f0b143da'
+    _poolOnly: true
+  - cipher: 'chacha20-ietf-poly1305'
+    name: 'shadowsocks-1830344687'
+    password: 'oZIoA69Q8yhcQV8ka3Pa3A'
+    port: 8080
+    server: '178.83.185.156'
+    type: 'ss'
+    udp: true
+    _poolOnly: true
+  - client-fingerprint: 'chrome'
+    flow: 'xtls-rprx-vision'
+    name: 'vless-1827151131'
+    network: 'tcp'
+    port: 443
+    reality-opts:
+      public-key: 'PryGoq51ilG0eLUPl9i0xCvmk1xpwkyFSr_tG4GNLlU'
+      short-id: '1d86d17709852910'
+    server: '86.54.28.75'
+    servername: 'www.apple.com'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '44ae52b9-76fc-444d-8e43-186b4384b80a'
+    _poolOnly: true
+  - client-fingerprint: 'firefox'
+    name: 'vless-1827162767'
+    network: 'tcp'
+    port: 2053
+    reality-opts:
+      public-key: 'k4l6TxwkBbx9DhZAFpByq5rfCWFSgyOex3f_eFe9CWU'
+      short-id: '83f8317a948bb769'
+    server: '66.70.179.198'
+    servername: 'www.cloudflare.com'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: 'dc620cd6-a9d8-4a0f-8f18-006b895db77e'
+    _poolOnly: true
+  - name: 'trojan-1846167252'
+    password: 'Trojan@82164024'
+    port: 443
+    server: '155.138.138.2'
+    skip-cert-verify: false
+    sni: 'ca.tronsg.com'
+    type: 'trojan'
+    udp: true
+    _poolOnly: true
+  - cipher: 'aes-128-gcm'
+    name: 'shadowsocks-1827146224'
+    password: 'shadowsocks'
+    port: 443
+    server: '149.22.95.183'
+    type: 'ss'
+    udp: true
+    _poolOnly: true
+  - client-fingerprint: 'firefox'
+    name: 'vless-1828294429'
+    network: 'tcp'
+    port: 2053
+    reality-opts:
+      public-key: 'CYFeysLf--_IVhxQOCd3ZxLrAVWFFOkJzvIGHOVXN3E'
+      short-id: '4cc9dc65f7770115'
+    server: '46.250.240.80'
+    servername: 'www.cloudflare.com'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '948df76f-505d-4608-9c76-a933ee3ccc76'
+    _poolOnly: true
+  - client-fingerprint: 'firefox'
+    name: 'vless-1827153943'
+    network: 'raw'
+    port: 2053
+    reality-opts:
+      public-key: 'CYFeysLf--_IVhxQOCd3ZxLrAVWFFOkJzvIGHOVXN3E'
+      short-id: '4cc9dc65f7770115'
+    server: '46.250.240.80'
+    servername: 'www.cloudflare.com'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '948df76f-505d-4608-9c76-a933ee3ccc76'
+    _poolOnly: true
+  - client-fingerprint: 'chrome'
+    name: 'vless-1827150264'
+    network: 'tcp'
+    port: 2053
+    reality-opts:
+      public-key: 'PuAGLfJy6cu1TNoHuKIKSxPetCbZI41fc8hQDjWPIAU'
+      short-id: '9980e0609b0d3891'
+    server: '194.61.31.126'
+    servername: 'www.apple.com'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '1d4e18bd-1f26-4915-b35a-7ace4826e76a'
+    _poolOnly: true
+  - alterId: 0
+    cipher: 'auto'
+    name: 'vmess-1827156822'
+    network: 'ws'
+    port: 80
+    server: '152.67.8.205'
+    type: 'vmess'
+    udp: true
+    uuid: '9db4c708-aef8-4359-821b-38e47990be0d'
+    _poolOnly: true
+  - cipher: 'aes-256-gcm'
+    name: 'shadowsocks-1827146853'
+    password: 'RexnBgU7EV5ADxG'
+    port: 7002
+    server: '172.105.39.124'
+    type: 'ss'
+    udp: true
+    _poolOnly: true
+  - name: 'hysteria2-1828374855'
+    password: 'H7mP2xY9kJ4nQ8wR5tF6vB3z'
+    port: 443
+    server: '103.115.109.49'
+    skip-cert-verify: true
+    sni: 'https'
+    type: 'hysteria2'
+    _poolOnly: true
+  - name: 'hysteria2-1832765000'
+    password: 'H7mP2xY9kJ4nQ8wR5tF6vB3z'
+    port: 443
+    server: '103.115.109.49'
+    skip-cert-verify: true
+    sni: ''
+    type: 'hysteria2'
+    _poolOnly: true
+  - name: 'hysteria2-1827145501'
+    password: 'H7mP2xY9kJ4nQ8wR5tF6vB3z'
+    port: 443
+    server: '160.187.100.109'
+    skip-cert-verify: true
+    sni: 'vpn-tw-002.fastervpn.world'
+    type: 'hysteria2'
+    _poolOnly: true
+  - name: 'vless-1827530471'
+    network: 'tcp'
+    port: 11907
+    server: '195.58.144.56'
+    servername: ''
+    skip-cert-verify: false
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '07cb07b9-0c4d-46c1-a15a-b147511b6b07'
+    _poolOnly: true
+  - name: 'hysteria2-1828371668'
+    password: 'H7mP2xY9kJ4nQ8wR5tF6vB3z'
+    port: 443
+    server: '202.146.222.89'
+    skip-cert-verify: true
+    sni: 't.me'
+    type: 'hysteria2'
+    _poolOnly: true
+  - name: 'trojan-1835486945'
+    password: 'XuMweB2PWs'
+    port: 45464
+    server: '2.27.109.179'
+    skip-cert-verify: true
+    sni: ''
+    type: 'trojan'
+    udp: true
+    _poolOnly: true
 proxy-groups:
   - name: 'COUNTRY'
     type: 'select'
