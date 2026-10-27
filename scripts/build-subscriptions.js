@@ -138,7 +138,11 @@ try{
    usedNames.add(name);
    proxies.push({...p,name});
  }
- console.log('persistent node pool merged:',poolEntries.length,'entries; source exploration:',sourceProxies.length,'new candidates');
+ const deadPoolIds=new Set((pool.nodes||[]).filter(entry=>entry.status==='dead').map(entry=>entry.fingerprint||entry.proxy?.['endpoint-id']).filter(Boolean));
+ const sourceKnownDead=sourceProxies.filter(p=>deadPoolIds.has(p['endpoint-id']||p._id)).length;
+ console.log('persistent node pool merged:',poolEntries.length,
+   'non-dead entries; source feed candidates before lifecycle classification:',sourceProxies.length,
+   'already-known dead:',sourceKnownDead);
 }catch(e){console.log('persistent node pool unavailable:',e.message)}
 fs.writeFileSync('data/current-node-sources.json',JSON.stringify(Object.fromEntries(currentSourceMembership),null,2));
 
@@ -179,6 +183,7 @@ for(const id of [...queueById.keys()]) if(knownPoolIds.has(id)) queueById.delete
 discoveryQueue={version:1,updatedAt:new Date().toISOString(),items:[...queueById.values()]};
 fs.mkdirSync(path.dirname(discoveryQueueFile),{recursive:true});
 fs.writeFileSync(discoveryQueueFile,JSON.stringify(discoveryQueue,null,2)+'\\n');
+console.log('discovery queue:',queueById.size,'pending genuinely unpooled endpoints; selected later by candidate allocation');
 
 // Complete inventory is kept for all.yaml; only selected work is written to candidates.json.
 const candidateLimit=Math.max(1,Number(process.env.NODE_CANDIDATE_LIMIT||1500));
