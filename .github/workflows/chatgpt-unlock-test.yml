@@ -37,7 +37,6 @@ jobs:
         run: mkdir -p data reports/chatgpt-unlock mihomo
 
       - name: Download China asset pool from B2
-        continue-on-error: true
         uses: backblaze-labs/b2-action@v1
         with:
           action: download
