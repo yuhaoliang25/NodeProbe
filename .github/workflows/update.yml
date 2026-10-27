@@ -251,14 +251,14 @@ jobs:
             const proxies=Array.isArray(cfg.proxies)?cfg.proxies:[];
             // Prefer identifying the exact endpoint from Mihomo's error text;
             // its displayed proxy index can vary by version / indexing base.
-            const endpoint=match[2].match(/^([a-z0-9_-]+)\\s+(\\[[^\\]]+\\]|[^:\\s]+):(\\d+)\\b/i);
+            const endpoint=match[2].match(/^([a-z0-9_-]+)\s+(\[[^\]]+\]|[^:\s]+):(\d+)\b/i);
             let index=-1;
             if(endpoint){
               const [,type,server,port]=endpoint;
               const normalizedServer=server.startsWith('[')?server.slice(1,-1):server;
               const matches=[];
               proxies.forEach((p,i)=>{
-                const sameServer=String(p.server||'').replace(/^\\[|\\]$/g,'')===normalizedServer;
+                const sameServer=String(p.server||'').replace(/^\[|\]$/g,'')===normalizedServer;
                 if(String(p.type||'').toLowerCase()===type.toLowerCase()&&sameServer&&String(p.port)===port)matches.push(i);
               });
               if(matches.length===1)index=matches[0];
