@@ -224,10 +224,46 @@ jobs:
       - name: Validate Mihomo config
         run: |
           set -euo pipefail
-          if ! mihomo/mihomo -t -d mihomo -f mihomo/config.yaml > mihomo/config-test.log 2>&1; then
-            cat mihomo/config-test.log
-            exit 1
-          fi
+          # One malformed public-feed proxy must not abort testing every other
+          # candidate. Mihomo reports the offending proxy index; remove only
+          # that entry from the isolated probe config and validate again.
+          node - <<'NODE'
+          const fs=require('fs'),yaml=require('js-yaml'),cp=require('child_process');
+          const file='mihomo/config.yaml';
+          const cfg=yaml.load(fs.readFileSync(file,'utf8'));
+          const removed=[];
+          for(let attempt=0;attempt<100;attempt++){
+            const run=cp.spawnSync('mihomo/mihomo',['-t','-d','mihomo','-f',file],{encoding:'utf8'});
+            const output=(run.stdout||'')+(run.stderr||'');
+            if(run.status===0){
+              console.log('Mihomo config valid; removed malformed proxies:',removed.length);
+              for(const item of removed)console.log('excluded invalid proxy:',item.name,'reason:',item.reason);
+              fs.writeFileSync('mihomo/config-validation.json',JSON.stringify({valid:true,removed},null,2));
+              process.exit(0);
+            }
+            fs.writeFileSync('mihomo/config-test.log',output);
+            const match=output.match(/proxy\s+(\d+):\s*([^\r\n]+)/i);
+            if(!match){
+              console.error(output);
+              throw new Error('Mihomo validation failed without an identifiable proxy index');
+            }
+            const reported=Number(match[1]);
+            const proxies=Array.isArray(cfg.proxies)?cfg.proxies:[];
+            // Mihomo versions differ in whether this diagnostic index is
+            // zero- or one-based. Prefer the reported index if it exists;
+            // if it doesn't, fall back to the one-based interpretation.
+            let index=reported>=0&&reported<proxies.length?reported:reported-1;
+            if(index<0||index>=proxies.length)throw new Error('Reported invalid proxy index is out of range: '+reported);
+            const [bad]=proxies.splice(index,1);
+            if(!bad)throw new Error('Could not remove reported invalid proxy at index '+index);
+            removed.push({name:bad.name||'(unnamed)',reason:match[2],reportedIndex:reported});
+            const group=(cfg['proxy-groups']||[]).find(g=>g.name==='PROXY');
+            if(group&&Array.isArray(group.proxies))group.proxies=group.proxies.filter(name=>name!==bad.name);
+            fs.writeFileSync(file,yaml.dump(cfg,{lineWidth:-1,noRefs:true}));
+            console.warn('Removed invalid proxy',bad.name,'and retrying validation ('+(attempt+1)+'/100)');
+          }
+          throw new Error('Too many invalid proxies: exceeded validation exclusion limit');
+          NODE
       - name: Start Mihomo
         run: |
           set -euo pipefail
