@@ -879,15 +879,6 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇫🇷FR_2172|1.1MB/s|R002-260618 01'
-    port: 8090
-    server: '80.124.109.22'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
   - name: '🇫🇷FR_2165|1.7MB/s|R002-260618 01'
     port: 4443
     server: '83.172.143.53'
@@ -965,15 +956,6 @@ proxies:
   - name: '🇺🇸US_523|698KB/s|R002-260618 01'
     port: 8090
     server: '24.142.229.178'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_521|454KB/s|R002-260618 01'
-    port: 8090
-    server: '50.76.211.251'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
@@ -1138,15 +1120,6 @@ proxies:
   - name: '🇮🇹IT_45|771KB/s|R002-260618 01'
     port: 8090
     server: '93.71.245.84'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇳🇱NL_229|806KB/s|R002-260618 01'
-    port: 443
-    server: '5.2.73.112'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
