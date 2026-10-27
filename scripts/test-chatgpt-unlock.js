@@ -210,6 +210,17 @@ async function probeBrowser(browser, proxyName) {
   let responseStatus = 0;
   let navigationError = null;
   const failedRequests = [];
+  const networkResponses = [];
+  const pageErrors = [];
+  page.on('pageerror', error => { if (pageErrors.length < 5) pageErrors.push(String(error?.message || error).slice(0, 180)); });
+  page.on('response', response => {
+    const url = response.url();
+    let parsed;
+    try { parsed = new URL(url); } catch { return; }
+    if ((/cloudflare\\.com$/i.test(parsed.hostname) || /chatgpt\\.com$/i.test(parsed.hostname) || /openai\\.com$/i.test(parsed.hostname)) && networkResponses.length < 30) {
+      networkResponses.push({ host: parsed.hostname, path: parsed.pathname.slice(0, 120), status: response.status(), resourceType: response.request().resourceType() });
+    }
+  });
   page.on('requestfailed', request => {
     const url = request.url();
     let host = '';
@@ -221,8 +232,8 @@ async function probeBrowser(browser, proxyName) {
   try {
     const response = await page.goto('https://chatgpt.com/', { waitUntil: 'domcontentloaded', timeout: 12000 });
     responseStatus = response ? response.status() : 0;
-    // Give client-side JavaScript time to hydrate and expose the actual landing UI.
-    await page.waitForTimeout(2500);
+    // Allow the Cloudflare challenge flow more time to complete before classifying the page.
+    await page.waitForTimeout(7000);
   } catch (e) {
     navigationError = String(e && e.message || e).slice(0, 240);
   }
@@ -247,7 +258,7 @@ async function probeBrowser(browser, proxyName) {
         bodyText,
         bodyTextContentLength: (body?.textContent || '').trim().length,
         bodyTextContentSnippet: (body?.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 400),
-        scriptSources: [...document.scripts].map(s => { try { return s.src ? new URL(s.src).hostname : 'inline'; } catch { return 'unknown'; } }).slice(0, 8),
+        scriptSources: [...document.scripts].map(s => { try { if (!s.src) return 'inline'; const u = new URL(s.src); return u.hostname + u.pathname.slice(0, 100); } catch { return 'unknown'; } }).slice(0, 8),
         htmlLength: document.documentElement?.outerHTML?.length || 0,
         bodyHtmlLength: body?.innerHTML?.length || 0,
         scriptCount: document.scripts.length,
@@ -298,6 +309,8 @@ async function probeBrowser(browser, proxyName) {
     bodyTextContentLength: pageData.bodyTextContentLength || 0,
     bodyTextContentSnippet: pageData.bodyTextContentSnippet || null,
     scriptSources: pageData.scriptSources || [],
+    networkResponses,
+    pageErrors,
     failedRequests,
     htmlLength: pageData.htmlLength || 0,
     bodyHtmlLength: pageData.bodyHtmlLength || 0,
