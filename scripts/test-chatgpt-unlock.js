@@ -209,6 +209,15 @@ async function probeBrowser(browser, proxyName) {
   page.setDefaultTimeout(5000);
   let responseStatus = 0;
   let navigationError = null;
+  const failedRequests = [];
+  page.on('requestfailed', request => {
+    const url = request.url();
+    let host = '';
+    try { host = new URL(url).hostname; } catch {}
+    if ((/cloudflare\.com$/i.test(host) || /chatgpt\.com$/i.test(host) || /openai\.com$/i.test(host)) && failedRequests.length < 12) {
+      failedRequests.push({ host, error: String(request.failure()?.errorText || 'unknown').slice(0, 160) });
+    }
+  });
   try {
     const response = await page.goto('https://chatgpt.com/', { waitUntil: 'domcontentloaded', timeout: 12000 });
     responseStatus = response ? response.status() : 0;
@@ -218,8 +227,8 @@ async function probeBrowser(browser, proxyName) {
     navigationError = String(e && e.message || e).slice(0, 240);
   }
   let pageData = {
-    title: '', url: page.url(), readyState: null, bodyText: '',
-    bodyTextContentLength: 0, htmlLength: 0, bodyHtmlLength: 0,
+    title: '', url: page.url(), readyState: null, bodyText: '', bodyTextContentSnippet: '',
+    bodyTextContentLength: 0, htmlLength: 0, bodyHtmlLength: 0, scriptSources: [],
     scriptCount: 0, iframeCount: 0, formCount: 0, inputCount: 0,
     challengeElementCount: 0, hasMain: false, hasLoginControl: false, hasComposer: false,
   };
@@ -237,6 +246,8 @@ async function probeBrowser(browser, proxyName) {
         readyState: document.readyState,
         bodyText,
         bodyTextContentLength: (body?.textContent || '').trim().length,
+        bodyTextContentSnippet: (body?.textContent || '').replace(/\\s+/g, ' ').trim().slice(0, 400),
+        scriptSources: [...document.scripts].map(s => { try { return s.src ? new URL(s.src).hostname : 'inline'; } catch { return 'unknown'; } }).slice(0, 8),
         htmlLength: document.documentElement?.outerHTML?.length || 0,
         bodyHtmlLength: body?.innerHTML?.length || 0,
         scriptCount: document.scripts.length,
@@ -285,6 +296,9 @@ async function probeBrowser(browser, proxyName) {
     bodyTextAvailable,
     bodyTextLength: bodyText.length,
     bodyTextContentLength: pageData.bodyTextContentLength || 0,
+    bodyTextContentSnippet: pageData.bodyTextContentSnippet || null,
+    scriptSources: pageData.scriptSources || [],
+    failedRequests,
     htmlLength: pageData.htmlLength || 0,
     bodyHtmlLength: pageData.bodyHtmlLength || 0,
     readyState: pageData.readyState || null,
@@ -363,6 +377,7 @@ async function run() {
     browserEmptyBodies: rows.filter(x => x.chatgptBrowser && x.chatgptBrowser.status > 0 && !x.chatgptBrowser.bodyTextAvailable).length,
     browserEmptyDomBodies: rows.filter(x => x.chatgptBrowser && x.chatgptBrowser.status > 0 && (x.chatgptBrowser.bodyHtmlLength || 0) === 0).length,
     browserResponsesWithHtmlButNoText: rows.filter(x => x.chatgptBrowser && x.chatgptBrowser.status > 0 && (x.chatgptBrowser.bodyHtmlLength || 0) > 0 && !x.chatgptBrowser.bodyTextAvailable).length,
+    browserChallengeRequestFailures: rows.reduce((n, x) => n + (x.chatgptBrowser?.failedRequests || []).filter(r => /challenges\\.cloudflare\\.com$/i.test(r.host)).length, 0),
     chatgptHttp403: rows.filter(x => x.chatgptWeb?.status === 403).length,
     chatgptHttp403Challenge: rows.filter(x => x.chatgptWeb?.classification === 'http_403_challenge_page').length,
     chatgptHttp200: rows.filter(x => x.chatgptWeb?.status === 200).length,
@@ -387,6 +402,7 @@ async function run() {
     browserEmptyBodies: summary.browserEmptyBodies,
     browserEmptyDomBodies: summary.browserEmptyDomBodies,
     browserResponsesWithHtmlButNoText: summary.browserResponsesWithHtmlButNoText,
+    browserChallengeRequestFailures: summary.browserChallengeRequestFailures,
     http403: summary.chatgptHttp403,
     http403Challenge: summary.chatgptHttp403Challenge,
     http200: summary.chatgptHttp200,
