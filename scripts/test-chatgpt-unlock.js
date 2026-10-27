@@ -8,9 +8,10 @@ const yaml = require('js-yaml');
 
 const API = process.env.MIHOMO_API || 'http://127.0.0.1:9090';
 const PROXY = process.env.TEST_PROXY || 'http://127.0.0.1:7890';
-const MAX_NODES = Math.max(1, Math.min(100, Number(process.env.TEST_MAX_NODES || 30)));
+const requestedMax = Number(process.env.TEST_MAX_NODES || 30);
+const MAX_NODES = Number.isFinite(requestedMax) ? Math.max(1, Math.min(100, Math.floor(requestedMax))) : 30;
 const OUT = 'reports/chatgpt-unlock';
-const SELECTED = path.join(OUT, 'selected-nodes.json');
+const SELECTED = 'data/chatgpt-test-selected.json';
 const CONFIG_OUT = 'mihomo/chatgpt-test-config.yaml';
 
 function readProxies(file) {
@@ -77,6 +78,7 @@ function classifyApi(result) {
 }
 async function prepare() {
   fs.mkdirSync(OUT, { recursive: true });
+  fs.mkdirSync('data', { recursive: true });
   fs.mkdirSync('mihomo', { recursive: true });
   const stable = readProxies('data/stable.yaml');
   const checkedIn = readProxies('mihomo/all.yaml');
