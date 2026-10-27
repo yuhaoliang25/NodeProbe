@@ -231,7 +231,12 @@ async function main(){
     if(!s.lastSeen)s.lastSeen=s.firstSeen;
     if(!s.fetchFailures)s.fetchFailures=0;
     s.name=id;
-    s.nextProbeAt=nextProbe(s.status,rep);
+    // Newly discovered candidates must be fetched in this workflow run.
+    // Scheduling them six hours ahead here caused fetch-sources.js to skip
+    // every fresh discovery, then repeatedly postpone candidates before fetch.
+    s.nextProbeAt=(s.status==='candidate'&&!rep)
+      ? new Date().toISOString()
+      : nextProbe(s.status,rep);
   }
 
   state.updatedAt=new Date().toISOString();
