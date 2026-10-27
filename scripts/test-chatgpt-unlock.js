@@ -137,9 +137,14 @@ async function run() {
       row.probeError = String(e && e.message || e).slice(0, 300);
     }
     rows.push(row);
+    const compactError = value => value ? String(value).replace(/\\s+/g, ' ').slice(0, 100) : '-';
     console.log('[chatgpt-test] ' + (i + 1) + '/' + selection.proxies.length +
-      ' web=' + (row.chatgptWeb?.accessible ? 'accessible' : 'not-confirmed') +
-      ' api=' + (row.openaiApi?.authRejectedAsExpected ? '401-auth' : row.openaiApi?.status || 'error') +
+      ' trace=' + (row.cloudflare?.status ?? 'skip') +
+      ' traceErr=' + compactError(row.cloudflare?.error) +
+      ' web=' + (row.chatgptWeb?.accessible ? 'accessible' : (row.chatgptWeb?.status ?? 'skip')) +
+      ' webErr=' + compactError(row.chatgptWeb?.error) +
+      ' api=' + (row.openaiApi?.authRejectedAsExpected ? '401-auth' : (row.openaiApi?.status ?? 'skip')) +
+      ' apiErr=' + compactError(row.openaiApi?.error) +
       ' region=' + (row.cloudflare?.region || '?') + ' | ' + p.name);
   }
   const summary = {
