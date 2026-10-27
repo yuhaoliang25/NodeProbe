@@ -36,7 +36,7 @@ jobs:
       - name: Prepare test directories
         run: mkdir -p data reports/chatgpt-unlock mihomo
 
-      - name: Download current Stable feed from B2
+      - name: Download China asset pool from B2
         continue-on-error: true
         uses: backblaze-labs/b2-action@v1
         with:
@@ -44,8 +44,8 @@ jobs:
           application-key-id: ${{ secrets.B2_APPLICATION_KEY_ID }}
           application-key: ${{ secrets.B2_APPLICATION_KEY }}
           bucket: nodeprobe
-          source: nodeprobe-state/china/stable.yaml
-          destination: data/stable.yaml
+          source: nodeprobe-state/china-node-assets.json
+          destination: data/china-node-assets.json
 
       - name: Check probe script syntax
         run: node --check scripts/test-chatgpt-unlock.js
