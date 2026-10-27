@@ -47,6 +47,9 @@ jobs:
           source: nodeprobe-state/china/stable.yaml
           destination: data/stable.yaml
 
+      - name: Check probe script syntax
+        run: node --check scripts/test-chatgpt-unlock.js
+
       - name: Prepare isolated Mihomo test config
         run: node scripts/test-chatgpt-unlock.js prepare
 
