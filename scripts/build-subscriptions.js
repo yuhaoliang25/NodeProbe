@@ -136,6 +136,13 @@ try{
    const id=entry.fingerprint||entry.proxy?.['endpoint-id'];
    const p=entry.proxy?{...entry.proxy}:{...entry};
    if(!id||!p.server||!p.port)continue;
+   // Pool entries outlive their source feed, so they must be revalidated too.
+   // Older assets may contain malformed Shadowsocks 2022 keys that current
+   // source ingestion already rejects; don't let them poison Mihomo validation.
+   if(!valid(p)){
+     invalidProxyCount++;
+     continue;
+   }
    p['endpoint-id']=id;
    p._id=id;
    p._poolOnly=true;
