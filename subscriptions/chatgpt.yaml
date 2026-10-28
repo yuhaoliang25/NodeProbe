@@ -1,13 +1,28 @@
 proxies:
-  - name: '🇸🇬SG_38|247KB/s|R002-260618 01'
-    port: 443
-    server: '154.26.139.24'
-    skip-cert-verify: true
+  - alpn:
+      - 'h3'
+      - 'h2'
+      - 'http/1.1'
+    client-fingerprint: 'ios'
+    encryption: 'none'
+    name: '🇫🇷FR_1788|619KB/s|R002-260618 01'
+    network: 'ws'
+    packet-encoding: 'xudp'
+    port: 2087
+    server: '104.18.1.1'
     sub_tag: 'R002-260618'
     tls: true
-    type: 'http'
+    type: 'vless'
+    uuid: '4859c235-2530-4062-9a0b-ea859cbbf861'
+    ws-opts:
+      early-data-header-name: 'Sec-WebSocket-Protocol'
+      headers:
+        Host: '1.proxy2.us.ci.'
+      max-early-data: 2560
+      path: '/'
     udp: true
-    endpoint-id: 'd1f4a0d80288cf0b'
+    servername: '1.proxy2.us.ci.'
+    _poolOnly: true
   - name: '🇮🇩ID_2|688KB/s|R002-260618 [ec91e15d058c]'
     port: 443
     server: '103.86.116.118'
@@ -17,12 +32,13 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇮🇩ID_10|550KB/s|R002-260618 01'
+  - name: '🇳🇱NL_239|1.2MB/s|R002-260618 01'
+    password: 'null'
     port: 443
-    server: '103.86.117.202'
-    skip-cert-verify: true
+    server: '157.22.183.72'
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
+    username: 'null'
     udp: true
     _poolOnly: true

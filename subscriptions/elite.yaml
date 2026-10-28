@@ -8,15 +8,15 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇸🇬SG_38|247KB/s|R002-260618 01'
+  - name: '🇫🇷FR_2058|2.0MB/s|R002-260618 01'
     port: 443
-    server: '154.26.139.24'
+    server: '172.64.68.89'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
-    endpoint-id: 'd1f4a0d80288cf0b'
+    _poolOnly: true
   - name: '🇫🇷FR_2083|1.8MB/s|R002-260618 01'
     port: 443
     server: '172.64.69.89'

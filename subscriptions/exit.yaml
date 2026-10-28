@@ -940,18 +940,18 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇺🇸US_523|698KB/s|R002-260618 01'
-    port: 8090
-    server: '24.142.229.178'
+  - name: '🇺🇸US_503|433KB/s|R002-260618 01'
+    port: 443
+    server: '207.5.30.9'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇺🇸US_521|454KB/s|R002-260618 01'
+  - name: '🇺🇸US_523|698KB/s|R002-260618 01'
     port: 8090
-    server: '50.76.211.251'
+    server: '24.142.229.178'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
@@ -1695,4 +1695,14 @@ proxies:
       path: '/@CloudVPNchannel/@CloudVPNchannel/@CloudVPNchannel/@CloudVPNchannel/@CloudVPNchannel/@CloudVPNchannel?ed=2056'
       headers:
         Host: 'mpkoe7ypcibr80p102020123.global.ssl.fastly.net'
+    _poolOnly: true
+  - name: '🇫🇷 法国 (France) 12 - tammader'
+    type: 'vless'
+    server: '15.236.109.186'
+    port: 2053
+    uuid: 'fbda2834-b1e7-4148-afb9-deda31036a30'
+    udp: true
+    tls: true
+    skip-cert-verify: true
+    servername: 'w.geogame.ir'
     _poolOnly: true
