@@ -1,6 +1,12 @@
 name: ChatGPT Unlock Probe (Experimental)
 
 on:
+  # Run a small diagnostic sample automatically when the experimental probe changes.
+  push:
+    branches: [main]
+    paths:
+      - "scripts/test-chatgpt-unlock.js"
+      - ".github/workflows/chatgpt-unlock-test.yml"
   workflow_dispatch:
     inputs:
       max_nodes:
@@ -22,8 +28,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 90
     env:
-      TEST_MAX_NODES: ${{ inputs.max_nodes }}
-      CHALLENGE_WAIT_SECONDS: ${{ inputs.challenge_wait_seconds }}
+      TEST_MAX_NODES: ${{ inputs.max_nodes || '10' }}
+      CHALLENGE_WAIT_SECONDS: ${{ inputs.challenge_wait_seconds || '20' }}
       MIHOMO_API: http://127.0.0.1:9090
       TEST_PROXY: http://127.0.0.1:7890
     steps:
