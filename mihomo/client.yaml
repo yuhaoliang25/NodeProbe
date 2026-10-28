@@ -44,70 +44,27 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇫🇷FR_2058|2.0MB/s|R002-260618 01'
-    port: 443
-    server: '172.64.68.89'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇫🇷FR_2083|1.8MB/s|R002-260618 01'
-    port: 443
-    server: '172.64.69.89'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - alpn:
-      - 'h3'
-      - 'h2'
-      - 'http/1.1'
-    client-fingerprint: 'ios'
-    encryption: 'none'
-    name: '🇫🇷FR_1788|619KB/s|R002-260618 01'
-    network: 'ws'
-    packet-encoding: 'xudp'
-    port: 2087
-    server: '104.18.1.1'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'vless'
-    uuid: '4859c235-2530-4062-9a0b-ea859cbbf861'
-    ws-opts:
-      early-data-header-name: 'Sec-WebSocket-Protocol'
-      headers:
-        Host: '1.proxy2.us.ci.'
-      max-early-data: 2560
-      path: '/'
-    udp: true
-    servername: '1.proxy2.us.ci.'
-    _poolOnly: true
-  - name: '🇮🇩ID_2|688KB/s|R002-260618 [ec91e15d058c]'
-    port: 443
-    server: '103.86.116.118'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇳🇱NL_239|1.2MB/s|R002-260618 01'
-    password: 'null'
-    port: 443
-    server: '157.22.183.72'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    _poolOnly: true
   - name: '🇮🇩ID_10|550KB/s|R002-260618 01'
     port: 443
     server: '103.86.117.202'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇸🇬SG_38|247KB/s|R002-260618 01'
+    port: 443
+    server: '154.26.139.24'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'd1f4a0d80288cf0b'
+  - name: '🇮🇩ID_2|688KB/s|R002-260618 [ec91e15d058c]'
+    port: 443
+    server: '103.86.116.118'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
@@ -119,15 +76,15 @@ proxy-groups:
     type: 'select'
     proxies:
       - '🇭🇰 香港 18-pool-3ecdf2883fc56e42'
-      - '🇫🇷FR_2058|2.0MB/s|R002-260618 01'
-      - '🇫🇷FR_2083|1.8MB/s|R002-260618 01'
+      - '🇮🇩ID_10|550KB/s|R002-260618 01'
+      - '🇸🇬SG_38|247KB/s|R002-260618 01'
       - 'DIRECT'
   - name: 'CHATGPT'
     type: 'select'
     proxies:
-      - '🇫🇷FR_1788|619KB/s|R002-260618 01'
+      - '🇮🇩ID_10|550KB/s|R002-260618 01'
       - '🇮🇩ID_2|688KB/s|R002-260618 [ec91e15d058c]'
-      - '🇳🇱NL_239|1.2MB/s|R002-260618 01'
+      - '🇸🇬SG_38|247KB/s|R002-260618 01'
   - name: 'STICKY'
     type: 'select'
     proxies:
