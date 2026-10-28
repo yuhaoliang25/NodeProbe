@@ -706,6 +706,15 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
+  - name: '🇺🇸US_513|813KB/s|R002-260618 01'
+    port: 443
+    server: '129.153.93.183'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
   - name: '🇺🇸US_530|602KB/s|R002-260618 01'
     port: 8443
     server: '44.248.167.117'
@@ -869,6 +878,15 @@ proxies:
   - name: '🇫🇷FR_2169|1.5MB/s|R002-260618 01'
     port: 443
     server: '82.66.235.221'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇫🇷FR_2172|1.1MB/s|R002-260618 01'
+    port: 8090
+    server: '80.124.109.22'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
@@ -1333,17 +1351,6 @@ proxies:
     tls: true
     skip-cert-verify: true
     _poolOnly: true
-  - name: '🇱🇻LV_24|2.4MB/s|K001-260618 [e8d4b41ce864]'
-    password: 'None'
-    port: 443
-    server: '185.219.159.16'
-    skip-cert-verify: true
-    sub_tag: 'K001-260618'
-    tls: true
-    type: 'http'
-    username: ''
-    udp: true
-    _poolOnly: true
   - name: '🇺🇸US_432|174KB/s|R002-260618 01'
     port: 443
     server: '38.28.185.143'
@@ -1444,15 +1451,6 @@ proxies:
     server: '213.109.163.119'
     skip-cert-verify: true
     sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇩🇪DE_94|2.5MB/s|R002-260618 01'
-    port: 443
-    server: '159.69.94.125'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
@@ -1565,15 +1563,6 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇳🇱NL_265|1.7MB/s|R002-260618 01'
-    port: 443
-    server: '185.93.106.214'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
   - name: '🇳🇱NL_244|3.5MB/s|R002-260618 01'
     password: 'null'
     port: 9002
@@ -1636,15 +1625,6 @@ proxies:
     username: 'ef37886e2aacd6fa622e3de3810299c2'
     udp: true
     _poolOnly: true
-  - name: '🇮🇹IT_25|1.1MB/s|R002-260618 01'
-    port: 443
-    server: '93.42.177.250'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
   - name: '🇵🇱PL_56|1.1MB/s|R002-260618 01'
     port: 443
     server: '91.92.250.33'
@@ -1663,23 +1643,12 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: 'US美国(mibei77.com 米贝节点分享)_48-2398c7e7b7c6fd5f'
-    type: 'anytls'
-    server: 'svip.skycon808.com'
-    port: 60005
-    password: '13f0acfa-38c1-4e82-a758-583aa31740df'
-    sni: '127.0.0.1'
+  - name: 'trojan-1827149341'
+    password: 'happybirthdaydaniel'
+    port: 25267
+    server: 'de-bots4.h1cloud.net'
     skip-cert-verify: true
-    tls: true
+    sni: 't.me/fuckthewall'
+    type: 'trojan'
     udp: true
-    _poolOnly: true
-  - name: '澳洲(mibei77.com 米贝节点分享)'
-    type: 'anytls'
-    server: 'svip.skycon808.com'
-    port: 60005
-    password: '13f0acfa-38c1-4e82-a758-583aa31740df'
-    skip-cert-verify: true
-    tls: true
-    udp: true
-    client-fingerprint: 'chrome'
     _poolOnly: true
