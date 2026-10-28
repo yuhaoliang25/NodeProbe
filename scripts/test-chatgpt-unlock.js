@@ -279,8 +279,9 @@ async function probeBrowser(browser, proxyName) {
       if (challengeTimeline.length < 24) challengeTimeline.push(snapshot);
       const text = (snapshot.title + ' ' + (snapshot.bodyTextSnippet || '')).toLowerCase();
       const stillChallenge = /just a moment|attention required|verify you are human|cf-chl-|captcha|enable javascript and cookies to continue/.test(text);
-      if (snapshot.hasMain || snapshot.hasComposer) break;
-      if (!stillChallenge && snapshot.bodyTextLength > 0) break;
+      const appLike = /chatgpt/i.test(snapshot.title) && (snapshot.hasMain || snapshot.hasComposer) &&
+        /chatgpt|openai|log in|sign up|登录|注册/i.test(snapshot.bodyTextSnippet || '');
+      if (appLike && !stillChallenge) break;
       await page.waitForTimeout(2000);
     }
   } catch (e) {
@@ -331,7 +332,8 @@ async function probeBrowser(browser, proxyName) {
   const bodyTextAvailable = bodyText.length > 0;
   const challengeTitle = /just a moment|attention required|security check/i.test(title);
   const challengeBody = /just a moment|verify you are human|enable javascript and cookies to continue|unusual activity|sorry, you have been blocked|cf-chl-|captcha/.test(bodyText.toLowerCase());
-  const challenge = challengeTitle || challengeBody || /cf-chl-|captcha/.test(signals);
+  const cfChallengeHeader = mainDocumentResponses.some(r => String(r.cfMitigated || '').toLowerCase() === 'challenge');
+  const challenge = challengeTitle || challengeBody || cfChallengeHeader || /cf-chl-|captcha/.test(signals);
   const regionRestriction = /unsupported country|not available in your country|country or region not supported|not available in your region/.test(signals);
   const titleLooksRight = /chatgpt/i.test(title);
   const renderedLanding = responseStatus === 200 && titleLooksRight && !challenge && !regionRestriction &&
@@ -351,7 +353,7 @@ async function probeBrowser(browser, proxyName) {
     // Anonymous landing-page rendering is not proof that a logged-in user can start a conversation.
     authenticatedChatVerified: false,
     challengeSuspected: Boolean(challenge),
-    challengeSignal: challengeTitle ? 'title' : challengeBody ? 'body' : challenge ? 'other' : null,
+    challengeSignal: challengeTitle ? 'title' : challengeBody ? 'body' : cfChallengeHeader ? 'cf-mitigated-header' : challenge ? 'other' : null,
     regionRestrictionSuspected: Boolean(regionRestriction),
     bodyTextAvailable,
     bodyTextLength: bodyText.length,
