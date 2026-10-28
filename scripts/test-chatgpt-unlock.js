@@ -12,6 +12,9 @@ const API = process.env.MIHOMO_API || 'http://127.0.0.1:9090';
 const PROXY = process.env.TEST_PROXY || 'http://127.0.0.1:7890';
 const requestedMax = Number(process.env.TEST_MAX_NODES || 30);
 const MAX_NODES = Number.isFinite(requestedMax) ? Math.max(1, Math.min(100, Math.floor(requestedMax))) : 30;
+const requestedChallengeWait = Number(process.env.CHALLENGE_WAIT_SECONDS || 20);
+const CHALLENGE_WAIT_SECONDS = Number.isFinite(requestedChallengeWait)
+  ? Math.max(5, Math.min(45, Math.floor(requestedChallengeWait))) : 20;
 const OUT = 'reports/chatgpt-unlock';
 const SELECTED = 'data/chatgpt-test-selected.json';
 const CONFIG_OUT = 'mihomo/chatgpt-test-config.yaml';
@@ -212,13 +215,32 @@ async function probeBrowser(browser, proxyName) {
   const failedRequests = [];
   const networkResponses = [];
   const pageErrors = [];
+  const mainDocumentResponses = [];
+  const challengeTimeline = [];
   page.on('pageerror', error => { if (pageErrors.length < 5) pageErrors.push(String(error?.message || error).slice(0, 180)); });
   page.on('response', response => {
     const url = response.url();
     let parsed;
     try { parsed = new URL(url); } catch { return; }
-    if ((/cloudflare\.com$/i.test(parsed.hostname) || /chatgpt\.com$/i.test(parsed.hostname) || /openai\.com$/i.test(parsed.hostname)) && networkResponses.length < 30) {
+    if ((/cloudflare\.com$/i.test(parsed.hostname) || /chatgpt\.com$/i.test(parsed.hostname) || /openai\.com$/i.test(parsed.hostname)) && networkResponses.length < 40) {
       networkResponses.push({ host: parsed.hostname, path: parsed.pathname.slice(0, 120), status: response.status(), resourceType: response.request().resourceType() });
+    }
+    if (response.request().isNavigationRequest() && response.frame() === page.mainFrame()) {
+      responseStatus = response.status();
+      if (mainDocumentResponses.length < 10) {
+        void response.allHeaders().then(headers => {
+          const cookieHeader = String(headers['set-cookie'] || '');
+          mainDocumentResponses.push({
+            status: response.status(),
+            url: response.url().slice(0, 240),
+            cfMitigated: headers['cf-mitigated'] || null,
+            cfRay: headers['cf-ray'] || null,
+            server: headers.server || null,
+            contentType: headers['content-type'] || null,
+            setCookieNames: [...cookieHeader.matchAll(/(?:^|,\s*)([^=;,\s]+)=/g)].map(m => m[1]).slice(0, 12),
+          });
+        }).catch(() => {});
+      }
     }
   });
   page.on('requestfailed', request => {
@@ -232,8 +254,35 @@ async function probeBrowser(browser, proxyName) {
   try {
     const response = await page.goto('https://chatgpt.com/', { waitUntil: 'domcontentloaded', timeout: 12000 });
     responseStatus = response ? response.status() : 0;
-    // Allow the Cloudflare challenge flow more time to complete before classifying the page.
-    await page.waitForTimeout(7000);
+    // Observe the site's normal JavaScript challenge flow; do not solve, spoof, or bypass it.
+    const deadline = Date.now() + CHALLENGE_WAIT_SECONDS * 1000;
+    while (Date.now() < deadline) {
+      let snapshot = { title: '', url: page.url(), bodyTextLength: 0, htmlLength: 0, hasMain: false, hasComposer: false };
+      try {
+        snapshot = await page.evaluate(() => {
+          const bodyText = (document.body?.innerText || '').replace(/\\s+/g, ' ').trim();
+          const title = document.title || '';
+          return {
+            title: title.slice(0, 160),
+            url: location.href.slice(0, 240),
+            bodyTextLength: bodyText.length,
+            bodyTextSnippet: bodyText.slice(0, 180) || null,
+            htmlLength: document.documentElement?.outerHTML?.length || 0,
+            hasMain: Boolean(document.querySelector('main, [role="main"]')),
+            hasComposer: Boolean(document.querySelector('textarea, [contenteditable="true"], [data-testid*="composer"]')),
+          };
+        });
+      } catch (e) {
+        snapshot.evaluateError = String(e?.message || e).slice(0, 120);
+      }
+      snapshot.elapsedMs = CHALLENGE_WAIT_SECONDS * 1000 - Math.max(0, deadline - Date.now());
+      if (challengeTimeline.length < 24) challengeTimeline.push(snapshot);
+      const text = (snapshot.title + ' ' + (snapshot.bodyTextSnippet || '')).toLowerCase();
+      const stillChallenge = /just a moment|attention required|verify you are human|cf-chl-|captcha|enable javascript and cookies to continue/.test(text);
+      if (snapshot.hasMain || snapshot.hasComposer) break;
+      if (!stillChallenge && snapshot.bodyTextLength > 0) break;
+      await page.waitForTimeout(2000);
+    }
   } catch (e) {
     navigationError = String(e && e.message || e).slice(0, 240);
   }
@@ -310,6 +359,12 @@ async function probeBrowser(browser, proxyName) {
     bodyTextContentSnippet: pageData.bodyTextContentSnippet || null,
     scriptSources: pageData.scriptSources || [],
     networkResponses,
+    mainDocumentResponses,
+    challengeTimeline,
+    challengeWaitSeconds: CHALLENGE_WAIT_SECONDS,
+    challengeResolvedDuringWait: challengeTimeline.some(x =>
+      (x.hasMain || x.hasComposer) && !/just a moment|attention required|verify you are human|cf-chl-|captcha|enable javascript and cookies to continue/i.test(x.title + ' ' + (x.bodyTextSnippet || ''))
+    ),
     pageErrors,
     failedRequests,
     htmlLength: pageData.htmlLength || 0,
@@ -400,7 +455,10 @@ async function run() {
     chatgptRestrictionSuspected: rows.filter(x => x.chatgptWeb?.challengeOrRestrictionSuspected).length,
     openaiApiApplicationResponse: rows.filter(x => x.openaiApi?.appLayerResponse).length,
     openaiApiExpectedAuthRejection: rows.filter(x => x.openaiApi?.authRejectedAsExpected).length,
-    note: 'HTTP curl checks do not execute JavaScript; browserLandingRendered means the anonymous ChatGPT landing UI rendered, not that account login or a real conversation works.',
+    challengeWaitSeconds: CHALLENGE_WAIT_SECONDS,
+    challengeResolvedDuringWait: rows.filter(x => x.chatgptBrowser?.challengeResolvedDuringWait).length,
+    mainDocumentResponsesWithCfMitigated: rows.reduce((n, x) => n + (x.chatgptBrowser?.mainDocumentResponses || []).filter(r => r.cfMitigated).length, 0),
+    note: 'The browser test only observes the normal anonymous JavaScript challenge flow; it does not solve or bypass challenges. HTTP 200 or a rendered landing page does not prove account login or a real conversation works.',
     results: rows,
   };
   fs.writeFileSync(path.join(OUT, 'results.json'), JSON.stringify(summary, null, 2) + '\n');
@@ -416,6 +474,9 @@ async function run() {
     browserEmptyDomBodies: summary.browserEmptyDomBodies,
     browserResponsesWithHtmlButNoText: summary.browserResponsesWithHtmlButNoText,
     browserChallengeRequestFailures: summary.browserChallengeRequestFailures,
+    challengeWaitSeconds: summary.challengeWaitSeconds,
+    challengeResolvedDuringWait: summary.challengeResolvedDuringWait,
+    mainDocumentResponsesWithCfMitigated: summary.mainDocumentResponsesWithCfMitigated,
     http403: summary.chatgptHttp403,
     http403Challenge: summary.chatgptHttp403Challenge,
     http200: summary.chatgptHttp200,
