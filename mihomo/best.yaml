@@ -4,83 +4,37 @@ mode: 'rule'
 log-level: 'warning'
 ipv6: false
 proxies:
-  - name: '🇳🇱 荷兰 (Netherlands) 722 - tammader'
-    type: 'vless'
-    server: '172.67.208.235'
-    port: 2096
-    uuid: 'b9ede7a5-5b4b-4aee-ac37-2c307e587e47'
+  - name: '🇬🇧 英国 (United Kingdom) 04 - tammader'
+    type: 'ss'
+    server: '104.239.12.81'
+    port: 43385
+    cipher: 'chacha20-ietf-poly1305'
+    password: 'AwW1fV6oDDQKh8r2znmptv59tPgt4eHVTgFaTqgKS2jiSdikJ7GyGCBYehDaK38S8yMgHFdbJqcTmRJSfYS5CFw345bNhFZa'
     udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'courses.mftplus.qzz.io'
-    network: 'ws'
-    ws-opts:
-      path: '/eyJqdW5rIjoidVkzQm1ROUg4dyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0'
-      headers:
-        Host: 'courses.mftplus.qzz.io'
-    endpoint-id: '287811fedbb82761'
-  - name: '🇺🇸 美国 (United States) 647 - tammader'
+    endpoint-id: '889859c342cc2654'
+  - name: '🇬🇧 英国 (United Kingdom) 21 - tammader'
     type: 'vless'
-    server: '104.18.1.1'
-    port: 2083
-    uuid: 'a1de0630-5786-48a0-84f6-dc6f2de10d6d'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'vlsovip.1d.mom'
-    network: 'ws'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'vlsovip.1d.mom'
-    endpoint-id: '7a8d3dc49bded3e9'
-  - name: '🇺🇸 美国 (United States) 337 - tammader'
-    type: 'vless'
-    server: '172.67.67.178'
-    port: 443
-    uuid: 'aebe5a70-0ca3-46ce-8208-8b5bab1346ce'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'rAyAn-007.nAsTaRaN.DpDnS.OrG'
-    network: 'ws'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'rAyAn-007.nAsTaRaN.DpDnS.OrG'
-    endpoint-id: 'bd1d8e1496de9497'
-  - name: '🇺🇸 美国 (United States) 510 - tammader'
-    type: 'vless'
-    server: 'us007.zestapp778.com'
-    port: 18580
+    server: '38.60.197.220'
+    port: 44559
     uuid: 'e9a8144e-5237-488a-afb1-9ca3d8d54c80'
     udp: true
     tls: true
     skip-cert-verify: true
-    servername: 'us007.zestapp778.com'
-    endpoint-id: 'd661b85de0807933'
-  - name: '🇨🇦 加拿大 (Canada) 30 - tammader'
-    type: 'vmess'
-    server: 'www.windowsmsidownloads.com'
+    servername: 'en001.zestapp778.com'
+    endpoint-id: '9e24574a73574ed3'
+  - name: '🇫🇷 法国 (France) 05 - tammader'
+    type: 'ss'
+    server: 'pl134.vpnbook.com'
     port: 443
-    uuid: '80be2deb-3b27-4775-9bd1-7f2a2b9c261b'
-    alterId: 0
-    cipher: 'auto'
+    cipher: 'chacha20-ietf-poly1305'
+    password: '6heexyz'
     udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: ''
-    network: 'ws'
-    ws-opts:
-      path: '/truth'
-      headers:
-        Host: ''
-    endpoint-id: '1c7ada6a806c5960'
-  - name: '🇺🇸 美国 (United States) 424 - tammader'
+    endpoint-id: 'ae48426303f8a48e'
+  - name: '🇰🇷 韩国 (South Korea) 01 - tammader'
     type: 'vless'
-    server: '208.84.100.209'
-    port: 8080
-    uuid: '36c3dcc2-17b6-4478-b8a7-3978e6d5afe9'
+    server: '152.69.226.63'
+    port: 25555
+    uuid: '27c5483f-17f4-48ae-9a04-def53d88440d'
     udp: true
     tls: false
     skip-cert-verify: true
@@ -88,30 +42,16 @@ proxies:
     ws-opts:
       path: '/'
       headers:
-        Host: '208.84.100.209'
-    endpoint-id: '6e1c0d8c0b24ae0c'
-  - type: 'trojan'
-    name: '@Alirewa-234'
-    server: '45-149-147-213.sslip.io'
-    port: 4444
-    tls: true
-    password: '9b347a9b-d7a6-4b51-9890-eff62b832834'
-    network: 'grpc'
-    sni: '45-149-147-213.sslip.io'
-    grpc-opts:
-      grpc-service-name: 'kobedin-server1-trojan'
-    endpoint-id: 'd07a6a986dd7be39'
+        Host: '152.69.226.63'
+    endpoint-id: '32b11016050dc8ad'
 proxy-groups:
   - name: 'PROXY'
     type: 'select'
     proxies:
       - 'DIRECT'
-      - '🇳🇱 荷兰 (Netherlands) 722 - tammader'
-      - '🇺🇸 美国 (United States) 647 - tammader'
-      - '🇺🇸 美国 (United States) 337 - tammader'
-      - '🇺🇸 美国 (United States) 510 - tammader'
-      - '🇨🇦 加拿大 (Canada) 30 - tammader'
-      - '🇺🇸 美国 (United States) 424 - tammader'
-      - '@Alirewa-234'
+      - '🇬🇧 英国 (United Kingdom) 04 - tammader'
+      - '🇬🇧 英国 (United Kingdom) 21 - tammader'
+      - '🇫🇷 法国 (France) 05 - tammader'
+      - '🇰🇷 韩国 (South Korea) 01 - tammader'
 rules:
   - 'MATCH,PROXY'

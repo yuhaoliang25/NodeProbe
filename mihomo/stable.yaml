@@ -4,17 +4,23 @@ mode: 'rule'
 log-level: 'warning'
 ipv6: false
 proxies:
-  - name: 'hysteria2-1853331471'
-    password: '4291c983-c520-46ac-82cc-48f14bef573f'
-    port: 35013
-    server: '129.213.91.185'
-    skip-cert-verify: true
-    sni: ''
-    type: 'hysteria2'
+  - type: 'ss'
+    name: 'shadowsocks-1875023024'
+    server: '193.151.163.18'
+    port: 19999
+    cipher: 'aes-256-gcm'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
     _poolOnly: true
-  - name: '🌐 其他地区 (Other) 31 - tammader'
+  - type: 'ss'
+    name: 'shadowsocks-1870576149'
+    server: '98.98.79.198'
+    port: 8080
+    cipher: 'rc4-md5'
+    password: '14fFPrbezE3HDZzsMOr6'
+    _poolOnly: true
+  - name: '🌐 其他地区 (Other) 36 - tammader'
     type: 'vless'
-    server: '172.64.153.153'
+    server: '172.64.153.66'
     port: 443
     uuid: 'd342d11e-d224-4463-b982-532309285094'
     udp: true
@@ -27,9 +33,9 @@ proxies:
       headers:
         Host: 'ccc.010304.xyz'
     _poolOnly: true
-  - name: '🇺🇸 美国 (United States) 322 - tammader'
+  - name: '🌐 其他地区 (Other) 16 - tammader'
     type: 'vless'
-    server: '172.66.1.36'
+    server: '172.66.154.57'
     port: 443
     uuid: 'd342d11e-d224-4463-b982-532309285094'
     udp: true
@@ -42,9 +48,70 @@ proxies:
       headers:
         Host: 'ccc.010304.xyz'
     _poolOnly: true
-  - name: '🌐 其他地区 (Other) 411 - tammader'
+  - type: 'trojan'
+    name: 'trojan-1929965364'
+    server: '216.152.155.158'
+    port: 443
+    tls: false
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    network: 'tcp'
+    sni: 'resources.nextjobopportunityandclaimyouridealrole.com'
+    _poolOnly: true
+  - name: '🌐 其他地区 (Other) 05 - tammader'
     type: 'vless'
-    server: '104.21.94.161'
+    server: '172.64.150.181'
+    port: 443
+    uuid: 'd342d11e-d224-4463-b982-532309285094'
+    udp: true
+    tls: true
+    skip-cert-verify: true
+    servername: 'ccc.010304.xyz'
+    network: 'ws'
+    ws-opts:
+      path: '/'
+      headers:
+        Host: 'ccc.010304.xyz'
+    _poolOnly: true
+  - type: 'ss'
+    name: 'shadowsocks-1875023016'
+    server: '185.230.230.18'
+    port: 19999
+    cipher: 'aes-256-gcm'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
+    _poolOnly: true
+  - name: '🌐 其他地区 (Other) 43 - tammader'
+    type: 'vless'
+    server: '104.18.36.242'
+    port: 443
+    uuid: 'd342d11e-d224-4463-b982-532309285094'
+    udp: true
+    tls: true
+    skip-cert-verify: true
+    servername: 'ccc.010304.xyz'
+    network: 'ws'
+    ws-opts:
+      path: '/'
+      headers:
+        Host: 'ccc.010304.xyz'
+    _poolOnly: true
+  - name: '🌐 其他地区 (Other) 09 - tammader-source-7922221896955808'
+    type: 'vless'
+    server: '172.64.229.72'
+    port: 443
+    uuid: 'd342d11e-d224-4463-b982-532309285094'
+    udp: true
+    tls: true
+    skip-cert-verify: true
+    servername: 'ccc.010304.xyz'
+    network: 'ws'
+    ws-opts:
+      path: '/'
+      headers:
+        Host: 'ccc.010304.xyz'
+    _poolOnly: true
+  - name: '🌐 其他地区 (Other) 13 - tammader'
+    type: 'vless'
+    server: '172.64.155.209'
     port: 443
     uuid: 'd342d11e-d224-4463-b982-532309285094'
     udp: true
@@ -58,61 +125,51 @@ proxies:
         Host: 'ccc.010304.xyz'
     _poolOnly: true
   - type: 'vless'
-    name: '🇸🇬 新加坡 | SGP'
-    server: '104.18.35.86'
-    port: 8080
+    name: 'vless-1882338667'
+    server: '45.138.100.248'
+    port: 14430
     tls: false
-    uuid: 'e5cc16a6-ea42-46b2-82ae-ad2157e1641b'
+    uuid: 'ae908ff5-f749-402c-af25-e6e9aef4d6bb'
     network: 'ws'
-    sni: 'hhlfy.twiladaphne.ndjp.net'
+    sni: '45.138.100.248'
     ws-opts:
-      path: '/sg-melbi'
+      path: '/vless'
       headers:
-        Host: 'hhlfy.twiladaphne.ndjp.net'
+        Host: '45.138.100.248'
     _poolOnly: true
-  - name: '🌐 其他地区 (Other) 556 - tammader'
+  - name: '🌐 其他地区 (Other) 25 - tammader'
     type: 'vless'
-    server: '104.18.35.86'
-    port: 8080
-    uuid: 'e5cc16a6-ea42-46b2-82ae-ad2157e1641b'
-    udp: true
-    tls: false
-    skip-cert-verify: true
-    network: 'ws'
-    ws-opts:
-      path: '/sg-melbi'
-      headers:
-        Host: 'hhlfy.twiladaphne.ndjp.net'
-    _poolOnly: true
-  - type: 'vless'
-    name: '🇸🇬[www.v2nodes.com] vless-SG-9... #1'
-    server: '172.64.150.43'
-    port: 8080
-    tls: false
-    uuid: 'e5cc16a6-ea42-46b2-82ae-ad2157e1641b'
-    network: 'ws'
-    sni: 'hhlfy.twiladaphne.ndjp.net'
-    ws-opts:
-      path: '/sg-melbi'
-      headers:
-        Host: 'hhlfy.twiladaphne.ndjp.net'
-    _poolOnly: true
-  - type: 'vless'
-    name: '🇺🇸 美国 | USA'
-    server: '104.26.4.2'
+    server: '172.64.157.229'
     port: 443
-    tls: true
     uuid: 'd342d11e-d224-4463-b982-532309285094'
+    udp: true
+    tls: true
+    skip-cert-verify: true
+    servername: 'ccc.010304.xyz'
     network: 'ws'
-    sni: 'ccc.010304.xyz'
     ws-opts:
       path: '/'
       headers:
         Host: 'ccc.010304.xyz'
     _poolOnly: true
-  - name: '🌐 其他地区 (Other) 320 - tammader'
+  - name: '🌐 其他地区 (Other) 27 - tammader'
     type: 'vless'
-    server: '104.18.45.38'
+    server: '104.18.41.86'
+    port: 443
+    uuid: 'd342d11e-d224-4463-b982-532309285094'
+    udp: true
+    tls: true
+    skip-cert-verify: true
+    servername: 'ccc.010304.xyz'
+    network: 'ws'
+    ws-opts:
+      path: '/'
+      headers:
+        Host: 'ccc.010304.xyz'
+    _poolOnly: true
+  - name: '🌐 其他地区 (Other) 33 - tammader'
+    type: 'vless'
+    server: '172.64.158.170'
     port: 443
     uuid: 'd342d11e-d224-4463-b982-532309285094'
     udp: true
@@ -125,113 +182,9 @@ proxies:
       headers:
         Host: 'ccc.010304.xyz'
     _poolOnly: true
-  - name: '🌐 其他地区 (Other) 423 - tammader'
+  - name: '🌐 其他地区 (Other) 26 - tammader'
     type: 'vless'
-    server: '172.64.150.43'
-    port: 8080
-    uuid: 'e5cc16a6-ea42-46b2-82ae-ad2157e1641b'
-    udp: true
-    tls: false
-    skip-cert-verify: true
-    network: 'ws'
-    ws-opts:
-      path: '/sg-melbi'
-      headers:
-        Host: 'hhlfy.twiladaphne.ndjp.net'
-    _poolOnly: true
-  - name: '🌐 其他地区 (Other) 333 - tammader'
-    type: 'vless'
-    server: '104.21.221.158'
-    port: 443
-    uuid: 'd342d11e-d224-4463-b982-532309285094'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'ccc.010304.xyz'
-    network: 'ws'
-    ws-opts:
-      path: '/fp=chrome'
-      headers:
-        Host: 'ccc.010304.xyz'
-    _poolOnly: true
-  - name: '🇺🇸 美国 (United States) 746 - tammader'
-    type: 'vless'
-    server: '172.66.44.211'
-    port: 2083
-    uuid: 'd342d11e-d424-4583-b36e-524ab1f0afa4'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'wk1.f1w.de5.net'
-    network: 'ws'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'wk1.f1w.de5.net'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1835060901'
-    network: 'raw'
-    port: 443
-    reality-opts:
-      public-key: 'H3R3BUAl7thrIZsznTbb-eRREIjQOH2f3WO0oTN7OGY'
-      short-id: 'a0e2a6074c6456b0'
-    server: '195.123.235.183'
-    servername: 'gateway.icloud.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'c14ec728-3eca-4750-87fc-fd1e6aeb81d5'
-    _poolOnly: true
-  - name: '🌐 其他地区 (Other) 09 - tammader'
-    type: 'vless'
-    server: '172.64.152.241'
-    port: 443
-    uuid: 'd342d11e-d224-4463-b982-532309285094'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'ccc.010304.xyz'
-    network: 'ws'
-    ws-opts:
-      path: '/fp'
-      headers:
-        Host: 'ccc.010304.xyz'
-    _poolOnly: true
-  - name: '🌐 其他地区 (Other) 436 - tammader'
-    type: 'vless'
-    server: '172.64.149.65'
-    port: 443
-    uuid: '5dc15e15-f285-4a9d-959b-0e4fbdd77b63'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'powered-by-surena.configfarsi695fcfe8a2e58.workers.dev'
-    network: 'ws'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'powered-by-surena.configfarsi695fcfe8a2e58.workers.dev'
-    _poolOnly: true
-  - name: '🇺🇸 美国 (United States) 640 - tammader'
-    type: 'vless'
-    server: '104.18.42.54'
-    port: 2083
-    uuid: 'd342d11e-d424-4583-b36e-524ab1f0afa4'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'newwk1.f1w.de5.net'
-    network: 'ws'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'newwk1.f1w.de5.net'
-    _poolOnly: true
-  - name: '🌐 其他地区 (Other) 195 - tammader'
-    type: 'vless'
-    server: '104.17.154.123'
+    server: '104.18.32.47'
     port: 443
     uuid: 'd342d11e-d224-4463-b982-532309285094'
     udp: true
@@ -244,1502 +197,424 @@ proxies:
       headers:
         Host: 'ccc.010304.xyz'
     _poolOnly: true
-  - name: '🌐 其他地区 (Other) 270 - tammader'
-    type: 'vless'
-    server: '104.18.45.38'
-    port: 443
-    uuid: 'd342d11e-d224-4463-b982-532309285094'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'ccc.010304.xyz'
-    network: 'ws'
-    ws-opts:
-      path: '/fp'
-      headers:
-        Host: 'ccc.010304.xyz'
+  - type: 'ss'
+    name: 'shadowsocks-1875022945'
+    server: '45.86.51.18'
+    port: 19999
+    cipher: 'aes-256-gcm'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
     _poolOnly: true
-  - type: 'trojan'
-    name: '🇺🇸 美国 | USA-dd320150588fcd08'
-    server: '66.163.122.7'
-    port: 443
-    tls: false
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'www.searchnationwidecareerchangehelperandguidancetoday.com'
-    _poolOnly: true
-  - name: '🌐 其他地区 (Other) 321 - tammader'
-    type: 'vless'
-    server: '172.64.150.28'
-    port: 2082
-    uuid: 'e5cc16a6-ea42-46b2-82ae-ad2157e1641b'
-    udp: true
-    tls: false
-    skip-cert-verify: true
-    network: 'ws'
-    ws-opts:
-      path: '/fp'
-      headers:
-        Host: 'hhlfy.twiladaphne.ndjp.net'
-    _poolOnly: true
-  - name: '🇺🇸 美国 (United States) 210 - tammader'
-    type: 'vless'
-    server: '172.67.67.178'
-    port: 443
-    uuid: 'aebe5a70-0ca3-46ce-8208-8b5bab1346ce'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'rAyAn-007.nAsTaRaN.DpDnS.OrG'
-    network: 'ws'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'rayan-007.nastaran.dpdns.org'
-    _poolOnly: true
-  - name: '🌐 其他地区 (Other) 100 - tammader'
-    type: 'vless'
-    server: '104.18.41.190'
-    port: 443
-    uuid: 'd342d11e-d224-4463-b982-532309285094'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'ccc.010304.xyz'
-    network: 'ws'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'ccc.010304.xyz'
-    _poolOnly: true
-  - name: '🌐 其他地区 (Other) 359 - tammader'
-    type: 'vless'
-    server: '172.64.144.198'
-    port: 443
-    uuid: '5dc15e15-f285-4a9d-959b-0e4fbdd77b63'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'powered-by-surena.configfarsi695fcfe8a2e58.workers.dev'
-    network: 'ws'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'powered-by-surena.configfarsi695fcfe8a2e58.workers.dev'
-    _poolOnly: true
-  - name: '🇺🇸 美国 (United States) 81 - tammader'
-    type: 'vless'
-    server: '188.114.97.3'
-    port: 2083
-    uuid: 'd342d11e-d424-4583-b36e-524ab1f0afa4'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'newwk1.f1w.de5.net'
-    network: 'ws'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'newwk1.f1w.de5.net'
-    _poolOnly: true
-  - name: '🌐 其他地区 (Other) 302 - tammader'
-    type: 'vless'
-    server: '172.67.160.192'
-    port: 443
-    uuid: '2bcfbfba-b446-4ad5-93ad-72af9e008f61'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'nuclear.us.kg'
-    network: 'ws'
-    ws-opts:
-      path: '/free/1.226.227.169:50001'
-      headers:
-        Host: 'nuclear.us.kg'
-    _poolOnly: true
-  - name: '🇳🇱 荷兰 (Netherlands) 722 - tammader'
-    type: 'vless'
-    server: '172.67.208.235'
-    port: 2096
-    uuid: 'b9ede7a5-5b4b-4aee-ac37-2c307e587e47'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'courses.mftplus.qzz.io'
-    network: 'ws'
-    ws-opts:
-      path: '/eyJqdW5rIjoidVkzQm1ROUg4dyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0'
-      headers:
-        Host: 'courses.mftplus.qzz.io'
-    _poolOnly: true
-  - name: '🇺🇸 美国 (United States) 21 - tammader'
-    type: 'vless'
-    server: '104.19.50.28'
-    port: 443
-    uuid: '2b181a3a-c001-4145-845a-5d43a43837d5'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'vpn-1fj.pages.dev'
-    network: 'ws'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'vpn-1fj.pages.dev'
-    _poolOnly: true
-  - name: '🌐 其他地区 (Other) 534 - tammader'
-    type: 'vless'
-    server: '104.21.14.232'
-    port: 443
-    uuid: '2bcfbfba-b446-4ad5-93ad-72af9e008f61'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'nuclear.us.kg'
-    network: 'ws'
-    ws-opts:
-      path: '/free/1.226.227.169:50001'
-      headers:
-        Host: 'nuclear.us.kg'
-    _poolOnly: true
-  - name: '🇺🇸 美国 (United States) 547 - tammader'
-    type: 'vless'
-    server: '172.64.145.202'
-    port: 2083
-    uuid: 'd342d11e-d424-4583-b36e-524ab1f0afa4'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'newwk1.f1w.de5.net'
-    network: 'ws'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'newwk1.f1w.de5.net'
-    _poolOnly: true
-  - name: '🇺🇸 美国 (United States) 647 - tammader'
-    type: 'vless'
-    server: '104.18.1.1'
-    port: 2083
-    uuid: 'a1de0630-5786-48a0-84f6-dc6f2de10d6d'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'vlsovip.1d.mom'
-    network: 'ws'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'vlsovip.1d.mom'
-    _poolOnly: true
-  - name: '🇸🇨 SC 55 - tammader'
-    type: 'vless'
-    server: '154.211.8.227'
-    port: 2087
-    uuid: '40af9131-d540-448a-bc56-5bba147a1dc3'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'proxy-34l.pages.dev'
-    network: 'ws'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'proxy-34l.pages.dev'
-    _poolOnly: true
-  - client-fingerprint: 'ios'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1831099315'
-    network: 'raw'
-    port: 443
-    reality-opts:
-      public-key: 'e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg'
-      short-id: 'c39cc7310a'
-    server: '169.40.42.231'
-    servername: 'yahoo.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'd65cc14c-f53f-4fe2-b262-97856601319c'
-    _poolOnly: true
-  - name: '🇺🇸 美国 (United States) 685 - tammader'
-    type: 'vless'
-    server: '8.35.211.188'
-    port: 8443
-    uuid: '2b181a3a-c001-4145-845a-5d43a43837d5'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'vpn-1fj.pages.dev'
-    network: 'ws'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'vpn-1fj.pages.dev'
-    _poolOnly: true
-  - name: '🌐 其他地区 (Other) 689 - tammader'
-    type: 'vless'
-    server: '104.21.221.158'
-    port: 443
-    uuid: 'd342d11e-d224-4463-b982-532309285094'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'ccc.010304.xyz'
-    network: 'ws'
-    ws-opts:
-      path: '/fp=unsafe'
-      headers:
-        Host: 'ccc.010304.xyz'
-    _poolOnly: true
-  - name: '🇸🇨 SC 139 - tammader'
-    type: 'vless'
-    server: '154.218.15.250'
-    port: 2083
-    uuid: '40af9131-d540-448a-bc56-5bba147a1dc3'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'proxy-1cu.pages.dev'
-    network: 'ws'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'proxy-1cu.pages.dev'
-    _poolOnly: true
-  - name: '🇨🇦 加拿大 (Canada) 24 - tammader'
-    type: 'vless'
-    server: '148.113.196.75'
-    port: 8443
-    uuid: '08f96221-9b7b-4e6f-8ffe-aee8b9c9b504'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'ov-canada1.09vpn.com'
-    network: 'ws'
-    ws-opts:
-      path: '/vless/'
-      headers:
-        Host: '148.113.196.75'
-    _poolOnly: true
-  - alterId: 0
+  - type: 'vmess'
+    name: 'CA 🇨🇦 | @Raydikalx | 0AD519'
+    server: '172.67.187.145'
+    port: 80
+    uuid: '0cf6d970-3f1d-4aae-a989-92a8f76ae3db'
+    alterId: 0
     cipher: 'auto'
-    name: 'vmess-1837386117'
-    network: 'raw'
-    port: 18000
-    server: '38.91.107.49'
-    type: 'vmess'
-    udp: true
-    uuid: 'f8c8dc3d-0d37-46b0-8b34-a7232882fcfe'
-    _poolOnly: true
-  - client-fingerprint: 'ios'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1828373369'
-    network: 'raw'
-    port: 443
-    reality-opts:
-      public-key: 'e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg'
-      short-id: 'c39cc7310a'
-    server: '169.40.42.225'
-    servername: 'yahoo.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'd65cc14c-f53f-4fe2-b262-97856601319c'
-    _poolOnly: true
-  - name: '🌐 其他地区 (Other) 420 - tammader'
-    type: 'vless'
-    server: '8.47.69.60'
-    port: 443
-    uuid: 'd342d11e-d224-4463-b982-532309285094'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'ccc.010304.xyz'
+    tls: false
     network: 'ws'
     ws-opts:
-      path: '/'
+      path: '/ws?ed=2048'
       headers:
-        Host: 'ccc.010304.xyz'
+        Host: 'vmess.lbw666.dpdns.org'
+    _poolOnly: true
+  - type: 'ss'
+    name: 'EPODONIOS-5ab6d6fb525a338c'
+    server: '185.215.132.9'
+    port: 19999
+    cipher: 'aes-256-gcm'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
+    _poolOnly: true
+  - type: 'ss'
+    name: 'shadowsocks-1875129451'
+    server: '193.151.160.18'
+    port: 19999
+    cipher: 'aes-256-gcm'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
     _poolOnly: true
   - type: 'trojan'
-    name: '🇺🇸 美国 | USA-cbf066ee94094462'
-    server: '216.152.155.54'
+    name: 'trojan-1929965334'
+    server: '66.163.122.25'
     port: 443
     tls: false
     password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
     network: 'tcp'
-    sni: 'learn.nextjobopportunityandclaimyouridealrole.com'
+    sni: 'cdn.searchnationwidecareerchangehelperandguidancetoday.com'
+    _poolOnly: true
+  - type: 'ss'
+    name: 'shadowsocks-1875022941'
+    server: '193.151.160.9'
+    port: 19999
+    cipher: 'aes-256-gcm'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
     _poolOnly: true
   - type: 'trojan'
-    name: '🇺🇸 美国 | USA #9'
-    server: '216.152.155.23'
+    name: 'trojan-1929965353'
+    server: '66.163.122.113'
     port: 443
     tls: false
     password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
     network: 'tcp'
-    sni: 'courses.nextjobopportunityandclaimyouridealrole.com'
+    sni: 'api.searchnationwidecareerchangehelperandguidancetoday.com'
     _poolOnly: true
   - type: 'trojan'
-    name: '🇺🇸 美国 | USA #2'
-    server: '216.152.155.176'
+    name: 'trojan-1929965355'
+    server: '66.163.114.132'
     port: 443
     tls: false
     password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
     network: 'tcp'
-    sni: 'blog.nextjobopportunityandclaimyouridealrole.com'
+    sni: 'courses.findconnectwithemployersandbuildprofessionalnetwork.com'
     _poolOnly: true
-  - name: '🌐 其他地区 (Other) 547 - tammader'
-    type: 'vless'
-    server: 'cf.090227.xyz'
+  - type: 'trojan'
+    name: 'trojan-1930077596'
+    server: '66.163.114.106'
     port: 443
-    uuid: 'd342d11e-d224-4463-b982-532309285094'
-    udp: true
+    tls: false
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    network: 'tcp'
+    sni: 'www.findconnectwithemployersandbuildprofessionalnetwork.com'
+    _poolOnly: true
+  - type: 'trojan'
+    name: 'trojan-1929965346'
+    server: '66.163.114.245'
+    port: 443
+    tls: false
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    network: 'tcp'
+    sni: 'findconnectwithemployersandbuildprofessionalnetwork.com'
+    _poolOnly: true
+  - type: 'trojan'
+    name: 'trojan-1929965362'
+    server: '66.163.114.166'
+    port: 443
+    tls: false
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    network: 'tcp'
+    sni: 'blog.findconnectwithemployersandbuildprofessionalnetwork.com'
+    _poolOnly: true
+  - type: 'trojan'
+    name: 'trojan-1929965331'
+    server: '216.152.156.81'
+    port: 443
+    tls: false
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    network: 'tcp'
+    sni: 'www.healthcarejobshubenhancemedicalprofessionalskillstoday.com'
+    _poolOnly: true
+  - type: 'trojan'
+    name: 'trojan-1929965339'
+    server: '216.152.156.49'
+    port: 443
+    tls: false
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    network: 'tcp'
+    sni: 'cdn.healthcarejobshubenhancemedicalprofessionalskillstoday.com'
+    _poolOnly: true
+  - type: 'trojan'
+    name: 'trojan-1929965332'
+    server: '216.152.156.212'
+    port: 443
+    tls: false
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    network: 'tcp'
+    sni: 'courses.healthcarejobshubenhancemedicalprofessionalskillstoday.com'
+    _poolOnly: true
+  - type: 'trojan'
+    name: 'trojan-1931254753'
+    server: '169.197.140.169'
+    port: 443
+    tls: false
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    network: 'tcp'
+    sni: 'api.discoverfreshgraduatejobsstartyourprofessionaljourney.com'
+    _poolOnly: true
+  - type: 'vmess'
+    name: '🏁RELAY-172.66.0.1-1194'
+    server: '172.66.0.1'
+    port: 443
+    uuid: '0cf6d970-3f1d-4aae-a989-92a8f76ae3db'
+    alterId: 0
+    cipher: 'auto'
     tls: true
-    skip-cert-verify: true
-    servername: 'ccc.010304.xyz'
     network: 'ws'
     ws-opts:
-      path: '/fp=chrome'
+      path: '/ws'
       headers:
-        Host: 'ccc.010304.xyz'
+        Host: 'vmess.lbw666.dpdns.org'
     _poolOnly: true
-  - name: '🇺🇸 美国 (United States) 406 - tammader'
-    type: 'vless'
-    server: '104.24.30.89'
+  - type: 'ss'
+    name: 'shadowsocks-1875129452'
+    server: '95.215.201.18'
+    port: 19999
+    cipher: 'aes-256-gcm'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
+    _poolOnly: true
+  - type: 'trojan'
+    name: 'trojan-1929965352'
+    server: '216.152.155.59'
     port: 443
-    uuid: 'aebe5a70-0ca3-46ce-8208-8b5bab1346ce'
-    udp: true
+    tls: false
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    network: 'tcp'
+    sni: 'api.nextjobopportunityandclaimyouridealrole.com'
+    _poolOnly: true
+  - type: 'ss'
+    name: 'shadowsocks-1870576345'
+    server: '79.110.54.250'
+    port: 8080
+    cipher: 'rc4-md5'
+    password: '14fFPrbezE3HDZzsMOr6'
+    _poolOnly: true
+  - type: 'trojan'
+    name: 'trojan-1929965347'
+    server: '66.163.114.126'
+    port: 443
+    tls: false
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    network: 'tcp'
+    sni: 'resources.findconnectwithemployersandbuildprofessionalnetwork.com'
+    _poolOnly: true
+  - type: 'trojan'
+    name: 'EPODONIOS-08c8ab9b63a6957c'
+    server: '216.106.186.33'
+    port: 443
     tls: true
-    skip-cert-verify: true
-    servername: 'rAyAn-007.nAsTaRaN.DpDnS.OrG'
+    password: 'f0eb8c92ce8946aaba856569cff1a16b'
+    network: 'tcp'
+    sni: 'resources.findlocaljobnetworkandbuildcommunityconnections.com'
+    _poolOnly: true
+  - type: 'trojan'
+    name: 'trojan-1875790321'
+    server: '216.106.186.32'
+    port: 443
+    tls: false
+    password: 'dba20dcb635e430fa4d3bfc303a149d2'
+    network: 'tcp'
+    sni: 'blog.findlocaljobnetworkandbuildcommunityconnections.com'
+    _poolOnly: true
+  - type: 'trojan'
+    name: 'trojan-1926289807'
+    server: '216.106.186.66'
+    port: 443
+    tls: false
+    password: '242a3d8eee5e4ed1a6bfa4141d549a25'
+    network: 'tcp'
+    sni: 'www.findlocaljobnetworkandbuildcommunityconnections.com'
+    _poolOnly: true
+  - type: 'ss'
+    name: 'EPODONIOS'
+    server: '185.176.206.9'
+    port: 19999
+    cipher: 'aes-256-gcm'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
+    _poolOnly: true
+  - type: 'trojan'
+    name: 'trojan-1929965350'
+    server: '66.163.112.13'
+    port: 443
+    tls: false
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    network: 'tcp'
+    sni: 'blog.unlockyourfuturefindyourperfectcareer.com'
+    _poolOnly: true
+  - type: 'trojan'
+    name: 'trojan-1930077586'
+    server: '66.163.112.142'
+    port: 443
+    tls: false
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    network: 'tcp'
+    sni: 'cdn.unlockyourfuturefindyourperfectcareer.com'
+    _poolOnly: true
+  - type: 'ss'
+    name: 'shadowsocks-1875023013'
+    server: '185.176.204.18'
+    port: 19999
+    cipher: 'aes-256-gcm'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
+    _poolOnly: true
+  - type: 'trojan'
+    name: 'trojan-1929965349'
+    server: '66.163.112.121'
+    port: 443
+    tls: false
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    network: 'tcp'
+    sni: 'www.unlockyourfuturefindyourperfectcareer.com'
+    _poolOnly: true
+  - type: 'trojan'
+    name: 'trojan-1929965344'
+    server: '66.163.112.76'
+    port: 443
+    tls: false
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    network: 'tcp'
+    sni: 'api.unlockyourfuturefindyourperfectcareer.com'
+    _poolOnly: true
+  - type: 'trojan'
+    name: 'trojan-1929965357'
+    server: '66.163.112.147'
+    port: 443
+    tls: false
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    network: 'tcp'
+    sni: 'courses.unlockyourfuturefindyourperfectcareer.com'
+    _poolOnly: true
+  - type: 'vless'
+    name: 'vless-1931194880'
+    server: '155.117.5.208'
+    port: 10002
+    tls: false
+    uuid: 'c6362720-0931-4b91-b187-d8ecf3149734'
+    network: 'tcp'
+    _poolOnly: true
+  - type: 'vless'
+    name: 'vless-1923902907'
+    server: '168.222.43.53'
+    port: 10000
+    tls: false
+    uuid: 'a05ecf37-c661-4247-ab09-4432cf0f3cc1'
+    network: 'tcp'
+    _poolOnly: true
+  - type: 'trojan'
+    name: 'trojan-1929965338'
+    server: '66.163.112.242'
+    port: 443
+    tls: false
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    network: 'tcp'
+    sni: 'resources.unlockyourfuturefindyourperfectcareer.com'
+    _poolOnly: true
+  - type: 'trojan'
+    name: 'trojan-1929965329'
+    server: '66.163.112.31'
+    port: 443
+    tls: false
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    network: 'tcp'
+    sni: 'unlockyourfuturefindyourperfectcareer.com'
+    _poolOnly: true
+  - type: 'vless'
+    name: 'vless-1930538303'
+    server: '155.117.5.208'
+    port: 10000
+    tls: false
+    uuid: 'a05ecf37-c661-4247-ab09-4432cf0f3cc1'
+    network: 'tcp'
+    _poolOnly: true
+  - type: 'vmess'
+    name: 'vmess-1827160934'
+    server: '129.146.77.248'
+    port: 39495
+    uuid: 'f836c736-87fc-4fde-aabc-00857ecdff3e'
+    alterId: 0
+    cipher: 'auto'
+    tls: false
     network: 'ws'
     ws-opts:
-      path: '/'
-      headers:
-        Host: 'rayan-007.nastaran.dpdns.org'
+      path: '/cctv13.m3u8'
     _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1831099319'
+  - type: 'trojan'
+    name: 'trojan-1929965361'
+    server: '216.238.80.100'
+    port: 443
+    tls: false
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    network: 'tcp'
+    sni: 'connectwithtopemployersandfindidealjobs.com'
+    _poolOnly: true
+  - type: 'ss'
+    name: 'shadowsocks-1887411780'
+    server: '82.38.31.169'
+    port: 443
+    cipher: 'chacha20-ietf-poly1305'
+    password: 'oZIoA69Q8yhcQV8ka3Pa3A'
+    _poolOnly: true
+  - name: '🇬🇧 英国 (United Kingdom) 04 - tammader'
+    type: 'ss'
+    server: '104.239.12.81'
+    port: 43385
+    cipher: 'chacha20-ietf-poly1305'
+    password: 'AwW1fV6oDDQKh8r2znmptv59tPgt4eHVTgFaTqgKS2jiSdikJ7GyGCBYehDaK38S8yMgHFdbJqcTmRJSfYS5CFw345bNhFZa'
+    udp: true
+    _poolOnly: true
+  - type: 'vless'
+    name: 'vless-1927723267'
+    server: '178.83.45.226'
+    port: 10000
+    tls: false
+    uuid: 'a05ecf37-c661-4247-ab09-4432cf0f3cc1'
     network: 'raw'
-    port: 443
-    reality-opts:
-      public-key: 'e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg'
-      short-id: 'c39cc7310a'
-    server: '169.40.42.74'
-    servername: 'yahoo.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'd65cc14c-f53f-4fe2-b262-97856601319c'
     _poolOnly: true
-  - name: '🇺🇸 美国 (United States) 337 - tammader'
-    type: 'vless'
-    server: '172.67.67.178'
-    port: 443
-    uuid: 'aebe5a70-0ca3-46ce-8208-8b5bab1346ce'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'rAyAn-007.nAsTaRaN.DpDnS.OrG'
-    network: 'ws'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'rAyAn-007.nAsTaRaN.DpDnS.OrG'
+  - type: 'vless'
+    name: 'vless-1927184355'
+    server: '168.222.43.53'
+    port: 10002
+    tls: false
+    uuid: 'c6362720-0931-4b91-b187-d8ecf3149734'
+    network: 'tcp'
     _poolOnly: true
-  - name: '🌐 其他地区 (Other) 344 - tammader'
-    type: 'vless'
-    server: '104.26.4.2'
-    port: 443
-    uuid: 'd342d11e-d224-4463-b982-532309285094'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'ccc.010304.xyz'
-    network: 'ws'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'ccc.010304.xyz'
+  - type: 'ss'
+    name: 'shadowsocks-1870576322'
+    server: '146.70.46.199'
+    port: 8080
+    cipher: 'rc4-md5'
+    password: '14fFPrbezE3HDZzsMOr6'
     _poolOnly: true
-  - name: '🌐 其他地区 (Other) 333 - tammader-b5b58a87f7e4be50'
-    type: 'vless'
-    server: '104.18.41.190'
-    port: 443
-    uuid: '16e80f38-e97e-4b14-ba89-77d87a3e637f'
+  - name: '🇫🇷 法国 (France) 03 - tammader'
+    type: 'ss'
+    server: '51.83.192.80'
+    port: 8388
+    cipher: 'aes-256-gcm'
+    password: 'itzvpn@321'
     udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'ex3r.qzz.io'
-    network: 'ws'
-    ws-opts:
-      path: '/sg-orcl'
-      headers:
-        Host: 'ex3r.qzz.io'
     _poolOnly: true
-  - name: '🌐 其他地区 (Other) 172 - tammader'
-    type: 'vless'
-    server: 'cf.090227.xyz'
-    port: 443
-    uuid: 'd342d11e-d224-4463-b982-532309285094'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'ccc.010304.xyz'
-    network: 'ws'
-    ws-opts:
-      path: '/fp=chromefp=chrome'
-      headers:
-        Host: 'ccc.010304.xyz'
+  - type: 'ss'
+    name: 'shadowsocks-1870576373'
+    server: '146.70.46.214'
+    port: 8080
+    cipher: 'rc4-md5'
+    password: '14fFPrbezE3HDZzsMOr6'
     _poolOnly: true
-  - name: '🇺🇸 美国 (United States) 510 - tammader'
+  - type: 'vless'
+    name: 'vless-1929113332'
+    server: '178.83.45.226'
+    port: 10002
+    tls: false
+    uuid: 'c6362720-0931-4b91-b187-d8ecf3149734'
+    network: 'tcp'
+    _poolOnly: true
+  - type: 'vless'
+    name: 'vless-1932277153'
+    server: '168.222.43.53'
+    port: 2052
+    tls: false
+    uuid: '1a8ecc41-6e62-431b-8eca-87c2fa4dc286'
+    network: 'tcp'
+    _poolOnly: true
+  - type: 'ss'
+    name: 'shadowsocks-1870576128'
+    server: '98.98.142.161'
+    port: 8080
+    cipher: 'rc4-md5'
+    password: '14fFPrbezE3HDZzsMOr6'
+    _poolOnly: true
+  - name: '🇬🇧 英国 (United Kingdom) 21 - tammader'
     type: 'vless'
-    server: 'us007.zestapp778.com'
-    port: 18580
+    server: '38.60.197.220'
+    port: 44559
     uuid: 'e9a8144e-5237-488a-afb1-9ca3d8d54c80'
     udp: true
     tls: true
     skip-cert-verify: true
-    servername: 'us007.zestapp778.com'
-    _poolOnly: true
-  - type: 'vless'
-    name: '🇸🇬[www.v2nodes.com] vless-SG'
-    server: '104.18.40.100'
-    port: 443
-    tls: true
-    uuid: 'd342d11e-d224-4463-b982-532309285094'
-    network: 'ws'
-    sni: 'ccc.010304.xyz'
-    ws-opts:
-      path: '/fp=chromefp=chrome'
-      headers:
-        Host: 'ccc.010304.xyz'
+    servername: 'en001.zestapp778.com'
     _poolOnly: true
   - type: 'trojan'
-    name: '🇺🇸 美国 | USA #1'
-    server: '216.152.156.65'
-    port: 443
-    tls: false
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'learn.healthcarejobshubenhancemedicalprofessionalskillstoday.com'
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇺🇸 美国 | USA-5f1aeb0a2ce700ed'
-    server: '216.152.156.42'
-    port: 443
-    tls: false
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'blog.healthcarejobshubenhancemedicalprofessionalskillstoday.com'
-    _poolOnly: true
-  - name: '🇨🇦 加拿大 (Canada) 30 - tammader'
-    type: 'vmess'
-    server: 'www.windowsmsidownloads.com'
-    port: 443
-    uuid: '80be2deb-3b27-4775-9bd1-7f2a2b9c261b'
-    alterId: 0
-    cipher: 'auto'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: ''
-    network: 'ws'
-    ws-opts:
-      path: '/truth'
-      headers:
-        Host: ''
-    _poolOnly: true
-  - name: 'trojan-1832868058'
-    password: 'ae7eb4dwyaz25pxwgq59'
-    port: 59689
-    server: '66.23.203.21'
-    skip-cert-verify: true
-    sni: '66.23.203.21'
-    type: 'trojan'
-    udp: true
-    _poolOnly: true
-  - name: '🇳🇱 荷兰 (Netherlands) 557 - tammader'
-    type: 'vless'
-    server: '188.164.248.216'
-    port: 443
-    uuid: 'd342d11e-d224-4463-b982-532309285094'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'ccc.010304.xyz'
-    network: 'ws'
-    ws-opts:
-      path: '/fp=chrome'
-      headers:
-        Host: 'ccc.010304.xyz'
-    _poolOnly: true
-  - client-fingerprint: 'ios'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1831099324'
-    network: 'raw'
-    port: 443
-    reality-opts:
-      public-key: 'e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg'
-      short-id: 'c39cc7310a'
-    server: '169.40.42.235'
-    servername: 'yahoo.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'd65cc14c-f53f-4fe2-b262-97856601319c'
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇺🇸 美国 | USA-15f5e809912fd264'
-    server: '66.163.122.81'
-    port: 443
-    tls: false
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'courses.searchnationwidecareerchangehelperandguidancetoday.com'
-    _poolOnly: true
-  - name: '🌐 其他地区 (Other) 626 - tammader'
-    type: 'vless'
-    server: '172.67.76.40'
-    port: 443
-    uuid: 'd342d11e-d224-4463-b982-532309285094'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'ccc.010304.xyz'
-    network: 'ws'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'ccc.010304.xyz'
-    _poolOnly: true
-  - name: '🌐 其他地区 (Other) 659 - tammader'
-    type: 'vless'
-    server: '172.64.146.66'
-    port: 443
-    uuid: 'd342d11e-d224-4463-b982-532309285094'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'ccc.010304.xyz'
-    network: 'ws'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'ccc.010304.xyz'
-    _poolOnly: true
-  - name: 'hysteria2-1832863509'
-    password: 'pbgLTkd5276SN1sZ'
-    port: 8443
-    server: '144.24.46.175'
-    skip-cert-verify: true
-    sni: ''
-    type: 'hysteria2'
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇺🇸 美国 | USA-bcb4f59dfefe9527'
-    server: '66.163.114.114'
-    port: 443
-    tls: false
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'learn.findconnectwithemployersandbuildprofessionalnetwork.com'
-    _poolOnly: true
-  - name: '🌐 其他地区 (Other) 131 - tammader'
-    type: 'vless'
-    server: '172.64.152.241'
-    port: 443
-    uuid: 'd342d11e-d224-4463-b982-532309285094'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'ccc.010304.xyz'
-    network: 'ws'
-    ws-opts:
-      path: '/fp=chrome'
-      headers:
-        Host: 'ccc.010304.xyz'
-    _poolOnly: true
-  - name: 'US - zhuhai.uk 03'
-    type: 'http'
-    server: '23.133.176.14'
-    port: 443
-    tls: true
-    skip-cert-verify: true
-    _poolOnly: true
-  - name: '🇺🇸 美国 (United States) 424 - tammader'
-    type: 'vless'
-    server: '208.84.100.209'
-    port: 8080
-    uuid: '36c3dcc2-17b6-4478-b8a7-3978e6d5afe9'
-    udp: true
-    tls: false
-    skip-cert-verify: true
-    network: 'ws'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: '208.84.100.209'
-    _poolOnly: true
-  - alterId: 0
-    cipher: 'auto'
-    name: 'vmess-1835539921'
-    network: 'raw'
-    port: 18000
-    server: '169.197.142.22'
-    type: 'vmess'
-    udp: true
-    uuid: 'f8c8dc3d-0d37-46b0-8b34-a7232882fcfe'
-    _poolOnly: true
-  - name: '🌐 其他地区 (Other) 41 - tammader'
-    type: 'vless'
-    server: '104.18.40.100'
-    port: 443
-    uuid: 'd342d11e-d224-4463-b982-532309285094'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'ccc.010304.xyz'
-    network: 'ws'
-    ws-opts:
-      path: '/fp=chrome'
-      headers:
-        Host: 'ccc.010304.xyz'
-    _poolOnly: true
-  - name: '🇱🇹 LT 310 - tammader'
-    type: 'vless'
-    server: '88.216.69.253'
-    port: 443
-    uuid: 'd342d11e-d224-4463-b982-532309285094'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'ccc.010304.xyz'
-    network: 'ws'
-    ws-opts:
-      path: '/fp=chrome'
-      headers:
-        Host: 'ccc.010304.xyz'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    name: 'vless-1841014091'
-    network: 'raw'
-    port: 2112
-    reality-opts:
-      public-key: 'p8pUe3hwND5rhAti-yRQ5qMaIkNdhxOV1K1jpbtJlEQ'
-      short-id: '125ba3'
-    server: '208.84.100.209'
-    servername: 'play.google.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '36c3dcc2-17b6-4478-b8a7-3978e6d5afe9'
-    _poolOnly: true
-  - name: 'hysteria2-1832863516'
-    password: 'bce6c821-200d-421f-bf3d-7159e5246ea0'
-    port: 33333
-    server: '155.248.209.237'
-    skip-cert-verify: true
-    sni: ''
-    type: 'hysteria2'
-    _poolOnly: true
-  - name: '🌐 其他地区 (Other) 289 - tammader'
-    type: 'vless'
-    server: '104.18.40.100'
-    port: 443
-    uuid: 'd342d11e-d224-4463-b982-532309285094'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'ccc.010304.xyz'
-    network: 'ws'
-    ws-opts:
-      path: '/fp=chromefp=chrome'
-      headers:
-        Host: 'ccc.010304.xyz'
-    _poolOnly: true
-  - name: 'hysteria2-1832880232'
-    password: '099830134df5ac3a04a4b21d39b8c395'
-    port: 50160
-    server: '163.192.14.135'
-    skip-cert-verify: true
-    sni: 'speedtest.tinkoff.ru'
-    type: 'hysteria2'
-    _poolOnly: true
-  - name: 'hysteria2-1853166912'
-    password: 'gf1:gfhysteria2024'
-    port: 443
-    server: '66.94.121.46'
-    skip-cert-verify: true
-    sni: '66.94.121.46'
-    type: 'hysteria2'
-    _poolOnly: true
-  - name: '🇺🇸 美国 (United States) 327 - tammader'
-    type: 'vless'
-    server: '162.159.152.4'
-    port: 443
-    uuid: '8d42d29a-ed53-4684-a9ff-6b33826149de'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'aio.eth0.dpdns.org'
-    network: 'ws'
-    ws-opts:
-      path: '/aioproxybot/94.23.144.99-2053'
-      headers:
-        Host: 'aio.eth0.dpdns.org'
-    _poolOnly: true
-  - name: '🇩🇪 德国 (Germany) 26 - tammader'
-    type: 'vless'
-    server: '104.21.77.142'
-    port: 2096
-    uuid: 'b9ede7a5-5b4b-4aee-ac37-2c307e587e47'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'courses.mftplus.qzz.io'
-    network: 'ws'
-    ws-opts:
-      path: '/eyJqdW5rIjoidVkzQm1ROUg4dyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0'
-      headers:
-        Host: 'courses.mftplus.qzz.io'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853340242'
-    network: 'tcp'
-    port: 23576
-    reality-opts:
-      public-key: '1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s'
-      short-id: '01'
-    server: '15.204.97.219'
-    servername: 'fuck.rkn'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '48ff2b70-e180-582f-8866-d9a2edeed5f5'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853340423'
-    network: 'tcp'
-    port: 23576
-    reality-opts:
-      public-key: '1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s'
-      short-id: '01'
-    server: '15.204.97.206'
-    servername: 'fuck.rkn'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '48ff2b70-e180-582f-8866-d9a2edeed5f5'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853340796'
-    network: 'tcp'
-    port: 23576
-    reality-opts:
-      public-key: '1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s'
-      short-id: '01'
-    server: '15.204.97.195'
-    servername: 'fuck.rkn'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '48ff2b70-e180-582f-8866-d9a2edeed5f5'
-    _poolOnly: true
-  - name: '🇱🇹 LT 181 - tammader'
-    type: 'vless'
-    server: '88.216.69.253'
-    port: 443
-    uuid: 'd342d11e-d224-4463-b982-532309285094'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'ccc.010304.xyz'
-    network: 'ws'
-    ws-opts:
-      path: '/fp'
-      headers:
-        Host: 'ccc.010304.xyz'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853340968'
-    network: 'tcp'
-    port: 23576
-    reality-opts:
-      public-key: '1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s'
-      short-id: '01'
-    server: '15.204.97.197'
-    servername: 'fuck.rkn'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '48ff2b70-e180-582f-8866-d9a2edeed5f5'
-    _poolOnly: true
-  - name: 'US - zhuhai.uk 08'
-    type: 'http'
-    server: '138.199.35.214'
-    port: 9002
-    tls: true
-    skip-cert-verify: true
-    _poolOnly: true
-  - name: 'US - zhuhai.uk'
-    type: 'http'
-    server: '138.199.35.199'
-    port: 9002
-    tls: true
-    skip-cert-verify: true
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853340775'
-    network: 'tcp'
-    port: 23576
-    reality-opts:
-      public-key: '1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s'
-      short-id: '01'
-    server: '15.204.97.216'
-    servername: 'fuck.rkn'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '48ff2b70-e180-582f-8866-d9a2edeed5f5'
-    _poolOnly: true
-  - name: 'US - zhuhai.uk 10'
-    type: 'http'
-    server: '138.199.35.212'
-    port: 9002
-    tls: true
-    skip-cert-verify: true
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853340196'
-    network: 'tcp'
-    port: 23576
-    reality-opts:
-      public-key: '1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s'
-      short-id: '01'
-    server: '15.204.97.198'
-    servername: 'fuck.rkn'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '48ff2b70-e180-582f-8866-d9a2edeed5f5'
-    _poolOnly: true
-  - name: 'US - zhuhai.uk 05'
-    type: 'http'
-    server: '138.199.35.205'
-    port: 9002
-    username: 'null'
-    password: 'None'
-    tls: true
-    skip-cert-verify: true
-    _poolOnly: true
-  - name: '🇩🇪 德国 (Germany) 30 - tammader'
-    type: 'vless'
-    server: '178.83.45.226'
-    port: 10000
-    uuid: 'a05ecf37-c661-4247-ab09-4432cf0f3cc1'
-    udp: true
-    tls: false
-    skip-cert-verify: true
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853340740'
-    network: 'tcp'
-    port: 23576
-    reality-opts:
-      public-key: '1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s'
-      short-id: '01'
-    server: '15.204.97.214'
-    servername: 'fuck.rkn'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '48ff2b70-e180-582f-8866-d9a2edeed5f5'
-    _poolOnly: true
-  - client-fingerprint: 'firefox'
-    name: 'vless-1843512943'
-    network: 'raw'
-    port: 2053
-    reality-opts:
-      public-key: 'xPEBx4wUmwAAv4ikUALNBf5wH6TRhyeQ0Q2pcNELsV0'
-      short-id: 'd051f678212f9d54'
-    server: '51.89.194.151'
-    servername: 'www.apple.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '8e790f25-1d71-4601-9fb0-d503931dcfca'
-    _poolOnly: true
-  - name: '🇺🇸 美国 (United States) 63 - tammader'
-    type: 'vmess'
-    server: '23.158.72.131'
-    port: 80
-    uuid: '8a9aaa70-ced9-11f1-b934-205c6d5f5d78'
-    alterId: 0
-    cipher: 'auto'
-    udp: true
-    tls: false
-    skip-cert-verify: true
-    network: 'ws'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'us-23.hihu.net'
-    _poolOnly: true
-  - name: '🇺🇸 美国 (United States) 284 - tammader-fd04518bac8d43a0'
-    type: 'vmess'
-    server: 'us-23.hihu.net'
-    port: 80
-    uuid: '8a9aaa70-ced9-11f1-b934-205c6d5f5d78'
-    alterId: 0
-    cipher: 'auto'
-    udp: true
-    tls: false
-    skip-cert-verify: true
-    network: 'ws'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: ''
-    _poolOnly: true
-  - name: '🇬🇧 英国 (United Kingdom) 25 - tammader'
-    type: 'vless'
-    server: '57.129.132.223'
-    port: 80
-    uuid: 'dbb78c94-9f87-4d7d-b945-2000b60352fd'
-    udp: true
-    tls: false
-    skip-cert-verify: true
-    network: 'ws'
-    ws-opts:
-      path: '/vless/'
-      headers:
-        Host: '57.129.132.223'
-    _poolOnly: true
-  - name: '🇺🇸 美国 (United States) 542 - tammader'
-    type: 'vmess'
-    server: 'us-23.hihu.net'
-    port: 80
-    uuid: '8a9aaa70-ced9-11f1-b934-205c6d5f5d78'
-    alterId: 0
-    cipher: 'auto'
-    udp: true
-    tls: false
-    skip-cert-verify: true
-    network: 'ws'
-    ws-opts:
-      path: '/870ao26f'
-      headers:
-        Host: ''
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇺🇸 美国 | USA-64c72d51751402bc'
-    server: '202.50.253.99'
-    port: 19999
-    cipher: 'aes-256-gcm'
-    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
-    _poolOnly: true
-  - type: 'trojan'
-    name: '@Alirewa-234'
-    server: '45-149-147-213.sslip.io'
-    port: 4444
-    tls: true
-    password: '9b347a9b-d7a6-4b51-9890-eff62b832834'
-    network: 'grpc'
-    sni: '45-149-147-213.sslip.io'
-    grpc-opts:
-      grpc-service-name: 'kobedin-server1-trojan'
-    _poolOnly: true
-  - name: '🇺🇸 美国 (United States) 282 - tammader-459fcdb3ae2abf7f'
-    type: 'vmess'
-    server: '23.158.72.131'
-    port: 80
-    uuid: '8a9aaa70-ced9-11f1-b934-205c6d5f5d78'
-    alterId: 0
-    cipher: 'auto'
-    udp: true
-    tls: false
-    skip-cert-verify: true
-    network: 'ws'
-    ws-opts:
-      path: '/870ao26f'
-      headers:
-        Host: ''
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853340633'
-    network: 'tcp'
-    port: 23576
-    reality-opts:
-      public-key: '1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s'
-      short-id: '01'
-    server: '51.158.206.29'
-    servername: 'fuck.rkn'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '48ff2b70-e180-582f-8866-d9a2edeed5f5'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853340571'
-    network: 'tcp'
-    port: 23576
-    reality-opts:
-      public-key: '1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s'
-      short-id: '01'
-    server: '51.158.206.34'
-    servername: 'fuck.rkn'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '48ff2b70-e180-582f-8866-d9a2edeed5f5'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853340555'
-    network: 'tcp'
-    port: 23576
-    reality-opts:
-      public-key: '1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s'
-      short-id: '01'
-    server: '51.158.206.103'
-    servername: 'fuck.rkn'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '48ff2b70-e180-582f-8866-d9a2edeed5f5'
-    _poolOnly: true
-  - name: 'IT - zhuhai.uk'
-    type: 'ss'
-    server: '202.50.253.18'
-    port: 19999
-    cipher: 'aes-256-gcm'
-    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
-    _poolOnly: true
-  - name: '🇺🇸 美国 (United States) 10 - tammader'
-    type: 'vmess'
-    server: 'us-23.hihu.net'
-    port: 80
-    uuid: '8a9aaa70-ced9-11f1-b934-205c6d5f5d78'
-    alterId: 0
-    cipher: 'auto'
-    udp: true
-    tls: false
-    skip-cert-verify: true
-    network: 'ws'
-    ws-opts:
-      path: ''
-      headers:
-        Host: '172.66.0.251'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853340779'
-    network: 'tcp'
-    port: 23576
-    reality-opts:
-      public-key: '1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s'
-      short-id: '01'
-    server: '51.158.206.87'
-    servername: 'fuck.rkn'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '48ff2b70-e180-582f-8866-d9a2edeed5f5'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853341249'
-    network: 'tcp'
-    port: 23576
-    reality-opts:
-      public-key: '1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s'
-      short-id: '01'
-    server: '51.158.206.8'
-    servername: 'fuck.rkn'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '48ff2b70-e180-582f-8866-d9a2edeed5f5'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1832650219'
-    network: 'tcp'
-    port: 23576
-    reality-opts:
-      public-key: '1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s'
-      short-id: '01'
-    server: '51.158.206.20'
-    servername: 'fuck.rkn'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '48ff2b70-e180-582f-8866-d9a2edeed5f5'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853340288'
-    network: 'tcp'
-    port: 23576
-    reality-opts:
-      public-key: '1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s'
-      short-id: '01'
-    server: '51.158.206.97'
-    servername: 'fuck.rkn'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '48ff2b70-e180-582f-8866-d9a2edeed5f5'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853340953'
-    network: 'tcp'
-    port: 23576
-    reality-opts:
-      public-key: '1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s'
-      short-id: '01'
-    server: '51.158.206.26'
-    servername: 'fuck.rkn'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '48ff2b70-e180-582f-8866-d9a2edeed5f5'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853340230'
-    network: 'tcp'
-    port: 23576
-    reality-opts:
-      public-key: '1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s'
-      short-id: '01'
-    server: '51.158.206.93'
-    servername: 'fuck.rkn'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '48ff2b70-e180-582f-8866-d9a2edeed5f5'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853340978'
-    network: 'tcp'
-    port: 23576
-    reality-opts:
-      public-key: '1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s'
-      short-id: '01'
-    server: '51.158.206.86'
-    servername: 'fuck.rkn'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '48ff2b70-e180-582f-8866-d9a2edeed5f5'
-    _poolOnly: true
-  - type: 'vless'
-    name: '🇫🇷[www.v2nodes.com] vless-FR-1... #2'
-    server: '138.124.70.41'
-    port: 14430
-    tls: false
-    uuid: '6cc745e3-4eb9-46c8-a4a1-85dee7b87edc'
-    network: 'ws'
-    ws-opts:
-      path: '/vless'
-    _poolOnly: true
-  - name: '🇩🇪 德国 (Germany) 23 - tammader'
-    type: 'vless'
-    server: '199.232.239.239'
-    port: 443
-    uuid: '36805edb-1e85-4199-a59f-117010b70017'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'firefox.com'
-    network: 'ws'
-    ws-opts:
-      path: '/@CloudVPNchannel/@CloudVPNchannel/@CloudVPNchannel/@CloudVPNchannel/@CloudVPNchannel/@CloudVPNchannel?ed=2056'
-      headers:
-        Host: 'mpkoe7ypcibr80p102020123.global.ssl.fastly.net'
-    _poolOnly: true
-  - name: '🇦🇪 阿联酋 (UAE) 04 - tammader'
-    type: 'vless'
-    server: '128.241.25.3'
-    port: 30021
-    uuid: 'afec813e-a5c7-432d-be48-2803c30eea4e'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'wkytah9k8oggj60.qzfi0skkopy875xhtc0l9pwds.workers.dev'
-    network: 'ws'
-    ws-opts:
-      path: '/@Marisa_kristi'
-      headers:
-        Host: 'wkytah9k8oggj60.qzfi0skkopy875xhtc0l9pwds.workers.dev'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853340709'
-    network: 'tcp'
-    port: 23576
-    reality-opts:
-      public-key: '1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s'
-      short-id: '01'
-    server: '51.158.206.19'
-    servername: 'fuck.rkn'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '48ff2b70-e180-582f-8866-d9a2edeed5f5'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853340788'
-    network: 'tcp'
-    port: 23576
-    reality-opts:
-      public-key: '1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s'
-      short-id: '01'
-    server: '51.158.206.96'
-    servername: 'fuck.rkn'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '48ff2b70-e180-582f-8866-d9a2edeed5f5'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853340225'
-    network: 'tcp'
-    port: 23576
-    reality-opts:
-      public-key: '1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s'
-      short-id: '01'
-    server: '51.158.206.25'
-    servername: 'fuck.rkn'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '48ff2b70-e180-582f-8866-d9a2edeed5f5'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853340883'
-    network: 'tcp'
-    port: 23576
-    reality-opts:
-      public-key: '1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s'
-      short-id: '01'
-    server: '51.158.206.12'
-    servername: 'fuck.rkn'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '48ff2b70-e180-582f-8866-d9a2edeed5f5'
-    _poolOnly: true
-  - name: '🇫🇷 法国 (France) 16 - tammader'
-    type: 'vless'
-    server: '138.124.70.41'
-    port: 14430
-    uuid: '6cc745e3-4eb9-46c8-a4a1-85dee7b87edc'
-    udp: true
-    tls: false
-    skip-cert-verify: true
-    network: 'ws'
-    ws-opts:
-      path: '/vless'
-      headers:
-        Host: '138.124.70.41'
-    _poolOnly: true
-  - name: '🇺🇸 美国 (United States) 528 - tammader'
-    type: 'vless'
-    server: '38.107.236.166'
-    port: 8443
-    uuid: '48572af1-d091-457b-a86e-4a457e99927f'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: '3h-unitedstates3.09vpn.com'
-    network: 'ws'
-    ws-opts:
-      path: '/vless/'
-      headers:
-        Host: '3h-unitedstates3.09vpn.com'
-    _poolOnly: true
-  - name: '🇦🇪 阿联酋 (UAE) 13 - tammader'
-    type: 'vless'
-    server: '128.241.25.11'
-    port: 30021
-    uuid: '72fbb611-628d-4afa-8198-bda3e38021f9'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: '3t1yvbyla-rj740g.28m7r63dttya6gazmhoo.workers.dev'
-    network: 'ws'
-    ws-opts:
-      path: '/@Marisa_kristi'
-      headers:
-        Host: '3t1yvbyla-rj740g.28m7r63dttya6gazmhoo.workers.dev'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1832650249'
-    network: 'tcp'
-    port: 23576
-    reality-opts:
-      public-key: '1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s'
-      short-id: '01'
-    server: '51.158.206.80'
-    servername: 'fuck.rkn'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '48ff2b70-e180-582f-8866-d9a2edeed5f5'
-    _poolOnly: true
-  - name: '🌐 其他地区 (Other) 253 - tammader'
-    type: 'vless'
-    server: '104.18.35.15'
-    port: 443
-    uuid: 'd342d11e-d224-4463-b982-532309285094'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'ccc.010304.xyz'
-    network: 'ws'
-    ws-opts:
-      path: '/fp=chrome'
-      headers:
-        Host: 'ccc.010304.xyz'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    name: 'vless-1831128588'
-    network: 'raw'
-    port: 2053
-    reality-opts:
-      public-key: 'g63cT3uI0Y5iUtj3m__RYz7nmR1eIK4AYikdnZCl63w'
-      short-id: 'bfe58beb41f1d09f'
-    server: '51.77.217.70'
-    servername: 'www.apple.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'bf16ee0c-8b3c-41e4-ab3a-8b48033c404e'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853341185'
-    network: 'tcp'
-    port: 23576
-    reality-opts:
-      public-key: '1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s'
-      short-id: '01'
-    server: '62.210.91.10'
-    servername: 'fuck.rkn'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '48ff2b70-e180-582f-8866-d9a2edeed5f5'
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇫🇷[www.v2nodes.com] trojan-FR-... #10'
-    server: '212.183.88.136'
-    port: 443
-    tls: false
-    password: 'humanity'
-    network: 'ws'
-    sni: 'www.calmlunch.com'
-    ws-opts:
-      path: '/assignment'
-      headers:
-        Host: 'www.calmlunch.com'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853340437'
-    network: 'tcp'
-    port: 23576
-    reality-opts:
-      public-key: '1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s'
-      short-id: '01'
-    server: 'ww13.levikogjgfdd.ir'
-    servername: 'fuck.rkn'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '48ff2b70-e180-582f-8866-d9a2edeed5f5'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853340698'
-    network: 'tcp'
-    port: 4443
-    reality-opts:
-      public-key: 'YIyohkkCU5kw6J5iZYZkhILyDwlfftFPDTkbITlrAUw'
-      short-id: 'df3aff719526dc5a'
-    server: '89.169.53.176'
-    servername: 'gateway.icloud.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '20dd9433-389e-4573-ba7b-689619cf13da'
-    _poolOnly: true
-  - name: '🇺🇸 美国 (United States) 479 - tammader'
-    type: 'vmess'
-    server: '47.88.79.34'
-    port: 443
-    uuid: '9b31490d-190e-4ef1-af0a-7ccab3e7c3b5'
-    alterId: 0
-    cipher: 'auto'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'rib9jxayoqjgn2kw.v.3dns.vip'
-    network: 'ws'
-    ws-opts:
-      path: '/ws-vmess'
-      headers:
-        Host: 'rib9jxayoqjgn2kw.v.3dns.vip'
-    _poolOnly: true
-  - name: 'vless-1837324384'
-    network: 'tcp'
-    port: 10000
-    server: 'connect.wecantos.site'
-    type: 'vless'
-    udp: true
-    uuid: 'a05ecf37-c661-4247-ab09-4432cf0f3cc1'
-    _poolOnly: true
-  - name: '🇫🇷 法国 (France) 08 - tammader'
-    type: 'vmess'
-    server: '57.128.164.21'
-    port: 80
-    uuid: 'bda82bcd-f6e2-46ae-9552-673f0b87ac30'
-    alterId: 0
-    cipher: 'auto'
-    udp: true
-    tls: false
-    skip-cert-verify: true
-    network: 'ws'
-    ws-opts:
-      path: '/d3d3LmlyYW5ob3N0LmNvbQ==?ed=2560'
-      headers:
-        Host: 'https.http.www.net.com.ramseyv2.ir.'
-    _poolOnly: true
-  - type: 'trojan'
-    name: '@Alirewa-119'
+    name: 'EPODONIOS-b96d9268eef3d9c8'
     server: '8.6.112.206'
     port: 443
-    tls: false
+    tls: true
     password: 'humanity'
     network: 'ws'
     sni: 'www.trusteeforward.com'
@@ -1748,120 +623,81 @@ proxies:
       headers:
         Host: 'www.trusteeforward.com'
     _poolOnly: true
-  - name: '🇩🇪 德国 (Germany) 21 - tammader'
-    type: 'vless'
-    server: '57.129.41.216'
-    port: 80
-    uuid: '7d74eae4-8a06-4306-a923-ad686f30bf26'
-    udp: true
-    tls: false
-    skip-cert-verify: true
-    network: 'ws'
-    ws-opts:
-      path: '/vless/'
-      headers:
-        Host: 'OV-Germany1.09vpn.com'
-    _poolOnly: true
-  - name: '🇵🇱 PL 750 - tammader'
-    type: 'vless'
-    server: '155.117.5.208'
-    port: 20001
-    uuid: '8e8210b7-71a4-4799-8b9b-2e69698b1eaf'
-    udp: true
-    tls: false
-    skip-cert-verify: true
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1835058280'
-    network: 'raw'
+  - type: 'trojan'
+    name: 'EPODONIOS-8cfe94264900713d'
+    server: '104.18.9.83'
     port: 443
-    reality-opts:
-      public-key: 'hlY5ce1UsVIgE46y5PlEZhUsSaXUnCtoDLLaGrhInjw'
-      short-id: '23d0950d60bc0d5b'
-    server: '195.123.245.241'
-    servername: 'gateway.icloud.com'
     tls: true
-    type: 'vless'
-    udp: true
-    uuid: '7c053ca8-38cc-45e2-930c-eda1fd66f903'
+    password: 'humanity'
+    network: 'ws'
+    sni: 'www.calmlunch.com'
+    ws-opts:
+      path: '/assignment'
+      headers:
+        Host: 'www.calmlunch.com'
     _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853340846'
+  - type: 'ss'
+    name: 'shadowsocks-1870576143'
+    server: '98.98.207.163'
+    port: 8080
+    cipher: 'rc4-md5'
+    password: '14fFPrbezE3HDZzsMOr6'
+    _poolOnly: true
+  - type: 'trojan'
+    name: 'EPODONIOS-703e6ff52c668c36'
+    server: '104.17.121.9'
+    port: 443
+    tls: true
+    password: 'humanity'
+    network: 'ws'
+    sni: 'www.calmlunch.com'
+    ws-opts:
+      path: '/assignment'
+      headers:
+        Host: 'www.calmlunch.com'
+    _poolOnly: true
+  - type: 'vless'
+    name: '未知 VLESS-60 | free-nodes'
+    server: 's170.gogocs.xyz'
+    port: 443
+    tls: true
+    uuid: '30e52776-55ac-3cb4-8d36-e2910f07e2c3'
     network: 'tcp'
-    port: 23576
-    reality-opts:
-      public-key: '1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s'
-      short-id: '01'
-    server: '51.158.206.98'
-    servername: 'fuck.rkn'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '48ff2b70-e180-582f-8866-d9a2edeed5f5'
-    _poolOnly: true
-  - name: '🇯🇵 日本 (Japan) 204 - tammader'
-    type: 'vless'
-    server: '57.129.130.200'
-    port: 52014
-    uuid: 'c8b0617e-010f-43a8-b3d0-d5358febf0c9'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'ke859ch2gse1iery3hiz.e3q4a5mjld11kpj0zj8dq.workers.dev'
-    network: 'ws'
-    ws-opts:
-      path: '/@Marisa_kristi'
-      headers:
-        Host: 'ke859ch2gse1iery3hiz.e3q4a5mjld11kpj0zj8dq.workers.dev'
-    _poolOnly: true
-  - name: '🇸🇬 新加坡 (Singapore) 226 - tammader'
-    type: 'vless'
-    server: '104.17.3.81'
-    port: 443
-    uuid: 'fc60147e-76b8-4bc5-b691-90b2da79e3d2'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'nautica-cff.kloningstrife002.workers.dev'
-    network: 'ws'
-    ws-opts:
-      path: '/138.2.74.219-28616'
-      headers:
-        Host: 'nautica-cff.kloningstrife002.workers.dev'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
+    sni: 'u695098u7dae9c0cs220.gogocs.xyz'
     flow: 'xtls-rprx-vision'
-    name: 'vless-1853340298'
-    network: 'tcp'
-    port: 443
-    reality-opts:
-      public-key: '5fkwwCKZzMsE6Eb_b3iqluu-1AWIfnYl-p0N3EL9Al8'
-      short-id: '2c9a2790ad5900b2'
-    server: '177.3.222.100'
-    servername: 'ge-s-1.pythonmakemigreat.wiki'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'f8d52ece-fad4-478d-875d-df6eed3befa7'
     _poolOnly: true
-  - name: '🇯🇵 日本 (Japan) 712 - tammader'
-    type: 'vless'
-    server: '57.129.130.63'
-    port: 52014
-    uuid: 'd731cf09-79a6-4647-aabe-8e0fda4fe3be'
-    udp: true
+  - type: 'ss'
+    name: '🇳🇿 新西兰 V2CROSS.COM'
+    server: '202.50.253.63'
+    port: 19999
+    cipher: 'aes-256-gcm'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
+    _poolOnly: true
+  - type: 'trojan'
+    name: 'EPODONIOS-047d272d9985f44d'
+    server: '89.150.34.41'
+    port: 2053
     tls: true
-    skip-cert-verify: true
-    servername: '9-7u3b6e.wzkija0v0du4yhk6jfyfafml3nh22kne.workers.dev'
+    password: 'humanity'
     network: 'ws'
+    sni: 'www.calmlunch.com'
     ws-opts:
-      path: '/@Marisa_kristi'
-      headers:
-        Host: '9-7u3b6e.wzkija0v0du4yhk6jfyfafml3nh22kne.workers.dev'
+      path: '/assignment'
     _poolOnly: true
-  - name: '🇬🇧 英国 (United Kingdom) 436 - tammader'
+  - type: 'vless'
+    name: '🇧🇾[www.v2nodes.com] vless-BY-1... #3'
+    server: '95.128.71.79'
+    port: 14430
+    tls: false
+    uuid: '8cef7621-c6f0-486e-b51d-59c30c5b0b25'
+    network: 'ws'
+    sni: '95.128.71.79'
+    ws-opts:
+      path: '/vless'
+      headers:
+        Host: '95.128.71.79'
+    _poolOnly: true
+  - name: '🇬🇧 英国 (United Kingdom) 29 - tammader'
     type: 'vless'
     server: '159.65.51.189'
     port: 443
@@ -1872,3398 +708,751 @@ proxies:
     servername: 'ccc.010304.xyz'
     network: 'ws'
     ws-opts:
-      path: '/'
+      path: '/fp#TELEGRAM--MARAMBASHI--MARAMBASHI--MARAMBASHI--MARAMBASHI?ed=512'
       headers:
         Host: 'ccc.010304.xyz'
     _poolOnly: true
-  - name: 'US - zhuhai.uk 09'
-    type: 'http'
-    server: 'jgwynphotoarts.pro'
-    port: 443
-    username: 'null'
-    password: 'null'
-    tls: true
-    _poolOnly: true
-  - name: 'hysteria2-1853331477'
-    password: '84a506ca5aca505696a454d828420b3f'
-    port: 50160
-    server: '140.238.213.114'
-    skip-cert-verify: true
-    sni: ''
-    type: 'hysteria2'
-    _poolOnly: true
-  - name: 'NL - zhuhai.uk 02'
-    type: 'http'
-    server: '51.158.243.91'
-    port: 443
-    tls: true
-    skip-cert-verify: true
-    _poolOnly: true
-  - type: 'vless'
-    name: '🇩🇪[www.v2nodes.com] vless-DE-1... #9'
-    server: '5.175.205.190'
-    port: 27774
-    tls: false
-    uuid: '653137c6-474e-4a3d-9a20-5a5afb3d4a4f'
-    network: 'tcp'
-    _poolOnly: true
-  - name: '🇯🇵 日本 (Japan) 306 - tammader'
-    type: 'vless'
-    server: '46.101.46.169'
-    port: 486
-    uuid: '16bf3359-e7d8-4de6-86a0-6d65cf793b56'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: '9-7u3b6e.wzkija0v0du4yhk6jfyfafml3nh22kne.workers.dev'
-    network: 'ws'
-    ws-opts:
-      path: '/@Marisa_kristi'
-      headers:
-        Host: '9-7u3b6e.wzkija0v0du4yhk6jfyfafml3nh22kne.workers.dev'
-    _poolOnly: true
-  - type: 'vless'
-    name: '🇳🇱[www.v2nodes.com] vless-NL'
-    server: '198.211.123.90'
-    port: 443
-    tls: true
-    uuid: 'd342d11e-d224-4463-b982-532309285094'
-    network: 'ws'
-    sni: 'ccc.010304.xyz'
-    ws-opts:
-      path: '/fp=unsafefp=chrome'
-      headers:
-        Host: 'ccc.010304.xyz'
-    _poolOnly: true
-  - name: '🇩🇪 德国 (Germany) 22 - tammader'
-    type: 'vless'
-    server: 'ggggoods.brand-netprime.com'
-    port: 2087
-    uuid: '16571fd5-5c8a-44ae-99fa-a354565e500b'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'b5.dl-netprime.com'
-    network: 'ws'
-    ws-opts:
-      path: '/ws-tls'
-      headers:
-        Host: 'b5.dl-netprime.com'
-    _poolOnly: true
-  - name: '🇫🇮 FI 78 - tammader'
-    type: 'vless'
-    server: '45.144.234.157'
-    port: 14430
-    uuid: '59b0d30e-9b29-4fda-a35c-b2901ec32db7'
-    udp: true
-    tls: false
-    skip-cert-verify: true
-    network: 'ws'
-    ws-opts:
-      path: '/vless'
-      headers:
-        Host: '45.144.234.157'
-    _poolOnly: true
-  - name: '🇷🇺 俄罗斯 (Russia) 47 - tammader'
-    type: 'ss'
-    server: '130.49.189.158'
-    port: 43558
+  - type: 'ss'
+    name: 'shadowsocks-1923819861'
+    server: '104.253.216.227'
+    port: 49917
     cipher: 'chacha20-ietf-poly1305'
-    password: 'cZGr8nLHdf+FE5ZAw0Y/Rzsml4AyikGL481Pg7eBpsI='
-    udp: true
+    password: 'G9ZuLN5DE9qqouTZwYUcvYsDJx8gyL1nCu3N7yRZFjPmYKhzSi8GkpVuexmTHAz2uvcErKkex1K2ceR2GH3L444HRNnN1YpP'
     _poolOnly: true
-  - client-fingerprint: 'ios'
-    name: 'vless-1876710446'
-    network: 'grpc'
-    port: 8444
-    reality-opts:
-      public-key: 'FWitre1jinQR7qz5HQ0q2Q4Gg9xA9B0SyizCziN7Ch0'
-      short-id: '457fab2ac885dbe0'
-    server: '62.133.63.45'
-    servername: 'github.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'a346c521-7a7f-452b-9356-a4893feb5982'
-    _poolOnly: true
-  - type: 'vless'
-    name: '🇫🇮[www.v2nodes.com] vless-FI-1... #4'
-    server: '45.144.234.157'
-    port: 14430
+  - type: 'trojan'
+    name: 'trojan-1929965330'
+    server: '64.176.163.182'
+    port: 443
     tls: false
-    uuid: '59b0d30e-9b29-4fda-a35c-b2901ec32db7'
-    network: 'ws'
-    sni: '45.144.234.157'
-    ws-opts:
-      path: '/vless'
-      headers:
-        Host: '45.144.234.157'
-    _poolOnly: true
-  - name: '🇳🇱 荷兰 (Netherlands) 206 - tammader'
-    type: 'vless'
-    server: '198.211.123.90'
-    port: 443
-    uuid: 'd342d11e-d224-4463-b982-532309285094'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'ccc.010304.xyz'
-    network: 'ws'
-    ws-opts:
-      path: '/fp=unsafefp=chrome'
-      headers:
-        Host: 'ccc.010304.xyz'
-    _poolOnly: true
-  - name: '🇩🇪 德国 (Germany) 03 - tammader'
-    type: 'vless'
-    server: '45.65.112.23'
-    port: 2087
-    uuid: '16571fd5-5c8a-44ae-99fa-a354565e500b'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'b5.dl-netprime.com'
-    network: 'ws'
-    ws-opts:
-      path: '/ws-tls'
-      headers:
-        Host: 'b5.dl-netprime.com'
-    _poolOnly: true
-  - name: '🇩🇪 德国 (Germany) 48 - tammader'
-    type: 'vless'
-    server: '199.232.239.239'
-    port: 443
-    uuid: '36805edb-1e85-4199-a59f-117010b70017'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'firefox.com'
-    network: 'ws'
-    ws-opts:
-      path: '/@CloudVPNchannel/@CloudVPNchannel/@CloudVPNchannel/@CloudVPNchannel/@CloudVPNchannel/@CloudVPNchannel?ed=2056fp=chrome'
-      headers:
-        Host: 'mpkoe7ypcibr80p102020123.global.ssl.fastly.net'
-    _poolOnly: true
-  - client-fingerprint: 'firefox'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1932656571'
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
     network: 'tcp'
-    port: 443
-    reality-opts:
-      public-key: 'M4Y9h339sntl5wEpiCa7f4IKhJ_8JLzPnAz2IzKlngM'
-      short-id: 'af4ca5d16438c938'
-    server: '45.43.79.92'
-    servername: 'vikt659.isgood.host'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '042b12d8-bac4-4b3a-b661-79e333f08e4e'
+    sni: 'exploreeducationsectoropportunitiestodayandadvancecareers.com'
     _poolOnly: true
-  - name: '🇬🇷 GR 558 - tammader'
-    type: 'ss'
-    server: 'ams1.rvpn.app'
-    port: 8388
-    cipher: 'chacha20-ietf-poly1305'
-    password: 'x2A6AsyZ-rAllz0wbKHzWA'
-    udp: true
-    _poolOnly: true
-  - name: '🇩🇪 德国 (Germany) 05 - tammader'
-    type: 'vless'
-    server: '91.107.247.173'
-    port: 2083
-    uuid: '7858128a-6b5e-4f86-9bff-52c1f1e6439d'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'sino.bestsellers1.site'
-    network: 'ws'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'sino.bestsellers1.site'
-    _poolOnly: true
-  - name: 'vless-1832764139'
-    network: 'ws'
-    port: 2083
-    server: '91.107.247.173'
-    servername: 'sino.bestsellers1.site'
-    skip-cert-verify: false
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '7858128a-6b5e-4f86-9bff-52c1f1e6439d'
-    _poolOnly: true
-  - name: '🇯🇵 日本 (Japan) 742 - tammader'
-    type: 'vless'
-    server: '129.151.64.169'
-    port: 31867
-    uuid: 'f7ff2e67-b687-4098-a28a-d102c27ba19c'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'mw5qisav.wjwqvie0wb1eqhb8e83clqdoq3m5p9a4on.workers.dev'
-    network: 'ws'
-    ws-opts:
-      path: '/@Marisa_kristi'
-      headers:
-        Host: 'mw5qisav.wjwqvie0wb1eqhb8e83clqdoq3m5p9a4on.workers.dev'
-    _poolOnly: true
-  - name: 'DE - zhuhai.uk'
-    type: 'http'
-    server: '158.173.154.5'
-    port: 9002
-    tls: true
-    skip-cert-verify: true
-    _poolOnly: true
-  - name: '🇩🇪 德国 (Germany) 27 - tammader'
-    type: 'vless'
-    server: '91.107.247.173'
-    port: 2083
-    uuid: '7858128a-6b5e-4f86-9bff-52c1f1e6439d'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'sino.bestsellers1.site'
-    network: 'ws'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: '91.107.247.173'
-    _poolOnly: true
-  - name: '🇯🇵 日本 (Japan) 314 - tammader'
-    type: 'vless'
-    server: '37.120.222.70'
-    port: 8082
-    uuid: '59c3c1c7-62d0-4707-9d67-5ff9c008591c'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'c6dbx99g6stb418qeo.t3jmlj0r152zji4htdkm9.workers.dev'
-    network: 'ws'
-    ws-opts:
-      path: '/@Marisa_kristi'
-      headers:
-        Host: 'c6dbx99g6stb418qeo.t3jmlj0r152zji4htdkm9.workers.dev'
-    _poolOnly: true
-  - name: '🇯🇵 日本 (Japan) 389 - tammader'
-    type: 'vless'
-    server: '80.240.18.227'
-    port: 10051
-    uuid: 'd161dcf1-fde2-44cc-b08d-d8944895e842'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'c6dbx99g6stb418qeo.t3jmlj0r152zji4htdkm9.workers.dev'
-    network: 'ws'
-    ws-opts:
-      path: '/@Marisa_kristi'
-      headers:
-        Host: 'c6dbx99g6stb418qeo.t3jmlj0r152zji4htdkm9.workers.dev'
-    _poolOnly: true
-  - name: '🇫🇮 FI 338 - tammader'
-    type: 'vless'
-    server: '2.27.13.152'
-    port: 2096
-    uuid: 'd1641bc6-3757-43db-815a-9b3f4d9b0d7e'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'st4834a.rumedia-cdn.com'
-    network: 'ws'
-    ws-opts:
-      path: '/cdn/v3/live'
-      headers:
-        Host: 'st4834a.rumedia-cdn.com'
-    _poolOnly: true
-  - name: 'hysteria2-1853341683'
-    password: 'u63SxILNwtrQZ7Y1ZrFaZfsA'
-    port: 8443
-    server: '8.211.175.236'
-    skip-cert-verify: true
-    sni: 'bing.com'
-    type: 'hysteria2'
-    _poolOnly: true
-  - name: 'vless-1931194866'
-    network: 'tcp'
-    port: 2052
-    server: '155.117.5.208'
-    type: 'vless'
-    udp: true
-    uuid: '1a8ecc41-6e62-431b-8eca-87c2fa4dc286'
-    _poolOnly: true
-  - name: '🇷🇴 RO 149 - tammader'
-    type: 'vless'
-    server: '178.83.45.226'
-    port: 2052
-    uuid: '1a8ecc41-6e62-431b-8eca-87c2fa4dc286'
-    udp: true
-    tls: false
-    skip-cert-verify: true
-    _poolOnly: true
-  - name: '🇩🇪 德国 (Germany) 06 - tammader'
-    type: 'vless'
-    server: '91.107.188.129'
-    port: 2083
-    uuid: '36592d47-b9f5-4e8f-949e-45ac05472aab'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'site.check-looks.space'
-    network: 'ws'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: '91.107.188.129'
-    _poolOnly: true
-  - name: 'hysteria2-1832764816'
-    password: '96ab5cd282733fd4c312a61f972f330a'
-    port: 443
-    server: '45.32.10.7'
-    skip-cert-verify: false
-    sni: 'vp3.yysyy.online'
-    type: 'hysteria2'
-    _poolOnly: true
-  - name: 'hysteria2-1853341822'
-    password: '41edb44c8e'
-    port: 11592
-    server: 'srv-17e124.21freedom.net'
-    skip-cert-verify: true
-    sni: 'srv-17e124.21freedom.net'
-    type: 'hysteria2'
-    _poolOnly: true
-  - name: '🌐 其他地区 (Other) 92 - tammader'
-    type: 'vless'
-    server: '104.18.47.73'
-    port: 443
-    uuid: 'd342d11e-d224-4463-b982-532309285094'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'ccc.010304.xyz'
-    network: 'ws'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'ccc.010304.xyz'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853340308'
-    network: 'tcp'
-    port: 4443
-    reality-opts:
-      public-key: 'k9srkQedwHsZGJP-R-GGwDOGok05gk23s8d4mtidMC4'
-      short-id: '835391010667297d'
-    server: '108.61.164.217'
-    servername: 'www.samsung.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '20dd9433-389e-4573-ba7b-689619cf13da'
-    _poolOnly: true
-  - name: '🇩🇪 德国 (Germany) 01 - tammader'
-    type: 'vless'
-    server: '157.230.101.36'
-    port: 443
-    uuid: 'd342d11e-d224-4463-b982-532309285094'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'ccc.010304.xyz'
-    network: 'ws'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'ccc.010304.xyz'
-    _poolOnly: true
-  - name: '🇩🇪 德国 (Germany) 02 - tammader'
-    type: 'vless'
-    server: '46.101.253.244'
-    port: 2083
-    uuid: 'bba95b1f-f48c-454b-897b-a6c6bc307df1'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'edge.yzkvm.top'
-    network: 'ws'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'edge.yzkvm.top'
-    _poolOnly: true
-  - name: '🇧🇷 BR 568 - tammader'
-    type: 'vless'
-    server: 'br001.zestapp778.com'
-    port: 15040
-    uuid: 'e9a8144e-5237-488a-afb1-9ca3d8d54c80'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'br.zestapp778.com'
-    _poolOnly: true
-  - name: '🇺🇸 美国 (United States) 716 - tammader'
-    type: 'vless'
-    server: '104.18.0.1'
-    port: 443
-    uuid: '3ccba794-1c6d-48a8-acf2-f5caf0e69d86'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'all.speedtest03.ccwu.cc'
-    network: 'ws'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'all.speedtest03.ccwu.cc'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1929297355'
-    network: 'tcp'
-    port: 443
-    reality-opts:
-      public-key: 'w0yEuw7sPMCEwk9_vDVoqjBhJsGoPvR7TsxIZVJy3iw'
-      short-id: 'f4b2a12c'
-    server: '78.135.73.168'
-    servername: 'tr2.tv-quoralyx.top'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '4b1be712-774c-4b65-8491-a3339e124a70'
-    _poolOnly: true
-  - name: '🇧🇾 BY 587 - tammader'
-    type: 'vless'
-    server: '95.128.71.79'
-    port: 14430
-    uuid: '8cef7621-c6f0-486e-b51d-59c30c5b0b25'
-    udp: true
-    tls: false
-    skip-cert-verify: true
-    network: 'ws'
-    ws-opts:
-      path: '/vless'
-      headers:
-        Host: '95.128.71.79'
-    _poolOnly: true
-  - name: '🇯🇵 日本 (Japan) 516 - tammader'
-    type: 'vless'
-    server: '147.45.42.73'
-    port: 20443
-    uuid: 'f293db4d-7ab1-4faf-bb15-89540d8709cb'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: '8n9qi6t-owl.gevc9s4n60cc3wzcmwhjyezydpmbchocxp.workers.dev'
-    network: 'ws'
-    ws-opts:
-      path: '/@Marisa_kristi'
-      headers:
-        Host: '8n9qi6t-owl.gevc9s4n60cc3wzcmwhjyezydpmbchocxp.workers.dev'
-    _poolOnly: true
-  - name: '🇯🇵 日本 (Japan) 481 - tammader'
-    type: 'vless'
-    server: '188.34.142.174'
-    port: 444
-    uuid: 'da46ec1f-84ad-4470-866f-010b58357b19'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: '9-7u3b6e.wzkija0v0du4yhk6jfyfafml3nh22kne.workers.dev'
-    network: 'ws'
-    ws-opts:
-      path: '/@Marisa_kristi'
-      headers:
-        Host: '9-7u3b6e.wzkija0v0du4yhk6jfyfafml3nh22kne.workers.dev'
-    _poolOnly: true
-  - name: '🇩🇪 德国 (Germany) 28 - tammader'
-    type: 'vless'
-    server: '167.172.165.106'
-    port: 2083
-    uuid: 'bba95b1f-f48c-454b-897b-a6c6bc307df1'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'edge.yzkvm.top'
-    network: 'ws'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'edge.yzkvm.top'
-    _poolOnly: true
-  - name: '🇨🇦 加拿大 (Canada) 40 - tammader'
-    type: 'vless'
-    server: '168.222.43.53'
+  - type: 'ss'
+    name: '🇬🇧GB-82.38.31.208-0114'
+    server: '82.38.31.208'
     port: 8080
+    cipher: 'chacha20-ietf-poly1305'
+    password: 'k1dBOmOB4oqi7Ump37a1bQ'
+    _poolOnly: true
+  - type: 'vless'
+    name: 'vless-1927724265'
+    server: '178.83.45.226'
+    port: 8080
+    tls: false
     uuid: '6bceb548-d9b6-461f-8e37-a5a7fbcdc2c8'
-    udp: true
-    tls: false
-    skip-cert-verify: true
-    _poolOnly: true
-  - name: '🇯🇵 日本 (Japan) 351 - tammader'
-    type: 'vless'
-    server: '79.137.199.52'
-    port: 21
-    uuid: '763e2ddd-c830-4f4f-801c-f6f2c3418d4f'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'bapj1qapjk4.0sds0li1bwcz0i76it0gjxv1.workers.dev'
-    network: 'ws'
-    ws-opts:
-      path: '/@Marisa_kristi'
-      headers:
-        Host: 'bapj1qapjk4.0sds0li1bwcz0i76it0gjxv1.workers.dev'
-    _poolOnly: true
-  - name: '🇯🇵 日本 (Japan) 541 - tammader'
-    type: 'vless'
-    server: '5.9.117.252'
-    port: 4433
-    uuid: 'ef286b0e-21ed-4e2b-9110-e2ddc7627892'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: '9-7u3b6e.wzkija0v0du4yhk6jfyfafml3nh22kne.workers.dev'
-    network: 'ws'
-    ws-opts:
-      path: '/@Marisa_kristi'
-      headers:
-        Host: '9-7u3b6e.wzkija0v0du4yhk6jfyfafml3nh22kne.workers.dev'
-    _poolOnly: true
-  - name: 'FR - zhuhai.uk'
-    type: 'http'
-    server: '31.32.19.111'
-    port: 8081
-    tls: true
-    skip-cert-verify: true
-    _poolOnly: true
-  - type: 'vless'
-    name: '🇧🇾[www.v2nodes.com] vless-BY-1...'
-    server: '178.172.227.228'
-    port: 14430
-    tls: false
-    uuid: 'b6e5dc56-836f-48c1-9163-b0b0b43b647d'
-    network: 'ws'
-    sni: '178.172.227.228'
-    ws-opts:
-      path: '/vless'
-      headers:
-        Host: '178.172.227.228'
-    _poolOnly: true
-  - type: 'vless'
-    name: '🇧🇾[www.v2nodes.com] vless-BY-1... #2'
-    server: '178.172.227.124'
-    port: 14430
-    tls: false
-    uuid: '1af36694-b548-4b18-89a0-bc076eab4ed7'
-    network: 'ws'
-    sni: '178.172.227.124'
-    ws-opts:
-      path: '/vless'
-      headers:
-        Host: '178.172.227.124'
-    _poolOnly: true
-  - name: 'hysteria2-1853331426'
-    password: 'H7mP2xY9kJ4nQ8wR5tF6vB3z'
-    port: 443
-    server: '103.115.109.49'
-    skip-cert-verify: true
-    sni: 'https%3a%2f%2ft.me%2foneclickvpnkeys'
-    type: 'hysteria2'
-    _poolOnly: true
-  - name: 'FR - zhuhai.uk 02'
-    type: 'http'
-    server: '82.96.128.175'
-    port: 8090
-    tls: true
-    skip-cert-verify: true
-    _poolOnly: true
-  - name: '🇫🇮 FI 05 - tammader'
-    type: 'vless'
-    server: '65.109.212.193'
-    port: 465
-    uuid: '924e20da-fcad-4e7e-8113-c62d27a0d01e'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'hw3.divarkhaghazi.com.'
-    network: 'ws'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'hw3.divarkhaghazi.com.'
-    _poolOnly: true
-  - name: 'hysteria2-1830467063'
-    password: 'H7mP2xY9kJ4nQ8wR5tF6vB3z'
-    port: 443
-    server: '103.115.109.49'
-    skip-cert-verify: true
-    sni: 'https%3a%2f%2ft.me%2fwangcai2'
-    type: 'hysteria2'
-    _poolOnly: true
-  - name: 'hysteria2-1853331609'
-    password: 'H7mP2xY9kJ4nQ8wR5tF6vB3z'
-    port: 443
-    server: '160.187.100.109'
-    skip-cert-verify: true
-    sni: ''
-    type: 'hysteria2'
-    _poolOnly: true
-  - name: '🌐 其他地区 (Other) 627 - tammader'
-    type: 'vless'
-    server: 'cf.877774.xyz'
-    port: 443
-    uuid: 'd342d11e-d224-4463-b982-532309285094'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'ccc.010304.xyz'
-    network: 'ws'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'ccc.010304.xyz'
-    _poolOnly: true
-  - client-fingerprint: 'firefox'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1930539315'
     network: 'tcp'
-    port: 443
-    reality-opts:
-      public-key: 'w0yEuw7sPMCEwk9_vDVoqjBhJsGoPvR7TsxIZVJy3iw'
-      short-id: 'f4b2a12c'
-    server: 'tr2.tv-quoralyx.top'
-    servername: 'tr2.tv-quoralyx.top'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '4b1be712-774c-4b65-8491-a3339e124a70'
     _poolOnly: true
-  - name: '🇳🇱 荷兰 (Netherlands) 511 - tammader'
-    type: 'vless'
-    server: '144.31.135.38'
-    port: 9444
-    uuid: '01c96414-9fcd-4f79-9274-2c8d8045e48d'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: '9-7u3b6e.wzkija0v0du4yhk6jfyfafml3nh22kne.workers.dev'
-    network: 'ws'
-    ws-opts:
-      path: '/@Marisa_kristi'
-      headers:
-        Host: '9-7u3b6e.wzkija0v0du4yhk6jfyfafml3nh22kne.workers.dev'
+  - type: 'ss'
+    name: '🇺🇸 US美国(mibei77.com 米贝节点分享)-19cfc0530ae0b8cf'
+    server: '202.50.253.45'
+    port: 19999
+    cipher: 'aes-256-gcm'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
     _poolOnly: true
-  - name: '🇯🇵 日本 (Japan) 421 - tammader'
-    type: 'vless'
-    server: '5.75.195.83'
-    port: 56879
-    uuid: 'f8847ac2-e586-400f-841b-00081ea4592e'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: '9-7u3b6e.wzkija0v0du4yhk6jfyfafml3nh22kne.workers.dev'
+  - type: 'vless'
+    name: 'vless-1930539293'
+    server: '170.114.46.6'
+    port: 8080
+    tls: false
+    uuid: '990bf436-f1b9-4e7f-857d-14378acc4ae5'
     network: 'ws'
-    ws-opts:
-      path: '/@Marisa_kristi'
-      headers:
-        Host: '9-7u3b6e.wzkija0v0du4yhk6jfyfafml3nh22kne.workers.dev'
-    _poolOnly: true
-  - name: '🇫🇮 FI 03 - tammader'
-    type: 'vless'
-    server: 'hw3.divarkhaghazi.com'
-    port: 465
-    uuid: '924e20da-fcad-4e7e-8113-c62d27a0d01e'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'hw3.divarkhaghazi.com.'
-    network: 'ws'
+    sni: 'free.nadun.store'
     ws-opts:
       path: '/'
       headers:
-        Host: 'hw3.divarkhaghazi.com.'
+        Host: 'free.nadun.store'
     _poolOnly: true
-  - name: '🇧🇾 BY 02 - tammader'
+  - type: 'ss'
+    name: 'shadowsocks-1870576189'
+    server: '68.183.235.240'
+    port: 8080
+    cipher: 'rc4-md5'
+    password: '14fFPrbezE3HDZzsMOr6'
+    _poolOnly: true
+  - type: 'ss'
+    name: 'shadowsocks-1870576350'
+    server: '128.1.186.132'
+    port: 8080
+    cipher: 'rc4-md5'
+    password: '14fFPrbezE3HDZzsMOr6'
+    _poolOnly: true
+  - name: '🇫🇷 法国 (France) 05 - tammader'
+    type: 'ss'
+    server: 'pl134.vpnbook.com'
+    port: 443
+    cipher: 'chacha20-ietf-poly1305'
+    password: '6heexyz'
+    udp: true
+    _poolOnly: true
+  - type: 'ss'
+    name: 'shadowsocks-1870576255'
+    server: '128.1.186.73'
+    port: 8080
+    cipher: 'rc4-md5'
+    password: '14fFPrbezE3HDZzsMOr6'
+    _poolOnly: true
+  - name: '🇰🇷 韩国 (South Korea) 01 - tammader'
     type: 'vless'
-    server: '178.172.227.124'
-    port: 14430
-    uuid: '1af36694-b548-4b18-89a0-bc076eab4ed7'
+    server: '152.69.226.63'
+    port: 25555
+    uuid: '27c5483f-17f4-48ae-9a04-def53d88440d'
     udp: true
     tls: false
     skip-cert-verify: true
     network: 'ws'
     ws-opts:
-      path: '/vless'
-      headers:
-        Host: '178.172.227.124'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1835058279'
-    network: 'raw'
-    port: 443
-    reality-opts:
-      public-key: '0QDBHaCRO2dPeeSVy3B3R_U12ZOvbvWl1JTFW_ZcpD0'
-      short-id: '31e91d43e553bf32'
-    server: '82.117.255.174'
-    servername: 'gateway.icloud.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '679439c5-28f2-485e-af5f-60a5fcd9c36c'
-    _poolOnly: true
-  - name: 'US - zhuhai.uk 02'
-    type: 'http'
-    server: 'fan.226278.xyz'
-    port: 443
-    tls: true
-    sni: 'fan.226278.xyz'
-    skip-cert-verify: true
-    _poolOnly: true
-  - name: 'hysteria2-1828373437'
-    password: 'H7mP2xY9kJ4nQ8wR5tF6vB3z'
-    port: 443
-    server: 'vpn-tw-002.fastervpn.world'
-    skip-cert-verify: true
-    sni: 'css.rbxcdn.com'
-    type: 'hysteria2'
-    _poolOnly: true
-  - name: 'RO - zhuhai.uk 03'
-    type: 'http'
-    server: '193.176.84.38'
-    port: 9002
-    tls: true
-    sni: 'www.bing.com'
-    skip-cert-verify: true
-    _poolOnly: true
-  - client-fingerprint: 'firefox'
-    name: 'vless-1832690712'
-    network: 'raw'
-    port: 2053
-    reality-opts:
-      public-key: 'bYW_MmB_CUHrsyoCAUKviI2LZdHf63yY2yOPXbih104'
-      short-id: '9e419c0759b54d6f'
-    server: '151.241.226.201'
-    servername: 'www.apple.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '0eed6293-8cf1-4e77-ac10-9c3d50d0b2f8'
-    _poolOnly: true
-  - name: 'RO - zhuhai.uk 04'
-    type: 'http'
-    server: '193.176.84.23'
-    port: 9002
-    tls: true
-    sni: 'www.bing.com'
-    skip-cert-verify: true
-    _poolOnly: true
-  - name: '🇸🇬 新加坡 (Singapore) 13 - tammader'
-    type: 'vless'
-    server: '43.174.193.1'
-    port: 443
-    uuid: 'd342d11e-d224-4463-b982-532309285094'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'ccc.010304.xyz'
-    network: 'ws'
-    ws-opts:
-      path: '/fp=chrome'
-      headers:
-        Host: 'ccc.010304.xyz'
-    _poolOnly: true
-  - name: 'trojan-1853341794'
-    password: 'e26a229d-e8f2-4ff9-8c7d-58a9d83ee437'
-    port: 8886
-    server: '45.32.52.173'
-    skip-cert-verify: true
-    sni: ''
-    type: 'trojan'
-    udp: true
-    _poolOnly: true
-  - name: '🇸🇬 新加坡 (Singapore) 363 - tammader'
-    type: 'vless'
-    server: '43.174.193.1'
-    port: 443
-    uuid: 'd342d11e-d224-4463-b982-532309285094'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'ccc.010304.xyz'
-    network: 'ws'
-    ws-opts:
       path: '/'
       headers:
-        Host: 'ccc.010304.xyz'
+        Host: '152.69.226.63'
     _poolOnly: true
-  - name: 'RO - zhuhai.uk 02'
-    type: 'http'
-    server: '193.176.84.19'
-    port: 9002
+  - name: '🇫🇷 法国 (France) 12 - tammader'
+    type: 'vless'
+    server: '15.236.109.186'
+    port: 2053
+    uuid: 'fbda2834-b1e7-4148-afb9-deda31036a30'
+    udp: true
     tls: true
-    sni: 'www.bing.com'
     skip-cert-verify: true
+    servername: 'w.geogame.ir'
+    _poolOnly: true
+  - type: 'trojan'
+    name: 'EPODONIOS-e224a4c0f94df4f2'
+    server: '141.101.115.104'
+    port: 443
+    tls: true
+    password: 'humanity'
+    network: 'ws'
+    sni: 'www.calmlunch.com'
+    ws-opts:
+      path: '/assignment'
     _poolOnly: true
   - type: 'vless'
-    name: '🇸🇬[www.v2nodes.com] vless-SG #6'
-    server: '43.174.193.1'
-    port: 443
-    tls: true
-    uuid: 'd342d11e-d224-4463-b982-532309285094'
-    network: 'ws'
-    sni: 'ccc.010304.xyz'
-    ws-opts:
-      path: '/fp=chrome'
-      headers:
-        Host: 'ccc.010304.xyz'
+    name: 'vless-1928873678'
+    server: '112.169.175.199'
+    port: 31157
+    tls: false
+    uuid: 'bd2fb303-b4c7-49af-a8e3-5c6f11b005dd'
+    network: 'none'
     _poolOnly: true
-  - name: 'hysteria2-1853331545'
-    password: 'H7mP2xY9kJ4nQ8wR5tF6vB3z'
+  - type: 'trojan'
+    name: 'trojan-1929965328'
+    server: '66.163.118.131'
     port: 443
-    server: '202.146.222.29'
-    skip-cert-verify: true
-    sni: 'httpst.mewangcai2'
-    type: 'hysteria2'
+    tls: false
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    network: 'tcp'
+    sni: 'www.discovergreatjobsandadvanceyourcareer.com'
     _poolOnly: true
-  - name: 'RO - zhuhai.uk'
-    type: 'http'
-    server: '193.176.84.24'
-    port: 9002
-    tls: true
-    sni: 'www.bing.com'
-    skip-cert-verify: true
-    _poolOnly: true
-  - name: 'hysteria2-1832765391'
-    password: 'H7mP2xY9kJ4nQ8wR5tF6vB3z'
-    port: 443
-    server: '202.146.222.89'
-    skip-cert-verify: true
-    sni: 'https://t.me/clashv8'
-    type: 'hysteria2'
-    _poolOnly: true
-  - name: '🇺🇸 美国 (United States) 26 - tammader'
-    type: 'vmess'
-    server: 'rib9jxayoqjgn2kw.v.3dns.vip'
-    port: 443
-    uuid: '9b31490d-190e-4ef1-af0a-7ccab3e7c3b5'
+  - type: 'vmess'
+    name: 'US 🇺🇸 | @Raydikalx | 6B18E0'
+    server: '38.110.1.246'
+    port: 18000
+    uuid: 'f8c8dc3d-0d37-46b0-8b34-a7232882fcfe'
     alterId: 0
     cipher: 'auto'
-    udp: true
+    tls: false
+    sni: '38.110.1.246'
+    network: 'tcp'
+    _poolOnly: true
+  - type: 'vmess'
+    name: 'CA 🇨🇦 | @Raydikalx | BA5E42'
+    server: '23.162.200.198'
+    port: 18000
+    uuid: 'f8c8dc3d-0d37-46b0-8b34-a7232882fcfe'
+    alterId: 0
+    cipher: 'auto'
+    tls: false
+    sni: '23.162.200.198'
+    network: 'tcp'
+    _poolOnly: true
+  - type: 'vmess'
+    name: 'vmess-1929111876'
+    server: '43.130.35.53'
+    port: 10087
+    uuid: '8e93b009-f1af-448a-b8ef-b110849a35f0'
+    alterId: 0
+    cipher: 'auto'
+    tls: false
+    network: 'tcp'
+    _poolOnly: true
+  - type: 'trojan'
+    name: 'EPODONIOS-e18035d2ef6d493a'
+    server: '104.27.203.207'
+    port: 443
     tls: true
-    skip-cert-verify: true
-    servername: ''
+    password: 'humanity'
+    network: 'ws'
+    sni: 'www.pleadcourt.org'
+    ws-opts:
+      path: '/assignment'
+      headers:
+        Host: 'www.pleadcourt.org'
+    _poolOnly: true
+  - type: 'ss'
+    name: 'shadowsocks-1928714919'
+    server: '54.36.174.134'
+    port: 443
+    cipher: 'chacha20-ietf-poly1305'
+    password: '6heexyz'
+    _poolOnly: true
+  - type: 'vless'
+    name: 'vless-1832887936'
+    server: '104.21.70.228'
+    port: 443
+    tls: true
+    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
+    network: 'ws'
+    sni: 'jp3.yohototo.top'
+    ws-opts:
+      path: '/tyxyws'
+      headers:
+        Host: 'jp3.yohototo.top'
+    _poolOnly: true
+  - type: 'ss'
+    name: '🇺🇸 US美国(mibei77.com 米贝节点分享)-fb67db6792170059'
+    server: '202.50.253.54'
+    port: 19999
+    cipher: 'aes-256-gcm'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
+    _poolOnly: true
+  - type: 'ss'
+    name: '🇺🇸 美国 | USA-18d6837128ca52bd'
+    server: '202.50.253.36'
+    port: 19999
+    cipher: 'aes-256-gcm'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
+    _poolOnly: true
+  - type: 'vless'
+    name: 'vless-1848100138-source-9262bb5c92cfca10'
+    server: '104.21.70.21'
+    port: 443
+    tls: true
+    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
+    network: 'ws'
+    sni: 'jp3.yohototo.top'
+    ws-opts:
+      path: '/tyxyws'
+      headers:
+        Host: 'jp3.yohototo.top'
+    _poolOnly: true
+  - type: 'trojan'
+    name: 'EPODONIOS-daea7942f539d843'
+    server: '172.64.145.133'
+    port: 443
+    tls: true
+    password: 'humanity'
+    network: 'ws'
+    sni: 'www.pleadcourt.org'
+    ws-opts:
+      path: '/assignment'
+      headers:
+        Host: 'www.pleadcourt.org'
+    _poolOnly: true
+  - type: 'trojan'
+    name: 'EPODONIOS-78d8afd9ea8f0d3e'
+    server: '45.80.111.7'
+    port: 443
+    tls: true
+    password: 'humanity'
+    network: 'ws'
+    sni: 'www.calmlunch.com'
+    ws-opts:
+      path: '/assignment'
+    _poolOnly: true
+  - type: 'trojan'
+    name: 'EPODONIOS-fc7ff8f5933fe503'
+    server: '141.193.213.172'
+    port: 443
+    tls: true
+    password: 'humanity'
+    network: 'ws'
+    sni: 'www.calmlunch.com'
+    ws-opts:
+      path: '/assignment'
+      headers:
+        Host: 'www.calmlunch.com'
+    _poolOnly: true
+  - type: 'trojan'
+    name: 'EPODONIOS-9f29959fee2a6d5f'
+    server: '188.114.97.8'
+    port: 443
+    tls: true
+    password: 'humanity'
+    network: 'ws'
+    sni: 'www.pleadcourt.org'
+    ws-opts:
+      path: '/assignment'
+    _poolOnly: true
+  - type: 'vless'
+    name: 'vless-1827151926-source-dbde993a102662a9'
+    server: '172.67.156.147'
+    port: 443
+    tls: true
+    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
+    network: 'ws'
+    sni: 'jp3.yohototo.top'
+    ws-opts:
+      path: '/tyxyws'
+      headers:
+        Host: 'jp3.yohototo.top'
+    _poolOnly: true
+  - type: 'vless'
+    name: 'vless-1831093906-source-5a324f22b336db67'
+    server: '152.69.200.216'
+    port: 443
+    tls: true
+    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
+    network: 'ws'
+    sni: 'jp3.yohototo.top'
+    ws-opts:
+      path: '/tyxyws'
+      headers:
+        Host: 'jp3.yohototo.top'
+    _poolOnly: true
+  - type: 'vless'
+    name: 'vless-1827961987'
+    server: '104.19.33.237'
+    port: 443
+    tls: true
+    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
+    network: 'ws'
+    sni: 'jp3.yohototo.top'
+    ws-opts:
+      path: '/tyxyws'
+      headers:
+        Host: 'jp3.yohototo.top'
+    _poolOnly: true
+  - type: 'vmess'
+    name: 'vmess-1927713381'
+    server: '23.158.72.131'
+    port: 80
+    uuid: '8a9aaa70-ced9-11f1-b934-205c6d5f5d78'
+    alterId: 0
+    cipher: 'auto'
+    tls: false
+    network: 'ws'
+    ws-opts:
+      path: '/'
+    _poolOnly: true
+  - type: 'vless'
+    name: 'vless-1827152273-source-6138b9e37fbcf1f2'
+    server: '162.159.254.3'
+    port: 443
+    tls: true
+    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
+    network: 'ws'
+    sni: 'jp3.yohototo.top'
+    ws-opts:
+      path: '/tyxyws'
+      headers:
+        Host: 'jp3.yohototo.top'
+    _poolOnly: true
+  - type: 'ss'
+    name: '🇳🇿 新西兰 V2CROSS.COM-ceabb7d7f9a91666'
+    server: '202.50.253.72'
+    port: 19999
+    cipher: 'aes-256-gcm'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
+    _poolOnly: true
+  - type: 'vmess'
+    name: 'CA 🇨🇦 | @Raydikalx | 00DD16'
+    server: '134.195.196.211'
+    port: 18000
+    uuid: 'f8c8dc3d-0d37-46b0-8b34-a7232882fcfe'
+    alterId: 0
+    cipher: 'auto'
+    tls: false
+    sni: '@vpnine1'
+    network: 'tcp'
+    _poolOnly: true
+  - type: 'vless'
+    name: 'vless-1831074722-source-f8c40da71770fe27'
+    server: '104.19.12.94'
+    port: 443
+    tls: true
+    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
+    network: 'ws'
+    sni: 'jp3.yohototo.top'
+    ws-opts:
+      path: '/tyxyws'
+      headers:
+        Host: 'jp3.yohototo.top'
+    _poolOnly: true
+  - type: 'vless'
+    name: 'vless-1853969345'
+    server: '104.16.10.2'
+    port: 443
+    tls: true
+    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
+    network: 'ws'
+    sni: 'jp3.yohototo.top'
+    ws-opts:
+      path: '/tyxyws'
+      headers:
+        Host: 'jp3.yohototo.top'
+    _poolOnly: true
+  - type: 'vless'
+    name: 'vless-1837364467'
+    server: '43.170.8.95'
+    port: 443
+    tls: true
+    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
+    network: 'ws'
+    sni: 'jp3.yohototo.top'
+    ws-opts:
+      path: '/tyxyws'
+      headers:
+        Host: 'jp3.yohototo.top'
+    _poolOnly: true
+  - type: 'vless'
+    name: 'vless-1879632052'
+    server: '104.18.37.127'
+    port: 443
+    tls: true
+    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
+    network: 'ws'
+    sni: 'jp3.yohototo.top'
+    ws-opts:
+      path: '/tyxyws'
+      headers:
+        Host: 'jp3.yohototo.top'
+    _poolOnly: true
+  - type: 'vless'
+    name: 'vless-1829720999-source-bba427e8df1d77b4'
+    server: '104.16.10.56'
+    port: 443
+    tls: true
+    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
+    network: 'ws'
+    sni: 'jp3.yohototo.top'
+    ws-opts:
+      path: '/tyxyws'
+      headers:
+        Host: 'jp3.yohototo.top'
+    _poolOnly: true
+  - type: 'vless'
+    name: 'vless-1856200505'
+    server: '172.67.217.240'
+    port: 443
+    tls: true
+    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
+    network: 'ws'
+    sni: 'jp3.yohototo.top'
+    ws-opts:
+      path: '/tyxyws'
+      headers:
+        Host: 'jp3.yohototo.top'
+    _poolOnly: true
+  - type: 'trojan'
+    name: 'trojan-1929965356'
+    server: '66.163.118.244'
+    port: 443
+    tls: false
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    network: 'tcp'
+    sni: 'api.discovergreatjobsandadvanceyourcareer.com'
+    _poolOnly: true
+  - type: 'vmess'
+    name: '🇭🇰 香港 | HKG-f665a50b717a40ed'
+    server: '47.243.65.243'
+    port: 443
+    uuid: 'f23bb427-c1f9-4373-876c-2f43e9f790f3'
+    alterId: 0
+    cipher: 'auto'
+    tls: true
     network: 'ws'
     ws-opts:
       path: '/ws-vmess'
       headers:
-        Host: ''
-    _poolOnly: true
-  - name: 'hysteria2-1853331565'
-    password: 'H7mP2xY9kJ4nQ8wR5tF6vB3z'
-    port: 443
-    server: '202.146.222.29'
-    skip-cert-verify: true
-    sni: 'https%3a%2f%2ft.me%2fwangcai2%c3%b0%c2%9f%c2%87%c2%a8%c3%b0%c2%9f%c2%87%c2%b3'
-    type: 'hysteria2'
-    _poolOnly: true
-  - name: 'hysteria2-1853341738'
-    password: 'maintell'
-    port: 2053
-    server: '152.70.237.123'
-    skip-cert-verify: true
-    sni: ''
-    type: 'hysteria2'
-    _poolOnly: true
-  - name: 'hysteria2-1853331593'
-    password: 'H7mP2xY9kJ4nQ8wR5tF6vB3z'
-    port: 443
-    server: '202.146.222.29'
-    skip-cert-verify: true
-    sni: 'https%3a%2f%2ft.me%2fwangcai2%ef%a3%bf%c3%bc%c3%a1'
-    type: 'hysteria2'
-    _poolOnly: true
-  - name: 'hysteria2-1853331606'
-    password: 'H7mP2xY9kJ4nQ8wR5tF6vB3z'
-    port: 443
-    server: '202.146.222.29'
-    skip-cert-verify: true
-    sni: 'https://t.me/wangcai2����'
-    type: 'hysteria2'
-    _poolOnly: true
-  - name: 'hysteria2-1832880265'
-    password: 'H7mP2xY9kJ4nQ8wR5tF6vB3z'
-    port: 443
-    server: '202.146.222.29'
-    skip-cert-verify: true
-    sni: "https://t.me/wangcai2ð\x9F\x87"
-    type: 'hysteria2'
-    _poolOnly: true
-  - name: 'hysteria2-1853331499'
-    password: 'H7mP2xY9kJ4nQ8wR5tF6vB3z'
-    port: 443
-    server: '202.146.222.29'
-    skip-cert-verify: true
-    sni: 'https://t.me/wangcai2��'
-    type: 'hysteria2'
-    _poolOnly: true
-  - name: 'hysteria2-1853331601'
-    password: 'H7mP2xY9kJ4nQ8wR5tF6vB3z'
-    port: 443
-    server: '202.146.222.29'
-    skip-cert-verify: true
-    sni: 'https://t.me/wangcai2üáüá'
-    type: 'hysteria2'
-    _poolOnly: true
-  - name: 'hysteria2-1853331407'
-    password: 'H7mP2xY9kJ4nQ8wR5tF6vB3z'
-    port: 443
-    server: '202.146.222.29'
-    skip-cert-verify: true
-    sni: 'https://t.me/wangcai2�'
-    type: 'hysteria2'
-    _poolOnly: true
-  - name: 'hysteria2-1853331424'
-    password: 'H7mP2xY9kJ4nQ8wR5tF6vB3z'
-    port: 443
-    server: '202.146.222.29'
-    skip-cert-verify: true
-    sni: 'https://t.me/wangcai2≡ƒç¿≡ƒç│'
-    type: 'hysteria2'
-    _poolOnly: true
-  - name: 'hysteria2-1853331597'
-    password: 'H7mP2xY9kJ4nQ8wR5tF6vB3z'
-    port: 443
-    server: '202.146.222.29'
-    skip-cert-verify: true
-    sni: 'https://t.me/wangcai2ð\x9f\x87¨ð\x9f\x87³'
-    type: 'hysteria2'
-    _poolOnly: true
-  - name: 'hysteria2-1853331603'
-    password: 'H7mP2xY9kJ4nQ8wR5tF6vB3z'
-    port: 443
-    server: '202.146.222.29'
-    skip-cert-verify: true
-    sni: 'https://t.me/wangcai2ⁿß«ⁿß'
-    type: 'hysteria2'
-    _poolOnly: true
-  - name: '🌐 其他地区 (Other) 489 - tammader'
-    type: 'vless'
-    server: '172.64.146.66'
-    port: 443
-    uuid: 'd342d11e-d224-4463-b982-532309285094'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'ccc.010304.xyz'
-    network: 'ws'
-    ws-opts:
-      path: '/fp=chrome'
-      headers:
-        Host: 'ccc.010304.xyz'
-    _poolOnly: true
-  - name: 'hysteria2-1853331567'
-    password: 'H7mP2xY9kJ4nQ8wR5tF6vB3z'
-    port: 443
-    server: '202.146.222.29'
-    skip-cert-verify: true
-    sni: 'https%3a%2f%2ft.me%2fwangcai2%d1%80%d2%b9%d2%af%d1%91%d1%80%d2%b9%d2%af%d1%96'
-    type: 'hysteria2'
-    _poolOnly: true
-  - name: '🇹🇷 土耳其 (Turkey) 22 - tammader'
-    type: 'vless'
-    server: '155.103.71.142'
-    port: 443
-    uuid: 'd342d11e-d224-4463-b982-532309285094'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'ccc.010304.xyz'
-    network: 'ws'
-    ws-opts:
-      path: '/fp=chrome'
-      headers:
-        Host: 'ccc.010304.xyz'
-    _poolOnly: true
-  - name: 'hysteria2-1832880301'
-    password: 'H7mP2xY9kJ4nQ8wR5tF6vB3z'
-    port: 443
-    server: '202.146.222.29'
-    skip-cert-verify: true
-    sni: 'https://t.me/wangcai2'
-    type: 'hysteria2'
-    _poolOnly: true
-  - alterId: 0
-    cipher: 'auto'
-    name: 'vmess-1837386988'
-    network: 'raw'
-    port: 18000
-    server: '149.88.23.207'
-    type: 'vmess'
-    udp: true
-    uuid: 'f8c8dc3d-0d37-46b0-8b34-a7232882fcfe'
-    _poolOnly: true
-  - name: 'hysteria2-1832880243'
-    password: '3d7634af8cb2c6cb4bac1c0efad8b43d'
-    port: 50160
-    server: '152.67.200.82'
-    skip-cert-verify: true
-    sni: 't.me'
-    type: 'hysteria2'
-    _poolOnly: true
-  - name: 'hysteria2-1832880226'
-    password: '3d7634af8cb2c6cb4bac1c0efad8b43d'
-    port: 50160
-    server: '152.67.200.82'
-    skip-cert-verify: true
-    sni: 'whatsapp.com'
-    type: 'hysteria2'
+        Host: 'lcv8v9l7oyamxxfz.v.3dns.vip'
     _poolOnly: true
   - type: 'vless'
-    name: '🇧🇬[www.v2nodes.com] vless-BG-3... #3'
-    server: '155.103.71.142'
+    name: 'vless-1863464818'
+    server: '104.18.42.98'
     port: 443
     tls: true
-    uuid: 'd342d11e-d224-4463-b982-532309285094'
+    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
     network: 'ws'
-    sni: 'ccc.010304.xyz'
+    sni: 'jp3.yohototo.top'
     ws-opts:
-      path: '/fp=chromefp=chrome'
+      path: '/tyxyws'
       headers:
-        Host: 'ccc.010304.xyz'
-    _poolOnly: true
-  - name: 'hysteria2-1853331559'
-    password: '3d7634af8cb2c6cb4bac1c0efad8b43d'
-    port: 50160
-    server: '152.67.200.82'
-    skip-cert-verify: true
-    sni: ''
-    type: 'hysteria2'
-    _poolOnly: true
-  - name: 'hysteria2-1832880261'
-    password: 'H7mP2xY9kJ4nQ8wR5tF6vB3z'
-    port: 443
-    server: '202.146.222.29'
-    skip-cert-verify: true
-    sni: 't.me'
-    type: 'hysteria2'
-    _poolOnly: true
-  - name: '🇯🇵 日本 (Japan) 639 - tammader'
-    type: 'vless'
-    server: '109.120.155.155'
-    port: 444
-    uuid: '99ab6748-3d57-4562-9451-843c15960b9b'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'ke859ch2gse1iery3hiz.e3q4a5mjld11kpj0zj8dq.workers.dev'
-    network: 'ws'
-    ws-opts:
-      path: '/@Marisa_kristi'
-      headers:
-        Host: 'ke859ch2gse1iery3hiz.e3q4a5mjld11kpj0zj8dq.workers.dev'
-    _poolOnly: true
-  - name: '🇵🇱 PL 170 - tammader'
-    type: 'vless'
-    server: '2.26.6.1'
-    port: 2087
-    uuid: 'b9fdc03f-389b-4cda-9be4-155b623bee15'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: '2.26.6.1'
-    _poolOnly: true
-  - name: '🇯🇵 日本 (Japan) 707 - tammader'
-    type: 'vless'
-    server: '89.22.224.146'
-    port: 43788
-    uuid: '6fbd9bd1-ccd4-4e2f-a918-a0f871965763'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'ke859ch2gse1iery3hiz.e3q4a5mjld11kpj0zj8dq.workers.dev'
-    network: 'ws'
-    ws-opts:
-      path: '/@Marisa_kristi'
-      headers:
-        Host: 'ke859ch2gse1iery3hiz.e3q4a5mjld11kpj0zj8dq.workers.dev'
-    _poolOnly: true
-  - client-fingerprint: 'random'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853340357'
-    network: 'tcp'
-    port: 43000
-    reality-opts:
-      public-key: 'lmT0SFJL1A8_ariRWL65dhShaqFbpitjGanv7EFnoR0'
-      short-id: '725e6ea0'
-    server: '144.48.11.97'
-    servername: '144.48.11.97'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '4799abf0-d0d9-4a46-9c31-b1f76ae00e1e'
-    _poolOnly: true
-  - name: '🇹🇷 土耳其 (Turkey) 425 - tammader'
-    type: 'vless'
-    server: '155.103.71.142'
-    port: 443
-    uuid: 'd342d11e-d224-4463-b982-532309285094'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'ccc.010304.xyz'
-    network: 'ws'
-    ws-opts:
-      path: '/fp=chromefp=chrome'
-      headers:
-        Host: 'ccc.010304.xyz'
-    _poolOnly: true
-  - name: '🇯🇵 日本 (Japan) 173 - tammader'
-    type: 'vless'
-    server: '83.147.216.223'
-    port: 4433
-    uuid: '660174a2-d32d-4521-840d-d1853bfc80b8'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: '3t1yvbyla-rj740g.28m7r63dttya6gazmhoo.workers.dev'
-    network: 'ws'
-    ws-opts:
-      path: '/@Marisa_kristi'
-      headers:
-        Host: '3t1yvbyla-rj740g.28m7r63dttya6gazmhoo.workers.dev'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1832754513'
-    network: 'raw'
-    port: 16016
-    reality-opts:
-      public-key: 'k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0'
-      short-id: '48050fab'
-    server: '67.220.73.204'
-    servername: 'www.apple.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '814bd064-544d-4255-a070-5705c03f6da9'
-    _poolOnly: true
-  - name: '🇦🇪 阿联酋 (UAE) 05 - tammader'
-    type: 'vless'
-    server: '95.174.68.188'
-    port: 14430
-    uuid: '965ffbbe-c6b6-4d5f-8dea-6d8abc55d9c0'
-    udp: true
-    tls: false
-    skip-cert-verify: true
-    network: 'ws'
-    ws-opts:
-      path: '/vless'
-      headers:
-        Host: '95.174.68.188'
-    _poolOnly: true
-  - name: '🇰🇷 韩国 (South Korea) 611 - tammader'
-    type: 'vless'
-    server: 'kr002.zestapp778.com'
-    port: 37095
-    uuid: 'e9a8144e-5237-488a-afb1-9ca3d8d54c80'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'kr002.zestapp778.com'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1828373783'
-    network: 'raw'
-    port: 18662
-    reality-opts:
-      public-key: 'k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0'
-      short-id: '48050fab'
-    server: '67.220.73.204'
-    servername: 'www.apple.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '814bd064-544d-4255-a070-5705c03f6da9'
-    _poolOnly: true
-  - name: '🇸🇬 新加坡 (Singapore) 276 - tammader'
-    type: 'vless'
-    server: '203.137.165.164'
-    port: 57554
-    uuid: 'e5b2a063-a114-4bd0-802d-b2da1fe1d1da'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: '9-7u3b6e.wzkija0v0du4yhk6jfyfafml3nh22kne.workers.dev'
-    network: 'ws'
-    ws-opts:
-      path: '/@Marisa_kristi'
-      headers:
-        Host: '9-7u3b6e.wzkija0v0du4yhk6jfyfafml3nh22kne.workers.dev'
-    _poolOnly: true
-  - name: '🇦🇺 澳大利亚 (Australia) 247 - tammader'
-    type: 'vless'
-    server: 'au001.zestapp778.com'
-    port: 35652
-    uuid: 'e9a8144e-5237-488a-afb1-9ca3d8d54c80'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'au001.zestapp778.com'
-    _poolOnly: true
-  - name: 'trojan-1929965333'
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    port: 443
-    server: '45.63.30.142'
-    skip-cert-verify: false
-    sni: 'connectwithemployerstohireyouridealteam.com'
-    type: 'trojan'
-    udp: true
-    _poolOnly: true
-  - name: '🇯🇵 日本 (Japan) 589 - tammader'
-    type: 'vless'
-    server: '84.22.150.39'
-    port: 7443
-    uuid: '9d5cbb90-876b-448d-9874-27ab35bae6e7'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'woc0zvrf11w2endu.dphdlc1u77bs3y4kvussbuap4p576f1ws7igthq8zbf3.workers.dev'
-    network: 'ws'
-    ws-opts:
-      path: '/@Marisa_kristi'
-      headers:
-        Host: 'woc0zvrf11w2endu.dphdlc1u77bs3y4kvussbuap4p576f1ws7igthq8zbf3.workers.dev'
-    _poolOnly: true
-  - name: 'trojan-1932509804'
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    port: 443
-    server: '45.63.30.142'
-    skip-cert-verify: true
-    sni: ''
-    type: 'trojan'
-    udp: true
-    _poolOnly: true
-  - name: 'vless-1853340424'
-    network: 'tcp'
-    port: 443
-    server: '139.162.27.96'
-    servername: 'aka.ms'
-    skip-cert-verify: true
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'f1178fbe-1420-4eef-b087-4f33b32b4a19'
+        Host: 'jp3.yohototo.top'
     _poolOnly: true
   - type: 'vless'
-    name: '🇦🇪[www.v2nodes.com] vless-AE-1...'
-    server: '95.174.68.188'
-    port: 14430
-    tls: false
-    uuid: '965ffbbe-c6b6-4d5f-8dea-6d8abc55d9c0'
-    network: 'ws'
-    sni: '95.174.68.188'
-    ws-opts:
-      path: '/vless'
-      headers:
-        Host: '95.174.68.188'
-    _poolOnly: true
-  - name: 'hysteria2-1853331449'
-    password: 'H7mP2xY9kJ4nQ8wR5tF6vB3z'
+    name: 'vless-1843512959'
+    server: '104.16.10.72'
     port: 443
-    server: '202.146.222.29'
-    skip-cert-verify: true
-    sni: 'https://t.me/wangcai2рҹүҹү'
-    type: 'hysteria2'
-    _poolOnly: true
-  - name: 'hysteria2-1853331618'
-    password: 'H7mP2xY9kJ4nQ8wR5tF6vB3z'
-    port: 443
-    server: '202.146.222.29'
-    skip-cert-verify: true
-    sni: 'https%3a%2f%2ft.me%2fwangcai2%d1%80%d2%b9%d2%af%d1%80%d2%b9%d2%af'
-    type: 'hysteria2'
-    _poolOnly: true
-  - name: '🌐 其他地区 (Other) 478 - tammader'
-    type: 'vless'
-    server: '172.64.146.66'
-    port: 443
-    uuid: '16e80f38-e97e-4b14-ba89-77d87a3e637f'
-    udp: true
     tls: true
-    skip-cert-verify: true
-    servername: 'ex3r.qzz.io'
+    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
     network: 'ws'
+    sni: 'jp3.yohototo.top'
     ws-opts:
-      path: '/sg-orcl'
+      path: '/tyxyws'
       headers:
-        Host: 'ex3r.qzz.io'
+        Host: 'jp3.yohototo.top'
     _poolOnly: true
-  - name: '🇸🇬 新加坡 (Singapore) 687 - tammader'
-    type: 'vless'
-    server: '95.111.195.98'
+  - type: 'vless'
+    name: 'vless-1827151478-source-458af516e04db375'
+    server: '104.16.111.102'
     port: 443
-    uuid: '270c3fa5-0293-4d68-875c-6cdc3bdc5b84'
-    udp: true
-    tls: false
-    skip-cert-verify: true
-    network: 'ws'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: '95.111.195.98'
-    _poolOnly: true
-  - name: 'hysteria2-1853331608'
-    password: 'H7mP2xY9kJ4nQ8wR5tF6vB3z'
-    port: 443
-    server: '202.146.222.29'
-    skip-cert-verify: true
-    sni: 'google.com'
-    type: 'hysteria2'
-    _poolOnly: true
-  - name: '🇸🇬 新加坡 (Singapore) 184 - tammader'
-    type: 'vless'
-    server: '45.32.117.217'
-    port: 443
-    uuid: 'e9a8144e-5237-488a-afb1-9ca3d8d54c80'
-    udp: true
     tls: true
-    skip-cert-verify: true
-    servername: 'sg003.zestapp778.com'
+    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
+    network: 'ws'
+    sni: 'jp3.yohototo.top'
+    ws-opts:
+      path: '/tyxyws'
+      headers:
+        Host: 'jp3.yohototo.top'
     _poolOnly: true
-  - name: '🇮🇳 印度 (India) 553 - tammader'
-    type: 'vmess'
+  - type: 'vmess'
+    name: '🇮🇳IN-152.67.8.205-5782'
     server: '152.67.8.205'
     port: 80
     uuid: '9db4c708-aef8-4359-821b-38e47990be0d'
     alterId: 0
     cipher: 'auto'
-    udp: true
     tls: false
-    skip-cert-verify: true
-    network: 'ws'
-    ws-opts:
-      path: ''
-      headers:
-        Host: 'in-152.67.8.205-0242'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1831116753'
-    network: 'tcp'
-    port: 443
-    reality-opts:
-      public-key: 'TqIFzUEEI1pIOR8BEpkNKEXcJ6cPfE5EzHb5joIivig'
-      short-id: '9930177816ab09da'
-    server: '206.206.76.75'
-    servername: 'www.cloudflare.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '1e3d3634-36ac-43ac-a439-9665d885238f'
-    _poolOnly: true
-  - name: '🇸🇬 新加坡 (Singapore) 278 - tammader'
-    type: 'vless'
-    server: '45.77.40.28'
-    port: 443
-    uuid: 'e9a8144e-5237-488a-afb1-9ca3d8d54c80'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'sg003.zestapp778.com'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    name: 'vless-1848101875'
-    network: 'raw'
-    port: 2053
-    reality-opts:
-      public-key: 'F6C33iIbfmt1mUsuLTarIC8ygdHKMqsaGvrSQltyxUo'
-      short-id: '429499c03d4cc8a0'
-    server: '151.245.106.49'
-    servername: 'www.cloudflare.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'a2de9567-9646-45a9-a410-7303a43bdb6c'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1835060902'
-    network: 'raw'
-    port: 443
-    reality-opts:
-      public-key: 'cwWhNuekusD1iPZZ--7G891dU9PCacxyCYwsZxOApHA'
-      short-id: 'b2efed6d157e7bb0'
-    server: '5.34.177.164'
-    servername: 'gateway.icloud.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'ca678d26-5435-4d13-b378-06c4c3b070ff'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1841013199'
-    network: 'raw'
-    port: 443
-    reality-opts:
-      public-key: 'ICrsmE5hqN7IsDIyHPG2WkDUUFK_VEj9yobLv8zuDwk'
-      short-id: '757b9e1ef18e60f0'
-    server: '195.123.208.32'
-    servername: 'gateway.icloud.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '1ebcb694-875c-4be7-b6a2-d53c8208991b'
-    _poolOnly: true
-  - name: '🇸🇬 新加坡 (Singapore) 137 - tammader'
-    type: 'vless'
-    server: 'sg003.zestapp778.com'
-    port: 443
-    uuid: 'e9a8144e-5237-488a-afb1-9ca3d8d54c80'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'sg003.zestapp778.com'
-    _poolOnly: true
-  - name: '🇱🇰 LK 728 - tammader'
-    type: 'vless'
-    server: '170.114.45.6'
-    port: 8080
-    uuid: '990bf436-f1b9-4e7f-857d-14378acc4ae5'
-    udp: true
-    tls: false
-    skip-cert-verify: true
+    sni: '152.67.8.205'
     network: 'ws'
     ws-opts:
       path: '/'
-      headers:
-        Host: 'free.nadun.store'
     _poolOnly: true
-  - name: '🌐 其他地区 (Other) 306 - tammader'
+  - name: '🇭🇰 中国香港 (Hong Kong) 07 - tammader'
     type: 'vless'
-    server: '104.16.10.84'
-    port: 443
-    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'jp3.yohototo.top'
-    network: 'ws'
-    ws-opts:
-      path: '/tyxyws'
-      headers:
-        Host: 'jp3.yohototo.top'
-    _poolOnly: true
-  - name: 'hysteria2-1853331439'
-    password: 'H7mP2xY9kJ4nQ8wR5tF6vB3z'
-    port: 443
-    server: '202.146.222.29'
-    skip-cert-verify: true
-    sni: 'https://t.me/wangcai2ⁿß'
-    type: 'hysteria2'
-    _poolOnly: true
-  - name: '🇹🇭 TH 573 - tammader'
-    type: 'vless'
-    server: 'v2ray.simspeedup.com'
-    port: 80
-    uuid: '3c52e091-6714-4915-949f-2149fe69951b'
-    udp: true
-    tls: false
-    skip-cert-verify: true
-    network: 'ws'
-    ws-opts:
-      path: '/ws'
-      headers:
-        Host: 'v2ray.simspeedup.com'
-    _poolOnly: true
-  - name: '🇹🇭 TH 591 - tammader'
-    type: 'vless'
-    server: '103.86.49.57'
-    port: 80
-    uuid: '3c52e091-6714-4915-949f-2149fe69951b'
-    udp: true
-    tls: false
-    skip-cert-verify: true
-    network: 'ws'
-    ws-opts:
-      path: '/ws'
-      headers:
-        Host: 'ais.speedtest.net'
-    _poolOnly: true
-  - name: '🇹🇭 TH 347 - tammader'
-    type: 'vless'
-    server: '103.86.49.57'
-    port: 80
-    uuid: '3c52e091-6714-4915-949f-2149fe69951b'
-    udp: true
-    tls: false
-    skip-cert-verify: true
-    network: 'ws'
-    ws-opts:
-      path: '/ws'
-      headers:
-        Host: 'aIs.SpEeDtEsT.nEt'
-    _poolOnly: true
-  - name: '🌐 其他地区 (Other) 108 - tammader'
-    type: 'vless'
-    server: '188.114.97.6'
-    port: 443
-    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'jp3.yohototo.top'
-    network: 'ws'
-    ws-opts:
-      path: '/tyxyws'
-      headers:
-        Host: 'jp3.yohototo.top'
-    _poolOnly: true
-  - name: '🇷🇺 俄罗斯 (Russia) 701 - tammader'
-    type: 'vless'
-    server: 'xsru2.freeddns.org'
-    port: 443
-    uuid: 'c90395e6-2140-47ad-a54d-9b166729d3ef'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'xsru2.freeddns.org'
-    network: 'ws'
-    ws-opts:
-      path: '/wsru'
-      headers:
-        Host: 'xsru2.freeddns.org'
-    _poolOnly: true
-  - name: 'vless-1828374791'
-    network: 'raw'
-    port: 443
-    server: '137.220.221.179'
-    type: 'vless'
-    udp: true
-    uuid: 'a16a3336-c9ab-489f-9b85-c973f5e2cfa4'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1835059139'
-    network: 'raw'
-    port: 443
-    reality-opts:
-      public-key: '4eE3K8Eac-ELze-LwRyJolqmhPqgCVqwQM1DKu6i0Ts'
-      short-id: 'e93d46ee3735069e'
-    server: '193.238.154.78'
-    servername: 'gateway.icloud.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '897d47f8-4dd5-42a1-bcd0-bef19caff55a'
-    _poolOnly: true
-  - name: '🇺🇸 美国 (United States) 718 - tammader'
-    type: 'vless'
-    server: '104.24.31.89'
-    port: 443
-    uuid: 'aebe5a70-0ca3-46ce-8208-8b5bab1346ce'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'rAyAn-007.nAsTaRaN.DpDnS.OrG'
-    network: 'ws'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'rayan-007.nastaran.dpdns.org'
-    _poolOnly: true
-  - name: 'hysteria2-1832881362'
-    password: '3d7634af8cb2c6cb4bac1c0efad8b43d'
-    port: 50160
-    server: '152.67.200.82'
-    skip-cert-verify: true
-    sni: 'speedtest.tinkoff.ru'
-    type: 'hysteria2'
-    _poolOnly: true
-  - type: 'vless'
-    name: '🇮🇳[www.v2nodes.com] vless-IN-1...'
-    server: '13.140.56.100'
+    server: '213.176.92.168'
     port: 14430
+    uuid: 'ba52cc43-700d-4040-9444-29214c98e6e0'
+    udp: true
     tls: false
-    uuid: '68512eac-cd53-4de3-8d1e-08f6e04af1a9'
+    skip-cert-verify: true
     network: 'ws'
-    sni: '13.140.56.100'
     ws-opts:
       path: '/vless'
       headers:
-        Host: '13.140.56.100'
+        Host: '213.176.92.168'
     _poolOnly: true
-  - name: '🇮🇩 ID 763 - tammader'
-    type: 'vless'
-    server: 'in001.zestapp778.com'
-    port: 57353
-    uuid: 'e9a8144e-5237-488a-afb1-9ca3d8d54c80'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'in001.zestapp778.com'
-    _poolOnly: true
-  - name: '🇮🇳 印度 (India) 53 - tammader'
-    type: 'vless'
-    server: 'in002.zestapp778.com'
-    port: 46362
-    uuid: 'e9a8144e-5237-488a-afb1-9ca3d8d54c80'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'in002.zestapp778.com'
-    _poolOnly: true
-  - name: '🇭🇰 中国香港 (Hong Kong) 207 (家宽) - tammader'
-    type: 'vless'
-    server: '103.180.20.108'
-    port: 8443
-    uuid: 'c1c04450-bf71-4049-ad0c-9cf6d94d9f1f'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'ty986gfazs.cainiaohub.xyz'
-    network: 'ws'
-    ws-opts:
-      path: '/81574b6b-c9d7-44a0-b83d-dad56e8cb530'
-      headers:
-        Host: 'ty986gfazs.cainiaohub.xyz'
-    _poolOnly: true
-  - name: 'hysteria2-1853331556'
-    password: 'H7mP2xY9kJ4nQ8wR5tF6vB3z'
+  - type: 'vless'
+    name: 'vless-1863476159'
+    server: '104.21.6.186'
     port: 443
-    server: '202.146.222.29'
-    skip-cert-verify: true
-    sni: 'https://t.me/wangcai2рҹүрҹү'
-    type: 'hysteria2'
-    _poolOnly: true
-  - name: 'hysteria2-1832880264'
-    password: 'H7mP2xY9kJ4nQ8wR5tF6vB3z'
-    port: 443
-    server: '202.146.222.174'
-    skip-cert-verify: true
-    sni: 't.me'
-    type: 'hysteria2'
-    _poolOnly: true
-  - name: 'trojan-1837386994'
-    password: 'p5jTPcffLgi4gaNOJd2KUTb9YEPBBD5B'
-    port: 56127
-    server: '154.90.62.70'
-    skip-cert-verify: true
-    sni: ''
-    type: 'trojan'
-    udp: true
-    _poolOnly: true
-  - name: '🇭🇰 中国香港 (Hong Kong) 403 (家宽) - tammader'
-    type: 'vless'
-    server: '103.148.73.173'
-    port: 8443
-    uuid: 'c1c04450-bf71-4049-ad0c-9cf6d94d9f1f'
-    udp: true
     tls: true
-    skip-cert-verify: true
-    servername: 'ty986gfazs.cainiaohub.xyz'
-    network: 'ws'
-    ws-opts:
-      path: '/81574b6b-c9d7-44a0-b83d-dad56e8cb530'
-      headers:
-        Host: '103.148.73.173'
-    _poolOnly: true
-  - name: '🇮🇳 印度 (India) 476 - tammader'
-    type: 'vless'
-    server: '139.84.145.241'
-    port: 46362
-    uuid: 'e9a8144e-5237-488a-afb1-9ca3d8d54c80'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'in002.zestapp778.com'
-    _poolOnly: true
-  - name: '🇹🇭 TH 319 - tammader'
-    type: 'vless'
-    server: 'v2ray.simspeedup.com'
-    port: 80
-    uuid: '3c52e091-6714-4915-949f-2149fe69951b'
-    udp: true
-    tls: false
-    skip-cert-verify: true
-    network: 'ws'
-    ws-opts:
-      path: '/ws'
-      headers:
-        Host: 'ais.speedtest.net'
-    _poolOnly: true
-  - name: '🌐 其他地区 (Other) 155 - tammader'
-    type: 'vless'
-    server: '104.16.10.9'
-    port: 443
     uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'jp3.yohototo.top'
     network: 'ws'
+    sni: 'jp3.yohototo.top'
     ws-opts:
       path: '/tyxyws'
       headers:
         Host: 'jp3.yohototo.top'
     _poolOnly: true
-  - name: '🇸🇬 新加坡 (Singapore) 17 - tammader'
-    type: 'vless'
-    server: '139.162.27.96'
-    port: 2096
-    uuid: '6e59d5c5-7aa3-4c36-a4c4-e3b899525ed2'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'free-server.techsonic.dev'
-    network: 'ws'
-    ws-opts:
-      path: '/free-server.techsonic.dev'
-      headers:
-        Host: 'free-server.techsonic.dev'
-    _poolOnly: true
-  - alterId: 0
-    cipher: 'auto'
-    name: 'vmess-1832868262'
-    network: 'ws'
-    port: 443
-    server: 'seoul02.zgjok.com'
-    servername: 'seoul02.zgjok.com'
-    skip-cert-verify: true
-    tls: true
+  - name: '🇸🇬 新加坡 (Singapore) 49 - tammader'
     type: 'vmess'
-    udp: true
-    uuid: '1a1e5196-eab4-4772-9012-65c27f19a524'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853336903'
-    network: 'tcp#🎡88@oneclickvpnkeys'
-    port: 24146
-    reality-opts:
-      public-key: 'VeluC9A7XDurAWQNgXKShS2SJSgoK79QHFgiAMYrvGo'
-      short-id: '7205d9079521832c'
-    server: '54.251.9.130'
-    servername: 'www.intel.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '9d9a048b-3aea-4b3e-b106-1106bf301feb'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1929912487'
-    network: 'tcp'
-    port: 443
-    reality-opts:
-      public-key: 'MiQ5B4j6In71lWvCi0vO_DkVSDb7sii34bh5efBMswk'
-      short-id: '3c032a7e'
-    server: '45.154.26.63'
-    servername: 'www.cloudflare.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'ff85e702-b605-4109-884d-2c1f065d0954'
-    _poolOnly: true
-  - name: 'vless-1927934775'
-    network: 'tcp'
-    port: 22222
-    server: '38.60.254.50'
-    servername: 'th001.zestapp778.com'
-    skip-cert-verify: false
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'e9a8144e-5237-488a-afb1-9ca3d8d54c80'
-    _poolOnly: true
-  - name: '🇹🇭 TH 608 - tammader'
-    type: 'vless'
-    server: '104.16.10.9'
-    port: 443
-    uuid: '3c52e091-6714-4915-949f-2149fe69951b'
+    server: '18.143.188.217'
+    port: 30330
+    uuid: 'dfa9f875-3805-49d9-8636-46b6899be24e'
+    alterId: 0
+    cipher: 'auto'
     udp: true
     tls: true
     skip-cert-verify: true
-    servername: 'v2ray.simspeedup.com'
+    servername: 'sg-transit-3.nebulacloud.win'
     network: 'ws'
     ws-opts:
-      path: '/ws'
+      path: '/ca/getData'
       headers:
-        Host: 'v2ray.simspeedup.com'
-    _poolOnly: true
-  - name: 'vless-1927724261'
-    network: 'raw'
-    port: 22222
-    server: '38.60.254.50'
-    servername: 'th001.zestapp778.com'
-    skip-cert-verify: false
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'e9a8144e-5237-488a-afb1-9ca3d8d54c80'
-    _poolOnly: true
-  - name: 'vless-1926288585'
-    network: 'tcp'
-    port: 22222
-    server: 'th001.zestapp778.com'
-    servername: 'th001.zestapp778.com'
-    skip-cert-verify: false
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'e9a8144e-5237-488a-afb1-9ca3d8d54c80'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1930761430'
-    network: 'raw'
-    port: 443
-    reality-opts:
-      public-key: 'MiQ5B4j6In71lWvCi0vO_DkVSDb7sii34bh5efBMswk'
-      short-id: '3c032a7e'
-    server: '45.154.26.63'
-    servername: 'www.cloudflare.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'ff85e702-b605-4109-884d-2c1f065d0954'
-    _poolOnly: true
-  - client-fingerprint: 'firefox'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1828373327'
-    network: 'raw'
-    port: 28573
-    reality-opts:
-      public-key: '1DJr9toke7FRuSXjibBVuNvRnLnJnN5kXwUBG6Romzg'
-      short-id: '03653bc03be10c97'
-    server: '18.183.215.124'
-    servername: 'www.sony.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '871bfce7-8440-4394-8d82-56b51f20fdad'
-    _poolOnly: true
-  - name: '🇱🇰 LK 377 - tammader'
-    type: 'vless'
-    server: '170.114.46.6'
-    port: 8080
-    uuid: '990bf436-f1b9-4e7f-857d-14378acc4ae5'
-    udp: true
-    tls: false
-    skip-cert-verify: true
-    network: 'ws'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'free.nadun.store'
-    _poolOnly: true
-  - name: '🇯🇵 日本 (Japan) 734 - tammader'
-    type: 'vless'
-    server: '54.179.79.12'
-    port: 53646
-    uuid: 'd57b9436-a238-4066-8b11-d23ae57c5982'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: '9-7u3b6e.wzkija0v0du4yhk6jfyfafml3nh22kne.workers.dev'
-    network: 'ws'
-    ws-opts:
-      path: '/@Marisa_kristi'
-      headers:
-        Host: '9-7u3b6e.wzkija0v0du4yhk6jfyfafml3nh22kne.workers.dev'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    name: 'vless-1844556217'
-    network: 'tcp'
-    port: 21004
-    reality-opts:
-      public-key: 'HZwHZBP3x4Yo4UQiHcypRJIU_UdZY5OAapQM8RUqVAU'
-      short-id: '2df2bd9d8366cef1'
-    server: '103.106.229.37'
-    servername: 'www.cloudflare.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '41b1c169-5905-4d98-b6a6-56896c25737c'
+        Host: 'sg-transit-3.nebulacloud.win'
     _poolOnly: true
   - type: 'vless'
-    name: '🇲🇾[www.v2nodes.com] vless-MY-5...'
-    server: '216.173.67.59'
+    name: 'vless-1900998711'
+    server: '104.16.0.1'
     port: 443
     tls: true
-    uuid: 'd342d11e-d224-4463-b982-532309285094'
+    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
     network: 'ws'
-    sni: 'ccc.010304.xyz'
+    sni: 'jp3.yohototo.top'
     ws-opts:
-      path: '/fp=chrome'
+      path: '/tyxyws'
       headers:
-        Host: 'ccc.010304.xyz'
+        Host: 'jp3.yohototo.top'
     _poolOnly: true
-  - name: '🇲🇾 MY 106 - tammader'
-    type: 'vless'
-    server: '216.173.67.59'
-    port: 443
-    uuid: 'd342d11e-d224-4463-b982-532309285094'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'ccc.010304.xyz'
-    network: 'ws'
-    ws-opts:
-      path: '/fp=chrome'
-      headers:
-        Host: 'ccc.010304.xyz'
-    _poolOnly: true
-  - name: '🇯🇵 日本 (Japan) 345 - tammader'
-    type: 'vless'
+  - type: 'vless'
+    name: 'vless-1867009433'
     server: '104.16.111.202'
     port: 443
-    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
-    udp: true
     tls: true
-    skip-cert-verify: true
-    servername: 'jp3.yohototo.top'
+    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
     network: 'ws'
+    sni: 'jp3.yohototo.top'
     ws-opts:
       path: '/tyxyws'
       headers:
         Host: 'jp3.yohototo.top'
     _poolOnly: true
-  - name: 'SG - zhuhai.uk'
-    type: 'socks5'
-    server: '47.236.168.243'
-    port: 1080
-    username: '8888'
-    password: '8888'
-    _poolOnly: true
-  - name: '🇸🇬 新加坡 (Singapore) 371 - tammader'
-    type: 'vmess'
-    server: 'wjofhsqteueywxeq.v.3dns.vip'
+  - type: 'vless'
+    name: 'vless-1832764138'
+    server: '104.17.210.74'
     port: 443
-    uuid: 'a9f4de8b-68f1-44b6-b6a2-1db60940503a'
-    alterId: 0
-    cipher: 'auto'
-    udp: true
     tls: true
-    skip-cert-verify: true
-    servername: ''
-    network: 'ws'
-    ws-opts:
-      path: '/ws-vmess'
-      headers:
-        Host: ''
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    name: 'vless-1828653269'
-    network: 'raw'
-    port: 21001
-    reality-opts:
-      public-key: 'HZwHZBP3x4Yo4UQiHcypRJIU_UdZY5OAapQM8RUqVAU'
-      short-id: 'ab39fc68ab3dee81'
-    server: '511.150333.xyz'
-    servername: 'www.cloudflare.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '41b1c169-5905-4d98-b6a6-56896c25737c'
-    _poolOnly: true
-  - name: '🇱🇰 LK 330 - tammader'
-    type: 'vless'
-    server: 'support.zoom.us'
-    port: 8080
-    uuid: '990bf436-f1b9-4e7f-857d-14378acc4ae5'
-    udp: true
-    tls: false
-    skip-cert-verify: true
-    network: 'ws'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'free.nadun.store'
-    _poolOnly: true
-  - name: 'trojan-1927187200'
-    password: 'Trojan@82164024'
-    port: 443
-    server: 'au.tronsg.com'
-    skip-cert-verify: true
-    sni: 'au.tronsg.com'
-    type: 'trojan'
-    udp: true
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853340459'
-    network: 'tcp'
-    port: 443
-    reality-opts:
-      public-key: 'J-dv-HrWfQ_IOoyutv0Kg-rO8QwoRwc02dS1dS_tblk'
-      short-id: 'd659da01fb94'
-    server: 'server.slavkiti.monster'
-    servername: 'www.foxsports.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'ff40696b-06d6-443b-9481-8d01eddd13e1'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853340561'
-    network: 'tcp'
-    port: 443
-    reality-opts:
-      public-key: 'FjcEZNQ8t5E4R04_11T6ghsOutdqwKKrelkuadakoQg'
-      short-id: 'b27ba098687b'
-    server: 'staging.lastilhame.monster'
-    servername: 'www.tradingview.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'ee39fb11-56a3-4ee7-9e7c-35a4235bd30e'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853340344'
-    network: 'tcp'
-    port: 443
-    reality-opts:
-      public-key: 'FjcEZNQ8t5E4R04_11T6ghsOutdqwKKrelkuadakoQg'
-      short-id: 'fc994ae7eb10'
-    server: 'staging.lastilhame.monster'
-    servername: 'www.tradingview.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '317bc783-340f-453c-afb5-b6bf637c0b23'
-    _poolOnly: true
-  - name: '🇦🇱 AL 201 - tammader'
-    type: 'ss'
-    server: 'dns22.m3hrzd.ir'
-    port: 1348
-    cipher: 'chacha20-ietf-poly1305'
-    password: 'LzEeLj2OP0DQmpPDtVTazdGC0cHcT0Kn'
-    udp: true
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853340249'
-    network: 'tcp'
-    port: 443
-    reality-opts:
-      public-key: 'J-dv-HrWfQ_IOoyutv0Kg-rO8QwoRwc02dS1dS_tblk'
-      short-id: '1374bddeb25d'
-    server: 'server.slavkiti.monster'
-    servername: 'www.tradingview.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '6dfc9149-1ff9-41c3-8563-0ef284381731'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853340603'
-    network: 'tcp'
-    port: 443
-    reality-opts:
-      public-key: 'J-dv-HrWfQ_IOoyutv0Kg-rO8QwoRwc02dS1dS_tblk'
-      short-id: '6c825bc79850'
-    server: 'server.slavkiti.monster'
-    servername: 'www.microsoft.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '1896c6c9-a941-4688-a865-29027bf7f8e6'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853340520'
-    network: 'tcp'
-    port: 443
-    reality-opts:
-      public-key: 'J-dv-HrWfQ_IOoyutv0Kg-rO8QwoRwc02dS1dS_tblk'
-      short-id: '1036b2383b72'
-    server: 'server.slavkiti.monster'
-    servername: 'www.mozilla.org'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'ed042cf7-efe0-49bd-848b-8d7e655111ff'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853340446'
-    network: 'tcp'
-    port: 443
-    reality-opts:
-      public-key: 'FjcEZNQ8t5E4R04_11T6ghsOutdqwKKrelkuadakoQg'
-      short-id: '60500a63ad12'
-    server: 'staging.lastilhame.monster'
-    servername: 'www.microsoft.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '106d20f6-d70a-40e2-b69b-8e82baf8d117'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853340909'
-    network: 'tcp'
-    port: 443
-    reality-opts:
-      public-key: 'J-dv-HrWfQ_IOoyutv0Kg-rO8QwoRwc02dS1dS_tblk'
-      short-id: 'bbcab8fa80a3'
-    server: 'server.slavkiti.monster'
-    servername: 'www.microsoft.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'b60cab55-e7a1-413d-a297-ddd7bad3fb62'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853340976'
-    network: 'tcp'
-    port: 443
-    reality-opts:
-      public-key: 'FjcEZNQ8t5E4R04_11T6ghsOutdqwKKrelkuadakoQg'
-      short-id: '18e4d2d21241'
-    server: 'staging.lastilhame.monster'
-    servername: 'www.microsoft.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '455cfdc6-9abf-4e40-863f-5ff6cc63457c'
-    _poolOnly: true
-  - client-fingerprint: 'firefox'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853341250'
-    network: 'tcp'
-    port: 443
-    reality-opts:
-      public-key: '_0fpFqEEuCso3B8K7AAcMjctwG_xfCxO2PdKzGd_-hg'
-      short-id: 'c9677d3b7dea'
-    server: '208.67.106.154'
-    servername: 'www.microsoft.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '96ee55ac-d534-4502-878a-468c7896360b'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853341207'
-    network: 'tcp'
-    port: 443
-    reality-opts:
-      public-key: 'J-dv-HrWfQ_IOoyutv0Kg-rO8QwoRwc02dS1dS_tblk'
-      short-id: 'ee1716767f9b'
-    server: 'server.slavkiti.monster'
-    servername: 'www.tradingview.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '4d017db2-7655-4276-9557-e2ec25b04ee7'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853340585'
-    network: 'tcp'
-    port: 443
-    reality-opts:
-      public-key: 'FjcEZNQ8t5E4R04_11T6ghsOutdqwKKrelkuadakoQg'
-      short-id: '5a018643df03'
-    server: 'staging.lastilhame.monster'
-    servername: 'www.microsoft.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '594d466e-8ac3-4fda-b1d1-eeb817853518'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853340241'
-    network: 'tcp'
-    port: 443
-    reality-opts:
-      public-key: 'FjcEZNQ8t5E4R04_11T6ghsOutdqwKKrelkuadakoQg'
-      short-id: '5c8a8e6c615b'
-    server: 'staging.lastilhame.monster'
-    servername: 'www.mozilla.org'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '2f6e2b17-4d5e-4a12-8979-f53fdd347580'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853341274'
-    network: 'tcp'
-    port: 443
-    reality-opts:
-      public-key: 'J-dv-HrWfQ_IOoyutv0Kg-rO8QwoRwc02dS1dS_tblk'
-      short-id: '8325360e8bd2'
-    server: 'server.slavkiti.monster'
-    servername: 'www.foxsports.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'fad0b9a6-187d-4fcc-96fc-498bc5b3135a'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853340597'
-    network: 'tcp'
-    port: 443
-    reality-opts:
-      public-key: 'FjcEZNQ8t5E4R04_11T6ghsOutdqwKKrelkuadakoQg'
-      short-id: '2a80364e93d9'
-    server: 'staging.lastilhame.monster'
-    servername: 'www.foxsports.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'aded66f1-de12-4c3c-af9e-a21d6e7d9c96'
-    _poolOnly: true
-  - client-fingerprint: 'random'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853341594'
-    network: 'tcp'
-    port: 443
-    reality-opts:
-      public-key: 'J-dv-HrWfQ_IOoyutv0Kg-rO8QwoRwc02dS1dS_tblk'
-      short-id: '2a2ce9e42980'
-    server: 'server.slavkiti.monster'
-    servername: 'www.mozilla.org'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'd84c13b2-c2b9-4a7c-838f-05ac09ee422e'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853340684'
-    network: 'tcp'
-    port: 443
-    reality-opts:
-      public-key: 'FjcEZNQ8t5E4R04_11T6ghsOutdqwKKrelkuadakoQg'
-      short-id: '225e930cfd4d'
-    server: 'staging.lastilhame.monster'
-    servername: 'www.hollywoodreporter.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'de38389f-5651-4f2f-8276-5aabf3b861c9'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853340735'
-    network: 'tcp'
-    port: 443
-    reality-opts:
-      public-key: 'J-dv-HrWfQ_IOoyutv0Kg-rO8QwoRwc02dS1dS_tblk'
-      short-id: '73a9e631a09b'
-    server: 'server.slavkiti.monster'
-    servername: 'www.microsoft.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '68cf8d29-5aa0-44b3-88a9-f1a576b6e84c'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853340929'
-    network: 'tcp'
-    port: 443
-    reality-opts:
-      public-key: 'FjcEZNQ8t5E4R04_11T6ghsOutdqwKKrelkuadakoQg'
-      short-id: '9409f73c2fd7'
-    server: 'staging.lastilhame.monster'
-    servername: 'www.microsoft.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '2ba7f500-017b-4891-87a0-e4e62a4ad52d'
-    _poolOnly: true
-  - name: 'HK - zhuhai.uk'
-    type: 'anytls'
-    server: '56481.df6h451rh.xin'
-    port: 443
-    password: '0324fbc29561'
-    udp: true
-    sni: 'images.ctfassets.net'
-    skip-cert-verify: true
-    client-fingerprint: 'chrome'
-    _poolOnly: true
-  - name: '🌐 其他地区 (Other) 351 - tammader'
-    type: 'vless'
-    server: '188.114.98.0'
-    port: 443
     uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'jp3.yohototo.top'
     network: 'ws'
+    sni: 'jp3.yohototo.top'
     ws-opts:
       path: '/tyxyws'
       headers:
         Host: 'jp3.yohototo.top'
     _poolOnly: true
-  - name: '🇮🇹 意大利 (Italy) 404 - tammader'
-    type: 'ss'
-    server: 'dns22.m3hrzd.ir'
-    port: 1349
-    cipher: 'chacha20-ietf-poly1305'
-    password: 'LzEeLj2OP0DQmpPDtVTazdGC0cHcT0Kn'
-    udp: true
-    _poolOnly: true
-  - client-fingerprint: 'firefox'
-    name: 'vless-1832650490'
-    network: 'raw'
-    port: 2053
-    reality-opts:
-      public-key: 'PuAGLfJy6cu1TNoHuKIKSxPetCbZI41fc8hQDjWPIAU'
-      short-id: '9980e0609b0d3891'
-    server: '194.61.31.126'
-    servername: 'www.apple.com'
-    tls: true
+  - name: '🇩🇪 德国 (Germany) 01 - tammader-source-04c2c2d857466744'
     type: 'vless'
-    udp: true
-    uuid: '1d4e18bd-1f26-4915-b35a-7ace4826e76a'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853340831'
-    network: 'tcp'
-    port: 443
-    reality-opts:
-      public-key: 'Y0noOXC8qHmbM0GmDpj-9BBwKSOtHs-uMbNfKU050GQ'
-      short-id: 'b558b9305a0b'
-    server: 'sql.popmintxo.cc'
-    servername: 'www.microsoft.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'd806a58b-33aa-42e0-b170-395e49c16b37'
-    _poolOnly: true
-  - client-fingerprint: 'firefox'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853341235'
-    network: 'tcp'
-    port: 443
-    reality-opts:
-      public-key: '_0fpFqEEuCso3B8K7AAcMjctwG_xfCxO2PdKzGd_-hg'
-      short-id: '88a13cf2655c'
-    server: '94.156.79.93'
-    servername: 'www.foxsports.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'd6752c6b-80ae-4a91-b446-bb330f7f8177'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853340310'
-    network: 'tcp'
-    port: 443
-    reality-opts:
-      public-key: 'J-dv-HrWfQ_IOoyutv0Kg-rO8QwoRwc02dS1dS_tblk'
-      short-id: '87f895f23064'
-    server: 'server.slavkiti.monster'
-    servername: 'www.techradar.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '13aef2e0-b3fb-4322-a0e9-c10b908ce6b5'
-    _poolOnly: true
-  - name: '🇯🇵 日本 (Japan) 12 - tammader'
-    type: 'vless'
-    server: '104.21.70.228'
-    port: 443
-    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
+    server: '45.76.85.31'
+    port: 33770
+    uuid: 'e9a8144e-5237-488a-afb1-9ca3d8d54c80'
     udp: true
     tls: true
     skip-cert-verify: true
-    servername: 'jp3.yohototo.top'
-    network: 'ws'
-    ws-opts:
-      path: '/tyxyws'
-      headers:
-        Host: 'jp3.yohototo.top'
+    servername: 'de001.zestapp778.com'
     _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853340498'
-    network: 'tcp'
-    port: 443
-    reality-opts:
-      public-key: 'G7bpUPFSW28-oE6ff8qZac1_apU6PiJ-GHmi7tAPDSY'
-      short-id: '91af08b1ce1f'
-    server: '50.117.15.225'
-    servername: 'www.foxsports.com'
-    tls: true
+  - name: '🇩🇪 德国 (Germany) 08 - tammader'
     type: 'vless'
-    udp: true
-    uuid: '67eb6b17-7797-4ded-bf52-423c4c5f6cbd'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853341198'
-    network: 'tcp'
-    port: 443
-    reality-opts:
-      public-key: 'G7bpUPFSW28-oE6ff8qZac1_apU6PiJ-GHmi7tAPDSY'
-      short-id: '91af08b1ce1f'
-    server: '87.239.249.137'
-    servername: 'www.foxsports.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '67eb6b17-7797-4ded-bf52-423c4c5f6cbd'
-    _poolOnly: true
-  - client-fingerprint: 'firefox'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853340957'
-    network: 'tcp'
-    port: 443
-    reality-opts:
-      public-key: '_0fpFqEEuCso3B8K7AAcMjctwG_xfCxO2PdKzGd_-hg'
-      short-id: 'f129dcdbf64f'
-    server: '94.156.79.93'
-    servername: 'www.microsoft.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '1a5e7720-abf3-4b9b-bc9b-9a900a04b434'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853340360'
-    network: 'tcp'
-    port: 443
-    reality-opts:
-      public-key: 'G7bpUPFSW28-oE6ff8qZac1_apU6PiJ-GHmi7tAPDSY'
-      short-id: '91af08b1ce1f'
-    server: 'lists.soloramtin.cyou'
-    servername: 'www.foxsports.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '67eb6b17-7797-4ded-bf52-423c4c5f6cbd'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1853340692'
-    network: 'tcp'
-    port: 23576
-    reality-opts:
-      public-key: '1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s'
-      short-id: '01'
-    server: '62.210.91.2'
-    servername: 'fuck.rkn'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '48ff2b70-e180-582f-8866-d9a2edeed5f5'
-    _poolOnly: true
-  - name: 'hysteria2-1832765339'
-    password: 'gf1:gfhysteria2024'
-    port: 443
-    server: '5.129.235.85'
-    skip-cert-verify: true
-    sni: 'www.linux.com'
-    type: 'hysteria2'
-    _poolOnly: true
-  - name: '🇯🇵 日本 (Japan) 18 - tammader'
-    type: 'vless'
-    server: '104.16.10.135'
-    port: 443
-    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
+    server: 'de001.zestapp778.com'
+    port: 33770
+    uuid: 'e9a8144e-5237-488a-afb1-9ca3d8d54c80'
     udp: true
     tls: true
     skip-cert-verify: true
-    servername: 'jp3.yohototo.top'
-    network: 'ws'
-    ws-opts:
-      path: '/tyxyws'
-      headers:
-        Host: 'jp3.yohototo.top'
-    _poolOnly: true
-  - name: '🇯🇵 日本 (Japan) 241 - tammader'
-    type: 'vless'
-    server: '104.18.153.10'
-    port: 443
-    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'jp3.yohototo.top'
-    network: 'ws'
-    ws-opts:
-      path: '/tyxyws'
-      headers:
-        Host: 'jp3.yohototo.top'
-    _poolOnly: true
-  - name: 'hysteria2-1853331557'
-    password: 'H7mP2xY9kJ4nQ8wR5tF6vB3z'
-    port: 443
-    server: '202.146.222.29'
-    skip-cert-verify: true
-    sni: 'https%3a%2f%2ft.me%2fwangcai2%d1%80%d2%b9%d2%af'
-    type: 'hysteria2'
-    _poolOnly: true
-  - name: '🌐 其他地区 (Other) 675 - tammader'
-    type: 'vless'
-    server: '104.19.12.94'
-    port: 443
-    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'jp3.yohototo.top'
-    network: 'ws'
-    ws-opts:
-      path: '/tyxyws'
-      headers:
-        Host: 'jp3.yohototo.top'
-    _poolOnly: true
-  - name: '🇯🇵 日本 (Japan) 91 - tammader'
-    type: 'vless'
-    server: '104.21.33.59'
-    port: 443
-    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'jp3.yohototo.top'
-    network: 'ws'
-    ws-opts:
-      path: '/tyxyws'
-      headers:
-        Host: 'jp3.yohototo.top'
-    _poolOnly: true
-  - name: '🇸🇪 SE 509 - tammader'
-    type: 'vless'
-    server: '5.178.109.174'
-    port: 14430
-    uuid: '80de563a-cac8-40ea-8cb0-4cb082dd92f9'
-    udp: true
-    tls: false
-    skip-cert-verify: true
-    network: 'ws'
-    ws-opts:
-      path: '/vless'
-      headers:
-        Host: '5.178.109.174'
-    _poolOnly: true
-  - name: '🌐 其他地区 (Other) 595 - tammader'
-    type: 'vless'
-    server: '104.16.10.72'
-    port: 443
-    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'jp3.yohototo.top'
-    network: 'ws'
-    ws-opts:
-      path: '/tyxyws'
-      headers:
-        Host: 'jp3.yohototo.top'
-    _poolOnly: true
-  - name: '🇬🇧 英国 (United Kingdom) 175 - tammader'
-    type: 'vmess'
-    server: '57.129.132.223'
-    port: 80
-    uuid: 'a25cbf11-2908-4a1b-a3a8-9a571777dca3'
-    alterId: 0
-    cipher: 'auto'
-    udp: true
-    tls: false
-    skip-cert-verify: true
-    network: 'ws'
-    ws-opts:
-      path: '/vmess/'
-      headers:
-        Host: 'google.com'
-    _poolOnly: true
-  - name: '🇹🇼 中国台湾 (Taiwan) 358 - tammader'
-    type: 'vless'
-    server: '60.248.219.78'
-    port: 443
-    uuid: 'c1c04450-bf71-4049-ad0c-9cf6d94d9f1f'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'ty986gfazs.cainiaohub.xyz'
-    network: 'ws'
-    ws-opts:
-      path: '/81574b6b-c9d7-44a0-b83d-dad56e8cb530'
-      headers:
-        Host: 'ty986gfazs.cainiaohub.xyz'
-    _poolOnly: true
-  - name: '🇯🇵 日本 (Japan) 525 - tammader'
-    type: 'vless'
-    server: '104.16.10.234'
-    port: 443
-    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'jp3.yohototo.top'
-    network: 'ws'
-    ws-opts:
-      path: '/tyxyws'
-      headers:
-        Host: 'jp3.yohototo.top'
-    _poolOnly: true
-  - name: '🌐 其他地区 (Other) 151 - tammader'
-    type: 'vless'
-    server: '162.159.254.3'
-    port: 443
-    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'jp3.yohototo.top'
-    network: 'ws'
-    ws-opts:
-      path: '/tyxyws'
-      headers:
-        Host: 'jp3.yohototo.top'
-    _poolOnly: true
-  - client-fingerprint: 'firefox'
-    name: 'vless-1843363510'
-    network: 'tcp'
-    port: 2053
-    reality-opts:
-      public-key: 'TpWeZocgNOygOhMo0l7oJawPu7STkn9D-SOa0UppcyY'
-      short-id: 'cd7e85995ae2afc9'
-    server: '45.132.75.213'
-    servername: 'www.cloudflare.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'f46182d1-e13b-47d3-97e2-fa5426a93e7c'
-    _poolOnly: true
-  - name: '🌐 其他地区 (Other) 223 - tammader'
-    type: 'vless'
-    server: '104.21.34.106'
-    port: 443
-    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'jp3.yohototo.top'
-    network: 'ws'
-    ws-opts:
-      path: '/tyxyws'
-      headers:
-        Host: 'jp3.yohototo.top'
-    _poolOnly: true
-  - name: '🇩🇪 德国 (Germany) 408 - tammader'
-    type: 'vless'
-    server: '172.67.195.79'
-    port: 2053
-    uuid: 'fc6e7824-c94a-499a-a713-883030381ff5'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'uwu.blueknightnet.qzz.io'
-    network: 'ws'
-    ws-opts:
-      path: '/@BlueKnight_net--@BlueKnight_net--@BlueKnight_net--@BlueKnight_net--@BlueKnight_net--@BlueKnight_net'
-      headers:
-        Host: 'uwu.blueknightnet.qzz.io'
-    _poolOnly: true
-  - name: '🇹🇼 中国台湾 (Taiwan) 129 (家宽) - tammader'
-    type: 'vless'
-    server: '60.248.219.78'
-    port: 443
-    uuid: 'c1c04450-bf71-4049-ad0c-9cf6d94d9f1f'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'ty986gfazs.cainiaohub.xyz'
-    network: 'ws'
-    ws-opts:
-      path: '/81574b6b-c9d7-44a0-b83d-dad56e8cb530'
-      headers:
-        Host: '60.248.219.78'
-    _poolOnly: true
-  - name: '🇸🇬 新加坡 (Singapore) 147 - tammader'
-    type: 'vless'
-    server: '43.170.8.95'
-    port: 443
-    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'jp3.yohototo.top'
-    network: 'ws'
-    ws-opts:
-      path: '/tyxyws'
-      headers:
-        Host: 'jp3.yohototo.top'
-    _poolOnly: true
-  - name: '🇯🇵 日本 (Japan) 214 - tammader'
-    type: 'vless'
-    server: '152.69.200.216'
-    port: 443
-    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'jp3.yohototo.top'
-    network: 'ws'
-    ws-opts:
-      path: '/tyxyws'
-      headers:
-        Host: 'jp3.yohototo.top'
-    _poolOnly: true
-  - name: '🇺🇸 美国 (United States) 682 - tammader'
-    type: 'vmess'
-    server: '104.17.77.77'
-    port: 8443
-    uuid: '60441548-b68e-43b2-8191-e3b884be4b3c'
-    alterId: 0
-    cipher: 'auto'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'v2ray1.dozapp.xyz'
-    network: 'ws'
-    ws-opts:
-      path: '/lMnsZUN4/'
-      headers:
-        Host: 'v2ray1.dozapp.xyz'
-    _poolOnly: true
-  - name: '🇯🇵 日本 (Japan) 285 - tammader'
-    type: 'vless'
-    server: '104.16.10.56'
-    port: 443
-    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'jp3.yohototo.top'
-    network: 'ws'
-    ws-opts:
-      path: '/tyxyws'
-      headers:
-        Host: 'jp3.yohototo.top'
-    _poolOnly: true
-  - name: '🇭🇰 中国香港 (Hong Kong) 581 - tammader'
-    type: 'vmess'
-    server: '8.217.254.88'
-    port: 443
-    uuid: 'f23bb427-c1f9-4373-876c-2f43e9f790f3'
-    alterId: 0
-    cipher: 'auto'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: '2b9hwy8ocx7q74nm.v.3dns.vip'
-    network: 'ws'
-    ws-opts:
-      path: '/ws-vmess'
-      headers:
-        Host: '2b9hwy8ocx7q74nm.v.3dns.vip'
-    _poolOnly: true
-  - name: '🇯🇵 日本 (Japan) 241 - tammader-a1aa5a8487562cf2'
-    type: 'vless'
-    server: '154.31.114.162'
-    port: 8443
-    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'jp3.yohototo.top'
-    network: 'ws'
-    ws-opts:
-      path: '/tyxyws'
-      headers:
-        Host: 'jp3.yohototo.top'
-    _poolOnly: true
-  - name: '🇺🇸 美国 (United States) 417 - tammader'
-    type: 'vless'
-    server: '172.66.47.45'
-    port: 2083
-    uuid: 'd342d11e-d424-4583-b36e-524ab1f0afa4'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'wk1.f1w.de5.net'
-    network: 'ws'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'wk1.f1w.de5.net'
-    _poolOnly: true
-  - name: '🇯🇵 日本 (Japan) 245 - tammader'
-    type: 'vless'
-    server: '172.64.190.13'
-    port: 443
-    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'jp3.yohototo.top'
-    network: 'ws'
-    ws-opts:
-      path: '/tyxyws'
-      headers:
-        Host: 'jp3.yohototo.top'
-    _poolOnly: true
-  - client-fingerprint: 'firefox'
-    name: 'vless-1852907848'
-    network: 'raw'
-    port: 2053
-    reality-opts:
-      public-key: 'TpWeZocgNOygOhMo0l7oJawPu7STkn9D-SOa0UppcyY'
-      short-id: 'cd7e85995ae2afc9'
-    server: '45.132.75.213'
-    servername: 'www.cloudflare.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'f46182d1-e13b-47d3-97e2-fa5426a93e7c'
-    _poolOnly: true
-  - name: '🇩🇪 德国 (Germany) 20 - tammader'
-    type: 'vless'
-    server: '172.67.133.118'
-    port: 2053
-    uuid: 'aa5d861a-7799-41a7-bdf4-7a6414cf98fd'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'uwu.blueknightnet.qzz.io'
-    network: 'ws'
-    ws-opts:
-      path: '/@BlueKnight_net--@BlueKnight_net--@BlueKnight_net--@BlueKnight_net--@BlueKnight_net--@BlueKnight_net'
-      headers:
-        Host: 'uwu.blueknightnet.qzz.io'
-    _poolOnly: true
-  - name: '🇩🇪 德国 (Germany) 18 - tammader'
-    type: 'vless'
-    server: '104.21.84.167'
-    port: 2053
-    uuid: 'fc6e7824-c94a-499a-a713-883030381ff5'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'uwu.blueknightnet.qzz.io'
-    network: 'ws'
-    ws-opts:
-      path: '/@BlueKnight_net--@BlueKnight_net--@BlueKnight_net--@BlueKnight_net--@BlueKnight_net--@BlueKnight_net'
-      headers:
-        Host: 'uwu.blueknightnet.qzz.io'
-    _poolOnly: true
-  - type: 'vmess'
-    name: '🇺🇸 US 68'
-    server: '104.21.57.84'
-    port: 8443
-    uuid: '60441548-b68e-43b2-8191-e3b884be4b3c'
-    alterId: 0
-    cipher: 'auto'
-    tls: true
-    network: 'ws'
-    ws-opts:
-      path: '/lMnsZUN4/'
-      headers:
-        Host: 'v2ray1.dozapp.xyz'
-    _poolOnly: true
-  - name: '🌐 其他地区 (Other) 156 - tammader'
-    type: 'vless'
-    server: '104.21.5.128'
-    port: 2053
-    uuid: 'aa5d861a-7799-41a7-bdf4-7a6414cf98fd'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'uwu.blueknightnet.qzz.io'
-    network: 'ws'
-    ws-opts:
-      path: '/@BlueKnight_net--@BlueKnight_net--@BlueKnight_net--@BlueKnight_net--@BlueKnight_net--@BlueKnight_net'
-      headers:
-        Host: 'uwu.blueknightnet.qzz.io'
-    _poolOnly: true
-  - name: '🇹🇼 中国台湾 (Taiwan) 24 (家宽) - tammader'
-    type: 'vless'
-    server: '60.248.219.53'
-    port: 443
-    uuid: 'c1c04450-bf71-4049-ad0c-9cf6d94d9f1f'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'ty986gfazs.cainiaohub.xyz'
-    network: 'ws'
-    ws-opts:
-      path: '/81574b6b-c9d7-44a0-b83d-dad56e8cb530'
-      headers:
-        Host: 'ty986gfazs.cainiaohub.xyz'
-    _poolOnly: true
-  - name: 'trojan-1835486945'
-    password: 'XuMweB2PWs'
-    port: 45464
-    server: '2.27.109.179'
-    skip-cert-verify: true
-    sni: ''
-    type: 'trojan'
-    udp: true
-    _poolOnly: true
-  - type: 'trojan'
-    name: '@Alirewa-106'
-    server: 'uwu.blueknightnet.qzz.io'
-    port: 2087
-    tls: true
-    password: '0y7hid61k3k2vuy1'
-    network: 'ws'
-    sni: 'uwu.dianaw.cc.cd'
-    ws-opts:
-      path: '/@BlueKnight_net--@BlueKnight_net--@BlueKnight_net'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    name: 'vless-1932656566'
-    network: 'tcp'
-    port: 30584
-    reality-opts:
-      public-key: '2hV4TY2ygvQ7ISa5o4u_FUKXzlIhLgbsScE8M1h0m3Y'
-      short-id: '67ece882d65d0f1a'
-    server: '45.38.143.210'
-    servername: 'm.vk.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'cebc5f19-18d9-48e6-9029-fb4b04caf393'
-    _poolOnly: true
-  - name: '🌐 其他地区 (Other) 105 - tammader'
-    type: 'vless'
-    server: '172.64.147.154'
-    port: 443
-    uuid: '5dc15e15-f285-4a9d-959b-0e4fbdd77b63'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'powered-by-surena.configfarsi695fcfe8a2e58.workers.dev'
-    network: 'ws'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'powered-by-surena.configfarsi695fcfe8a2e58.workers.dev'
-    _poolOnly: true
-  - name: '🇬🇧 英国 (United Kingdom) 221 - tammader'
-    type: 'vless'
-    server: '51.38.71.147'
-    port: 443
-    uuid: 'fda89998-7e9a-4494-857a-cd0d00661b58'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'uk1.connectsuite.org'
-    network: 'ws'
-    ws-opts:
-      path: '/cdn-cgi/ws'
-      headers:
-        Host: '51.38.71.147'
-    _poolOnly: true
-  - name: '🇺🇸 美国 (United States) 284 - tammader'
-    type: 'vmess'
-    server: '104.17.136.198'
-    port: 443
-    uuid: '0cf6d970-3f1d-4aae-a989-92a8f76ae3db'
-    alterId: 0
-    cipher: 'auto'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'vmess.lbw666.dpdns.org'
-    network: 'ws'
-    ws-opts:
-      path: '/ws'
-      headers:
-        Host: 'vmess.lbw666.dpdns.org'
+    servername: 'de001.zestapp778.com'
     _poolOnly: true
 proxy-groups:
   - name: 'PROXY'
     type: 'select'
     proxies:
       - 'DIRECT'
-      - 'hysteria2-1853331471'
-      - '🌐 其他地区 (Other) 31 - tammader'
-      - '🇺🇸 美国 (United States) 322 - tammader'
-      - '🌐 其他地区 (Other) 411 - tammader'
-      - '🇸🇬 新加坡 | SGP'
-      - '🌐 其他地区 (Other) 556 - tammader'
-      - '🇸🇬[www.v2nodes.com] vless-SG-9... #1'
-      - '🇺🇸 美国 | USA'
-      - '🌐 其他地区 (Other) 320 - tammader'
-      - '🌐 其他地区 (Other) 423 - tammader'
-      - '🌐 其他地区 (Other) 333 - tammader'
-      - '🇺🇸 美国 (United States) 746 - tammader'
-      - 'vless-1835060901'
-      - '🌐 其他地区 (Other) 09 - tammader'
-      - '🌐 其他地区 (Other) 436 - tammader'
-      - '🇺🇸 美国 (United States) 640 - tammader'
-      - '🌐 其他地区 (Other) 195 - tammader'
-      - '🌐 其他地区 (Other) 270 - tammader'
-      - '🇺🇸 美国 | USA-dd320150588fcd08'
-      - '🌐 其他地区 (Other) 321 - tammader'
-      - '🇺🇸 美国 (United States) 210 - tammader'
-      - '🌐 其他地区 (Other) 100 - tammader'
-      - '🌐 其他地区 (Other) 359 - tammader'
-      - '🇺🇸 美国 (United States) 81 - tammader'
-      - '🌐 其他地区 (Other) 302 - tammader'
-      - '🇳🇱 荷兰 (Netherlands) 722 - tammader'
-      - '🇺🇸 美国 (United States) 21 - tammader'
-      - '🌐 其他地区 (Other) 534 - tammader'
-      - '🇺🇸 美国 (United States) 547 - tammader'
-      - '🇺🇸 美国 (United States) 647 - tammader'
-      - '🇸🇨 SC 55 - tammader'
-      - 'vless-1831099315'
-      - '🇺🇸 美国 (United States) 685 - tammader'
-      - '🌐 其他地区 (Other) 689 - tammader'
-      - '🇸🇨 SC 139 - tammader'
-      - '🇨🇦 加拿大 (Canada) 24 - tammader'
-      - 'vmess-1837386117'
-      - 'vless-1828373369'
-      - '🌐 其他地区 (Other) 420 - tammader'
-      - '🇺🇸 美国 | USA-cbf066ee94094462'
-      - '🇺🇸 美国 | USA #9'
-      - '🇺🇸 美国 | USA #2'
-      - '🌐 其他地区 (Other) 547 - tammader'
-      - '🇺🇸 美国 (United States) 406 - tammader'
-      - 'vless-1831099319'
-      - '🇺🇸 美国 (United States) 337 - tammader'
-      - '🌐 其他地区 (Other) 344 - tammader'
-      - '🌐 其他地区 (Other) 333 - tammader-b5b58a87f7e4be50'
-      - '🌐 其他地区 (Other) 172 - tammader'
-      - '🇺🇸 美国 (United States) 510 - tammader'
-      - '🇸🇬[www.v2nodes.com] vless-SG'
-      - '🇺🇸 美国 | USA #1'
-      - '🇺🇸 美国 | USA-5f1aeb0a2ce700ed'
-      - '🇨🇦 加拿大 (Canada) 30 - tammader'
-      - 'trojan-1832868058'
-      - '🇳🇱 荷兰 (Netherlands) 557 - tammader'
-      - 'vless-1831099324'
-      - '🇺🇸 美国 | USA-15f5e809912fd264'
-      - '🌐 其他地区 (Other) 626 - tammader'
-      - '🌐 其他地区 (Other) 659 - tammader'
-      - 'hysteria2-1832863509'
-      - '🇺🇸 美国 | USA-bcb4f59dfefe9527'
-      - '🌐 其他地区 (Other) 131 - tammader'
-      - 'US - zhuhai.uk 03'
-      - '🇺🇸 美国 (United States) 424 - tammader'
-      - 'vmess-1835539921'
-      - '🌐 其他地区 (Other) 41 - tammader'
-      - '🇱🇹 LT 310 - tammader'
-      - 'vless-1841014091'
-      - 'hysteria2-1832863516'
-      - '🌐 其他地区 (Other) 289 - tammader'
-      - 'hysteria2-1832880232'
-      - 'hysteria2-1853166912'
-      - '🇺🇸 美国 (United States) 327 - tammader'
-      - '🇩🇪 德国 (Germany) 26 - tammader'
-      - 'vless-1853340242'
-      - 'vless-1853340423'
-      - 'vless-1853340796'
-      - '🇱🇹 LT 181 - tammader'
-      - 'vless-1853340968'
-      - 'US - zhuhai.uk 08'
-      - 'US - zhuhai.uk'
-      - 'vless-1853340775'
-      - 'US - zhuhai.uk 10'
-      - 'vless-1853340196'
-      - 'US - zhuhai.uk 05'
-      - '🇩🇪 德国 (Germany) 30 - tammader'
-      - 'vless-1853340740'
-      - 'vless-1843512943'
-      - '🇺🇸 美国 (United States) 63 - tammader'
-      - '🇺🇸 美国 (United States) 284 - tammader-fd04518bac8d43a0'
-      - '🇬🇧 英国 (United Kingdom) 25 - tammader'
-      - '🇺🇸 美国 (United States) 542 - tammader'
-      - '🇺🇸 美国 | USA-64c72d51751402bc'
-      - '@Alirewa-234'
-      - '🇺🇸 美国 (United States) 282 - tammader-459fcdb3ae2abf7f'
-      - 'vless-1853340633'
-      - 'vless-1853340571'
-      - 'vless-1853340555'
-      - 'IT - zhuhai.uk'
-      - '🇺🇸 美国 (United States) 10 - tammader'
-      - 'vless-1853340779'
-      - 'vless-1853341249'
-      - 'vless-1832650219'
-      - 'vless-1853340288'
-      - 'vless-1853340953'
-      - 'vless-1853340230'
-      - 'vless-1853340978'
-      - '🇫🇷[www.v2nodes.com] vless-FR-1... #2'
-      - '🇩🇪 德国 (Germany) 23 - tammader'
-      - '🇦🇪 阿联酋 (UAE) 04 - tammader'
-      - 'vless-1853340709'
-      - 'vless-1853340788'
-      - 'vless-1853340225'
-      - 'vless-1853340883'
-      - '🇫🇷 法国 (France) 16 - tammader'
-      - '🇺🇸 美国 (United States) 528 - tammader'
-      - '🇦🇪 阿联酋 (UAE) 13 - tammader'
-      - 'vless-1832650249'
-      - '🌐 其他地区 (Other) 253 - tammader'
-      - 'vless-1831128588'
-      - 'vless-1853341185'
-      - '🇫🇷[www.v2nodes.com] trojan-FR-... #10'
-      - 'vless-1853340437'
-      - 'vless-1853340698'
-      - '🇺🇸 美国 (United States) 479 - tammader'
-      - 'vless-1837324384'
-      - '🇫🇷 法国 (France) 08 - tammader'
-      - '@Alirewa-119'
-      - '🇩🇪 德国 (Germany) 21 - tammader'
-      - '🇵🇱 PL 750 - tammader'
-      - 'vless-1835058280'
-      - 'vless-1853340846'
-      - '🇯🇵 日本 (Japan) 204 - tammader'
-      - '🇸🇬 新加坡 (Singapore) 226 - tammader'
-      - 'vless-1853340298'
-      - '🇯🇵 日本 (Japan) 712 - tammader'
-      - '🇬🇧 英国 (United Kingdom) 436 - tammader'
-      - 'US - zhuhai.uk 09'
-      - 'hysteria2-1853331477'
-      - 'NL - zhuhai.uk 02'
-      - '🇩🇪[www.v2nodes.com] vless-DE-1... #9'
-      - '🇯🇵 日本 (Japan) 306 - tammader'
-      - '🇳🇱[www.v2nodes.com] vless-NL'
-      - '🇩🇪 德国 (Germany) 22 - tammader'
-      - '🇫🇮 FI 78 - tammader'
-      - '🇷🇺 俄罗斯 (Russia) 47 - tammader'
-      - 'vless-1876710446'
-      - '🇫🇮[www.v2nodes.com] vless-FI-1... #4'
-      - '🇳🇱 荷兰 (Netherlands) 206 - tammader'
-      - '🇩🇪 德国 (Germany) 03 - tammader'
-      - '🇩🇪 德国 (Germany) 48 - tammader'
-      - 'vless-1932656571'
-      - '🇬🇷 GR 558 - tammader'
-      - '🇩🇪 德国 (Germany) 05 - tammader'
-      - 'vless-1832764139'
-      - '🇯🇵 日本 (Japan) 742 - tammader'
-      - 'DE - zhuhai.uk'
-      - '🇩🇪 德国 (Germany) 27 - tammader'
-      - '🇯🇵 日本 (Japan) 314 - tammader'
-      - '🇯🇵 日本 (Japan) 389 - tammader'
-      - '🇫🇮 FI 338 - tammader'
-      - 'hysteria2-1853341683'
-      - 'vless-1931194866'
-      - '🇷🇴 RO 149 - tammader'
-      - '🇩🇪 德国 (Germany) 06 - tammader'
-      - 'hysteria2-1832764816'
-      - 'hysteria2-1853341822'
-      - '🌐 其他地区 (Other) 92 - tammader'
-      - 'vless-1853340308'
-      - '🇩🇪 德国 (Germany) 01 - tammader'
-      - '🇩🇪 德国 (Germany) 02 - tammader'
-      - '🇧🇷 BR 568 - tammader'
-      - '🇺🇸 美国 (United States) 716 - tammader'
-      - 'vless-1929297355'
-      - '🇧🇾 BY 587 - tammader'
-      - '🇯🇵 日本 (Japan) 516 - tammader'
-      - '🇯🇵 日本 (Japan) 481 - tammader'
-      - '🇩🇪 德国 (Germany) 28 - tammader'
-      - '🇨🇦 加拿大 (Canada) 40 - tammader'
-      - '🇯🇵 日本 (Japan) 351 - tammader'
-      - '🇯🇵 日本 (Japan) 541 - tammader'
-      - 'FR - zhuhai.uk'
-      - '🇧🇾[www.v2nodes.com] vless-BY-1...'
-      - '🇧🇾[www.v2nodes.com] vless-BY-1... #2'
-      - 'hysteria2-1853331426'
-      - 'FR - zhuhai.uk 02'
-      - '🇫🇮 FI 05 - tammader'
-      - 'hysteria2-1830467063'
-      - 'hysteria2-1853331609'
-      - '🌐 其他地区 (Other) 627 - tammader'
-      - 'vless-1930539315'
-      - '🇳🇱 荷兰 (Netherlands) 511 - tammader'
-      - '🇯🇵 日本 (Japan) 421 - tammader'
-      - '🇫🇮 FI 03 - tammader'
-      - '🇧🇾 BY 02 - tammader'
-      - 'vless-1835058279'
-      - 'US - zhuhai.uk 02'
-      - 'hysteria2-1828373437'
-      - 'RO - zhuhai.uk 03'
-      - 'vless-1832690712'
-      - 'RO - zhuhai.uk 04'
-      - '🇸🇬 新加坡 (Singapore) 13 - tammader'
-      - 'trojan-1853341794'
-      - '🇸🇬 新加坡 (Singapore) 363 - tammader'
-      - 'RO - zhuhai.uk 02'
-      - '🇸🇬[www.v2nodes.com] vless-SG #6'
-      - 'hysteria2-1853331545'
-      - 'RO - zhuhai.uk'
-      - 'hysteria2-1832765391'
-      - '🇺🇸 美国 (United States) 26 - tammader'
-      - 'hysteria2-1853331565'
-      - 'hysteria2-1853341738'
-      - 'hysteria2-1853331593'
-      - 'hysteria2-1853331606'
-      - 'hysteria2-1832880265'
-      - 'hysteria2-1853331499'
-      - 'hysteria2-1853331601'
-      - 'hysteria2-1853331407'
-      - 'hysteria2-1853331424'
-      - 'hysteria2-1853331597'
-      - 'hysteria2-1853331603'
-      - '🌐 其他地区 (Other) 489 - tammader'
-      - 'hysteria2-1853331567'
-      - '🇹🇷 土耳其 (Turkey) 22 - tammader'
-      - 'hysteria2-1832880301'
-      - 'vmess-1837386988'
-      - 'hysteria2-1832880243'
-      - 'hysteria2-1832880226'
-      - '🇧🇬[www.v2nodes.com] vless-BG-3... #3'
-      - 'hysteria2-1853331559'
-      - 'hysteria2-1832880261'
-      - '🇯🇵 日本 (Japan) 639 - tammader'
-      - '🇵🇱 PL 170 - tammader'
-      - '🇯🇵 日本 (Japan) 707 - tammader'
-      - 'vless-1853340357'
-      - '🇹🇷 土耳其 (Turkey) 425 - tammader'
-      - '🇯🇵 日本 (Japan) 173 - tammader'
-      - 'vless-1832754513'
-      - '🇦🇪 阿联酋 (UAE) 05 - tammader'
-      - '🇰🇷 韩国 (South Korea) 611 - tammader'
-      - 'vless-1828373783'
-      - '🇸🇬 新加坡 (Singapore) 276 - tammader'
-      - '🇦🇺 澳大利亚 (Australia) 247 - tammader'
-      - 'trojan-1929965333'
-      - '🇯🇵 日本 (Japan) 589 - tammader'
-      - 'trojan-1932509804'
-      - 'vless-1853340424'
-      - '🇦🇪[www.v2nodes.com] vless-AE-1...'
-      - 'hysteria2-1853331449'
-      - 'hysteria2-1853331618'
-      - '🌐 其他地区 (Other) 478 - tammader'
-      - '🇸🇬 新加坡 (Singapore) 687 - tammader'
-      - 'hysteria2-1853331608'
-      - '🇸🇬 新加坡 (Singapore) 184 - tammader'
-      - '🇮🇳 印度 (India) 553 - tammader'
-      - 'vless-1831116753'
-      - '🇸🇬 新加坡 (Singapore) 278 - tammader'
-      - 'vless-1848101875'
-      - 'vless-1835060902'
-      - 'vless-1841013199'
-      - '🇸🇬 新加坡 (Singapore) 137 - tammader'
-      - '🇱🇰 LK 728 - tammader'
-      - '🌐 其他地区 (Other) 306 - tammader'
-      - 'hysteria2-1853331439'
-      - '🇹🇭 TH 573 - tammader'
-      - '🇹🇭 TH 591 - tammader'
-      - '🇹🇭 TH 347 - tammader'
-      - '🌐 其他地区 (Other) 108 - tammader'
-      - '🇷🇺 俄罗斯 (Russia) 701 - tammader'
-      - 'vless-1828374791'
-      - 'vless-1835059139'
-      - '🇺🇸 美国 (United States) 718 - tammader'
-      - 'hysteria2-1832881362'
-      - '🇮🇳[www.v2nodes.com] vless-IN-1...'
-      - '🇮🇩 ID 763 - tammader'
-      - '🇮🇳 印度 (India) 53 - tammader'
-      - '🇭🇰 中国香港 (Hong Kong) 207 (家宽) - tammader'
-      - 'hysteria2-1853331556'
-      - 'hysteria2-1832880264'
-      - 'trojan-1837386994'
-      - '🇭🇰 中国香港 (Hong Kong) 403 (家宽) - tammader'
-      - '🇮🇳 印度 (India) 476 - tammader'
-      - '🇹🇭 TH 319 - tammader'
-      - '🌐 其他地区 (Other) 155 - tammader'
-      - '🇸🇬 新加坡 (Singapore) 17 - tammader'
-      - 'vmess-1832868262'
-      - 'vless-1853336903'
-      - 'vless-1929912487'
-      - 'vless-1927934775'
-      - '🇹🇭 TH 608 - tammader'
-      - 'vless-1927724261'
-      - 'vless-1926288585'
-      - 'vless-1930761430'
-      - 'vless-1828373327'
-      - '🇱🇰 LK 377 - tammader'
-      - '🇯🇵 日本 (Japan) 734 - tammader'
-      - 'vless-1844556217'
-      - '🇲🇾[www.v2nodes.com] vless-MY-5...'
-      - '🇲🇾 MY 106 - tammader'
-      - '🇯🇵 日本 (Japan) 345 - tammader'
-      - 'SG - zhuhai.uk'
-      - '🇸🇬 新加坡 (Singapore) 371 - tammader'
-      - 'vless-1828653269'
-      - '🇱🇰 LK 330 - tammader'
-      - 'trojan-1927187200'
-      - 'vless-1853340459'
-      - 'vless-1853340561'
-      - 'vless-1853340344'
-      - '🇦🇱 AL 201 - tammader'
-      - 'vless-1853340249'
-      - 'vless-1853340603'
-      - 'vless-1853340520'
-      - 'vless-1853340446'
-      - 'vless-1853340909'
-      - 'vless-1853340976'
-      - 'vless-1853341250'
-      - 'vless-1853341207'
-      - 'vless-1853340585'
-      - 'vless-1853340241'
-      - 'vless-1853341274'
-      - 'vless-1853340597'
-      - 'vless-1853341594'
-      - 'vless-1853340684'
-      - 'vless-1853340735'
-      - 'vless-1853340929'
-      - 'HK - zhuhai.uk'
-      - '🌐 其他地区 (Other) 351 - tammader'
-      - '🇮🇹 意大利 (Italy) 404 - tammader'
-      - 'vless-1832650490'
-      - 'vless-1853340831'
-      - 'vless-1853341235'
-      - 'vless-1853340310'
-      - '🇯🇵 日本 (Japan) 12 - tammader'
-      - 'vless-1853340498'
-      - 'vless-1853341198'
-      - 'vless-1853340957'
-      - 'vless-1853340360'
-      - 'vless-1853340692'
-      - 'hysteria2-1832765339'
-      - '🇯🇵 日本 (Japan) 18 - tammader'
-      - '🇯🇵 日本 (Japan) 241 - tammader'
-      - 'hysteria2-1853331557'
-      - '🌐 其他地区 (Other) 675 - tammader'
-      - '🇯🇵 日本 (Japan) 91 - tammader'
-      - '🇸🇪 SE 509 - tammader'
-      - '🌐 其他地区 (Other) 595 - tammader'
-      - '🇬🇧 英国 (United Kingdom) 175 - tammader'
-      - '🇹🇼 中国台湾 (Taiwan) 358 - tammader'
-      - '🇯🇵 日本 (Japan) 525 - tammader'
-      - '🌐 其他地区 (Other) 151 - tammader'
-      - 'vless-1843363510'
-      - '🌐 其他地区 (Other) 223 - tammader'
-      - '🇩🇪 德国 (Germany) 408 - tammader'
-      - '🇹🇼 中国台湾 (Taiwan) 129 (家宽) - tammader'
-      - '🇸🇬 新加坡 (Singapore) 147 - tammader'
-      - '🇯🇵 日本 (Japan) 214 - tammader'
-      - '🇺🇸 美国 (United States) 682 - tammader'
-      - '🇯🇵 日本 (Japan) 285 - tammader'
-      - '🇭🇰 中国香港 (Hong Kong) 581 - tammader'
-      - '🇯🇵 日本 (Japan) 241 - tammader-a1aa5a8487562cf2'
-      - '🇺🇸 美国 (United States) 417 - tammader'
-      - '🇯🇵 日本 (Japan) 245 - tammader'
-      - 'vless-1852907848'
-      - '🇩🇪 德国 (Germany) 20 - tammader'
-      - '🇩🇪 德国 (Germany) 18 - tammader'
-      - '🇺🇸 US 68'
-      - '🌐 其他地区 (Other) 156 - tammader'
-      - '🇹🇼 中国台湾 (Taiwan) 24 (家宽) - tammader'
-      - 'trojan-1835486945'
-      - '@Alirewa-106'
-      - 'vless-1932656566'
-      - '🌐 其他地区 (Other) 105 - tammader'
-      - '🇬🇧 英国 (United Kingdom) 221 - tammader'
-      - '🇺🇸 美国 (United States) 284 - tammader'
+      - 'shadowsocks-1875023024'
+      - 'shadowsocks-1870576149'
+      - '🌐 其他地区 (Other) 36 - tammader'
+      - '🌐 其他地区 (Other) 16 - tammader'
+      - 'trojan-1929965364'
+      - '🌐 其他地区 (Other) 05 - tammader'
+      - 'shadowsocks-1875023016'
+      - '🌐 其他地区 (Other) 43 - tammader'
+      - '🌐 其他地区 (Other) 09 - tammader-source-7922221896955808'
+      - '🌐 其他地区 (Other) 13 - tammader'
+      - 'vless-1882338667'
+      - '🌐 其他地区 (Other) 25 - tammader'
+      - '🌐 其他地区 (Other) 27 - tammader'
+      - '🌐 其他地区 (Other) 33 - tammader'
+      - '🌐 其他地区 (Other) 26 - tammader'
+      - 'shadowsocks-1875022945'
+      - 'CA 🇨🇦 | @Raydikalx | 0AD519'
+      - 'EPODONIOS-5ab6d6fb525a338c'
+      - 'shadowsocks-1875129451'
+      - 'trojan-1929965334'
+      - 'shadowsocks-1875022941'
+      - 'trojan-1929965353'
+      - 'trojan-1929965355'
+      - 'trojan-1930077596'
+      - 'trojan-1929965346'
+      - 'trojan-1929965362'
+      - 'trojan-1929965331'
+      - 'trojan-1929965339'
+      - 'trojan-1929965332'
+      - 'trojan-1931254753'
+      - '🏁RELAY-172.66.0.1-1194'
+      - 'shadowsocks-1875129452'
+      - 'trojan-1929965352'
+      - 'shadowsocks-1870576345'
+      - 'trojan-1929965347'
+      - 'EPODONIOS-08c8ab9b63a6957c'
+      - 'trojan-1875790321'
+      - 'trojan-1926289807'
+      - 'EPODONIOS'
+      - 'trojan-1929965350'
+      - 'trojan-1930077586'
+      - 'shadowsocks-1875023013'
+      - 'trojan-1929965349'
+      - 'trojan-1929965344'
+      - 'trojan-1929965357'
+      - 'vless-1931194880'
+      - 'vless-1923902907'
+      - 'trojan-1929965338'
+      - 'trojan-1929965329'
+      - 'vless-1930538303'
+      - 'vmess-1827160934'
+      - 'trojan-1929965361'
+      - 'shadowsocks-1887411780'
+      - '🇬🇧 英国 (United Kingdom) 04 - tammader'
+      - 'vless-1927723267'
+      - 'vless-1927184355'
+      - 'shadowsocks-1870576322'
+      - '🇫🇷 法国 (France) 03 - tammader'
+      - 'shadowsocks-1870576373'
+      - 'vless-1929113332'
+      - 'vless-1932277153'
+      - 'shadowsocks-1870576128'
+      - '🇬🇧 英国 (United Kingdom) 21 - tammader'
+      - 'EPODONIOS-b96d9268eef3d9c8'
+      - 'EPODONIOS-8cfe94264900713d'
+      - 'shadowsocks-1870576143'
+      - 'EPODONIOS-703e6ff52c668c36'
+      - '未知 VLESS-60 | free-nodes'
+      - '🇳🇿 新西兰 V2CROSS.COM'
+      - 'EPODONIOS-047d272d9985f44d'
+      - '🇧🇾[www.v2nodes.com] vless-BY-1... #3'
+      - '🇬🇧 英国 (United Kingdom) 29 - tammader'
+      - 'shadowsocks-1923819861'
+      - 'trojan-1929965330'
+      - '🇬🇧GB-82.38.31.208-0114'
+      - 'vless-1927724265'
+      - '🇺🇸 US美国(mibei77.com 米贝节点分享)-19cfc0530ae0b8cf'
+      - 'vless-1930539293'
+      - 'shadowsocks-1870576189'
+      - 'shadowsocks-1870576350'
+      - '🇫🇷 法国 (France) 05 - tammader'
+      - 'shadowsocks-1870576255'
+      - '🇰🇷 韩国 (South Korea) 01 - tammader'
+      - '🇫🇷 法国 (France) 12 - tammader'
+      - 'EPODONIOS-e224a4c0f94df4f2'
+      - 'vless-1928873678'
+      - 'trojan-1929965328'
+      - 'US 🇺🇸 | @Raydikalx | 6B18E0'
+      - 'CA 🇨🇦 | @Raydikalx | BA5E42'
+      - 'vmess-1929111876'
+      - 'EPODONIOS-e18035d2ef6d493a'
+      - 'shadowsocks-1928714919'
+      - 'vless-1832887936'
+      - '🇺🇸 US美国(mibei77.com 米贝节点分享)-fb67db6792170059'
+      - '🇺🇸 美国 | USA-18d6837128ca52bd'
+      - 'vless-1848100138-source-9262bb5c92cfca10'
+      - 'EPODONIOS-daea7942f539d843'
+      - 'EPODONIOS-78d8afd9ea8f0d3e'
+      - 'EPODONIOS-fc7ff8f5933fe503'
+      - 'EPODONIOS-9f29959fee2a6d5f'
+      - 'vless-1827151926-source-dbde993a102662a9'
+      - 'vless-1831093906-source-5a324f22b336db67'
+      - 'vless-1827961987'
+      - 'vmess-1927713381'
+      - 'vless-1827152273-source-6138b9e37fbcf1f2'
+      - '🇳🇿 新西兰 V2CROSS.COM-ceabb7d7f9a91666'
+      - 'CA 🇨🇦 | @Raydikalx | 00DD16'
+      - 'vless-1831074722-source-f8c40da71770fe27'
+      - 'vless-1853969345'
+      - 'vless-1837364467'
+      - 'vless-1879632052'
+      - 'vless-1829720999-source-bba427e8df1d77b4'
+      - 'vless-1856200505'
+      - 'trojan-1929965356'
+      - '🇭🇰 香港 | HKG-f665a50b717a40ed'
+      - 'vless-1863464818'
+      - 'vless-1843512959'
+      - 'vless-1827151478-source-458af516e04db375'
+      - '🇮🇳IN-152.67.8.205-5782'
+      - '🇭🇰 中国香港 (Hong Kong) 07 - tammader'
+      - 'vless-1863476159'
+      - '🇸🇬 新加坡 (Singapore) 49 - tammader'
+      - 'vless-1900998711'
+      - 'vless-1867009433'
+      - 'vless-1832764138'
+      - '🇩🇪 德国 (Germany) 01 - tammader-source-04c2c2d857466744'
+      - '🇩🇪 德国 (Germany) 08 - tammader'
 rules:
   - 'MATCH,PROXY'
