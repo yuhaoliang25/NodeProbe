@@ -79,7 +79,7 @@ async function probeChatGPTResponse(proxyName){
   // HTTP 200 or 403 response proves the ChatGPT endpoint responded, but a 403
   // is reachability evidence only, not proof that a user can use ChatGPT.
   const normal=await probeDelay({api:CONFIG.api,name:proxyName,target:CONFIG.chatgptTarget,expected:String(CONFIG.chatgptExpected),timeout:CONFIG.chatgptTimeout});
-  if(normal.success)return {...normal,status:CONFIG.chatgptExpected,responseClass:'http-200'};
+  if(normal.success)return {...normal,status:CONFIG.chatgptExpected,responseClass:'http-'+CONFIG.chatgptExpected};
   const challenge=await probeDelay({api:CONFIG.api,name:proxyName,target:CONFIG.chatgptTarget,expected:String(CONFIG.chatgptChallengeExpected),timeout:CONFIG.chatgptTimeout});
   if(challenge.success)return {...challenge,status:CONFIG.chatgptChallengeExpected,responseClass:'http-403-challenge-or-forbidden',initialError:normal.error};
   return {
