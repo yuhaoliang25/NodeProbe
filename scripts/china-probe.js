@@ -46,6 +46,7 @@ const CONFIG={
   stabilityMaxConsecutiveTimeouts:Number(process.env.CHINA_STABILITY_MAX_CONSECUTIVE_TIMEOUTS||1),
   chatgptTarget:process.env.CHINA_CHATGPT_TARGET||'https://chatgpt.com/',
   chatgptExpected:Number(process.env.CHINA_CHATGPT_EXPECTED||200),
+  chatgptChallengeExpected:Number(process.env.CHINA_CHATGPT_CHALLENGE_EXPECTED||403),
   chatgptAttempts:Number(process.env.CHINA_CHATGPT_ATTEMPTS||3),
   chatgptTimeout:Number(process.env.CHINA_CHATGPT_TIMEOUT||8000),
   environment:process.env.CHINA_PROBE_ENV||os.hostname(),
@@ -71,6 +72,23 @@ function tcpReachability(proxy,timeout){
     socket.once('connect',()=>finish(true));
     socket.once('error',e=>finish(false,String(e.message||e).slice(0,300)));
   });
+}
+
+async function probeChatGPTResponse(proxyName){
+  // Do not require Cloudflare's challenge to complete in this stage. A direct
+  // HTTP 200 or 403 response proves the ChatGPT endpoint responded, but a 403
+  // is reachability evidence only, not proof that a user can use ChatGPT.
+  const normal=await probeDelay({api:CONFIG.api,name:proxyName,target:CONFIG.chatgptTarget,expected:String(CONFIG.chatgptExpected),timeout:CONFIG.chatgptTimeout});
+  if(normal.success)return {...normal,status:CONFIG.chatgptExpected,responseClass:'http-200'};
+  const challenge=await probeDelay({api:CONFIG.api,name:proxyName,target:CONFIG.chatgptTarget,expected:String(CONFIG.chatgptChallengeExpected),timeout:CONFIG.chatgptTimeout});
+  if(challenge.success)return {...challenge,status:CONFIG.chatgptChallengeExpected,responseClass:'http-403-challenge-or-forbidden',initialError:normal.error};
+  return {
+    ...challenge,
+    status:null,
+    responseClass:'no-accepted-http-response',
+    error:'HTTP '+CONFIG.chatgptExpected+' check failed ('+(normal.error||'unknown')+'); HTTP '+CONFIG.chatgptChallengeExpected+' check failed ('+(challenge.error||'unknown')+')',
+    timeout:Boolean(normal.timeout&&challenge.timeout),
+  };
 }
 
 async function selectProbeProxy(name){
@@ -395,13 +413,16 @@ async function main(){
     const chatgptRows=await runConcurrent(chatgptCandidates,async p=>{
       const attempts=[];
       for(let attempt=1;attempt<=CONFIG.chatgptAttempts;attempt++){
-        const result=await probeDelay({api:CONFIG.api,name:p.name,target:CONFIG.chatgptTarget,expected:String(CONFIG.chatgptExpected),timeout:CONFIG.chatgptTimeout});
-        attempts.push({success:result.success,latencyMs:result.delayMs,error:result.error,timeout:result.timeout,at:result.startedAt,finishedAt:result.finishedAt});
+        const result=await probeChatGPTResponse(p.name);
+        attempts.push({success:result.success,status:result.status??null,responseClass:result.responseClass,latencyMs:result.delayMs,error:result.error,timeout:result.timeout,at:result.startedAt,finishedAt:result.finishedAt});
       }
-      return {endpointId:endpointId(p),successRate:attempts.filter(x=>x.success).length/attempts.length,success:attempts.every(x=>x.success),attempts};
+      const successRate=attempts.filter(x=>x.success).length/attempts.length;
+      return {endpointId:endpointId(p),successRate,success:attempts.every(x=>x.success),endpointReachable:attempts.every(x=>x.success),http200:attempts.filter(x=>x.status===200).length,http403:attempts.filter(x=>x.status===403).length,attempts};
     },CONFIG.stabilityConcurrency);
     const chatgptById=new Map(chatgptRows.map(x=>[x.endpointId,x]));
-    console.log('[china-probe] ChatGPT capability test done: '+chatgptRows.filter(x=>x.success).length+'/'+chatgptRows.length+' nodes passed');
+    const chatgptHttp200=chatgptRows.reduce((n,x)=>n+x.http200,0);
+    const chatgptHttp403=chatgptRows.reduce((n,x)=>n+x.http403,0);
+    console.log('[china-probe] ChatGPT endpoint test done: '+chatgptRows.filter(x=>x.endpointReachable).length+'/'+chatgptRows.length+' nodes reachable (HTTP 200='+chatgptHttp200+', HTTP 403 challenge/forbidden='+chatgptHttp403+'); challenge completion is not required');
 
     // Stage attempts are detailed evidence. Only one final observation per node
     // is applied to the China asset, so several stages in one probe run do not
@@ -432,7 +453,10 @@ async function main(){
         reachabilityLatencyMs:reachabilityAttempt?.latencyMs??null,
         exitSuccess,
         stabilityEligible:stability?.eligible??null,
-        chatgptEligible:chatgptById.get(id)?.success??null,
+        chatgptEligible:chatgptById.get(id)?.endpointReachable??null,
+        chatgptEndpointReachable:chatgptById.get(id)?.endpointReachable??null,
+        chatgptHttp200Attempts:chatgptById.get(id)?.http200??null,
+        chatgptHttp403Attempts:chatgptById.get(id)?.http403??null,
         chatgptSuccessRate:chatgptById.get(id)?.successRate??null,
         chatgptAttempts:chatgptById.get(id)?.attempts??[],
         speedMbps:speedById.get(id)?.speedMbps??null,
@@ -462,7 +486,7 @@ async function main(){
       probeEnvironment:CONFIG.environment,
       target:CONFIG.target,
       expected:CONFIG.expected,
-      stages:{reachabilityTimeout:CONFIG.reachabilityTimeout,stage1Timeout:CONFIG.fastTimeout,deepRounds:CONFIG.deepRounds,stabilityRounds:CONFIG.stabilityRounds,stabilityAttempts:CONFIG.stabilityAttempts,speedTarget:CONFIG.speedTarget,speedBytes:CONFIG.speedBytes,speedTimeout:CONFIG.speedTimeout,speedMaxNodes:CONFIG.speedMaxNodes,chatgptTarget:CONFIG.chatgptTarget,chatgptExpected:CONFIG.chatgptExpected,chatgptAttempts:CONFIG.chatgptAttempts},
+      stages:{reachabilityTimeout:CONFIG.reachabilityTimeout,stage1Timeout:CONFIG.fastTimeout,deepRounds:CONFIG.deepRounds,stabilityRounds:CONFIG.stabilityRounds,stabilityAttempts:CONFIG.stabilityAttempts,speedTarget:CONFIG.speedTarget,speedBytes:CONFIG.speedBytes,speedTimeout:CONFIG.speedTimeout,speedMaxNodes:CONFIG.speedMaxNodes,chatgptTarget:CONFIG.chatgptTarget,chatgptExpected:CONFIG.chatgptExpected,chatgptChallengeExpected:CONFIG.chatgptChallengeExpected,chatgptAttempts:CONFIG.chatgptAttempts,chatgptAcceptancePolicy:'HTTP 200 or HTTP 403 response; challenge completion is not required; 403 is reachability evidence only'},
       observations:finalObservations,
       // Keep all per-attempt evidence in the diagnostic stream, including stability rounds.
       attempts:[...observations,...stabilityAttempts],
