@@ -1,1 +1,98 @@
-proxies: []
+proxies:
+  - name: '🇳🇱 荷兰 (Netherlands) 722 - tammader'
+    type: 'vless'
+    server: '172.67.208.235'
+    port: 2096
+    uuid: 'b9ede7a5-5b4b-4aee-ac37-2c307e587e47'
+    udp: true
+    tls: true
+    skip-cert-verify: true
+    servername: 'courses.mftplus.qzz.io'
+    network: 'ws'
+    ws-opts:
+      path: '/eyJqdW5rIjoidVkzQm1ROUg4dyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0'
+      headers:
+        Host: 'courses.mftplus.qzz.io'
+    endpoint-id: '287811fedbb82761'
+  - name: '🇺🇸 美国 (United States) 647 - tammader'
+    type: 'vless'
+    server: '104.18.1.1'
+    port: 2083
+    uuid: 'a1de0630-5786-48a0-84f6-dc6f2de10d6d'
+    udp: true
+    tls: true
+    skip-cert-verify: true
+    servername: 'vlsovip.1d.mom'
+    network: 'ws'
+    ws-opts:
+      path: '/'
+      headers:
+        Host: 'vlsovip.1d.mom'
+    endpoint-id: '7a8d3dc49bded3e9'
+  - name: '🇺🇸 美国 (United States) 337 - tammader'
+    type: 'vless'
+    server: '172.67.67.178'
+    port: 443
+    uuid: 'aebe5a70-0ca3-46ce-8208-8b5bab1346ce'
+    udp: true
+    tls: true
+    skip-cert-verify: true
+    servername: 'rAyAn-007.nAsTaRaN.DpDnS.OrG'
+    network: 'ws'
+    ws-opts:
+      path: '/'
+      headers:
+        Host: 'rAyAn-007.nAsTaRaN.DpDnS.OrG'
+    endpoint-id: 'bd1d8e1496de9497'
+  - name: '🇺🇸 美国 (United States) 510 - tammader'
+    type: 'vless'
+    server: 'us007.zestapp778.com'
+    port: 18580
+    uuid: 'e9a8144e-5237-488a-afb1-9ca3d8d54c80'
+    udp: true
+    tls: true
+    skip-cert-verify: true
+    servername: 'us007.zestapp778.com'
+    endpoint-id: 'd661b85de0807933'
+  - name: '🇨🇦 加拿大 (Canada) 30 - tammader'
+    type: 'vmess'
+    server: 'www.windowsmsidownloads.com'
+    port: 443
+    uuid: '80be2deb-3b27-4775-9bd1-7f2a2b9c261b'
+    alterId: 0
+    cipher: 'auto'
+    udp: true
+    tls: true
+    skip-cert-verify: true
+    servername: ''
+    network: 'ws'
+    ws-opts:
+      path: '/truth'
+      headers:
+        Host: ''
+    endpoint-id: '1c7ada6a806c5960'
+  - name: '🇺🇸 美国 (United States) 424 - tammader'
+    type: 'vless'
+    server: '208.84.100.209'
+    port: 8080
+    uuid: '36c3dcc2-17b6-4478-b8a7-3978e6d5afe9'
+    udp: true
+    tls: false
+    skip-cert-verify: true
+    network: 'ws'
+    ws-opts:
+      path: '/'
+      headers:
+        Host: '208.84.100.209'
+    endpoint-id: '6e1c0d8c0b24ae0c'
+  - type: 'trojan'
+    name: '@Alirewa-234'
+    server: '45-149-147-213.sslip.io'
+    port: 4444
+    tls: true
+    password: '9b347a9b-d7a6-4b51-9890-eff62b832834'
+    network: 'grpc'
+    sni: '45-149-147-213.sslip.io'
+    grpc-opts:
+      grpc-service-name: 'kobedin-server1-trojan'
+    endpoint-id: 'd07a6a986dd7be39'
