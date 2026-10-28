@@ -118,13 +118,15 @@ function latestChatGPTObservation(node) {
 function chatgptEligible(node) {
   const latest = latestChatGPTObservation(node);
   if (!latest) return false;
-  // ChatGPT is its own capability pool. It still requires a confirmed usable
-  // exit in the same observation, but it must not depend on the ordinary
+  // ChatGPT is its own endpoint-reachability pool. HTTP 200 or 403 responses
+  // are accepted by the probe; a 403 does not prove challenge completion or
+  // authenticated usability. It still requires a confirmed ordinary exit,
+  // but must not depend on the ordinary
   // Elite threshold (top-3 ranking, five-run trust threshold, or 90% recent
   // rate). The ChatGPT-specific three-attempt test is the capability gate.
   return latest.success === true &&
     latest.exitSuccess === true &&
-    latest.chatgptEligible === true &&
+    (latest.chatgptEndpointReachable === true || latest.chatgptEligible === true) &&
     Number(latest.chatgptSuccessRate) >= CHATGPT_MIN_RATE &&
     latest.chatgptAttempts.length >= CHATGPT_MIN_ATTEMPTS;
 }
@@ -306,6 +308,7 @@ function main() {
       chatgptMinSuccessRate: CHATGPT_MIN_RATE,
       chatgptMinAttempts: CHATGPT_MIN_ATTEMPTS,
       chatgptPoolMode: 'incumbent-first-with-exploration',
+      chatgptAcceptancePolicy: 'HTTP 200 or HTTP 403 response; Cloudflare challenge completion is not required; 403 is reachability-only evidence',
       chatgptExcludedRegions: ['HK'],
       pairFallbackOnly: true,
     },
