@@ -364,9 +364,15 @@ async function probeBrowser(browser, proxyName) {
     mainDocumentResponses,
     challengeTimeline,
     challengeWaitSeconds: CHALLENGE_WAIT_SECONDS,
-    challengeResolvedDuringWait: challengeTimeline.some(x =>
-      (x.hasMain || x.hasComposer) && !/just a moment|attention required|verify you are human|cf-chl-|captcha|enable javascript and cookies to continue/i.test(x.title + ' ' + (x.bodyTextSnippet || ''))
-    ),
+    // Require positive app evidence; a generic <main> element exists on Cloudflare's challenge page too.
+    challengeResolvedDuringWait: challengeTimeline.some(x => {
+      const snapshotText = (x.title + ' ' + (x.bodyTextSnippet || '')).toLowerCase();
+      const stillChallenge = /just a moment|attention required|verify you are human|cf-chl-|captcha|enable javascript and cookies to continue|verification successful\. waiting for chatgpt\.com to respond/.test(snapshotText);
+      const appTitle = /^chatgpt(?:\s|$)/i.test(String(x.title || '').trim());
+      const appContent = Number(x.bodyTextLength || 0) > 20 &&
+        /chatgpt|openai|log in|sign up|登录|注册/i.test(x.bodyTextSnippet || '');
+      return !stillChallenge && appTitle && (x.hasComposer || (x.hasMain && appContent));
+    }),
     pageErrors,
     failedRequests,
     htmlLength: pageData.htmlLength || 0,
