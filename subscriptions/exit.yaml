@@ -498,17 +498,6 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: 'a7050f9b8d257d48'
-  - name: '🇳🇱NL_271|1.0MB/s|R002-260618 01'
-    password: 'null'
-    port: 443
-    server: '103.97.88.154'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    endpoint-id: 'a406a6cbecb4c7ff'
   - name: '🇩🇪DE_11|2.9MB/s|R002-260618 01'
     port: 443
     server: '185.44.107.166'
@@ -886,6 +875,15 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
+  - name: '🇮🇹IT_53|1.1MB/s|R002-260618 01'
+    port: 443
+    server: '94.177.163.156'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
   - name: '🇸🇬SG_102|275KB/s|R002-260618 01'
     port: 443
     server: '43.160.239.37'
@@ -999,6 +997,15 @@ proxies:
   - name: '🇳🇱NL_282|1.6MB/s|R002-260618 01'
     port: 443
     server: '89.150.35.94'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇩🇪DE_197|2.2MB/s|R002-260618 01'
+    port: 443
+    server: '193.233.75.115'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
@@ -1663,4 +1670,29 @@ proxies:
     password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
     network: 'tcp'
     sni: 'exploreeducationsectoropportunitiestodayandadvancecareers.com'
+    _poolOnly: true
+  - name: '香港(yudou99.com 玉豆分享)_8'
+    type: 'anytls'
+    server: '654968169.df6h451rh.xin'
+    port: 443
+    password: '0324fbc29561'
+    sni: '654968169.df6h451rh.xin'
+    skip-cert-verify: true
+    tls: true
+    udp: true
+    _poolOnly: true
+  - name: '🇩🇪 德国 (Germany) 23 - tammader'
+    type: 'vless'
+    server: '199.232.239.239'
+    port: 443
+    uuid: '36805edb-1e85-4199-a59f-117010b70017'
+    udp: true
+    tls: true
+    skip-cert-verify: true
+    servername: 'firefox.com'
+    network: 'ws'
+    ws-opts:
+      path: '/@CloudVPNchannel/@CloudVPNchannel/@CloudVPNchannel/@CloudVPNchannel/@CloudVPNchannel/@CloudVPNchannel?ed=2056'
+      headers:
+        Host: 'mpkoe7ypcibr80p102020123.global.ssl.fastly.net'
     _poolOnly: true
