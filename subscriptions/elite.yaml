@@ -8,9 +8,9 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇮🇩ID_10|550KB/s|R002-260618 01'
+  - name: '🇮🇩ID_2|688KB/s|R002-260618 [ec91e15d058c]'
     port: 443
-    server: '103.86.117.202'
+    server: '103.86.116.118'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true

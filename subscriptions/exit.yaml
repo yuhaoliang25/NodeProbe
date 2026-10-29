@@ -318,6 +318,17 @@ proxies:
     username: 'null'
     udp: true
     endpoint-id: '9b94b90a44e04d52'
+  - name: '🇳🇱NL_285|1.1MB/s|P002-260618 01'
+    password: 'null'
+    port: 443
+    server: '185.140.209.235'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    endpoint-id: 'b1b69e8bf091d5cf'
   - name: '🇺🇸US_627|334KB/s|R002-260618 01'
     port: 443
     server: '38.28.193.1'
@@ -1111,15 +1122,6 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '❓OtherT1_1|467KB/s|R002-260618 01'
-    port: 8443
-    server: '45.142.141.5'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
   - name: '🇺🇸US_452|351KB/s|R002-260618 01'
     port: 443
     server: '137.175.22.40'
@@ -1553,30 +1555,6 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇪🇪EE_29|2.0MB/s|R002-260618 01'
-    password: '9jkvAVV-9ufV6IGd'
-    port: 44008
-    server: 'chalo-ru.nexorcdn.com'
-    skip-cert-verify: true
-    sni: 'chalo-ru.nexorcdn.com'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'ef37886e2aacd6fa622e3de3810299c2'
-    udp: true
-    _poolOnly: true
-  - name: '🇪🇪EE_32|1.5MB/s|R002-260618 01'
-    password: '9jkvAVV-9ufV6IGd'
-    port: 36774
-    server: 'chalo-ru.nexorcdn.com'
-    skip-cert-verify: true
-    sni: 'chalo-ru.nexorcdn.com'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'ef37886e2aacd6fa622e3de3810299c2'
-    udp: true
-    _poolOnly: true
   - name: '🇮🇹IT_25|1.1MB/s|R002-260618 01'
     port: 443
     server: '93.42.177.250'
@@ -1613,15 +1591,6 @@ proxies:
     type: 'trojan'
     udp: true
     _poolOnly: true
-  - type: 'trojan'
-    name: '🇺🇸 美国 | USA-dd320150588fcd08'
-    server: '66.163.122.7'
-    port: 443
-    tls: false
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'www.searchnationwidecareerchangehelperandguidancetoday.com'
-    _poolOnly: true
   - name: 'HK - zhuhai.uk'
     type: 'anytls'
     server: '56481.df6h451rh.xin'
@@ -1650,6 +1619,16 @@ proxies:
     skip-cert-verify: true
     tls: true
     udp: true
+    _poolOnly: true
+  - name: '🇺🇸 美国 (United States) 510 - tammader'
+    type: 'vless'
+    server: 'us007.zestapp778.com'
+    port: 18580
+    uuid: 'e9a8144e-5237-488a-afb1-9ca3d8d54c80'
+    udp: true
+    tls: true
+    skip-cert-verify: true
+    servername: 'us007.zestapp778.com'
     _poolOnly: true
   - name: '🇩🇪 德国 (Germany) 23 - tammader'
     type: 'vless'
