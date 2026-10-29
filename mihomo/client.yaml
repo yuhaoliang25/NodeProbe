@@ -44,18 +44,9 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇸🇬SG_38|247KB/s|R002-260618 01'
+  - name: '🇮🇩ID_2|688KB/s|R002-260618 [ec91e15d058c]'
     port: 443
-    server: '154.26.139.24'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: 'd1f4a0d80288cf0b'
-  - name: '🇫🇷FR_2083|1.8MB/s|R002-260618 01'
-    port: 443
-    server: '172.64.69.89'
+    server: '103.86.116.118'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
@@ -71,29 +62,29 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇮🇩ID_2|688KB/s|R002-260618 [ec91e15d058c]'
+  - name: '🇸🇬SG_38|247KB/s|R002-260618 01'
     port: 443
-    server: '103.86.116.118'
+    server: '154.26.139.24'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
-    _poolOnly: true
+    endpoint-id: 'd1f4a0d80288cf0b'
 proxy-groups:
   - name: 'PROXY'
     type: 'select'
     proxies:
       - '🇭🇰 香港 18-pool-3ecdf2883fc56e42'
-      - '🇸🇬SG_38|247KB/s|R002-260618 01'
-      - '🇫🇷FR_2083|1.8MB/s|R002-260618 01'
+      - '🇮🇩ID_2|688KB/s|R002-260618 [ec91e15d058c]'
+      - '🇮🇩ID_10|550KB/s|R002-260618 01'
       - 'DIRECT'
   - name: 'CHATGPT'
     type: 'select'
     proxies:
+      - '🇮🇩ID_2|688KB/s|R002-260618 [ec91e15d058c]'
       - '🇮🇩ID_10|550KB/s|R002-260618 01'
       - '🇸🇬SG_38|247KB/s|R002-260618 01'
-      - '🇮🇩ID_2|688KB/s|R002-260618 [ec91e15d058c]'
   - name: 'STICKY'
     type: 'select'
     proxies:
