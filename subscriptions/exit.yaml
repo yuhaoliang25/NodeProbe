@@ -1259,15 +1259,6 @@ proxies:
     tls: true
     skip-cert-verify: true
     _poolOnly: true
-  - name: '🇺🇸US_439|751KB/s|R002-260618 01'
-    port: 443
-    server: '64.98.50.100'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
   - name: '🇮🇪IE_11|3.2MB/s|K001-260618 [ebe2b193bdbc]'
     password: 'None'
     port: 443
@@ -1295,17 +1286,6 @@ proxies:
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_531|776KB/s|K001-260618 [264821797083]'
-    password: 'None'
-    port: 443
-    server: '64.98.50.100'
-    skip-cert-verify: true
-    sub_tag: 'K001-260618'
-    tls: true
-    type: 'http'
-    username: ''
     udp: true
     _poolOnly: true
   - name: '🇮🇩ID_2|688KB/s|R002-260618 [ec91e15d058c]'
@@ -1482,15 +1462,6 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: 'trojan-1827149341'
-    password: 'happybirthdaydaniel'
-    port: 25267
-    server: 'de-bots4.h1cloud.net'
-    skip-cert-verify: true
-    sni: 't.me/fuckthewall'
-    type: 'trojan'
-    udp: true
-    _poolOnly: true
   - name: 'HK - zhuhai.uk'
     type: 'anytls'
     server: '56481.df6h451rh.xin'
@@ -1510,14 +1481,4 @@ proxies:
     skip-cert-verify: true
     tls: true
     udp: true
-    _poolOnly: true
-  - name: '🇺🇸 美国 (United States) 510 - tammader'
-    type: 'vless'
-    server: 'us007.zestapp778.com'
-    port: 18580
-    uuid: 'e9a8144e-5237-488a-afb1-9ca3d8d54c80'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'us007.zestapp778.com'
     _poolOnly: true
