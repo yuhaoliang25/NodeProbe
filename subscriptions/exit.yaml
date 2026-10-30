@@ -366,16 +366,16 @@ proxies:
     username: 'null'
     udp: true
     endpoint-id: 'e73f9b00dc6db0bb'
-  - name: '🇳🇱NL_58|1.6MB/s|R002-260618 01'
+  - name: '🇦🇺AU_2|373KB/s|R002-260618 01'
+    password: 'None'
     port: 443
-    server: '103.97.88.154'
+    server: '159.13.44.228'
     skip-cert-verify: true
-    sni: '4a8c2906c96058315dffbc2b0e7ff19b-98005bea43f9ac33.apache-iv.com'
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
-    endpoint-id: '9c35e4b4a187e58c'
+    endpoint-id: 'b6287b6141712218'
   - name: '🇲🇽MX_1|483KB/s|R002-260618 01'
     port: 443
     server: '45.134.9.41'
@@ -447,16 +447,6 @@ proxies:
     udp: true
     sni: 'fan.132031.xyz'
     endpoint-id: 'd2e9c39519d8b7a4'
-  - name: '🇳🇱NL_287|777KB/s|R002-260618 01'
-    port: 443
-    server: '185.246.153.42'
-    skip-cert-verify: true
-    sni: '482c8436a1f7c908b48a1757abb5dd79-3791fb4df2db250b.apache-iv.com'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: 'e1c82204f654007f'
   - name: '🇺🇸US_765|333KB/s|R002-260618 01'
     password: 'null'
     port: 443
@@ -637,15 +627,6 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇳🇱NL_278|1.7MB/s|R002-260618 01'
-    port: 19362
-    server: '51.159.225.197'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
   - name: '🇳🇱NL_279|1.7MB/s|R002-260618 01'
     port: 9002
     server: '84.17.47.123'
@@ -719,15 +700,6 @@ proxies:
   - name: '🇫🇷FR_2165|1.7MB/s|R002-260618 01'
     port: 4443
     server: '83.172.143.53'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇮🇹IT_53|1.1MB/s|R002-260618 01'
-    port: 443
-    server: '94.177.163.156'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
@@ -831,6 +803,16 @@ proxies:
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇳🇱NL_239|1.2MB/s|R002-260618 01'
+    password: 'null'
+    port: 443
+    server: '157.22.183.72'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
     udp: true
     _poolOnly: true
   - name: '🇳🇱NL_274|3.0MB/s|R002-260618 01'
