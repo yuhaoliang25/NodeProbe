@@ -1009,15 +1009,6 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇺🇸US_422|607KB/s|P002-260618 01'
-    port: 8443
-    server: '45.150.164.18'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
   - name: '🇺🇸US_445|479KB/s|R002-260618 01'
     port: 443
     server: '66.64.100.66'
