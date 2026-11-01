@@ -198,6 +198,13 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '096c3c8668fe13c3'
+  - name: 'NL - zhuhai.uk 02'
+    type: 'http'
+    server: '51.158.243.91'
+    port: 443
+    tls: true
+    skip-cert-verify: true
+    _poolOnly: true
   - name: '🇵🇱PL_2|2.5MB/s|R002-260618 01'
     port: 443
     server: '151.115.54.133'
@@ -348,15 +355,6 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: 'd3d97e8a4f270f45'
-  - name: '🇺🇸US_61|332KB/s|R002-260618 01'
-    port: 443
-    server: '38.28.193.188'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '5b107f4a88d7b51f'
   - name: '🇫🇷FR_66|3.0MB/s|R002-260618 01'
     port: 443
     server: '141.94.16.4'
@@ -435,6 +433,14 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '82d5def0fabb8171'
+  - name: 'US - zhuhai.uk 02'
+    type: 'http'
+    server: 'fan.226278.xyz'
+    port: 443
+    tls: true
+    sni: 'fan.226278.xyz'
+    skip-cert-verify: true
+    _poolOnly: true
   - name: '🇺🇸US_547|586KB/s|R002-260618 01'
     port: 443
     server: '216.107.139.82'
@@ -608,24 +614,6 @@ proxies:
   - name: '🇳🇱NL_280|706KB/s|R002-260618 01'
     port: 443
     server: '185.238.168.20'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇫🇷FR_2238|2.0MB/s|R002-260618 01'
-    port: 443
-    server: '51.210.167.149'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇩🇪DE_198|2.5MB/s|R002-260618 01'
-    port: 443
-    server: '79.76.126.155'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
@@ -1248,14 +1236,4 @@ proxies:
     tls: true
     type: 'http'
     udp: true
-    _poolOnly: true
-  - name: 'HK - zhuhai.uk'
-    type: 'anytls'
-    server: '56481.df6h451rh.xin'
-    port: 443
-    password: '0324fbc29561'
-    udp: true
-    sni: 'images.ctfassets.net'
-    skip-cert-verify: true
-    client-fingerprint: 'chrome'
     _poolOnly: true
