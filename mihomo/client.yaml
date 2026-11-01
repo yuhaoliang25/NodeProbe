@@ -83,8 +83,8 @@ proxy-groups:
     type: 'select'
     proxies:
       - '🇮🇩ID_10|550KB/s|R002-260618 01'
-      - '🇮🇩ID_2|688KB/s|R002-260618 [ec91e15d058c]'
       - '🇫🇷FR_2058|2.0MB/s|R002-260618 01'
+      - '🇮🇩ID_2|688KB/s|R002-260618 [ec91e15d058c]'
   - name: 'STICKY'
     type: 'select'
     proxies:
