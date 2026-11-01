@@ -244,6 +244,27 @@ proxies:
     udp: true
     username: 'testuser1'
     endpoint-id: 'ca137e96d0035143'
+  - name: '🇮🇹IT_1|625KB/s|R002-260618 01'
+    port: 443
+    server: '91.243.118.217'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'e019d09aa7573606'
+  - name: '🇳🇱NL_200|4.6MB/s|R002-260618 01'
+    password: 'null'
+    port: 23856
+    server: '51.159.225.196'
+    skip-cert-verify: true
+    sni: '51.159.225.196'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    endpoint-id: 'd29d25afe0ed72dd'
   - name: '🇵🇱PL_8|1.6MB/s|P002-260618 01'
     password: 'None'
     port: 443
@@ -393,6 +414,16 @@ proxies:
     udp: true
     sni: 'fan.587475.xyz'
     endpoint-id: 'ac5a189a995d7c1d'
+  - name: '🇳🇱NL_167|225KB/s|P002-260618 01'
+    password: 'None'
+    port: 443
+    server: '5.255.118.82'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '5785822f65964492'
   - name: '🇺🇸US_249|347KB/s|R002-260618 01'
     password: 'null'
     port: 443
@@ -891,30 +922,6 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - alpn:
-      - 'h3'
-      - 'h2'
-      - 'http/1.1'
-    client-fingerprint: 'ios'
-    encryption: 'none'
-    name: '🇫🇷FR_1788|619KB/s|R002-260618 01'
-    network: 'ws'
-    packet-encoding: 'xudp'
-    port: 2087
-    server: '104.18.1.1'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'vless'
-    uuid: '4859c235-2530-4062-9a0b-ea859cbbf861'
-    ws-opts:
-      early-data-header-name: 'Sec-WebSocket-Protocol'
-      headers:
-        Host: '1.proxy2.us.ci.'
-      max-early-data: 2560
-      path: '/'
-    udp: true
-    servername: '1.proxy2.us.ci.'
-    _poolOnly: true
   - name: '🇺🇸US_476|518KB/s|R002-260618 01'
     port: 443
     server: '24.225.10.211'
@@ -924,18 +931,20 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇬🇧GB_53|323KB/s|R002-260618 01'
-    port: 8443
-    server: '77.221.136.60'
-    skip-cert-verify: true
+  - name: '🇰🇷KR_45|524KB/s|R002-260618 01'
+    password: 'bb85e074-b0c2-11ea-ad28-f23c913c8d2b'
+    port: 31433
+    server: '783f6643-tcev40-th02zb-m0b9.kr.oshuawei.com'
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
+    username: 'bb85e074-b0c2-11ea-ad28-f23c913c8d2b'
     udp: true
+    sni: '783f6643-tcev40-th02zb-m0b9.kr.oshuawei.com'
     _poolOnly: true
-  - name: '🇺🇸US_471|656KB/s|R002-260618 01'
+  - name: '🇬🇧GB_53|323KB/s|R002-260618 01'
     port: 8443
-    server: '45.145.72.122'
+    server: '77.221.136.60'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
@@ -1054,6 +1063,17 @@ proxies:
     tls: true
     skip-cert-verify: true
     _poolOnly: true
+  - name: '🇱🇻LV_24|2.4MB/s|K001-260618 [e8d4b41ce864]'
+    password: 'None'
+    port: 443
+    server: '185.219.159.16'
+    skip-cert-verify: true
+    sub_tag: 'K001-260618'
+    tls: true
+    type: 'http'
+    username: ''
+    udp: true
+    _poolOnly: true
   - name: '🇺🇸US_432|174KB/s|R002-260618 01'
     port: 443
     server: '38.28.185.143'
@@ -1109,18 +1129,18 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇩🇪DE_163|2.2MB/s|R002-260618 01'
+  - name: '🇩🇪DE_94|2.5MB/s|R002-260618 01'
     port: 443
-    server: '213.109.163.119'
+    server: '159.69.94.125'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇮🇹IT_48|731KB/s|R002-260618 01'
+  - name: '🇩🇪DE_163|2.2MB/s|R002-260618 01'
     port: 443
-    server: '95.229.15.89'
+    server: '213.109.163.119'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
@@ -1184,6 +1204,15 @@ proxies:
   - name: '🇺🇸US_417|185KB/s|R002-260618 01'
     port: 443
     server: '38.28.185.222'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇳🇱NL_265|1.7MB/s|R002-260618 01'
+    port: 443
+    server: '185.93.106.214'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
