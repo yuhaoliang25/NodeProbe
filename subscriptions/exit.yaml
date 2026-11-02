@@ -233,6 +233,16 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: 'a8c19b903065a5b5'
+  - name: '🇳🇱NL_54|5.0MB/s|P002-260618 01'
+    password: 'None'
+    port: 23856
+    server: '51.159.225.196'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '19f9563200872813'
   - name: '🇩🇪DE_38|595KB/s|P002-260618 01'
     password: 'e4b72b531a2d10900519'
     port: 443
@@ -376,6 +386,15 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: 'd3d97e8a4f270f45'
+  - name: '🇺🇸US_61|332KB/s|R002-260618 01'
+    port: 443
+    server: '38.28.193.188'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '5b107f4a88d7b51f'
   - name: '🇫🇷FR_66|3.0MB/s|R002-260618 01'
     port: 443
     server: '141.94.16.4'
@@ -838,6 +857,15 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
+  - name: '🇳🇱NL_282|1.6MB/s|R002-260618 01'
+    port: 443
+    server: '89.150.35.94'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
   - name: '🇳🇱NL_239|1.2MB/s|R002-260618 01'
     password: 'null'
     port: 443
@@ -939,6 +967,17 @@ proxies:
     tls: true
     type: 'http'
     udp: true
+    _poolOnly: true
+  - name: '🇰🇷KR_45|524KB/s|R002-260618 01'
+    password: 'bb85e074-b0c2-11ea-ad28-f23c913c8d2b'
+    port: 31433
+    server: '783f6643-tcev40-th02zb-m0b9.kr.oshuawei.com'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'bb85e074-b0c2-11ea-ad28-f23c913c8d2b'
+    udp: true
+    sni: '783f6643-tcev40-th02zb-m0b9.kr.oshuawei.com'
     _poolOnly: true
   - name: '🇬🇧GB_53|323KB/s|R002-260618 01'
     port: 8443
@@ -1244,15 +1283,6 @@ proxies:
     tls: true
     type: 'http'
     username: 'null'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_436|478KB/s|R002-260618 01'
-    port: 443
-    server: '96.5.129.85'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
     udp: true
     _poolOnly: true
   - name: '🇺🇸US_446|112KB/s|R002-260618 01'
