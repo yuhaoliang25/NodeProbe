@@ -462,6 +462,17 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '5785822f65964492'
+  - name: '🇺🇸US_249|347KB/s|R002-260618 01'
+    password: 'null'
+    port: 443
+    server: 'fan.596189.xyz'
+    sni: 'fan.596189.xyz'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    endpoint-id: 'e73f9b00dc6db0bb'
   - name: '🇳🇱NL_221|3.8MB/s|R002-260618 01'
     port: 443
     server: '5.255.118.82'
@@ -471,16 +482,6 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '2a89310d810d8786'
-  - name: '🇦🇺AU_2|373KB/s|R002-260618 01'
-    password: 'None'
-    port: 443
-    server: '159.13.44.228'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: 'b6287b6141712218'
   - name: '🇳🇱NL_58|1.6MB/s|R002-260618 01'
     port: 443
     server: '103.97.88.154'
@@ -686,6 +687,24 @@ proxies:
   - name: '🇺🇸US_517|646KB/s|R002-260618 01'
     port: 443
     server: '162.217.114.50'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_518|1.2MB/s|R002-260618 01'
+    port: 8443
+    server: '44.217.145.28'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_491|1.1MB/s|R002-260618 01'
+    port: 8443
+    server: '18.206.28.143'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
@@ -998,6 +1017,39 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
+  - name: '🇷🇺RU_17|1.2MB/s|R002-260618 01'
+    port: 1446
+    server: '46.29.166.134'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - alpn:
+      - 'h3'
+      - 'h2'
+      - 'http/1.1'
+    client-fingerprint: 'ios'
+    encryption: 'none'
+    name: '🇫🇷FR_1788|619KB/s|R002-260618 01'
+    network: 'ws'
+    packet-encoding: 'xudp'
+    port: 2087
+    server: '104.18.1.1'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'vless'
+    uuid: '4859c235-2530-4062-9a0b-ea859cbbf861'
+    ws-opts:
+      early-data-header-name: 'Sec-WebSocket-Protocol'
+      headers:
+        Host: '1.proxy2.us.ci.'
+      max-early-data: 2560
+      path: '/'
+    udp: true
+    servername: '1.proxy2.us.ci.'
+    _poolOnly: true
   - name: '🇺🇸US_476|518KB/s|R002-260618 01'
     port: 443
     server: '24.225.10.211'
@@ -1019,6 +1071,15 @@ proxies:
   - name: '🇺🇸US_471|656KB/s|R002-260618 01'
     port: 8443
     server: '45.145.72.122'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇺RU_13|492KB/s|R002-260618 01'
+    port: 443
+    server: '194.186.179.62'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
