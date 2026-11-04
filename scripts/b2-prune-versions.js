@@ -55,14 +55,15 @@ async function listExactVersions(auth,bucketId,fileName){
 async function prune(auth,bucketId,fileName){
   const versions=await listExactVersions(auth,bucketId,fileName);
   const uploads=versions.filter(x=>x.action==='upload'&&x.fileId);
-  if(uploads.length<=1){
-    console.log('[B2] '+fileName+': '+uploads.length+' upload version(s), nothing to prune');
+  if(!uploads.length){
+    console.log('[B2] '+fileName+': no uploaded version found; nothing to prune');
     return;
   }
   uploads.sort((a,b)=>Number(b.uploadTimestamp||0)-Number(a.uploadTimestamp||0));
   const keep=uploads[0];
   let deleted=0;
-  for(const version of uploads.slice(1)){
+  for(const version of versions){
+    if(!version.fileId||version.fileId===keep.fileId)continue;
     await api(auth,'b2_delete_file_version',{fileName:version.fileName,fileId:version.fileId});
     deleted++;
   }
