@@ -4,54 +4,106 @@ mode: 'rule'
 log-level: 'warning'
 ipv6: false
 proxies:
-  - name: '🇬🇧 英国 (United Kingdom) 04 - tammader'
-    type: 'ss'
-    server: '104.239.12.81'
-    port: 43385
-    cipher: 'chacha20-ietf-poly1305'
-    password: 'AwW1fV6oDDQKh8r2znmptv59tPgt4eHVTgFaTqgKS2jiSdikJ7GyGCBYehDaK38S8yMgHFdbJqcTmRJSfYS5CFw345bNhFZa'
-    udp: true
-    endpoint-id: '889859c342cc2654'
-  - name: '🇬🇧 英国 (United Kingdom) 21 - tammader'
-    type: 'vless'
-    server: '38.60.197.220'
-    port: 44559
-    uuid: 'e9a8144e-5237-488a-afb1-9ca3d8d54c80'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'en001.zestapp778.com'
-    endpoint-id: '9e24574a73574ed3'
-  - name: '🇫🇷 法国 (France) 05 - tammader'
-    type: 'ss'
-    server: 'pl134.vpnbook.com'
+  - type: 'trojan'
+    name: '🇺🇸US_633'
+    server: '169.197.140.171'
     port: 443
-    cipher: 'chacha20-ietf-poly1305'
-    password: '6heexyz'
-    udp: true
-    endpoint-id: 'ae48426303f8a48e'
-  - name: '🇰🇷 韩国 (South Korea) 01 - tammader'
-    type: 'vless'
+    tls: false
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    network: 'tcp'
+    sni: 'cdn.discoverfreshgraduatejobsstartyourprofessionaljourney.com'
+    endpoint-id: '0d2dd500e6aab2a7'
+  - type: 'trojan'
+    name: '🇺🇸US_612'
+    server: '169.197.140.224'
+    port: 443
+    tls: false
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    network: 'tcp'
+    sni: 'resources.discoverfreshgraduatejobsstartyourprofessionaljourney.com'
+    endpoint-id: '51544a573dcbd2bc'
+  - type: 'ss'
+    name: '🇵🇱PL_21'
+    server: '217.30.10.44'
+    port: 9052
+    cipher: 'aes-256-cfb'
+    password: 'jt2ekBNc9HuVtm2a'
+    endpoint-id: '3e9525ee6937b015'
+  - type: 'trojan'
+    name: '🇸🇪SE_14'
+    server: '70.34.207.14'
+    port: 443
+    tls: false
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    network: 'tcp'
+    sni: 'searchhealthcarejobsandbuildmedicalcareerpathway.com'
+    endpoint-id: '6535ad0a05575bd6'
+  - type: 'trojan'
+    name: '🇵🇱PL_28'
+    server: '70.34.252.255'
+    port: 443
+    tls: false
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    network: 'tcp'
+    sni: 'browseexecutivejobopeningsandenhanceleadershipcareer.com'
+    endpoint-id: 'b1cead645621918a'
+  - type: 'trojan'
+    name: '🇸🇬SG_68'
+    server: '149.28.130.108'
+    port: 443
+    tls: false
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    network: 'tcp'
+    sni: 'searchcreativejobsandshowcaseyourartistictalents.com'
+    endpoint-id: 'd3c89fb67c7c89ab'
+  - type: 'vless'
+    name: '🇰🇷KR_37'
     server: '152.69.226.63'
     port: 25555
-    uuid: '27c5483f-17f4-48ae-9a04-def53d88440d'
-    udp: true
     tls: false
-    skip-cert-verify: true
+    uuid: '27c5483f-17f4-48ae-9a04-def53d88440d'
     network: 'ws'
+    sni: '152.69.226.63'
+    ws-opts:
+      path: '/'
+    endpoint-id: 'd9a6fa77343a4b14'
+  - type: 'vless'
+    name: '🇰🇿KZ_6'
+    server: '3h-kazakhstan1.09vpn.com'
+    port: 8443
+    tls: true
+    uuid: '2424febb-43cb-488d-bdd1-401e923c8e48'
+    network: 'ws'
+    sni: '3h-kazakhstan1.09vpn.com'
+    ws-opts:
+      path: '/vless/'
+    endpoint-id: '0b09480702f72c85'
+  - type: 'vless'
+    name: '❓Other_59'
+    server: '104.17.70.206'
+    port: 8443
+    tls: true
+    uuid: '5f704d93-7e7f-45b5-81f5-08db4a946220'
+    network: 'ws'
+    sni: 'free.sahanwickramasinghe.com'
     ws-opts:
       path: '/'
       headers:
-        Host: '152.69.226.63'
-    endpoint-id: '32b11016050dc8ad'
+        Host: 'free.sahanwickramasinghe.com'
+    endpoint-id: 'f0409683c90c1b02'
 proxy-groups:
   - name: 'PROXY'
     type: 'select'
     proxies:
       - 'DIRECT'
-      - '🇬🇧 英国 (United Kingdom) 04 - tammader'
-      - '🇬🇧 英国 (United Kingdom) 21 - tammader'
-      - '🇫🇷 法国 (France) 05 - tammader'
-      - '🇰🇷 韩国 (South Korea) 01 - tammader'
+      - '🇺🇸US_633'
+      - '🇺🇸US_612'
+      - '🇵🇱PL_21'
+      - '🇸🇪SE_14'
+      - '🇵🇱PL_28'
+      - '🇸🇬SG_68'
+      - '🇰🇷KR_37'
+      - '🇰🇿KZ_6'
+      - '❓Other_59'
 rules:
   - 'MATCH,PROXY'
