@@ -589,6 +589,28 @@ jobs:
           source: subscriptions/stable.yaml
           destination: nodeprobe-state/china/stable.yaml
 
+      - name: Prune overwritten B2 state versions
+        if: success()
+        env:
+          B2_APPLICATION_KEY_ID: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          B2_APPLICATION_KEY: ${{ secrets.B2_APPLICATION_KEY }}
+          B2_BUCKET: nodeprobe
+        run: |
+          node scripts/b2-prune-versions.js \
+            nodeprobe-state/node-discovery-queue.json \
+            nodeprobe-state/sources.json \
+            nodeprobe-state/discovery-state.json \
+            nodeprobe-state/source-evolution.json \
+            nodeprobe-state/source-history.json \
+            nodeprobe-state/source-reputation.json \
+            nodeprobe-state/node-pool.json \
+            nodeprobe-state/history.json \
+            nodeprobe-state/stability.json \
+            nodeprobe-state/stability-history.json \
+            nodeprobe-state/ip-geolocation.json \
+            nodeprobe-state/country-pool.json \
+            nodeprobe-state/china/stable.yaml
+
       - name: Commit generated subscriptions
         run: |
           set -euo pipefail
