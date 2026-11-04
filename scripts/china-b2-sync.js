@@ -79,6 +79,70 @@ function runQuiet(args){
   }
   recordB2Usage(args);
 }
+function runB2(args){
+  const r=spawnSync(process.env.B2_BIN||'b2v4',args,{encoding:'utf8',env:process.env});
+  if(r.error)throw r.error;
+  if(r.status!==0){
+    if(r.stderr)process.stderr.write(r.stderr);
+    if(r.stdout)process.stderr.write(r.stdout);
+    throw new Error(`B2 command failed: ${args.join(' ')}`);
+  }
+  return r.stdout||'';
+}
+function parseVersionListing(stdout){
+  // b2v4 emits JSON for list-versions. Accept either one JSON document or
+  // JSON-lines output, but fail closed if the output cannot be understood.
+  try{
+    const parsed=JSON.parse(stdout);
+    if(Array.isArray(parsed))return parsed;
+    if(Array.isArray(parsed.files))return parsed.files;
+  }catch{}
+  const lines=stdout.split(/\\r?\\n/).map(line=>line.trim()).filter(Boolean);
+  const rows=[];
+  for(const line of lines){
+    let value;
+    try{value=JSON.parse(line);}catch{return null;}
+    if(Array.isArray(value))rows.push(...value);
+    else if(Array.isArray(value.files))rows.push(...value.files);
+    else if(value.fileName&&value.fileId)rows.push(value);
+    else return null;
+  }
+  return rows.length?rows:null;
+}
+function pruneOldVersions(remote,fileId){
+  // Use the exact object name as both prefix and post-filter. Never prune
+  // neighboring objects that merely share a prefix.
+  const stdout=runB2(['file','list-versions',BUCKET,'--prefix',remote,'--max-file-count','10000']);
+  const versions=parseVersionListing(stdout);
+  if(!versions)throw new Error('Unable to parse B2 list-versions output; refusing to delete versions for '+remote);
+  const exact=versions.filter(item=>item && item.fileName===remote && item.fileId);
+  if(!exact.some(item=>item.fileId===fileId)){
+    throw new Error('Uploaded version not found in B2 version listing; refusing to prune '+remote);
+  }
+  if(versions.length>=10000){
+    throw new Error('B2 version listing reached 10000 entries; refusing potentially incomplete prune for '+remote);
+  }
+  let deleted=0;
+  for(const version of exact){
+    if(version.fileId===fileId)continue;
+    runQuiet(['file','delete-version',version.fileName,version.fileId]);
+    deleted++;
+  }
+  if(deleted)console.log(`[B2] pruned ${deleted} old version(s): ${remote}`);
+}
+function uploadAndPrune(local,remote){
+  const stdout=runB2(['file','upload',BUCKET,local,remote]);
+  // CLI output formats vary by version; identify the uploaded version from
+  // the subsequent exact-name listing, using the newest upload timestamp.
+  const versions=parseVersionListing(runB2(['file','list-versions',BUCKET,'--prefix',remote,'--max-file-count','10000']));
+  if(!versions)throw new Error('Unable to parse B2 list-versions output after upload: '+remote);
+  const exact=versions.filter(item=>item && item.fileName===remote && item.fileId && item.action==='upload');
+  if(!exact.length)throw new Error('Newly uploaded B2 version not found: '+remote);
+  const newest=exact.sort((a,b)=>Number(b.uploadTimestamp||0)-Number(a.uploadTimestamp||0))[0];
+  recordB2Usage(['file','upload',BUCKET,local,remote]);
+  pruneOldVersions(remote,newest.fileId);
+  return stdout;
+}
 function usage(){
   console.log('usage: node scripts/china-b2-sync.js restore-asset-if-needed | pull-stable | pull-candidates | pull-discovery-queue | pull-pair-candidates | publish-results');
 }
@@ -192,7 +256,7 @@ if(mode==='restore-asset-if-needed'){
   ];
   for(const [local,remote] of outputs){
     if(!fs.existsSync(local))throw new Error('China result missing: '+local);
-    runQuiet(['file','upload',BUCKET,local,remote]);
+    uploadAndPrune(local,remote);
   }
   const crypto=require('crypto');
   const generatedAt=new Date().toISOString();
@@ -221,7 +285,7 @@ if(mode==='restore-asset-if-needed'){
   fs.writeFileSync(manifestFile,JSON.stringify(manifest,null,2)+'\n');
   // The manifest is published last. GitHub only needs to consume a release
   // after this marker exists, so it never becomes the China state writer.
-  runQuiet(['file','upload',BUCKET,manifestFile,PREFIX+'/release.json']);
+  uploadAndPrune(manifestFile,PREFIX+'/release.json');
   // Per-run diagnostics are audit records. Remove the local copy after the
   // upload so the China machine does not accumulate historical diagnostics.
   const localDiagnosticHistory=outputs.find(([local])=>local.startsWith('data/china-diagnostics-history/'))?.[0];
