@@ -97,7 +97,7 @@ function parseVersionListing(stdout){
     if(Array.isArray(parsed))return parsed;
     if(Array.isArray(parsed.files))return parsed.files;
   }catch{}
-  const lines=stdout.split(/\\r?\\n/).map(line=>line.trim()).filter(Boolean);
+  const lines=stdout.split(/\r?\n/).map(line=>line.trim()).filter(Boolean);
   const rows=[];
   for(const line of lines){
     let value;
@@ -112,7 +112,7 @@ function parseVersionListing(stdout){
 function pruneOldVersions(remote,fileId){
   // Use the exact object name as both prefix and post-filter. Never prune
   // neighboring objects that merely share a prefix.
-  const stdout=runB2(['file','list-versions',BUCKET,'--prefix',remote,'--max-file-count','10000']);
+  const stdout=runB2(['file','list-versions',BUCKET,'--prefix',remote,'--max-file-count','10000','--json']);
   const versions=parseVersionListing(stdout);
   if(!versions)throw new Error('Unable to parse B2 list-versions output; refusing to delete versions for '+remote);
   const exact=versions.filter(item=>item && item.fileName===remote && item.fileId);
@@ -128,7 +128,7 @@ function pruneOldVersions(remote,fileId){
     runQuiet(['file','delete-version',version.fileName,version.fileId]);
     deleted++;
   }
-  if(deleted)console.log(`[B2] pruned ${deleted} old version(s): ${remote}`);
+  console.log(`[B2] ${remote}: versions=${exact.length}, kept=1, deleted=${deleted}`);
 }
 function uploadAndPrune(local,remote){
   const stdout=runB2(['file','upload',BUCKET,local,remote]);
@@ -138,7 +138,7 @@ function uploadAndPrune(local,remote){
   if(!versions)throw new Error('Unable to parse B2 list-versions output after upload: '+remote);
   const exact=versions.filter(item=>item && item.fileName===remote && item.fileId && item.action==='upload');
   if(!exact.length)throw new Error('Newly uploaded B2 version not found: '+remote);
-  const newest=exact.sort((a,b)=>Number(b.uploadTimestamp||0)-Number(a.uploadTimestamp||0))[0];
+  exact.sort((a,b)=>Number(b.uploadTimestamp||0)-Number(a.uploadTimestamp||0));\n  const newest=exact[0];
   recordB2Usage(['file','upload',BUCKET,local,remote]);
   pruneOldVersions(remote,newest.fileId);
   return stdout;
