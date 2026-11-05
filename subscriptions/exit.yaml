@@ -611,6 +611,17 @@ proxies:
     username: 'null'
     udp: true
     endpoint-id: '49afa43edc803cfa'
+  - name: '🇫🇷FR_393|77KB/s|R002-260618 01'
+    password: 'null'
+    port: 443
+    server: 'fan.132031.xyz'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    sni: 'fan.132031.xyz'
+    endpoint-id: 'd2e9c39519d8b7a4'
   - name: '🇳🇱NL_287|777KB/s|R002-260618 01'
     port: 443
     server: '185.246.153.42'
@@ -1035,38 +1046,14 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇷🇺RU_17|1.2MB/s|R002-260618 01'
-    port: 1446
-    server: '46.29.166.134'
+  - name: '🇺🇸US_515|604KB/s|R002-260618 01'
+    port: 443
+    server: '20.42.108.114'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
-    _poolOnly: true
-  - alpn:
-      - 'h3'
-      - 'h2'
-      - 'http/1.1'
-    client-fingerprint: 'ios'
-    encryption: 'none'
-    name: '🇫🇷FR_1788|619KB/s|R002-260618 01'
-    network: 'ws'
-    packet-encoding: 'xudp'
-    port: 2087
-    server: '104.18.1.1'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'vless'
-    uuid: '4859c235-2530-4062-9a0b-ea859cbbf861'
-    ws-opts:
-      early-data-header-name: 'Sec-WebSocket-Protocol'
-      headers:
-        Host: '1.proxy2.us.ci.'
-      max-early-data: 2560
-      path: '/'
-    udp: true
-    servername: '1.proxy2.us.ci.'
     _poolOnly: true
   - name: '🇺🇸US_476|518KB/s|R002-260618 01'
     port: 443
@@ -1356,15 +1343,6 @@ proxies:
     tls: true
     type: 'http'
     username: 'null'
-    udp: true
-    _poolOnly: true
-  - name: '🇫🇮FI_85|129KB/s|R002-260618 01'
-    port: 8080
-    server: '65.109.179.56'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
     udp: true
     _poolOnly: true
   - name: '🇺🇸US_436|478KB/s|R002-260618 01'
