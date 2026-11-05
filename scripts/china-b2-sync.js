@@ -138,7 +138,8 @@ function uploadAndPrune(local,remote){
   if(!versions)throw new Error('Unable to parse B2 list-versions output after upload: '+remote);
   const exact=versions.filter(item=>item && item.fileName===remote && item.fileId && item.action==='upload');
   if(!exact.length)throw new Error('Newly uploaded B2 version not found: '+remote);
-  exact.sort((a,b)=>Number(b.uploadTimestamp||0)-Number(a.uploadTimestamp||0));\n  const newest=exact[0];
+  exact.sort((a,b)=>Number(b.uploadTimestamp||0)-Number(a.uploadTimestamp||0));
+  const newest=exact[0];
   recordB2Usage(['file','upload',BUCKET,local,remote]);
   pruneOldVersions(remote,newest.fileId);
   return stdout;
