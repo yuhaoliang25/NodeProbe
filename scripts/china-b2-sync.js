@@ -90,8 +90,8 @@ function runB2(args){
   return r.stdout||'';
 }
 function parseVersionListing(stdout){
-  // b2v4 emits JSON for list-versions. Accept either one JSON document or
-  // JSON-lines output, but fail closed if the output cannot be understood.
+  // Request machine-readable output explicitly. Accept either one JSON document
+  // or JSON-lines output, but fail closed if the output cannot be understood.
   try{
     const parsed=JSON.parse(stdout);
     if(Array.isArray(parsed))return parsed;
@@ -119,7 +119,7 @@ function pruneOldVersions(remote,fileId){
   if(!exact.some(item=>item.fileId===fileId)){
     throw new Error('Uploaded version not found in B2 version listing; refusing to prune '+remote);
   }
-  if(versions.length>=10000){
+  if(exact.length>=10000){
     throw new Error('B2 version listing reached 10000 entries; refusing potentially incomplete prune for '+remote);
   }
   let deleted=0;
