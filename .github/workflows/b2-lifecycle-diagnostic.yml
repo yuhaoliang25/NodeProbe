@@ -35,12 +35,8 @@ jobs:
           target = os.environ["B2_TARGET_FILE"]
 
           def post(url, token, payload):
-              req = urllib.request.Request(
-                  url,
-                  data=json.dumps(payload).encode(),
-                  headers={"Authorization": token, "Content-Type": "application/json"},
-                  method="POST",
-              )
+              req = urllib.request.Request(url, data=json.dumps(payload).encode(),
+                  headers={"Authorization": token, "Content-Type": "application/json"}, method="POST")
               try:
                   with urllib.request.urlopen(req, timeout=30) as response:
                       return json.load(response)
@@ -49,15 +45,12 @@ jobs:
                   raise RuntimeError(f"B2 API HTTP {exc.code}: {body[:1000]}")
 
           basic = base64.b64encode(f"{key_id}:{app_key}".encode()).decode()
-          req = urllib.request.Request(
-              "https://api.backblazeb2.com/b2api/v2/b2_authorize_account",
-              headers={"Authorization": f"Basic {basic}"},
-          )
+          req = urllib.request.Request("https://api.backblazeb2.com/b2api/v2/b2_authorize_account",
+              headers={"Authorization": f"Basic {basic}"})
           with urllib.request.urlopen(req, timeout=30) as response:
               auth = json.load(response)
 
-          api = auth["apiUrl"]
-          token = auth["authorizationToken"]
+          api, token = auth["apiUrl"], auth["authorizationToken"]
           buckets = post(api + "/b2api/v2/b2_list_buckets", token, {"accountId": auth["accountId"]})
           bucket = next((b for b in buckets.get("buckets", []) if b["bucketName"] == bucket_name), None)
           if not bucket:
@@ -66,25 +59,42 @@ jobs:
           print("LIFECYCLE_RULES:")
           print(json.dumps(bucket.get("lifecycleRules", []), indent=2, sort_keys=True))
 
-          payload = {"bucketId": bucket["bucketId"], "startFileName": target, "maxFileCount": 1000}
-          data = post(api + "/b2api/v2/b2_list_file_versions", token, payload)
-          exact = [f for f in data.get("files", []) if f.get("fileName") == target]
-          exact.sort(key=lambda f: f.get("uploadTimestamp", 0), reverse=True)
-          print(f"\nTARGET: {target}")
-          print(f"EXACT_VERSION_COUNT: {len(exact)}")
+          versions, start_name, start_id = [], target, None
+          while True:
+              payload = {"bucketId": bucket["bucketId"], "startFileName": start_name, "maxFileCount": 1000}
+              if start_id:
+                  payload["startFileId"] = start_id
+              page = post(api + "/b2api/v2/b2_list_file_versions", token, payload)
+              page_files = page.get("files", [])
+              versions.extend(f for f in page_files if f.get("fileName") == target)
+              next_name, next_id = page.get("nextFileName"), page.get("nextFileId")
+              if not next_name or next_name != target:
+                  break
+              if not next_id or (next_name == start_name and next_id == start_id):
+                  raise RuntimeError("B2 version-list pagination did not advance")
+              start_name, start_id = next_name, next_id
+
+          versions.sort(key=lambda f: f.get("uploadTimestamp", 0), reverse=True)
           now = datetime.now(timezone.utc)
-          for item in exact:
-              ts = item.get("uploadTimestamp", 0) / 1000
-              uploaded = datetime.fromtimestamp(ts, timezone.utc)
-              age_hours = (now - uploaded).total_seconds() / 3600
+          print(f"\nTARGET: {target}")
+          print(f"EXACT_VERSION_COUNT: {len(versions)}")
+          locked = 0
+          for item in versions:
+              uploaded = datetime.fromtimestamp(item.get("uploadTimestamp", 0) / 1000, timezone.utc)
+              retention = item.get("fileRetention")
+              legal_hold = item.get("legalHold")
+              is_locked = bool(legal_hold == "on" or (retention and retention.get("mode") not in (None, "none")))
+              locked += int(is_locked)
               print(json.dumps({
                   "action": item.get("action"),
-                  "uploadTimestamp": item.get("uploadTimestamp"),
                   "uploadedUtc": uploaded.isoformat(),
-                  "ageHours": round(age_hours, 2),
+                  "ageHours": round((now - uploaded).total_seconds() / 3600, 2),
                   "fileId": item.get("fileId"),
-                  "size": item.get("size"),
+                  "contentLength": item.get("contentLength"),
+                  "fileRetention": retention,
+                  "legalHold": legal_hold,
+                  "locked": is_locked,
               }, sort_keys=True))
-          if data.get("nextFileName"):
-              print("WARNING: API returned a pagination cursor; exact-version output may be incomplete.")
+          print(f"LOCKED_VERSION_COUNT: {locked}")
+          print(f"OLDER_THAN_24H: {sum(1 for f in versions if (now.timestamp()*1000-f.get('uploadTimestamp',0))/3600000 > 24)}")
           PY
