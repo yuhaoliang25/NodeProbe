@@ -132,9 +132,9 @@ function pruneOldVersions(remote,fileId){
 }
 function uploadAndPrune(local,remote){
   const stdout=runB2(['file','upload',BUCKET,local,remote]);
-  // CLI output formats vary by version; identify the uploaded version from
-  // the subsequent exact-name listing, using the newest upload timestamp.
-  const versions=parseVersionListing(runB2(['file','list-versions',BUCKET,'--prefix',remote,'--max-file-count','10000']));
+  // B2 lists versions newest-first for each exact file name. Select the newest
+  // uploaded version; the exact-name filter excludes prefix neighbours.
+  const versions=parseVersionListing(runB2(['file','list-versions',BUCKET,'--prefix',remote,'--max-file-count','10000','--json']));
   if(!versions)throw new Error('Unable to parse B2 list-versions output after upload: '+remote);
   const exact=versions.filter(item=>item && item.fileName===remote && item.fileId && item.action==='upload');
   if(!exact.length)throw new Error('Newly uploaded B2 version not found: '+remote);
