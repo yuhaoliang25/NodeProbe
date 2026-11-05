@@ -1,0 +1,90 @@
+name: B2 Lifecycle Diagnostic
+
+on:
+  push:
+    branches:
+      - b2-lifecycle-diagnostic
+    paths:
+      - .github/workflows/b2-lifecycle-diagnostic.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      B2_KEY_ID: ${{ secrets.B2_APPLICATION_KEY_ID }}
+      B2_APPLICATION_KEY: ${{ secrets.B2_APPLICATION_KEY }}
+      B2_BUCKET: nodeprobe
+      B2_TARGET_FILE: nodeprobe-state/china-node-assets.json
+    steps:
+      - name: Inspect bucket lifecycle and target object versions
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import base64, json, os, urllib.request, urllib.error
+          from datetime import datetime, timezone
+
+          key_id = os.environ["B2_KEY_ID"]
+          app_key = os.environ["B2_APPLICATION_KEY"]
+          bucket_name = os.environ["B2_BUCKET"]
+          target = os.environ["B2_TARGET_FILE"]
+
+          def post(url, token, payload):
+              req = urllib.request.Request(
+                  url,
+                  data=json.dumps(payload).encode(),
+                  headers={"Authorization": token, "Content-Type": "application/json"},
+                  method="POST",
+              )
+              try:
+                  with urllib.request.urlopen(req, timeout=30) as response:
+                      return json.load(response)
+              except urllib.error.HTTPError as exc:
+                  body = exc.read().decode(errors="replace")
+                  raise RuntimeError(f"B2 API HTTP {exc.code}: {body[:1000]}")
+
+          basic = base64.b64encode(f"{key_id}:{app_key}".encode()).decode()
+          req = urllib.request.Request(
+              "https://api.backblazeb2.com/b2api/v2/b2_authorize_account",
+              headers={"Authorization": f"Basic {basic}"},
+          )
+          with urllib.request.urlopen(req, timeout=30) as response:
+              auth = json.load(response)
+
+          api = auth["apiUrl"]
+          token = auth["authorizationToken"]
+          buckets = post(api + "/b2api/v2/b2_list_buckets", token, {"accountId": auth["accountId"]})
+          bucket = next((b for b in buckets.get("buckets", []) if b["bucketName"] == bucket_name), None)
+          if not bucket:
+              raise SystemExit(f"ERROR: bucket {bucket_name!r} not visible to this key")
+          print(f"BUCKET: {bucket_name}")
+          print("LIFECYCLE_RULES:")
+          print(json.dumps(bucket.get("lifecycleRules", []), indent=2, sort_keys=True))
+
+          payload = {"bucketId": bucket["bucketId"], "startFileName": target, "maxFileCount": 1000}
+          data = post(api + "/b2api/v2/b2_list_file_versions", token, payload)
+          exact = [f for f in data.get("files", []) if f.get("fileName") == target]
+          exact.sort(key=lambda f: f.get("uploadTimestamp", 0), reverse=True)
+          print(f"\nTARGET: {target}")
+          print(f"EXACT_VERSION_COUNT: {len(exact)}")
+          now = datetime.now(timezone.utc)
+          for item in exact:
+              ts = item.get("uploadTimestamp", 0) / 1000
+              uploaded = datetime.fromtimestamp(ts, timezone.utc)
+              age_hours = (now - uploaded).total_seconds() / 3600
+              print(json.dumps({
+                  "action": item.get("action"),
+                  "uploadTimestamp": item.get("uploadTimestamp"),
+                  "uploadedUtc": uploaded.isoformat(),
+                  "ageHours": round(age_hours, 2),
+                  "fileId": item.get("fileId"),
+                  "size": item.get("size"),
+              }, sort_keys=True))
+          if data.get("nextFileName"):
+              print("WARNING: API returned a pagination cursor; exact-version output may be incomplete.")
+          PY
