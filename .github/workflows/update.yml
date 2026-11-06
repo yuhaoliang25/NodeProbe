@@ -590,7 +590,7 @@ jobs:
           destination: nodeprobe-state/china/stable.yaml
 
       - name: Prune overwritten B2 state versions
-        if: success()
+        if: ${{ !cancelled() }}
         env:
           B2_APPLICATION_KEY_ID: ${{ secrets.B2_APPLICATION_KEY_ID }}
           B2_APPLICATION_KEY: ${{ secrets.B2_APPLICATION_KEY }}
