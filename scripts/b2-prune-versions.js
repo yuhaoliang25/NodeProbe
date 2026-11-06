@@ -49,7 +49,7 @@ async function listExactVersions(auth,bucketId,fileName){
     all.push(...files.filter(x=>x.fileName===fileName));
     if(!result.nextFileName||result.nextFileName!==fileName)return all;
     const nextFileId=result.nextFileId;
-    if(!nextFileId||(nextFileName===startFileName&&nextFileId===startFileId)){
+    if(!nextFileId||(result.nextFileName===startFileName&&nextFileId===startFileId)){
       throw new Error('B2 version pagination did not advance for '+fileName);
     }
     startFileName=result.nextFileName;
