@@ -1,0 +1,43 @@
+name: B2 State Full Prune Verification
+
+on:
+  push:
+    branches:
+      - fix-b2-prune-execution
+    paths:
+      - .github/workflows/b2-state-full-prune-test.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  prune-state:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Prune all NodeProbe persistent B2 objects and verify
+        env:
+          B2_APPLICATION_KEY_ID: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          B2_APPLICATION_KEY: ${{ secrets.B2_APPLICATION_KEY }}
+          B2_BUCKET: nodeprobe
+        run: |
+          node scripts/b2-prune-versions.js \
+            nodeprobe-state/node-discovery-queue.json \
+            nodeprobe-state/sources.json \
+            nodeprobe-state/discovery-state.json \
+            nodeprobe-state/source-evolution.json \
+            nodeprobe-state/source-history.json \
+            nodeprobe-state/source-reputation.json \
+            nodeprobe-state/node-pool.json \
+            nodeprobe-state/history.json \
+            nodeprobe-state/stability.json \
+            nodeprobe-state/stability-history.json \
+            nodeprobe-state/ip-geolocation.json \
+            nodeprobe-state/country-pool.json \
+            nodeprobe-state/china/stable.yaml \
+            nodeprobe-state/china-node-assets.json
