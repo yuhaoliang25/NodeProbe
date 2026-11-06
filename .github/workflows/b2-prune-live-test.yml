@@ -1,0 +1,29 @@
+name: B2 Prune Live Verification
+
+on:
+  push:
+    branches:
+      - fix-b2-prune-execution
+    paths:
+      - .github/workflows/b2-prune-live-test.yml
+      - scripts/b2-prune-versions.js
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  prune-one-object:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Prune and verify China asset object versions
+        env:
+          B2_APPLICATION_KEY_ID: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          B2_APPLICATION_KEY: ${{ secrets.B2_APPLICATION_KEY }}
+          B2_BUCKET: nodeprobe
+        run: node scripts/b2-prune-versions.js nodeprobe-state/china-node-assets.json
