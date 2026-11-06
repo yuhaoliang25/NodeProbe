@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 'use strict';
 
-// Run after the workflow's B2 uploads. Keep the newest uploaded version for
-// each exact object name and delete older versions to avoid B2 lifecycle lag.
+// Keep the newest uploaded version for each exact object name and delete
+// every older upload/hide marker. This is independent of upload success so
+// stale versions can still be cleaned when the main workflow fails later.
 const keyId=process.env.B2_APPLICATION_KEY_ID;
 const applicationKey=process.env.B2_APPLICATION_KEY;
 const bucketName=process.env.B2_BUCKET||'nodeprobe';
@@ -31,7 +32,8 @@ async function api(auth,name,payload){
 }
 async function getBucketId(auth){
   const result=await api(auth,'b2_list_buckets',{accountId:auth.accountId,bucketName});
-  const bucket=result.buckets?.find(x=>x.name===bucketName);
+  // B2's response field is bucketName (not name).
+  const bucket=result.buckets?.find(x=>x.bucketName===bucketName);
   if(!bucket)throw new Error('B2 bucket not found: '+bucketName);
   return bucket.bucketId;
 }
@@ -45,10 +47,13 @@ async function listExactVersions(auth,bucketId,fileName){
     });
     const files=Array.isArray(result.files)?result.files:[];
     all.push(...files.filter(x=>x.fileName===fileName));
-    if(!result.nextFileName) return all;
-    if(result.nextFileName!==fileName) return all;
+    if(!result.nextFileName||result.nextFileName!==fileName)return all;
+    const nextFileId=result.nextFileId;
+    if(!nextFileId||(nextFileName===startFileName&&nextFileId===startFileId)){
+      throw new Error('B2 version pagination did not advance for '+fileName);
+    }
     startFileName=result.nextFileName;
-    startFileId=result.nextFileId;
+    startFileId=nextFileId;
   }
   throw new Error('Version listing exceeded 100 pages for '+fileName);
 }
@@ -67,7 +72,14 @@ async function prune(auth,bucketId,fileName){
     await api(auth,'b2_delete_file_version',{fileName:version.fileName,fileId:version.fileId});
     deleted++;
   }
-  console.log('[B2] '+fileName+': kept latest '+keep.fileId+', deleted '+deleted+' old version(s)');
+  const remaining=await listExactVersions(auth,bucketId,fileName);
+  const remainingUploads=remaining.filter(x=>x.action==='upload');
+  if(remaining.length!==1||remainingUploads.length!==1||remainingUploads[0].fileId!==keep.fileId){
+    throw new Error('[B2] post-prune verification failed for '+fileName+
+      ': remaining versions='+remaining.length+', uploads='+remainingUploads.length);
+  }
+  console.log('[B2] '+fileName+': before='+versions.length+
+    ', kept latest='+keep.fileId+', deleted='+deleted+', after='+remaining.length+' (verified)');
 }
 async function main(){
   const names=[...new Set(process.argv.slice(2))].filter(Boolean);
