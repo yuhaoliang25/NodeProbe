@@ -609,7 +609,8 @@ jobs:
             nodeprobe-state/stability-history.json \
             nodeprobe-state/ip-geolocation.json \
             nodeprobe-state/country-pool.json \
-            nodeprobe-state/china/stable.yaml
+            nodeprobe-state/china/stable.yaml \
+            nodeprobe-state/china-node-assets.json
 
       - name: Commit generated subscriptions
         run: |
