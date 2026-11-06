@@ -927,15 +927,6 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇳🇱NL_282|1.6MB/s|R002-260618 01'
-    port: 443
-    server: '89.150.35.94'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
   - name: '🇩🇪DE_197|2.2MB/s|R002-260618 01'
     port: 443
     server: '193.233.75.115'
