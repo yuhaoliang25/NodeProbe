@@ -2,6 +2,10 @@ name: Update free nodes
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/build-subscriptions.js'
   schedule:
     - cron: '17 * * * *'
 
