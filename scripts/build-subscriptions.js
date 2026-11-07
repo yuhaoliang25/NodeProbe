@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 'use strict';
-// Temporary targeted Actions validation trigger; removed after the test run.
 const path=require('path');
 const fs=require('fs'),yaml=require('js-yaml'),crypto=require('crypto');
 const {timeDecayWeight,timeDecayedEvidence}=require('./time-decay');
