@@ -89,59 +89,13 @@ function runB2(args){
   }
   return r.stdout||'';
 }
-function parseVersionListing(stdout){
-  // Request machine-readable output explicitly. Accept either one JSON document
-  // or JSON-lines output, but fail closed if the output cannot be understood.
-  try{
-    const parsed=JSON.parse(stdout);
-    if(Array.isArray(parsed))return parsed;
-    if(Array.isArray(parsed.files))return parsed.files;
-  }catch{}
-  const lines=stdout.split(/\r?\n/).map(line=>line.trim()).filter(Boolean);
-  const rows=[];
-  for(const line of lines){
-    let value;
-    try{value=JSON.parse(line);}catch{return null;}
-    if(Array.isArray(value))rows.push(...value);
-    else if(Array.isArray(value.files))rows.push(...value.files);
-    else if(value.fileName&&value.fileId)rows.push(value);
-    else return null;
-  }
-  return rows.length?rows:null;
-}
-function pruneOldVersions(remote,fileId){
-  // Use the exact object name as both prefix and post-filter. Never prune
-  // neighboring objects that merely share a prefix.
-  const stdout=runB2(['file','list-versions',BUCKET,'--prefix',remote,'--max-file-count','10000','--json']);
-  const versions=parseVersionListing(stdout);
-  if(!versions)throw new Error('Unable to parse B2 list-versions output; refusing to delete versions for '+remote);
-  const exact=versions.filter(item=>item && item.fileName===remote && item.fileId);
-  if(!exact.some(item=>item.fileId===fileId)){
-    throw new Error('Uploaded version not found in B2 version listing; refusing to prune '+remote);
-  }
-  if(exact.length>=10000){
-    throw new Error('B2 version listing reached 10000 entries; refusing potentially incomplete prune for '+remote);
-  }
-  let deleted=0;
-  for(const version of exact){
-    if(version.fileId===fileId)continue;
-    runQuiet(['file','delete-version',version.fileName,version.fileId]);
-    deleted++;
-  }
-  console.log(`[B2] ${remote}: versions=${exact.length}, kept=1, deleted=${deleted}`);
-}
+
 function uploadAndPrune(local,remote){
+  // The installed b2v4 CLI does not expose list-versions/delete-version.
+  // Upload here; the GitHub Native API pruning workflow owns version cleanup.
   const stdout=runB2(['file','upload',BUCKET,local,remote]);
-  // B2 lists versions newest-first for each exact file name. Select the newest
-  // uploaded version; the exact-name filter excludes prefix neighbours.
-  const versions=parseVersionListing(runB2(['file','list-versions',BUCKET,'--prefix',remote,'--max-file-count','10000','--json']));
-  if(!versions)throw new Error('Unable to parse B2 list-versions output after upload: '+remote);
-  const exact=versions.filter(item=>item && item.fileName===remote && item.fileId && item.action==='upload');
-  if(!exact.length)throw new Error('Newly uploaded B2 version not found: '+remote);
-  exact.sort((a,b)=>Number(b.uploadTimestamp||0)-Number(a.uploadTimestamp||0));
-  const newest=exact[0];
   recordB2Usage(['file','upload',BUCKET,local,remote]);
-  pruneOldVersions(remote,newest.fileId);
+  console.log('[B2] uploaded '+remote+'; version cleanup delegated to GitHub.');
   return stdout;
 }
 function usage(){
