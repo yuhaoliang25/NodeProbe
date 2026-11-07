@@ -5,105 +5,71 @@ log-level: 'warning'
 ipv6: false
 proxies:
   - type: 'trojan'
-    name: '🇺🇸US_633'
-    server: '169.197.140.171'
+    name: '@DeltaKroneckerGithub-86e3588957b29a9c'
+    server: '216.152.147.201'
     port: 443
-    tls: false
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'cdn.discoverfreshgraduatejobsstartyourprofessionaljourney.com'
-    endpoint-id: '0d2dd500e6aab2a7'
-  - type: 'trojan'
-    name: '🇺🇸US_612'
-    server: '169.197.140.224'
-    port: 443
-    tls: false
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'resources.discoverfreshgraduatejobsstartyourprofessionaljourney.com'
-    endpoint-id: '51544a573dcbd2bc'
-  - type: 'ss'
-    name: '🇵🇱PL_21'
-    server: '217.30.10.44'
-    port: 9052
-    cipher: 'aes-256-cfb'
-    password: 'jt2ekBNc9HuVtm2a'
-    endpoint-id: '3e9525ee6937b015'
-  - type: 'trojan'
-    name: '🇸🇪SE_14'
-    server: '70.34.207.14'
-    port: 443
-    tls: false
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'searchhealthcarejobsandbuildmedicalcareerpathway.com'
-    endpoint-id: '6535ad0a05575bd6'
-  - type: 'trojan'
-    name: '🇵🇱PL_28'
-    server: '70.34.252.255'
-    port: 443
-    tls: false
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'browseexecutivejobopeningsandenhanceleadershipcareer.com'
-    endpoint-id: 'b1cead645621918a'
-  - type: 'trojan'
-    name: '🇸🇬SG_68'
-    server: '149.28.130.108'
-    port: 443
-    tls: false
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'searchcreativejobsandshowcaseyourartistictalents.com'
-    endpoint-id: 'd3c89fb67c7c89ab'
-  - type: 'vless'
-    name: '🇰🇷KR_37'
-    server: '152.69.226.63'
-    port: 25555
-    tls: false
-    uuid: '27c5483f-17f4-48ae-9a04-def53d88440d'
-    network: 'ws'
-    sni: '152.69.226.63'
-    ws-opts:
-      path: '/'
-    endpoint-id: 'd9a6fa77343a4b14'
-  - type: 'vless'
-    name: '🇰🇿KZ_6'
-    server: '3h-kazakhstan1.09vpn.com'
-    port: 8443
     tls: true
-    uuid: '2424febb-43cb-488d-bdd1-401e923c8e48'
-    network: 'ws'
-    sni: '3h-kazakhstan1.09vpn.com'
-    ws-opts:
-      path: '/vless/'
-    endpoint-id: '0b09480702f72c85'
-  - type: 'vless'
-    name: '❓Other_59'
-    server: '104.17.70.206'
-    port: 8443
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    network: 'tcp'
+    sni: 'resources.connectingpeoplewithgreatjobs.com'
+    endpoint-id: '86e3588957b29a9c'
+  - type: 'trojan'
+    name: '@DeltaKroneckerGithub-7594215fa99a6aee'
+    server: '167.88.61.20'
+    port: 443
     tls: true
-    uuid: '5f704d93-7e7f-45b5-81f5-08db4a946220'
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    network: 'tcp'
+    sni: 'api.browseseniorrolesandenhanceyourcareertoday.com'
+    endpoint-id: '7594215fa99a6aee'
+  - type: 'trojan'
+    name: '4Sarina-fb184c9231'
+    server: '199.68.156.121'
+    port: 2087
+    tls: true
+    password: '7bpe9s002exll38s'
     network: 'ws'
-    sni: 'free.sahanwickramasinghe.com'
+    sni: 'nexoshop.netvia.ir'
     ws-opts:
-      path: '/'
+      path: '/wss'
       headers:
-        Host: 'free.sahanwickramasinghe.com'
-    endpoint-id: 'f0409683c90c1b02'
+        Host: 'nexoshop.netvia.ir'
+    endpoint-id: '215019cace13343f'
+  - type: 'trojan'
+    name: '4Nika-1fab105ff0'
+    server: '199.181.197.99'
+    port: 443
+    tls: true
+    password: '70756c73-0000-4000-8000-650000000000'
+    network: 'ws'
+    sni: 'parsa-panel-u48we.wotic15356.workers.dev'
+    ws-opts:
+      path: '/pulse'
+      headers:
+        Host: 'parsa-panel-u48we.wotic15356.workers.dev'
+    endpoint-id: 'fd37884abbd6b587'
+  - type: 'trojan'
+    name: '4FreeIran-4c06e360a8'
+    server: '104.234.239.139'
+    port: 443
+    tls: true
+    password: '70756c73-0000-4000-8000-650000000000'
+    network: 'ws'
+    sni: 'parsa-panel-u48we.wotic15356.workers.dev'
+    ws-opts:
+      path: '/pulse'
+      headers:
+        Host: 'parsa-panel-u48we.wotic15356.workers.dev'
+    endpoint-id: 'bdfbb4e54b1c1733'
 proxy-groups:
   - name: 'PROXY'
     type: 'select'
     proxies:
       - 'DIRECT'
-      - '🇺🇸US_633'
-      - '🇺🇸US_612'
-      - '🇵🇱PL_21'
-      - '🇸🇪SE_14'
-      - '🇵🇱PL_28'
-      - '🇸🇬SG_68'
-      - '🇰🇷KR_37'
-      - '🇰🇿KZ_6'
-      - '❓Other_59'
+      - '@DeltaKroneckerGithub-86e3588957b29a9c'
+      - '@DeltaKroneckerGithub-7594215fa99a6aee'
+      - '4Sarina-fb184c9231'
+      - '4Nika-1fab105ff0'
+      - '4FreeIran-4c06e360a8'
 rules:
   - 'MATCH,PROXY'

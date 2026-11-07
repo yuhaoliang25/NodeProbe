@@ -1,77 +1,118 @@
 proxies:
-  - type: 'trojan'
-    name: '🇺🇸US_633'
-    server: '169.197.140.171'
-    port: 443
-    tls: false
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+  - name: '[443] 🇺🇸 GTHost TROJAN SNI TLS'
     network: 'tcp'
-    sni: 'cdn.discoverfreshgraduatejobsstartyourprofessionaljourney.com'
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    port: 443
+    server: '66.163.112.171'
+    skip-cert-verify: true
+    sni: 'learn.unlockyourfuturefindyourperfectcareer.com'
+    type: 'trojan'
+    udp: true
     _poolOnly: true
-  - type: 'vless'
-    name: '❓Other_59'
-    server: '104.17.70.206'
-    port: 8443
-    tls: true
-    uuid: '5f704d93-7e7f-45b5-81f5-08db4a946220'
+  - name: '[406] 🇺🇸 Baykov Ilya Sergeevich WS SNI'
     network: 'ws'
-    sni: 'free.sahanwickramasinghe.com'
+    port: 14430
+    server: '45.138.100.248'
+    servername: '45.138.100.248'
+    skip-cert-verify: true
+    tls: false
+    type: 'vless'
+    udp: true
+    uuid: 'ae908ff5-f749-402c-af25-e6e9aef4d6bb'
     ws-opts:
-      path: '/'
       headers:
-        Host: 'free.sahanwickramasinghe.com'
+        Host: '45.138.100.248'
+      path: '/vless'
     _poolOnly: true
-  - type: 'ss'
-    name: '🇺🇸US_736'
-    server: '138.197.89.234'
-    port: 28960
-    cipher: 'chacha20-ietf-poly1305'
-    password: 'DZRy4Q3QH0jUGfKFl2jDCZ'
-    _poolOnly: true
-  - type: 'vless'
-    name: '🇰🇷KR_37'
-    server: '152.69.226.63'
-    port: 25555
-    tls: false
-    uuid: '27c5483f-17f4-48ae-9a04-def53d88440d'
+  - alterId: 0
+    cipher: 'auto'
+    name: '[171] 🇺🇸 Oracle Corporation WS SNI'
     network: 'ws'
-    sni: '152.69.226.63'
+    port: 39495
+    server: '129.146.77.248'
+    servername: '129.146.77.248'
+    skip-cert-verify: true
+    tls: false
+    type: 'vmess'
+    udp: true
+    uuid: 'f836c736-87fc-4fde-aabc-00857ecdff3e'
     ws-opts:
-      path: '/'
+      headers:
+        Host: '129.146.77.248'
+      path: '/cctv13.m3u8'
+    _poolOnly: true
+  - alterId: 0
+    cipher: 'auto'
+    name: '[293] 🇩🇪 OVH GmbH TCP SNI TLS'
+    network: 'tcp'
+    port: 1234
+    server: '141.95.65.9'
+    servername: '141.95.65.9'
+    skip-cert-verify: true
+    tls: true
+    type: 'vmess'
+    udp: true
+    uuid: '5c040f1d-45db-43bd-8d46-e4950e433735'
+    _poolOnly: true
+  - alterId: 0
+    cipher: 'auto'
+    name: '[312] 🇩🇪 OVH GmbH TCP SNI TLS'
+    network: 'tcp'
+    port: 1234
+    server: '162.19.204.71'
+    servername: '162.19.204.71'
+    skip-cert-verify: true
+    tls: true
+    type: 'vmess'
+    udp: true
+    uuid: '5c040f1d-45db-43bd-8d46-e4950e433735'
+    _poolOnly: true
+  - alterId: 0
+    cipher: 'auto'
+    name: '[388] 🇳🇱 Zenex 5ive Limited TCP SNI TLS'
+    network: 'tcp'
+    port: 1234
+    server: '45.90.106.24'
+    servername: '45.90.106.24'
+    skip-cert-verify: true
+    tls: true
+    type: 'vmess'
+    udp: true
+    uuid: '5c040f1d-45db-43bd-8d46-e4950e433735'
+    _poolOnly: true
+  - cipher: 'chacha20-ietf-poly1305'
+    name: '[125] 🇳🇱 GLOBALIT DOO SHADOWSOCKS SNI'
+    password: 'AwW1fV6oDDQKh8r2znmptv59tPgt4eHVTgFaTqgKS2jiSdikJ7GyGCBYehDaK38S8yMgHFdbJqcTmRJSfYS5CFw345bNhFZa'
+    port: 43385
+    server: 'sql.popmintxo.cc'
+    type: 'ss'
+    udp: true
+    _poolOnly: true
+  - name: '[137] 🇮🇳 Contabo Asia Private Limited WS SNI'
+    network: 'ws'
+    port: 14430
+    server: '13.140.56.100'
+    servername: '13.140.56.100'
+    skip-cert-verify: true
+    tls: false
+    type: 'vless'
+    udp: true
+    uuid: '68512eac-cd53-4de3-8d1e-08f6e04af1a9'
+    ws-opts:
+      headers:
+        Host: '13.140.56.100'
+      path: '/vless'
     _poolOnly: true
   - type: 'trojan'
-    name: '🇸🇬SG_68'
-    server: '149.28.130.108'
+    password: '0a9f1f5a397bd427'
+    server: '125.227.86.45'
     port: 443
-    tls: false
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'searchcreativejobsandshowcaseyourartistictalents.com'
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇩🇪DE_88'
-    server: '193.108.119.96'
-    port: 443
-    tls: false
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'learn.iloverussia2026.com'
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇨🇦CA_42'
-    server: 'ca001.zestapp778.com'
-    port: 46977
-    tls: false
-    password: '5t6i121em5lkmsmk'
-    network: 'tcp'
-    sni: 'ca001.zestapp778.com'
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇮🇳IN_36'
-    server: '139.84.210.39'
-    port: 42733
-    tls: false
-    password: '5t6i121em5lkmsmk'
-    network: 'tcp'
-    sni: 'in002.zestapp778.com'
+    name: '🇹🇼TW-01 · 524K/s'
+    skip-cert-verify: true
+    sni: 'TG.freecodes'
+    alpn:
+      - 'h2'
+    network: 'grpc'
+    grpc-opts:
+      grpc-service-name: 'db'
     _poolOnly: true

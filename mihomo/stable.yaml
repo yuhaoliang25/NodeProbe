@@ -4,291 +4,361 @@ mode: 'rule'
 log-level: 'warning'
 ipv6: false
 proxies:
-  - type: 'trojan'
-    name: '🇺🇸US_633'
-    server: '169.197.140.171'
-    port: 443
+  - name: '[406] 🇺🇸 Baykov Ilya Sergeevich WS SNI'
+    network: 'ws'
+    port: 14430
+    server: '45.138.100.248'
+    servername: '45.138.100.248'
+    skip-cert-verify: true
     tls: false
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'cdn.discoverfreshgraduatejobsstartyourprofessionaljourney.com'
+    type: 'vless'
+    udp: true
+    uuid: 'ae908ff5-f749-402c-af25-e6e9aef4d6bb'
+    ws-opts:
+      headers:
+        Host: '45.138.100.248'
+      path: '/vless'
+    _poolOnly: true
+  - type: 'vless'
+    server: '159.89.87.21'
+    port: 28190
+    uuid: '14c80e0e-f7ce-4991-94fc-99a1db4a9b1e'
+    udp: true
+    skip-cert-verify: true
+    tls: true
+    servername: 'aws.amazon.com'
+    reality-opts:
+      public-key: 'ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno'
+    flow: 'xtls-rprx-vision'
+    client-fingerprint: 'chrome'
+    name: '🇺🇸US-04 · 1.6M/s'
     _poolOnly: true
   - type: 'trojan'
-    name: '🇺🇸US_612'
-    server: '169.197.140.224'
-    port: 443
-    tls: false
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'resources.discoverfreshgraduatejobsstartyourprofessionaljourney.com'
+    name: '4Jadi-414a513b03'
+    server: '208.103.161.16'
+    port: 2096
+    tls: true
+    password: 'hWsj5AwIRPF8'
+    network: 'ws'
+    sni: 'rayAnconfIg3-Bhl0ai7j-t2.raYan-coNfig-3.woRKers.dEV'
+    ws-opts:
+      path: '/?ed=2560'
+      headers:
+        Host: 'rayAnconfIg3-Bhl0ai7j-t2.raYan-coNfig-3.woRKers.dEV'
     _poolOnly: true
-  - cipher: 'chacha20-ietf-poly1305'
-    name: '[386] 🇵🇱 OVH Sp. z o. o. SHADOWSOCKS SNI'
-    password: '6heexyz'
+  - name: '[395] 🇺🇸 GTHost TCP SNI TLS'
+    network: 'tcp'
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
     port: 443
-    server: '54.36.174.140'
-    type: 'ss'
+    server: '216.152.155.131'
+    skip-cert-verify: true
+    sni: 'www.nextjobopportunityandclaimyouridealrole.com'
+    type: 'trojan'
     udp: true
     _poolOnly: true
-  - type: 'ss'
-    name: '🇵🇱PL_21'
-    server: '217.30.10.44'
-    port: 9052
-    cipher: 'aes-256-cfb'
-    password: 'jt2ekBNc9HuVtm2a'
+  - name: '[420] 🇺🇸 GLOBALTELEHOST Corp. TCP SNI TLS'
+    network: 'tcp'
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    port: 443
+    server: '169.197.140.214'
+    skip-cert-verify: true
+    sni: 'courses.discoverfreshgraduatejobsstartyourprofessionaljourney.com'
+    type: 'trojan'
+    udp: true
     _poolOnly: true
   - type: 'trojan'
-    name: '🇸🇪SE_14'
-    server: '70.34.207.14'
+    name: '@DeltaKroneckerGithub-86e3588957b29a9c'
+    server: '216.152.147.201'
     port: 443
-    tls: false
+    tls: true
     password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
     network: 'tcp'
-    sni: 'searchhealthcarejobsandbuildmedicalcareerpathway.com'
+    sni: 'resources.connectingpeoplewithgreatjobs.com'
     _poolOnly: true
-  - type: 'trojan'
-    name: '🇵🇱PL_28'
-    server: '70.34.252.255'
-    port: 443
-    tls: false
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+  - name: '[424] 🇺🇸 GTHost TCP SNI TLS'
     network: 'tcp'
-    sni: 'browseexecutivejobopeningsandenhanceleadershipcareer.com'
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    port: 443
+    server: '66.163.114.45'
+    skip-cert-verify: true
+    sni: 'cdn.findconnectwithemployersandbuildprofessionalnetwork.com'
+    type: 'trojan'
+    udp: true
+    _poolOnly: true
+  - name: '[443] 🇺🇸 GTHost TROJAN SNI TLS'
+    network: 'tcp'
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    port: 443
+    server: '66.163.112.171'
+    skip-cert-verify: true
+    sni: 'learn.unlockyourfuturefindyourperfectcareer.com'
+    type: 'trojan'
+    udp: true
+    _poolOnly: true
+  - alterId: 0
+    cipher: 'auto'
+    name: '[171] 🇺🇸 Oracle Corporation WS SNI'
+    network: 'ws'
+    port: 39495
+    server: '129.146.77.248'
+    servername: '129.146.77.248'
+    skip-cert-verify: true
+    tls: false
+    type: 'vmess'
+    udp: true
+    uuid: 'f836c736-87fc-4fde-aabc-00857ecdff3e'
+    ws-opts:
+      headers:
+        Host: '129.146.77.248'
+      path: '/cctv13.m3u8'
     _poolOnly: true
   - type: 'trojan'
-    name: '🇺🇸US_627'
+    name: '@DeltaKroneckerGithub-7594215fa99a6aee'
     server: '167.88.61.20'
     port: 443
-    tls: false
+    tls: true
     password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
     network: 'tcp'
     sni: 'api.browseseniorrolesandenhanceyourcareertoday.com'
     _poolOnly: true
-  - type: 'trojan'
-    name: '🇸🇬SG_68'
-    server: '149.28.130.108'
-    port: 443
-    tls: false
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+  - alterId: 0
+    cipher: 'auto'
+    name: '[388] 🇳🇱 Zenex 5ive Limited TCP SNI TLS'
     network: 'tcp'
-    sni: 'searchcreativejobsandshowcaseyourartistictalents.com'
-    _poolOnly: true
-  - type: 'vless'
-    name: '🇰🇷KR_37'
-    server: '152.69.226.63'
-    port: 25555
-    tls: false
-    uuid: '27c5483f-17f4-48ae-9a04-def53d88440d'
-    network: 'ws'
-    sni: '152.69.226.63'
-    ws-opts:
-      path: '/'
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇺🇸US_686'
-    server: '170.101.101.131'
-    port: 443
-    tls: false
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'blog.explorecreativejobsandenhanceyourcareerportfolio.com'
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇨🇦CA_42'
-    server: 'ca001.zestapp778.com'
-    port: 46977
-    tls: false
-    password: '5t6i121em5lkmsmk'
-    network: 'tcp'
-    sni: 'ca001.zestapp778.com'
-    _poolOnly: true
-  - type: 'vless'
-    name: '🇰🇿KZ_6'
-    server: '3h-kazakhstan1.09vpn.com'
-    port: 8443
+    port: 1234
+    server: '45.90.106.24'
+    servername: '45.90.106.24'
+    skip-cert-verify: true
     tls: true
-    uuid: '2424febb-43cb-488d-bdd1-401e923c8e48'
-    network: 'ws'
-    sni: '3h-kazakhstan1.09vpn.com'
-    ws-opts:
-      path: '/vless/'
+    type: 'vmess'
+    udp: true
+    uuid: '5c040f1d-45db-43bd-8d46-e4950e433735'
     _poolOnly: true
-  - type: 'vless'
-    name: '❓Other_59'
-    server: '104.17.70.206'
-    port: 8443
+  - cipher: 'chacha20-ietf-poly1305'
+    name: '[227] 🇵🇱 OVH Sp. z o. o. SHADOWSOCKS SNI'
+    password: '6heexyz'
+    port: 443
+    server: 'pl140.vpnbook.com'
+    type: 'ss'
+    udp: true
+    _poolOnly: true
+  - alterId: 0
+    cipher: 'auto'
+    name: '[293] 🇩🇪 OVH GmbH TCP SNI TLS'
+    network: 'tcp'
+    port: 1234
+    server: '141.95.65.9'
+    servername: '141.95.65.9'
+    skip-cert-verify: true
     tls: true
-    uuid: '5f704d93-7e7f-45b5-81f5-08db4a946220'
+    type: 'vmess'
+    udp: true
+    uuid: '5c040f1d-45db-43bd-8d46-e4950e433735'
+    _poolOnly: true
+  - alterId: 0
+    cipher: 'auto'
+    name: '[312] 🇩🇪 OVH GmbH TCP SNI TLS'
+    network: 'tcp'
+    port: 1234
+    server: '162.19.204.71'
+    servername: '162.19.204.71'
+    skip-cert-verify: true
+    tls: true
+    type: 'vmess'
+    udp: true
+    uuid: '5c040f1d-45db-43bd-8d46-e4950e433735'
+    _poolOnly: true
+  - name: '[463] 🇨🇱 Vultr Holdings LLC TROJAN SNI TLS'
+    network: 'tcp'
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    port: 443
+    server: '64.176.7.205'
+    skip-cert-verify: true
+    sni: 'advanceyouremploymentskillsandcareerdevelopmenthub.com'
+    type: 'trojan'
+    udp: true
+    _poolOnly: true
+  - type: 'trojan'
+    name: '4Sarina-fb184c9231'
+    server: '199.68.156.121'
+    port: 2087
+    tls: true
+    password: '7bpe9s002exll38s'
     network: 'ws'
-    sni: 'free.sahanwickramasinghe.com'
+    sni: 'nexoshop.netvia.ir'
+    ws-opts:
+      path: '/wss'
+      headers:
+        Host: 'nexoshop.netvia.ir'
+    _poolOnly: true
+  - type: 'trojan'
+    name: '4Nika-1fab105ff0'
+    server: '199.181.197.99'
+    port: 443
+    tls: true
+    password: '70756c73-0000-4000-8000-650000000000'
+    network: 'ws'
+    sni: 'parsa-panel-u48we.wotic15356.workers.dev'
+    ws-opts:
+      path: '/pulse'
+      headers:
+        Host: 'parsa-panel-u48we.wotic15356.workers.dev'
+    _poolOnly: true
+  - name: '[85] 🇧🇾 IDEAHOST LTD Belarus WS SNI'
+    network: 'ws'
+    port: 14430
+    server: '178.172.227.228'
+    servername: '178.172.227.228'
+    skip-cert-verify: true
+    tls: false
+    type: 'vless'
+    udp: true
+    uuid: 'b6e5dc56-836f-48c1-9163-b0b0b43b647d'
+    ws-opts:
+      headers:
+        Host: '178.172.227.228'
+      path: '/vless'
+    _poolOnly: true
+  - name: '[129] 🇫🇮 AEZA GROUP LLC WS SNI'
+    network: 'ws'
+    port: 14430
+    server: '193.188.21.253'
+    servername: '193.188.21.253'
+    skip-cert-verify: true
+    tls: false
+    type: 'vless'
+    udp: true
+    uuid: '57f7772d-f5d6-4d8f-992d-5fa5e0d6da55'
+    ws-opts:
+      headers:
+        Host: '193.188.21.253'
+      path: '/vless'
+    _poolOnly: true
+  - type: 'trojan'
+    name: '4FreeIran-4c06e360a8'
+    server: '104.234.239.139'
+    port: 443
+    tls: true
+    password: '70756c73-0000-4000-8000-650000000000'
+    network: 'ws'
+    sni: 'parsa-panel-u48we.wotic15356.workers.dev'
+    ws-opts:
+      path: '/pulse'
+      headers:
+        Host: 'parsa-panel-u48we.wotic15356.workers.dev'
+    _poolOnly: true
+  - type: 'trojan'
+    password: '0a9f1f5a397bd427'
+    server: '125.227.86.45'
+    port: 443
+    name: '🇹🇼TW-01 · 524K/s'
+    skip-cert-verify: true
+    sni: 'TG.freecodes'
+    alpn:
+      - 'h2'
+    network: 'grpc'
+    grpc-opts:
+      grpc-service-name: 'db'
+    _poolOnly: true
+  - cipher: 'chacha20-ietf-poly1305'
+    name: '[125] 🇳🇱 GLOBALIT DOO SHADOWSOCKS SNI'
+    password: 'AwW1fV6oDDQKh8r2znmptv59tPgt4eHVTgFaTqgKS2jiSdikJ7GyGCBYehDaK38S8yMgHFdbJqcTmRJSfYS5CFw345bNhFZa'
+    port: 43385
+    server: 'sql.popmintxo.cc'
+    type: 'ss'
+    udp: true
+    _poolOnly: true
+  - name: '[469] 🇧🇾 IDEAHOST LTD Belarus TCP SNI'
+    network: 'tcp'
+    port: 10443
+    server: '178.172.227.124'
+    skip-cert-verify: true
+    tls: false
+    type: 'vless'
+    udp: true
+    uuid: '1af36694-b548-4b18-89a0-bc076eab4ed7'
+    _poolOnly: true
+  - name: '[137] 🇮🇳 Contabo Asia Private Limited WS SNI'
+    network: 'ws'
+    port: 14430
+    server: '13.140.56.100'
+    servername: '13.140.56.100'
+    skip-cert-verify: true
+    tls: false
+    type: 'vless'
+    udp: true
+    uuid: '68512eac-cd53-4de3-8d1e-08f6e04af1a9'
+    ws-opts:
+      headers:
+        Host: '13.140.56.100'
+      path: '/vless'
+    _poolOnly: true
+  - type: 'trojan'
+    name: '@DeltaKroneckerGithub-a11e312c4621979c'
+    server: 'Sclass-C1.catcat321.com'
+    port: 20086
+    tls: false
+    password: 'd9064589-74af-432a-9390-5d8a9da281bf'
+    network: 'tcp'
+    sni: 'hk.catxstar.com'
+    _poolOnly: true
+  - type: 'trojan'
+    name: '@DeltaKroneckerGithub-352444913bc7c5c9'
+    server: '172.67.118.45'
+    port: 2053
+    tls: false
+    password: 'gHQP0D7D15'
+    network: 'ws'
+    sni: 'marvdasht.phonecomparisonblog.org'
     ws-opts:
       path: '/'
       headers:
-        Host: 'free.sahanwickramasinghe.com'
+        Host: 'marvdasht.phonecomparisonblog.org'
     _poolOnly: true
   - type: 'trojan'
-    name: '🇩🇪DE_88'
-    server: '193.108.119.96'
-    port: 443
-    tls: false
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'learn.iloverussia2026.com'
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇺🇸US_452'
-    server: '216.106.186.66'
-    port: 443
-    tls: false
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'www.findlocaljobnetworkandbuildcommunityconnections.com'
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇺🇸US_435'
-    server: '216.106.186.33'
-    port: 443
-    tls: false
-    password: 'f0eb8c92ce8946aaba856569cff1a16b'
-    network: 'tcp'
-    sni: 'resources.findlocaljobnetworkandbuildcommunityconnections.com'
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇺🇸US_736'
-    server: '138.197.89.234'
-    port: 28960
-    cipher: 'chacha20-ietf-poly1305'
-    password: 'DZRy4Q3QH0jUGfKFl2jDCZ'
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇮🇳IN_36'
-    server: '139.84.210.39'
-    port: 42733
-    tls: false
-    password: '5t6i121em5lkmsmk'
-    network: 'tcp'
-    sni: 'in002.zestapp778.com'
-    _poolOnly: true
-  - type: 'vless'
-    name: '🇺🇸US_437'
-    server: '172.67.199.126'
+    name: '4Sarina-eda8e3f01c'
+    server: '172.66.0.1'
     port: 2053
     tls: true
-    uuid: 'c83f15bf-1817-4ec8-a19f-6393d226434c'
+    password: 'gHQP0D7D15'
     network: 'ws'
-    sni: 'fast.145779.xyz'
+    sni: 'marvdasht.phonecomparisonblog.org'
     ws-opts:
-      path: '/ws-tesla'
+      path: '/'
       headers:
-        Host: 'fast.145779.xyz'
-    _poolOnly: true
-  - type: 'vless'
-    name: '🇳🇱NL_304'
-    server: 'sc-thenetherlands2.09vpn.com'
-    port: 80
-    tls: false
-    uuid: 'e73df646-1f62-41bf-8c50-653497d603d0'
-    network: 'ws'
-    sni: 'sc-thenetherlands2.09vpn.com'
-    ws-opts:
-      path: '/vless/'
-      headers:
-        Host: 'sc-thenetherlands2.09vpn.com'
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇺🇸US_711'
-    server: '216.106.186.82'
-    port: 443
-    tls: false
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'courses.findlocaljobnetworkandbuildcommunityconnections.com'
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇫🇷FR_499'
-    server: 'fr001.zestapp778.com'
-    port: 16778
-    tls: false
-    password: '5t6i121em5lkmsmk'
-    network: 'tcp'
-    sni: 'fr001.zestapp778.com'
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇨🇭CH_60'
-    server: '208.69.78.222'
-    port: 443
-    tls: false
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'yourultimateprofessionalcareerhub.com'
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇨🇭CH_54'
-    server: '208.69.78.19'
-    port: 443
-    tls: false
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'www.yourultimateprofessionalcareerhub.com'
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇫🇷FR_588'
-    server: '108.61.177.57'
-    port: 16778
-    tls: false
-    password: '5t6i121em5lkmsmk'
-    network: 'tcp'
-    sni: 'fr001.zestapp778.com'
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇨🇭CH_62'
-    server: '208.69.78.33'
-    port: 443
-    tls: false
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'courses.yourultimateprofessionalcareerhub.com'
-    _poolOnly: true
-  - type: 'vless'
-    name: '🇺🇸US_526'
-    server: 'us007.zestapp778.com'
-    port: 18580
-    tls: true
-    uuid: 'e9a8144e-5237-488a-afb1-9ca3d8d54c80'
-    network: 'tcp'
-    sni: 'us007.zestapp778.com'
+        Host: 'marvdasht.phonecomparisonblog.org'
     _poolOnly: true
 proxy-groups:
   - name: 'PROXY'
     type: 'select'
     proxies:
       - 'DIRECT'
-      - '🇺🇸US_633'
-      - '🇺🇸US_612'
-      - '[386] 🇵🇱 OVH Sp. z o. o. SHADOWSOCKS SNI'
-      - '🇵🇱PL_21'
-      - '🇸🇪SE_14'
-      - '🇵🇱PL_28'
-      - '🇺🇸US_627'
-      - '🇸🇬SG_68'
-      - '🇰🇷KR_37'
-      - '🇺🇸US_686'
-      - '🇨🇦CA_42'
-      - '🇰🇿KZ_6'
-      - '❓Other_59'
-      - '🇩🇪DE_88'
-      - '🇺🇸US_452'
-      - '🇺🇸US_435'
-      - '🇺🇸US_736'
-      - '🇮🇳IN_36'
-      - '🇺🇸US_437'
-      - '🇳🇱NL_304'
-      - '🇺🇸US_711'
-      - '🇫🇷FR_499'
-      - '🇨🇭CH_60'
-      - '🇨🇭CH_54'
-      - '🇫🇷FR_588'
-      - '🇨🇭CH_62'
-      - '🇺🇸US_526'
+      - '[406] 🇺🇸 Baykov Ilya Sergeevich WS SNI'
+      - '🇺🇸US-04 · 1.6M/s'
+      - '4Jadi-414a513b03'
+      - '[395] 🇺🇸 GTHost TCP SNI TLS'
+      - '[420] 🇺🇸 GLOBALTELEHOST Corp. TCP SNI TLS'
+      - '@DeltaKroneckerGithub-86e3588957b29a9c'
+      - '[424] 🇺🇸 GTHost TCP SNI TLS'
+      - '[443] 🇺🇸 GTHost TROJAN SNI TLS'
+      - '[171] 🇺🇸 Oracle Corporation WS SNI'
+      - '@DeltaKroneckerGithub-7594215fa99a6aee'
+      - '[388] 🇳🇱 Zenex 5ive Limited TCP SNI TLS'
+      - '[227] 🇵🇱 OVH Sp. z o. o. SHADOWSOCKS SNI'
+      - '[293] 🇩🇪 OVH GmbH TCP SNI TLS'
+      - '[312] 🇩🇪 OVH GmbH TCP SNI TLS'
+      - '[463] 🇨🇱 Vultr Holdings LLC TROJAN SNI TLS'
+      - '4Sarina-fb184c9231'
+      - '4Nika-1fab105ff0'
+      - '[85] 🇧🇾 IDEAHOST LTD Belarus WS SNI'
+      - '[129] 🇫🇮 AEZA GROUP LLC WS SNI'
+      - '4FreeIran-4c06e360a8'
+      - '🇹🇼TW-01 · 524K/s'
+      - '[125] 🇳🇱 GLOBALIT DOO SHADOWSOCKS SNI'
+      - '[469] 🇧🇾 IDEAHOST LTD Belarus TCP SNI'
+      - '[137] 🇮🇳 Contabo Asia Private Limited WS SNI'
+      - '@DeltaKroneckerGithub-a11e312c4621979c'
+      - '@DeltaKroneckerGithub-352444913bc7c5c9'
+      - '4Sarina-eda8e3f01c'
 rules:
   - 'MATCH,PROXY'
