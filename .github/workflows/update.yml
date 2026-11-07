@@ -630,7 +630,23 @@ jobs:
             nodeprobe-state/ip-geolocation.json \
             nodeprobe-state/country-pool.json \
             nodeprobe-state/china/stable.yaml \
-            nodeprobe-state/china-node-assets.json
+            nodeprobe-state/china-node-assets.json \
+            nodeprobe-state/china/discovery-queue.json \
+            nodeprobe-state/china/pair-knowledge.json \
+            nodeprobe-state/china/candidates.json \
+            nodeprobe-state/china/pair-candidates.json \
+            nodeprobe-state/china/exit.yaml \
+            nodeprobe-state/china/elite.yaml \
+            nodeprobe-state/china/chatgpt.yaml \
+            nodeprobe-state/china/sticky.yaml \
+            nodeprobe-state/china/china-sticky.json \
+            nodeprobe-state/china/diagnostics.json \
+            nodeprobe-state/china/china-elite.json \
+            nodeprobe-state/china/pairs.yaml \
+            nodeprobe-state/china/china-pools.json \
+            nodeprobe-state/china/china-pair-pool.json \
+            nodeprobe-state/china/client.yaml \
+            nodeprobe-state/china/release.json
 
       - name: Commit generated subscriptions
         run: |
