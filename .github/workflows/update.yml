@@ -202,9 +202,13 @@ jobs:
         run: |
           node - <<'NODE'
           const fs=require('fs'),yaml=require('js-yaml');
-          const d=yaml.load(fs.readFileSync('subscriptions/all.yaml','utf8'))||{};
-          const p=Array.isArray(d.proxies)?d.proxies.filter(x=>x&&x.name):[];
-          if (!p.length) throw new Error('subscriptions/all.yaml contains no usable proxies');
+          const candidates=JSON.parse(fs.readFileSync('data/candidates.json','utf8'));
+          const p=Array.isArray(candidates)?candidates.map(({_source,_sources,_id,...x})=>{
+            delete x['endpoint-id'];
+            return x;
+          }).filter(x=>x&&x.name):[];
+          if (!p.length) throw new Error('data/candidates.json contains no probe candidates');
+          // Validate only this run's allocated workload, never the full subscription inventory.
           // This is an isolated probe config, not the published client config.
           // Build it inline so CI does not depend on the removed config-template.yaml.
           const cfg={
@@ -232,19 +236,23 @@ jobs:
           const file='mihomo/config.yaml';
           const cfg=yaml.load(fs.readFileSync(file,'utf8'));
           const removed=[];
+          const writeReport=(valid,lastError=null)=>fs.writeFileSync('mihomo/config-validation.json',JSON.stringify({
+            valid,checkedProxies:cfg.proxies?.length||0,removed,lastError
+          },null,2));
           for(let attempt=0;attempt<100;attempt++){
             const run=cp.spawnSync('mihomo/mihomo',['-t','-d','mihomo','-f',file],{encoding:'utf8'});
             const output=(run.stdout||'')+(run.stderr||'');
             if(run.status===0){
               console.log('Mihomo config valid; removed malformed proxies:',removed.length);
               for(const item of removed)console.log('excluded invalid proxy:',item.name,'reason:',item.reason);
-              fs.writeFileSync('mihomo/config-validation.json',JSON.stringify({valid:true,removed},null,2));
+              writeReport(true);
               process.exit(0);
             }
             fs.writeFileSync('mihomo/config-test.log',output);
             const match=output.match(/proxy\s+(\d+):\s*([^\r\n]+)/i);
             if(!match){
               console.error(output);
+              writeReport(false,output);
               throw new Error('Mihomo validation failed without an identifiable proxy index');
             }
             const reported=Number(match[1]);
@@ -287,13 +295,25 @@ jobs:
               type:bad.type,server:bad.server,port:bad.port,error:match[2]
             }));
             removed.push({name:bad.name||'(unnamed)',type:bad.type,server:bad.server,port:bad.port,reason:match[2],reportedIndex:reported,selectedIndex:index});
+            writeReport(false,match[2]);
             const group=(cfg['proxy-groups']||[]).find(g=>g.name==='PROXY');
             if(group&&Array.isArray(group.proxies))group.proxies=group.proxies.filter(name=>name!==bad.name);
             fs.writeFileSync(file,yaml.dump(cfg,{lineWidth:-1,noRefs:true}));
             console.warn('Removed invalid proxy',bad.name,'and retrying validation ('+(attempt+1)+'/100)');
           }
+          writeReport(false,'Too many invalid proxies: exceeded validation exclusion limit');
           throw new Error('Too many invalid proxies: exceeded validation exclusion limit');
           NODE
+      - name: Upload Mihomo validation diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mihomo-validation-diagnostics
+          path: |
+            mihomo/config-test.log
+            mihomo/config-validation.json
+          if-no-files-found: ignore
+          retention-days: 14
       - name: Start Mihomo
         run: |
           set -euo pipefail
