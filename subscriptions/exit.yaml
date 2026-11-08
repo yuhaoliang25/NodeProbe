@@ -1010,15 +1010,6 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇺🇸US_515|604KB/s|R002-260618 01'
-    port: 443
-    server: '20.42.108.114'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
   - name: '🇺🇸US_476|518KB/s|R002-260618 01'
     port: 443
     server: '24.225.10.211'
@@ -1113,6 +1104,17 @@ proxies:
     sub_tag: 'P002-260618'
     tls: true
     type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇫🇷FR_358|1.0MB/s|K001-260618 [af44a4a293e5]'
+    password: 'None'
+    port: 8081
+    server: '31.32.19.111'
+    skip-cert-verify: true
+    sub_tag: 'K001-260618'
+    tls: true
+    type: 'http'
+    username: ''
     udp: true
     _poolOnly: true
   - name: 'FR - zhuhai.uk'
@@ -1238,6 +1240,15 @@ proxies:
   - name: '🇺🇸US_424|152KB/s|R002-260618 01'
     port: 8443
     server: '45.145.73.240'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_489|343KB/s|R002-260618 01'
+    port: 443
+    server: '137.175.22.56'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
