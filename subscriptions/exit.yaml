@@ -614,6 +614,28 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: 'e1c82204f654007f'
+  - name: '🇺🇸US_765|333KB/s|R002-260618 01'
+    password: 'null'
+    port: 443
+    server: '38.28.193.188'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    endpoint-id: '8b549a577b977342'
+  - name: '🇳🇱NL_305|1.9MB/s|K001-260618 01'
+    password: 'null'
+    port: 9002
+    server: '84.17.47.147'
+    skip-cert-verify: true
+    sub_tag: 'K001-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
   - name: '🇵🇱PL_37|2.8MB/s|K001-260618 01'
     password: 'null'
     port: 443
@@ -887,6 +909,15 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
+  - name: '🇩🇪DE_197|2.2MB/s|R002-260618 01'
+    port: 443
+    server: '193.233.75.115'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
   - name: '🇳🇱NL_274|3.0MB/s|R002-260618 01'
     password: 'null'
     port: 9002
@@ -988,6 +1019,15 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
+  - name: '🇺🇸US_476|518KB/s|R002-260618 01'
+    port: 443
+    server: '24.225.10.211'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
   - name: '🇺🇸US_494|762KB/s|R002-260618 01'
     password: 'e1dee7c0-cff7-11eb-a8bf-f23c91cfbbc9'
     port: 443
@@ -1073,17 +1113,6 @@ proxies:
     sub_tag: 'P002-260618'
     tls: true
     type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇫🇷FR_358|1.0MB/s|K001-260618 [af44a4a293e5]'
-    password: 'None'
-    port: 8081
-    server: '31.32.19.111'
-    skip-cert-verify: true
-    sub_tag: 'K001-260618'
-    tls: true
-    type: 'http'
-    username: ''
     udp: true
     _poolOnly: true
   - name: 'FR - zhuhai.uk'
@@ -1242,6 +1271,15 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
+  - name: '🇮🇳IN_50|341KB/s|R002-260618 01'
+    port: 443
+    server: '110.173.188.221'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
   - name: '🇺🇸US_417|185KB/s|R002-260618 01'
     port: 443
     server: '38.28.185.222'
@@ -1283,6 +1321,15 @@ proxies:
   - name: '🇩🇪DE_202|1.2MB/s|R002-260618 01'
     port: 443
     server: '116.202.172.99'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇮🇹IT_25|1.1MB/s|R002-260618 01'
+    port: 443
+    server: '93.42.177.250'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
