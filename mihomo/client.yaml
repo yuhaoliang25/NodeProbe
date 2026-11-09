@@ -53,6 +53,15 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
+  - name: '🇭🇰 香港 18-pool-3ecdf2883fc56e42'
+    port: 3128
+    server: '119.28.24.235'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
   - name: '🇮🇩ID_10|550KB/s|R002-260618 01'
     port: 443
     server: '103.86.117.202'
@@ -68,14 +77,14 @@ proxy-groups:
     proxies:
       - '🇫🇷FR_2058|2.0MB/s|R002-260618 01'
       - '🇫🇷FR_2083|1.8MB/s|R002-260618 01'
-      - '🇮🇩ID_10|550KB/s|R002-260618 01'
+      - '🇭🇰 香港 18-pool-3ecdf2883fc56e42'
       - 'DIRECT'
   - name: 'CHATGPT'
     type: 'select'
     proxies:
       - '🇫🇷FR_2058|2.0MB/s|R002-260618 01'
-      - '🇮🇩ID_10|550KB/s|R002-260618 01'
       - '🇫🇷FR_2083|1.8MB/s|R002-260618 01'
+      - '🇮🇩ID_10|550KB/s|R002-260618 01'
   - name: 'STICKY'
     type: 'select'
     proxies:
