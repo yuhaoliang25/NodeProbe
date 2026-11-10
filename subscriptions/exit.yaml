@@ -284,16 +284,6 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: 'd92eead3a31122fd'
-  - name: '🇫🇷FR_31|1.3MB/s|R002-260618 01'
-    port: 443
-    server: '103.82.101.43'
-    skip-cert-verify: true
-    sni: '76d1d3ecadca44efa2339867d7dfc9a1-8e928736d0f8dbdc.apache-iv.com'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '7dd00fd83ec1e995'
   - name: '🇳🇱NL_84|1.2MB/s|R002-260618 01'
     port: 443
     server: '185.140.209.235'
@@ -534,15 +524,6 @@ proxies:
     username: 'null'
     udp: true
     endpoint-id: 'a406a6cbecb4c7ff'
-  - name: '🇩🇪DE_11|2.9MB/s|R002-260618 01'
-    port: 443
-    server: '185.44.107.166'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '82d5def0fabb8171'
   - name: 'US - zhuhai.uk 02'
     type: 'http'
     server: 'fan.226278.xyz'
@@ -832,6 +813,15 @@ proxies:
   - name: '🇫🇷FR_2169|1.5MB/s|R002-260618 01'
     port: 443
     server: '82.66.235.221'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇫🇷FR_2172|1.1MB/s|R002-260618 01'
+    port: 8090
+    server: '80.124.109.22'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
@@ -1311,15 +1301,6 @@ proxies:
   - name: '🇺🇸US_423|86KB/s|R002-260618 01'
     port: 443
     server: '137.175.22.98'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_489|343KB/s|R002-260618 01'
-    port: 443
-    server: '137.175.22.56'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
