@@ -273,16 +273,6 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '7dd00fd83ec1e995'
-  - name: '🇳🇱NL_84|1.2MB/s|R002-260618 01'
-    port: 443
-    server: '185.140.209.235'
-    skip-cert-verify: true
-    sni: '482c8436a1f7c908b48a1757abb5dd79-ce85c45206570905.apache-iv.com'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '95111393a7a7a22e'
   - name: '🇩🇪DE_46|313KB/s|R002-260618 01'
     port: 443
     server: 'fan.973511.xyz'
@@ -354,16 +344,6 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '0ae09a41f776c539'
-  - name: '🇫🇷FR_183|751KB/s|R002-260618 01'
-    port: 443
-    server: 'fan.132031.xyz'
-    skip-cert-verify: true
-    sni: 'fan.132031.xyz'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: 'eedf278594fece87'
   - name: '🇳🇱NL_166|5.5MB/s|R002-260618 01'
     password: 'e4b72b531a2d10900519'
     port: 443
@@ -572,17 +552,6 @@ proxies:
     username: 'null'
     udp: true
     endpoint-id: '49afa43edc803cfa'
-  - name: '🇫🇷FR_393|77KB/s|R002-260618 01'
-    password: 'null'
-    port: 443
-    server: 'fan.132031.xyz'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    sni: 'fan.132031.xyz'
-    endpoint-id: 'd2e9c39519d8b7a4'
   - name: '🇳🇱NL_287|777KB/s|R002-260618 01'
     port: 443
     server: '185.246.153.42'
@@ -641,6 +610,15 @@ proxies:
   - name: '🇺🇸US_514|347KB/s|R002-260618 01'
     port: 443
     server: '137.175.22.72'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_549|229KB/s|R002-260618 01'
+    port: 443
+    server: '137.175.22.116'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
@@ -783,15 +761,6 @@ proxies:
   - name: '🇫🇷FR_2169|1.5MB/s|R002-260618 01'
     port: 443
     server: '82.66.235.221'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇫🇷FR_2172|1.1MB/s|R002-260618 01'
-    port: 8090
-    server: '80.124.109.22'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
