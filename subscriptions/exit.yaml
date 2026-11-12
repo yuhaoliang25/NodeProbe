@@ -595,6 +595,13 @@ proxies:
     username: 'null'
     udp: true
     _poolOnly: true
+  - type: 'ss'
+    name: '🇺🇸 美国 | USA-64c72d51751402bc'
+    server: '202.50.253.99'
+    port: 19999
+    cipher: 'aes-256-gcm'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
+    _poolOnly: true
   - name: '🇳🇱NL_219|2.8MB/s|R002-260618 01'
     password: 'null'
     port: 9002
@@ -830,6 +837,15 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
+  - name: '🇺🇸US_493|596KB/s|R002-260618 01'
+    port: 8090
+    server: '184.188.139.2'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
   - name: '🇩🇪DE_197|2.2MB/s|R002-260618 01'
     port: 443
     server: '193.233.75.115'
@@ -952,6 +968,15 @@ proxies:
   - name: '🇺🇸US_443|68KB/s|R002-260618 01'
     port: 443
     server: '137.175.22.85'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_529|354KB/s|R002-260618 01'
+    port: 443
+    server: '137.175.22.84'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
