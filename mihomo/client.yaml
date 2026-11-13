@@ -62,16 +62,6 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇳🇱NL_55|1.2MB/s|R002-260618 01'
-    port: 443
-    server: '185.246.153.28'
-    skip-cert-verify: true
-    sni: '4a8c2906c96058315dffbc2b0e7ff19b-0c66a58858a795df.apache-iv.com'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: 'b23ac484bc70d600'
   - name: '🇮🇩ID_10|550KB/s|R002-260618 01'
     port: 443
     server: '103.86.117.202'
@@ -94,7 +84,7 @@ proxy-groups:
     proxies:
       - '🇫🇷FR_2058|2.0MB/s|R002-260618 01'
       - '🇫🇷FR_2083|1.8MB/s|R002-260618 01'
-      - '🇳🇱NL_55|1.2MB/s|R002-260618 01'
+      - '🇮🇩ID_10|550KB/s|R002-260618 01'
   - name: 'STICKY'
     type: 'select'
     proxies:
