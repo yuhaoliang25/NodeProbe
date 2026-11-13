@@ -82,13 +82,13 @@ proxy-groups:
   - name: 'CHATGPT'
     type: 'select'
     proxies:
-      - '🇫🇷FR_2058|2.0MB/s|R002-260618 01'
       - '🇫🇷FR_2083|1.8MB/s|R002-260618 01'
+      - '🇫🇷FR_2058|2.0MB/s|R002-260618 01'
       - '🇮🇩ID_10|550KB/s|R002-260618 01'
   - name: 'STICKY'
     type: 'select'
     proxies:
-      - '🇮🇩ID_10|550KB/s|R002-260618 01'
+      - '🇫🇷FR_2058|2.0MB/s|R002-260618 01'
 rules:
   - 'DOMAIN-SUFFIX,x.com,STICKY'
   - 'DOMAIN-SUFFIX,twitter.com,STICKY'

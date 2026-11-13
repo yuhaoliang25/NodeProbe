@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-11-13T17:58:26.134Z",
+  "generatedAt": "2026-11-13T23:43:55.362Z",
   "maxPaths": 3,
   "counts": {
-    "eligibleExits": 150,
-    "chatgptEligibleExits": 191,
+    "eligibleExits": 152,
+    "chatgptEligibleExits": 189,
     "chatgptSelectedPaths": 3,
     "chatgptIncumbentPaths": 3,
     "selectedPaths": 3,
@@ -27,23 +27,23 @@
       "kind": "exit",
       "endpointId": "42b92fd19e27c47a",
       "name": "🇫🇷FR_2058|2.0MB/s|R002-260618 01",
-      "score": 1997.986682117772,
+      "score": 2014.377664834749,
       "recentSuccessRate": 1,
-      "lifetimeSuccessRate": 0.9946043165467626,
-      "observedRuns": 556,
-      "p95LatencyMs": 548,
-      "speedMbps": 25.465785126071555
+      "lifetimeSuccessRate": 0.9947089947089947,
+      "observedRuns": 567,
+      "p95LatencyMs": 535,
+      "speedMbps": 29.3193011158193
     },
     {
       "kind": "exit",
       "endpointId": "a3f6417c87a3f816",
       "name": "🇫🇷FR_2083|1.8MB/s|R002-260618 01",
-      "score": 1997.1206855194976,
+      "score": 2006.3179292312725,
       "recentSuccessRate": 1,
-      "lifetimeSuccessRate": 0.9978768577494692,
-      "observedRuns": 471,
-      "p95LatencyMs": 559,
-      "speedMbps": 25.021878505017824
+      "lifetimeSuccessRate": 0.9979253112033195,
+      "observedRuns": 482,
+      "p95LatencyMs": 535,
+      "speedMbps": 26.883039288889844
     },
     {
       "kind": "exit",
@@ -60,26 +60,26 @@
   "chatgptPaths": [
     {
       "kind": "chatgpt-incumbent",
-      "endpointId": "42b92fd19e27c47a",
-      "name": "🇫🇷FR_2058|2.0MB/s|R002-260618 01",
-      "score": 1997.986682117772,
-      "chatgptScore": 1182.8408482208233,
+      "endpointId": "a3f6417c87a3f816",
+      "name": "🇫🇷FR_2083|1.8MB/s|R002-260618 01",
+      "score": 2006.3179292312725,
+      "chatgptScore": 1187.6197388055523,
       "chatgptSuccessRate": 1
     },
     {
       "kind": "chatgpt-incumbent",
-      "endpointId": "a3f6417c87a3f816",
-      "name": "🇫🇷FR_2083|1.8MB/s|R002-260618 01",
-      "score": 1997.1206855194976,
-      "chatgptScore": 1175.074798120893,
+      "endpointId": "42b92fd19e27c47a",
+      "name": "🇫🇷FR_2058|2.0MB/s|R002-260618 01",
+      "score": 2014.377664834749,
+      "chatgptScore": 1178.882468902547,
       "chatgptSuccessRate": 1
     },
     {
       "kind": "chatgpt-incumbent",
       "endpointId": "7f4f023778326735",
       "name": "🇮🇩ID_10|550KB/s|R002-260618 01",
-      "score": 1791.6123874341458,
-      "chatgptScore": 1152.6968853728401,
+      "score": 1769.0525584982006,
+      "chatgptScore": 1138.3729894977528,
       "chatgptSuccessRate": 1
     }
   ]
