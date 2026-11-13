@@ -422,6 +422,16 @@ proxies:
     udp: true
     sni: 'fan.587475.xyz'
     endpoint-id: 'ac5a189a995d7c1d'
+  - name: '🇳🇱NL_167|225KB/s|P002-260618 01'
+    password: 'None'
+    port: 443
+    server: '5.255.118.82'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '5785822f65964492'
   - name: '🇺🇸US_249|347KB/s|R002-260618 01'
     password: 'null'
     port: 443
@@ -1059,6 +1069,15 @@ proxies:
     password: 'None'
     port: 8443
     server: '44.248.167.117'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_422|607KB/s|P002-260618 01'
+    port: 8443
+    server: '45.150.164.18'
     skip-cert-verify: true
     sub_tag: 'P002-260618'
     tls: true
