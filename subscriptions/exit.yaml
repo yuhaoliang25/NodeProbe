@@ -606,15 +606,6 @@ proxies:
     username: 'null'
     udp: true
     _poolOnly: true
-  - name: '🇺🇸US_514|347KB/s|R002-260618 01'
-    port: 443
-    server: '137.175.22.72'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
   - name: '🇺🇸US_507|284KB/s|R002-260618 01'
     port: 443
     server: '137.175.22.29'
@@ -775,6 +766,15 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
+  - name: '🇫🇷FR_2165|1.7MB/s|R002-260618 01'
+    port: 4443
+    server: '83.172.143.53'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
   - name: '🇩🇪DE_160|4.2MB/s|R002-260618 01'
     port: 443
     server: '87.106.223.158'
@@ -814,15 +814,6 @@ proxies:
   - name: '🇺🇸US_523|698KB/s|R002-260618 01'
     port: 8090
     server: '24.142.229.178'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_495|518KB/s|R002-260618 01'
-    port: 443
-    server: '162.244.227.36'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
@@ -1098,6 +1089,15 @@ proxies:
     server: '45.150.164.18'
     skip-cert-verify: true
     sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '❓Other_76|561KB/s|R002-260618 01'
+    port: 443
+    server: '142.44.210.129'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
@@ -1434,4 +1434,11 @@ proxies:
     tls: true
     type: 'http'
     udp: true
+    _poolOnly: true
+  - type: 'ss'
+    name: '🇳🇿 新西兰 V2CROSS.COM'
+    server: '202.50.253.63'
+    port: 19999
+    cipher: 'aes-256-gcm'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
     _poolOnly: true
