@@ -1249,6 +1249,17 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
+  - name: '🇳🇱NL_239|1.8MB/s|P002-260618 01'
+    password: 'null'
+    port: 443
+    server: '5.255.118.82'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
   - name: '🇺🇸US_446|499KB/s|R002-260618 01'
     port: 8090
     server: '98.101.229.212'
