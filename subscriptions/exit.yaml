@@ -520,15 +520,6 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: 'c0870835e6ab426a'
-  - name: '🇮🇹IT_6|1.0MB/s|R002-260618 01'
-    port: 443
-    server: '109.116.41.154'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '7ae9c25547c29cee'
   - name: '🇳🇱NL_226|3.3MB/s|R002-260618 01'
     password: 'null'
     port: 9002
