@@ -1111,15 +1111,6 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇺🇸US_422|607KB/s|P002-260618 01'
-    port: 8443
-    server: '45.150.164.18'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
   - name: '❓Other_76|561KB/s|R002-260618 01'
     port: 443
     server: '142.44.210.129'
@@ -1247,6 +1238,15 @@ proxies:
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: 'IT意大利(mibei77.com 米贝节点分享)_1'
+    type: 'ss'
+    server: '202.50.253.81'
+    port: 19999
+    cipher: 'aes-256-gcm'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
+    skip-cert-verify: true
     udp: true
     _poolOnly: true
   - name: '🇳🇱NL_239|1.8MB/s|P002-260618 01'
