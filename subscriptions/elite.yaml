@@ -17,12 +17,14 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇸🇬SG_38|247KB/s|R002-260618 01'
+  - name: '🇫🇷FR_364|1.9MB/s|K001-260618 [9609525282db]'
+    password: 'None'
     port: 443
-    server: '154.26.139.24'
+    server: '82.66.235.221'
     skip-cert-verify: true
-    sub_tag: 'R002-260618'
+    sub_tag: 'K001-260618'
     tls: true
     type: 'http'
+    username: ''
     udp: true
-    endpoint-id: 'd1f4a0d80288cf0b'
+    _poolOnly: true
