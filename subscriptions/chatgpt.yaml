@@ -8,15 +8,13 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇮🇪IE_11|3.2MB/s|K001-260618 [ebe2b193bdbc]'
-    password: 'None'
+  - name: '🇫🇷FR_2058|2.0MB/s|R002-260618 01'
     port: 443
-    server: '18.200.158.139'
+    server: '172.64.68.89'
     skip-cert-verify: true
-    sub_tag: 'K001-260618'
+    sub_tag: 'R002-260618'
     tls: true
     type: 'http'
-    username: ''
     udp: true
     _poolOnly: true
   - name: '🇳🇱NL_244|3.5MB/s|R002-260618 01'

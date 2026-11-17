@@ -35,15 +35,6 @@ rule-providers:
     interval: 86400
     url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs'
 proxies:
-  - name: '🇫🇷FR_2058|2.0MB/s|R002-260618 01'
-    port: 443
-    server: '172.64.68.89'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
   - name: '🇫🇷FR_2083|1.8MB/s|R002-260618 01'
     port: 443
     server: '172.64.69.89'
@@ -53,21 +44,19 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇫🇷FR_364|1.9MB/s|K001-260618 [9609525282db]'
-    password: 'None'
+  - name: '🇫🇷FR_2058|2.0MB/s|R002-260618 01'
     port: 443
-    server: '82.66.235.221'
+    server: '172.64.68.89'
     skip-cert-verify: true
-    sub_tag: 'K001-260618'
+    sub_tag: 'R002-260618'
     tls: true
     type: 'http'
-    username: ''
     udp: true
     _poolOnly: true
-  - name: '🇮🇪IE_11|3.2MB/s|K001-260618 [ebe2b193bdbc]'
+  - name: '🇫🇷FR_358|1.0MB/s|K001-260618 [af44a4a293e5]'
     password: 'None'
-    port: 443
-    server: '18.200.158.139'
+    port: 8081
+    server: '31.32.19.111'
     skip-cert-verify: true
     sub_tag: 'K001-260618'
     tls: true
@@ -90,15 +79,15 @@ proxy-groups:
   - name: 'PROXY'
     type: 'select'
     proxies:
-      - '🇫🇷FR_2058|2.0MB/s|R002-260618 01'
       - '🇫🇷FR_2083|1.8MB/s|R002-260618 01'
-      - '🇫🇷FR_364|1.9MB/s|K001-260618 [9609525282db]'
+      - '🇫🇷FR_2058|2.0MB/s|R002-260618 01'
+      - '🇫🇷FR_358|1.0MB/s|K001-260618 [af44a4a293e5]'
       - 'DIRECT'
   - name: 'CHATGPT'
     type: 'select'
     proxies:
       - '🇫🇷FR_2083|1.8MB/s|R002-260618 01'
-      - '🇮🇪IE_11|3.2MB/s|K001-260618 [ebe2b193bdbc]'
+      - '🇫🇷FR_2058|2.0MB/s|R002-260618 01'
       - '🇳🇱NL_244|3.5MB/s|R002-260618 01'
   - name: 'STICKY'
     type: 'select'
