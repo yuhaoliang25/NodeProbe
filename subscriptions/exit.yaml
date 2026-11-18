@@ -349,15 +349,6 @@ proxies:
     udp: true
     sni: 'fan.973511.xyz'
     endpoint-id: '31b4fe08df14792d'
-  - name: '🇺🇸US_691|124KB/s|R002-260618 01'
-    port: 7615
-    server: '47.90.206.169'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: 'd3d97e8a4f270f45'
   - name: '🇺🇸US_61|332KB/s|R002-260618 01'
     port: 443
     server: '38.28.193.188'
@@ -415,17 +406,6 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '5785822f65964492'
-  - name: '🇺🇸US_249|347KB/s|R002-260618 01'
-    password: 'null'
-    port: 443
-    server: 'fan.596189.xyz'
-    sni: 'fan.596189.xyz'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    endpoint-id: 'e73f9b00dc6db0bb'
   - name: '🇳🇱NL_221|3.8MB/s|R002-260618 01'
     port: 443
     server: '5.255.118.82'
@@ -685,24 +665,6 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇺🇸US_518|1.2MB/s|R002-260618 01'
-    port: 8443
-    server: '44.217.145.28'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_491|1.1MB/s|R002-260618 01'
-    port: 8443
-    server: '18.206.28.143'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
   - name: '🇳🇱NL_278|1.7MB/s|R002-260618 01'
     port: 19362
     server: '51.159.225.197'
@@ -776,6 +738,15 @@ proxies:
   - name: '🇫🇷FR_2169|1.5MB/s|R002-260618 01'
     port: 443
     server: '82.66.235.221'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇫🇷FR_2172|1.1MB/s|R002-260618 01'
+    port: 8090
+    server: '80.124.109.22'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
@@ -1316,6 +1287,15 @@ proxies:
   - name: '🇮🇩ID_10|550KB/s|R002-260618 01'
     port: 443
     server: '103.86.117.202'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇮🇳IN_50|341KB/s|R002-260618 01'
+    port: 443
+    server: '110.173.188.221'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
