@@ -367,6 +367,15 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '5b107f4a88d7b51f'
+  - name: '🇫🇷FR_66|3.0MB/s|R002-260618 01'
+    port: 443
+    server: '141.94.16.4'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'baa006648c5cceb5'
   - name: '🇯🇵JP_17|159KB/s|R002-260618 01'
     password: 'null'
     port: 443
@@ -598,6 +607,15 @@ proxies:
   - name: '🇺🇸US_507|284KB/s|R002-260618 01'
     port: 443
     server: '137.175.22.29'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_549|229KB/s|R002-260618 01'
+    port: 443
+    server: '137.175.22.116'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
@@ -1055,15 +1073,6 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇺🇸US_422|607KB/s|P002-260618 01'
-    port: 8443
-    server: '45.150.164.18'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
   - name: '❓Other_76|561KB/s|R002-260618 01'
     port: 443
     server: '142.44.210.129'
@@ -1356,15 +1365,6 @@ proxies:
     server: '91.92.250.33'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇭🇰 香港 18-pool-3ecdf2883fc56e42'
-    port: 3128
-    server: '119.28.24.235'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
     tls: true
     type: 'http'
     udp: true
