@@ -8,6 +8,27 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: 'd1f4a0d80288cf0b'
+  - name: '🇭🇰 香港 04'
+    port: 443
+    server: 'fan.240104.xyz'
+    skip-cert-verify: true
+    sni: 'fan.240104.xyz'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: '2525753ed3d65e2e'
+  - name: '🇭🇰 香港 09'
+    password: 'null'
+    port: 443
+    server: 'fan.240104.xyz'
+    sni: 'fan.240104.xyz'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    endpoint-id: 'a2852a26d8d9ed35'
   - name: '🇳🇱NL_141|4.1MB/s 01'
     password: ''
     port: 9002
@@ -338,6 +359,15 @@ proxies:
     username: 'testuser1'
     udp: true
     endpoint-id: '1b365f8090e75c3c'
+  - name: '🇺🇸US_691|124KB/s|R002-260618 01'
+    port: 7615
+    server: '47.90.206.169'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'd3d97e8a4f270f45'
   - name: '🇺🇸US_61|332KB/s|R002-260618 01'
     port: 443
     server: '38.28.193.188'
@@ -688,15 +718,6 @@ proxies:
     tls: true
     skip-cert-verify: true
     _poolOnly: true
-  - name: '🇺🇸US_528|631KB/s|P002-260618 01'
-    port: 8090
-    server: '173.42.49.102'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
   - name: '🇩🇪DE_204|2.4MB/s|R002-260618 01'
     port: 9002
     server: '158.173.154.4'
@@ -832,15 +853,6 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇮🇪IE_3|3.0MB/s|R002-260618 01'
-    port: 443
-    server: '34.249.214.108'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
   - name: '🇳🇱NL_282|1.6MB/s|R002-260618 01'
     port: 443
     server: '89.150.35.94'
@@ -933,6 +945,15 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
+  - name: '🇫🇷FR_2239|1.0MB/s|R002-260618 01'
+    port: 8090
+    server: '217.181.201.254'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
   - name: '🇷🇺RU_17|1.2MB/s|R002-260618 01'
     port: 1446
     server: '46.29.166.134'
@@ -990,6 +1011,15 @@ proxies:
   - name: '🇺🇸US_450|350KB/s|R002-260618 01'
     port: 443
     server: '137.175.22.52'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_476|518KB/s|R002-260618 01'
+    port: 443
+    server: '24.225.10.211'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
