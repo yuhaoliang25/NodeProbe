@@ -596,13 +596,6 @@ proxies:
     password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
     _poolOnly: true
   - type: 'ss'
-    name: '🇺🇸 US美国(mibei77.com 米贝节点分享)-19cfc0530ae0b8cf'
-    server: '202.50.253.45'
-    port: 19999
-    cipher: 'aes-256-gcm'
-    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
-    _poolOnly: true
-  - type: 'ss'
     name: '🇺🇸 美国 | USA-64c72d51751402bc'
     server: '202.50.253.99'
     port: 19999
@@ -853,6 +846,15 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
+  - name: '🇮🇪IE_3|3.0MB/s|R002-260618 01'
+    port: 443
+    server: '34.249.214.108'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
   - name: '🇳🇱NL_282|1.6MB/s|R002-260618 01'
     port: 443
     server: '89.150.35.94'
@@ -972,6 +974,15 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
+  - name: '❓OtherT1_1|467KB/s|R002-260618 01'
+    port: 8443
+    server: '45.142.141.5'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
   - name: '🇺🇸US_452|351KB/s|R002-260618 01'
     port: 443
     server: '137.175.22.40'
@@ -993,15 +1004,6 @@ proxies:
   - name: '🇺🇸US_529|354KB/s|R002-260618 01'
     port: 443
     server: '137.175.22.84'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '❓Other_97|122KB/s|R002-260618 01'
-    port: 443
-    server: '137.175.22.89'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
