@@ -19,7 +19,7 @@ function valid(p){
   const t=String(p.type).toLowerCase();
   const flowResult=normalizeProxyFlow(p);
   if(!flowResult.valid){invalidFlowCount++;return false;}
-  if(flowResult.changed)ignoredNonVlessFlowCount++;
+  if(flowResult.removed)ignoredNonVlessFlowCount++;
   if(['vless','vmess'].includes(t)&&(!p.uuid||!/^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$/.test(String(p.uuid))))return false;
   if(['ss','shadowsocks'].includes(t)){
     if(!p.cipher)return false;
