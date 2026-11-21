@@ -180,7 +180,7 @@ try{
 
  if(rejectedPoolIds.size){
    poolState.nodes=(pool.nodes||[]).filter(entry=>!rejectedPoolIds.has(entry.fingerprint||entry.proxy?.['endpoint-id']));
-   fs.writeFileSync(poolFile,JSON.stringify(poolState,null,2)+'\\n');
+   fs.writeFileSync(poolFile,JSON.stringify(poolState,null,2)+'\n');
    console.log('persistent node pool pruned invalid active entries:',rejectedPoolIds.size);
  }
  // Only endpoints absent from the Node Pool remain eligible for exploration.
