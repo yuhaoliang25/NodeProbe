@@ -992,6 +992,15 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
+  - name: '❓Other_97|122KB/s|R002-260618 01'
+    port: 443
+    server: '137.175.22.89'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
   - name: '🇺🇸US_450|350KB/s|R002-260618 01'
     port: 443
     server: '137.175.22.52'
