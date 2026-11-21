@@ -3,9 +3,10 @@
 const path=require('path');
 const fs=require('fs'),yaml=require('js-yaml'),crypto=require('crypto');
 const {timeDecayWeight,timeDecayedEvidence}=require('./time-decay');
+const {normalizeProxyFlow}=require('./lib/proxy-flow');
 const raw=JSON.parse(fs.readFileSync('data/raw-sources.json','utf8'));
 const proxies=[],seen=new Set(),usedNames=new Set(),sourcesById=new Map();
-let invalidProxyCount=0,invalidSS2022KeyCount=0,invalidSSCipherCount=0;
+let invalidProxyCount=0,invalidSS2022KeyCount=0,invalidSSCipherCount=0,invalidFlowCount=0,ignoredNonVlessFlowCount=0;
 const SUPPORTED_SS_CIPHERS=new Set([
   'aes-128-gcm','aes-192-gcm','aes-256-gcm',
   'chacha20-ietf-poly1305','xchacha20-ietf-poly1305',
@@ -16,6 +17,9 @@ function valid(p){
   if(!p||typeof p!=='object'||!p.name||!p.server||!p.port||!p.type)return false;
   const port=Number(p.port); if(!Number.isInteger(port)||port<1||port>65535)return false;
   const t=String(p.type).toLowerCase();
+  const flowResult=normalizeProxyFlow(p);
+  if(!flowResult.valid){invalidFlowCount++;return false;}
+  if(flowResult.changed)ignoredNonVlessFlowCount++;
   if(['vless','vmess'].includes(t)&&(!p.uuid||!/^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$/.test(String(p.uuid))))return false;
   if(['ss','shadowsocks'].includes(t)){
     if(!p.cipher)return false;
@@ -127,7 +131,7 @@ for(const p of proxies){
   const list=sourcesById.get(p._id)||[p._source];
   p._sources=[...new Set(list)];
 }
-console.log('source proxy validation:',proxies.length,'accepted;',invalidProxyCount,'invalid entries skipped;',invalidSSCipherCount,'unsupported Shadowsocks ciphers;',invalidSS2022KeyCount,'invalid Shadowsocks 2022 keys');
+console.log('source proxy validation:',proxies.length,'accepted;',invalidProxyCount,'invalid entries skipped;',invalidSSCipherCount,'unsupported Shadowsocks ciphers;',invalidSS2022KeyCount,'invalid Shadowsocks 2022 keys;',invalidFlowCount,'unsupported VLESS flows skipped;',ignoredNonVlessFlowCount,'irrelevant non-VLESS flow fields removed');
 // Snapshot only current Source discovery membership before historical Node Pool
 // entries are merged; pool-only nodes must never reintroduce stale sources.
 const currentSourceMembership=new Map([...sourcesById].map(([id,list])=>[id,[...new Set(list||[])]]));
