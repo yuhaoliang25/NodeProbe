@@ -146,6 +146,7 @@ try{
  // source-side proxy definition is discarded for asset monitoring and the
  // pool's own last-known proxy is used instead.
  const poolEntries=(pool.nodes||[]).filter(entry=>entry.status!=='dead');
+ const rejectedPoolIds=new Set();
  const poolIds=new Set(poolEntries.map(entry=>entry.fingerprint||entry.proxy?.['endpoint-id']).filter(Boolean));
  const sourceProxies=proxies.filter(p=>!poolIds.has(p['endpoint-id']||p._id));
 
@@ -162,6 +163,7 @@ try{
    // source ingestion already rejects; don't let them poison Mihomo validation.
    if(!valid(p)){
      invalidProxyCount++;
+     rejectedPoolIds.add(id);
      continue;
    }
    p['endpoint-id']=id;
@@ -176,6 +178,11 @@ try{
    proxies.push({...p,name});
  }
 
+ if(rejectedPoolIds.size){
+   poolState.nodes=(pool.nodes||[]).filter(entry=>!rejectedPoolIds.has(entry.fingerprint||entry.proxy?.['endpoint-id']));
+   fs.writeFileSync(poolFile,JSON.stringify(poolState,null,2)+'\\n');
+   console.log('persistent node pool pruned invalid active entries:',rejectedPoolIds.size);
+ }
  // Only endpoints absent from the Node Pool remain eligible for exploration.
  // Their source metadata is kept solely for provenance/source evolution.
  for(const p of sourceProxies){
