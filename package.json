@@ -13,7 +13,7 @@
     "node-index": "node scripts/generate-node-index.js",
     "best-audit": "node scripts/generate-best-audit.js",
     "stability": "node scripts/confirm-stability.js",
-    "check": "node --check scripts/*.js",
+    "check": "node --check scripts/*.js && node scripts/test-proxy-flow.js",
     "lint": "npx --yes eslint@8 --no-eslintrc --env node --env es6 --parser-options '{\"ecmaVersion\":2022}' --rule 'no-undef:error' scripts/*.js",
     "client-config": "node scripts/generate-client-config.js",
     "china-assets": "node scripts/china-node-asset.js",
@@ -30,7 +30,8 @@
     "china-sticky": "node scripts/build-china-sticky.js",
     "china-diagnostics": "node scripts/china-diagnostics.js",
     "china-preflight": "node scripts/china-preflight.js",
-    "test:china-publication-snapshot": "node scripts/test-china-publication-snapshot.js"
+    "test:china-publication-snapshot": "node scripts/test-china-publication-snapshot.js",
+    "test:proxy-flow": "node scripts/test-proxy-flow.js"
   },
   "dependencies": {
     "js-yaml": "^4.1.0"
