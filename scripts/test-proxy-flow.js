@@ -32,4 +32,12 @@ const { normalizeProxyFlow } = require('./lib/proxy-flow');
   assert.equal(normalizeProxyFlow(proxy).valid, true);
   assert.equal(Object.hasOwn(proxy, 'flow'), false);
 }
+{
+  const proxy = { type: 'vless', flow: ' xtls-rprx-vision ' };
+  const result = normalizeProxyFlow(proxy);
+  assert.equal(result.valid, true);
+  assert.equal(result.changed, true);
+  assert.equal(result.removed, false);
+  assert.equal(proxy.flow, 'xtls-rprx-vision');
+}
 console.log('Proxy flow validation tests passed.');
