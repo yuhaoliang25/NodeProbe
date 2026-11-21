@@ -7,7 +7,8 @@ function normalizeProxyFlow(proxy) {
     return { valid: true, changed: false };
   }
 
-  const flow = String(proxy.flow).trim();
+  const originalFlow = proxy.flow;
+  const flow = String(originalFlow).trim();
   if (type !== 'vless') {
     delete proxy.flow;
     return { valid: true, changed: true, reason: 'flow is only supported for VLESS proxies' };
@@ -15,7 +16,7 @@ function normalizeProxyFlow(proxy) {
 
   if (flow === 'xtls-rprx-vision') {
     proxy.flow = flow;
-    return { valid: true, changed: flow !== proxy.flow };
+    return { valid: true, changed: flow !== originalFlow };
   }
 
   return {
