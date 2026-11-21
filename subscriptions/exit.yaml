@@ -377,26 +377,15 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '5b107f4a88d7b51f'
-  - name: '🇯🇵JP_17|159KB/s|R002-260618 01'
-    password: 'null'
+  - name: '🇫🇷FR_66|3.0MB/s|R002-260618 01'
     port: 443
-    server: 'fan.571589.xyz'
-    sni: 'fan.571589.xyz'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    endpoint-id: '9afbef29e30f3386'
-  - name: '🇯🇵JP_4|254KB/s|R002-260618 01'
-    port: 443
-    server: 'fan.571589.xyz'
-    sni: 'fan.571589.xyz'
+    server: '141.94.16.4'
+    skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
-    endpoint-id: '7a223d425bb0d505'
+    endpoint-id: 'baa006648c5cceb5'
   - name: '🇯🇵JP_41|290KB/s|R002-260618 01'
     port: 443
     server: 'fan.587475.xyz'
@@ -406,36 +395,6 @@ proxies:
     udp: true
     sni: 'fan.587475.xyz'
     endpoint-id: 'ac5a189a995d7c1d'
-  - name: '🇳🇱NL_167|225KB/s|P002-260618 01'
-    password: 'None'
-    port: 443
-    server: '5.255.118.82'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '5785822f65964492'
-  - name: '🇺🇸US_249|347KB/s|R002-260618 01'
-    password: 'null'
-    port: 443
-    server: 'fan.596189.xyz'
-    sni: 'fan.596189.xyz'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    endpoint-id: 'e73f9b00dc6db0bb'
-  - name: '🇳🇱NL_221|3.8MB/s|R002-260618 01'
-    port: 443
-    server: '5.255.118.82'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '2a89310d810d8786'
   - name: '🇳🇱NL_58|1.6MB/s|R002-260618 01'
     port: 443
     server: '103.97.88.154'
@@ -494,15 +453,6 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: 'c0870835e6ab426a'
-  - name: '🇮🇹IT_6|1.0MB/s|R002-260618 01'
-    port: 443
-    server: '109.116.41.154'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '7ae9c25547c29cee'
   - name: '🇳🇱NL_226|3.3MB/s|R002-260618 01'
     password: 'null'
     port: 9002
@@ -583,6 +533,14 @@ proxies:
     name: '🇳🇿 新西兰 V2CROSS.COM-ceabb7d7f9a91666'
     server: '202.50.253.72'
     port: 19999
+    cipher: 'aes-256-gcm'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
+    _poolOnly: true
+  - name: '🇮🇹 意大利_4P2WCP'
+    server: '202.50.253.27'
+    port: 19999
+    type: 'ss'
+    udp: true
     cipher: 'aes-256-gcm'
     password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
     _poolOnly: true
@@ -741,6 +699,15 @@ proxies:
   - name: '🇫🇷FR_2169|1.5MB/s|R002-260618 01'
     port: 443
     server: '82.66.235.221'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇫🇷FR_2172|1.1MB/s|R002-260618 01'
+    port: 8090
+    server: '80.124.109.22'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
