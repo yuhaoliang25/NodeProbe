@@ -1,118 +1,63 @@
 proxies:
-  - name: '[443] 🇺🇸 GTHost TROJAN SNI TLS'
-    network: 'tcp'
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    port: 443
-    server: '66.163.112.171'
-    skip-cert-verify: true
-    sni: 'learn.unlockyourfuturefindyourperfectcareer.com'
-    type: 'trojan'
-    udp: true
+  - type: 'ss'
+    name: '🇺🇸US_446|1.3MB/s|B007-260618 [7881d9b17dae]'
+    server: '185.215.132.18'
+    port: 19999
+    cipher: 'aes-256-gcm'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
     _poolOnly: true
-  - name: '[406] 🇺🇸 Baykov Ilya Sergeevich WS SNI'
+  - type: 'vless'
+    name: '🇺🇸US_358|832KB/s|S004-260618 [3fbf02e695d3]'
+    server: '69.48.201.136'
+    port: 30016
+    tls: false
+    uuid: '03dc60cb-a8d4-4226-93fe-0e6cbf77fe5a'
     network: 'ws'
+    sni: 'uspanel.unixzone.us'
+    ws-opts:
+      path: '/usserver'
+      headers:
+        Host: 'uspanel.unixzone.us'
+    _poolOnly: true
+  - type: 'vmess'
+    name: '🇺🇸US_331|76KB/s|M003-260806 [4a6de620d459]'
+    server: '104.17.77.77'
+    port: 8443
+    uuid: '60441548-b68e-43b2-8191-e3b884be4b3c'
+    alterId: 0
+    cipher: 'auto'
+    tls: true
+    sni: 'v2ray1.dozapp.xyz'
+    network: 'ws'
+    ws-opts:
+      path: '/lMnsZUN4/'
+      headers:
+        Host: 'v2ray1.dozapp.xyz'
+    _poolOnly: true
+  - type: 'vless'
+    name: '🇩🇪DE_90|553KB/s|A004-260618 [14d5e93093da]'
+    server: '193.188.21.253'
     port: 14430
-    server: '45.138.100.248'
-    servername: '45.138.100.248'
-    skip-cert-verify: true
     tls: false
-    type: 'vless'
-    udp: true
-    uuid: 'ae908ff5-f749-402c-af25-e6e9aef4d6bb'
-    ws-opts:
-      headers:
-        Host: '45.138.100.248'
-      path: '/vless'
-    _poolOnly: true
-  - alterId: 0
-    cipher: 'auto'
-    name: '[171] 🇺🇸 Oracle Corporation WS SNI'
+    uuid: '57f7772d-f5d6-4d8f-992d-5fa5e0d6da55'
     network: 'ws'
-    port: 39495
-    server: '129.146.77.248'
-    servername: '129.146.77.248'
-    skip-cert-verify: true
-    tls: false
-    type: 'vmess'
-    udp: true
-    uuid: 'f836c736-87fc-4fde-aabc-00857ecdff3e'
+    sni: '193.188.21.253'
     ws-opts:
-      headers:
-        Host: '129.146.77.248'
-      path: '/cctv13.m3u8'
-    _poolOnly: true
-  - alterId: 0
-    cipher: 'auto'
-    name: '[293] 🇩🇪 OVH GmbH TCP SNI TLS'
-    network: 'tcp'
-    port: 1234
-    server: '141.95.65.9'
-    servername: '141.95.65.9'
-    skip-cert-verify: true
-    tls: true
-    type: 'vmess'
-    udp: true
-    uuid: '5c040f1d-45db-43bd-8d46-e4950e433735'
-    _poolOnly: true
-  - alterId: 0
-    cipher: 'auto'
-    name: '[312] 🇩🇪 OVH GmbH TCP SNI TLS'
-    network: 'tcp'
-    port: 1234
-    server: '162.19.204.71'
-    servername: '162.19.204.71'
-    skip-cert-verify: true
-    tls: true
-    type: 'vmess'
-    udp: true
-    uuid: '5c040f1d-45db-43bd-8d46-e4950e433735'
-    _poolOnly: true
-  - alterId: 0
-    cipher: 'auto'
-    name: '[388] 🇳🇱 Zenex 5ive Limited TCP SNI TLS'
-    network: 'tcp'
-    port: 1234
-    server: '45.90.106.24'
-    servername: '45.90.106.24'
-    skip-cert-verify: true
-    tls: true
-    type: 'vmess'
-    udp: true
-    uuid: '5c040f1d-45db-43bd-8d46-e4950e433735'
-    _poolOnly: true
-  - cipher: 'chacha20-ietf-poly1305'
-    name: '[125] 🇳🇱 GLOBALIT DOO SHADOWSOCKS SNI'
-    password: 'AwW1fV6oDDQKh8r2znmptv59tPgt4eHVTgFaTqgKS2jiSdikJ7GyGCBYehDaK38S8yMgHFdbJqcTmRJSfYS5CFw345bNhFZa'
-    port: 43385
-    server: 'sql.popmintxo.cc'
-    type: 'ss'
-    udp: true
-    _poolOnly: true
-  - name: '[137] 🇮🇳 Contabo Asia Private Limited WS SNI'
-    network: 'ws'
-    port: 14430
-    server: '13.140.56.100'
-    servername: '13.140.56.100'
-    skip-cert-verify: true
-    tls: false
-    type: 'vless'
-    udp: true
-    uuid: '68512eac-cd53-4de3-8d1e-08f6e04af1a9'
-    ws-opts:
-      headers:
-        Host: '13.140.56.100'
       path: '/vless'
+      headers:
+        Host: '193.188.21.253'
     _poolOnly: true
-  - type: 'trojan'
-    password: '0a9f1f5a397bd427'
-    server: '125.227.86.45'
-    port: 443
-    name: '🇹🇼TW-01 · 524K/s'
-    skip-cert-verify: true
-    sni: 'TG.freecodes'
-    alpn:
-      - 'h2'
-    network: 'grpc'
-    grpc-opts:
-      grpc-service-name: 'db'
+  - type: 'vmess'
+    name: '🇮🇳IN_30|465KB/s|A004-260618 [623a4de5e9ec]'
+    server: '152.67.8.205'
+    port: 80
+    uuid: '9db4c708-aef8-4359-821b-38e47990be0d'
+    alterId: 0
+    cipher: 'auto'
+    tls: false
+    network: 'ws'
+    ws-opts:
+      path: '/'
+      headers:
+        Host: 'in-152.67.8.205-0202'
     _poolOnly: true
