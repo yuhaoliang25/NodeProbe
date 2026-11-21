@@ -161,7 +161,10 @@ try{
    normalizedPoolNodes.push(entry.proxy?{...entry,proxy:p}:{...entry,...p});
  }
  const poolEntries=normalizedPoolNodes.filter(entry=>entry.status!=='dead');
- const poolIds=new Set(poolEntries.map(entry=>entry.fingerprint||entry.proxy?.['endpoint-id']).filter(Boolean));
+ const poolIds=new Set(poolEntries.map(entry=>{
+   const p=entry.proxy||entry;
+   return p.server&&p.port&&p.type?endpointIdentity(p):(entry.fingerprint||entry.proxy?.['endpoint-id']);
+ }).filter(Boolean));
  const sourceProxies=proxies.filter(p=>!poolIds.has(p['endpoint-id']||p._id));
 
  proxies.length=0;
