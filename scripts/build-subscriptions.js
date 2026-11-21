@@ -145,8 +145,22 @@ try{
  // only an exploration feed: once an endpoint already exists in the pool, its
  // source-side proxy definition is discarded for asset monitoring and the
  // pool's own last-known proxy is used instead.
- const poolEntries=(pool.nodes||[]).filter(entry=>entry.status!=='dead');
  const rejectedPoolIds=new Set();
+ let normalizedPoolChanged=false;
+ const normalizedPoolNodes=[];
+ for(const entry of pool.nodes||[]){
+   const id=entry.fingerprint||entry.proxy?.['endpoint-id'];
+   const p=entry.proxy?{...entry.proxy}:{...entry};
+   if(!id){normalizedPoolNodes.push(entry);continue;}
+   if(!p.server||!p.port||!valid(p)){
+     invalidProxyCount++;
+     rejectedPoolIds.add(id);
+     continue;
+   }
+   if(JSON.stringify(p)!==JSON.stringify(entry.proxy||entry))normalizedPoolChanged=true;
+   normalizedPoolNodes.push(entry.proxy?{...entry,proxy:p}:{...entry,...p});
+ }
+ const poolEntries=normalizedPoolNodes.filter(entry=>entry.status!=='dead');
  const poolIds=new Set(poolEntries.map(entry=>entry.fingerprint||entry.proxy?.['endpoint-id']).filter(Boolean));
  const sourceProxies=proxies.filter(p=>!poolIds.has(p['endpoint-id']||p._id));
 
@@ -158,14 +172,6 @@ try{
    const id=entry.fingerprint||entry.proxy?.['endpoint-id'];
    const p=entry.proxy?{...entry.proxy}:{...entry};
    if(!id||!p.server||!p.port)continue;
-   // Pool entries outlive their source feed, so they must be revalidated too.
-   // Older assets may contain malformed Shadowsocks 2022 keys that current
-   // source ingestion already rejects; don't let them poison Mihomo validation.
-   if(!valid(p)){
-     invalidProxyCount++;
-     rejectedPoolIds.add(id);
-     continue;
-   }
    p['endpoint-id']=id;
    p._id=id;
    p._poolOnly=true;
@@ -178,10 +184,10 @@ try{
    proxies.push({...p,name});
  }
 
- if(rejectedPoolIds.size){
-   poolState.nodes=(pool.nodes||[]).filter(entry=>!rejectedPoolIds.has(entry.fingerprint||entry.proxy?.['endpoint-id']));
+ if(rejectedPoolIds.size||normalizedPoolChanged){
+   poolState.nodes=normalizedPoolNodes;
    fs.writeFileSync(poolFile,JSON.stringify(poolState,null,2)+'\n');
-   console.log('persistent node pool pruned invalid active entries:',rejectedPoolIds.size);
+   console.log('persistent node pool compatibility cleanup: removed',rejectedPoolIds.size,'invalid entries; normalized valid entries:',normalizedPoolChanged);
  }
  // Only endpoints absent from the Node Pool remain eligible for exploration.
  // Their source metadata is kept solely for provenance/source evolution.
@@ -194,7 +200,7 @@ try{
    usedNames.add(name);
    proxies.push({...p,name});
  }
- const deadPoolIds=new Set((pool.nodes||[]).filter(entry=>entry.status==='dead').map(entry=>entry.fingerprint||entry.proxy?.['endpoint-id']).filter(Boolean));
+ const deadPoolIds=new Set((poolState.nodes||[]).filter(entry=>entry.status==='dead').map(entry=>entry.fingerprint||entry.proxy?.['endpoint-id']).filter(Boolean));
  const sourceKnownDead=sourceProxies.filter(p=>deadPoolIds.has(p['endpoint-id']||p._id)).length;
  console.log('persistent node pool merged:',poolEntries.length,
    'non-dead entries; source feed candidates before lifecycle classification:',sourceProxies.length,
