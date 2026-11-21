@@ -13,6 +13,7 @@ const SUPPORTED_SS_CIPHERS=new Set([
   '2022-blake3-aes-128-gcm','2022-blake3-aes-256-gcm',
   '2022-blake3-chacha20-poly1305'
 ]);
+// Mihomo VLESS flow compatibility: only xtls-rprx-vision is accepted.
 function valid(p){
   if(!p||typeof p!=='object'||!p.name||!p.server||!p.port||!p.type)return false;
   const port=Number(p.port); if(!Number.isInteger(port)||port<1||port>65535)return false;
