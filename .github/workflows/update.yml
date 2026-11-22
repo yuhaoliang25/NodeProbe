@@ -223,26 +223,6 @@ jobs:
           };
           fs.mkdirSync('mihomo',{recursive:true});
           fs.writeFileSync('mihomo/config.yaml',yaml.dump(cfg,{lineWidth:-1,noRefs:true}));
-          const keyStats={total:p.length,withPrivateKey:0,byType:{},samples:[]};
-          const walk=(value,path,found)=>{
-            if(!value||typeof value!=='object')return;
-            for(const [key,v] of Object.entries(value)){
-              const next=path?path+'.'+key:key;
-              if(/private.?key/i.test(key))found.push({path:next,valueType:typeof v,valueLength:typeof v==='string'?v.length:null});
-              walk(v,next,found);
-            }
-          };
-          for(const proxy of p){
-            const found=[];
-            walk(proxy,'',found);
-            if(found.length){
-              keyStats.withPrivateKey++;
-              keyStats.byType[proxy.type]=(keyStats.byType[proxy.type]||0)+1;
-              if(keyStats.samples.length<20)keyStats.samples.push({name:proxy.name,type:proxy.type,fields:found});
-            }
-          }
-          fs.writeFileSync('mihomo/proxy-field-diagnostics.json',JSON.stringify(keyStats,null,2));
-          console.log('Proxy private-key field diagnostic:',JSON.stringify({total:keyStats.total,withPrivateKey:keyStats.withPrivateKey,byType:keyStats.byType}));
           console.log('Generated isolated probe config; nodes:',p.length);
           NODE
       - name: Validate Mihomo config
@@ -254,6 +234,7 @@ jobs:
           node - <<'NODE'
           const fs=require('fs'),yaml=require('js-yaml'),cp=require('child_process');
           const file='mihomo/config.yaml';
+          const {reportedProxyIndexToArrayIndex}=require('./scripts/lib/mihomo-index');
           const cfg=yaml.load(fs.readFileSync(file,'utf8'));
           const removed=[];
           const writeReport=(valid,lastError=null)=>fs.writeFileSync('mihomo/config-validation.json',JSON.stringify({
@@ -332,7 +313,6 @@ jobs:
           path: |
             mihomo/config-test.log
             mihomo/config-validation.json
-            mihomo/proxy-field-diagnostics.json
           if-no-files-found: ignore
           retention-days: 14
       - name: Start Mihomo
