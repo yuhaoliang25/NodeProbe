@@ -1,5 +1,4 @@
 'use strict';
-// Temporary trigger marker for the WireGuard malformed-key regression run.
 
 function isValidWireGuardPrivateKey(value) {
   if (typeof value !== 'string') return false;
