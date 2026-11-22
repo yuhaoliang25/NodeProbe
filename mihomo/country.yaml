@@ -5,162 +5,83 @@ log-level: 'warning'
 ipv6: false
 proxies:
   - type: 'trojan'
-    name: '🇺🇸US_419|471KB/s|B007-260618 [5fba9afc2dd9]'
-    server: 'blog.findlocaljobnetworkandbuildcommunityconnections.com'
+    name: '🇺🇸US_398|984KB/s|C002-260622 [5378648dfebd]'
+    server: 'resources.findlocaljobnetworkandbuildcommunityconnections.com'
     port: 443
     tls: false
-    password: 'dba20dcb635e430fa4d3bfc303a149d2'
+    password: 'f0eb8c92ce8946aaba856569cff1a16b'
     network: 'tcp'
-    sni: 'blog.findlocaljobnetworkandbuildcommunityconnections.com'
+    sni: 'resources.findlocaljobnetworkandbuildcommunityconnections.com'
     _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1827152587'
-    network: 'tcp'
-    port: 18662
-    reality-opts:
-      public-key: 'k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0'
-      short-id: '48050fab'
-    server: '67.220.73.204'
-    servername: 'www.apple.com'
+  - type: 'vmess'
+    name: '🇯🇵JP_36|254KB/s|M003-260806 [d514df0968c0]'
+    server: 'or3.sfacg.uk'
+    port: 2083
+    uuid: 'ac251237-576f-40c8-a543-554960c958b1'
+    alterId: 0
+    cipher: 'auto'
     tls: true
-    type: 'vless'
-    udp: true
-    uuid: '814bd064-544d-4255-a070-5705c03f6da9'
+    sni: 'or3.sfacg.uk'
+    network: 'ws'
+    ws-opts:
+      path: '/or3'
+      headers:
+        Host: 'or3.sfacg.uk'
     _poolOnly: true
-  - type: 'ss'
-    name: '🇺🇸 SkyBit-4_2026-11-21_19-05'
-    server: '161.153.38.61'
-    port: 50356
-    cipher: '2022-blake3-chacha20-poly1305'
-    password: 'EP/0kIjk18c43tfkqeJqdVQm8lGArteYkhhwgBJ3q70='
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇯🇵 SkyBit-156_2026-11-21_19-05'
-    server: 'jpa.123069.xyz'
-    port: 53758
-    cipher: 'aes-128-gcm'
-    password: 'Bwlqh7GcFB'
-    _poolOnly: true
-  - name: '[0.07MB/s][554ms] [freeSub#172] D🔴🇯🇵[🎬🤖📺🎭]_dokng.com_4920b'
-    port: 443
-    server: 'fan.571589.xyz'
-    sni: 'fan.571589.xyz'
-    tls: true
-    type: 'http'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1827153793'
-    network: 'tcp'
-    port: 443
-    reality-opts:
-      public-key: '-YTGWg5DjsLDyaDfr1D83kiUK22LVcrK3yC53lqqigs'
-      short-id: 'feedbacc'
-    server: 'sg.fasti.win'
-    servername: 'sg.fasti.win'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'a16bd0e2-ff2e-4e4c-a955-0c684255a065'
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇸🇬 SkyBit-13_2026-11-21_19-05'
-    server: '149.88.106.73'
-    port: 19999
+  - name: '041 | 30ms | 机房 seed82'
     cipher: 'aes-256-gcm'
-    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1827153416'
-    network: 'tcp'
-    port: 443
-    reality-opts:
-      public-key: '-YTGWg5DjsLDyaDfr1D83kiUK22LVcrK3yC53lqqigs'
-      short-id: 'feedbacc'
-    server: '67.159.52.81'
-    servername: 'sg.fasti.win'
-    tls: true
-    type: 'vless'
+    password: 'kDWvXYZoTBcGkC4'
+    port: 8881
+    server: '15.204.246.108'
+    sub_tag: 'B007-260618'
+    type: 'ss'
     udp: true
-    uuid: 'a16bd0e2-ff2e-4e4c-a955-0c684255a065'
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇩🇪 SkyBit-154_2026-11-21_19-05'
-    server: '193.108.117.84'
-    port: 19999
-    cipher: 'aes-256-gcm'
-    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
     _poolOnly: true
   - type: 'vless'
-    name: '🏴‍☠️ SkyBit-106_2026-11-21_19-05'
-    server: '88.216.70.125'
+    name: '🇸🇬SG_29|211KB/s|A004-260618 [80c29d11c05e]'
+    server: '139.162.27.96'
+    port: 2096
+    tls: true
+    uuid: '6e59d5c5-7aa3-4c36-a4c4-e3b899525ed2'
+    network: 'ws'
+    sni: 'free-server.techsonic.dev'
+    ws-opts:
+      path: '/free-server.techsonic.dev'
+      headers:
+        Host: 'free-server.techsonic.dev'
+    _poolOnly: true
+  - type: 'vless'
+    name: '🇬🇧GB_22|108KB/s|C002-260622 [caa4c0b4879f]'
+    server: 'uk1.connectsuite.org'
     port: 443
     tls: true
-    uuid: '88e79aa6-f431-4453-8dcc-652a0c747198'
+    uuid: 'fda89998-7e9a-4494-857a-cd0d00661b58'
     network: 'ws'
-    sni: 'o685y.save-node.com'
+    sni: 'uk1.connectsuite.org'
     ws-opts:
-      path: '/api/se1k2rfxlsuer3ry4u6e84kl8rqp721p'
-      headers:
-        Host: 'o685y.save-node.com'
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇩🇪 SkyBit-153_2026-11-21_19-05'
-    server: '193.108.119.2'
-    port: 19999
-    cipher: 'aes-256-gcm'
-    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇫🇷 SkyBit-31_2026-11-21_19-05'
-    server: '107.161.160.28'
-    port: 8388
-    cipher: 'aes-256-gcm'
-    password: 'itzvpn@321'
+      path: '/cdn-cgi/ws'
     _poolOnly: true
   - cipher: 'aes-128-gcm'
-    name: 'shadowsocks-1827146829'
+    name: 'shadowsocks-225'
     password: 'shadowsocks'
     port: 443
-    server: '158.173.20.171'
+    server: '141.98.101.178'
     type: 'ss'
-    udp: true
-    _poolOnly: true
-  - type: 'vless'
-    name: '🇳🇱 SkyBit-43_2026-11-21_19-05'
-    server: '146.19.254.171'
-    port: 8443
-    tls: true
-    uuid: '24fb9b5b-43b7-4058-a7e5-a0499ada1fda'
-    network: 'tcp'
-    sni: '146.19.254.171'
-    flow: 'xtls-rprx-vision'
-    _poolOnly: true
-  - name: '🇳🇱 荷兰 | SS | 001'
-    type: 'ss'
-    server: '216.172.144.199'
-    port: 40643
-    cipher: 'chacha20-ietf-poly1305'
-    password: 'Xd4G9xn7AgT88msCYC9MZfavMUqd3dWFNAvswi6KfaD9YcexptMbPn4cSECEMzDgvAMomAWJHyweqJer99ssMVYGH6TK8k4c'
     udp: true
     _poolOnly: true
   - type: 'ss'
-    name: '🇨🇦 SkyBit-148_2026-11-21_19-05'
-    server: '184.107.106.78'
-    port: 8388
+    name: '🇩🇪 Germany 04'
+    server: '23.157.88.43'
+    port: 19999
     cipher: 'aes-256-gcm'
-    password: 'itzvpn@321'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
     _poolOnly: true
-  - name: '[0.01MB/s][726ms] [freeSub#393] D🔴🇭🇰[🎬📺🎭🎪]_dokng.com_d85a9'
-    password: null
+  - type: 'ss'
+    name: '🇳🇱NL_327|8.8MB/s|A004-260618 [fba1c64cad1b]'
+    server: '82.38.31.165'
     port: 443
-    server: 'fan.240104.xyz'
-    skip-cert-verify: true
-    tls: true
-    type: 'http'
-    username: null
+    cipher: 'chacha20-ietf-poly1305'
+    password: 'oZIoA69Q8yhcQV8ka3Pa3A'
     _poolOnly: true
 proxy-groups:
   - name: 'COUNTRY'
@@ -170,11 +91,9 @@ proxy-groups:
       - 'US · United States'
       - 'JP · Japan'
       - 'SG · Singapore'
+      - 'GB · United Kingdom'
       - 'DE · Germany'
-      - 'FR · France'
       - 'NL · Netherlands'
-      - 'CA · Canada'
-      - 'HK · Hong Kong'
   - name: 'US · United States'
     type: 'url-test'
     url: 'https://www.google.com/generate_204'
@@ -182,8 +101,7 @@ proxy-groups:
     tolerance: 100
     lazy: false
     proxies:
-      - '🇺🇸US_419|471KB/s|B007-260618 [5fba9afc2dd9]'
-      - '🇺🇸 SkyBit-4_2026-11-21_19-05'
+      - '🇺🇸US_398|984KB/s|C002-260622 [5378648dfebd]'
   - name: 'JP · Japan'
     type: 'url-test'
     url: 'https://www.google.com/generate_204'
@@ -191,8 +109,7 @@ proxy-groups:
     tolerance: 100
     lazy: false
     proxies:
-      - '🇯🇵 SkyBit-156_2026-11-21_19-05'
-      - '[0.07MB/s][554ms] [freeSub#172] D🔴🇯🇵[🎬🤖📺🎭]_dokng.com_4920b'
+      - '🇯🇵JP_36|254KB/s|M003-260806 [d514df0968c0]'
   - name: 'SG · Singapore'
     type: 'url-test'
     url: 'https://www.google.com/generate_204'
@@ -200,7 +117,15 @@ proxy-groups:
     tolerance: 100
     lazy: false
     proxies:
-      - '🇸🇬 SkyBit-13_2026-11-21_19-05'
+      - '🇸🇬SG_29|211KB/s|A004-260618 [80c29d11c05e]'
+  - name: 'GB · United Kingdom'
+    type: 'url-test'
+    url: 'https://www.google.com/generate_204'
+    interval: 300
+    tolerance: 100
+    lazy: false
+    proxies:
+      - '🇬🇧GB_22|108KB/s|C002-260622 [caa4c0b4879f]'
   - name: 'DE · Germany'
     type: 'url-test'
     url: 'https://www.google.com/generate_204'
@@ -208,16 +133,7 @@ proxy-groups:
     tolerance: 100
     lazy: false
     proxies:
-      - '🇩🇪 SkyBit-154_2026-11-21_19-05'
-      - '🇩🇪 SkyBit-153_2026-11-21_19-05'
-  - name: 'FR · France'
-    type: 'url-test'
-    url: 'https://www.google.com/generate_204'
-    interval: 300
-    tolerance: 100
-    lazy: false
-    proxies:
-      - '🇫🇷 SkyBit-31_2026-11-21_19-05'
+      - '🇩🇪 Germany 04'
   - name: 'NL · Netherlands'
     type: 'url-test'
     url: 'https://www.google.com/generate_204'
@@ -225,23 +141,6 @@ proxy-groups:
     tolerance: 100
     lazy: false
     proxies:
-      - '🇳🇱 SkyBit-43_2026-11-21_19-05'
-      - '🇳🇱 荷兰 | SS | 001'
-  - name: 'CA · Canada'
-    type: 'url-test'
-    url: 'https://www.google.com/generate_204'
-    interval: 300
-    tolerance: 100
-    lazy: false
-    proxies:
-      - '🇨🇦 SkyBit-148_2026-11-21_19-05'
-  - name: 'HK · Hong Kong'
-    type: 'url-test'
-    url: 'https://www.google.com/generate_204'
-    interval: 300
-    tolerance: 100
-    lazy: false
-    proxies:
-      - '[0.01MB/s][726ms] [freeSub#393] D🔴🇭🇰[🎬📺🎭🎪]_dokng.com_d85a9'
+      - '🇳🇱NL_327|8.8MB/s|A004-260618 [fba1c64cad1b]'
 rules:
   - 'MATCH,COUNTRY'

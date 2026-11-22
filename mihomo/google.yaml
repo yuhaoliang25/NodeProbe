@@ -4,1093 +4,587 @@ mode: 'rule'
 log-level: 'warning'
 ipv6: false
 proxies:
-  - type: 'trojan'
-    name: '🇺🇸 SkyBit-112_2026-11-21_19-05'
-    server: '216.106.186.82'
-    port: 443
-    tls: true
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+  - name: '008 | 100ms | 个人 seed2'
+    cipher: 'aes-256-gcm'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
+    port: 19999
+    server: '167.17.67.171'
+    sub_tag: 'M003-260806'
+    type: 'ss'
+    udp: true
+    _poolOnly: true
+  - name: '006 | 96ms | 个人 seed0'
+    type: 'ss'
+    server: '38.64.138.135'
+    port: 19999
+    cipher: 'aes-256-gcm'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
+    udp: true
+    _poolOnly: true
+  - name: '009 | 104ms | 个人 seed1'
+    server: '216.106.178.169'
+    port: 19999
+    type: 'ss'
+    cipher: 'aes-256-gcm'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
+    udp: true
+    _poolOnly: true
+  - name: '041 | 30ms | 机房 seed82'
+    cipher: 'aes-256-gcm'
+    password: 'kDWvXYZoTBcGkC4'
+    port: 8881
+    server: '15.204.246.108'
+    sub_tag: 'B007-260618'
+    type: 'ss'
+    udp: true
+    _poolOnly: true
+  - name: '012 | 194ms | 个人 seed12'
+    server: '23.150.152.38'
+    port: 19999
+    type: 'ss'
+    cipher: 'aes-256-gcm'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
+    udp: true
+    _poolOnly: true
+  - name: '014 | 222ms | 个人 seed18'
+    type: 'ss'
+    server: '38.143.66.146'
+    port: 19999
+    cipher: 'aes-256-gcm'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
+    udp: true
+    _poolOnly: true
+  - name: '042 | 33ms | 机房 seed92'
+    cipher: 'aes-256-gcm'
+    password: 'lGqs95QkFHo2NV'
+    port: 5498
+    server: '15.204.246.111'
+    sub_tag: 'B007-260618'
+    type: 'ss'
+    udp: true
+    _poolOnly: true
+  - name: '028 | 289ms | 个人 seed39'
+    client-fingerprint: 'chrome'
     network: 'tcp'
-    sni: 'courses.findlocaljobnetworkandbuildcommunityconnections.com'
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    port: 443
+    server: '216.106.186.155'
+    skip-cert-verify: false
+    sni: 'api.findlocaljobnetworkandbuildcommunityconnections.com'
+    sub_tag: 'C002-260622'
+    type: 'trojan'
+    udp: true
     _poolOnly: true
   - type: 'trojan'
-    name: '🇺🇸 SkyBit-98_2026-11-21_19-05'
-    server: '216.106.186.32'
+    name: '🇺🇸US_414|918KB/s|A004-260618 [5f59ad15238f]'
+    server: 'www.findlocaljobnetworkandbuildcommunityconnections.com'
     port: 443
-    tls: true
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'blog.findlocaljobnetworkandbuildcommunityconnections.com'
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇺🇸 SkyBit-103_2026-11-21_19-05'
-    server: '216.106.186.66'
-    port: 443
-    tls: true
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    tls: false
+    password: '242a3d8eee5e4ed1a6bfa4141d549a25'
     network: 'tcp'
     sni: 'www.findlocaljobnetworkandbuildcommunityconnections.com'
     _poolOnly: true
-  - type: 'trojan'
-    name: '🇺🇸 SkyBit-99_2026-11-21_19-05'
-    server: '216.106.186.46'
+  - name: '002 | 84ms | 个人 seed5'
     port: 443
+    server: '216.107.139.82'
+    skip-cert-verify: true
+    sni: '991cc80f13caf81d3426ddebb2da7f49-92ff472ddc24e5b7.apache-iv.com'
+    sub_tag: 'R002-260618'
     tls: true
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'cdn.findlocaljobnetworkandbuildcommunityconnections.com'
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '007 | 100ms | 个人 seed9'
+    password: '75bPoRcB'
+    port: 62000
+    server: '216.132.114.27'
+    sub_tag: 'R002-260618'
+    type: 'socks5'
+    username: 'JzufiJ62'
+    udp: true
     _poolOnly: true
   - type: 'trojan'
-    name: '🇺🇸 SkyBit-67_2026-11-21_19-05'
-    server: '216.106.186.33'
+    name: '🇺🇸US_398|984KB/s|C002-260622 [5378648dfebd]'
+    server: 'resources.findlocaljobnetworkandbuildcommunityconnections.com'
     port: 443
-    tls: true
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    tls: false
+    password: 'f0eb8c92ce8946aaba856569cff1a16b'
     network: 'tcp'
     sni: 'resources.findlocaljobnetworkandbuildcommunityconnections.com'
     _poolOnly: true
-  - type: 'vless'
-    name: '🇫🇷FR_144|436KB/s|M003-260806 [7f126e87b58b]'
-    server: '172.64.150.248'
+  - name: '038 | 335ms | 个人 seed35'
     port: 443
-    tls: true
-    uuid: '5dc15e15-f285-4a9d-959b-0e4fbdd77b63'
-    network: 'ws'
-    sni: 'powered-by-surena.configfarsi695fd01a94fe7.workers.dev'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'powered-by-surena.configfarsi695fd01a94fe7.workers.dev'
-    _poolOnly: true
-  - type: 'vless'
-    name: '🇫🇷FR_139|542KB/s|M003-260806 [697644dc5d62]'
-    server: '172.64.147.154'
-    port: 443
-    tls: true
-    uuid: '5dc15e15-f285-4a9d-959b-0e4fbdd77b63'
-    network: 'ws'
-    sni: 'powered-by-surena.configfarsi695fcfe8a2e58.workers.dev'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'powered-by-surena.configfarsi695fcfe8a2e58.workers.dev'
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇺🇸 SkyBit-36_2026-11-21_19-05'
-    server: '216.106.186.155'
-    port: 443
-    tls: true
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'api.findlocaljobnetworkandbuildcommunityconnections.com'
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇺🇸 SkyBit-4_2026-11-21_19-05'
-    server: '161.153.38.61'
-    port: 50356
-    cipher: '2022-blake3-chacha20-poly1305'
-    password: 'EP/0kIjk18c43tfkqeJqdVQm8lGArteYkhhwgBJ3q70='
-    _poolOnly: true
-  - name: '[0.02MB/s][826ms] [freeSub#097] D🔴🇺🇸[🎬🤖📺🎭]_dokng.com_0f8d1'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.197'
+    server: '45.134.9.41'
     skip-cert-verify: true
-    tls: true
-    type: 'http'
-    username: null
-    _poolOnly: true
-  - name: '[0.12MB/s][808ms] [freeSub#132] D🔴🇺🇸[🎬🤖📺🎭]_dokng.com_6e941'
-    password: 'null'
-    port: 9002
-    server: '138.199.35.205'
-    skip-cert-verify: true
-    tls: true
-    type: 'http'
-    username: 'null'
-    _poolOnly: true
-  - name: '[0.02MB/s][819ms] [freeSub#148] D🔴🇺🇸[🎬🤖📺🎭]_dokng.com_c4137'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.218'
-    skip-cert-verify: true
-    tls: true
-    type: 'http'
-    username: null
-    _poolOnly: true
-  - name: '[0.01MB/s][790ms] [freeSub#114] D🔴🇺🇸[🎬🤖📺🎭]_dokng.com_0cd2d'
-    port: 9002
-    server: '138.199.35.195'
-    skip-cert-verify: true
+    sni: '991cc80f13caf81d3426ddebb2da7f49-240d6105b6ef86f0.apache-iv.com'
+    sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '[0.01MB/s][814ms] [freeSub#173] D🔴🇺🇸[🎬📺🎭🎪]_dokng.com_bf297'
-    password: null
-    port: 9002
-    server: '138.199.35.217'
+  - name: '001 | 84ms | 个人 seed3'
+    port: 443
+    server: '162.217.114.50'
     skip-cert-verify: true
-    tls: true
-    type: 'http'
-    username: null
-    _poolOnly: true
-  - name: '[0.02MB/s][799ms] [freeSub#137] D🔴🇺🇸[🎬🤖📺🎭]_dokng.com_ab091'
-    password: ''
-    port: 9002
-    server: '138.199.35.201'
-    skip-cert-verify: true
-    tls: true
-    type: 'http'
-    udp: true
-    username: ''
-    _poolOnly: true
-  - name: '[0.01MB/s][782ms] [freeSub#163] D🔴🇺🇸[🎬🤖📺🎭]_dokng.com_3a778'
-    port: 9002
-    server: '138.199.35.202'
-    skip-cert-verify: true
+    sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '[0.01MB/s][803ms] [freeSub#191] D🔴🇺🇸[🎬🤖📺🎭]_dokng.com_bea28'
-    password: ''
-    port: 9002
-    server: '138.199.35.207'
-    skip-cert-verify: true
-    tls: true
-    type: 'http'
+  - name: '018 | 254ms | 个人 seed31'
+    cipher: 'aes-256-gcm'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
+    port: 19999
+    server: '66.163.125.120'
+    sub_tag: 'M003-260806'
+    type: 'ss'
     udp: true
-    username: ''
     _poolOnly: true
-  - type: 'trojan'
-    name: '🇺🇸 SkyBit-108_2026-11-21_19-05'
-    server: '66.163.112.142'
-    port: 443
-    tls: true
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'cdn.unlockyourfuturefindyourperfectcareer.com'
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇺🇸 SkyBit-79_2026-11-21_19-05'
-    server: '66.163.112.121'
-    port: 443
-    tls: true
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'www.unlockyourfuturefindyourperfectcareer.com'
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇺🇸 SkyBit-114_2026-11-21_19-05'
-    server: '66.163.112.147'
-    port: 443
-    tls: true
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'courses.unlockyourfuturefindyourperfectcareer.com'
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇺🇸 SkyBit-163_2026-11-21_19-05'
-    server: '167.88.62.203'
-    port: 19999
-    cipher: 'aes-256-gcm'
+  - cipher: 'aes-256-gcm'
+    name: '016 | 248ms | 个人 seed38'
     password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇺🇸 SkyBit-162_2026-11-21_19-05'
-    server: '38.91.100.39'
     port: 19999
-    cipher: 'aes-256-gcm'
-    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇺🇸 SkyBit-78_2026-11-21_19-05'
-    server: '66.163.112.31'
-    port: 443
-    tls: true
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'unlockyourfuturefindyourperfectcareer.com'
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇺🇸 SkyBit-10_2026-11-21_19-05'
-    server: '137.184.89.151'
-    port: 19999
-    cipher: 'aes-256-gcm'
-    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
-    _poolOnly: true
-  - name: '[0.03MB/s][606ms] [freeSub#047] D🔴🇺🇸[🎬🤖📺🎪]_dokng.com_a88e9'
-    password: 'gs4BXwT6SW'
-    port: 10988
-    server: '154.26.192.123'
-    tls: false
-    type: 'http'
-    username: 'fQ67Dpe5dU'
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇺🇸 SkyBit-95_2026-11-21_19-05'
-    server: '216.152.155.50'
-    port: 443
-    tls: true
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'cdn.nextjobopportunityandclaimyouridealrole.com'
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇺🇸 SkyBit-74_2026-11-21_19-05'
-    server: '170.101.101.237'
-    port: 443
-    tls: true
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'cdn.explorecreativejobsandenhanceyourcareerportfolio.com'
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇺🇸 SkyBit-94_2026-11-21_19-05'
-    server: '170.101.101.131'
-    port: 443
-    tls: true
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'blog.explorecreativejobsandenhanceyourcareerportfolio.com'
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇺🇸 SkyBit-57_2026-11-21_19-05'
-    server: '170.101.101.67'
-    port: 443
-    tls: true
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'courses.explorecreativejobsandenhanceyourcareerportfolio.com'
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇺🇸 SkyBit-9_2026-11-21_19-05'
-    server: '170.101.101.211'
-    port: 443
-    tls: true
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'api.explorecreativejobsandenhanceyourcareerportfolio.com'
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇺🇸 SkyBit-30_2026-11-21_19-05'
-    server: '170.101.101.53'
-    port: 443
-    tls: true
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'www.explorecreativejobsandenhanceyourcareerportfolio.com'
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇺🇸 SkyBit-102_2026-11-21_19-05'
-    server: '170.101.101.112'
-    port: 443
-    tls: true
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'resources.explorecreativejobsandenhanceyourcareerportfolio.com'
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇺🇸 SkyBit-35_2026-11-21_19-05'
-    server: '170.101.101.19'
-    port: 443
-    tls: true
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'learn.explorecreativejobsandenhanceyourcareerportfolio.com'
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇺🇸 SkyBit-81_2026-11-21_19-05'
-    server: '40.160.86.43'
-    port: 8388
-    cipher: 'aes-256-gcm'
-    password: 'itzvpn@321'
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇨🇦 SkyBit-148_2026-11-21_19-05'
-    server: '184.107.106.78'
-    port: 8388
-    cipher: 'aes-256-gcm'
-    password: 'itzvpn@321'
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇺🇸 SkyBit-137_2026-11-21_19-05'
-    server: '135.148.42.13'
-    port: 8388
-    cipher: 'aes-256-gcm'
-    password: 'itzvpn@321'
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇺🇸 SkyBit-165_2026-11-21_19-05'
-    server: '38.22.17.219'
-    port: 19999
-    cipher: 'aes-256-gcm'
-    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇺🇸 SkyBit-126_2026-11-21_19-05'
-    server: '216.152.156.159'
-    port: 443
-    tls: true
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'resources.healthcarejobshubenhancemedicalprofessionalskillstoday.com'
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇺🇸 SkyBit-164_2026-11-21_19-05'
-    server: '38.22.17.214'
-    port: 19999
-    cipher: 'aes-256-gcm'
-    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇺🇸 SkyBit-42_2026-11-21_19-05'
-    server: '66.163.122.30'
-    port: 443
-    tls: true
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'resources.searchnationwidecareerchangehelperandguidancetoday.com'
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇺🇸 SkyBit-96_2026-11-21_19-05'
-    server: '66.163.122.25'
-    port: 443
-    tls: true
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'cdn.searchnationwidecareerchangehelperandguidancetoday.com'
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇺🇸 SkyBit-66_2026-11-21_19-05'
-    server: '66.163.122.26'
-    port: 443
-    tls: true
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'blog.searchnationwidecareerchangehelperandguidancetoday.com'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1827152587'
-    network: 'tcp'
-    port: 18662
-    reality-opts:
-      public-key: 'k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0'
-      short-id: '48050fab'
-    server: '67.220.73.204'
-    servername: 'www.apple.com'
-    tls: true
-    type: 'vless'
+    server: '198.244.201.129'
+    type: 'ss'
     udp: true
-    uuid: '814bd064-544d-4255-a070-5705c03f6da9'
     _poolOnly: true
-  - type: 'ss'
-    name: '🇩🇪 SkyBit-154_2026-11-21_19-05'
-    server: '193.108.117.84'
-    port: 19999
-    cipher: 'aes-256-gcm'
+  - cipher: 'aes-256-gcm'
+    name: '019 | 261ms | 个人 seed37'
     password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇩🇪 SkyBit-153_2026-11-21_19-05'
-    server: '193.108.119.2'
     port: 19999
-    cipher: 'aes-256-gcm'
+    server: '198.244.202.215'
+    type: 'ss'
+    udp: true
+    _poolOnly: true
+  - cipher: 'aes-256-gcm'
+    name: '021 | 271ms | 个人 🇳🇱[www.v2nodes.com] ss-NL-1614...'
     password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
+    port: 19999
+    server: '151.241.19.36'
+    type: 'ss'
+    udp: true
+    _poolOnly: true
+  - cipher: 'aes-256-gcm'
+    name: '025 | 282ms | 个人 🇳🇱[www.v2nodes.com] ss-NL-1614... #1'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
+    port: 19999
+    server: '151.241.19.29'
+    type: 'ss'
+    udp: true
+    _poolOnly: true
+  - cipher: 'aes-256-gcm'
+    name: '020 | 269ms | 个人 🇬🇧[www.v2nodes.com] ss-GB-1615... #1'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
+    port: 19999
+    server: '38.114.120.221'
+    type: 'ss'
+    udp: true
     _poolOnly: true
   - type: 'ss'
-    name: '🇫🇷 SkyBit-31_2026-11-21_19-05'
-    server: '107.161.160.28'
-    port: 8388
-    cipher: 'aes-256-gcm'
-    password: 'itzvpn@321'
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇩🇪 SkyBit-151_2026-11-21_19-05'
-    server: '193.108.116.98'
+    name: '🇩🇪 Germany 04'
+    server: '23.157.88.43'
     port: 19999
     cipher: 'aes-256-gcm'
     password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
     _poolOnly: true
   - cipher: 'aes-128-gcm'
-    name: 'shadowsocks-1827146829'
+    name: 'shadowsocks-225'
     password: 'shadowsocks'
     port: 443
-    server: '158.173.20.171'
+    server: '141.98.101.178'
     type: 'ss'
     udp: true
     _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1827153006'
-    network: 'tcp'
-    port: 16016
-    reality-opts:
-      public-key: 'k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0'
-      short-id: '48050fab'
-    server: '67.220.73.204'
-    servername: 'www.apple.com'
+  - name: '026 | 285ms | 个人 🇩🇪DE-193.108.119.3-0096 / 85.423MB'
+    server: '193.108.119.3'
+    port: 19999
+    type: 'ss'
+    cipher: 'aes-256-gcm'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
+    udp: true
+    _poolOnly: true
+  - cipher: 'aes-256-gcm'
+    name: '032 | 309ms | 个人 🇫🇷[www.v2nodes.com] ss-FR-1615... #2'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
+    port: 19999
+    server: '172.99.189.142'
+    type: 'ss'
+    udp: true
+    _poolOnly: true
+  - cipher: 'aes-256-gcm'
+    name: '036 | 319ms | 个人 🇫🇷[www.v2nodes.com] ss-FR-1616...'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
+    port: 19999
+    server: '23.162.152.22'
+    type: 'ss'
+    udp: true
+    _poolOnly: true
+  - client-fingerprint: 'firefox'
+    grpc-opts:
+      grpc-service-name: '138-124-86-230-sslip-io'
+    name: '015 | 246ms | 个人 🏳[www.v2nodes.com] vless- #13'
+    network: 'grpc'
+    port: 48115
+    server: '138.124.86.230'
+    servername: '138-124-86-230.sslip.io'
     tls: true
     type: 'vless'
+    uuid: 'b2fe1fa4-6a79-4938-a3f4-63b54ae7f16b'
     udp: true
-    uuid: '814bd064-544d-4255-a070-5705c03f6da9'
     _poolOnly: true
-  - type: 'ss'
-    name: '🇯🇵 SkyBit-156_2026-11-21_19-05'
-    server: 'jpa.123069.xyz'
-    port: 53758
-    cipher: 'aes-128-gcm'
-    password: 'Bwlqh7GcFB'
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇺🇸 SkyBit-17_2026-11-21_19-05'
-    server: '66.163.122.7'
-    port: 443
-    tls: true
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'www.searchnationwidecareerchangehelperandguidancetoday.com'
-    _poolOnly: true
-  - name: '🇳🇱 荷兰 | SS | 001'
+  - cipher: 'aes-256-gcm'
+    name: '034 | 311ms | 个人 🇫🇷[www.v2nodes.com] ss-FR-1615...'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
+    port: 19999
+    server: '38.109.228.110'
     type: 'ss'
-    server: '216.172.144.199'
-    port: 40643
-    cipher: 'chacha20-ietf-poly1305'
-    password: 'Xd4G9xn7AgT88msCYC9MZfavMUqd3dWFNAvswi6KfaD9YcexptMbPn4cSECEMzDgvAMomAWJHyweqJer99ssMVYGH6TK8k4c'
+    udp: true
+    _poolOnly: true
+  - cipher: 'aes-256-gcm'
+    name: '033 | 310ms | 个人 🇫🇷[www.v2nodes.com] ss-FR-1615... #3'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
+    port: 19999
+    server: '167.17.64.175'
+    type: 'ss'
     udp: true
     _poolOnly: true
   - type: 'ss'
-    name: '🇨🇭 SkyBit-60_2026-11-21_19-05'
-    server: '208.69.78.133'
-    port: 443
-    cipher: 'chacha20-ietf-poly1305'
-    password: 'ncIkubmoDGsl'
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇨🇭 SkyBit-149_2026-11-21_19-05'
-    server: '186.190.215.251'
+    name: '🇨🇭 Switzerland 01'
+    server: '23.166.88.189'
     port: 19999
     cipher: 'aes-256-gcm'
     password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
     _poolOnly: true
-  - type: 'ss'
-    name: '🇨🇭 SkyBit-59_2026-11-21_19-05'
-    server: '79.127.184.104'
-    port: 19999
-    cipher: 'aes-256-gcm'
+  - cipher: 'aes-256-gcm'
+    name: '031 | 308ms | 个人 🇫🇷[www.v2nodes.com] ss-FR-1615... #1'
     password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
+    port: 19999
+    server: '167.17.64.27'
+    type: 'ss'
+    udp: true
     _poolOnly: true
-  - type: 'trojan'
-    name: '🇺🇸US_419|471KB/s|B007-260618 [5fba9afc2dd9]'
-    server: 'blog.findlocaljobnetworkandbuildcommunityconnections.com'
-    port: 443
-    tls: false
-    password: 'dba20dcb635e430fa4d3bfc303a149d2'
-    network: 'tcp'
-    sni: 'blog.findlocaljobnetworkandbuildcommunityconnections.com'
+  - cipher: 'aes-256-gcm'
+    name: '037 | 329ms | 个人 🏳[www.v2nodes.com] ss- #2'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
+    port: 19999
+    server: '23.166.88.127'
+    type: 'ss'
+    udp: true
     _poolOnly: true
-  - type: 'ss'
-    name: '🇮🇹 SkyBit-76_2026-11-21_19-05'
-    server: '57.131.27.21'
+  - name: '017 | 249ms | 个人 seed34'
+    port: 8090
+    server: '173.42.49.102'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - cipher: 'chacha20-ietf-poly1305'
+    name: '039 | 338ms | 个人 🇦🇹[www.v2nodes.com] ss-AT-1614...'
+    password: 'AdawffFMHymlasRb0VOP3HFf7sTG5sJx'
     port: 8388
-    cipher: 'aes-256-gcm'
-    password: 'itzvpn@321'
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇸🇬 SkyBit-13_2026-11-21_19-05'
-    server: '149.88.106.73'
-    port: 19999
-    cipher: 'aes-256-gcm'
-    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇸🇬 SkyBit-45_2026-11-21_19-05'
-    server: '149.88.106.74'
-    port: 19999
-    cipher: 'aes-256-gcm'
-    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇫🇮 SkyBit-155_2026-11-21_19-05'
-    server: '213.176.92.148'
-    port: 40647
-    cipher: 'aes-256-gcm'
-    password: 'DgMywXKqojHXeuXY8hOJaYGPFcjweCIJeD5cdg/cUUY='
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇸🇬 SkyBit-142_2026-11-21_19-05'
-    server: '51.79.228.131'
-    port: 19999
-    cipher: 'aes-256-gcm'
-    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇸🇬 SkyBit-129_2026-11-21_19-05'
-    server: '43.106.81.90'
-    port: 443
-    cipher: '2022-blake3-chacha20-poly1305'
-    password: '8SrAY2kEk9UHKSgUJjQvfdTJP9oPlSPVP1wICL7n3hk='
-    _poolOnly: true
-  - name: '🇺🇸 美国 | SS | 001'
+    server: '152.53.1.57'
     type: 'ss'
-    server: '48.103.218.77'
-    port: 18443
-    cipher: 'aes-256-gcm'
-    password: '5mKjXAGrliIAlYwWDeFzkCEMIgQdFQLe'
+    udp: true
+    _poolOnly: true
+  - name: '035 | 313ms | 个人 seed33'
+    port: 443
+    server: '71.43.26.234'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
     udp: true
     _poolOnly: true
   - type: 'trojan'
-    name: '🇪🇸 SkyBit-124_2026-11-21_19-05'
-    server: '66.163.118.203'
-    port: 443
-    tls: true
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'blog.discovergreatjobsandadvanceyourcareer.com'
-    _poolOnly: true
-  - type: 'vless'
-    name: '🏴‍☠️ SkyBit-106_2026-11-21_19-05'
-    server: '88.216.70.125'
-    port: 443
-    tls: true
-    uuid: '88e79aa6-f431-4453-8dcc-652a0c747198'
-    network: 'ws'
-    sni: 'o685y.save-node.com'
-    ws-opts:
-      path: '/api/se1k2rfxlsuer3ry4u6e84kl8rqp721p'
-      headers:
-        Host: 'o685y.save-node.com'
-    _poolOnly: true
-  - type: 'vless'
-    name: '🏴‍☠️ SkyBit-143_2026-11-21_19-05'
-    server: 'o685y.save-node.com'
-    port: 443
-    tls: true
-    uuid: '88e79aa6-f431-4453-8dcc-652a0c747198'
-    network: 'ws'
-    sni: 'o685y.save-node.com'
-    ws-opts:
-      path: '/api/se1k2rfxlsuer3ry4u6e84kl8rqp721p'
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇳🇱 SkyBit-147_2026-11-21_19-05'
-    server: 'dns22.m3hrzd.ir'
-    port: 1348
-    cipher: 'chacha20-ietf-poly1305'
-    password: 'pFlEjR_10osoxyR2CnNIhUMpAy4CzfXr'
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇨🇱 SkyBit-109_2026-11-21_19-05'
-    server: '64.176.7.205'
-    port: 443
-    tls: true
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'advanceyouremploymentskillsandcareerdevelopmenthub.com'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1827153793'
-    network: 'tcp'
-    port: 443
-    reality-opts:
-      public-key: '-YTGWg5DjsLDyaDfr1D83kiUK22LVcrK3yC53lqqigs'
-      short-id: 'feedbacc'
-    server: 'sg.fasti.win'
-    servername: 'sg.fasti.win'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'a16bd0e2-ff2e-4e4c-a955-0c684255a065'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1827153416'
-    network: 'tcp'
-    port: 443
-    reality-opts:
-      public-key: '-YTGWg5DjsLDyaDfr1D83kiUK22LVcrK3yC53lqqigs'
-      short-id: 'feedbacc'
-    server: '67.159.52.81'
-    servername: 'sg.fasti.win'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'a16bd0e2-ff2e-4e4c-a955-0c684255a065'
-    _poolOnly: true
-  - name: '🇩🇪 德国 | VLESS | 001'
-    type: 'vless'
-    server: '179.253.80.175'
-    port: 4443
-    uuid: 'a35c508f-4d5d-4531-842e-6e9d43c762c0'
-    udp: true
-    tls: true
-    servername: 'swo2.nexfile.net'
-    client-fingerprint: 'chrome'
-    network: 'xhttp'
-    xhttp-opts:
-      path: '/api/v1/sync/'
-    _poolOnly: true
-  - type: 'vless'
-    name: '🇳🇱 SkyBit-43_2026-11-21_19-05'
-    server: '146.19.254.171'
-    port: 8443
-    tls: true
-    uuid: '24fb9b5b-43b7-4058-a7e5-a0499ada1fda'
-    network: 'tcp'
-    sni: '146.19.254.171'
-    flow: 'xtls-rprx-vision'
-    _poolOnly: true
-  - name: '🇪🇸 西班牙 | VLESS | 002'
-    type: 'vless'
-    server: 'api.ferrin.uk'
-    port: 443
-    uuid: '7d1a74fd-8a38-4a29-863f-5da53a9e557e'
-    udp: true
-    tls: true
-    servername: '7d1a74fd.ferrin.uk'
-    client-fingerprint: 'safari'
-    network: 'xhttp'
-    xhttp-opts:
-      path: '/es'
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇨🇭 SkyBit-24_2026-11-21_19-05'
+    name: '🇨🇭 Switzerland 02'
     server: '208.69.78.60'
     port: 443
-    tls: true
+    tls: false
     password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
     network: 'tcp'
     sni: 'cdn.yourultimateprofessionalcareerhub.com'
     _poolOnly: true
-  - name: '[0.01MB/s][726ms] [freeSub#393] D🔴🇭🇰[🎬📺🎭🎪]_dokng.com_d85a9'
-    password: null
+  - type: 'vless'
+    name: '🇬🇧GB_22|108KB/s|C002-260622 [caa4c0b4879f]'
+    server: 'uk1.connectsuite.org'
     port: 443
-    server: 'fan.240104.xyz'
-    skip-cert-verify: true
     tls: true
-    type: 'http'
-    username: null
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇳🇱 SkyBit-169_2026-11-21_19-05'
-    server: '77.221.132.206'
-    port: 24759
-    cipher: 'chacha20-ietf-poly1305'
-    password: 'hCgbUnMaoAfSgvE8IKdnGu'
-    _poolOnly: true
-  - name: '🇺🇳 未知地区 | VLESS | 002'
-    type: 'vless'
-    server: '188.114.98.0'
-    port: 443
-    uuid: '88e79aa6-f431-4453-8dcc-652a0c747198'
-    udp: true
-    tls: true
-    servername: 'o685y.save-node.com'
-    client-fingerprint: 'unsafe'
-    alpn:
-      - 'http/1.1'
+    uuid: 'fda89998-7e9a-4494-857a-cd0d00661b58'
     network: 'ws'
+    sni: 'uk1.connectsuite.org'
     ws-opts:
-      path: '/api/se1k2rfxlsuer3ry4u6e84kl8rqp721p'
-      headers:
-        Host: 'o685y.save-node.com'
+      path: '/cdn-cgi/ws'
     _poolOnly: true
   - type: 'ss'
-    name: '🇳🇱 SkyBit-152_2026-11-21_19-05'
-    server: '156.67.120.205'
-    port: 51628
+    name: '🇳🇱NL_327|8.8MB/s|A004-260618 [fba1c64cad1b]'
+    server: '82.38.31.165'
+    port: 443
     cipher: 'chacha20-ietf-poly1305'
-    password: '29ZZXVa34x7sC48w9FKQ54UKHiJJGTVgKFppBRgviLrVCAYVVyKZdD3obbpjCyk31V5b2G2d7xzqmaPBFdcheCVB9UQ4ZghF'
+    password: 'oZIoA69Q8yhcQV8ka3Pa3A'
     _poolOnly: true
   - type: 'trojan'
-    name: '🇨🇭 SkyBit-123_2026-11-21_19-05'
-    server: '208.69.78.33'
+    name: '🇨🇭 Switzerland 05'
+    server: '208.69.78.29'
     port: 443
-    tls: true
+    tls: false
     password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
     network: 'tcp'
-    sni: 'courses.yourultimateprofessionalcareerhub.com'
+    sni: 'learn.yourultimateprofessionalcareerhub.com'
     _poolOnly: true
-  - type: 'trojan'
-    name: '🇨🇭 SkyBit-69_2026-11-21_19-05'
-    server: '208.69.78.208'
-    port: 443
+  - type: 'vless'
+    name: '🇸🇬SG_29|211KB/s|A004-260618 [80c29d11c05e]'
+    server: '139.162.27.96'
+    port: 2096
     tls: true
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'resources.yourultimateprofessionalcareerhub.com'
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇳🇱 SkyBit-150_2026-11-21_19-05'
-    server: '194.87.233.93'
-    port: 46190
-    cipher: 'chacha20-ietf-poly1305'
-    password: '2Ef8X21WALqK7H6N8A78j5WYtzZ999PP8rF8DaLsb5LLyDLQpf5dGVAjdA3mj1wudigKXTt5heYU9jmaBbfxXBJJAqhPHkxe'
-    _poolOnly: true
-  - name: '🇳🇱 荷兰 | VLESS | 004'
-    type: 'vless'
-    server: '48.102.173.24'
-    port: 444
-    uuid: 'ef5a57c7-84d5-4f86-b99c-875a16da485f'
-    udp: true
-    tls: true
-    servername: 'neplay603.gangtype.com'
-    client-fingerprint: 'firefox'
+    uuid: '6e59d5c5-7aa3-4c36-a4c4-e3b899525ed2'
     network: 'ws'
+    sni: 'free-server.techsonic.dev'
     ws-opts:
-      path: '/stream/updates/a66d7902'
+      path: '/free-server.techsonic.dev'
       headers:
-        Host: 'neplay603.gangtype.com'
+        Host: 'free-server.techsonic.dev'
     _poolOnly: true
-  - type: 'ss'
-    name: '🇩🇪 SkyBit-0_2026-11-21_19-05'
-    server: '136.176.66.193'
-    port: 443
-    cipher: 'chacha20-ietf-poly1305'
-    password: 'SWBJ2eOCrLJk'
-    _poolOnly: true
-  - name: '🇵🇱 波兰 | VLESS | 003'
-    server: 'pl.galacticworld.online'
-    port: 443
-    type: 'vless'
-    uuid: 'ecc0e60a-f2cc-4266-8353-b228df89730a'
-    tls: true
-    flow: 'xtls-rprx-vision'
-    reality-opts:
-      public-key: 'GBO_paFyK9FihgPMH8r_vHa4IKMkSGfvAQ2fhPK_1H4'
-    servername: 'pl.galacticworld.online'
-    client-fingerprint: 'qq'
-    network: 'tcp'
-    udp: true
-    _poolOnly: true
-  - name: '🇳🇱 荷兰 | VLESS | 002'
-    type: 'vless'
-    server: '196.196.148.63'
-    port: 443
-    uuid: 'cda0862a-0f87-4be9-8ed8-1d0c9e382839'
-    udp: true
-    tls: true
-    servername: '717252g.nl8.h1clayd.click'
-    client-fingerprint: 'firefox'
-    reality-opts:
-      public-key: 'PD8Jdlg3xB9QY--jwQjp8PFPzCS8-Oryw6-HWBcHMFU'
-      short-id: 'd3bd772514c87d28'
-    network: 'grpc'
-    grpc-opts:
-      grpc-service-name: '204adda7e3da'
-    _poolOnly: true
-  - name: '[0.07MB/s][554ms] [freeSub#172] D🔴🇯🇵[🎬🤖📺🎭]_dokng.com_4920b'
-    port: 443
-    server: 'fan.571589.xyz'
-    sni: 'fan.571589.xyz'
-    tls: true
-    type: 'http'
-    _poolOnly: true
-  - type: 'vless'
-    name: '🇳🇱 荷兰 | VLESS | 001'
-    server: '196.196.148.63'
-    port: 443
-    uuid: 'cda0862a-0f87-4be9-8ed8-1d0c9e382839'
-    tls: true
-    servername: '717252g.nl8.h1clayd.click'
-    sni: '717252g.nl8.h1clayd.click'
-    skip-cert-verify: false
-    client-fingerprint: 'firefox'
-    reality-opts:
-      public-key: 'PD8Jdlg3xB9QY--jwQjp8PFPzCS8-Oryw6-HWBcHMFU'
-      short-id: 'd3bd772514c87d28'
-    network: 'grpc'
-    grpc-opts:
-      grpc-service-name: '204adda7e3da'
-    _poolOnly: true
-  - name: '🇳🇱 荷兰 | VLESS | 003'
-    type: 'vless'
-    server: '196.196.148.63'
-    port: 443
-    uuid: 'cda0862a-0f87-4be9-8ed8-1d0c9e382839'
-    udp: true
-    tls: true
-    servername: 'fc82dfx.nl8.h1clayd.click'
-    client-fingerprint: 'chrome'
-    reality-opts:
-      public-key: 'dtO7khFLUkpFDQOtNzo4Th4hJKLoPSY2VtD_9k4Hgiw'
-      short-id: '7b2b1a14a6e0630d'
-    network: 'xhttp'
-    xhttp-opts:
-      path: '/0616f2d729aa'
-      mode: 'auto'
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇩🇪 SkyBit-3_2026-11-21_19-05'
-    server: '8.209.106.54'
-    port: 443
-    cipher: '2022-blake3-chacha20-poly1305'
-    password: '8yO3ANWefuuGs1lRKXECQA1FEhxlWFV2ppQMcBaZo5Y='
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇩🇪 SkyBit-132_2026-11-21_19-05'
-    server: '8.209.73.203'
-    port: 443
-    cipher: '2022-blake3-chacha20-poly1305'
-    password: '8yO3ANWefuuGs1lRKXECQA1FEhxlWFV2ppQMcBaZo5Y='
-    _poolOnly: true
-  - type: 'vless'
-    name: '🇰🇿 SkyBit-7_2026-11-21_19-05'
-    server: '3h-kazakhstan1.09vpn.com'
+  - type: 'vmess'
+    name: '🇺🇸US_372|164KB/s|M003-260806 [b7ca55dc1a7c]'
+    server: '172.67.167.78'
     port: 8443
-    tls: true
-    uuid: '2424febb-43cb-488d-bdd1-401e923c8e48'
-    network: 'ws'
-    ws-opts:
-      path: '/vless/'
-    _poolOnly: true
-  - name: '🇪🇸 西班牙 | VLESS | 001'
-    type: 'vless'
-    server: '196.196.149.81'
-    port: 443
-    uuid: '4201786b-d99b-4147-a5f0-20d47acddb81'
-    udp: true
-    flow: 'xtls-rprx-vision'
-    tls: true
-    servername: '7aa271t.es1.h1clayd.click'
-    client-fingerprint: 'firefox'
-    reality-opts:
-      public-key: 'ZSmetD4e9QG5CiXhniHg5HJB68L4kwbgAkJmMHtVwEE'
-      short-id: '42426c882c5fcd41'
-    _poolOnly: true
-  - name: '🇪🇸 西班牙 | VLESS | 005'
-    type: 'vless'
-    server: '196.196.149.80'
-    port: 443
-    uuid: '4201786b-d99b-4147-a5f0-20d47acddb81'
-    udp: true
-    flow: 'xtls-rprx-vision'
-    tls: true
-    servername: '7aa271t.es1.h1clayd.click'
-    client-fingerprint: 'chrome'
-    reality-opts:
-      public-key: 'ZSmetD4e9QG5CiXhniHg5HJB68L4kwbgAkJmMHtVwEE'
-      short-id: '42426c882c5fcd41'
-    _poolOnly: true
-  - name: '🇪🇸 西班牙 | VLESS | 003'
-    type: 'vless'
-    server: '196.199.122.2'
-    port: 443
-    uuid: '4201786b-d99b-4147-a5f0-20d47acddb81'
-    udp: true
-    flow: 'xtls-rprx-vision'
-    tls: true
-    servername: '7aa271t.es1.h1clayd.click'
-    client-fingerprint: 'chrome'
-    reality-opts:
-      public-key: 'ZSmetD4e9QG5CiXhniHg5HJB68L4kwbgAkJmMHtVwEE'
-      short-id: '42426c882c5fcd41'
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇩🇪 SkyBit-19_2026-11-21_19-05'
-    server: '47.254.169.3'
-    port: 443
-    cipher: '2022-blake3-chacha20-poly1305'
-    password: '8yO3ANWefuuGs1lRKXECQA1FEhxlWFV2ppQMcBaZo5Y='
-    _poolOnly: true
-  - name: '🇳🇱 荷兰 | VLESS | 006'
-    type: 'vless'
-    server: '196.245.52.183'
-    port: 443
-    uuid: 'cda0862a-0f87-4be9-8ed8-1d0c9e382839'
-    udp: true
-    tls: true
-    servername: 'e60833x.nl7.h1clayd.click'
-    client-fingerprint: 'firefox'
-    reality-opts:
-      public-key: 'jIRVNEf9SpuWP2nJrAbHGGIUnfzOmwZZlrNGw-Y-O2Q'
-      short-id: '2d2598d60447a967'
-    network: 'xhttp'
-    xhttp-opts:
-      path: '/d20896a4ce30'
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇩🇪 SkyBit-16_2026-11-21_19-05'
-    server: '47.245.170.82'
-    port: 443
-    cipher: '2022-blake3-chacha20-poly1305'
-    password: '8yO3ANWefuuGs1lRKXECQA1FEhxlWFV2ppQMcBaZo5Y='
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇩🇪 SkyBit-26_2026-11-21_19-05'
-    server: '8.211.38.49'
-    port: 443
-    cipher: '2022-blake3-chacha20-poly1305'
-    password: '8yO3ANWefuuGs1lRKXECQA1FEhxlWFV2ppQMcBaZo5Y='
-    _poolOnly: true
-  - name: '🇺🇳 未知地区 | VMESS | 001'
-    type: 'vmess'
-    server: '168.110.63.247'
-    port: 8081
-    uuid: 'c3bde296-8e44-4b8c-a325-577d5b3cc7c8'
+    uuid: '60441548-b68e-43b2-8191-e3b884be4b3c'
     alterId: 0
     cipher: 'auto'
-    udp: true
+    tls: true
+    sni: 'v2ray1.dozapp.xyz'
     network: 'ws'
     ws-opts:
-      path: '/vless'
+      path: '/lMnsZUN4/'
+      headers:
+        Host: 'v2ray1.dozapp.xyz'
     _poolOnly: true
-  - name: '🇩🇪 德国 | SS | 001'
-    type: 'ss'
-    server: '47.254.128.109'
+  - type: 'vmess'
+    name: '🇯🇵JP_36|254KB/s|M003-260806 [d514df0968c0]'
+    server: 'or3.sfacg.uk'
+    port: 2083
+    uuid: 'ac251237-576f-40c8-a543-554960c958b1'
+    alterId: 0
+    cipher: 'auto'
+    tls: true
+    sni: 'or3.sfacg.uk'
+    network: 'ws'
+    ws-opts:
+      path: '/or3'
+      headers:
+        Host: 'or3.sfacg.uk'
+    _poolOnly: true
+  - name: 'hysteria2-145039'
+    password: 'qQe1z5kU8kN6SlKnDt9Ru3Qp'
     port: 443
-    cipher: '2022-blake3-chacha20-poly1305'
-    password: '8yO3ANWefuuGs1lRKXECQA1FEhxlWFV2ppQMcBaZo5Y='
+    server: 'vpn-sg-001.fastervpn.world'
+    skip-cert-verify: true
+    sni: 'vpn-sg-001.fastervpn.world'
+    type: 'hysteria2'
+    _poolOnly: true
+  - name: '011 | 144ms | 个人 🏳[www.v2nodes.com] trojan-'
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    port: 443
+    server: '216.152.147.79'
+    skip-cert-verify: false
+    sni: 'blog.connectingpeoplewithgreatjobs.com'
+    type: 'trojan'
     udp: true
     _poolOnly: true
   - type: 'vmess'
-    name: '🇺🇸US_348|560KB/s|M003-260806 [9e0f36454b0a]'
-    server: '104.17.136.198'
-    port: 443
+    name: '🇰🇿KZ_5|957KB/s|M002-260618 [91eb6d889a29]'
+    server: '38.107.234.57'
+    port: 80
+    uuid: '567f4be5-12ab-42e1-b8d9-db6fd1fdd31c'
+    alterId: 0
+    cipher: 'auto'
+    tls: false
+    network: 'ws'
+    ws-opts:
+      path: '/vmess/'
+    _poolOnly: true
+  - type: 'vless'
+    name: '🇫🇷FR_499|696KB/s|M002-260618 [95f54bbdb169]'
+    server: 'OV-France1.09vpn.com'
+    port: 80
+    tls: false
+    uuid: 'f5c47e9c-914a-4a91-a81e-a5a77bc10fc1'
+    network: 'ws'
+    sni: 'OV-France1.09vpn.com'
+    ws-opts:
+      path: '/vless/'
+      headers:
+        Host: 'OV-France1.09vpn.com'
+    _poolOnly: true
+  - type: 'vmess'
+    name: '🇺🇸US_340|568KB/s|A004-260618 [94742dfc6783]'
+    server: 'cf.0sm.com'
+    port: 80
     uuid: '0cf6d970-3f1d-4aae-a989-92a8f76ae3db'
     alterId: 0
     cipher: 'auto'
-    tls: true
-    sni: 'vmess.lbw666.dpdns.org'
+    tls: false
     network: 'ws'
     ws-opts:
-      path: '/ws?ed=2048'
+      path: '/ws'
       headers:
         Host: 'vmess.lbw666.dpdns.org'
     _poolOnly: true
-  - name: '🇺🇳 未知地区 | VLESS | 001'
-    type: 'vless'
-    server: '5.34.178.120'
+  - name: '010 | 140ms | 个人 🇨🇦[www.v2nodes.com] trojan-CA-... #5'
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
     port: 443
-    uuid: '23b848b7-93e5-4d96-b36d-ed704912e5b7'
-    udp: true
-    flow: 'xtls-rprx-vision'
-    tls: true
-    servername: 'www.cloudflare.com'
-    client-fingerprint: 'chrome'
-    reality-opts:
-      public-key: '4RaNuv9yehmcfpdzvRxCWWzEWERWzZSIHqcgg3l35Cw'
-      short-id: 'e16bbf1a5bee2321'
-    _poolOnly: true
-  - name: '🇳🇬 尼日利亚 | TROJAN | 001'
+    server: '216.152.147.93'
+    sni: 'connectingpeoplewithgreatjobs.com'
     type: 'trojan'
-    server: 'sclass-c2.catcat321.com'
-    port: 20051
-    password: 'd9064589-74af-432a-9390-5d8a9da281bf'
     udp: true
-    sni: 'hk.catxstar.com'
+    _poolOnly: true
+  - type: 'vmess'
+    name: '🇮🇳IN_1|360KB/s|A004-260618 [b3f3a42347ba]'
+    server: '152.67.8.205'
+    port: 80
+    uuid: '9db4c708-aef8-4359-821b-38e47990be0d'
+    alterId: 0
+    cipher: 'auto'
+    tls: false
+    network: 'ws'
+    ws-opts:
+      path: '/'
+    _poolOnly: true
+  - type: 'vless'
+    name: '🇩🇪DE_116|1.2MB/s|A004-260618 [31c87c8824f0]'
+    server: '172.64.229.129'
+    port: 2052
+    tls: false
+    uuid: '5744e593-1cc8-48fa-b8ca-57cd494fe35b'
+    network: 'ws'
+    sni: 'eu02.123450908.xyz'
+    ws-opts:
+      path: '/rain1226'
+      headers:
+        Host: 'eu02.123450908.xyz'
+    _poolOnly: true
+  - type: 'vmess'
+    name: '🇮🇳IN_25|181KB/s|A004-260618 [c3a9fd8fb3cf]'
+    server: '152.67.8.205'
+    port: 80
+    uuid: '9db4c708-aef8-4359-821b-38e47990be0d'
+    alterId: 0
+    cipher: 'auto'
+    tls: false
+    network: 'ws'
+    ws-opts:
+      path: '/'
+      headers:
+        Host: 'in-152.67.8.205-0250'
+    _poolOnly: true
+  - type: 'vless'
+    name: '🇯🇵JP_38|150KB/s|M002-260618 [9ec696201416]'
+    server: '104.16.10.185'
+    port: 443
+    tls: true
+    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
+    network: 'ws'
+    sni: 'jp3.yohototo.top'
+    ws-opts:
+      path: '/tyxyws'
+      headers:
+        Host: 'jp3.yohototo.top'
+    _poolOnly: true
+  - type: 'vless'
+    name: '🇩🇪DE_83|1.0MB/s|A004-260618 [6c16d1f416bd]'
+    server: '172.64.150.43'
+    port: 2052
+    tls: false
+    uuid: '5744e593-1cc8-48fa-b8ca-57cd494fe35b'
+    network: 'ws'
+    sni: 'eu02.123450908.xyz'
+    ws-opts:
+      path: '/rain1226'
+      headers:
+        Host: 'eu02.123450908.xyz'
+    _poolOnly: true
+  - name: '013 | 219ms | 个人 seed32'
+    port: 443
+    server: '207.5.30.9'
     skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - type: 'vless'
+    name: '🇯🇵JP_47|93KB/s|M002-260618 [d0c8d4a391d8]'
+    server: '154.31.114.162'
+    port: 8443
+    tls: true
+    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
+    network: 'ws'
+    sni: 'jp3.yohototo.top'
+    ws-opts:
+      path: '/tyxyws'
+      headers:
+        Host: 'jp3.yohototo.top'
     _poolOnly: true
 proxy-groups:
   - name: 'PROXY'
     type: 'select'
     proxies:
       - 'DIRECT'
-      - '🇺🇸 SkyBit-112_2026-11-21_19-05'
-      - '🇺🇸 SkyBit-98_2026-11-21_19-05'
-      - '🇺🇸 SkyBit-103_2026-11-21_19-05'
-      - '🇺🇸 SkyBit-99_2026-11-21_19-05'
-      - '🇺🇸 SkyBit-67_2026-11-21_19-05'
-      - '🇫🇷FR_144|436KB/s|M003-260806 [7f126e87b58b]'
-      - '🇫🇷FR_139|542KB/s|M003-260806 [697644dc5d62]'
-      - '🇺🇸 SkyBit-36_2026-11-21_19-05'
-      - '🇺🇸 SkyBit-4_2026-11-21_19-05'
-      - '[0.02MB/s][826ms] [freeSub#097] D🔴🇺🇸[🎬🤖📺🎭]_dokng.com_0f8d1'
-      - '[0.12MB/s][808ms] [freeSub#132] D🔴🇺🇸[🎬🤖📺🎭]_dokng.com_6e941'
-      - '[0.02MB/s][819ms] [freeSub#148] D🔴🇺🇸[🎬🤖📺🎭]_dokng.com_c4137'
-      - '[0.01MB/s][790ms] [freeSub#114] D🔴🇺🇸[🎬🤖📺🎭]_dokng.com_0cd2d'
-      - '[0.01MB/s][814ms] [freeSub#173] D🔴🇺🇸[🎬📺🎭🎪]_dokng.com_bf297'
-      - '[0.02MB/s][799ms] [freeSub#137] D🔴🇺🇸[🎬🤖📺🎭]_dokng.com_ab091'
-      - '[0.01MB/s][782ms] [freeSub#163] D🔴🇺🇸[🎬🤖📺🎭]_dokng.com_3a778'
-      - '[0.01MB/s][803ms] [freeSub#191] D🔴🇺🇸[🎬🤖📺🎭]_dokng.com_bea28'
-      - '🇺🇸 SkyBit-108_2026-11-21_19-05'
-      - '🇺🇸 SkyBit-79_2026-11-21_19-05'
-      - '🇺🇸 SkyBit-114_2026-11-21_19-05'
-      - '🇺🇸 SkyBit-163_2026-11-21_19-05'
-      - '🇺🇸 SkyBit-162_2026-11-21_19-05'
-      - '🇺🇸 SkyBit-78_2026-11-21_19-05'
-      - '🇺🇸 SkyBit-10_2026-11-21_19-05'
-      - '[0.03MB/s][606ms] [freeSub#047] D🔴🇺🇸[🎬🤖📺🎪]_dokng.com_a88e9'
-      - '🇺🇸 SkyBit-95_2026-11-21_19-05'
-      - '🇺🇸 SkyBit-74_2026-11-21_19-05'
-      - '🇺🇸 SkyBit-94_2026-11-21_19-05'
-      - '🇺🇸 SkyBit-57_2026-11-21_19-05'
-      - '🇺🇸 SkyBit-9_2026-11-21_19-05'
-      - '🇺🇸 SkyBit-30_2026-11-21_19-05'
-      - '🇺🇸 SkyBit-102_2026-11-21_19-05'
-      - '🇺🇸 SkyBit-35_2026-11-21_19-05'
-      - '🇺🇸 SkyBit-81_2026-11-21_19-05'
-      - '🇨🇦 SkyBit-148_2026-11-21_19-05'
-      - '🇺🇸 SkyBit-137_2026-11-21_19-05'
-      - '🇺🇸 SkyBit-165_2026-11-21_19-05'
-      - '🇺🇸 SkyBit-126_2026-11-21_19-05'
-      - '🇺🇸 SkyBit-164_2026-11-21_19-05'
-      - '🇺🇸 SkyBit-42_2026-11-21_19-05'
-      - '🇺🇸 SkyBit-96_2026-11-21_19-05'
-      - '🇺🇸 SkyBit-66_2026-11-21_19-05'
-      - 'vless-1827152587'
-      - '🇩🇪 SkyBit-154_2026-11-21_19-05'
-      - '🇩🇪 SkyBit-153_2026-11-21_19-05'
-      - '🇫🇷 SkyBit-31_2026-11-21_19-05'
-      - '🇩🇪 SkyBit-151_2026-11-21_19-05'
-      - 'shadowsocks-1827146829'
-      - 'vless-1827153006'
-      - '🇯🇵 SkyBit-156_2026-11-21_19-05'
-      - '🇺🇸 SkyBit-17_2026-11-21_19-05'
-      - '🇳🇱 荷兰 | SS | 001'
-      - '🇨🇭 SkyBit-60_2026-11-21_19-05'
-      - '🇨🇭 SkyBit-149_2026-11-21_19-05'
-      - '🇨🇭 SkyBit-59_2026-11-21_19-05'
-      - '🇺🇸US_419|471KB/s|B007-260618 [5fba9afc2dd9]'
-      - '🇮🇹 SkyBit-76_2026-11-21_19-05'
-      - '🇸🇬 SkyBit-13_2026-11-21_19-05'
-      - '🇸🇬 SkyBit-45_2026-11-21_19-05'
-      - '🇫🇮 SkyBit-155_2026-11-21_19-05'
-      - '🇸🇬 SkyBit-142_2026-11-21_19-05'
-      - '🇸🇬 SkyBit-129_2026-11-21_19-05'
-      - '🇺🇸 美国 | SS | 001'
-      - '🇪🇸 SkyBit-124_2026-11-21_19-05'
-      - '🏴‍☠️ SkyBit-106_2026-11-21_19-05'
-      - '🏴‍☠️ SkyBit-143_2026-11-21_19-05'
-      - '🇳🇱 SkyBit-147_2026-11-21_19-05'
-      - '🇨🇱 SkyBit-109_2026-11-21_19-05'
-      - 'vless-1827153793'
-      - 'vless-1827153416'
-      - '🇩🇪 德国 | VLESS | 001'
-      - '🇳🇱 SkyBit-43_2026-11-21_19-05'
-      - '🇪🇸 西班牙 | VLESS | 002'
-      - '🇨🇭 SkyBit-24_2026-11-21_19-05'
-      - '[0.01MB/s][726ms] [freeSub#393] D🔴🇭🇰[🎬📺🎭🎪]_dokng.com_d85a9'
-      - '🇳🇱 SkyBit-169_2026-11-21_19-05'
-      - '🇺🇳 未知地区 | VLESS | 002'
-      - '🇳🇱 SkyBit-152_2026-11-21_19-05'
-      - '🇨🇭 SkyBit-123_2026-11-21_19-05'
-      - '🇨🇭 SkyBit-69_2026-11-21_19-05'
-      - '🇳🇱 SkyBit-150_2026-11-21_19-05'
-      - '🇳🇱 荷兰 | VLESS | 004'
-      - '🇩🇪 SkyBit-0_2026-11-21_19-05'
-      - '🇵🇱 波兰 | VLESS | 003'
-      - '🇳🇱 荷兰 | VLESS | 002'
-      - '[0.07MB/s][554ms] [freeSub#172] D🔴🇯🇵[🎬🤖📺🎭]_dokng.com_4920b'
-      - '🇳🇱 荷兰 | VLESS | 001'
-      - '🇳🇱 荷兰 | VLESS | 003'
-      - '🇩🇪 SkyBit-3_2026-11-21_19-05'
-      - '🇩🇪 SkyBit-132_2026-11-21_19-05'
-      - '🇰🇿 SkyBit-7_2026-11-21_19-05'
-      - '🇪🇸 西班牙 | VLESS | 001'
-      - '🇪🇸 西班牙 | VLESS | 005'
-      - '🇪🇸 西班牙 | VLESS | 003'
-      - '🇩🇪 SkyBit-19_2026-11-21_19-05'
-      - '🇳🇱 荷兰 | VLESS | 006'
-      - '🇩🇪 SkyBit-16_2026-11-21_19-05'
-      - '🇩🇪 SkyBit-26_2026-11-21_19-05'
-      - '🇺🇳 未知地区 | VMESS | 001'
-      - '🇩🇪 德国 | SS | 001'
-      - '🇺🇸US_348|560KB/s|M003-260806 [9e0f36454b0a]'
-      - '🇺🇳 未知地区 | VLESS | 001'
-      - '🇳🇬 尼日利亚 | TROJAN | 001'
+      - '008 | 100ms | 个人 seed2'
+      - '006 | 96ms | 个人 seed0'
+      - '009 | 104ms | 个人 seed1'
+      - '041 | 30ms | 机房 seed82'
+      - '012 | 194ms | 个人 seed12'
+      - '014 | 222ms | 个人 seed18'
+      - '042 | 33ms | 机房 seed92'
+      - '028 | 289ms | 个人 seed39'
+      - '🇺🇸US_414|918KB/s|A004-260618 [5f59ad15238f]'
+      - '002 | 84ms | 个人 seed5'
+      - '007 | 100ms | 个人 seed9'
+      - '🇺🇸US_398|984KB/s|C002-260622 [5378648dfebd]'
+      - '038 | 335ms | 个人 seed35'
+      - '001 | 84ms | 个人 seed3'
+      - '018 | 254ms | 个人 seed31'
+      - '016 | 248ms | 个人 seed38'
+      - '019 | 261ms | 个人 seed37'
+      - '021 | 271ms | 个人 🇳🇱[www.v2nodes.com] ss-NL-1614...'
+      - '025 | 282ms | 个人 🇳🇱[www.v2nodes.com] ss-NL-1614... #1'
+      - '020 | 269ms | 个人 🇬🇧[www.v2nodes.com] ss-GB-1615... #1'
+      - '🇩🇪 Germany 04'
+      - 'shadowsocks-225'
+      - '026 | 285ms | 个人 🇩🇪DE-193.108.119.3-0096 / 85.423MB'
+      - '032 | 309ms | 个人 🇫🇷[www.v2nodes.com] ss-FR-1615... #2'
+      - '036 | 319ms | 个人 🇫🇷[www.v2nodes.com] ss-FR-1616...'
+      - '015 | 246ms | 个人 🏳[www.v2nodes.com] vless- #13'
+      - '034 | 311ms | 个人 🇫🇷[www.v2nodes.com] ss-FR-1615...'
+      - '033 | 310ms | 个人 🇫🇷[www.v2nodes.com] ss-FR-1615... #3'
+      - '🇨🇭 Switzerland 01'
+      - '031 | 308ms | 个人 🇫🇷[www.v2nodes.com] ss-FR-1615... #1'
+      - '037 | 329ms | 个人 🏳[www.v2nodes.com] ss- #2'
+      - '017 | 249ms | 个人 seed34'
+      - '039 | 338ms | 个人 🇦🇹[www.v2nodes.com] ss-AT-1614...'
+      - '035 | 313ms | 个人 seed33'
+      - '🇨🇭 Switzerland 02'
+      - '🇬🇧GB_22|108KB/s|C002-260622 [caa4c0b4879f]'
+      - '🇳🇱NL_327|8.8MB/s|A004-260618 [fba1c64cad1b]'
+      - '🇨🇭 Switzerland 05'
+      - '🇸🇬SG_29|211KB/s|A004-260618 [80c29d11c05e]'
+      - '🇺🇸US_372|164KB/s|M003-260806 [b7ca55dc1a7c]'
+      - '🇯🇵JP_36|254KB/s|M003-260806 [d514df0968c0]'
+      - 'hysteria2-145039'
+      - '011 | 144ms | 个人 🏳[www.v2nodes.com] trojan-'
+      - '🇰🇿KZ_5|957KB/s|M002-260618 [91eb6d889a29]'
+      - '🇫🇷FR_499|696KB/s|M002-260618 [95f54bbdb169]'
+      - '🇺🇸US_340|568KB/s|A004-260618 [94742dfc6783]'
+      - '010 | 140ms | 个人 🇨🇦[www.v2nodes.com] trojan-CA-... #5'
+      - '🇮🇳IN_1|360KB/s|A004-260618 [b3f3a42347ba]'
+      - '🇩🇪DE_116|1.2MB/s|A004-260618 [31c87c8824f0]'
+      - '🇮🇳IN_25|181KB/s|A004-260618 [c3a9fd8fb3cf]'
+      - '🇯🇵JP_38|150KB/s|M002-260618 [9ec696201416]'
+      - '🇩🇪DE_83|1.0MB/s|A004-260618 [6c16d1f416bd]'
+      - '013 | 219ms | 个人 seed32'
+      - '🇯🇵JP_47|93KB/s|M002-260618 [d0c8d4a391d8]'
 rules:
   - 'MATCH,PROXY'
