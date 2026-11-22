@@ -6,6 +6,7 @@ function reportedProxyIndexToArrayIndex(reportedIndex, proxyCount) {
     throw new Error(`Mihomo reported proxy index out of range: ${reportedIndex} (proxy count: ${proxyCount})`);
   }
   // Mihomo's "proxy N" diagnostic uses a zero-based index.
+// Regression trigger marker: index 618 must resolve to array element 618.
   return index;
 }
 
