@@ -1,10 +1,6 @@
 name: Update free nodes
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/lib/mihomo-index.js'
   workflow_dispatch:
   schedule:
     - cron: '17 * * * *'
