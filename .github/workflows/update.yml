@@ -660,12 +660,13 @@ jobs:
           git diff --cached --quiet && exit 0
           git commit -m "chore: refresh node candidates"
 
-          # The workflow may run while main is being updated manually.
-          # Rebase the generated commit onto the latest main before pushing.
-          # This keeps unrelated manual commits and avoids a stale-checkout push race.
+          # Generated subscription files are the output of this run. If another
+          # workflow run has already refreshed the same generated files on main,
+          # prefer this run's versions while preserving unrelated main changes.
+          # During rebase, "theirs" is the commit being replayed (our generated output).
           for attempt in 1 2 3; do
             git fetch origin main
-            git rebase origin/main
+            git rebase -X theirs origin/main
 
             if git push origin HEAD:main; then
               exit 0
