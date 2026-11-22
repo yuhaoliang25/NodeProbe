@@ -1,6 +1,10 @@
 name: Update free nodes
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/lib/wireguard-key.js'
   workflow_dispatch:
   schedule:
     - cron: '17 * * * *'
