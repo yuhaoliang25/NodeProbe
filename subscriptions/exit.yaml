@@ -1,13 +1,11 @@
 proxies:
-  - name: '🇸🇬SG_38|247KB/s|R002-260618 01'
-    port: 443
-    server: '154.26.139.24'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
+  - name: '[zhuhaiuk-free-nodes] SG - zhuhai.uk 02'
     type: 'http'
-    udp: true
-    endpoint-id: 'd1f4a0d80288cf0b'
+    server: '154.26.139.24'
+    port: 443
+    tls: true
+    skip-cert-verify: true
+    _poolOnly: true
   - name: '🇭🇰 香港 04'
     port: 443
     server: 'fan.240104.xyz'
@@ -29,7 +27,7 @@ proxies:
     username: 'null'
     udp: true
     endpoint-id: 'a2852a26d8d9ed35'
-  - name: '🇳🇱NL_141|4.1MB/s 01'
+  - name: '[cbusifabcap-clashmeta] ❓Other_15|598KB/s'
     password: ''
     port: 9002
     server: '84.17.47.147'
@@ -38,8 +36,8 @@ proxies:
     type: 'http'
     username: ''
     udp: true
-    endpoint-id: 'ace9d51da61928fc'
-  - name: '🇳🇱NL_142|5.6MB/s|P002-260618 01'
+    _poolOnly: true
+  - name: '[cbusifabcap-clashmeta] ❓Other_17|327KB/s|P002-260618'
     password: ''
     port: 9002
     server: '84.17.47.146'
@@ -49,7 +47,7 @@ proxies:
     type: 'http'
     username: ''
     udp: true
-    endpoint-id: '709db4aba6d49da5'
+    _poolOnly: true
   - name: '🇳🇱NL_46|5.3MB/s|R002-260618 01'
     port: 9002
     server: '84.17.47.150'
@@ -88,15 +86,14 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '3ec59da15bdfe635'
-  - name: '🇳🇱NL_160|6.6MB/s|R002-260618 01'
+  - name: '[ermaozi-subscribe] FR_speednode_0011'
     port: 23856
     server: '51.159.225.196'
     skip-cert-verify: true
-    sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
-    endpoint-id: 'ef628958ee9b9c79'
+    _poolOnly: true
   - name: '🇳🇱NL_83|3.3MB/s|R002-260618 01'
     port: 9002
     server: '84.17.47.149'
@@ -106,16 +103,15 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '2d13b6ac85e0e476'
-  - name: '🇳🇱NL_51|4.4MB/s|P002-260618 01'
-    password: 'None'
-    port: 9002
-    server: '84.17.47.125'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
+  - name: '[share-daily-node] NL-HTTP-05'
     type: 'http'
+    server: '84.17.47.125'
+    port: 9002
     udp: true
-    endpoint-id: 'e718ded3ef659a90'
+    tls: true
+    skip-cert-verify: true
+    password: 'None'
+    _poolOnly: true
   - name: '🇫🇷FR_32|1.7MB/s|R002-260618 01'
     port: 443
     server: '103.82.101.44'
@@ -126,7 +122,7 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '76887085bc7044ab'
-  - name: '🇩🇪DE_7|551KB/s|R002-260618 01'
+  - name: '[cbusifabcap-clashmeta] 🇩🇪DE_2|581KB/s|R002-260618'
     password: 'e4b72b531a2d10900519'
     port: 443
     server: '167.172.172.190'
@@ -137,7 +133,7 @@ proxies:
     type: 'http'
     username: 'testuser1'
     udp: true
-    endpoint-id: 'd3594c2e62c0c2dd'
+    _poolOnly: true
   - name: '🇺🇸US_307|355KB/s|R002-260618 01'
     port: 443
     server: 'fan.596189.xyz'
@@ -159,7 +155,7 @@ proxies:
     username: 'testuser1'
     udp: true
     endpoint-id: '989e3a7d477a623c'
-  - name: '🇳🇱NL_169|2.8MB/s 01'
+  - name: '[cbusifabcap-clashmeta] ❓Other_11|430KB/s'
     password: 'null'
     port: 9002
     server: '84.17.47.148'
@@ -168,7 +164,7 @@ proxies:
     type: 'http'
     username: 'null'
     udp: true
-    endpoint-id: '58afc8e4fe5fd161'
+    _poolOnly: true
   - name: '🇳🇱NL_71|3.5MB/s|P002-260618 01'
     password: 'None'
     port: 9002
@@ -186,15 +182,14 @@ proxies:
     tls: true
     skip-cert-verify: true
     _poolOnly: true
-  - name: '🇵🇱PL_2|2.5MB/s|R002-260618 01'
-    port: 443
-    server: '151.115.54.133'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
+  - name: '[share-daily-node] PL-HTTP-01'
     type: 'http'
+    server: '151.115.54.133'
+    port: 443
     udp: true
-    endpoint-id: 'd7897a9c8dc46124'
+    tls: true
+    skip-cert-verify: true
+    _poolOnly: true
   - name: '🇨🇿CZ_3|2.0MB/s|R002-260618 01'
     port: 443
     server: '193.35.104.196'
@@ -224,7 +219,7 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '19f9563200872813'
-  - name: '🇩🇪DE_38|595KB/s|P002-260618 01'
+  - name: '[cbusifabcap-clashmeta] ❓Other_5|198KB/s|P002-260618'
     password: 'e4b72b531a2d10900519'
     port: 443
     server: '167.172.172.190'
@@ -234,7 +229,16 @@ proxies:
     type: 'http'
     udp: true
     username: 'testuser1'
-    endpoint-id: 'ca137e96d0035143'
+    _poolOnly: true
+  - name: '🇮🇹IT_1|625KB/s|R002-260618 01'
+    port: 443
+    server: '91.243.118.217'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'e019d09aa7573606'
   - name: '🇳🇱NL_200|4.6MB/s|R002-260618 01'
     password: 'null'
     port: 23856
@@ -257,7 +261,7 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: 'd92eead3a31122fd'
-  - name: '🇫🇷FR_31|1.3MB/s|R002-260618 01'
+  - name: '[cbusifabcap-clashmeta] ❓Other_15|316KB/s|R002-260618'
     port: 443
     server: '103.82.101.43'
     skip-cert-verify: true
@@ -266,8 +270,8 @@ proxies:
     tls: true
     type: 'http'
     udp: true
-    endpoint-id: '7dd00fd83ec1e995'
-  - name: '🇳🇱NL_84|1.2MB/s|R002-260618 01'
+    _poolOnly: true
+  - name: '[cbusifabcap-clashmeta] ❓Other_19|209KB/s|R002-260618'
     port: 443
     server: '185.140.209.235'
     skip-cert-verify: true
@@ -276,7 +280,7 @@ proxies:
     tls: true
     type: 'http'
     udp: true
-    endpoint-id: '95111393a7a7a22e'
+    _poolOnly: true
   - name: '🇳🇱NL_55|1.2MB/s|R002-260618 01'
     port: 443
     server: '185.246.153.28'
@@ -309,7 +313,7 @@ proxies:
     username: 'null'
     udp: true
     endpoint-id: 'b1b69e8bf091d5cf'
-  - name: '🇺🇸US_627|334KB/s|R002-260618 01'
+  - name: '[cbusifabcap-clashmeta] ❓Other_47|224KB/s|R002-260618'
     port: 443
     server: '38.28.193.1'
     skip-cert-verify: true
@@ -318,8 +322,8 @@ proxies:
     tls: true
     type: 'http'
     udp: true
-    endpoint-id: '91d3eb820cd59701'
-  - name: '🇳🇱NL_279|5.5MB/s|R002-260618 01'
+    _poolOnly: true
+  - name: '[cbusifabcap-clashmeta] ❓Other_39|227KB/s|R002-260618'
     password: 'null'
     port: 9002
     server: '84.17.47.146'
@@ -329,27 +333,26 @@ proxies:
     type: 'http'
     username: 'null'
     udp: true
-    endpoint-id: '2549bdd889c44f54'
-  - name: '🇳🇱NL_147|2.4MB/s|R002-260618 01'
+    _poolOnly: true
+  - name: '[ermaozi-subscribe] NL_speednode_0015'
     port: 9002
     server: '84.17.47.125'
     skip-cert-verify: true
-    sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
-    endpoint-id: '0ae09a41f776c539'
-  - name: '🇳🇱NL_166|5.5MB/s|R002-260618 01'
-    password: 'e4b72b531a2d10900519'
-    port: 443
+    _poolOnly: true
+  - name: '[share-daily-node] NL-HTTP-78'
+    type: 'http'
     server: '82.196.9.7'
-    sni: '52c40907.acsnet.co'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'testuser1'
+    port: 443
     udp: true
-    endpoint-id: '1b365f8090e75c3c'
+    tls: true
+    sni: '52c40907.acsnet.co'
+    skip-cert-verify: false
+    username: 'testuser1'
+    password: 'e4b72b531a2d10900519'
+    _poolOnly: true
   - name: '🇺🇸US_691|124KB/s|R002-260618 01'
     port: 7615
     server: '47.90.206.169'
@@ -359,33 +362,49 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: 'd3d97e8a4f270f45'
-  - name: '🇺🇸US_61|332KB/s|R002-260618 01'
-    port: 443
+  - name: '[share-daily-node] US-HTTP-13'
+    type: 'http'
     server: '38.28.193.188'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '5b107f4a88d7b51f'
-  - name: '🇫🇷FR_66|3.0MB/s|R002-260618 01'
     port: 443
+    udp: true
+    tls: true
+    skip-cert-verify: true
+    _poolOnly: true
+  - name: '[share-daily-node] FR-HTTP-01'
+    type: 'http'
     server: '141.94.16.4'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: 'baa006648c5cceb5'
-  - name: '🇯🇵JP_41|290KB/s|R002-260618 01'
     port: 443
-    server: 'fan.587475.xyz'
+    udp: true
+    tls: true
+    skip-cert-verify: true
+    _poolOnly: true
+  - name: '🇯🇵JP_17|159KB/s|R002-260618 01'
+    password: 'null'
+    port: 443
+    server: 'fan.571589.xyz'
+    sni: 'fan.571589.xyz'
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
+    username: 'null'
     udp: true
+    endpoint-id: '9afbef29e30f3386'
+  - name: '[0.07MB/s][554ms] [freeSub#172] D🔴🇯🇵[🎬🤖📺🎭]_dokng.com_4920b'
+    port: 443
+    server: 'fan.571589.xyz'
+    sni: 'fan.571589.xyz'
+    tls: true
+    type: 'http'
+    _poolOnly: true
+  - name: '[share-daily-node] JP-HTTP-03'
+    type: 'http'
+    server: 'fan.587475.xyz'
+    port: 443
+    udp: true
+    tls: true
     sni: 'fan.587475.xyz'
-    endpoint-id: 'ac5a189a995d7c1d'
+    skip-cert-verify: false
+    _poolOnly: true
   - name: '🇳🇱NL_58|1.6MB/s|R002-260618 01'
     port: 443
     server: '103.97.88.154'
@@ -396,7 +415,7 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: '9c35e4b4a187e58c'
-  - name: '🇲🇽MX_1|483KB/s|R002-260618 01'
+  - name: '038 | 335ms | 个人 seed35'
     port: 443
     server: '45.134.9.41'
     skip-cert-verify: true
@@ -405,7 +424,7 @@ proxies:
     tls: true
     type: 'http'
     udp: true
-    endpoint-id: 'a7050f9b8d257d48'
+    _poolOnly: true
   - name: '🇳🇱NL_271|1.0MB/s|R002-260618 01'
     password: 'null'
     port: 443
@@ -425,7 +444,7 @@ proxies:
     sni: 'fan.226278.xyz'
     skip-cert-verify: true
     _poolOnly: true
-  - name: '🇺🇸US_547|586KB/s|R002-260618 01'
+  - name: '002 | 84ms | 个人 seed5'
     port: 443
     server: '216.107.139.82'
     skip-cert-verify: true
@@ -434,8 +453,8 @@ proxies:
     tls: true
     type: 'http'
     udp: true
-    endpoint-id: '9c6a642e0d7c18d4'
-  - name: '🇫🇷FR_298|3.6MB/s|R002-260618 01'
+    _poolOnly: true
+  - name: '[cbusifabcap-clashmeta] ❓Other_11|243KB/s|R002-260618'
     port: 6103
     server: '87.98.174.157'
     skip-cert-verify: true
@@ -443,7 +462,7 @@ proxies:
     tls: true
     type: 'http'
     udp: true
-    endpoint-id: 'c0870835e6ab426a'
+    _poolOnly: true
   - name: '🇳🇱NL_226|3.3MB/s|R002-260618 01'
     password: 'null'
     port: 9002
@@ -520,13 +539,6 @@ proxies:
     username: 'null'
     udp: true
     _poolOnly: true
-  - type: 'ss'
-    name: '🇳🇿 新西兰 V2CROSS.COM-ceabb7d7f9a91666'
-    server: '202.50.253.72'
-    port: 19999
-    cipher: 'aes-256-gcm'
-    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
-    _poolOnly: true
   - name: '🇮🇹 意大利_4P2WCP'
     server: '202.50.253.27'
     port: 19999
@@ -581,16 +593,14 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇫🇷FR_2083|1.8MB/s|R002-260618 01'
+  - name: '[ermaozi-subscribe] 🇩🇪DE_2|1017KB/s'
     port: 443
     server: '172.64.69.89'
     skip-cert-verify: true
-    sub_tag: 'R002-260618'
     tls: true
     type: 'http'
-    udp: true
     _poolOnly: true
-  - name: '🇫🇷FR_2058|2.0MB/s|R002-260618 01'
+  - name: '[cbusifabcap-clashmeta] ❓Other_23|318KB/s|R002-260618'
     port: 443
     server: '172.64.68.89'
     skip-cert-verify: true
@@ -608,16 +618,15 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇺🇸US_534|894KB/s|R002-260618 01'
+  - name: '[ermaozi-subscribe] US_speednode_0040'
     port: 443
     server: '38.247.141.135'
     skip-cert-verify: true
-    sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇺🇸US_517|646KB/s|R002-260618 01'
+  - name: '001 | 84ms | 个人 seed3'
     port: 443
     server: '162.217.114.50'
     skip-cert-verify: true
@@ -651,7 +660,7 @@ proxies:
     tls: true
     skip-cert-verify: true
     _poolOnly: true
-  - name: '🇩🇪DE_204|2.4MB/s|R002-260618 01'
+  - name: '[cbusifabcap-clashmeta] 🇩🇪DE_19|4.6MB/s|R002-260618'
     port: 9002
     server: '158.173.154.4'
     skip-cert-verify: true
@@ -660,16 +669,14 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇩🇪DE_206|2.8MB/s|R002-260618 01'
+  - name: '[ermaozi-subscribe] 🇩🇪DE_11|2.5MB/s'
     port: 9002
     server: '158.173.154.3'
     skip-cert-verify: true
-    sub_tag: 'R002-260618'
     tls: true
     type: 'http'
-    udp: true
     _poolOnly: true
-  - name: '🇩🇪DE_162|1.1MB/s|R002-260618 01'
+  - name: '[cbusifabcap-clashmeta] 🇩🇪DE_43|5.8MB/s|R002-260618'
     port: 9002
     server: '158.173.154.2'
     skip-cert-verify: true
@@ -687,7 +694,7 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇫🇷FR_2169|1.5MB/s|R002-260618 01'
+  - name: '[ermaozi-subscribe] 🇫🇷FR_2|1.6MB/s|R002-260618'
     port: 443
     server: '82.66.235.221'
     skip-cert-verify: true
@@ -695,6 +702,7 @@ proxies:
     tls: true
     type: 'http'
     udp: true
+    x-toolall-mihomo: true
     _poolOnly: true
   - name: '🇫🇷FR_2172|1.1MB/s|R002-260618 01'
     port: 8090
@@ -723,7 +731,7 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇩🇪DE_160|4.2MB/s|R002-260618 01'
+  - name: '[ermaozi-subscribe] 🇩🇪DE_8|2.6MB/s|R002-260618'
     port: 443
     server: '87.106.223.158'
     skip-cert-verify: true
@@ -731,8 +739,9 @@ proxies:
     tls: true
     type: 'http'
     udp: true
+    x-toolall-mihomo: true
     _poolOnly: true
-  - name: '🇩🇪DE_201|688KB/s|R002-260618 01'
+  - name: '[cbusifabcap-clashmeta] 🇩🇪DE_17|968KB/s|R002-260618'
     port: 443
     server: '176.94.74.21'
     skip-cert-verify: true
@@ -741,7 +750,7 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇺🇸US_508|588KB/s|R002-260618 01'
+  - name: '035 | 313ms | 个人 seed33'
     port: 443
     server: '71.43.26.234'
     skip-cert-verify: true
@@ -768,29 +777,26 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇺🇸US_495|518KB/s|R002-260618 01'
-    port: 443
-    server: '162.244.227.36'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
+  - name: '[share-daily-node] US-HTTP-10'
     type: 'http'
+    server: '162.244.227.36'
+    port: 443
     udp: true
+    tls: true
+    skip-cert-verify: true
     _poolOnly: true
-  - name: '🇮🇪IE_5|1.2MB/s|R002-260618 01'
+  - name: '[ermaozi-subscribe] IE_speednode_0010'
     port: 443
     server: '18.200.158.139'
     skip-cert-verify: true
-    sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇮🇪IE_3|3.0MB/s|R002-260618 01'
+  - name: '[ermaozi-subscribe] IE_speednode_0013'
     port: 443
     server: '34.249.214.108'
     skip-cert-verify: true
-    sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
@@ -833,16 +839,14 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇳🇱NL_276|2.1MB/s|R002-260618 01'
-    port: 9002
-    server: '84.17.47.126'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
+  - name: '[zhuhaiuk-free-nodes] NL - zhuhai.uk'
     type: 'http'
-    udp: true
+    server: '84.17.47.126'
+    port: 9002
+    tls: true
+    skip-cert-verify: true
     _poolOnly: true
-  - name: '🇧🇷BR_24|553KB/s|R002-260618 01'
+  - name: '[cbusifabcap-clashmeta] 🇧🇷BR_1|567KB/s|R002-260618'
     port: 443
     server: '134.65.17.77'
     skip-cert-verify: true
@@ -851,7 +855,7 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇷🇴RO_110|1.0MB/s|R002-260618 01'
+  - name: '[cbusifabcap-clashmeta] ❓Other_45|840KB/s|R002-260618'
     port: 9002
     server: '193.176.84.18'
     skip-cert-verify: true
@@ -860,7 +864,7 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇱🇻LV_15|1.3MB/s|R002-260618 01'
+  - name: '[cbusifabcap-clashmeta] ❓Other_22|407KB/s|R002-260618'
     port: 443
     server: '185.219.159.16'
     skip-cert-verify: true
@@ -869,11 +873,10 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇮🇱IL_2|1.0MB/s|R002-260618 01'
+  - name: '[ermaozi-subscribe] IL_speednode_0011'
     port: 443
     server: '62.90.77.30'
     skip-cert-verify: true
-    sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
@@ -905,16 +908,15 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇳🇱NL_229|806KB/s|R002-260618 01'
-    port: 443
-    server: '5.2.73.112'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
+  - name: '[share-daily-node] NL-HTTP-80'
     type: 'http'
+    server: '5.2.73.112'
+    port: 443
     udp: true
+    tls: true
+    skip-cert-verify: true
     _poolOnly: true
-  - name: '❓OtherT1_1|467KB/s|R002-260618 01'
+  - name: '[cbusifabcap-clashmeta] ❓OtherT1_1|342KB/s|R002-260618'
     port: 8443
     server: '45.142.141.5'
     skip-cert-verify: true
@@ -932,14 +934,12 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇺🇸US_443|68KB/s|R002-260618 01'
-    port: 443
-    server: '137.175.22.85'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
+  - name: '[zhuhaiuk-free-nodes] US - zhuhai.uk'
     type: 'http'
-    udp: true
+    server: '137.175.22.85'
+    port: 443
+    tls: true
+    skip-cert-verify: true
     _poolOnly: true
   - name: '🇺🇸US_529|354KB/s|R002-260618 01'
     port: 443
@@ -968,23 +968,20 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇺🇸US_476|518KB/s|R002-260618 01'
-    port: 443
+  - name: '[share-daily-node] US-HTTP-19'
+    type: 'http'
     server: '24.225.10.211'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
+    port: 443
     udp: true
+    tls: true
+    skip-cert-verify: true
     _poolOnly: true
-  - name: '🇬🇧GB_53|323KB/s|R002-260618 01'
-    port: 8443
-    server: '77.221.136.60'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
+  - name: '[zhuhaiuk-free-nodes] SE - zhuhai.uk 02'
     type: 'http'
-    udp: true
+    server: '77.221.136.60'
+    port: 8443
+    tls: true
+    skip-cert-verify: true
     _poolOnly: true
   - name: '🇺🇸US_443|92KB/s|R002-260618 01'
     port: 443
@@ -1004,7 +1001,7 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '❓Other_76|561KB/s|R002-260618 01'
+  - name: '[cbusifabcap-clashmeta] 🇨🇦CA_15|695KB/s|R002-260618'
     port: 443
     server: '142.44.210.129'
     skip-cert-verify: true
@@ -1013,7 +1010,7 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇫🇷FR_364|1.9MB/s|K001-260618 [9609525282db]'
+  - name: '[ermaozi-subscribe] 🇫🇷FR_1|2.7MB/s|K001-260618'
     password: 'None'
     port: 443
     server: '82.66.235.221'
@@ -1021,8 +1018,8 @@ proxies:
     sub_tag: 'K001-260618'
     tls: true
     type: 'http'
-    username: ''
     udp: true
+    x-toolall-mihomo: true
     _poolOnly: true
   - name: '🇳🇱NL_325|6.3MB/s|P002-260618 [111aaa619f5f]'
     password: 'None'
@@ -1172,14 +1169,13 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇩🇪DE_94|2.5MB/s|R002-260618 01'
-    port: 443
-    server: '159.69.94.125'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
+  - name: '[share-daily-node] DE-HTTP-06'
     type: 'http'
+    server: '159.69.94.125'
+    port: 443
     udp: true
+    tls: true
+    skip-cert-verify: true
     _poolOnly: true
   - name: '🇩🇪DE_163|2.2MB/s|R002-260618 01'
     port: 443
@@ -1226,7 +1222,7 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇩🇪DE_162|1.0MB/s|R002-260618 01'
+  - name: '[cbusifabcap-clashmeta] ❓Other_48|344KB/s|R002-260618'
     port: 443
     server: '217.92.132.233'
     skip-cert-verify: true
@@ -1235,14 +1231,12 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇮🇩ID_10|550KB/s|R002-260618 01'
-    port: 443
-    server: '103.86.117.202'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
+  - name: '[zhuhaiuk-free-nodes] ID - zhuhai.uk'
     type: 'http'
-    udp: true
+    server: '103.86.117.202'
+    port: 443
+    tls: true
+    skip-cert-verify: true
     _poolOnly: true
   - name: '🇮🇳IN_50|341KB/s|R002-260618 01'
     port: 443
@@ -1282,7 +1276,7 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇺🇸US_436|478KB/s|R002-260618 01'
+  - name: '[cbusifabcap-clashmeta] ❓Other_26|196KB/s|R002-260618'
     port: 443
     server: '96.5.129.85'
     skip-cert-verify: true
@@ -1300,16 +1294,7 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇮🇹IT_25|1.1MB/s|R002-260618 01'
-    port: 443
-    server: '93.42.177.250'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇵🇱PL_56|1.1MB/s|R002-260618 01'
+  - name: '[cbusifabcap-clashmeta] ❓Other_37|279KB/s|R002-260618'
     port: 443
     server: '91.92.250.33'
     skip-cert-verify: true
@@ -1324,4 +1309,69 @@ proxies:
     port: 19999
     cipher: 'aes-256-gcm'
     password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
+    _poolOnly: true
+  - name: '🇳🇱 荷兰 | VLESS | 004'
+    type: 'vless'
+    server: '48.102.173.24'
+    port: 444
+    uuid: 'ef5a57c7-84d5-4f86-b99c-875a16da485f'
+    udp: true
+    tls: true
+    servername: 'neplay603.gangtype.com'
+    client-fingerprint: 'firefox'
+    network: 'ws'
+    ws-opts:
+      path: '/stream/updates/a66d7902'
+      headers:
+        Host: 'neplay603.gangtype.com'
+    _poolOnly: true
+  - name: '🇳🇱 荷兰 | VLESS | 002'
+    type: 'vless'
+    server: '196.196.148.63'
+    port: 443
+    uuid: 'cda0862a-0f87-4be9-8ed8-1d0c9e382839'
+    udp: true
+    tls: true
+    servername: '717252g.nl8.h1clayd.click'
+    client-fingerprint: 'firefox'
+    reality-opts:
+      public-key: 'PD8Jdlg3xB9QY--jwQjp8PFPzCS8-Oryw6-HWBcHMFU'
+      short-id: 'd3bd772514c87d28'
+    network: 'grpc'
+    grpc-opts:
+      grpc-service-name: '204adda7e3da'
+    _poolOnly: true
+  - type: 'vless'
+    name: '🇳🇱 荷兰 | VLESS | 001'
+    server: '196.196.148.63'
+    port: 443
+    uuid: 'cda0862a-0f87-4be9-8ed8-1d0c9e382839'
+    tls: true
+    servername: '717252g.nl8.h1clayd.click'
+    sni: '717252g.nl8.h1clayd.click'
+    skip-cert-verify: false
+    client-fingerprint: 'firefox'
+    reality-opts:
+      public-key: 'PD8Jdlg3xB9QY--jwQjp8PFPzCS8-Oryw6-HWBcHMFU'
+      short-id: 'd3bd772514c87d28'
+    network: 'grpc'
+    grpc-opts:
+      grpc-service-name: '204adda7e3da'
+    _poolOnly: true
+  - name: '🇳🇱 荷兰 | VLESS | 003'
+    type: 'vless'
+    server: '196.196.148.63'
+    port: 443
+    uuid: 'cda0862a-0f87-4be9-8ed8-1d0c9e382839'
+    udp: true
+    tls: true
+    servername: 'fc82dfx.nl8.h1clayd.click'
+    client-fingerprint: 'chrome'
+    reality-opts:
+      public-key: 'dtO7khFLUkpFDQOtNzo4Th4hJKLoPSY2VtD_9k4Hgiw'
+      short-id: '7b2b1a14a6e0630d'
+    network: 'xhttp'
+    xhttp-opts:
+      path: '/0616f2d729aa'
+      mode: 'auto'
     _poolOnly: true
