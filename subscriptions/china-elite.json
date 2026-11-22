@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-11-22T17:59:36.494Z",
+  "generatedAt": "2026-11-22T23:44:55.173Z",
   "maxPaths": 3,
   "counts": {
-    "eligibleExits": 189,
-    "chatgptEligibleExits": 226,
+    "eligibleExits": 197,
+    "chatgptEligibleExits": 229,
     "chatgptSelectedPaths": 3,
     "chatgptIncumbentPaths": 3,
     "selectedPaths": 3,
@@ -25,61 +25,61 @@
   "paths": [
     {
       "kind": "exit",
-      "endpointId": "7f4f023778326735",
-      "name": "[zhuhaiuk-free-nodes] ID - zhuhai.uk",
-      "score": 1892.606247236013,
-      "recentSuccessRate": 0.9829611938652381,
-      "lifetimeSuccessRate": 0.995880535530381,
-      "observedRuns": 971,
-      "p95LatencyMs": 633,
-      "speedMbps": 11.701569034137865
+      "endpointId": "42b92fd19e27c47a",
+      "name": "[cbusifabcap-clashmeta] ❓Other_23|318KB/s|R002-260618",
+      "score": 2006.1518653265325,
+      "recentSuccessRate": 1,
+      "lifetimeSuccessRate": 0.9956663055254604,
+      "observedRuns": 923,
+      "p95LatencyMs": 535,
+      "speedMbps": 27.11676887428802
     },
     {
       "kind": "exit",
-      "endpointId": "487b9b078b2feaa8",
-      "name": "[ermaozi-subscribe] 🇩🇪DE_5|1.0MB/s",
-      "score": 1881.8304125682625,
+      "endpointId": "a3f6417c87a3f816",
+      "name": "[ermaozi-subscribe] 🇩🇪DE_2|1017KB/s",
+      "score": 2001.721727473213,
       "recentSuccessRate": 1,
-      "lifetimeSuccessRate": 1,
-      "observedRuns": 5,
-      "p95LatencyMs": 540,
-      "speedMbps": 26.816715126705628
+      "lifetimeSuccessRate": 0.9974587039390089,
+      "observedRuns": 787,
+      "p95LatencyMs": 530,
+      "speedMbps": 25.790594557023972
     },
     {
       "kind": "exit",
-      "endpointId": "898c45bc5f6e51af",
-      "name": "[ermaozi-subscribe] 🇩🇪DE_1|2.5MB/s",
-      "score": 1880.734701033252,
+      "endpointId": "17aa556ae6fb7bc7",
+      "name": "🇮🇩ID_2|688KB/s|R002-260618 [ec91e15d058c]",
+      "score": 1897.3230300663158,
       "recentSuccessRate": 1,
-      "lifetimeSuccessRate": 1,
-      "observedRuns": 5,
-      "p95LatencyMs": 540,
-      "speedMbps": 26.55388347226547
+      "lifetimeSuccessRate": 0.9932885906040269,
+      "observedRuns": 447,
+      "p95LatencyMs": 627,
+      "speedMbps": 10.514334981455342
     }
   ],
   "chatgptPaths": [
     {
       "kind": "chatgpt-incumbent",
-      "endpointId": "a3f6417c87a3f816",
-      "name": "[ermaozi-subscribe] 🇩🇪DE_2|1017KB/s",
-      "score": 1783.1231504466557,
-      "chatgptScore": 1186.4772144200883,
+      "endpointId": "42b92fd19e27c47a",
+      "name": "[cbusifabcap-clashmeta] ❓Other_23|318KB/s|R002-260618",
+      "score": 2006.1518653265325,
+      "chatgptScore": 1188.700383605713,
       "chatgptSuccessRate": 1
     },
     {
       "kind": "chatgpt-incumbent",
-      "endpointId": "42b92fd19e27c47a",
-      "name": "[cbusifabcap-clashmeta] ❓Other_23|318KB/s|R002-260618",
-      "score": 1776.8040158660322,
-      "chatgptScore": 1180.3119371854073,
+      "endpointId": "a3f6417c87a3f816",
+      "name": "[ermaozi-subscribe] 🇩🇪DE_2|1017KB/s",
+      "score": 2001.721727473213,
+      "chatgptScore": 1187.2548204069453,
       "chatgptSuccessRate": 1
     },
     {
       "kind": "chatgpt-incumbent",
       "endpointId": "17aa556ae6fb7bc7",
       "name": "🇮🇩ID_2|688KB/s|R002-260618 [ec91e15d058c]",
-      "score": 1681.050327772994,
-      "chatgptScore": 1166.3420052647757,
+      "score": 1897.3230300663158,
+      "chatgptScore": 1163.8303877683068,
       "chatgptSuccessRate": 1
     }
   ]

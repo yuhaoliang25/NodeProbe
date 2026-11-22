@@ -1,11 +1,4 @@
 proxies:
-  - name: '[ermaozi-subscribe] 🇩🇪DE_2|1017KB/s'
-    port: 443
-    server: '172.64.69.89'
-    skip-cert-verify: true
-    tls: true
-    type: 'http'
-    _poolOnly: true
   - name: '[cbusifabcap-clashmeta] ❓Other_23|318KB/s|R002-260618'
     port: 443
     server: '172.64.68.89'
@@ -14,6 +7,13 @@ proxies:
     tls: true
     type: 'http'
     udp: true
+    _poolOnly: true
+  - name: '[ermaozi-subscribe] 🇩🇪DE_2|1017KB/s'
+    port: 443
+    server: '172.64.69.89'
+    skip-cert-verify: true
+    tls: true
+    type: 'http'
     _poolOnly: true
   - name: '🇮🇩ID_2|688KB/s|R002-260618 [ec91e15d058c]'
     port: 443
