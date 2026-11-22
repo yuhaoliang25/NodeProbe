@@ -275,16 +275,17 @@ jobs:
               // it points at one of the endpoint matches.
               if(matches.length===1)index=matches[0];
               else if(matches.length>1) {
-                const oneBased=reported-1;
                 const zeroBased=reported;
-                if(matches.includes(oneBased))index=oneBased;
-                else if(matches.includes(zeroBased))index=zeroBased;
+                 const oneBased=reported-1;
+                 if(matches.includes(zeroBased))index=zeroBased;
+                 else if(matches.includes(oneBased))index=oneBased;
                 else throw new Error('Ambiguous invalid endpoint; reported proxy index does not match endpoint: '+match[2]);
               }
             }
-            // Fall back to the usual one-based diagnostic index only when
-            // the error text does not identify a matching endpoint.
-            if(index<0)index=reported-1;
+            // Mihomo's `proxy N` diagnostic is zero-based. Do not subtract
+             // one: that removes the preceding proxy and shifts the same bad
+             // proxy left on every retry.
+             if(index<0)index=reportedProxyIndexToArrayIndex(reported,proxies.length);
             if(index<0||index>=proxies.length)throw new Error('Reported invalid proxy index is out of range: '+reported);
             const [bad]=proxies.splice(index,1);
             if(!bad)throw new Error('Could not remove reported invalid proxy at index '+index);
