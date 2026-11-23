@@ -1,239 +1,307 @@
 proxies:
-  - name: '🌐 其他地区 (Other) 436 - tammader'
-    type: 'vless'
-    server: '172.64.149.65'
-    port: 443
-    uuid: '5dc15e15-f285-4a9d-959b-0e4fbdd77b63'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'powered-by-surena.configfarsi695fcfe8a2e58.workers.dev'
+  - type: 'ss'
+    name: 'EPODONIOS-5ab6d6fb525a338c'
+    server: '185.215.132.9'
+    port: 19999
+    cipher: 'aes-256-gcm'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
+    _poolOnly: true
+  - type: 'vless'
+    name: 'vless-1882338667'
+    server: '45.138.100.248'
+    port: 14430
+    tls: false
+    uuid: 'ae908ff5-f749-402c-af25-e6e9aef4d6bb'
     network: 'ws'
+    sni: '45.138.100.248'
     ws-opts:
-      path: '/'
+      path: '/vless'
       headers:
-        Host: 'powered-by-surena.configfarsi695fcfe8a2e58.workers.dev'
+        Host: '45.138.100.248'
     _poolOnly: true
-  - name: 'hysteria2-1832764823'
-    password: 'gf1:gfhysteria2024'
+  - type: 'trojan'
+    name: '🇺🇸 美国 | USA-cbf066ee94094462'
+    server: '216.152.155.54'
     port: 443
-    server: '66.94.121.46'
-    skip-cert-verify: true
-    sni: 'www.broadcom.com'
-    type: 'hysteria2'
+    tls: false
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    network: 'tcp'
+    sni: 'learn.nextjobopportunityandclaimyouridealrole.com'
     _poolOnly: true
-  - alterId: 0
-    cipher: 'auto'
-    name: 'vmess-1828338232'
-    network: 'raw'
-    port: 18000
-    server: '84.17.41.2'
-    type: 'vmess'
-    udp: true
-    uuid: 'f8c8dc3d-0d37-46b0-8b34-a7232882fcfe'
-    _poolOnly: true
-  - name: '🇯🇵 日本 (Japan) 214 - tammader'
-    type: 'vless'
-    server: '152.69.200.216'
-    port: 443
-    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'jp3.yohototo.top'
-    network: 'ws'
-    ws-opts:
-      path: '/tyxyws'
-      headers:
-        Host: 'jp3.yohototo.top'
-    _poolOnly: true
-  - name: '🇯🇵 日本 (Japan) 241 - tammader-a1aa5a8487562cf2'
-    type: 'vless'
-    server: '154.31.114.162'
+  - name: 'hysteria2-1853341683'
+    password: 'u63SxILNwtrQZ7Y1ZrFaZfsA'
     port: 8443
-    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'jp3.yohototo.top'
-    network: 'ws'
-    ws-opts:
-      path: '/tyxyws'
-      headers:
-        Host: 'jp3.yohototo.top'
-    _poolOnly: true
-  - name: 'hysteria2-1828529280'
-    password: '1671a252e2a97dc2bda4e515475931da'
-    port: 50160
-    server: '132.226.226.189'
-    skip-cert-verify: true
-    sni: ''
-    type: 'hysteria2'
-    _poolOnly: true
-  - name: 'trojan-1827937733'
-    password: 'p5jTPcffLgi4gaNOJd2KUTb9YEPBBD5B'
-    port: 56127
-    server: '154.90.62.70'
-    skip-cert-verify: true
-    sni: '154.90.62.70'
-    type: 'trojan'
-    udp: true
-    _poolOnly: true
-  - name: 'hysteria2-1828529345'
-    password: 'maintell'
-    port: 2053
-    server: '152.70.237.123'
-    skip-cert-verify: true
-    sni: '152.70.237.123'
-    type: 'hysteria2'
-    _poolOnly: true
-  - alterId: 0
-    cipher: 'auto'
-    name: 'vmess-1828150806'
-    network: 'raw'
-    port: 18000
-    server: '149.88.23.202'
-    type: 'vmess'
-    udp: true
-    uuid: 'f8c8dc3d-0d37-46b0-8b34-a7232882fcfe'
-    _poolOnly: true
-  - name: 'hysteria2-1828150748'
-    password: 'f87376e17da040ed04c9665ce8972930'
-    port: 50160
-    server: '138.2.73.238'
-    skip-cert-verify: true
-    sni: ''
-    type: 'hysteria2'
-    _poolOnly: true
-  - name: '🇸🇬 新加坡 (Singapore) 17 - tammader'
-    type: 'vless'
-    server: '139.162.27.96'
-    port: 2096
-    uuid: '6e59d5c5-7aa3-4c36-a4c4-e3b899525ed2'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'free-server.techsonic.dev'
-    network: 'ws'
-    ws-opts:
-      path: '/free-server.techsonic.dev'
-      headers:
-        Host: 'free-server.techsonic.dev'
-    _poolOnly: true
-  - name: 'hysteria2-1832764859'
-    password: 'github.com/Alvin9999-newpac/fanqiang'
-    port: 60111
-    server: '62.210.7.139'
+    server: '8.211.175.236'
     skip-cert-verify: true
     sni: 'bing.com'
     type: 'hysteria2'
     _poolOnly: true
-  - cipher: 'chacha20-ietf-poly1305'
-    name: 'shadowsocks-1830344687'
-    password: 'oZIoA69Q8yhcQV8ka3Pa3A'
-    port: 8080
-    server: '178.83.185.156'
-    type: 'ss'
+  - type: 'vless'
+    name: 'vless-1831093906-source-5a324f22b336db67'
+    server: '152.69.200.216'
+    port: 443
+    tls: true
+    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
+    network: 'ws'
+    sni: 'jp3.yohototo.top'
+    ws-opts:
+      path: '/tyxyws'
+      headers:
+        Host: 'jp3.yohototo.top'
+    _poolOnly: true
+  - name: 'hysteria2-1853341738'
+    password: 'maintell'
+    port: 2053
+    server: '152.70.237.123'
+    skip-cert-verify: true
+    sni: ''
+    type: 'hysteria2'
+    _poolOnly: true
+  - name: '🇰🇷 韩国 (South Korea) 01 - tammader'
+    type: 'vless'
+    server: '152.69.226.63'
+    port: 25555
+    uuid: '27c5483f-17f4-48ae-9a04-def53d88440d'
     udp: true
+    tls: false
+    skip-cert-verify: true
+    network: 'ws'
+    ws-opts:
+      path: '/'
+      headers:
+        Host: '152.69.226.63'
+    _poolOnly: true
+  - name: 'trojan-1837386994'
+    password: 'p5jTPcffLgi4gaNOJd2KUTb9YEPBBD5B'
+    port: 56127
+    server: '154.90.62.70'
+    skip-cert-verify: true
+    sni: ''
+    type: 'trojan'
+    udp: true
+    _poolOnly: true
+  - alterId: 0
+    cipher: 'auto'
+    name: 'vmess-1837386988'
+    network: 'raw'
+    port: 18000
+    server: '149.88.23.207'
+    type: 'vmess'
+    udp: true
+    uuid: 'f8c8dc3d-0d37-46b0-8b34-a7232882fcfe'
     _poolOnly: true
   - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1828372615'
-    network: 'raw'
-    port: 443
-    reality-opts:
-      public-key: 'PryGoq51ilG0eLUPl9i0xCvmk1xpwkyFSr_tG4GNLlU'
-      short-id: '1d86d17709852910'
-    server: '86.54.28.75'
-    servername: 'www.apple.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '44ae52b9-76fc-444d-8e43-186b4384b80a'
-    _poolOnly: true
-  - client-fingerprint: 'firefox'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1828371278'
-    network: 'raw'
-    port: 443
-    reality-opts:
-      public-key: 'vnjp7zIK2H3CGdjSis_79KXqS6IG-opmpbETPUD-EC8'
-      short-id: '15affa0af66dfc79'
-    server: '130.12.242.106'
-    servername: 'deepl.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: 'bc058e69-0444-4c7b-98da-bd67f0b143da'
-    _poolOnly: true
-  - client-fingerprint: 'firefox'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1828372652'
+    name: 'vless-1844556217'
     network: 'tcp'
-    port: 443
+    port: 21004
     reality-opts:
-      public-key: 'uTmb-ytXsx8p0fkBz7A76SHpWk7_oVutIA4LGTE8BQk'
-      short-id: 'f98843107912e782'
-    server: '209.200.246.148'
+      public-key: 'HZwHZBP3x4Yo4UQiHcypRJIU_UdZY5OAapQM8RUqVAU'
+      short-id: '2df2bd9d8366cef1'
+    server: '103.106.229.37'
     servername: 'www.cloudflare.com'
     tls: true
     type: 'vless'
     udp: true
-    uuid: 'ca52e2b6-fb9f-4dac-b6dc-49da9923f251'
+    uuid: '41b1c169-5905-4d98-b6a6-56896c25737c'
     _poolOnly: true
-  - name: 'hysteria2-1830466990'
+  - name: 'SG - zhuhai.uk'
+    type: 'socks5'
+    server: '47.236.168.243'
+    port: 1080
+    username: '8888'
+    password: '8888'
+    _poolOnly: true
+  - type: 'ss'
+    name: 'EPODONIOS'
+    server: '185.176.206.9'
+    port: 19999
+    cipher: 'aes-256-gcm'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
+    _poolOnly: true
+  - name: 'DE - zhuhai.uk'
+    type: 'http'
+    server: '158.173.154.5'
+    port: 9002
+    tls: true
+    skip-cert-verify: true
+    _poolOnly: true
+  - client-fingerprint: 'chrome'
+    flow: 'xtls-rprx-vision'
+    name: 'vless-1853340498'
+    network: 'tcp'
+    port: 443
+    reality-opts:
+      public-key: 'G7bpUPFSW28-oE6ff8qZac1_apU6PiJ-GHmi7tAPDSY'
+      short-id: '91af08b1ce1f'
+    server: '50.117.15.225'
+    servername: 'www.foxsports.com'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '67eb6b17-7797-4ded-bf52-423c4c5f6cbd'
+    _poolOnly: true
+  - type: 'ss'
+    name: 'shadowsocks-1875023013'
+    server: '185.176.204.18'
+    port: 19999
+    cipher: 'aes-256-gcm'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
+    _poolOnly: true
+  - client-fingerprint: 'chrome'
+    flow: 'xtls-rprx-vision'
+    name: 'vless-1853341185'
+    network: 'tcp'
+    port: 23576
+    reality-opts:
+      public-key: '1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s'
+      short-id: '01'
+    server: '62.210.91.10'
+    servername: 'fuck.rkn'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '48ff2b70-e180-582f-8866-d9a2edeed5f5'
+    _poolOnly: true
+  - name: 'FR - zhuhai.uk'
+    type: 'http'
+    server: '31.32.19.111'
+    port: 8081
+    tls: true
+    skip-cert-verify: true
+    _poolOnly: true
+  - type: 'vless'
+    name: '🇫🇷[www.v2nodes.com] vless-FR-1... #2'
+    server: '138.124.70.41'
+    port: 14430
+    tls: false
+    uuid: '6cc745e3-4eb9-46c8-a4a1-85dee7b87edc'
+    network: 'ws'
+    ws-opts:
+      path: '/vless'
+    _poolOnly: true
+  - client-fingerprint: 'chrome'
+    flow: 'xtls-rprx-vision'
+    name: 'vless-1853340779'
+    network: 'tcp'
+    port: 23576
+    reality-opts:
+      public-key: '1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s'
+      short-id: '01'
+    server: '51.158.206.87'
+    servername: 'fuck.rkn'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '48ff2b70-e180-582f-8866-d9a2edeed5f5'
+    _poolOnly: true
+  - name: 'NL - zhuhai.uk 02'
+    type: 'http'
+    server: '51.158.243.91'
+    port: 443
+    tls: true
+    skip-cert-verify: true
+    _poolOnly: true
+  - name: 'hysteria2-1832765339'
+    password: 'gf1:gfhysteria2024'
+    port: 443
+    server: '5.129.235.85'
+    skip-cert-verify: true
+    sni: 'www.linux.com'
+    type: 'hysteria2'
+    _poolOnly: true
+  - type: 'vmess'
+    name: 'CA 🇨🇦 | @Raydikalx | BA5E42'
+    server: '23.162.200.198'
+    port: 18000
+    uuid: 'f8c8dc3d-0d37-46b0-8b34-a7232882fcfe'
+    alterId: 0
+    cipher: 'auto'
+    tls: false
+    sni: '23.162.200.198'
+    network: 'tcp'
+    _poolOnly: true
+  - type: 'vmess'
+    name: 'CA 🇨🇦 | @Raydikalx | 00DD16'
+    server: '134.195.196.211'
+    port: 18000
+    uuid: 'f8c8dc3d-0d37-46b0-8b34-a7232882fcfe'
+    alterId: 0
+    cipher: 'auto'
+    tls: false
+    sni: '@vpnine1'
+    network: 'tcp'
+    _poolOnly: true
+  - type: 'vless'
+    name: '🇮🇳[www.v2nodes.com] vless-IN-1...'
+    server: '13.140.56.100'
+    port: 14430
+    tls: false
+    uuid: '68512eac-cd53-4de3-8d1e-08f6e04af1a9'
+    network: 'ws'
+    sni: '13.140.56.100'
+    ws-opts:
+      path: '/vless'
+      headers:
+        Host: '13.140.56.100'
+    _poolOnly: true
+  - type: 'vmess'
+    name: '🇮🇳IN-152.67.8.205-5782'
+    server: '152.67.8.205'
+    port: 80
+    uuid: '9db4c708-aef8-4359-821b-38e47990be0d'
+    alterId: 0
+    cipher: 'auto'
+    tls: false
+    sni: '152.67.8.205'
+    network: 'ws'
+    ws-opts:
+      path: '/'
+    _poolOnly: true
+  - name: 'hysteria2-1853331609'
+    password: 'H7mP2xY9kJ4nQ8wR5tF6vB3z'
+    port: 443
+    server: '160.187.100.109'
+    skip-cert-verify: true
+    sni: ''
+    type: 'hysteria2'
+    _poolOnly: true
+  - name: 'hysteria2-1853331426'
     password: 'H7mP2xY9kJ4nQ8wR5tF6vB3z'
     port: 443
     server: '103.115.109.49'
     skip-cert-verify: true
-    sni: 'https%3a%2f%2ft.me%2fwangcai2%f0%9f%87%a8%f0%9f%87%b3'
+    sni: 'https%3a%2f%2ft.me%2foneclickvpnkeys'
     type: 'hysteria2'
     _poolOnly: true
-  - name: '🇹🇼 中国台湾 (Taiwan) 129 (家宽) - tammader'
-    type: 'vless'
-    server: '60.248.219.78'
-    port: 443
-    uuid: 'c1c04450-bf71-4049-ad0c-9cf6d94d9f1f'
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: 'ty986gfazs.cainiaohub.xyz'
-    network: 'ws'
-    ws-opts:
-      path: '/81574b6b-c9d7-44a0-b83d-dad56e8cb530'
-      headers:
-        Host: '60.248.219.78'
-    _poolOnly: true
-  - type: 'trojan'
-    name: 'trojan-1926102551'
-    server: '188.253.7.44'
-    port: 24999
-    tls: false
-    password: '29086912-33e4-4e06-ba2b-60f1a195864f'
-    network: 'tcp'
-    sni: 'tjtw.m2k699.com'
-    _poolOnly: true
-  - name: 'hysteria2-1828371668'
+  - name: 'hysteria2-1830467063'
     password: 'H7mP2xY9kJ4nQ8wR5tF6vB3z'
     port: 443
-    server: '202.146.222.89'
+    server: '103.115.109.49'
     skip-cert-verify: true
-    sni: 't.me'
+    sni: 'https%3a%2f%2ft.me%2fwangcai2'
     type: 'hysteria2'
     _poolOnly: true
-  - name: 'hysteria2-1832880258'
+  - name: 'hysteria2-1853331593'
     password: 'H7mP2xY9kJ4nQ8wR5tF6vB3z'
     port: 443
-    server: '202.146.222.89'
+    server: '202.146.222.29'
     skip-cert-verify: true
-    sni: 'vk.com'
+    sni: 'https%3a%2f%2ft.me%2fwangcai2%ef%a3%bf%c3%bc%c3%a1'
     type: 'hysteria2'
     _poolOnly: true
-  - name: 'hysteria2-1828371410'
+  - name: 'hysteria2-1853331606'
     password: 'H7mP2xY9kJ4nQ8wR5tF6vB3z'
     port: 443
-    server: '202.146.222.89'
+    server: '202.146.222.29'
     skip-cert-verify: true
-    sni: 'https://t.me/clashv8🇨🇳'
+    sni: 'https://t.me/wangcai2����'
+    type: 'hysteria2'
+    _poolOnly: true
+  - name: 'hysteria2-1853331601'
+    password: 'H7mP2xY9kJ4nQ8wR5tF6vB3z'
+    port: 443
+    server: '202.146.222.29'
+    skip-cert-verify: true
+    sni: 'https://t.me/wangcai2üáüá'
     type: 'hysteria2'
     _poolOnly: true
