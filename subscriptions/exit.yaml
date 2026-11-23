@@ -279,16 +279,6 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇳🇱NL_55|1.2MB/s|R002-260618 01'
-    port: 443
-    server: '185.246.153.28'
-    skip-cert-verify: true
-    sni: '4a8c2906c96058315dffbc2b0e7ff19b-0c66a58858a795df.apache-iv.com'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: 'b23ac484bc70d600'
   - name: '🇳🇱NL_215|3.1MB/s|K001-260618 01'
     password: 'null'
     port: 23856
@@ -513,17 +503,6 @@ proxies:
     type: 'http'
     udp: true
     endpoint-id: 'e1c82204f654007f'
-  - name: '🇺🇸US_765|333KB/s|R002-260618 01'
-    password: 'null'
-    port: 443
-    server: '38.28.193.188'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    endpoint-id: '8b549a577b977342'
   - name: '[717.3ms +/-0ms] http-84.17.47.147'
     server: '84.17.47.147'
     port: 9002
@@ -576,6 +555,15 @@ proxies:
     tls: true
     type: 'http'
     username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_514|347KB/s|R002-260618 01'
+    port: 443
+    server: '137.175.22.72'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
     udp: true
     _poolOnly: true
   - name: '🇺🇸US_549|229KB/s|R002-260618 01'
@@ -765,14 +753,6 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '[ermaozi-subscribe] IE_speednode_0013'
-    port: 443
-    server: '34.249.214.108'
-    skip-cert-verify: true
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
   - name: 'NL - zhuhai.uk'
     type: 'http'
     server: '89.150.35.94'
@@ -924,12 +904,30 @@ proxies:
     tls: true
     skip-cert-verify: true
     _poolOnly: true
+  - name: '🇺🇸US_493|646KB/s|R002-260618 01'
+    port: 8090
+    server: '50.184.176.222'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
   - name: '[zhuhaiuk-free-nodes] SE - zhuhai.uk 02'
     type: 'http'
     server: '77.221.136.60'
     port: 8443
     tls: true
     skip-cert-verify: true
+    _poolOnly: true
+  - name: '🇺🇸US_443|92KB/s|R002-260618 01'
+    port: 443
+    server: '38.28.185.205'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
     _poolOnly: true
   - name: '🇺🇸US_453|136KB/s|R002-260618 01'
     port: 443
@@ -999,14 +997,12 @@ proxies:
     username: ''
     udp: true
     _poolOnly: true
-  - name: 'IT意大利(mibei77.com 米贝节点分享)'
-    type: 'ss'
+  - type: 'ss'
+    name: '🇺🇸 US美国(mibei77.com 米贝节点分享)-bd001ca6560e5d6c'
     server: '202.50.253.90'
     port: 19999
     cipher: 'aes-256-gcm'
     password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
-    skip-cert-verify: true
-    udp: true
     _poolOnly: true
   - name: '🇺🇸US_432|174KB/s|R002-260618 01'
     port: 443
@@ -1069,14 +1065,12 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: 'IT意大利(mibei77.com 米贝节点分享)_1'
-    type: 'ss'
+  - type: 'ss'
+    name: '🇮🇹 意大利(mibei77.com 米贝节点分享)'
     server: '202.50.253.81'
     port: 19999
     cipher: 'aes-256-gcm'
     password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
-    skip-cert-verify: true
-    udp: true
     _poolOnly: true
   - name: '🇳🇱NL_239|1.8MB/s|P002-260618 01'
     password: 'null'
@@ -1206,6 +1200,15 @@ proxies:
     username: 'null'
     udp: true
     _poolOnly: true
+  - name: '🇳🇱NL_241|408KB/s|R002-260618 01'
+    port: 9090
+    server: '185.53.129.141'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
   - name: '[cbusifabcap-clashmeta] ❓Other_26|196KB/s|R002-260618'
     port: 443
     server: '96.5.129.85'
@@ -1239,21 +1242,6 @@ proxies:
     port: 19999
     cipher: 'aes-256-gcm'
     password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
-    _poolOnly: true
-  - name: '🇳🇱 荷兰 | VLESS | 004'
-    type: 'vless'
-    server: '48.102.173.24'
-    port: 444
-    uuid: 'ef5a57c7-84d5-4f86-b99c-875a16da485f'
-    udp: true
-    tls: true
-    servername: 'neplay603.gangtype.com'
-    client-fingerprint: 'firefox'
-    network: 'ws'
-    ws-opts:
-      path: '/stream/updates/a66d7902'
-      headers:
-        Host: 'neplay603.gangtype.com'
     _poolOnly: true
   - name: '🇳🇱 荷兰 | VLESS | 002'
     type: 'vless'
@@ -1361,17 +1349,6 @@ proxies:
     port: 443
     tls: true
     skip-cert-verify: true
-    _poolOnly: true
-  - name: '[share-daily-node] US-HTTP-97'
-    type: 'http'
-    server: '107.151.238.27'
-    port: 443
-    udp: true
-    tls: true
-    sni: '6b97ee1b.acsnet.co'
-    skip-cert-verify: false
-    username: 'testuser1'
-    password: 'e4b72b531a2d10900519'
     _poolOnly: true
   - name: '[ermaozi-subscribe] 🇫🇷FR_3|1.1MB/s|P002-260618'
     password: 'None'

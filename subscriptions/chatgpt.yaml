@@ -1,4 +1,11 @@
 proxies:
+  - name: '[ermaozi-subscribe] 🇩🇪DE_2|1017KB/s'
+    port: 443
+    server: '172.64.69.89'
+    skip-cert-verify: true
+    tls: true
+    type: 'http'
+    _poolOnly: true
   - name: '[cbusifabcap-clashmeta] ❓Other_23|318KB/s|R002-260618'
     port: 443
     server: '172.64.68.89'
@@ -8,17 +15,15 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '[zhuhaiuk-free-nodes] SG - zhuhai.uk 02'
-    type: 'http'
-    server: '154.26.139.24'
-    port: 443
-    tls: true
+  - name: '🇳🇱NL_219|2.8MB/s|R002-260618 01'
+    password: 'null'
+    port: 9002
+    server: '84.17.47.147'
     skip-cert-verify: true
-    _poolOnly: true
-  - name: '[zhuhaiuk-free-nodes] ID - zhuhai.uk'
-    type: 'http'
-    server: '103.86.117.202'
-    port: 443
+    sni: '84.17.47.147'
+    sub_tag: 'R002-260618'
     tls: true
-    skip-cert-verify: true
+    type: 'http'
+    username: 'null'
+    udp: true
     _poolOnly: true
