@@ -544,6 +544,13 @@ proxies:
     username: 'null'
     udp: true
     _poolOnly: true
+  - type: 'ss'
+    name: '🇳🇿 新西兰 V2CROSS.COM-ceabb7d7f9a91666'
+    server: '202.50.253.72'
+    port: 19999
+    cipher: 'aes-256-gcm'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
+    _poolOnly: true
   - name: '🇮🇹 意大利_4P2WCP'
     server: '202.50.253.27'
     port: 19999
@@ -569,24 +576,6 @@ proxies:
     tls: true
     type: 'http'
     username: 'null'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_514|347KB/s|R002-260618 01'
-    port: 443
-    server: '137.175.22.72'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_507|284KB/s|R002-260618 01'
-    port: 443
-    server: '137.175.22.29'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
     udp: true
     _poolOnly: true
   - name: '🇺🇸US_549|229KB/s|R002-260618 01'
@@ -760,15 +749,6 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇺🇸US_523|698KB/s|R002-260618 01'
-    port: 8090
-    server: '24.142.229.178'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
   - name: '[share-daily-node] US-HTTP-10'
     type: 'http'
     server: '162.244.227.36'
@@ -927,15 +907,6 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '❓Other_97|122KB/s|R002-260618 01'
-    port: 443
-    server: '137.175.22.89'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
   - name: '🇺🇸US_450|350KB/s|R002-260618 01'
     port: 443
     server: '137.175.22.52'
@@ -959,15 +930,6 @@ proxies:
     port: 8443
     tls: true
     skip-cert-verify: true
-    _poolOnly: true
-  - name: '🇺🇸US_443|92KB/s|R002-260618 01'
-    port: 443
-    server: '38.28.185.205'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
     _poolOnly: true
   - name: '🇺🇸US_453|136KB/s|R002-260618 01'
     port: 443
@@ -1242,15 +1204,6 @@ proxies:
     tls: true
     type: 'http'
     username: 'null'
-    udp: true
-    _poolOnly: true
-  - name: '🇳🇱NL_241|408KB/s|R002-260618 01'
-    port: 9090
-    server: '185.53.129.141'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
     udp: true
     _poolOnly: true
   - name: '[cbusifabcap-clashmeta] ❓Other_26|196KB/s|R002-260618'
@@ -1627,6 +1580,14 @@ proxies:
     sni: '43.160.239.37'
     skip-cert-verify: true
     _poolOnly: true
+  - name: '[ermaozi-subscribe] 🇮🇪IE_2|2.4MB/s'
+    password: 'None'
+    port: 443
+    server: '34.249.214.108'
+    skip-cert-verify: true
+    tls: true
+    type: 'http'
+    _poolOnly: true
   - name: '[cbusifabcap-clashmeta] ❓Other_116|222KB/s|P002-260618'
     password: 'None'
     port: 443
@@ -1819,4 +1780,66 @@ proxies:
     type: 'http'
     username: ''
     udp: true
+    _poolOnly: true
+  - name: '巴西 002'
+    type: 'vless'
+    network: 'grpc'
+    server: '201.24.116.192'
+    port: 443
+    uuid: '38308ff1-5aa9-494f-a25a-0f2870d56b3e'
+    servername: 'vps3.nemnogogo.com'
+    tls: true
+    udp: true
+    client-fingerprint: 'firefox'
+    grpc-opts:
+      grpc-mode: 'gun'
+      grpc-service-name: 'mobile.api.Event'
+    _poolOnly: true
+  - name: '巴西 003'
+    type: 'vless'
+    network: 'grpc'
+    server: '201.51.12.98'
+    port: 443
+    uuid: '38308ff1-5aa9-494f-a25a-0f2870d56b3e'
+    servername: 'vps3.nemnogogo.com'
+    tls: true
+    udp: true
+    client-fingerprint: 'firefox'
+    grpc-opts:
+      grpc-mode: 'gun'
+      grpc-service-name: 'mobile.api.Event'
+    _poolOnly: true
+  - name: '俄罗斯 003'
+    type: 'vless'
+    network: 'xhttp'
+    server: '193.160.208.240'
+    port: 443
+    uuid: '4777d90d-265b-4927-a0d1-63f36ed1421c'
+    servername: '193.160.208.240'
+    tls: true
+    udp: true
+    client-fingerprint: 'firefox'
+    xhttp-opts:
+      mode: 'auto'
+      path: '/assets/twru01/'
+    _poolOnly: true
+  - name: '[217.1ms +/-2ms] http-usgp1-cdn-route.couldfl(…)'
+    server: 'usgp1-cdn-route.couldflare-cdn.com'
+    port: 443
+    type: 'http'
+    username: 'mrwdfNTD8M79LCukCieldrqZWqs='
+    password: 'exaxgqkKkd0TAMrCxeonWg=='
+    tls: true
+    skip-cert-verify: true
+    _poolOnly: true
+  - type: 'vless'
+    name: '@SylphNet | 1405-09-01 #171'
+    server: 'vps3.nemnogogo.com'
+    port: 443
+    tls: true
+    uuid: '38308ff1-5aa9-494f-a25a-0f2870d56b3e'
+    network: 'grpc'
+    sni: 'vps3.nemnogogo.com'
+    grpc-opts:
+      grpc-service-name: 'mobile.api.Event'
     _poolOnly: true
