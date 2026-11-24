@@ -1,1 +1,143 @@
-proxies: []
+proxies:
+  - type: 'trojan'
+    name: '🇮🇷 t.me/rghoddoosi رسول قدوسی - 64'
+    server: '167.88.61.52'
+    port: 443
+    tls: false
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    network: 'tcp'
+    sni: 'courses.browseseniorrolesandenhanceyourcareertoday.com'
+    endpoint-id: 'ef9bff15c7971949'
+  - type: 'ss'
+    name: '🇺🇸 t.me/rghoddoosi رسول قدوسی - 1'
+    server: '38.121.43.231'
+    port: 19999
+    cipher: 'aes-256-gcm'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
+    endpoint-id: '49ddbd5afa43dc8e'
+  - type: 'trojan'
+    name: '[TG] t.me/rghoddoosi رسول قدوسی - 64-ed5dc34a380bf626'
+    server: '216.152.156.159'
+    port: 443
+    tls: false
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    network: 'tcp'
+    sni: 'resources.healthcarejobshubenhancemedicalprofessionalskillstoday.com'
+    endpoint-id: 'ed5dc34a380bf626'
+  - type: 'ss'
+    name: '🇮🇷 t.me/rghoddoosi رسول قدوسی - 64-3fb9284fde51186d'
+    server: '8.211.53.194'
+    port: 443
+    cipher: '2022-blake3-chacha20-poly1305'
+    password: '8yO3ANWefuuGs1lRKXECQA1FEhxlWFV2ppQMcBaZo5Y='
+    endpoint-id: '3fb9284fde51186d'
+  - type: 'ss'
+    name: '🇮🇷 t.me/rghoddoosi رسول قدوسی - 65-ba31ff394416cedc'
+    server: '47.91.74.232'
+    port: 443
+    cipher: '2022-blake3-chacha20-poly1305'
+    password: '8yO3ANWefuuGs1lRKXECQA1FEhxlWFV2ppQMcBaZo5Y='
+    endpoint-id: 'ba31ff394416cedc'
+  - type: 'ss'
+    name: '🇩🇪 t.me/rghoddoosi رسول قدوسی - 65-663b4423fc3866e4'
+    server: '8.209.72.224'
+    port: 443
+    cipher: '2022-blake3-chacha20-poly1305'
+    password: '8yO3ANWefuuGs1lRKXECQA1FEhxlWFV2ppQMcBaZo5Y='
+    endpoint-id: '663b4423fc3866e4'
+  - type: 'ss'
+    name: '🇩🇪 t.me/rghoddoosi رسول قدوسی - 65-aee33a95bc429f25'
+    server: '47.254.174.203'
+    port: 443
+    cipher: '2022-blake3-chacha20-poly1305'
+    password: '8yO3ANWefuuGs1lRKXECQA1FEhxlWFV2ppQMcBaZo5Y='
+    endpoint-id: 'aee33a95bc429f25'
+  - type: 'ss'
+    name: '🇩🇪 t.me/rghoddoosi رسول قدوسی - 65-01c25f3bc4b1d2fb'
+    server: '8.209.119.13'
+    port: 443
+    cipher: '2022-blake3-chacha20-poly1305'
+    password: '8yO3ANWefuuGs1lRKXECQA1FEhxlWFV2ppQMcBaZo5Y='
+    endpoint-id: '01c25f3bc4b1d2fb'
+  - type: 'trojan'
+    name: '🇯🇵 t.me/rghoddoosi رسول قدوسی - 19-0fc5c35fbcf73e91'
+    server: 'win2loxfde0303.gggrelay.org'
+    port: 34745
+    tls: false
+    password: '57beeeb0-03fc-4fc9-94da-7604488a7134'
+    network: 'tcp'
+    sni: 'nu3rb.supertoolify.com'
+    endpoint-id: '0fc5c35fbcf73e91'
+  - type: 'trojan'
+    name: '🇳🇱 t.me/rghoddoosi رسول قدوسی - 1-604add47784eecc4'
+    server: '66.163.127.155'
+    port: 443
+    tls: false
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    network: 'tcp'
+    sni: 'indyourperfectremotetechjobfromthecomfortofhome.com'
+    endpoint-id: '604add47784eecc4'
+  - type: 'ss'
+    name: '🇦🇱 t.me/rghoddoosi رسول قدوسی - 65-d63a2279ce5d0ce9'
+    server: '130.49.189.158'
+    port: 43558
+    cipher: 'chacha20-ietf-poly1305'
+    password: 'yZiPrr484OdSYcivDUv+UIygwvyW+HQYytKsIgTw9tU='
+    endpoint-id: 'd63a2279ce5d0ce9'
+  - type: 'trojan'
+    name: '🇮🇷 t.me/rghoddoosi رسول قدوسی - 10-bba73525dfbd8660'
+    server: '77.93.89.2'
+    port: 443
+    tls: false
+    password: '57beeeb0-03fc-4fc9-94da-7604488a7134'
+    network: 'tcp'
+    sni: 'bgsg1.hikigo.com'
+    endpoint-id: 'bba73525dfbd8660'
+  - type: 'ss'
+    name: '🇮🇷 t.me/rghoddoosi رسول قدوسی - 65-c826153d1087f5a3'
+    server: '47.245.167.223'
+    port: 443
+    cipher: '2022-blake3-chacha20-poly1305'
+    password: '8yO3ANWefuuGs1lRKXECQA1FEhxlWFV2ppQMcBaZo5Y='
+    endpoint-id: 'c826153d1087f5a3'
+  - type: 'trojan'
+    name: '🇭🇰 t.me/rghoddoosi رسول قدوسی - 83-39c0bdd696aa17cc'
+    server: 'xvxn1hkzf.mateflora.com'
+    port: 443
+    tls: false
+    password: '57beeeb0-03fc-4fc9-94da-7604488a7134'
+    network: 'tcp'
+    sni: 'xvxn1hkzf.mateflora.com'
+    endpoint-id: '39c0bdd696aa17cc'
+  - type: 'trojan'
+    name: '🇭🇰 t.me/rghoddoosi رسول قدوسی - 83-cbddb535c5c1dd0f'
+    server: '43.255.157.222'
+    port: 443
+    tls: false
+    password: '57beeeb0-03fc-4fc9-94da-7604488a7134'
+    network: 'tcp'
+    sni: 'xvxn1hkzf.mateflora.com'
+    endpoint-id: 'cbddb535c5c1dd0f'
+  - type: 'trojan'
+    name: '🇹🇼 t.me/rghoddoosi رسول قدوسی - 83'
+    server: '34.80.15.95'
+    port: 443
+    tls: false
+    password: '123456'
+    network: 'tcp'
+    sni: 'tw.ctt25.uk'
+    endpoint-id: '1b1e8081360dff47'
+  - type: 'ss'
+    name: '🇮🇷 t.me/rghoddoosi رسول قدوسی - 65-a970f3ca7c29324f'
+    server: '8.209.117.187'
+    port: 443
+    cipher: '2022-blake3-chacha20-poly1305'
+    password: '8yO3ANWefuuGs1lRKXECQA1FEhxlWFV2ppQMcBaZo5Y='
+    endpoint-id: 'a970f3ca7c29324f'
+  - type: 'ss'
+    name: '🇩🇪 t.me/rghoddoosi رسول قدوسی - 65-ffd3c5e56043bda0'
+    server: '8.211.57.86'
+    port: 443
+    cipher: '2022-blake3-chacha20-poly1305'
+    password: '8yO3ANWefuuGs1lRKXECQA1FEhxlWFV2ppQMcBaZo5Y='
+    endpoint-id: 'ffd3c5e56043bda0'
