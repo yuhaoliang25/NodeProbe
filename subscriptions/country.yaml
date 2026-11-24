@@ -1,44 +1,156 @@
 proxies:
   - type: 'trojan'
-    name: '🇺🇸US_627'
-    server: '167.88.61.20'
+    name: '🇺🇸US_631'
+    server: '167.88.61.85'
     port: 443
     tls: false
     password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
     network: 'tcp'
-    sni: 'api.browseseniorrolesandenhanceyourcareertoday.com'
+    sni: 'resources.browseseniorrolesandenhanceyourcareertoday.com'
     _poolOnly: true
-  - type: 'vless'
-    name: 'CA加拿大'
-    server: '172.64.152.19'
-    port: 443
+  - name: '[VLESS] 🇽🇽XX(AzadNet.t.me) 71'
+    server: '172.64.154.113'
+    port: 8443
+    type: 'vless'
     tls: true
-    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
+    uuid: '53bbdad4-2f4e-45db-8df4-fa491a6a7227'
+    servername: 'freeceshi6.frii.site'
     network: 'ws'
-    sni: 'jp3.yohototo.top'
     ws-opts:
-      path: '/tyxyws'
+      path: '/?Telegram---PLANB_NET---PLANB_NET---PLANB_NET---PLANB_NET'
       headers:
-        Host: 'jp3.yohototo.top'
+        Host: 'freeceshi6.frii.site'
+    skip-cert-verify: true
+    tfo: false
     _poolOnly: true
-  - name: '🇺🇸US-47.85.238.210-07'
-    server: '47.85.238.210'
-    port: 443
+  - name: '[SS] 🇺🇸 🇺🇸US(AzadNet.t.me) 14'
+    server: '129.146.200.49'
+    port: 50356
     type: 'ss'
     cipher: '2022-blake3-chacha20-poly1305'
-    password: '3NBsnBLanPfG6i3S2GTHineswr6EeSJPb0PCeMQoGoA='
+    password: '011mfoSmYFVhBNbKk0V5DxqGs9PwrsqY+9EAhOll+58='
+    tfo: false
     _poolOnly: true
-  - type: 'vmess'
-    name: '🇬🇧 GB 🇬🇧 | @Raydikalx | 1113BB'
+  - type: 'vless'
+    name: '🇰🇷KR_37'
+    server: '152.69.226.63'
+    port: 25555
+    tls: false
+    uuid: '27c5483f-17f4-48ae-9a04-def53d88440d'
+    network: 'ws'
+    sni: '152.69.226.63'
+    ws-opts:
+      path: '/'
+    _poolOnly: true
+  - name: '[SS] 🇸🇬 🇸🇬SG(AzadNet.t.me)'
+    server: '27.124.5.86'
+    port: 8388
+    type: 'ss'
+    cipher: '2022-blake3-aes-256-gcm'
+    password: 'j4DddfVh3zON1s3Wfbmdn2WWhLCWAaOJyKqdeKvxh4A='
+    tfo: false
+    _poolOnly: true
+  - name: '[SS] 🇬🇧 🇬🇧GB(AzadNet.t.me) 52'
+    server: '129.151.82.249'
+    port: 61312
+    type: 'ss'
+    cipher: '2022-blake3-chacha20-poly1305'
+    password: 'L35ZoQjjihDmVI3YcDK0UMgcjpoxdMtVDStV2NH74xw='
+    tfo: false
+    _poolOnly: true
+  - name: '[VMess] 🇫🇷 🇫🇷FR(AzadNet.t.me) 14'
     server: '57.129.132.223'
     port: 80
+    type: 'vmess'
     uuid: 'a25cbf11-2908-4a1b-a3a8-9a571777dca3'
     alterId: 0
     cipher: 'auto'
     tls: false
+    skip-cert-verify: true
     network: 'ws'
     ws-opts:
-      path: '/vmess/?TELEGRAM--B2Hub-B2Hub-B2Hub-B2Hub-B2Hub-B2Hub-B2Hub-B2Hub-B2Hub-B2Hub--TELEGRAM'
+      path: '/vmess/'
       headers:
-        Host: 'google.com'
+        Host: 'viber.com'
+    tfo: false
+    _poolOnly: true
+  - name: '[VLESS] 🇩🇪 🇩🇪DE(AzadNet.t.me) 18'
+    server: '146.103.41.14'
+    port: 9543
+    type: 'vless'
+    tls: true
+    uuid: '920b3cd9-4f82-4669-bbd2-d4a28b9052c6'
+    servername: 'storage.yandexcloud.net'
+    host: 'storage.yandexcloud.net'
+    flow: 'xtls-rprx-vision'
+    reality-opts:
+      public-key: 'M6Ck7wUfOLhQl4582CBnaXwscPEP6SCpdEkUDzoj4Fc'
+      short-id: '123abcdf'
+    client-fingerprint: 'random'
+    skip-cert-verify: true
+    tfo: false
+    _poolOnly: true
+  - name: '[VLESS] 🇩🇪 🇩🇪DE(AzadNet.t.me) 24'
+    server: '146.103.41.207'
+    port: 9543
+    type: 'vless'
+    tls: true
+    uuid: '920b3cd9-4f82-4669-bbd2-d4a28b9052c6'
+    servername: 'storage.yandexcloud.net'
+    host: 'storage.yandexcloud.net'
+    flow: 'xtls-rprx-vision'
+    reality-opts:
+      public-key: 'M6Ck7wUfOLhQl4582CBnaXwscPEP6SCpdEkUDzoj4Fc'
+      short-id: '123abcdf'
+    client-fingerprint: 'random'
+    skip-cert-verify: true
+    tfo: false
+    _poolOnly: true
+  - name: '[VLESS] 🇩🇪 🇩🇪DE(AzadNet.t.me) 26'
+    server: '146.103.42.165'
+    port: 9543
+    type: 'vless'
+    tls: true
+    uuid: '920b3cd9-4f82-4669-bbd2-d4a28b9052c6'
+    servername: 'storage.yandexcloud.net'
+    host: 'storage.yandexcloud.net'
+    flow: 'xtls-rprx-vision'
+    reality-opts:
+      public-key: 'M6Ck7wUfOLhQl4582CBnaXwscPEP6SCpdEkUDzoj4Fc'
+      short-id: '123abcdf'
+    client-fingerprint: 'random'
+    skip-cert-verify: true
+    tfo: false
+    _poolOnly: true
+  - name: '[VLESS] 🇫🇷 🇫🇷FR(AzadNet.t.me) 38'
+    server: '195.216.169.229'
+    port: 9543
+    type: 'vless'
+    tls: true
+    uuid: '920b3cd9-4f82-4669-bbd2-d4a28b9052c6'
+    servername: 'storage.yandexcloud.net'
+    host: 'storage.yandexcloud.net'
+    flow: 'xtls-rprx-vision'
+    reality-opts:
+      public-key: 'M6Ck7wUfOLhQl4582CBnaXwscPEP6SCpdEkUDzoj4Fc'
+      short-id: '123abcdf'
+    client-fingerprint: 'random'
+    skip-cert-verify: true
+    tfo: false
+    _poolOnly: true
+  - name: '[VMess] 🇮🇳 🇮🇳IN(AzadNet.t.me) 9'
+    server: '152.67.8.205'
+    port: 80
+    type: 'vmess'
+    uuid: '9db4c708-aef8-4359-821b-38e47990be0d'
+    alterId: 0
+    cipher: 'auto'
+    tls: false
+    skip-cert-verify: true
+    network: 'ws'
+    ws-opts:
+      path: '/'
+      headers:
+        Host: '152.67.8.205'
+    tfo: false
     _poolOnly: true
