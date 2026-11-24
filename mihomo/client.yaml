@@ -60,16 +60,15 @@ proxies:
     type: 'http'
     username: 'null'
     _poolOnly: true
-  - name: '🇳🇱NL_219|2.8MB/s|R002-260618 01'
-    password: 'null'
-    port: 9002
-    server: '84.17.47.147'
+  - name: '🇱🇻LV_24|2.4MB/s|K001-260618 [e8d4b41ce864]'
+    password: 'None'
+    port: 443
+    server: '185.219.159.16'
     skip-cert-verify: true
-    sni: '84.17.47.147'
-    sub_tag: 'R002-260618'
+    sub_tag: 'K001-260618'
     tls: true
     type: 'http'
-    username: 'null'
+    username: ''
     udp: true
     _poolOnly: true
 proxy-groups:
@@ -85,7 +84,7 @@ proxy-groups:
     proxies:
       - '[ermaozi-subscribe] 🇩🇪DE_2|1017KB/s'
       - '[cbusifabcap-clashmeta] ❓Other_23|318KB/s|R002-260618'
-      - '🇳🇱NL_219|2.8MB/s|R002-260618 01'
+      - '🇱🇻LV_24|2.4MB/s|K001-260618 [e8d4b41ce864]'
   - name: 'STICKY'
     type: 'select'
     proxies:
