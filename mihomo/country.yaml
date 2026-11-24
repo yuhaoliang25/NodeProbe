@@ -5,108 +5,47 @@ log-level: 'warning'
 ipv6: false
 proxies:
   - type: 'trojan'
-    name: '🇮🇷 t.me/rghoddoosi رسول قدوسی - 64'
-    server: '167.88.61.52'
+    name: '🇺🇸US_627'
+    server: '167.88.61.20'
     port: 443
     tls: false
     password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
     network: 'tcp'
-    sni: 'courses.browseseniorrolesandenhanceyourcareertoday.com'
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇺🇸 t.me/rghoddoosi رسول قدوسی - 1'
-    server: '38.121.43.231'
-    port: 19999
-    cipher: 'aes-256-gcm'
-    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
+    sni: 'api.browseseniorrolesandenhanceyourcareertoday.com'
     _poolOnly: true
   - type: 'vless'
-    name: 'EPODONIOS-ed3dc2abe69f54eb'
-    server: '104.26.12.31'
-    port: 8080
-    tls: false
-    uuid: '3e06b1db-2efb-446e-ba2d-68850dfd2f9d'
+    name: 'CA加拿大'
+    server: '172.64.152.19'
+    port: 443
+    tls: true
+    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
     network: 'ws'
-    sni: 'ip.sb'
+    sni: 'jp3.yohototo.top'
     ws-opts:
-      path: '/'
+      path: '/tyxyws'
       headers:
-        Host: 'bdfba-cool-tree-b580.v8fz4kbv.workers.dev'
+        Host: 'jp3.yohototo.top'
     _poolOnly: true
-  - type: 'trojan'
-    name: '🇯🇵 t.me/rghoddoosi رسول قدوسی - 19-0fc5c35fbcf73e91'
-    server: 'win2loxfde0303.gggrelay.org'
-    port: 34745
-    tls: false
-    password: '57beeeb0-03fc-4fc9-94da-7604488a7134'
-    network: 'tcp'
-    sni: 'nu3rb.supertoolify.com'
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇮🇷 t.me/rghoddoosi رسول قدوسی - 65-ba31ff394416cedc'
-    server: '47.91.74.232'
+  - name: '🇺🇸US-47.85.238.210-07'
+    server: '47.85.238.210'
     port: 443
+    type: 'ss'
     cipher: '2022-blake3-chacha20-poly1305'
-    password: '8yO3ANWefuuGs1lRKXECQA1FEhxlWFV2ppQMcBaZo5Y='
+    password: '3NBsnBLanPfG6i3S2GTHineswr6EeSJPb0PCeMQoGoA='
     _poolOnly: true
-  - type: 'ss'
-    name: '🇩🇪 t.me/rghoddoosi رسول قدوسی - 65-663b4423fc3866e4'
-    server: '8.209.72.224'
-    port: 443
-    cipher: '2022-blake3-chacha20-poly1305'
-    password: '8yO3ANWefuuGs1lRKXECQA1FEhxlWFV2ppQMcBaZo5Y='
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇩🇪 t.me/rghoddoosi رسول قدوسی - 65-aee33a95bc429f25'
-    server: '47.254.174.203'
-    port: 443
-    cipher: '2022-blake3-chacha20-poly1305'
-    password: '8yO3ANWefuuGs1lRKXECQA1FEhxlWFV2ppQMcBaZo5Y='
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇳🇱 t.me/rghoddoosi رسول قدوسی - 1-604add47784eecc4'
-    server: '66.163.127.155'
-    port: 443
+  - type: 'vmess'
+    name: '🇬🇧 GB 🇬🇧 | @Raydikalx | 1113BB'
+    server: '57.129.132.223'
+    port: 80
+    uuid: 'a25cbf11-2908-4a1b-a3a8-9a571777dca3'
+    alterId: 0
+    cipher: 'auto'
     tls: false
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'indyourperfectremotetechjobfromthecomfortofhome.com'
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇹🇼 t.me/rghoddoosi رسول قدوسی - 83'
-    server: '34.80.15.95'
-    port: 443
-    tls: false
-    password: '123456'
-    network: 'tcp'
-    sni: 'tw.ctt25.uk'
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇭🇰 t.me/rghoddoosi رسول قدوسی - 83-39c0bdd696aa17cc'
-    server: 'xvxn1hkzf.mateflora.com'
-    port: 443
-    tls: false
-    password: '57beeeb0-03fc-4fc9-94da-7604488a7134'
-    network: 'tcp'
-    sni: 'xvxn1hkzf.mateflora.com'
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇳🇬 t.me/rghoddoosi رسول قدوسی - 56'
-    server: 'sclass-00.catcat321.com'
-    port: 20103
-    tls: false
-    password: 'd9064589-74af-432a-9390-5d8a9da281bf'
-    network: 'tcp'
-    sni: 'hk.catxstar.com'
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇭🇰 t.me/rghoddoosi رسول قدوسی - 56'
-    server: 'sclass-c1.catcat321.com'
-    port: 20051
-    tls: false
-    password: 'd9064589-74af-432a-9390-5d8a9da281bf'
-    network: 'tcp'
-    sni: 'hk.catxstar.com'
+    network: 'ws'
+    ws-opts:
+      path: '/vmess/?TELEGRAM--B2Hub-B2Hub-B2Hub-B2Hub-B2Hub-B2Hub-B2Hub-B2Hub-B2Hub-B2Hub--TELEGRAM'
+      headers:
+        Host: 'google.com'
     _poolOnly: true
 proxy-groups:
   - name: 'COUNTRY'
@@ -114,11 +53,7 @@ proxy-groups:
     proxies:
       - 'DIRECT'
       - 'US · United States'
-      - 'JP · Japan'
-      - 'DE · Germany'
-      - 'NL · Netherlands'
-      - 'TW · Taiwan'
-      - 'HK · Hong Kong'
+      - 'GB · United Kingdom'
   - name: 'US · United States'
     type: 'url-test'
     url: 'https://www.google.com/generate_204'
@@ -126,48 +61,15 @@ proxy-groups:
     tolerance: 100
     lazy: false
     proxies:
-      - '🇺🇸 t.me/rghoddoosi رسول قدوسی - 1'
-  - name: 'JP · Japan'
+      - '🇺🇸US_627'
+      - '🇺🇸US-47.85.238.210-07'
+  - name: 'GB · United Kingdom'
     type: 'url-test'
     url: 'https://www.google.com/generate_204'
     interval: 300
     tolerance: 100
     lazy: false
     proxies:
-      - '🇯🇵 t.me/rghoddoosi رسول قدوسی - 19-0fc5c35fbcf73e91'
-  - name: 'DE · Germany'
-    type: 'url-test'
-    url: 'https://www.google.com/generate_204'
-    interval: 300
-    tolerance: 100
-    lazy: false
-    proxies:
-      - '🇩🇪 t.me/rghoddoosi رسول قدوسی - 65-663b4423fc3866e4'
-      - '🇩🇪 t.me/rghoddoosi رسول قدوسی - 65-aee33a95bc429f25'
-  - name: 'NL · Netherlands'
-    type: 'url-test'
-    url: 'https://www.google.com/generate_204'
-    interval: 300
-    tolerance: 100
-    lazy: false
-    proxies:
-      - '🇳🇱 t.me/rghoddoosi رسول قدوسی - 1-604add47784eecc4'
-  - name: 'TW · Taiwan'
-    type: 'url-test'
-    url: 'https://www.google.com/generate_204'
-    interval: 300
-    tolerance: 100
-    lazy: false
-    proxies:
-      - '🇹🇼 t.me/rghoddoosi رسول قدوسی - 83'
-  - name: 'HK · Hong Kong'
-    type: 'url-test'
-    url: 'https://www.google.com/generate_204'
-    interval: 300
-    tolerance: 100
-    lazy: false
-    proxies:
-      - '🇭🇰 t.me/rghoddoosi رسول قدوسی - 83-39c0bdd696aa17cc'
-      - '🇭🇰 t.me/rghoddoosi رسول قدوسی - 56'
+      - '🇬🇧 GB 🇬🇧 | @Raydikalx | 1113BB'
 rules:
   - 'MATCH,COUNTRY'
