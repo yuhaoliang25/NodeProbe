@@ -35,6 +35,13 @@ rule-providers:
     interval: 86400
     url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs'
 proxies:
+  - name: '[ermaozi-subscribe] 🇩🇪DE_2|1017KB/s'
+    port: 443
+    server: '172.64.69.89'
+    skip-cert-verify: true
+    tls: true
+    type: 'http'
+    _poolOnly: true
   - name: '[cbusifabcap-clashmeta] ❓Other_23|318KB/s|R002-260618'
     port: 443
     server: '172.64.68.89'
@@ -44,16 +51,18 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '[ermaozi-subscribe] 🇩🇪DE_2|1017KB/s'
+  - name: '[ermaozi-subscribe] 🇩🇪DE_2|2.9MB/s'
+    password: 'null'
     port: 443
-    server: '172.64.69.89'
+    server: '172.64.68.89'
     skip-cert-verify: true
     tls: true
     type: 'http'
+    username: 'null'
     _poolOnly: true
-  - name: '[zhuhaiuk-free-nodes] ID - zhuhai.uk'
+  - name: '[zhuhaiuk-free-nodes] SG - zhuhai.uk 02'
     type: 'http'
-    server: '103.86.117.202'
+    server: '154.26.139.24'
     port: 443
     tls: true
     skip-cert-verify: true
@@ -62,16 +71,16 @@ proxy-groups:
   - name: 'PROXY'
     type: 'select'
     proxies:
-      - '[cbusifabcap-clashmeta] ❓Other_23|318KB/s|R002-260618'
       - '[ermaozi-subscribe] 🇩🇪DE_2|1017KB/s'
-      - '[zhuhaiuk-free-nodes] ID - zhuhai.uk'
+      - '[cbusifabcap-clashmeta] ❓Other_23|318KB/s|R002-260618'
+      - '[ermaozi-subscribe] 🇩🇪DE_2|2.9MB/s'
       - 'DIRECT'
   - name: 'CHATGPT'
     type: 'select'
     proxies:
       - '[cbusifabcap-clashmeta] ❓Other_23|318KB/s|R002-260618'
       - '[ermaozi-subscribe] 🇩🇪DE_2|1017KB/s'
-      - '[zhuhaiuk-free-nodes] ID - zhuhai.uk'
+      - '[zhuhaiuk-free-nodes] SG - zhuhai.uk 02'
   - name: 'STICKY'
     type: 'select'
     proxies:

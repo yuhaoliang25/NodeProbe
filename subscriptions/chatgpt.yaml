@@ -15,9 +15,9 @@ proxies:
     tls: true
     type: 'http'
     _poolOnly: true
-  - name: '[zhuhaiuk-free-nodes] ID - zhuhai.uk'
+  - name: '[zhuhaiuk-free-nodes] SG - zhuhai.uk 02'
     type: 'http'
-    server: '103.86.117.202'
+    server: '154.26.139.24'
     port: 443
     tls: true
     skip-cert-verify: true
