@@ -4,473 +4,3814 @@ mode: 'rule'
 log-level: 'warning'
 ipv6: false
 proxies:
-  - name: '[VLESS] 🇽🇽XX(AzadNet.t.me) 71'
-    server: '172.64.154.113'
-    port: 8443
-    type: 'vless'
-    tls: true
-    uuid: '53bbdad4-2f4e-45db-8df4-fa491a6a7227'
-    servername: 'freeceshi6.frii.site'
+  - ip: '172.16.0.2/32'
+    mtu: 1280
+    name: '🇨🇳CN_1|1.3MB/s'
+    port: 500
+    presharedkey: ''
+    private-key: 'cMxekgAnVSNb+rgOySV+74ogaJhqpJtShZaECZCY6k4='
+    public-key: 'bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo='
+    reserved:
+      - 236
+      - 210
+      - 245
+    server: '162.159.192.1'
+    type: 'wireguard'
+    udp: true
+    _poolOnly: true
+  - name: '🇸🇬[www.v2nodes.com] vless-SG #1'
     network: 'ws'
+    port: 443
+    server: '172.64.145.94'
+    servername: 'powered-by-surena.configfarsi695fd01a94fe7.workers.dev'
+    tls: true
+    type: 'vless'
+    uuid: '5dc15e15-f285-4a9d-959b-0e4fbdd77b63'
     ws-opts:
-      path: '/?Telegram---PLANB_NET---PLANB_NET---PLANB_NET---PLANB_NET'
       headers:
-        Host: 'freeceshi6.frii.site'
-    skip-cert-verify: true
-    tfo: false
+        Host: 'powered-by-surena.configfarsi695fd01a94fe7.workers.dev'
+      path: '/fp=chrome'
     _poolOnly: true
-  - name: '[SS] 🇺🇸 🇺🇸US(AzadNet.t.me) 14'
-    server: '129.146.200.49'
-    port: 50356
-    type: 'ss'
-    cipher: '2022-blake3-chacha20-poly1305'
-    password: '011mfoSmYFVhBNbKk0V5DxqGs9PwrsqY+9EAhOll+58='
-    tfo: false
+  - ip: '172.16.0.2/32'
+    mtu: 1380
+    name: '🇨🇳CN_3|2.3MB/s'
+    port: 2371
+    presharedkey: ''
+    private-key: 'CBMxaub4dG7Q9W91x4+lUCqtF9eV1BN+4osBfWZNXHs='
+    public-key: 'bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo='
+    reserved:
+      - 225
+      - 17
+      - 205
+    server: '162.159.195.4'
+    type: 'wireguard'
+    udp: true
     _poolOnly: true
-  - name: '[VLESS] 🇫🇷 🇫🇷FR(AzadNet.t.me) 38'
-    server: '195.216.169.229'
-    port: 9543
+  - name: 'ZZ · VLESS · freeclashnode · 05FE1378'
     type: 'vless'
-    tls: true
-    uuid: '920b3cd9-4f82-4669-bbd2-d4a28b9052c6'
-    servername: 'storage.yandexcloud.net'
-    host: 'storage.yandexcloud.net'
-    flow: 'xtls-rprx-vision'
-    reality-opts:
-      public-key: 'M6Ck7wUfOLhQl4582CBnaXwscPEP6SCpdEkUDzoj4Fc'
-      short-id: '123abcdf'
-    client-fingerprint: 'random'
-    skip-cert-verify: true
-    tfo: false
-    _poolOnly: true
-  - name: '[VLESS] 🇨🇿CZ(AzadNet.t.me)'
-    server: '212.192.3.113'
-    port: 9543
-    type: 'vless'
-    tls: true
-    uuid: '920b3cd9-4f82-4669-bbd2-d4a28b9052c6'
-    servername: 'storage.yandexcloud.net'
-    host: 'storage.yandexcloud.net'
-    flow: 'xtls-rprx-vision'
-    reality-opts:
-      public-key: 'M6Ck7wUfOLhQl4582CBnaXwscPEP6SCpdEkUDzoj4Fc'
-      short-id: '123abcdf'
-    client-fingerprint: 'random'
-    skip-cert-verify: true
-    tfo: false
-    _poolOnly: true
-  - name: '[VLESS] 🇩🇪 🇩🇪DE(AzadNet.t.me) 18'
-    server: '146.103.41.14'
-    port: 9543
-    type: 'vless'
-    tls: true
-    uuid: '920b3cd9-4f82-4669-bbd2-d4a28b9052c6'
-    servername: 'storage.yandexcloud.net'
-    host: 'storage.yandexcloud.net'
-    flow: 'xtls-rprx-vision'
-    reality-opts:
-      public-key: 'M6Ck7wUfOLhQl4582CBnaXwscPEP6SCpdEkUDzoj4Fc'
-      short-id: '123abcdf'
-    client-fingerprint: 'random'
-    skip-cert-verify: true
-    tfo: false
-    _poolOnly: true
-  - name: '[VLESS] 🇽🇽XX(AzadNet.t.me) 77'
-    server: 'ws.liuzedong.ltd'
+    server: '172.64.145.94'
     port: 443
-    type: 'vless'
-    tls: true
-    uuid: 'FCEAD694-2E27-4EEB-8836-9D4ACF3E028B'
-    servername: 'ws.liuzedong.ltd'
+    uuid: '5dc15e15-f285-4a9d-959b-0e4fbdd77b63'
     network: 'ws'
-    ws-opts:
-      path: '/ws'
-      headers:
-        Host: 'ws.liuzedong.ltd'
-    skip-cert-verify: true
-    tfo: false
-    _poolOnly: true
-  - name: '[SS] 🇸🇬 🇸🇬SG(AzadNet.t.me)'
-    server: '27.124.5.86'
-    port: 8388
-    type: 'ss'
-    cipher: '2022-blake3-aes-256-gcm'
-    password: 'j4DddfVh3zON1s3Wfbmdn2WWhLCWAaOJyKqdeKvxh4A='
-    tfo: false
-    _poolOnly: true
-  - name: '[VLESS] 🇺🇸 🇺🇸US(AzadNet.t.me) 72'
-    server: 'birchbark.gerqix.online'
-    port: 443
-    type: 'vless'
     tls: true
-    uuid: '0b6a7fe0-206b-4071-9f96-cd397d1ec01a'
-    servername: 'birchbark.gerqix.online'
-    alpn:
-      - 'h2'
-    network: 'grpc'
-    grpc-opts:
-      grpc-mode: 'gun'
-      grpc-service-name: 'glush.de7.v1'
-    skip-cert-verify: true
-    tfo: false
-    _poolOnly: true
-  - name: '[VLESS] 🇧🇷BR(AzadNet.t.me) 4'
-    server: '179.254.126.86'
-    port: 25135
-    type: 'vless'
-    tls: true
-    uuid: 'e89a2a0e-7803-447e-b050-3ba67962ed95'
-    servername: 's-25452.nl18.h1clayd.click'
-    host: 's-25452.nl18.h1clayd.click'
-    reality-opts:
-      public-key: 'zJI16_ywLd4clshY0IQQPxQ_YBbIq2b0XTO_dnTJOy4'
-      short-id: 'fe51f413b9646e97'
-    client-fingerprint: 'random'
-    skip-cert-verify: true
-    tfo: false
-    _poolOnly: true
-  - name: '[VLESS] 🇺🇸 🇺🇸US(AzadNet.t.me) 135'
-    server: '4935e4t.de25.h1clayd.click'
-    port: 443
-    type: 'vless'
-    tls: true
-    uuid: '4201786b-d99b-4147-a5f0-20d47acddb81'
-    servername: '4935e4t.de25.h1clayd.click'
-    host: '4935e4t.de25.h1clayd.click'
-    flow: 'xtls-rprx-vision'
-    reality-opts:
-      public-key: 'MzgB17ZFbKqs8pbC3EscTzHid_ENc-k_Cp6nXl-2knw'
-      short-id: '6976d670818644cc'
-    client-fingerprint: 'random'
-    skip-cert-verify: true
-    tfo: false
-    _poolOnly: true
-  - name: '[VLESS] 🇺🇸 🇺🇸US(AzadNet.t.me) 74'
-    server: '72.56.238.135'
-    port: 443
-    type: 'vless'
-    tls: true
-    uuid: '0b6a7fe0-206b-4071-9f96-cd397d1ec01a'
-    servername: 'parchment.merlano.monster'
-    network: 'ws'
-    ws-opts:
-      path: '/api/de7/stream'
-      headers:
-        Host: 'parchment.merlano.monster'
-    skip-cert-verify: true
-    tfo: false
-    _poolOnly: true
-  - type: 'vless'
-    name: '🇰🇷KR_37'
-    server: '152.69.226.63'
-    port: 25555
-    tls: false
-    uuid: '27c5483f-17f4-48ae-9a04-def53d88440d'
-    network: 'ws'
-    sni: '152.69.226.63'
+    servername: 'powered-by-surena.configfarsi695fd01a94fe7.workers.dev'
+    client-fingerprint: 'chrome'
     ws-opts:
       path: '/'
+      headers:
+        Host: 'powered-by-surena.configfarsi695fd01a94fe7.workers.dev'
     _poolOnly: true
-  - name: '[VLESS] 🇺🇦 🇺🇦UA(AzadNet.t.me)'
-    server: '212.87.190.232'
+  - ip: '172.16.0.2/32'
+    ipv6: '2606:4700:110:8e4e:939b:b987:39aa:c46c/128'
+    mtu: 1280
+    name: '🇺🇸US_14|3.0MB/s'
+    port: 3854
+    private-key: 'OEysS/3kryZt7O/RobQFlmPatDWuUl9bwef0IoMX/Uo='
+    public-key: 'bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo='
+    reserved:
+      - 0
+      - 0
+      - 0
+    server: '8.6.112.134'
+    type: 'wireguard'
+    udp: true
+    _poolOnly: true
+  - name: '🇸🇬[www.v2nodes.com] vless-SG-1... #7'
+    network: 'ws'
+    port: 8443
+    server: '172.64.154.113'
+    servername: 'freeceshi6.frii.site'
+    tls: true
+    type: 'vless'
+    uuid: '53bbdad4-2f4e-45db-8df4-fa491a6a7227'
+    ws-opts:
+      headers:
+        Host: 'freeceshi6.frii.site'
+      path: '/proxyip=ProxyIP.JP.CMLiussss.netfp=chrome'
+    _poolOnly: true
+  - ip: '172.16.0.2/32'
+    keepalive: '5'
+    mtu: 1280
+    name: '🇨🇳CN_5|2.4MB/s'
+    persistent-keepalive: '5'
+    port: 2408
+    private-key: 'iP43+YO4O28eA8W6YRhSasNI0fggDS6efGoSL4AAIU4='
+    public-key: 'bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo='
+    reserved:
+      - 213
+      - 69
+      - 137
+    server: '162.159.192.3'
+    type: 'wireguard'
+    udp: true
+    wnoise: 'quic'
+    wnoisecount: '5'
+    wnoisedelay: '5'
+    wpayloadsize: '40-90'
+    _poolOnly: true
+  - type: 'trojan'
+    name: 'SG新加坡(mibei77.com 米贝节点分享) (2)'
+    server: '172.66.47.18'
+    port: 443
+    password: 'e7TTceggMwUMg+aFN:F4'
+    udp: true
+    tls: true
+    servername: 'APkD964o1oghlTghHt0L0Of.pAgeS.Dev'
+    sni: 'APkD964o1oghlTghHt0L0Of.pAgeS.Dev'
+    skip-cert-verify: false
+    network: 'ws'
+    ws-opts:
+      path: '/tr/SIeRkg2QvR2Zcpu0SeEMow?ed=2560'
+    _poolOnly: true
+  - ip: '172.16.0.2/32'
+    mtu: 1280
+    name: '🇨🇳CN_2|2.3MB/s'
+    port: 500
+    presharedkey: ''
+    private-key: '2D+QMolgGWVRVGdJJvsQ4VBDCcZTym0c1sFN00PeMUs='
+    public-key: 'bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo='
+    reserved:
+      - 213
+      - 74
+      - 19
+    server: '162.159.192.3'
+    type: 'wireguard'
+    udp: true
+    _poolOnly: true
+  - ip: '172.16.0.2/32'
+    keepalive: '5'
+    mtu: 1280
+    name: '🇨🇳CN_4|2.7MB/s'
+    persistent-keepalive: '5'
+    port: 4500
+    private-key: 'QN9e//MZcXBdaz7vDo7hX6tY5xh2yFzlActftLGlA10='
+    public-key: 'bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo='
+    reserved:
+      - 255
+      - 89
+      - 117
+    server: '162.159.192.1'
+    type: 'wireguard'
+    udp: true
+    wnoise: 'quic'
+    wnoisecount: '5'
+    wnoisedelay: '5'
+    wpayloadsize: '40-90'
+    _poolOnly: true
+  - name: 'FR · VLESS · freeclashnode · 0F2ED0C0'
+    type: 'vless'
+    server: '154.197.64.252'
+    port: 443
+    uuid: '08038e90-7fe9-49c9-bbdc-b7044d6bd348'
+    network: 'ws'
+    tls: true
+    servername: 'worker3.notoj58234.workers.dev'
+    client-fingerprint: 'chrome'
+    ws-opts:
+      path: '/'
+      headers:
+        Host: 'worker3.notoj58234.workers.dev'
+    _poolOnly: true
+  - name: 'FR · VLESS · freeclashnode · 0DBA9DAE'
+    type: 'vless'
+    server: '104.19.52.70'
+    port: 8443
+    uuid: 'fceb3200-2516-47d2-8e28-d04ecde9427a'
+    network: 'ws'
+    tls: true
+    servername: 'edge-fef90023.pages.dev'
+    client-fingerprint: 'firefox'
+    ws-opts:
+      path: '/'
+      headers:
+        Host: 'edge-fef90023.pages.dev'
+    _poolOnly: true
+  - name: '🇫🇷FR_119|1.3MB/s|K001-260618 [ec92deb18f1d]'
+    client-fingerprint: 'chrome'
+    network: 'ws'
+    port: 443
+    server: '104.17.44.17'
+    sub_tag: 'K001-260618'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: 'd37a75db-76b6-4db8-b213-0d5b044d138d'
+    ws-opts:
+      headers:
+        Host: 'top-e4s.pages.dev'
+        User-Agent: 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36 MVisionPlayer/1.0.0.0'
+      path: '/fp=unsafe'
+    xudp: true
+    packet-encoding: 'xudp'
+    servername: 'top-e4s.pages.dev'
+    _poolOnly: true
+  - name: '🇺🇸US_327|83KB/s|R002-260618 [f9ebf4bb49d2]'
+    port: 7615
+    server: '47.90.206.169'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: 'US · VLESS · freeclashnode · 00D9DA4A'
+    type: 'vless'
+    server: '188.114.98.0'
+    port: 443
+    uuid: 'd4733e5a-5850-4523-942e-f28f82ebf4a9'
+    network: 'ws'
+    tls: true
+    servername: 'party-5cn.pages.dev'
+    client-fingerprint: 'chrome'
+    ws-opts:
+      path: '/?TELEGRAM--MARAMBASHI--MARAMBASHI--MARAMBASHI--MARAMBASHI?ed=2560'
+      headers:
+        Host: 'party-5cn.pages.dev'
+    _poolOnly: true
+  - name: 'trojan-1943754366-source-d2b95f4cfabaf7c2'
+    network: 'tcp'
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    port: 443
+    server: '216.152.155.131'
+    skip-cert-verify: true
+    type: 'trojan'
+    _poolOnly: true
+  - name: 'US · VMESS · freeclashnode · 0879252A'
+    type: 'vmess'
+    server: '162.251.60.97'
+    port: 1270
+    uuid: '5c040f1d-45db-43bd-8d46-e4950e433735'
+    alterId: 0
+    cipher: 'auto'
+    network: 'tcp'
+    tls: true
+    servername: 'xmfhlpy.com'
+    _poolOnly: true
+  - name: 'US · VMESS · freeclashnode · 18BE0E67'
+    type: 'vmess'
+    server: '38.128.66.249'
+    port: 1270
+    uuid: '5c040f1d-45db-43bd-8d46-e4950e433735'
+    alterId: 0
+    cipher: 'auto'
+    network: 'tcp'
+    tls: true
+    servername: 'xmfhlpy.com'
+    _poolOnly: true
+  - name: 'CA · VLESS · clashmeta · 5AFB5CA5'
+    type: 'vless'
+    server: '172.64.149.88'
+    port: 443
+    uuid: 'd37a75db-76b6-4db8-b213-0d5b044d138d'
+    network: 'ws'
+    tls: true
+    servername: 'top-e4s.pages.dev'
+    client-fingerprint: 'unsafe'
+    ws-opts:
+      path: '/'
+      headers:
+        Host: 'top-e4s.pages.dev'
+    _poolOnly: true
+  - name: 'FR · VLESS · freeclashnode · D6444C90'
+    type: 'vless'
+    server: 'www.speedtest.net'
+    port: 443
+    uuid: '85550ebf-fd43-42dd-9801-bda528fea2fc'
+    network: 'ws'
+    tls: true
+    servername: 'wallweb5.pages.dev'
+    client-fingerprint: 'chrome'
+    ws-opts:
+      path: '/'
+      headers:
+        Host: 'wallweb5.pages.dev'
+    _poolOnly: true
+  - name: '[500] 🇺🇸 IONOS Inc. WS SNI'
+    network: 'ws'
+    port: 30016
+    server: '69.48.201.136'
+    servername: 'uspanel.unixzone.us'
+    skip-cert-verify: true
+    tls: false
+    type: 'vless'
+    udp: true
+    uuid: '03dc60cb-a8d4-4226-93fe-0e6cbf77fe5a'
+    ws-opts:
+      headers:
+        Host: 'uspanel.unixzone.us'
+      path: '/usserver'
+    _poolOnly: true
+  - name: 'trojan-1931229905-source-27fa0e6cd75c7a7e'
+    network: 'tcp'
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    port: 443
+    server: '216.152.156.65'
+    skip-cert-verify: true
+    type: 'trojan'
+    _poolOnly: true
+  - name: 'trojan-1940466747-source-ea0249d569423355'
+    network: 'tcp'
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    port: 443
+    server: '216.152.156.81'
+    skip-cert-verify: true
+    type: 'trojan'
+    _poolOnly: true
+  - name: '🆓13@oneclickvpnkeys'
+    password: '04920673-035c-410d-94e4-5b1469d3fb6f'
+    port: 42848
+    server: '171.22.183.158'
+    skip-cert-verify: true
+    sni: '171.22.183.158'
+    tls: false
+    type: 'hysteria2'
+    _poolOnly: true
+  - name: '@V2rayNPVTConfig'
+    password: '04920673-035c-410d-94e4-5b1469d3fb6f'
+    port: 42848
+    server: '171.22.183.158'
+    skip-cert-verify: false
+    tls: false
+    type: 'hysteria2'
+    _poolOnly: true
+  - client-fingerprint: 'chrome'
+    name: '@OutlineReleasedKey #2'
+    password: '549766c3-fa5f-471e-8031-ffc1f8d5064f'
+    port: 24403
+    server: '94.183.164.119'
+    sni: 'docs.blog-forme.ru'
+    tls: false
+    type: 'hysteria2'
+    _poolOnly: true
+  - cipher: 'aes-256-gcm'
+    name: '🇺🇸US-38.91.107.188-0141'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
+    port: 19999
+    server: '38.91.107.188'
+    type: 'ss'
+    _poolOnly: true
+  - name: '🇺🇸US_183|315KB/s|R002-260618 [f3757137fc03]'
+    port: 443
+    server: '129.153.93.183'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: 'US · VMESS · clashnode · 40EABEDA'
+    type: 'vmess'
+    server: '107.150.19.24'
+    port: 54321
+    uuid: '2659ef8a-3456-48f8-95fe-08b82d3f4984'
+    alterId: 0
+    cipher: 'auto'
+    alpn:
+      - ''
+    http-opts:
+      headers:
+        Host:
+          - 'down-cdn.dingtalk.com'
+      path:
+        - '/x'
+    network: 'http'
+    skip-cert-verify: false
+    sub_tag: 'M003-260806'
+    tls: false
+    udp: true
+    xudp: true
+    packet-encoding: 'xudp'
+    _poolOnly: true
+  - cipher: '2022-blake3-chacha20-poly1305'
+    name: '🇩🇪DE_7|1.4MB/s'
+    password: 'Cg2Dw4OhdBZhqbeO9ZTA3g/Gk/AvsrYZGhAJeGnQIx4='
+    port: 443
+    server: '35.178.82.244'
+    type: 'ss'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_14|771KB/s|R002-260618 [430dc52727da]'
+    port: 9002
+    server: '138.199.35.198'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_23|831KB/s|P002-260618 [3d6858c0edb1]'
+    password: 'null'
+    port: 9002
+    server: '138.199.35.202'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_149|789KB/s|R002-260618 [7999de0c275c]'
+    password: 'None'
+    port: 9002
+    server: '138.199.35.201'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_248|735KB/s|R002-260618 [bddf99e54974]'
+    password: 'null'
+    port: 9002
+    server: '138.199.35.219'
+    skip-cert-verify: true
+    sni: '138.199.35.219'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_277|371KB/s|P002-260618 [cd51b3cc2bd7]'
+    password: 'None'
+    port: 9002
+    server: '138.199.35.210'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_66|761KB/s|R002-260618 [598978da4bbc]'
+    port: 9002
+    server: '138.199.35.211'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_120|800KB/s|P002-260618 [7feeec8f30cf]'
+    password: 'None'
+    port: 9002
+    server: '138.199.35.212'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_224|759KB/s|R002-260618 [82a1098fb882]'
+    port: 9002
+    server: '138.199.35.215'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_42|718KB/s|P002-260618 [2df51a0db43f]'
+    password: 'None'
+    port: 9002
+    server: '138.199.35.202'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_97|692KB/s|R002-260618 [2d2bb008072d]'
+    password: 'null'
+    port: 9002
+    server: '138.199.35.212'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_6|770KB/s|P002-260618 [342fedcdd2a9]'
+    password: 'None'
+    port: 9002
+    server: '138.199.35.217'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_101|320KB/s|P002-260618 [3fb4f934a2bc]'
+    password: 'None'
+    port: 9002
+    server: '138.199.35.208'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_20|578KB/s|P002-260618 [4cc71e0918ac]'
+    password: 'None'
+    port: 9002
+    server: '138.199.35.216'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_334|804KB/s|R002-260618 [5385a051842e]'
+    password: 'null'
+    port: 9002
+    server: '138.199.35.216'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_107|742KB/s|P002-260618 [66ebf6ae1341]'
+    password: ''
+    port: 9002
+    server: '138.199.35.210'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    username: ''
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_228|689KB/s|P002-260618 [9411ee14b7b3]'
+    password: 'null'
+    port: 9002
+    server: '138.199.35.217'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_342|470KB/s [d4a1bf05a3c6]'
+    password: 'null'
+    port: 9002
+    server: '138.199.35.200'
+    skip-cert-verify: true
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: 'US · HTTP · clashnode · 5DB2CBF4'
+    type: 'http'
+    server: '138.199.35.219'
+    port: 9002
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    udp: true
+    username: 'null'
+    password: 'null'
+    _poolOnly: true
+  - name: '🇺🇸US_9|774KB/s|P002-260618 [1e13e95b0e5a]'
+    password: 'None'
+    port: 9002
+    server: '138.199.35.220'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_325|754KB/s|P002-260618 [2066bdd63838]'
+    password: 'None'
+    port: 9002
+    server: '138.199.35.199'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_139|838KB/s|P002-260618 [30b959b768eb]'
+    password: 'None'
+    port: 9002
+    server: '138.199.35.214'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_205|732KB/s|R002-260618 [39054f90cbcc]'
+    password: 'null'
+    port: 9002
+    server: '138.199.35.202'
+    skip-cert-verify: true
+    sni: '138.199.35.202'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_140|759KB/s|R002-260618 [57beb1e2a7df]'
+    password: 'null'
+    port: 9002
+    server: '138.199.35.198'
+    skip-cert-verify: true
+    sni: '138.199.35.198'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_239|793KB/s|P002-260618 [b90a89b0573a]'
+    password: 'None'
+    port: 9002
+    server: '138.199.35.206'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_195|749KB/s [bdd89167a37f]'
+    password: 'null'
+    port: 9002
+    server: '138.199.35.213'
+    skip-cert-verify: true
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_141|784KB/s|P002-260618 [c3059253814a]'
+    password: 'null'
+    port: 9002
+    server: '138.199.35.198'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_121|764KB/s|P002-260618 [d6053f38ebec]'
+    password: 'None'
+    port: 9002
+    server: '138.199.35.198'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_13|831KB/s|P002-260618 [e842f77422a7]'
+    password: 'None'
+    port: 9002
+    server: '138.199.35.207'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_223|812KB/s [f658df7df711]'
+    password: ''
+    port: 9002
+    server: '138.199.35.218'
+    skip-cert-verify: true
+    tls: true
+    type: 'http'
+    username: ''
+    udp: true
+    _poolOnly: true
+  - name: 'US · HTTP · clashnode · 4A53BD15'
+    type: 'http'
+    server: '138.199.35.209'
+    port: 9002
+    skip-cert-verify: true
+    sni: '138.199.35.209'
+    sub_tag: 'R002-260618'
+    tls: true
+    udp: true
+    username: 'null'
+    password: 'null'
+    _poolOnly: true
+  - name: '🇺🇸US_61|498KB/s|R002-260618 [1ac4d958cac3]'
+    password: 'null'
+    port: 9002
+    server: '138.199.35.199'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_250|758KB/s|R002-260618 [4ac5d05f7655]'
+    port: 9002
+    server: '138.199.35.220'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_225|749KB/s|R002-260618 [54fae4ceb8c7]'
+    port: 9002
+    server: '138.199.35.216'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_90|413KB/s|R002-260618 [5bfea617b8dd]'
+    port: 9002
+    server: '138.199.35.204'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_173|837KB/s|P002-260618 [6c613d96f69b]'
+    password: 'null'
+    port: 9002
+    server: '138.199.35.209'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_193|748KB/s|R002-260618 [99f87f2b140a]'
+    password: 'null'
+    port: 9002
+    server: '138.199.35.210'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_220|500KB/s [9ad570cf8a0d]'
+    password: ''
+    port: 9002
+    server: '138.199.35.205'
+    skip-cert-verify: true
+    tls: true
+    type: 'http'
+    username: ''
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_343|799KB/s|P002-260618 [a8fb52dac60b]'
+    password: 'None'
+    port: 9002
+    server: '138.199.35.196'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_218|835KB/s|P002-260618 [cc2d161c221c]'
+    password: 'None'
+    port: 9002
+    server: '138.199.35.219'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_240|814KB/s|P002-260618 [d1e830ac3b71]'
+    password: 'null'
+    port: 9002
+    server: '138.199.35.220'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_150|817KB/s|R002-260618 [1fd0f978ab09]'
+    password: 'null'
+    port: 9002
+    server: '138.199.35.197'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_198|832KB/s|P002-260618 [8d81cfcb4761]'
+    password: 'null'
+    port: 9002
+    server: '138.199.35.218'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_419|755KB/s|K001-260618 [c6e1aea44c4a]'
+    password: 'None'
+    port: 9002
+    server: '138.199.35.203'
+    skip-cert-verify: true
+    sub_tag: 'K001-260618'
+    tls: true
+    type: 'http'
+    username: ''
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_281|775KB/s|P002-260618 [de266c2b5bde]'
+    password: 'None'
+    port: 9002
+    server: '138.199.35.215'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_227|796KB/s|P002-260618 [69a5c36ac9fa]'
+    password: 'None'
+    port: 9002
+    server: '138.199.35.204'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_217|800KB/s|R002-260618 [69ea03375d59]'
+    password: 'None'
+    port: 9002
+    server: '138.199.35.195'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_59|842KB/s|R002-260618 [712a67040d3e]'
+    port: 9002
+    server: '138.199.35.206'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_215|854KB/s|R002-260618 [d405161e00fc]'
+    port: 9002
+    server: '138.199.35.197'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_106|741KB/s|P002-260618 [2cca269a4ba7]'
+    password: 'null'
+    port: 9002
+    server: '138.199.35.195'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '@VPsave #1'
+    obfs: 'salamander'
+    obfs-password: 're61ep4ancwplwh8'
+    password: '57beeeb0-03fc-4fc9-94da-7604488a7134'
+    port: 40055
+    server: 'a3dgus.supertoolify.com'
+    skip-cert-verify: true
+    sni: 'psstatic.cdn.bcebos.com'
+    tls: false
+    type: 'hysteria2'
+    _poolOnly: true
+  - alpn:
+      - 'h3'
+    name: 'ᴛᴇʟᴇɢʀᴀᴍ ɪᴅ = @ꜰxxɴᴇᴛ🤡'
+    obfs: 'salamander'
+    obfs-password: 'qrl-03E8Q6JaUlAkOPHXQBwN'
+    password: '74bec046f0004aa5bc280ecc4ab50465'
+    port: 443
+    server: '216.73.157.142'
+    skip-cert-verify: false
+    sni: '216.73.157.142'
+    tls: false
+    type: 'hysteria2'
+    _poolOnly: true
+  - name: '🇮🇹IT-05 · 309K/s'
+    server: '202.50.253.27'
+    port: 19999
+    type: 'ss'
+    cipher: 'aes-256-gcm'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸 23@exclavevpn'
+    obfs: 'salamander'
+    obfs-password: 're61ep4ancwplwh8'
+    password: '57beeeb0-03fc-4fc9-94da-7604488a7134'
+    port: 40055
+    server: '154.40.49.216'
+    skip-cert-verify: true
+    sni: 'psstatic.cdn.bcebos.com'
+    tls: false
+    type: 'hysteria2'
+    _poolOnly: true
+  - alpn:
+      - 'h3'
+    name: '@V2rayNPVTConfig #1'
+    password: '04920673-035c-410d-94e4-5b1469d3fb6f'
+    port: 42848
+    server: '91.211.27.231'
+    skip-cert-verify: false
+    sni: '171.22.183.158'
+    tls: false
+    type: 'hysteria2'
+    _poolOnly: true
+  - alpn:
+      - 'h2'
+      - 'http/1.1'
+    client-fingerprint: 'chrome'
+    encryption: 'none'
+    flow: 'xtls-rprx-vision'
+    name: '🇳🇱NL_9|4.1MB/s'
+    network: 'tcp'
+    port: 443
+    server: '185.200.199.122'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '04920673-035c-410d-94e4-5b1469d3fb6f'
+    xudp: true
+    _poolOnly: true
+  - name: '🇺🇸US_213|200KB/s|R002-260618 [886f746fa672]'
+    port: 443
+    server: '137.175.22.96'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_45|69KB/s|R002-260618 [1fc116c439cd]'
+    port: 443
+    server: '137.175.22.116'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇮🇪IE_6|3.5MB/s|K001-260618 [ebe2b193bdbc]'
+    password: 'None'
+    port: 443
+    server: '18.200.158.139'
+    skip-cert-verify: true
+    sub_tag: 'K001-260618'
+    tls: true
+    type: 'http'
+    username: ''
+    udp: true
+    _poolOnly: true
+  - alterId: 0
+    cipher: 'auto'
+    name: 'FR 🇫🇷 | @Raydikalx | 4C225F #1'
+    network: 'tcp'
+    port: 1270
+    server: '46.105.222.156'
+    servername: 'xmfhlpy.com'
+    tls: true
+    type: 'vmess'
+    uuid: '5c040f1d-45db-43bd-8d46-e4950e433735'
+    _poolOnly: true
+  - name: 'MX · SOCKS5 · clashnode · 70E55AA5'
+    type: 'socks5'
+    server: '94.194.165.96'
+    port: 62000
+    sub_tag: 'R002-260618'
+    udp: true
+    username: 'QyVdo5ks'
+    password: 'lcFa8dTH'
+    _poolOnly: true
+  - name: '🇩🇪DE_5|282KB/s|R002-260618 [3c848704dd46]'
+    password: 'udp-relay=true'
+    port: 11111
+    server: '103.237.102.191'
+    sub_tag: 'R002-260618'
+    type: 'http'
+    username: 'None'
+    udp: true
+    _poolOnly: true
+  - name: '🇩🇪DE_2|5.0MB/s|P002-260618 [b982eaaa5258]'
+    password: 'None'
+    port: 11111
+    server: '103.237.102.191'
+    sub_tag: 'P002-260618'
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_124|738KB/s|R002-260618 [f68eff2eac5f]'
+    port: 443
+    server: 'mmgr.club'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    sni: 'mmgr.club'
+    _poolOnly: true
+  - name: '🇺🇸US_231|719KB/s|P002-260618 [78c07ea64a89]'
+    password: 'None'
+    port: 443
+    server: 'efr-marktplatz.club'
+    skip-cert-verify: false
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    sni: 'efr-marktplatz.club'
+    _poolOnly: true
+  - name: '🇺🇸US_321|800KB/s|P002-260618 [e1045d79dae0]'
+    password: 'None'
+    port: 443
+    server: 'jewelscollecti.icu'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    sni: 'jewelscollecti.icu'
+    _poolOnly: true
+  - name: '🇺🇸US_94|577KB/s|P002-260618 [c8264c24d457]'
+    password: 'None'
+    port: 443
+    server: 'mmgr.club'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    sni: 'mmgr.club'
+    _poolOnly: true
+  - name: '🇺🇸US_123|782KB/s|R002-260618 [f96d8fe2cd92]'
+    password: 'None'
+    port: 443
+    server: 'jgwynphotoarts.pro'
+    skip-cert-verify: false
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    sni: 'jgwynphotoarts.pro'
+    _poolOnly: true
+  - name: '🇺🇸US_31|607KB/s|P002-260618 [9d68984591b5]'
+    password: 'None'
+    port: 443
+    server: 'purecambogiasl.live'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    sni: 'purecambogiasl.live'
+    _poolOnly: true
+  - name: '🇺🇸US_326|774KB/s|R002-260618 [a570d214b4cf]'
+    password: 'null'
+    port: 443
+    server: 'voteshirleysew.club'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    sni: 'voteshirleysew.club'
+    _poolOnly: true
+  - name: '🇺🇸US_24|636KB/s|R002-260618 [c0d594964827]'
+    port: 443
+    server: 'webdrone.club'
+    skip-cert-verify: false
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    sni: 'webdrone.club'
+    _poolOnly: true
+  - name: '🇺🇸US_312|379KB/s|R002-260618 [747f40a249e2]'
+    password: 'sni=\"goedkoopgeluid.icu\"'
+    port: 443
+    server: 'goedkoopgeluid.icu'
+    sni: 'goedkoopgeluid.icu'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'None'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_71|765KB/s|R002-260618 [fc73875d8c32]'
+    port: 443
+    server: 'goedkoopgeluid.icu'
+    skip-cert-verify: true
+    sni: 'goedkoopgeluid.icu'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_70|791KB/s|R002-260618 [d6b1d93bf171]'
+    port: 443
+    server: 'purposebydesig.club'
+    sni: 'purposebydesig.club'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_163|730KB/s|R002-260618 [e7b56fb2aa36]'
+    password: 'null'
+    port: 443
+    server: 'fullmanfirm.icu'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    sni: 'fullmanfirm.icu'
+    _poolOnly: true
+  - name: '🇺🇸US_162|786KB/s|R002-260618 [75c47cca7d0a]'
+    password: 'null'
+    port: 443
+    server: 'purposebydesig.club'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    sni: 'purposebydesig.club'
+    _poolOnly: true
+  - name: '🇺🇸US_77|749KB/s|R002-260618 [d9ecc980fba0]'
+    port: 443
+    server: 'crosscards.site'
+    sni: 'crosscards.site'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_11|466KB/s|P002-260618 [d842677472af]'
+    password: 'None'
+    port: 443
+    server: 'goedkoopgeluid.icu'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    sni: 'goedkoopgeluid.icu'
+    _poolOnly: true
+  - name: '🇳🇱NL_126|1.9MB/s|P002-260618 [64363aa77890]'
+    password: 'None'
+    port: 443
+    server: '5.255.118.82'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇳🇱NL_239|266KB/s|R002-260618 [1ab44c194f27]'
+    port: 443
+    server: '5.255.125.188'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_73|388KB/s|R002-260618 [f485c49773a6]'
+    password: 'e4b72b531a2d10900519'
+    port: 443
+    server: '162.243.146.243'
+    sni: 'a2f392f3.acsnet.co'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'testuser1'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_269|753KB/s|R002-260618 [2e68419aab69]'
+    password: 'sni="goedkoopgeluid.icu"'
+    port: 443
+    server: 'goedkoopgeluid.icu'
+    skip-cert-verify: true
+    sni: 'goedkoopgeluid.icu'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'None'
+    udp: true
+    _poolOnly: true
+  - name: '🇳🇱NL_121|432KB/s|P002-260618 [e012a4e53a46]'
+    password: 'null'
+    port: 443
+    server: '185.140.209.235'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇳🇱NL_149|2.4MB/s|P002-260618 [e4e8d92b2a08]'
+    password: 'null'
+    port: 443
+    server: '5.255.118.82'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇳🇱NL_125|1.1MB/s|R002-260618 [fa52015dee35]'
+    port: 443
+    server: '5.255.118.82'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_138|737KB/s|K001-260618 [fc8529ceafb7]'
+    password: 'null'
+    port: 443
+    server: 'jewelscollecti.icu'
+    skip-cert-verify: true
+    sub_tag: 'K001-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    sni: 'jewelscollecti.icu'
+    _poolOnly: true
+  - name: 'MX · SOCKS5 · clashnode · 2B33D64E'
+    type: 'socks5'
+    server: '72.57.228.87'
+    port: 62000
+    skip-cert-verify: true
+    sub_tag: 'K001-260618'
+    udp: true
+    username: 'UBXich0K'
+    password: 'VvUAFi2E'
+    _poolOnly: true
+  - name: '🇺🇸US_96|762KB/s|P002-260618 [bdb7323375e8]'
+    password: 'None'
+    port: 443
+    server: 'fullmanfirm.icu'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    sni: 'fullmanfirm.icu'
+    _poolOnly: true
+  - name: '🇺🇸US_95|778KB/s|P002-260618 [3fb5cbbb9d42]'
+    port: 443
+    server: 'voteshirleysew.club'
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    sni: 'voteshirleysew.club'
+    _poolOnly: true
+  - name: 'MX · SOCKS5 · clashnode · D602F1D4'
+    type: 'socks5'
+    server: '72.57.228.30'
+    port: 62000
+    sub_tag: 'R002-260618'
+    udp: true
+    username: 'UBXich0K'
+    password: 'VvUAFi2E'
+    _poolOnly: true
+  - name: '🇺🇸US_243|305KB/s|P002-260618 [d0b846fb0830]'
+    password: 'None'
+    port: 443
+    server: 'tzoa.fun'
+    skip-cert-verify: false
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    sni: 'tzoa.fun'
+    _poolOnly: true
+  - name: '🇳🇱NL_115|6.6MB/s|R002-260618 [ef760e5bc4d6]'
+    password: 'null'
+    port: 443
+    server: '51.158.243.91'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇳🇱NL_143|411KB/s|R002-260618 [212db84ab5aa]'
+    port: 443
+    server: '103.97.88.154'
+    skip-cert-verify: true
+    sni: '4a8c2906c96058315dffbc2b0e7ff19b-98005bea43f9ac33.apache-iv.com'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_130|738KB/s|P002-260618 [e1222b9a83cc]'
+    password: 'None'
+    port: 443
+    server: 'carolinafreigh.fun'
+    skip-cert-verify: false
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    sni: 'carolinafreigh.fun'
+    _poolOnly: true
+  - name: '🇺🇸US_129|329KB/s|P002-260618 [834b1cadfe2f]'
+    password: 'None'
+    port: 443
+    server: 'berniesbodybla.fun'
+    skip-cert-verify: false
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    sni: 'berniesbodybla.fun'
+    _poolOnly: true
+  - name: '🇺🇸US_69|685KB/s|R002-260618 [68c54a8a7923]'
+    port: 443
+    server: 'purecambogiasl.live'
+    skip-cert-verify: true
+    sni: 'purecambogiasl.live'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_156|760KB/s|R002-260618 [83acbd90408f]'
+    password: 'null'
+    port: 443
+    server: 'zebpay.site'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    sni: 'zebpay.site'
+    _poolOnly: true
+  - name: '🇺🇸US_175|785KB/s|R002-260618 [b687c56e5918]'
+    password: 'null'
+    port: 443
+    server: 'berniesbodybla.fun'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    sni: 'berniesbodybla.fun'
+    _poolOnly: true
+  - name: '🇺🇸US_158|770KB/s|R002-260618 [ef979e089ede]'
+    password: 'null'
+    port: 443
+    server: 'mmgr.club'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    sni: 'mmgr.club'
+    _poolOnly: true
+  - name: '🇺🇸US_308|667KB/s|R002-260618 [39ea5fb883a1]'
+    password: 'sni="webdrone.club"'
+    port: 443
+    server: 'webdrone.club'
+    sni: 'webdrone.club'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'None'
+    udp: true
+    _poolOnly: true
+  - name: '🇫🇷FR_3|1.8MB/s|R002-260618 [df3cefb034a8]'
+    port: 443
+    server: '103.82.101.44'
+    skip-cert-verify: true
+    sni: 'f3a61d8406d537345747f99f8a281007-3f754ed5da1bba09.apache-iv.com'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_137|697KB/s|R002-260618 [2c2fa1ad5771]'
+    password: 'null'
+    port: 443
+    server: 'goedkoopgeluid.icu'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    sni: 'goedkoopgeluid.icu'
+    _poolOnly: true
+  - name: '🇺🇸US_126|822KB/s|K001-260618 [34ec23bd9506]'
+    password: 'null'
+    port: 443
+    server: 'kimberlymilano.icu'
+    skip-cert-verify: true
+    sub_tag: 'K001-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    sni: 'kimberlymilano.icu'
+    _poolOnly: true
+  - name: '🇺🇸US_92|723KB/s|P002-260618 [e1485bbbb7ea]'
+    password: 'None'
+    port: 443
+    server: 'kimberlymilano.icu'
+    skip-cert-verify: false
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    sni: 'kimberlymilano.icu'
+    _poolOnly: true
+  - name: '🇺🇸US_278|725KB/s|R002-260618 [1dcafc09d7db]'
+    port: 443
+    server: 'zebpay.site'
+    sni: 'zebpay.site'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇳🇱NL_96|3.5MB/s|P002-260618 [6aa08aa36e29]'
+    password: 'None'
+    port: 23856
+    server: '51.159.225.196'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🆓36@oneclickvpnkeys'
+    password: '87bb2ac4-b7a1-0001-b11d-2107709ea6cb'
+    port: 443
+    server: '136.148.83.69'
+    skip-cert-verify: true
+    sni: 'szqbx-ru-77dc.my-fade.cloud'
+    tls: false
+    type: 'hysteria2'
+    _poolOnly: true
+  - name: '🇳🇱NL_124|5.5MB/s|K001-260618 [0314ff07d8b2]'
+    password: 'null'
+    port: 23856
+    server: '51.159.225.196'
+    skip-cert-verify: true
+    sub_tag: 'K001-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇳🇱NL_109|3.1MB/s|R002-260618 [d87f2e8fe2b7]'
+    password: 'null'
+    port: 23856
+    server: '51.159.225.196'
+    skip-cert-verify: true
+    sni: '51.159.225.196'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇳🇱NL_228|1004KB/s|R002-260618 [8befcd8cfe66]'
+    port: 443
+    server: '185.246.153.42'
+    skip-cert-verify: true
+    sni: '482c8436a1f7c908b48a1757abb5dd79-3791fb4df2db250b.apache-iv.com'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: 'ᴛᴇʟᴇɢʀᴀᴍ ɪᴅ = @ꜰxxɴᴇᴛ💘'
+    password: 'oracle_hy2_pass_2026'
+    port: 8443
+    server: '129.225.181.46'
+    skip-cert-verify: true
+    sni: 'bing.com'
+    tls: false
+    type: 'hysteria2'
+    _poolOnly: true
+  - name: '🇺🇸US_5|736KB/s|R002-260618 [2ac17c33a391]'
+    port: 443
+    server: 'jewelscollecti.icu'
+    skip-cert-verify: true
+    sni: 'jewelscollecti.icu'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇳🇱NL_20|6.3MB/s|P002-260618 [d77b65a8fb8a]'
+    password: 'None'
+    port: 443
+    server: '51.158.243.91'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇳🇱NL_82|266KB/s|R002-260618 [02e64b2794c6]'
+    port: 9002
+    server: '84.17.47.150'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇳🇱NL_193|2.8MB/s|P002-260618 [cb3b6268d982]'
+    password: 'None'
+    port: 9002
+    server: '84.17.47.148'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇳🇱NL_120|70KB/s|R002-260618 [11147645fc19]'
+    password: 'null'
+    port: 443
+    server: '103.97.88.154'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_144|818KB/s|R002-260618 [2281ed7d6fa2]'
+    port: 443
+    server: 'fullmanfirm.icu'
+    skip-cert-verify: true
+    sni: 'fullmanfirm.icu'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇩🇪DE_21|7.1MB/s|R002-260618 [7ec6ac94817b]'
+    port: 443
+    server: '193.233.75.115'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇳🇱NL_83|5.3MB/s|R002-260618 [cf19808e163e]'
+    port: 9002
+    server: '84.17.47.148'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: 'MX · SOCKS5 · clashnode · F364EC71'
+    type: 'socks5'
+    server: '94.194.166.52'
+    port: 42000
+    sub_tag: 'R002-260618'
+    udp: true
+    username: 'userLRgK'
+    password: 'KsPAxZGn'
+    _poolOnly: true
+  - name: '🇳🇱NL_113|3.0MB/s|R002-260618 [a92bf8b04615]'
+    password: 'null'
+    port: 9002
+    server: '84.17.47.150'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_117|301KB/s|P002-260618 [227464e6f2f6]'
+    password: 'None'
+    port: 443
+    server: 'webdrone.club'
+    skip-cert-verify: false
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    sni: 'webdrone.club'
+    _poolOnly: true
+  - name: '🇳🇱NL_196|5.3MB/s|R002-260618 [f5cce65976e8]'
+    password: 'null'
+    port: 9002
+    server: '84.17.47.147'
+    skip-cert-verify: true
+    sni: '84.17.47.147'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇳🇱NL_112|946KB/s|R002-260618 [28e6f82e9549]'
+    port: 443
+    server: '185.246.153.28'
+    skip-cert-verify: true
+    sni: '4a8c2906c96058315dffbc2b0e7ff19b-0c66a58858a795df.apache-iv.com'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇩🇪DE_110|6.7MB/s|P002-260618 [3b421a43fbd6]'
+    password: 'None'
+    port: 443
+    server: '193.233.75.115'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_128|710KB/s|P002-260618 [0e9a0b8f1c70]'
+    password: 'None'
+    port: 443
+    server: 'zebpay.site'
+    skip-cert-verify: false
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    sni: 'zebpay.site'
+    _poolOnly: true
+  - name: '🇳🇱NL_257|5.5MB/s|P002-260618 [111aaa619f5f]'
+    password: 'None'
+    port: 9002
+    server: '84.17.47.123'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_322|371KB/s|P002-260618 [012da4b2957a]'
+    password: 'None'
+    port: 443
+    server: 'crosscards.site'
+    skip-cert-verify: false
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    sni: 'crosscards.site'
+    _poolOnly: true
+  - name: '🇳🇱NL_42|2.5MB/s|R002-260618 [429686735a0f]'
+    port: 19362
+    server: '51.159.225.197'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇳🇱NL_102|5.3MB/s|P002-260618 [f84dd5f92876]'
+    password: 'None'
+    port: 9002
+    server: '84.17.47.147'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇳🇱NL_262|231KB/s|K001-260618 [1a33049d81fc]'
+    password: 'None'
+    port: 9002
+    server: '84.17.47.149'
+    skip-cert-verify: true
+    sub_tag: 'K001-260618'
+    tls: true
+    type: 'http'
+    username: ''
+    udp: true
+    _poolOnly: true
+  - name: '❓Other_28|868KB/s|P002-260618 [95c96fb6d441]'
+    password: 'None'
+    port: 9002
+    server: '84.17.47.126'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇳🇱NL_175|5.6MB/s|R002-260618 [ecbc8201cfbb]'
+    password: 'null'
+    port: 9002
+    server: '84.17.47.149'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_251|495KB/s|R002-260618 [5864aa81972f]'
+    password: 'null'
+    port: 443
+    server: 'jgwynphotoarts.pro'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    sni: 'jgwynphotoarts.pro'
+    _poolOnly: true
+  - name: 'PL · VLESS · clashnode · 0AF670FC'
+    type: 'vless'
+    server: '179.254.191.251'
+    port: 4443
+    uuid: 'a35c508f-4d5d-4531-842e-6e9d43c762c0'
+    client-fingerprint: 'chrome'
+    encryption: 'none'
+    network: 'xhttp'
+    sub_tag: 'B007-260618'
+    tls: true
+    udp: true
+    xhttp-opts:
+      mode: 'auto'
+      path: '/api/v1/sync/'
+    xudp: true
+    packet-encoding: 'xudp'
+    servername: 'bl1.nexfile.net'
+    _poolOnly: true
+  - name: '🇺🇸US_78|749KB/s|R002-260618 [873df955e6ca]'
+    port: 443
+    server: 'carolinafreigh.fun'
+    sni: 'carolinafreigh.fun'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_76|815KB/s|R002-260618 [1ebc3aabf01f]'
+    port: 443
+    server: 'kimberlymilano.icu'
+    sni: 'kimberlymilano.icu'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇳🇱NL_114|6.0MB/s|K001-260618 [e33fb6223bc5]'
+    password: 'e4b72b531a2d10900519'
+    port: 443
+    server: '82.196.9.7'
+    skip-cert-verify: true
+    sub_tag: 'K001-260618'
+    tls: true
+    type: 'http'
+    username: 'testuser1'
+    udp: true
+    _poolOnly: true
+  - alpn:
+      - 'h2'
+    client-fingerprint: 'chrome'
+    grpc-opts:
+      grpc-mode: 'gun'
+      grpc-service-name: 'mobile.api.Event'
+    name: '🇷🇺 俄罗斯 | RUS 2 #1'
+    network: 'grpc'
+    port: 443
+    server: 'leviko-ru4448.shopingggg.ir'
+    servername: 'vps3.nemnogogo.com'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '38308ff1-5aa9-494f-a25a-0f2870d56b3e'
+    _poolOnly: true
+  - name: '🇺🇸US_93|770KB/s|R002-260618 [480e90452489]'
+    password: 'None'
+    port: 443
+    server: 'purposebydesig.club'
+    skip-cert-verify: false
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    sni: 'purposebydesig.club'
+    _poolOnly: true
+  - alpn:
+      - 'h2'
+    client-fingerprint: 'firefox'
+    grpc-opts:
+      grpc-mode: 'gun'
+      grpc-service-name: 'mobile.api.Event'
+    name: '🇷🇺 俄罗斯 | RUS 6 #1'
+    network: 'grpc'
+    port: 443
+    server: 'vps3.nemnogogo.com'
+    servername: 'vps3.nemnogogo.com'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '38308ff1-5aa9-494f-a25a-0f2870d56b3e'
+    _poolOnly: true
+  - name: '🇩🇪DE_93|232KB/s|P002-260618 [c242c75d0a6f]'
+    password: 'None'
+    port: 443
+    server: '213.109.163.119'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_116|743KB/s|R002-260618 [58eccf1963f4]'
+    password: 'null'
+    port: 443
+    server: 'purecambogiasl.live'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    sni: 'purecambogiasl.live'
+    _poolOnly: true
+  - name: 'US · SOCKS5 · clashnode · 1951DE24'
+    type: 'socks5'
+    server: '23.230.200.250'
+    port: 62000
+    sub_tag: 'R002-260618'
+    udp: true
+    username: 'kingstar123'
+    password: 'kingstar123++'
+    _poolOnly: true
+  - name: 'ZZ · SOCKS5 · clashnode · 82BC43FB'
+    type: 'socks5'
+    server: '66.253.2.69'
+    port: 62000
+    sub_tag: 'R002-260618'
+    udp: true
+    username: 'u_rb1dba2'
+    password: 'l1tlrdx52v'
+    _poolOnly: true
+  - name: '🇫🇷FR_66|2.5MB/s|R002-260618 [bf593393ec6e]'
+    port: 443
+    server: '130.180.211.56'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇵🇱PL_3|2.8MB/s|P002-260618 [0559e2b40cf9]'
+    password: 'None'
+    port: 443
+    server: '151.115.54.133'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇵🇱PL_2|1.6MB/s|K001-260618 [7d600a30a2b6]'
+    password: 'null'
+    port: 443
+    server: '151.115.54.133'
+    skip-cert-verify: true
+    sub_tag: 'K001-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇩🇪DE_62|1.2MB/s|R002-260618 [f8f3f9b23979]'
+    port: 443
+    server: '213.109.163.119'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_79|745KB/s|R002-260618 [b5fee3ef00a5]'
+    port: 443
+    server: 'tzoa.fun'
+    sni: 'tzoa.fun'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_152|677KB/s|R002-260618 [238bfb50e0f1]'
+    port: 443
+    server: 'efr-marktplatz.club'
+    sni: 'efr-marktplatz.club'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇱🇻LV_9|2.4MB/s|K001-260618 [e8d4b41ce864]'
+    password: 'None'
+    port: 443
+    server: '185.219.159.16'
+    skip-cert-verify: true
+    sub_tag: 'K001-260618'
+    tls: true
+    type: 'http'
+    username: ''
+    udp: true
+    _poolOnly: true
+  - name: '🇫🇷FR_120|1.7MB/s|K001-260618 [af44a4a293e5]'
+    password: 'None'
+    port: 8081
+    server: '31.32.19.111'
+    skip-cert-verify: true
+    sub_tag: 'K001-260618'
+    tls: true
+    type: 'http'
+    username: ''
+    udp: true
+    _poolOnly: true
+  - alpn:
+      - 'h3'
+    name: '@VPsave'
+    obfs: 'salamander'
+    obfs-password: '6fltjteoyab7fjf1'
+    password: '57beeeb0-03fc-4fc9-94da-7604488a7134'
+    port: 40055
+    server: '22egdg.mateflora.com'
+    skip-cert-verify: true
+    sni: 'psstatic.cdn.bcebos.com'
+    tls: false
+    type: 'hysteria2'
+    _poolOnly: true
+  - name: '🇺🇸US_369|1.1MB/s|S001-260618 [a66364c9e9f6]'
+    password: ''
+    port: 38182
+    server: '69.55.49.177'
+    skip-cert-verify: true
+    sub_tag: 'S001-260618'
+    type: 'socks5'
+    username: ''
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_155|146KB/s|R002-260618 [535e13772931]'
+    password: 'null'
+    port: 443
+    server: '38.28.193.188'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇨🇿CZ_1|1.9MB/s|R002-260618 [dea96bfbdd9e]'
+    port: 443
+    server: '193.35.104.196'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇱🇹LT_1|2.2MB/s|R002-260618 [bfa4d7ad5717]'
+    port: 443
+    server: '89.124.11.9'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_51|338KB/s|P002-260618 [1a98c95ea598]'
+    password: 'None'
+    port: 9002
+    server: '193.176.84.38'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_53|592KB/s|K001-260618 [266b985728bf]'
+    password: 'null'
+    port: 9002
+    server: '193.176.84.36'
+    skip-cert-verify: true
+    sub_tag: 'K001-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_58|1.7MB/s|R002-260618 [2a38cb0737ea]'
+    port: 9002
+    server: '193.176.84.23'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: 'JP · VMESS · freeclashnode · 2017A3CA'
+    type: 'vmess'
+    server: '161.33.20.255'
+    port: 8880
+    uuid: 'e0856508-d693-450a-a099-455091dc4f25'
+    alterId: 0
+    cipher: 'auto'
+    network: 'ws'
+    ws-opts:
+      path: '/e0856508-d693-450a-a099-455091dc4f25-vm'
+    _poolOnly: true
+  - name: '🇷🇴RO_68|1.7MB/s|R002-260618 [e24efac8b6e9]'
+    password: 'null'
+    port: 9002
+    server: '193.176.84.38'
+    skip-cert-verify: true
+    sni: '193.176.84.38'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_74|1.8MB/s|P002-260618 [f85d2e6c6bd6]'
+    password: 'None'
+    port: 9002
+    server: '193.176.84.39'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_3|942KB/s|R002-260618 [16b7d44488cc]'
+    port: 9002
+    server: '193.176.84.31'
+    skip-cert-verify: true
+    sni: 'www.bing.com'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_1|2.0MB/s|R002-260618 [3ab835bbceb4]'
+    port: 9002
+    server: '193.176.84.27'
+    skip-cert-verify: true
+    sni: 'www.bing.com'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_38|2.0MB/s|R002-260618 [1c60bd1e9888]'
+    port: 9002
+    server: '193.176.84.35'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_62|1.7MB/s|R002-260618 [395e12451e0e]'
+    password: 'null'
+    port: 9002
+    server: '193.176.84.33'
+    skip-cert-verify: true
+    sni: '193.176.84.33'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_72|2.1MB/s|K001-260618 [51d6c485128b]'
+    password: 'null'
+    port: 9002
+    server: '193.176.84.33'
+    skip-cert-verify: true
+    sub_tag: 'K001-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_35|1.7MB/s|P002-260618 [6ae474347dac]'
+    password: 'None'
+    port: 9002
+    server: '193.176.84.29'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_43|746KB/s|R002-260618 [5514b87d8d42]'
+    password: 'None'
+    port: 9002
+    server: '193.176.84.33'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_34|1.2MB/s|P002-260618 [de71c7ae652d]'
+    password: 'None'
+    port: 9002
+    server: '193.176.84.30'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_82|2.0MB/s|R002-260618 [edff0870a0ac]'
+    password: 'null'
+    port: 9002
+    server: '193.176.84.39'
+    skip-cert-verify: true
+    sni: '193.176.84.39'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_78|1.2MB/s|R002-260618 [5dc79f84d447]'
+    port: 9002
+    server: '193.176.84.37'
+    skip-cert-verify: true
+    sni: 'www.bing.com'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_40|2.0MB/s [693ea8f5a428]'
+    port: 9002
+    server: '193.176.84.21'
+    skip-cert-verify: true
+    sni: 'www.bing.com'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_22|1.2MB/s [6de6cd1297d7]'
+    port: 9002
+    server: '193.176.84.33'
+    skip-cert-verify: true
+    sni: 'www.bing.com'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_32|1.7MB/s|R002-260618 [fc21fe8daf43]'
+    password: 'null'
+    port: 9002
+    server: '193.176.84.40'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_10|1.1MB/s [7354ec979027]'
+    port: 9002
+    server: '193.176.84.34'
+    skip-cert-verify: true
+    sni: 'www.bing.com'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_26|693KB/s [dc46a9626177]'
+    port: 9002
+    server: '193.176.84.30'
+    skip-cert-verify: true
+    sni: 'www.bing.com'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_59|1.8MB/s|R002-260618 [affdc6a4119f]'
+    password: 'null'
+    port: 9002
+    server: '193.176.84.35'
+    skip-cert-verify: true
+    sni: '193.176.84.35'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_44|1.6MB/s|R002-260618 [baf2f18ca1c2]'
+    port: 9002
+    server: '193.176.84.32'
+    skip-cert-verify: true
+    sni: 'www.bing.com'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_15|1.5MB/s|G001-260618 [bc0c44411289]'
+    delay: 1801
+    port: 9002
+    server: '193.176.84.31'
+    skip-cert-verify: true
+    sub_tag: 'G001-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_332|584KB/s|R002-260618 [be32b39e85c7]'
+    port: 8090
+    server: '98.101.229.212'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_77|1.9MB/s|P002-260618 [fe2f38680a32]'
+    port: 9002
+    server: '193.176.84.36'
+    skip-cert-verify: true
+    sni: 'www.bing.com'
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_20|1.5MB/s [a070dbe59d38]'
+    port: 9002
+    server: '193.176.84.40'
+    skip-cert-verify: true
+    sni: 'www.bing.com'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_5|487KB/s|R002-260618 [b8e109e02989]'
+    port: 9002
+    server: '193.176.84.16'
+    skip-cert-verify: true
+    sni: 'www.bing.com'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_60|1.3MB/s|R002-260618 [f438a8f40ada]'
+    password: 'null'
+    port: 9002
+    server: '193.176.84.23'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_61|1.4MB/s|R002-260618 [11354267ebab]'
+    password: 'null'
+    port: 9002
+    server: '193.176.84.31'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '❓Other_3|1.2MB/s|P002-260618 [a09d024d4dff]'
+    password: 'None'
+    port: 9002
+    server: '193.176.84.37'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_67|1.2MB/s [681ab62eb83f]'
+    port: 9002
+    server: '193.176.84.35'
+    skip-cert-verify: true
+    sni: 'www.bing.com'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_11|2.0MB/s|R002-260618 [7f81a7b258e8]'
+    port: 9002
+    server: '193.176.84.39'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_18|2.1MB/s|R002-260618 [16766d4073c8]'
+    port: 9002
+    server: '193.176.84.26'
+    skip-cert-verify: true
+    sni: 'www.bing.com'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_6|2.0MB/s|P002-260618 [db7fe7644734]'
+    password: 'None'
+    port: 9002
+    server: '193.176.84.16'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_36|1.7MB/s|P002-260618 [4ac2e14c271d]'
+    password: 'None'
+    port: 9002
+    server: '193.176.84.21'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_29|685KB/s|Z001-260618 [d6a9c7089cd8]'
+    port: 9002
+    server: '193.176.84.40'
+    skip-cert-verify: true
+    sub_tag: 'Z001-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_91|1.5MB/s|R002-260618 [d639d2bb1dd5]'
+    port: 9002
+    server: '193.176.84.29'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_27|642KB/s [2fa8c713139b]'
+    port: 9002
+    server: '193.176.84.25'
+    skip-cert-verify: true
+    sni: 'www.bing.com'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_39|2.1MB/s|P002-260618 [56b374aec58f]'
+    password: 'None'
+    port: 9002
+    server: '193.176.84.40'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: 'MX · SOCKS5 · clashnode · B7D81B4B'
+    type: 'socks5'
+    server: '144.225.47.8'
+    port: 42000
+    sub_tag: 'R002-260618'
+    udp: true
+    username: 'Tek2x6av'
+    password: 'DJy1T0dt'
+    _poolOnly: true
+  - name: '🇷🇴RO_97|1.5MB/s|K001-260618 [5a6d353e399f]'
+    password: 'None'
+    port: 9002
+    server: '193.176.84.18'
+    skip-cert-verify: true
+    sub_tag: 'K001-260618'
+    tls: true
+    type: 'http'
+    username: ''
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_50|2.1MB/s|R002-260618 [0a23683cba9b]'
+    password: 'None'
+    port: 9002
+    server: '193.176.84.22'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_55|1.3MB/s|R002-260618 [4a5138d3dc84]'
+    password: 'null'
+    port: 9002
+    server: '193.176.84.16'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_28|1.9MB/s|P002-260618 [c57b25d7a27f]'
+    port: 9002
+    server: '193.176.84.19'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_63|1.7MB/s|P002-260618 [5780bdc5783c]'
+    password: ''
+    port: 9002
+    server: '193.176.84.38'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    username: ''
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_73|1.9MB/s [1174d8efe1df]'
+    port: 9002
+    server: '193.176.84.22'
+    skip-cert-verify: true
+    sni: 'www.bing.com'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_94|1.9MB/s|P002-260618 [3c09190ad5da]'
+    password: 'None'
+    port: 9002
+    server: '193.176.84.24'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_31|1.4MB/s|P002-260618 [4a642eb93bc8]'
+    password: 'None'
+    port: 9002
+    server: '193.176.84.19'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_33|1.4MB/s|P002-260618 [a6ec975042ad]'
+    password: 'None'
+    port: 9002
+    server: '193.176.84.26'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_69|2.1MB/s|P002-260618 [e1e5753e62ce]'
+    password: 'null'
+    port: 9002
+    server: '193.176.84.21'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_56|1.7MB/s|R002-260618 [87cf0d33a9e0]'
+    password: 'null'
+    port: 9002
+    server: '193.176.84.19'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_71|1.1MB/s|R002-260618 [955230628083]'
+    password: 'null'
+    port: 9002
+    server: '193.176.84.26'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_54|1.9MB/s|P002-260618 [a767ca6149fc]'
+    password: 'None'
+    port: 9002
+    server: '193.176.84.17'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: 'MX · SOCKS5 · clashnode · 4414F12F'
+    type: 'socks5'
+    server: '144.225.47.68'
+    port: 42000
+    sub_tag: 'R002-260618'
+    udp: true
+    username: 'DJy1T0dt'
+    password: 'sZnD8GTz'
+    _poolOnly: true
+  - name: '🇷🇴RO_47|1.5MB/s|P002-260618 [adaa083b38d5]'
+    password: 'None'
+    port: 9002
+    server: '193.176.84.32'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_2|1.9MB/s|P002-260618 [ca40bf62f458]'
+    port: 9002
+    server: '193.176.84.36'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_49|1.3MB/s [04d8dee969a2]'
+    password: 'null'
+    port: 9002
+    server: '193.176.84.38'
+    skip-cert-verify: true
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇴RO_4|2.0MB/s|R002-260618 [aeb681b279e6]'
+    password: 'None'
+    port: 9002
+    server: '193.176.84.25'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇺RU_3|1.5MB/s|R002-260618 [48eeca537cae]'
+    port: 1446
+    server: '46.29.166.134'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: 'MX · SOCKS5 · clashnode · 8153D1B7'
+    type: 'socks5'
+    server: '144.225.47.106'
+    port: 42000
+    sub_tag: 'R002-260618'
+    udp: true
+    username: 'DJy1T0dt'
+    password: 'sZnD8GTz'
+    _poolOnly: true
+  - name: '🇭🇰[www.v2nodes.com] trojan-HK-...'
+    password: '12012'
+    port: 12012
+    server: '47.242.93.89'
+    skip-cert-verify: true
+    sni: 'ali-hk.b-gfw.cfd'
+    type: 'trojan'
+    _poolOnly: true
+  - alpn:
+      - 'h2'
+      - 'http/1.1'
+    client-fingerprint: 'firefox'
+    name: '🇩🇪 德国 | DEU #21'
+    network: 'xhttp'
+    port: 443
+    server: 'wildflower.elvano.website'
+    servername: 'wildflower.elvano.website'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '0b6a7fe0-206b-4071-9f96-cd397d1ec01a'
+    xhttp-opts:
+      host: 'wildflower.elvano.website'
+      mode: 'auto'
+      path: '/api/de5/sync'
+    _poolOnly: true
+  - alpn:
+      - 'h2'
+    client-fingerprint: 'firefox'
+    name: '🇩🇪 德国 | DEU #12'
+    network: 'xhttp'
+    port: 443
+    server: 'alderbloom.gerqix.online'
+    servername: 'inlet.gerqix.online'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '83706ae4-be2f-4b2b-8079-c3eb4e0b2e3e'
+    xhttp-opts:
+      host: 'inlet.gerqix.online'
+      mode: 'packet-up'
+      path: '/api/de4/preview/'
+    _poolOnly: true
+  - client-fingerprint: 'firefox'
+    grpc-opts:
+      grpc-service-name: 'glush.de3.v1'
+    name: '🇩🇪 德国 | DEU 6'
+    network: 'grpc'
+    port: 443
+    server: 'vellum.filnex.baby'
+    servername: 'rookery.moltex.click'
+    tls: true
+    type: 'vless'
+    uuid: '0b6a7fe0-206b-4071-9f96-cd397d1ec01a'
+    _poolOnly: true
+  - alpn:
+      - 'h2'
+      - 'http/1.1'
+    client-fingerprint: 'edge'
+    name: '🇷🇺 俄罗斯 | RUS #12'
+    network: 'xhttp'
+    port: 443
+    server: 'bayleaf.elvano.website'
+    servername: 'bayleaf.elvano.website'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '0b6a7fe0-206b-4071-9f96-cd397d1ec01a'
+    xhttp-opts:
+      host: 'bayleaf.elvano.website'
+      mode: 'auto'
+      path: '/api/de3/sync'
+    _poolOnly: true
+  - alpn:
+      - 'h2'
+      - 'http/1.1'
+    client-fingerprint: 'chrome'
+    name: '🇩🇪 德国 | DEU #22'
+    network: 'xhttp'
+    port: 443
+    server: 'heatherfield.moltex.click'
+    servername: 'heatherfield.moltex.click'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '0b6a7fe0-206b-4071-9f96-cd397d1ec01a'
+    xhttp-opts:
+      host: 'heatherfield.moltex.click'
+      mode: 'auto'
+      path: '/api/de6/sync'
+    _poolOnly: true
+  - name: '🇫🇷FR_25|2.0MB/s|R002-260618 [e9b65e97ef66]'
+    port: 8090
+    server: '80.124.109.22'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - client-fingerprint: 'firefox'
+    name: '🇷🇺 俄罗斯 | RUS #6'
+    network: 'ws'
+    port: 443
+    server: 'ws3.falmero.store'
+    servername: 'paperbirch.merlano.monster'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '0b6a7fe0-206b-4071-9f96-cd397d1ec01a'
+    ws-opts:
+      headers:
+        Host: 'paperbirch.merlano.monster'
+      path: '/api/de1/stream'
+    _poolOnly: true
+  - alpn:
+      - 'h2'
+      - 'http/1.1'
+    client-fingerprint: 'firefox'
+    name: '🇩🇪 德国 | DEU #16'
+    network: 'xhttp'
+    port: 443
+    server: 'greenhouse.elvano.website'
+    servername: 'greenhouse.elvano.website'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '0b6a7fe0-206b-4071-9f96-cd397d1ec01a'
+    xhttp-opts:
+      host: 'greenhouse.elvano.website'
+      mode: 'auto'
+      path: '/api/de6/sync'
+    _poolOnly: true
+  - name: '🇫🇮FI_7|1.2MB/s|B007-260618 [bec781bc4192]'
+    alpn:
+      - ''
+    alterId: '0'
+    cipher: 'auto'
+    http-opts:
+      headers:
+        Host:
+          - 'down-cdn.dingtalk.com'
+      path:
+        - '/3x'
+    network: 'http'
+    port: 2053
+    server: '185.212.149.7'
+    skip-cert-verify: false
+    sub_tag: 'B007-260618'
+    tls: false
+    type: 'vmess'
+    udp: true
+    uuid: 'aeb3c019-ae83-4677-af97-846baa787ad5'
+    xudp: true
+    packet-encoding: 'xudp'
+    _poolOnly: true
+  - name: '❓Other_13|844KB/s|R002-260618 [7e6a15927292]'
+    port: 9090
+    server: '128.199.116.219'
+    sub_tag: 'R002-260618'
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - alpn:
+      - 'h2'
+      - 'http/1.1'
+    client-fingerprint: 'edge'
+    name: '🇷🇺 俄罗斯 | RUS #13'
+    network: 'xhttp'
+    port: 443
+    server: 'seaglass.gerqix.online'
+    servername: 'seaglass.gerqix.online'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '0b6a7fe0-206b-4071-9f96-cd397d1ec01a'
+    xhttp-opts:
+      host: 'seaglass.gerqix.online'
+      mode: 'auto'
+      path: '/api/de5/sync'
+    _poolOnly: true
+  - alpn:
+      - 'http/1.1'
+    client-fingerprint: 'firefox'
+    name: '🇩🇪[www.v2nodes.com] vless-DE-1... #11'
+    network: 'ws'
+    port: 443
+    server: 'sundial.filnex.baby'
+    servername: 'silverfen.elvano.website'
+    tls: true
+    type: 'vless'
+    uuid: '83706ae4-be2f-4b2b-8079-c3eb4e0b2e3e'
+    ws-opts:
+      headers:
+        Host: 'sundial.filnex.baby'
+      path: '/api/de4/stream'
+    _poolOnly: true
+  - name: '🇸🇬SG_60|475KB/s|R002-260618 [50a568bb2adc]'
+    port: 9090
+    server: '152.42.170.187'
+    sub_tag: 'R002-260618'
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇯🇵JP_19|94KB/s|K001-260618 [4a732b04dd53]'
+    password: 'null'
+    port: 443
+    server: 'fan.571589.xyz'
+    skip-cert-verify: true
+    sub_tag: 'K001-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    sni: 'fan.571589.xyz'
+    _poolOnly: true
+  - name: 'JP · VLESS · freeclashnode · 04A75C4E'
+    type: 'vless'
+    server: 'djj.zjlo.top'
+    port: 23169
+    uuid: 'f67b1159-a61f-4ae4-9844-0701b716a290'
+    network: 'tcp'
+    tls: true
+    servername: 'djj.zjlo.top'
+    flow: 'xtls-rprx-vision'
+    client-fingerprint: 'chrome'
+    _poolOnly: true
+  - name: 'KR · TROJAN · freeclashnode · 5AA4257A'
+    type: 'trojan'
+    server: 'ikr200.zxom.eu.org'
+    port: 20045
+    network: 'tcp'
+    servername: 'ikr200.zxom.eu.org'
+    client-fingerprint: 'chrome'
+    password: '463f7453753f4d47'
+    _poolOnly: true
+  - name: '🇺🇸 美国_02 - v2raydog.com'
+    server: '162.35.101.177'
     port: 443
     type: 'vless'
-    tls: true
+    udp: true
     uuid: 'cda0862a-0f87-4be9-8ed8-1d0c9e382839'
-    servername: 'f0d7aft.nl13.h1clayd.click'
-    host: 'f0d7aft.nl13.h1clayd.click'
+    tls: true
+    skip-cert-verify: true
+    network: 'grpc'
+    reality-opts:
+      public-key: 'cO3wYHISTeorXcM8ffaDCDdqZ-olBQL-GyZqb-W7rTk'
+      short-id: 'bd8f712209a9c283'
+    servername: '0592efg.us8.h1clayd.click'
+    client-fingerprint: 'edge'
+    grpc-opts:
+      grpc-service-name: '99f2107b03f8'
+    _poolOnly: true
+  - name: '🇭🇰HK_25|85KB/s|R002-260618 [132af03e1e90]'
+    port: 443
+    server: 'fan.240104.xyz'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    sni: 'fan.240104.xyz'
+    _poolOnly: true
+  - name: 'SG · TROJAN · freeclashnode · 70C4EF4A'
+    type: 'trojan'
+    server: 'i1tr.mateflora.com'
+    port: 443
+    network: 'tcp'
+    servername: 'i1tr.mateflora.com'
+    client-fingerprint: 'chrome'
+    password: '57beeeb0-03fc-4fc9-94da-7604488a7134'
+    _poolOnly: true
+  - client-fingerprint: 'chrome'
+    name: '🇭🇰HK_1|2.3MB/s'
+    password: '0324fbc29561'
+    port: 443
+    server: '5641sdds.df6h451rh.xin'
+    servername: 'images.ctfassets.net'
+    skip-cert-verify: true
+    sni: 'images.ctfassets.net'
+    tls: true
+    type: 'anytls'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_296|226KB/s|R002-260618 [c3d5eeffc341]'
+    port: 443
+    server: '38.28.185.207'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇳🇱NL_246|85KB/s|R002-260618 [e777851201f1]'
+    port: 1080
+    server: '5.255.103.55'
+    sub_tag: 'R002-260618'
+    type: 'socks5'
+    udp: true
+    _poolOnly: true
+  - name: 'US · TROJAN · clashmeta · 11E4DE34'
+    type: 'trojan'
+    server: 'xvxn1hkzf.mateflora.com'
+    port: 443
+    network: 'tcp'
+    tls: true
+    servername: 'xvxn1hkzf.mateflora.com'
+    password: '57beeeb0-03fc-4fc9-94da-7604488a7134'
+    _poolOnly: true
+  - client-fingerprint: 'chrome'
+    name: '🇹🇼 台湾2|@ripaojiedian'
+    password: '0324fbc29561'
+    port: 443
+    server: 'a54ge.df6h451rh.xin'
+    skip-cert-verify: true
+    sni: 'docs.microsoft.com'
+    type: 'anytls'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_336|223KB/s|R002-260618 [0d53f0c1aef8]'
+    port: 443
+    server: '38.28.185.143'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - client-fingerprint: 'chrome'
+    name: '🇭🇰HK_2|3.0MB/s'
+    password: '2902c46c8493'
+    port: 443
+    server: 'ibsdsf.df6h451rh.xin'
+    servername: 'docs.microsoft.com'
+    skip-cert-verify: true
+    sni: 'docs.microsoft.com'
+    tls: true
+    type: 'anytls'
+    udp: true
+    _poolOnly: true
+  - name: '🇮🇩ID_1|559KB/s|R002-260618 [1e85b67c9f00]'
+    port: 443
+    server: '178.248.73.58'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇮🇩ID_3|367KB/s|R002-260618 [ec91e15d058c]'
+    port: 443
+    server: '103.86.116.118'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_253|81KB/s|R002-260618 [39215ca34ddc]'
+    port: 443
+    server: '137.175.22.72'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_264|267KB/s|R002-260618 [b4135a5f200b]'
+    port: 443
+    server: '137.175.22.98'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_207|243KB/s|R002-260618 [b92c1a4a1fb1]'
+    port: 443
+    server: '137.175.22.89'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_210|310KB/s|R002-260618 [83c31957de44]'
+    port: 443
+    server: '137.175.22.40'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_4|232KB/s|R002-260618 [4b9bb8749abb]'
+    port: 443
+    server: 'fan.365747.xyz'
+    skip-cert-verify: true
+    sni: 'fan.365747.xyz'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_371|350KB/s|R002-260618 [713d9982d1a3]'
+    port: 443
+    server: '137.175.22.88'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_142|134KB/s|R002-260618 [423dd28e4065]'
+    password: 'null'
+    port: 443
+    server: 'fan.365747.xyz'
+    skip-cert-verify: true
+    sni: 'fan.365747.xyz'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_256|262KB/s [0205d799a499]'
+    password: 'test123'
+    port: 1080
+    server: '104.168.249.36'
+    skip-cert-verify: true
+    type: 'socks5'
+    username: 'test123'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_268|232KB/s|R002-260618 [5f9e954fe312]'
+    port: 443
+    server: '137.175.22.56'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: 'BE · VLESS · clashstair · 745EB9E6'
+    type: 'vless'
+    server: 'f0d7aft.nl13.h1clayd.click'
+    port: 443
     reality-opts:
       public-key: 'kkCGiCQCKnkozJR1KKCRNtmdBECmThCgI9VSv7iDcWI'
       short-id: '8956c57cb4c4f8d2'
-    client-fingerprint: 'random'
-    skip-cert-verify: true
-    tfo: false
-    _poolOnly: true
-  - name: '[VLESS] 🇺🇸 🇺🇸US(AzadNet.t.me) 77'
-    server: '205.186.112.19'
-    port: 443
-    type: 'vless'
+    uuid: 'cda0862a-0f87-4be9-8ed8-1d0c9e382839'
+    udp: true
     tls: true
-    uuid: 'f1a04d4c-56b3-4f93-a4ec-91a5039a48bd'
-    servername: 'www.amazon.com'
-    host: 'www.amazon.com'
-    flow: 'xtls-rprx-vision'
-    reality-opts:
-      public-key: 'cwao9PnlNhUTd19WxIKAOdAjkaqVJihY0d2WOR8I2WY'
-      short-id: 'cce23a6bce3bc925'
-    client-fingerprint: 'random'
+    servername: 'f0d7aft.nl13.h1clayd.click'
+    client-fingerprint: 'chrome'
+    _poolOnly: true
+  - name: 'Telegram@vpnjey #7'
+    obfs: 'salamander'
+    obfs-password: 'Telegram@vpnjey'
+    password: 'VpNJEy'
+    port: 36264
+    server: '179.61.138.145'
     skip-cert-verify: true
-    tfo: false
+    sni: 'de2.jey.cc.cd'
+    tls: false
+    type: 'hysteria2'
     _poolOnly: true
-  - name: '[SS] 🇬🇧 🇬🇧GB(AzadNet.t.me) 52'
-    server: '129.151.82.249'
-    port: 61312
-    type: 'ss'
-    cipher: '2022-blake3-chacha20-poly1305'
-    password: 'L35ZoQjjihDmVI3YcDK0UMgcjpoxdMtVDStV2NH74xw='
-    tfo: false
+  - name: '🇺🇸US_377|176KB/s|K001-260618 [7c92db8aa094]'
+    password: ''
+    port: 1080
+    server: '209.50.255.91'
+    skip-cert-verify: true
+    sub_tag: 'K001-260618'
+    type: 'socks5'
+    username: ''
+    udp: true
     _poolOnly: true
-  - type: 'trojan'
-    name: '🇨🇭CH_62'
-    server: '208.69.78.33'
+  - name: 'ZZ · VLESS · clashstair · C0CD6294'
+    type: 'vless'
+    server: '196.196.148.85'
     port: 443
-    tls: false
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'courses.yourultimateprofessionalcareerhub.com'
+    reality-opts:
+      public-key: 'l-GzBDuNuhnjxoRlZqKvT7jAt_sbVAxhGFsAttO5kXs'
+      short-id: '361d0dd59c70516f'
+    uuid: 'cda0862a-0f87-4be9-8ed8-1d0c9e382839'
+    udp: true
+    tls: true
+    servername: '5d0319t.nl7.h1clayd.click'
+    client-fingerprint: 'chrome'
     _poolOnly: true
-  - name: '[VMess] 🇮🇳 🇮🇳IN(AzadNet.t.me) 9'
-    server: '152.67.8.205'
+  - name: 'FR · VLESS · clashnode · 08A88097'
+    type: 'vless'
+    server: 'suh.cryptofront.uk'
     port: 80
-    type: 'vmess'
-    uuid: '9db4c708-aef8-4359-821b-38e47990be0d'
-    alterId: 0
-    cipher: 'auto'
-    tls: false
-    skip-cert-verify: true
+    uuid: 'c762af05-2e92-4133-bc30-8cf45dd40a28'
     network: 'ws'
+    sub_tag: 'M003-260806'
+    udp: true
     ws-opts:
+      headers:
+        Host: 'suh.cryptofront.uk'
+        User-Agent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.167 Safari/537.36'
       path: '/'
-      headers:
-        Host: '152.67.8.205'
-    tfo: false
+    xudp: true
+    packet-encoding: 'xudp'
+    servername: 'suh.cryptofront.uk'
     _poolOnly: true
-  - name: '[VLESS] 🇩🇪 🇩🇪DE(AzadNet.t.me) 24'
-    server: '146.103.41.207'
-    port: 9543
+  - name: '🇩🇪 德国_01 - v2raydog.com'
+    server: '47.254.167.157'
+    port: 443
+    type: 'ss'
+    udp: true
+    cipher: '2022-blake3-chacha20-poly1305'
+    password: '8yO3ANWefuuGs1lRKXECQA1FEhxlWFV2ppQMcBaZo5Y='
+    _poolOnly: true
+  - name: '🇺🇸 美国_01 - v2raydog.com'
+    server: '88.210.34.18'
+    port: 443
     type: 'vless'
+    udp: true
+    uuid: '9df9ee1a-0671-4c6c-93c7-65598fb946f7'
     tls: true
-    uuid: '920b3cd9-4f82-4669-bbd2-d4a28b9052c6'
-    servername: 'storage.yandexcloud.net'
-    host: 'storage.yandexcloud.net'
+    skip-cert-verify: true
+    network: 'tcp'
     flow: 'xtls-rprx-vision'
     reality-opts:
-      public-key: 'M6Ck7wUfOLhQl4582CBnaXwscPEP6SCpdEkUDzoj4Fc'
-      short-id: '123abcdf'
-    client-fingerprint: 'random'
-    skip-cert-verify: true
-    tfo: false
+      public-key: 'v_vyazre_waQFN1iDyL-deNRJvoFBuokDcHCOCdiQ2A'
+      short-id: '1cb833e7c85a788b'
+    servername: 'rusamicro6.gangtype.com'
+    client-fingerprint: 'chrome'
     _poolOnly: true
-  - name: '[VMess] 🇫🇷 🇫🇷FR(AzadNet.t.me) 14'
-    server: '57.129.132.223'
+  - name: 'ZZ · VLESS · clashstair · 0F2AEEAA'
+    type: 'vless'
+    server: '13.141.51.2'
+    port: 443
+    reality-opts:
+      public-key: 'UoS8qZ74hP_ECcncCz55lzvlcVss3R7VA0WYZE0YQCY'
+      short-id: 'ba2a3dce62b99092'
+    uuid: 'cda0862a-0f87-4be9-8ed8-1d0c9e382839'
+    udp: true
+    tls: true
+    servername: '04535dt.us8.h1clayd.click'
+    client-fingerprint: 'firefox'
+    _poolOnly: true
+  - name: '🇹🇼TW_2|4.9MB/s'
+    password: '0324fbc29561'
+    port: 443
+    server: 'mfjh645drfj1dr6j5.df6h451rh.xin'
+    skip-cert-verify: true
+    sni: 'px.ads.linkedin.com'
+    type: 'anytls'
+    _poolOnly: true
+  - name: '🇺🇸US_294|239KB/s|R002-260618 [bbd4ccc22867]'
+    port: 443
+    server: '38.28.185.205'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇳🇱 荷兰_01 - v2raydog.com'
+    server: '196.245.52.183'
+    port: 443
+    type: 'vless'
+    udp: true
+    uuid: 'cda0862a-0f87-4be9-8ed8-1d0c9e382839'
+    tls: true
+    skip-cert-verify: true
+    network: 'grpc'
+    reality-opts:
+      public-key: 'zbz--PMjcIC4Ggr3j-ibDf0fzXRTj0lM_HzjPJyMkVE'
+      short-id: '50a749f0eccb628c'
+    servername: '15b171g.nl7.h1clayd.click'
+    client-fingerprint: 'firefox'
+    grpc-opts:
+      grpc-service-name: '5b79e8a94241'
+    _poolOnly: true
+  - name: '🇺🇸US_199|149KB/s|R002-260618 [f680b3bec0ff]'
+    port: 443
+    server: '137.175.22.29'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: 'برای اتصال دائمی جوین شو🦠 Tele...'
+    obfs: 'salamander'
+    obfs-password: '7M4RXPFcQyQEGbkxBPfXo4bilMhCW2U9'
+    password: 'eBTe6Ax2pUts8oMEWoYVDfnSlHfkLffQ'
+    port: 5010
+    server: '152.32.254.68'
+    skip-cert-verify: false
+    sni: 'nas.aizhzo.com'
+    tls: false
+    type: 'hysteria2'
+    _poolOnly: true
+  - name: '🇫🇷[www.v2nodes.com] vless-FR-1... #5'
+    network: 'ws'
     port: 80
+    server: '188.114.99.137'
+    tls: false
+    type: 'vless'
+    uuid: 'c762af05-2e92-4133-bc30-8cf45dd40a28'
+    ws-opts:
+      headers:
+        Host: 'suh.cryptofront.uk'
+      path: '/'
+    _poolOnly: true
+  - name: 'ZZ · VLESS · clashstair · 16205036'
+    type: 'vless'
+    server: '717252g.nl8.h1clayd.click'
+    port: 443
+    reality-opts:
+      public-key: 'PD8Jdlg3xB9QY--jwQjp8PFPzCS8-Oryw6-HWBcHMFU'
+      short-id: 'd3bd772514c87d28'
+    uuid: 'cda0862a-0f87-4be9-8ed8-1d0c9e382839'
+    udp: true
+    tls: true
+    servername: '717252g.nl8.h1clayd.click'
+    client-fingerprint: 'firefox'
+    network: 'grpc'
+    grpc-opts:
+      grpc-service-name: '204adda7e3da'
+    _poolOnly: true
+  - alterId: 0
+    cipher: 'auto'
+    name: '🇭🇰 香港 | HKG #6'
+    network: 'ws'
+    port: 443
+    server: '47.86.90.31'
+    servername: 'bywxdhirqkjj8xaz.v.3dns.vip'
+    skip-cert-verify: true
+    tls: true
     type: 'vmess'
-    uuid: 'a25cbf11-2908-4a1b-a3a8-9a571777dca3'
+    udp: true
+    uuid: '234a8041-2b4d-44a3-a8d8-523cbfd58dc4'
+    ws-opts:
+      headers:
+        Host: 'bywxdhirqkjj8xaz.v.3dns.vip'
+      path: '/ws-vmess'
+    _poolOnly: true
+  - name: '🇳🇪 尼日尔_01 - v2raydog.com'
+    server: '196.196.148.90'
+    port: 443
+    type: 'vless'
+    udp: true
+    uuid: '4201786b-d99b-4147-a5f0-20d47acddb81'
+    tls: true
+    skip-cert-verify: true
+    network: 'tcp'
+    flow: 'xtls-rprx-vision'
+    reality-opts:
+      public-key: 'ZSmetD4e9QG5CiXhniHg5HJB68L4kwbgAkJmMHtVwEE'
+      short-id: '42426c882c5fcd41'
+    servername: '7aa271t.es9.h1clayd.click'
+    client-fingerprint: 'firefox'
+    _poolOnly: true
+  - type: 'vmess'
+    name: '🇭🇰 香港_01 - v2raydog.com-044f575b14dca93f'
+    server: '47.244.120.197'
+    port: 23026
+    uuid: 'b9de1bc9-baa7-41ac-86f7-ccd59695cb21'
     alterId: 0
     cipher: 'auto'
     tls: false
-    skip-cert-verify: true
+    sni: '47.244.120.197'
     network: 'ws'
     ws-opts:
-      path: '/vmess/'
+      path: '/arki'
       headers:
-        Host: 'viber.com'
-    tfo: false
+        Host: '47.244.120.197'
     _poolOnly: true
-  - name: '[VLESS] 🇺🇸 🇺🇸US(AzadNet.t.me) 134'
-    server: '5d0319t.nl7.h1clayd.click'
+  - name: '🇺🇸US_295|230KB/s|R002-260618 [b04d1f18858c]'
     port: 443
-    type: 'vless'
+    server: '137.175.77.35'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
     tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_335|176KB/s|R002-260618 [b293ec7d21de]'
+    port: 443
+    server: 'fan.596189.xyz'
+    skip-cert-verify: true
+    sni: 'fan.596189.xyz'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: 'ZZ · VLESS · clashstair · C7620611'
+    type: 'vless'
+    server: '196.245.52.187'
+    port: 443
+    reality-opts:
+      public-key: 'UoS8qZ74hP_ECcncCz55lzvlcVss3R7VA0WYZE0YQCY'
+      short-id: 'ba2a3dce62b99092'
     uuid: 'cda0862a-0f87-4be9-8ed8-1d0c9e382839'
-    servername: '5d0319t.nl7.h1clayd.click'
-    host: '5d0319t.nl7.h1clayd.click'
-    reality-opts:
-      public-key: 'l-GzBDuNuhnjxoRlZqKvT7jAt_sbVAxhGFsAttO5kXs'
-      short-id: '361d0dd59c70516f'
-    client-fingerprint: 'random'
-    skip-cert-verify: true
-    tfo: false
+    udp: true
+    tls: true
+    servername: '04535dt.us8.h1clayd.click'
+    client-fingerprint: 'firefox'
     _poolOnly: true
-  - name: '[VLESS] 🇺🇸 🇺🇸US(AzadNet.t.me) 133'
-    server: '13.141.36.10'
+  - name: 'GB · VLESS · clashnode · 06EFA9A0'
+    type: 'vless'
+    server: 'uk1.connectsuite.org'
     port: 443
-    type: 'vless'
-    tls: true
-    uuid: 'cda0862a-0f87-4be9-8ed8-1d0c9e382839'
-    servername: '5d0319t.nl7.h1clayd.click'
-    host: '5d0319t.nl7.h1clayd.click'
-    reality-opts:
-      public-key: 'l-GzBDuNuhnjxoRlZqKvT7jAt_sbVAxhGFsAttO5kXs'
-      short-id: '361d0dd59c70516f'
-    client-fingerprint: 'random'
-    skip-cert-verify: true
-    tfo: false
-    _poolOnly: true
-  - name: '[VLESS] 🇩🇪 🇩🇪DE(AzadNet.t.me) 26'
-    server: '146.103.42.165'
-    port: 9543
-    type: 'vless'
-    tls: true
-    uuid: '920b3cd9-4f82-4669-bbd2-d4a28b9052c6'
-    servername: 'storage.yandexcloud.net'
-    host: 'storage.yandexcloud.net'
-    flow: 'xtls-rprx-vision'
-    reality-opts:
-      public-key: 'M6Ck7wUfOLhQl4582CBnaXwscPEP6SCpdEkUDzoj4Fc'
-      short-id: '123abcdf'
-    client-fingerprint: 'random'
-    skip-cert-verify: true
-    tfo: false
-    _poolOnly: true
-  - name: '[VLESS] 🇩🇪 🇩🇪DE(AzadNet.t.me) 27'
-    server: '146.103.43.15'
-    port: 9543
-    type: 'vless'
-    tls: true
-    uuid: '920b3cd9-4f82-4669-bbd2-d4a28b9052c6'
-    servername: 'storage.yandexcloud.net'
-    host: 'storage.yandexcloud.net'
-    flow: 'xtls-rprx-vision'
-    reality-opts:
-      public-key: 'M6Ck7wUfOLhQl4582CBnaXwscPEP6SCpdEkUDzoj4Fc'
-      short-id: '123abcdf'
-    client-fingerprint: 'random'
-    skip-cert-verify: true
-    tfo: false
-    _poolOnly: true
-  - name: '[VLESS] 🇧🇷BR(AzadNet.t.me)'
-    server: '191.217.215.228'
-    port: 2053
-    type: 'vless'
-    tls: true
-    uuid: 'fbe22815-0718-4eae-816f-e91c67d15b54'
-    servername: '191.217.215.228'
-    host: '191.217.215.228'
-    flow: 'xtls-rprx-vision'
-    skip-cert-verify: true
-    tfo: false
-    _poolOnly: true
-  - name: '[VLESS] 🇺🇸 🇺🇸US(AzadNet.t.me) 104'
-    server: '132.243.242.244'
-    port: 9543
-    type: 'vless'
-    tls: true
-    uuid: '920b3cd9-4f82-4669-bbd2-d4a28b9052c6'
-    servername: 'storage.yandexcloud.net'
-    host: 'storage.yandexcloud.net'
-    flow: 'xtls-rprx-vision'
-    reality-opts:
-      public-key: 'M6Ck7wUfOLhQl4582CBnaXwscPEP6SCpdEkUDzoj4Fc'
-      short-id: '123abcdf'
-    client-fingerprint: 'random'
-    skip-cert-verify: true
-    tfo: false
-    _poolOnly: true
-  - name: '[VLESS] 🇺🇸 🇺🇸US(AzadNet.t.me) 136'
-    server: '8ba6c3t.nl2.h1clayd.click'
-    port: 443
-    type: 'vless'
-    tls: true
-    uuid: 'd92038b6-b470-4267-9c69-2c649bf3f4a4'
-    servername: '8ba6c3t.nl2.h1clayd.click'
-    host: '8ba6c3t.nl2.h1clayd.click'
-    reality-opts:
-      public-key: '43bHrvqzL5Sw8lvtDSE3LAlp_0WbixVc7nYcAf17bhg'
-      short-id: '16b6715de8577aaa'
-    client-fingerprint: 'random'
-    skip-cert-verify: true
-    tfo: false
-    _poolOnly: true
-  - name: '[VLESS] 🇩🇪 🇩🇪DE(AzadNet.t.me) 14'
-    server: '146.103.42.78'
-    port: 9543
-    type: 'vless'
-    tls: true
-    uuid: '920b3cd9-4f82-4669-bbd2-d4a28b9052c6'
-    servername: 'storage.yandexcloud.net'
-    host: 'storage.yandexcloud.net'
-    flow: 'xtls-rprx-vision'
-    reality-opts:
-      public-key: 'M6Ck7wUfOLhQl4582CBnaXwscPEP6SCpdEkUDzoj4Fc'
-      short-id: '123abcdf'
-    client-fingerprint: 'random'
-    skip-cert-verify: true
-    tfo: false
-    _poolOnly: true
-  - name: '[VLESS] 🇩🇪 🇩🇪DE(AzadNet.t.me) 15'
-    server: '146.103.42.26'
-    port: 9543
-    type: 'vless'
-    tls: true
-    uuid: '920b3cd9-4f82-4669-bbd2-d4a28b9052c6'
-    servername: 'storage.yandexcloud.net'
-    host: 'storage.yandexcloud.net'
-    flow: 'xtls-rprx-vision'
-    reality-opts:
-      public-key: 'M6Ck7wUfOLhQl4582CBnaXwscPEP6SCpdEkUDzoj4Fc'
-      short-id: '123abcdf'
-    client-fingerprint: 'random'
-    skip-cert-verify: true
-    tfo: false
-    _poolOnly: true
-  - name: '[VMess] 🇽🇽XX(AzadNet.t.me) 67'
-    server: 'cf.877771.xyz'
-    port: 443
-    type: 'vmess'
-    uuid: '0cf6d970-3f1d-4aae-a989-92a8f76ae3db'
-    alterId: 0
-    cipher: 'auto'
-    tls: true
-    skip-cert-verify: true
-    servername: 'vmess.lbw666.dpdns.org'
+    uuid: 'fda89998-7e9a-4494-857a-cd0d00661b58'
+    client-fingerprint: 'chrome'
     network: 'ws'
+    sub_tag: 'A004-260618'
+    tls: true
+    udp: true
     ws-opts:
-      path: '/ws'
       headers:
-        Host: 'vmess.lbw666.dpdns.org'
-    tfo: false
+        Host: ''
+        User-Agent: 'Mozilla/5.0 (Linux; Android 7.0; SM-J730GM Build/NRD90M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.111 Mobile Safari/537.36'
+      path: '/cdn-cgi/ws'
+    xudp: true
+    packet-encoding: 'xudp'
+    servername: 'uk1.connectsuite.org'
     _poolOnly: true
-  - name: '[VMess] 🇽🇽XX(AzadNet.t.me) 106'
-    server: '104.17.147.222'
-    port: 80
-    type: 'vmess'
-    uuid: '0cf6d970-3f1d-4aae-a989-92a8f76ae3db'
-    alterId: 0
+  - name: '🇺🇸US_211|174KB/s|R002-260618 [9862f21df803]'
+    port: 443
+    server: '38.28.185.163'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: 'GB · VLESS · clashnode · 202CBB5F'
+    type: 'vless'
+    server: '51.38.71.147'
+    port: 443
+    uuid: 'fda89998-7e9a-4494-857a-cd0d00661b58'
+    client-fingerprint: 'chrome'
+    encryption: 'none'
+    network: 'ws'
+    sub_tag: 'B007-260618'
+    tls: true
+    udp: true
+    ws-opts:
+      headers:
+        Host: ''
+        User-Agent: 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36'
+      path: '/cdn-cgi/ws'
+    xudp: true
+    packet-encoding: 'xudp'
+    servername: 'uk1.connectsuite.org'
+    _poolOnly: true
+  - name: '🇺🇸US_201|181KB/s|R002-260618 [ea1befc94c60]'
+    port: 443
+    server: '137.175.22.84'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇫🇮FI_6|1.2MB/s|S004-260618 [153529a4ec05]'
+    alpn:
+      - ''
+    alterId: '0'
     cipher: 'auto'
+    http-opts:
+      headers:
+        Host:
+          - 'down-cdn.dingtalk.com'
+      path:
+        - '/3x'
+    network: 'http'
+    port: 52080
+    server: '185.212.149.7'
+    skip-cert-verify: false
+    sub_tag: 'S004-260618'
     tls: false
+    type: 'vmess'
+    udp: true
+    uuid: 'ec3c8b97-f308-4fee-aa16-95e2c7595acd'
+    xudp: true
+    packet-encoding: 'xudp'
+    _poolOnly: true
+  - name: '🇹🇼 🇨🇳 台湾 | TWN'
+    password: '2902c46c8493'
+    port: 443
+    server: 'rtifgjdr.df6h451rh.xin'
+    servername: 'docs.microsoft.com'
     skip-cert-verify: true
-    network: 'ws'
-    ws-opts:
-      path: '/ws?ed=2048'
-      headers:
-        Host: 'vmess.lbw666.dpdns.org'
-    tfo: false
+    sni: 'docs.microsoft.com'
+    tls: true
+    type: 'anytls'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_290|147KB/s|R002-260618 [5f8596a8538f]'
+    password: 'null'
+    port: 443
+    server: 'fan.596189.xyz'
+    sni: 'fan.596189.xyz'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇲🇽MX_3|855KB/s|P002-260618 [134074f5823b]'
+    port: 999
+    server: '189.51.168.164'
+    sub_tag: 'P002-260618'
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_209|307KB/s|R002-260618 [d8d0f16380f5]'
+    port: 443
+    server: '137.175.22.52'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇳🇱NL_256|668KB/s|S001-260618 [e79d3780e159]'
+    password: 'test123'
+    port: 1080
+    server: '185.145.99.41'
+    skip-cert-verify: true
+    sub_tag: 'S001-260618'
+    type: 'socks5'
+    username: 'test123'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_2|3.3MB/s'
+    obfs: 'salamander'
+    obfs-password: '6fltjteoyab7fjf1'
+    password: '57beeeb0-03fc-4fc9-94da-7604488a7134'
+    port: 40055
+    server: '64.118.154.18'
+    servername: 'psstatic.cdn.bcebos.com'
+    skip-cert-verify: true
+    sni: 'psstatic.cdn.bcebos.com'
+    type: 'hysteria2'
+    udp: true
     _poolOnly: true
 proxy-groups:
   - name: 'PROXY'
     type: 'select'
     proxies:
       - 'DIRECT'
-      - '[VLESS] 🇽🇽XX(AzadNet.t.me) 71'
-      - '[SS] 🇺🇸 🇺🇸US(AzadNet.t.me) 14'
-      - '[VLESS] 🇫🇷 🇫🇷FR(AzadNet.t.me) 38'
-      - '[VLESS] 🇨🇿CZ(AzadNet.t.me)'
-      - '[VLESS] 🇩🇪 🇩🇪DE(AzadNet.t.me) 18'
-      - '[VLESS] 🇽🇽XX(AzadNet.t.me) 77'
-      - '[SS] 🇸🇬 🇸🇬SG(AzadNet.t.me)'
-      - '[VLESS] 🇺🇸 🇺🇸US(AzadNet.t.me) 72'
-      - '[VLESS] 🇧🇷BR(AzadNet.t.me) 4'
-      - '[VLESS] 🇺🇸 🇺🇸US(AzadNet.t.me) 135'
-      - '[VLESS] 🇺🇸 🇺🇸US(AzadNet.t.me) 74'
-      - '🇰🇷KR_37'
-      - '[VLESS] 🇺🇦 🇺🇦UA(AzadNet.t.me)'
-      - '[VLESS] 🇺🇸 🇺🇸US(AzadNet.t.me) 77'
-      - '[SS] 🇬🇧 🇬🇧GB(AzadNet.t.me) 52'
-      - '🇨🇭CH_62'
-      - '[VMess] 🇮🇳 🇮🇳IN(AzadNet.t.me) 9'
-      - '[VLESS] 🇩🇪 🇩🇪DE(AzadNet.t.me) 24'
-      - '[VMess] 🇫🇷 🇫🇷FR(AzadNet.t.me) 14'
-      - '[VLESS] 🇺🇸 🇺🇸US(AzadNet.t.me) 134'
-      - '[VLESS] 🇺🇸 🇺🇸US(AzadNet.t.me) 133'
-      - '[VLESS] 🇩🇪 🇩🇪DE(AzadNet.t.me) 26'
-      - '[VLESS] 🇩🇪 🇩🇪DE(AzadNet.t.me) 27'
-      - '[VLESS] 🇧🇷BR(AzadNet.t.me)'
-      - '[VLESS] 🇺🇸 🇺🇸US(AzadNet.t.me) 104'
-      - '[VLESS] 🇺🇸 🇺🇸US(AzadNet.t.me) 136'
-      - '[VLESS] 🇩🇪 🇩🇪DE(AzadNet.t.me) 14'
-      - '[VLESS] 🇩🇪 🇩🇪DE(AzadNet.t.me) 15'
-      - '[VMess] 🇽🇽XX(AzadNet.t.me) 67'
-      - '[VMess] 🇽🇽XX(AzadNet.t.me) 106'
+      - '🇨🇳CN_1|1.3MB/s'
+      - '🇸🇬[www.v2nodes.com] vless-SG #1'
+      - '🇨🇳CN_3|2.3MB/s'
+      - 'ZZ · VLESS · freeclashnode · 05FE1378'
+      - '🇺🇸US_14|3.0MB/s'
+      - '🇸🇬[www.v2nodes.com] vless-SG-1... #7'
+      - '🇨🇳CN_5|2.4MB/s'
+      - 'SG新加坡(mibei77.com 米贝节点分享) (2)'
+      - '🇨🇳CN_2|2.3MB/s'
+      - '🇨🇳CN_4|2.7MB/s'
+      - 'FR · VLESS · freeclashnode · 0F2ED0C0'
+      - 'FR · VLESS · freeclashnode · 0DBA9DAE'
+      - '🇫🇷FR_119|1.3MB/s|K001-260618 [ec92deb18f1d]'
+      - '🇺🇸US_327|83KB/s|R002-260618 [f9ebf4bb49d2]'
+      - 'US · VLESS · freeclashnode · 00D9DA4A'
+      - 'trojan-1943754366-source-d2b95f4cfabaf7c2'
+      - 'US · VMESS · freeclashnode · 0879252A'
+      - 'US · VMESS · freeclashnode · 18BE0E67'
+      - 'CA · VLESS · clashmeta · 5AFB5CA5'
+      - 'FR · VLESS · freeclashnode · D6444C90'
+      - '[500] 🇺🇸 IONOS Inc. WS SNI'
+      - 'trojan-1931229905-source-27fa0e6cd75c7a7e'
+      - 'trojan-1940466747-source-ea0249d569423355'
+      - '🆓13@oneclickvpnkeys'
+      - '@V2rayNPVTConfig'
+      - '@OutlineReleasedKey #2'
+      - '🇺🇸US-38.91.107.188-0141'
+      - '🇺🇸US_183|315KB/s|R002-260618 [f3757137fc03]'
+      - 'US · VMESS · clashnode · 40EABEDA'
+      - '🇩🇪DE_7|1.4MB/s'
+      - '🇺🇸US_14|771KB/s|R002-260618 [430dc52727da]'
+      - '🇺🇸US_23|831KB/s|P002-260618 [3d6858c0edb1]'
+      - '🇺🇸US_149|789KB/s|R002-260618 [7999de0c275c]'
+      - '🇺🇸US_248|735KB/s|R002-260618 [bddf99e54974]'
+      - '🇺🇸US_277|371KB/s|P002-260618 [cd51b3cc2bd7]'
+      - '🇺🇸US_66|761KB/s|R002-260618 [598978da4bbc]'
+      - '🇺🇸US_120|800KB/s|P002-260618 [7feeec8f30cf]'
+      - '🇺🇸US_224|759KB/s|R002-260618 [82a1098fb882]'
+      - '🇺🇸US_42|718KB/s|P002-260618 [2df51a0db43f]'
+      - '🇺🇸US_97|692KB/s|R002-260618 [2d2bb008072d]'
+      - '🇺🇸US_6|770KB/s|P002-260618 [342fedcdd2a9]'
+      - '🇺🇸US_101|320KB/s|P002-260618 [3fb4f934a2bc]'
+      - '🇺🇸US_20|578KB/s|P002-260618 [4cc71e0918ac]'
+      - '🇺🇸US_334|804KB/s|R002-260618 [5385a051842e]'
+      - '🇺🇸US_107|742KB/s|P002-260618 [66ebf6ae1341]'
+      - '🇺🇸US_228|689KB/s|P002-260618 [9411ee14b7b3]'
+      - '🇺🇸US_342|470KB/s [d4a1bf05a3c6]'
+      - 'US · HTTP · clashnode · 5DB2CBF4'
+      - '🇺🇸US_9|774KB/s|P002-260618 [1e13e95b0e5a]'
+      - '🇺🇸US_325|754KB/s|P002-260618 [2066bdd63838]'
+      - '🇺🇸US_139|838KB/s|P002-260618 [30b959b768eb]'
+      - '🇺🇸US_205|732KB/s|R002-260618 [39054f90cbcc]'
+      - '🇺🇸US_140|759KB/s|R002-260618 [57beb1e2a7df]'
+      - '🇺🇸US_239|793KB/s|P002-260618 [b90a89b0573a]'
+      - '🇺🇸US_195|749KB/s [bdd89167a37f]'
+      - '🇺🇸US_141|784KB/s|P002-260618 [c3059253814a]'
+      - '🇺🇸US_121|764KB/s|P002-260618 [d6053f38ebec]'
+      - '🇺🇸US_13|831KB/s|P002-260618 [e842f77422a7]'
+      - '🇺🇸US_223|812KB/s [f658df7df711]'
+      - 'US · HTTP · clashnode · 4A53BD15'
+      - '🇺🇸US_61|498KB/s|R002-260618 [1ac4d958cac3]'
+      - '🇺🇸US_250|758KB/s|R002-260618 [4ac5d05f7655]'
+      - '🇺🇸US_225|749KB/s|R002-260618 [54fae4ceb8c7]'
+      - '🇺🇸US_90|413KB/s|R002-260618 [5bfea617b8dd]'
+      - '🇺🇸US_173|837KB/s|P002-260618 [6c613d96f69b]'
+      - '🇺🇸US_193|748KB/s|R002-260618 [99f87f2b140a]'
+      - '🇺🇸US_220|500KB/s [9ad570cf8a0d]'
+      - '🇺🇸US_343|799KB/s|P002-260618 [a8fb52dac60b]'
+      - '🇺🇸US_218|835KB/s|P002-260618 [cc2d161c221c]'
+      - '🇺🇸US_240|814KB/s|P002-260618 [d1e830ac3b71]'
+      - '🇺🇸US_150|817KB/s|R002-260618 [1fd0f978ab09]'
+      - '🇺🇸US_198|832KB/s|P002-260618 [8d81cfcb4761]'
+      - '🇺🇸US_419|755KB/s|K001-260618 [c6e1aea44c4a]'
+      - '🇺🇸US_281|775KB/s|P002-260618 [de266c2b5bde]'
+      - '🇺🇸US_227|796KB/s|P002-260618 [69a5c36ac9fa]'
+      - '🇺🇸US_217|800KB/s|R002-260618 [69ea03375d59]'
+      - '🇺🇸US_59|842KB/s|R002-260618 [712a67040d3e]'
+      - '🇺🇸US_215|854KB/s|R002-260618 [d405161e00fc]'
+      - '🇺🇸US_106|741KB/s|P002-260618 [2cca269a4ba7]'
+      - '@VPsave #1'
+      - 'ᴛᴇʟᴇɢʀᴀᴍ ɪᴅ = @ꜰxxɴᴇᴛ🤡'
+      - '🇮🇹IT-05 · 309K/s'
+      - '🇺🇸 23@exclavevpn'
+      - '@V2rayNPVTConfig #1'
+      - '🇳🇱NL_9|4.1MB/s'
+      - '🇺🇸US_213|200KB/s|R002-260618 [886f746fa672]'
+      - '🇺🇸US_45|69KB/s|R002-260618 [1fc116c439cd]'
+      - '🇮🇪IE_6|3.5MB/s|K001-260618 [ebe2b193bdbc]'
+      - 'FR 🇫🇷 | @Raydikalx | 4C225F #1'
+      - 'MX · SOCKS5 · clashnode · 70E55AA5'
+      - '🇩🇪DE_5|282KB/s|R002-260618 [3c848704dd46]'
+      - '🇩🇪DE_2|5.0MB/s|P002-260618 [b982eaaa5258]'
+      - '🇺🇸US_124|738KB/s|R002-260618 [f68eff2eac5f]'
+      - '🇺🇸US_231|719KB/s|P002-260618 [78c07ea64a89]'
+      - '🇺🇸US_321|800KB/s|P002-260618 [e1045d79dae0]'
+      - '🇺🇸US_94|577KB/s|P002-260618 [c8264c24d457]'
+      - '🇺🇸US_123|782KB/s|R002-260618 [f96d8fe2cd92]'
+      - '🇺🇸US_31|607KB/s|P002-260618 [9d68984591b5]'
+      - '🇺🇸US_326|774KB/s|R002-260618 [a570d214b4cf]'
+      - '🇺🇸US_24|636KB/s|R002-260618 [c0d594964827]'
+      - '🇺🇸US_312|379KB/s|R002-260618 [747f40a249e2]'
+      - '🇺🇸US_71|765KB/s|R002-260618 [fc73875d8c32]'
+      - '🇺🇸US_70|791KB/s|R002-260618 [d6b1d93bf171]'
+      - '🇺🇸US_163|730KB/s|R002-260618 [e7b56fb2aa36]'
+      - '🇺🇸US_162|786KB/s|R002-260618 [75c47cca7d0a]'
+      - '🇺🇸US_77|749KB/s|R002-260618 [d9ecc980fba0]'
+      - '🇺🇸US_11|466KB/s|P002-260618 [d842677472af]'
+      - '🇳🇱NL_126|1.9MB/s|P002-260618 [64363aa77890]'
+      - '🇳🇱NL_239|266KB/s|R002-260618 [1ab44c194f27]'
+      - '🇺🇸US_73|388KB/s|R002-260618 [f485c49773a6]'
+      - '🇺🇸US_269|753KB/s|R002-260618 [2e68419aab69]'
+      - '🇳🇱NL_121|432KB/s|P002-260618 [e012a4e53a46]'
+      - '🇳🇱NL_149|2.4MB/s|P002-260618 [e4e8d92b2a08]'
+      - '🇳🇱NL_125|1.1MB/s|R002-260618 [fa52015dee35]'
+      - '🇺🇸US_138|737KB/s|K001-260618 [fc8529ceafb7]'
+      - 'MX · SOCKS5 · clashnode · 2B33D64E'
+      - '🇺🇸US_96|762KB/s|P002-260618 [bdb7323375e8]'
+      - '🇺🇸US_95|778KB/s|P002-260618 [3fb5cbbb9d42]'
+      - 'MX · SOCKS5 · clashnode · D602F1D4'
+      - '🇺🇸US_243|305KB/s|P002-260618 [d0b846fb0830]'
+      - '🇳🇱NL_115|6.6MB/s|R002-260618 [ef760e5bc4d6]'
+      - '🇳🇱NL_143|411KB/s|R002-260618 [212db84ab5aa]'
+      - '🇺🇸US_130|738KB/s|P002-260618 [e1222b9a83cc]'
+      - '🇺🇸US_129|329KB/s|P002-260618 [834b1cadfe2f]'
+      - '🇺🇸US_69|685KB/s|R002-260618 [68c54a8a7923]'
+      - '🇺🇸US_156|760KB/s|R002-260618 [83acbd90408f]'
+      - '🇺🇸US_175|785KB/s|R002-260618 [b687c56e5918]'
+      - '🇺🇸US_158|770KB/s|R002-260618 [ef979e089ede]'
+      - '🇺🇸US_308|667KB/s|R002-260618 [39ea5fb883a1]'
+      - '🇫🇷FR_3|1.8MB/s|R002-260618 [df3cefb034a8]'
+      - '🇺🇸US_137|697KB/s|R002-260618 [2c2fa1ad5771]'
+      - '🇺🇸US_126|822KB/s|K001-260618 [34ec23bd9506]'
+      - '🇺🇸US_92|723KB/s|P002-260618 [e1485bbbb7ea]'
+      - '🇺🇸US_278|725KB/s|R002-260618 [1dcafc09d7db]'
+      - '🇳🇱NL_96|3.5MB/s|P002-260618 [6aa08aa36e29]'
+      - '🆓36@oneclickvpnkeys'
+      - '🇳🇱NL_124|5.5MB/s|K001-260618 [0314ff07d8b2]'
+      - '🇳🇱NL_109|3.1MB/s|R002-260618 [d87f2e8fe2b7]'
+      - '🇳🇱NL_228|1004KB/s|R002-260618 [8befcd8cfe66]'
+      - 'ᴛᴇʟᴇɢʀᴀᴍ ɪᴅ = @ꜰxxɴᴇᴛ💘'
+      - '🇺🇸US_5|736KB/s|R002-260618 [2ac17c33a391]'
+      - '🇳🇱NL_20|6.3MB/s|P002-260618 [d77b65a8fb8a]'
+      - '🇳🇱NL_82|266KB/s|R002-260618 [02e64b2794c6]'
+      - '🇳🇱NL_193|2.8MB/s|P002-260618 [cb3b6268d982]'
+      - '🇳🇱NL_120|70KB/s|R002-260618 [11147645fc19]'
+      - '🇺🇸US_144|818KB/s|R002-260618 [2281ed7d6fa2]'
+      - '🇩🇪DE_21|7.1MB/s|R002-260618 [7ec6ac94817b]'
+      - '🇳🇱NL_83|5.3MB/s|R002-260618 [cf19808e163e]'
+      - 'MX · SOCKS5 · clashnode · F364EC71'
+      - '🇳🇱NL_113|3.0MB/s|R002-260618 [a92bf8b04615]'
+      - '🇺🇸US_117|301KB/s|P002-260618 [227464e6f2f6]'
+      - '🇳🇱NL_196|5.3MB/s|R002-260618 [f5cce65976e8]'
+      - '🇳🇱NL_112|946KB/s|R002-260618 [28e6f82e9549]'
+      - '🇩🇪DE_110|6.7MB/s|P002-260618 [3b421a43fbd6]'
+      - '🇺🇸US_128|710KB/s|P002-260618 [0e9a0b8f1c70]'
+      - '🇳🇱NL_257|5.5MB/s|P002-260618 [111aaa619f5f]'
+      - '🇺🇸US_322|371KB/s|P002-260618 [012da4b2957a]'
+      - '🇳🇱NL_42|2.5MB/s|R002-260618 [429686735a0f]'
+      - '🇳🇱NL_102|5.3MB/s|P002-260618 [f84dd5f92876]'
+      - '🇳🇱NL_262|231KB/s|K001-260618 [1a33049d81fc]'
+      - '❓Other_28|868KB/s|P002-260618 [95c96fb6d441]'
+      - '🇳🇱NL_175|5.6MB/s|R002-260618 [ecbc8201cfbb]'
+      - '🇺🇸US_251|495KB/s|R002-260618 [5864aa81972f]'
+      - 'PL · VLESS · clashnode · 0AF670FC'
+      - '🇺🇸US_78|749KB/s|R002-260618 [873df955e6ca]'
+      - '🇺🇸US_76|815KB/s|R002-260618 [1ebc3aabf01f]'
+      - '🇳🇱NL_114|6.0MB/s|K001-260618 [e33fb6223bc5]'
+      - '🇷🇺 俄罗斯 | RUS 2 #1'
+      - '🇺🇸US_93|770KB/s|R002-260618 [480e90452489]'
+      - '🇷🇺 俄罗斯 | RUS 6 #1'
+      - '🇩🇪DE_93|232KB/s|P002-260618 [c242c75d0a6f]'
+      - '🇺🇸US_116|743KB/s|R002-260618 [58eccf1963f4]'
+      - 'US · SOCKS5 · clashnode · 1951DE24'
+      - 'ZZ · SOCKS5 · clashnode · 82BC43FB'
+      - '🇫🇷FR_66|2.5MB/s|R002-260618 [bf593393ec6e]'
+      - '🇵🇱PL_3|2.8MB/s|P002-260618 [0559e2b40cf9]'
+      - '🇵🇱PL_2|1.6MB/s|K001-260618 [7d600a30a2b6]'
+      - '🇩🇪DE_62|1.2MB/s|R002-260618 [f8f3f9b23979]'
+      - '🇺🇸US_79|745KB/s|R002-260618 [b5fee3ef00a5]'
+      - '🇺🇸US_152|677KB/s|R002-260618 [238bfb50e0f1]'
+      - '🇱🇻LV_9|2.4MB/s|K001-260618 [e8d4b41ce864]'
+      - '🇫🇷FR_120|1.7MB/s|K001-260618 [af44a4a293e5]'
+      - '@VPsave'
+      - '🇺🇸US_369|1.1MB/s|S001-260618 [a66364c9e9f6]'
+      - '🇺🇸US_155|146KB/s|R002-260618 [535e13772931]'
+      - '🇨🇿CZ_1|1.9MB/s|R002-260618 [dea96bfbdd9e]'
+      - '🇱🇹LT_1|2.2MB/s|R002-260618 [bfa4d7ad5717]'
+      - '🇷🇴RO_51|338KB/s|P002-260618 [1a98c95ea598]'
+      - '🇷🇴RO_53|592KB/s|K001-260618 [266b985728bf]'
+      - '🇷🇴RO_58|1.7MB/s|R002-260618 [2a38cb0737ea]'
+      - 'JP · VMESS · freeclashnode · 2017A3CA'
+      - '🇷🇴RO_68|1.7MB/s|R002-260618 [e24efac8b6e9]'
+      - '🇷🇴RO_74|1.8MB/s|P002-260618 [f85d2e6c6bd6]'
+      - '🇷🇴RO_3|942KB/s|R002-260618 [16b7d44488cc]'
+      - '🇷🇴RO_1|2.0MB/s|R002-260618 [3ab835bbceb4]'
+      - '🇷🇴RO_38|2.0MB/s|R002-260618 [1c60bd1e9888]'
+      - '🇷🇴RO_62|1.7MB/s|R002-260618 [395e12451e0e]'
+      - '🇷🇴RO_72|2.1MB/s|K001-260618 [51d6c485128b]'
+      - '🇷🇴RO_35|1.7MB/s|P002-260618 [6ae474347dac]'
+      - '🇷🇴RO_43|746KB/s|R002-260618 [5514b87d8d42]'
+      - '🇷🇴RO_34|1.2MB/s|P002-260618 [de71c7ae652d]'
+      - '🇷🇴RO_82|2.0MB/s|R002-260618 [edff0870a0ac]'
+      - '🇷🇴RO_78|1.2MB/s|R002-260618 [5dc79f84d447]'
+      - '🇷🇴RO_40|2.0MB/s [693ea8f5a428]'
+      - '🇷🇴RO_22|1.2MB/s [6de6cd1297d7]'
+      - '🇷🇴RO_32|1.7MB/s|R002-260618 [fc21fe8daf43]'
+      - '🇷🇴RO_10|1.1MB/s [7354ec979027]'
+      - '🇷🇴RO_26|693KB/s [dc46a9626177]'
+      - '🇷🇴RO_59|1.8MB/s|R002-260618 [affdc6a4119f]'
+      - '🇷🇴RO_44|1.6MB/s|R002-260618 [baf2f18ca1c2]'
+      - '🇷🇴RO_15|1.5MB/s|G001-260618 [bc0c44411289]'
+      - '🇺🇸US_332|584KB/s|R002-260618 [be32b39e85c7]'
+      - '🇷🇴RO_77|1.9MB/s|P002-260618 [fe2f38680a32]'
+      - '🇷🇴RO_20|1.5MB/s [a070dbe59d38]'
+      - '🇷🇴RO_5|487KB/s|R002-260618 [b8e109e02989]'
+      - '🇷🇴RO_60|1.3MB/s|R002-260618 [f438a8f40ada]'
+      - '🇷🇴RO_61|1.4MB/s|R002-260618 [11354267ebab]'
+      - '❓Other_3|1.2MB/s|P002-260618 [a09d024d4dff]'
+      - '🇷🇴RO_67|1.2MB/s [681ab62eb83f]'
+      - '🇷🇴RO_11|2.0MB/s|R002-260618 [7f81a7b258e8]'
+      - '🇷🇴RO_18|2.1MB/s|R002-260618 [16766d4073c8]'
+      - '🇷🇴RO_6|2.0MB/s|P002-260618 [db7fe7644734]'
+      - '🇷🇴RO_36|1.7MB/s|P002-260618 [4ac2e14c271d]'
+      - '🇷🇴RO_29|685KB/s|Z001-260618 [d6a9c7089cd8]'
+      - '🇷🇴RO_91|1.5MB/s|R002-260618 [d639d2bb1dd5]'
+      - '🇷🇴RO_27|642KB/s [2fa8c713139b]'
+      - '🇷🇴RO_39|2.1MB/s|P002-260618 [56b374aec58f]'
+      - 'MX · SOCKS5 · clashnode · B7D81B4B'
+      - '🇷🇴RO_97|1.5MB/s|K001-260618 [5a6d353e399f]'
+      - '🇷🇴RO_50|2.1MB/s|R002-260618 [0a23683cba9b]'
+      - '🇷🇴RO_55|1.3MB/s|R002-260618 [4a5138d3dc84]'
+      - '🇷🇴RO_28|1.9MB/s|P002-260618 [c57b25d7a27f]'
+      - '🇷🇴RO_63|1.7MB/s|P002-260618 [5780bdc5783c]'
+      - '🇷🇴RO_73|1.9MB/s [1174d8efe1df]'
+      - '🇷🇴RO_94|1.9MB/s|P002-260618 [3c09190ad5da]'
+      - '🇷🇴RO_31|1.4MB/s|P002-260618 [4a642eb93bc8]'
+      - '🇷🇴RO_33|1.4MB/s|P002-260618 [a6ec975042ad]'
+      - '🇷🇴RO_69|2.1MB/s|P002-260618 [e1e5753e62ce]'
+      - '🇷🇴RO_56|1.7MB/s|R002-260618 [87cf0d33a9e0]'
+      - '🇷🇴RO_71|1.1MB/s|R002-260618 [955230628083]'
+      - '🇷🇴RO_54|1.9MB/s|P002-260618 [a767ca6149fc]'
+      - 'MX · SOCKS5 · clashnode · 4414F12F'
+      - '🇷🇴RO_47|1.5MB/s|P002-260618 [adaa083b38d5]'
+      - '🇷🇴RO_2|1.9MB/s|P002-260618 [ca40bf62f458]'
+      - '🇷🇴RO_49|1.3MB/s [04d8dee969a2]'
+      - '🇷🇴RO_4|2.0MB/s|R002-260618 [aeb681b279e6]'
+      - '🇷🇺RU_3|1.5MB/s|R002-260618 [48eeca537cae]'
+      - 'MX · SOCKS5 · clashnode · 8153D1B7'
+      - '🇭🇰[www.v2nodes.com] trojan-HK-...'
+      - '🇩🇪 德国 | DEU #21'
+      - '🇩🇪 德国 | DEU #12'
+      - '🇩🇪 德国 | DEU 6'
+      - '🇷🇺 俄罗斯 | RUS #12'
+      - '🇩🇪 德国 | DEU #22'
+      - '🇫🇷FR_25|2.0MB/s|R002-260618 [e9b65e97ef66]'
+      - '🇷🇺 俄罗斯 | RUS #6'
+      - '🇩🇪 德国 | DEU #16'
+      - '🇫🇮FI_7|1.2MB/s|B007-260618 [bec781bc4192]'
+      - '❓Other_13|844KB/s|R002-260618 [7e6a15927292]'
+      - '🇷🇺 俄罗斯 | RUS #13'
+      - '🇩🇪[www.v2nodes.com] vless-DE-1... #11'
+      - '🇸🇬SG_60|475KB/s|R002-260618 [50a568bb2adc]'
+      - '🇯🇵JP_19|94KB/s|K001-260618 [4a732b04dd53]'
+      - 'JP · VLESS · freeclashnode · 04A75C4E'
+      - 'KR · TROJAN · freeclashnode · 5AA4257A'
+      - '🇺🇸 美国_02 - v2raydog.com'
+      - '🇭🇰HK_25|85KB/s|R002-260618 [132af03e1e90]'
+      - 'SG · TROJAN · freeclashnode · 70C4EF4A'
+      - '🇭🇰HK_1|2.3MB/s'
+      - '🇺🇸US_296|226KB/s|R002-260618 [c3d5eeffc341]'
+      - '🇳🇱NL_246|85KB/s|R002-260618 [e777851201f1]'
+      - 'US · TROJAN · clashmeta · 11E4DE34'
+      - '🇹🇼 台湾2|@ripaojiedian'
+      - '🇺🇸US_336|223KB/s|R002-260618 [0d53f0c1aef8]'
+      - '🇭🇰HK_2|3.0MB/s'
+      - '🇮🇩ID_1|559KB/s|R002-260618 [1e85b67c9f00]'
+      - '🇮🇩ID_3|367KB/s|R002-260618 [ec91e15d058c]'
+      - '🇺🇸US_253|81KB/s|R002-260618 [39215ca34ddc]'
+      - '🇺🇸US_264|267KB/s|R002-260618 [b4135a5f200b]'
+      - '🇺🇸US_207|243KB/s|R002-260618 [b92c1a4a1fb1]'
+      - '🇺🇸US_210|310KB/s|R002-260618 [83c31957de44]'
+      - '🇺🇸US_4|232KB/s|R002-260618 [4b9bb8749abb]'
+      - '🇺🇸US_371|350KB/s|R002-260618 [713d9982d1a3]'
+      - '🇺🇸US_142|134KB/s|R002-260618 [423dd28e4065]'
+      - '🇺🇸US_256|262KB/s [0205d799a499]'
+      - '🇺🇸US_268|232KB/s|R002-260618 [5f9e954fe312]'
+      - 'BE · VLESS · clashstair · 745EB9E6'
+      - 'Telegram@vpnjey #7'
+      - '🇺🇸US_377|176KB/s|K001-260618 [7c92db8aa094]'
+      - 'ZZ · VLESS · clashstair · C0CD6294'
+      - 'FR · VLESS · clashnode · 08A88097'
+      - '🇩🇪 德国_01 - v2raydog.com'
+      - '🇺🇸 美国_01 - v2raydog.com'
+      - 'ZZ · VLESS · clashstair · 0F2AEEAA'
+      - '🇹🇼TW_2|4.9MB/s'
+      - '🇺🇸US_294|239KB/s|R002-260618 [bbd4ccc22867]'
+      - '🇳🇱 荷兰_01 - v2raydog.com'
+      - '🇺🇸US_199|149KB/s|R002-260618 [f680b3bec0ff]'
+      - 'برای اتصال دائمی جوین شو🦠 Tele...'
+      - '🇫🇷[www.v2nodes.com] vless-FR-1... #5'
+      - 'ZZ · VLESS · clashstair · 16205036'
+      - '🇭🇰 香港 | HKG #6'
+      - '🇳🇪 尼日尔_01 - v2raydog.com'
+      - '🇭🇰 香港_01 - v2raydog.com-044f575b14dca93f'
+      - '🇺🇸US_295|230KB/s|R002-260618 [b04d1f18858c]'
+      - '🇺🇸US_335|176KB/s|R002-260618 [b293ec7d21de]'
+      - 'ZZ · VLESS · clashstair · C7620611'
+      - 'GB · VLESS · clashnode · 06EFA9A0'
+      - '🇺🇸US_211|174KB/s|R002-260618 [9862f21df803]'
+      - 'GB · VLESS · clashnode · 202CBB5F'
+      - '🇺🇸US_201|181KB/s|R002-260618 [ea1befc94c60]'
+      - '🇫🇮FI_6|1.2MB/s|S004-260618 [153529a4ec05]'
+      - '🇹🇼 🇨🇳 台湾 | TWN'
+      - '🇺🇸US_290|147KB/s|R002-260618 [5f8596a8538f]'
+      - '🇲🇽MX_3|855KB/s|P002-260618 [134074f5823b]'
+      - '🇺🇸US_209|307KB/s|R002-260618 [d8d0f16380f5]'
+      - '🇳🇱NL_256|668KB/s|S001-260618 [e79d3780e159]'
+      - '🇺🇸US_2|3.3MB/s'
 rules:
   - 'MATCH,PROXY'
