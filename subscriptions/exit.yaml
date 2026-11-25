@@ -291,17 +291,6 @@ proxies:
     username: 'null'
     udp: true
     endpoint-id: '9b94b90a44e04d52'
-  - name: '🇳🇱NL_285|1.1MB/s|P002-260618 01'
-    password: 'null'
-    port: 443
-    server: '185.140.209.235'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    endpoint-id: 'b1b69e8bf091d5cf'
   - name: '[cbusifabcap-clashmeta] ❓Other_47|224KB/s|R002-260618'
     port: 443
     server: '38.28.193.1'
@@ -869,15 +858,6 @@ proxies:
     port: 443
     server: '62.90.77.30'
     skip-cert-verify: true
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇷🇺RU_20|870KB/s|R002-260618 01'
-    port: 8443
-    server: '87.242.85.187'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
@@ -1560,14 +1540,6 @@ proxies:
     sni: '109.116.41.154'
     skip-cert-verify: true
     _poolOnly: true
-  - name: '[share-daily-node] US-HTTP-01'
-    type: 'http'
-    server: '118.184.140.90'
-    port: 58764
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    _poolOnly: true
   - name: '[cbusifabcap-clashmeta] ❓Other_54|96KB/s|K001-260618'
     password: 'None'
     port: 443
@@ -1872,4 +1844,42 @@ proxies:
     type: 'ss'
     cipher: '2022-blake3-chacha20-poly1305'
     password: '3NBsnBLanPfG6i3S2GTHineswr6EeSJPb0PCeMQoGoA='
+    _poolOnly: true
+  - name: '🇺🇸US-47.85.227.36-05'
+    server: '47.85.227.36'
+    port: 443
+    type: 'ss'
+    cipher: '2022-blake3-chacha20-poly1305'
+    password: '3NBsnBLanPfG6i3S2GTHineswr6EeSJPb0PCeMQoGoA='
+    _poolOnly: true
+  - name: '[VLESS] 🇺🇸 🇺🇸US(AzadNet.t.me) 135'
+    server: '4935e4t.de25.h1clayd.click'
+    port: 443
+    type: 'vless'
+    tls: true
+    uuid: '4201786b-d99b-4147-a5f0-20d47acddb81'
+    servername: '4935e4t.de25.h1clayd.click'
+    host: '4935e4t.de25.h1clayd.click'
+    flow: 'xtls-rprx-vision'
+    reality-opts:
+      public-key: 'MzgB17ZFbKqs8pbC3EscTzHid_ENc-k_Cp6nXl-2knw'
+      short-id: '6976d670818644cc'
+    client-fingerprint: 'random'
+    skip-cert-verify: true
+    tfo: false
+    _poolOnly: true
+  - name: '[VLESS] 🇺🇸 🇺🇸US(AzadNet.t.me) 133'
+    server: '13.141.36.10'
+    port: 443
+    type: 'vless'
+    tls: true
+    uuid: 'cda0862a-0f87-4be9-8ed8-1d0c9e382839'
+    servername: '5d0319t.nl7.h1clayd.click'
+    host: '5d0319t.nl7.h1clayd.click'
+    reality-opts:
+      public-key: 'l-GzBDuNuhnjxoRlZqKvT7jAt_sbVAxhGFsAttO5kXs'
+      short-id: '361d0dd59c70516f'
+    client-fingerprint: 'random'
+    skip-cert-verify: true
+    tfo: false
     _poolOnly: true
