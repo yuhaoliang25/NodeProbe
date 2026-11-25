@@ -76,7 +76,7 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇳🇱NL_158|2.7MB/s|P002-260618 01'
+  - name: '🇳🇱NL_29|2.3MB/s|P002-260618 [a1a43e85b47a]'
     password: 'None'
     port: 9002
     server: '84.17.47.146'
@@ -85,7 +85,7 @@ proxies:
     tls: true
     type: 'http'
     udp: true
-    endpoint-id: '3ec59da15bdfe635'
+    _poolOnly: true
   - name: '[ermaozi-subscribe] FR_speednode_0011'
     port: 23856
     server: '51.159.225.196'
@@ -603,15 +603,6 @@ proxies:
     username: 'null'
     udp: true
     _poolOnly: true
-  - name: '🇺🇸US_253|81KB/s|R002-260618 [39215ca34ddc]'
-    port: 443
-    server: '137.175.22.72'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
   - name: '🇺🇸US_199|149KB/s|R002-260618 [f680b3bec0ff]'
     port: 443
     server: '137.175.22.29'
@@ -977,6 +968,17 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
+  - name: '[ermaozi-subscribe] 🇫🇷FR_1|2.7MB/s|K001-260618'
+    password: 'None'
+    port: 443
+    server: '82.66.235.221'
+    skip-cert-verify: true
+    sub_tag: 'K001-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    x-toolall-mihomo: true
+    _poolOnly: true
   - name: '🇳🇱NL_257|5.5MB/s|P002-260618 [111aaa619f5f]'
     password: 'None'
     port: 9002
@@ -1244,19 +1246,6 @@ proxies:
     cipher: 'aes-256-gcm'
     password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
     _poolOnly: true
-  - name: '🇪🇸 西班牙 | VLESS | 002'
-    type: 'vless'
-    server: 'api.ferrin.uk'
-    port: 443
-    uuid: '7d1a74fd-8a38-4a29-863f-5da53a9e557e'
-    udp: true
-    tls: true
-    servername: '7d1a74fd.ferrin.uk'
-    client-fingerprint: 'safari'
-    network: 'xhttp'
-    xhttp-opts:
-      path: '/es'
-    _poolOnly: true
   - name: '[0.01MB/s][726ms] [freeSub#393] D🔴🇭🇰[🎬📺🎭🎪]_dokng.com_d85a9'
     password: null
     port: 443
@@ -1414,16 +1403,6 @@ proxies:
     udp: true
     tls: true
     skip-cert-verify: true
-    _poolOnly: true
-  - name: '[cbusifabcap-clashmeta] ❓Other_67|224KB/s|P002-260618'
-    password: 'None'
-    port: 343
-    server: '133.18.200.207'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
     _poolOnly: true
   - name: '[zhuhaiuk-free-nodes] PL - zhuhai.uk'
     type: 'http'
@@ -1772,13 +1751,6 @@ proxies:
     grpc-opts:
       grpc-service-name: 'mobile.api.Event'
     _poolOnly: true
-  - name: '🇺🇸US-47.85.238.210-07'
-    server: '47.85.238.210'
-    port: 443
-    type: 'ss'
-    cipher: '2022-blake3-chacha20-poly1305'
-    password: '3NBsnBLanPfG6i3S2GTHineswr6EeSJPb0PCeMQoGoA='
-    _poolOnly: true
   - name: '🇺🇸US-47.85.227.36-05'
     server: '47.85.227.36'
     port: 443
@@ -1816,6 +1788,21 @@ proxies:
     client-fingerprint: 'random'
     skip-cert-verify: true
     tfo: false
+    _poolOnly: true
+  - client-fingerprint: 'firefox'
+    name: '🇷🇺 俄罗斯 | RUS #6'
+    network: 'ws'
+    port: 443
+    server: 'ws3.falmero.store'
+    servername: 'paperbirch.merlano.monster'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '0b6a7fe0-206b-4071-9f96-cd397d1ec01a'
+    ws-opts:
+      headers:
+        Host: 'paperbirch.merlano.monster'
+      path: '/api/de1/stream'
     _poolOnly: true
   - alpn:
       - 'h2'
@@ -1973,5 +1960,128 @@ proxies:
     tls: true
     type: 'http'
     username: ''
+    udp: true
+    _poolOnly: true
+  - name: 'ZZ · VLESS · clashstair · C7620611'
+    type: 'vless'
+    server: '196.245.52.187'
+    port: 443
+    reality-opts:
+      public-key: 'UoS8qZ74hP_ECcncCz55lzvlcVss3R7VA0WYZE0YQCY'
+      short-id: 'ba2a3dce62b99092'
+    uuid: 'cda0862a-0f87-4be9-8ed8-1d0c9e382839'
+    udp: true
+    tls: true
+    servername: '04535dt.us8.h1clayd.click'
+    client-fingerprint: 'firefox'
+    _poolOnly: true
+  - name: 'NZ · SS · ts-sf-clash · 80A5B442'
+    type: 'ss'
+    server: '202.50.253.18'
+    port: 19999
+    cipher: 'aes-256-gcm'
+    alterId: 0
+    tls: true
+    skip-cert-verify: true
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
+    _poolOnly: true
+  - name: '🇮🇪IE_1|319KB/s|R002-260618 [42e1acae4056]'
+    password: 'null'
+    port: 443
+    server: '34.249.214.108'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: 'US · HTTP · kooker · B3B62EE7'
+    type: 'http'
+    server: 'usgp1-cdn-route.couldflare-cdn.com'
+    port: 443
+    tls: true
+    udp: true
+    sni: 'usgp1-cdn-route.couldflare-cdn.com'
+    username: 'mrwdfNTD8M79LCukCieldrqZWqs='
+    password: 'exaxgqkKkd0TAMrCxeonWg=='
+    _poolOnly: true
+  - name: '❓Other_99|210KB/s [fe68ba92b4d7]'
+    password: 'null'
+    port: 443
+    server: '129.153.93.183'
+    skip-cert-verify: true
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - type: 'vless'
+    name: '西班牙(mibei77.com 米贝节点分享) (3)'
+    server: '196.245.52.187'
+    port: 443
+    uuid: 'cda0862a-0f87-4be9-8ed8-1d0c9e382839'
+    udp: true
+    tls: true
+    servername: '35295cx.us8.h1clayd.click'
+    sni: '35295cx.us8.h1clayd.click'
+    skip-cert-verify: false
+    client-fingerprint: 'firefox'
+    reality-opts:
+      public-key: 'LsaTohbE6CqCH9UbYKwIybVXG3E5Wgz_X9czqas2LAI'
+      short-id: '9acff4d98e2fbcc6'
+    network: 'xhttp'
+    xhttp-opts:
+      path: '/1812842934d4'
+      mode: 'auto'
+    _poolOnly: true
+  - name: 'NL · HTTP · kooker · BD17B6BF'
+    type: 'http'
+    server: '84.17.47.123'
+    port: 9002
+    skip-cert-verify: true
+    tls: true
+    username: 'null'
+    password: 'null'
+    _poolOnly: true
+  - name: '🇩🇪DE_6|1010KB/s|R002-260618 [5af8b43bb3c2]'
+    password: 'null'
+    port: 443
+    server: '159.69.94.125'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: 'DK · HTTP · kooker · 1BB680D1'
+    type: 'http'
+    server: '158.173.154.4'
+    port: 9002
+    tls: true
+    skip-cert-verify: true
+    udp: true
+    password: 'None'
+    _poolOnly: true
+  - name: '🇫🇷FR_27|402KB/s|P002-260618 [b3d4aadd9f8a]'
+    password: 'null'
+    port: 443
+    server: '82.66.235.221'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    _poolOnly: true
+  - name: '🇩🇪DE_16|399KB/s|R002-260618 [62cee87d127c]'
+    port: 443
+    server: '176.94.74.21'
+    skip-cert-verify: true
+    sni: '176.94.74.21'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
     udp: true
     _poolOnly: true
