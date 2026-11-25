@@ -1,170 +1,7 @@
 proxies:
-  - ip: '172.16.0.2/32'
-    mtu: 1280
-    name: '🇨🇳CN_1|1.3MB/s'
-    port: 500
-    presharedkey: ''
-    private-key: 'cMxekgAnVSNb+rgOySV+74ogaJhqpJtShZaECZCY6k4='
-    public-key: 'bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo='
-    reserved:
-      - 236
-      - 210
-      - 245
-    server: '162.159.192.1'
-    type: 'wireguard'
-    udp: true
-    endpoint-id: '7c6db7dcb05ed4ec'
-  - ip: '172.16.0.2/32'
-    mtu: 1380
-    name: '🇨🇳CN_3|2.3MB/s'
-    port: 2371
-    presharedkey: ''
-    private-key: 'CBMxaub4dG7Q9W91x4+lUCqtF9eV1BN+4osBfWZNXHs='
-    public-key: 'bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo='
-    reserved:
-      - 225
-      - 17
-      - 205
-    server: '162.159.195.4'
-    type: 'wireguard'
-    udp: true
-    endpoint-id: '7432ef5fc6a943c2'
-  - ip: '172.16.0.2/32'
-    ipv6: '2606:4700:110:8e4e:939b:b987:39aa:c46c/128'
-    mtu: 1280
-    name: '🇺🇸US_14|3.0MB/s'
-    port: 3854
-    private-key: 'OEysS/3kryZt7O/RobQFlmPatDWuUl9bwef0IoMX/Uo='
-    public-key: 'bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo='
-    reserved:
-      - 0
-      - 0
-      - 0
-    server: '8.6.112.134'
-    type: 'wireguard'
-    udp: true
-    endpoint-id: '8aa9bb20f39be62a'
-  - name: '🇸🇬[www.v2nodes.com] vless-SG-1... #7'
-    network: 'ws'
-    port: 8443
-    server: '172.64.154.113'
-    servername: 'freeceshi6.frii.site'
-    tls: true
-    type: 'vless'
-    uuid: '53bbdad4-2f4e-45db-8df4-fa491a6a7227'
-    ws-opts:
-      headers:
-        Host: 'freeceshi6.frii.site'
-      path: '/proxyip=ProxyIP.JP.CMLiussss.netfp=chrome'
-    endpoint-id: '0088667fb00584da'
-  - ip: '172.16.0.2/32'
-    keepalive: '5'
-    mtu: 1280
-    name: '🇨🇳CN_5|2.4MB/s'
-    persistent-keepalive: '5'
-    port: 2408
-    private-key: 'iP43+YO4O28eA8W6YRhSasNI0fggDS6efGoSL4AAIU4='
-    public-key: 'bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo='
-    reserved:
-      - 213
-      - 69
-      - 137
-    server: '162.159.192.3'
-    type: 'wireguard'
-    udp: true
-    wnoise: 'quic'
-    wnoisecount: '5'
-    wnoisedelay: '5'
-    wpayloadsize: '40-90'
-    endpoint-id: 'a05a6dfa5138d418'
-  - ip: '172.16.0.2/32'
-    mtu: 1280
-    name: '🇨🇳CN_2|2.3MB/s'
-    port: 500
-    presharedkey: ''
-    private-key: '2D+QMolgGWVRVGdJJvsQ4VBDCcZTym0c1sFN00PeMUs='
-    public-key: 'bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo='
-    reserved:
-      - 213
-      - 74
-      - 19
-    server: '162.159.192.3'
-    type: 'wireguard'
-    udp: true
-    endpoint-id: '469773b1f4b3478f'
-  - ip: '172.16.0.2/32'
-    keepalive: '5'
-    mtu: 1280
-    name: '🇨🇳CN_4|2.7MB/s'
-    persistent-keepalive: '5'
-    port: 4500
-    private-key: 'QN9e//MZcXBdaz7vDo7hX6tY5xh2yFzlActftLGlA10='
-    public-key: 'bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo='
-    reserved:
-      - 255
-      - 89
-      - 117
-    server: '162.159.192.1'
-    type: 'wireguard'
-    udp: true
-    wnoise: 'quic'
-    wnoisecount: '5'
-    wnoisedelay: '5'
-    wpayloadsize: '40-90'
-    endpoint-id: '25772af326e869c6'
-  - name: 'FR · VLESS · freeclashnode · 0F2ED0C0'
-    type: 'vless'
-    server: '154.197.64.252'
-    port: 443
-    uuid: '08038e90-7fe9-49c9-bbdc-b7044d6bd348'
-    network: 'ws'
-    tls: true
-    servername: 'worker3.notoj58234.workers.dev'
-    client-fingerprint: 'chrome'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'worker3.notoj58234.workers.dev'
-    endpoint-id: '586649b9752c7711'
-  - name: 'FR · VLESS · freeclashnode · 0DBA9DAE'
-    type: 'vless'
-    server: '104.19.52.70'
-    port: 8443
-    uuid: 'fceb3200-2516-47d2-8e28-d04ecde9427a'
-    network: 'ws'
-    tls: true
-    servername: 'edge-fef90023.pages.dev'
-    client-fingerprint: 'firefox'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'edge-fef90023.pages.dev'
-    endpoint-id: 'b3fbc248a78c43ce'
-  - name: 'US · VLESS · freeclashnode · 00D9DA4A'
-    type: 'vless'
-    server: '188.114.98.0'
-    port: 443
-    uuid: 'd4733e5a-5850-4523-942e-f28f82ebf4a9'
-    network: 'ws'
-    tls: true
-    servername: 'party-5cn.pages.dev'
-    client-fingerprint: 'chrome'
-    ws-opts:
-      path: '/?TELEGRAM--MARAMBASHI--MARAMBASHI--MARAMBASHI--MARAMBASHI?ed=2560'
-      headers:
-        Host: 'party-5cn.pages.dev'
-    endpoint-id: '0cf3ed00388d49ae'
-  - name: 'trojan-1943754366-source-d2b95f4cfabaf7c2'
-    network: 'tcp'
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    port: 443
-    server: '216.152.155.131'
-    skip-cert-verify: true
-    type: 'trojan'
-    endpoint-id: 'd2b95f4cfabaf7c2'
-  - name: 'US · VMESS · freeclashnode · 0879252A'
+  - name: 'US · VMESS · freeclashnode · 35598D53'
     type: 'vmess'
-    server: '162.251.60.97'
+    server: '38.107.226.5'
     port: 1270
     uuid: '5c040f1d-45db-43bd-8d46-e4950e433735'
     alterId: 0
@@ -172,10 +9,10 @@ proxies:
     network: 'tcp'
     tls: true
     servername: 'xmfhlpy.com'
-    endpoint-id: 'e59caad90c463872'
-  - name: 'US · VMESS · freeclashnode · 18BE0E67'
+    endpoint-id: '921b3d4534c38c8a'
+  - name: 'US · VMESS · freeclashnode · 55892437'
     type: 'vmess'
-    server: '38.128.66.249'
+    server: '162.251.61.46'
     port: 1270
     uuid: '5c040f1d-45db-43bd-8d46-e4950e433735'
     alterId: 0
@@ -183,720 +20,616 @@ proxies:
     network: 'tcp'
     tls: true
     servername: 'xmfhlpy.com'
-    endpoint-id: 'fdc258cd6960696e'
-  - name: 'trojan-1931229905-source-27fa0e6cd75c7a7e'
-    network: 'tcp'
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    port: 443
-    server: '216.152.156.65'
-    skip-cert-verify: true
-    type: 'trojan'
-    endpoint-id: '27fa0e6cd75c7a7e'
-  - name: 'trojan-1940466747-source-ea0249d569423355'
-    network: 'tcp'
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    port: 443
-    server: '216.152.156.81'
-    skip-cert-verify: true
-    type: 'trojan'
-    endpoint-id: 'ea0249d569423355'
-  - name: '🆓13@oneclickvpnkeys'
-    password: '04920673-035c-410d-94e4-5b1469d3fb6f'
-    port: 42848
-    server: '171.22.183.158'
-    skip-cert-verify: true
-    sni: '171.22.183.158'
-    tls: false
-    type: 'hysteria2'
-    endpoint-id: '6626d9c7e97e2cb4'
-  - name: '@V2rayNPVTConfig'
-    password: '04920673-035c-410d-94e4-5b1469d3fb6f'
-    port: 42848
-    server: '171.22.183.158'
-    skip-cert-verify: false
-    tls: false
-    type: 'hysteria2'
-    endpoint-id: '9014f2840287b4be'
-  - client-fingerprint: 'chrome'
-    name: '@OutlineReleasedKey #2'
-    password: '549766c3-fa5f-471e-8031-ffc1f8d5064f'
-    port: 24403
-    server: '94.183.164.119'
-    sni: 'docs.blog-forme.ru'
-    tls: false
-    type: 'hysteria2'
-    endpoint-id: 'e6d7b89931253a56'
-  - cipher: 'aes-256-gcm'
-    name: '🇺🇸US-38.91.107.188-0141'
-    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
-    port: 19999
-    server: '38.91.107.188'
-    type: 'ss'
-    endpoint-id: 'd19a0ed991d4ea70'
-  - name: '🇺🇸US_183|315KB/s|R002-260618 [f3757137fc03]'
-    port: 443
-    server: '129.153.93.183'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: 'e319ab8b2af930e1'
-  - name: 'US · VMESS · clashnode · 40EABEDA'
-    type: 'vmess'
-    server: '107.150.19.24'
-    port: 54321
-    uuid: '2659ef8a-3456-48f8-95fe-08b82d3f4984'
+    endpoint-id: 'ab3e4a435c2b3170'
+  - type: 'vmess'
+    name: 'US · VMESS · radikal · B2FA8F37-7de0f9e8bfb6b4c4'
+    server: '169.197.142.22'
+    port: 18000
+    uuid: 'f8c8dc3d-0d37-46b0-8b34-a7232882fcfe'
     alterId: 0
     cipher: 'auto'
-    alpn:
-      - ''
-    http-opts:
-      headers:
-        Host:
-          - 'down-cdn.dingtalk.com'
-      path:
-        - '/x'
-    network: 'http'
-    skip-cert-verify: false
-    sub_tag: 'M003-260806'
     tls: false
+    sni: '169.197.142.22'
+    network: 'tcp'
+    endpoint-id: '7de0f9e8bfb6b4c4'
+  - type: 'vmess'
+    name: 'US · VMESS · radikal · 65925987'
+    server: '84.17.41.2'
+    port: 18000
+    uuid: 'f8c8dc3d-0d37-46b0-8b34-a7232882fcfe'
+    alterId: 0
+    cipher: 'auto'
+    tls: false
+    sni: 'bj1aa2zyjxyamyuk.v.3dns.vip'
+    network: 'tcp'
+    endpoint-id: '026004d62659026d'
+  - name: 'US · VMESS · freeclashnode · 5DA3B853'
+    type: 'vmess'
+    server: '172.111.36.253'
+    port: 1270
+    uuid: '5c040f1d-45db-43bd-8d46-e4950e433735'
+    alterId: 0
+    cipher: 'auto'
+    network: 'tcp'
+    tls: true
+    servername: 'xmfhlpy.com'
+    endpoint-id: '66dbf49a18d81919'
+  - name: 'ZZ · HYSTERIA2 · wzmwayne · 697684F6'
+    type: 'hysteria2'
+    server: '62.210.7.139'
+    port: 60111
+    skip-cert-verify: true
+    sni: 'www.bing.com'
+    password: 'github.com/Alvin9999-newpac/fanqiang'
+    endpoint-id: 'dbc746341d67d544'
+  - name: 'ZZ · HYSTERIA2 · wzmwayne · 46BF7E38'
+    type: 'hysteria2'
+    server: '62.210.7.139'
+    port: 60111
+    skip-cert-verify: true
+    sni: '62.210.7.139'
+    password: 'github.com/Alvin9999-newpac/fanqiang'
+    endpoint-id: '3e14058f75861cef'
+  - name: '🇺🇸US_62|301KB/s|B007-260618 [457ea0d80507]'
+    alterId: 0
+    cipher: 'auto'
+    client-fingerprint: 'chrome'
+    network: 'tcp'
+    port: 1270
+    server: '172.111.36.123'
+    sub_tag: 'B007-260618'
+    tls: true
+    type: 'vmess'
     udp: true
+    uuid: '5c040f1d-45db-43bd-8d46-e4950e433735'
     xudp: true
     packet-encoding: 'xudp'
-    endpoint-id: '946844a427409e53'
-  - cipher: '2022-blake3-chacha20-poly1305'
-    name: '🇩🇪DE_7|1.4MB/s'
-    password: 'Cg2Dw4OhdBZhqbeO9ZTA3g/Gk/AvsrYZGhAJeGnQIx4='
-    port: 443
-    server: '35.178.82.244'
-    type: 'ss'
-    udp: true
-    endpoint-id: '258d6c679d96a8ea'
-  - name: '🇺🇸US_14|771KB/s|R002-260618 [430dc52727da]'
-    port: 9002
-    server: '138.199.35.198'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
+    servername: 'xmfhlpy.com'
+    endpoint-id: 'b125f009f9723bc8'
+  - name: 'US · VMESS · freeclashnode · 4EC4FADC'
+    type: 'vmess'
+    server: '172.111.36.126'
+    port: 1270
+    uuid: '5c040f1d-45db-43bd-8d46-e4950e433735'
+    alterId: 0
+    cipher: 'auto'
+    network: 'tcp'
     tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '64b00770f99303a9'
-  - name: '🇺🇸US_23|831KB/s|P002-260618 [3d6858c0edb1]'
-    password: 'null'
-    port: 9002
-    server: '138.199.35.202'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
+    servername: 'xmfhlpy.com'
+    endpoint-id: '3697a1280043941b'
+  - name: 'US · VMESS · freeclashnode · 5581FB55'
+    type: 'vmess'
+    server: '162.251.62.31'
+    port: 1270
+    uuid: '5c040f1d-45db-43bd-8d46-e4950e433735'
+    alterId: 0
+    cipher: 'auto'
+    network: 'tcp'
     tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    endpoint-id: '37c31851d6b9da12'
-  - name: '🇺🇸US_149|789KB/s|R002-260618 [7999de0c275c]'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.201'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
+    servername: 'xmfhlpy.com'
+    endpoint-id: '802a21fed4f18ab1'
+  - name: 'US · VMESS · freeclashnode · 0EBCFFF2'
+    type: 'vmess'
+    server: '67.220.74.197'
+    port: 1270
+    uuid: '5c040f1d-45db-43bd-8d46-e4950e433735'
+    alterId: 0
+    cipher: 'auto'
+    network: 'tcp'
     tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '6a686b4cda81077c'
-  - name: '🇺🇸US_248|735KB/s|R002-260618 [bddf99e54974]'
-    password: 'null'
-    port: 9002
-    server: '138.199.35.219'
-    skip-cert-verify: true
-    sni: '138.199.35.219'
-    sub_tag: 'R002-260618'
+    servername: 'xmfhlpy.com'
+    endpoint-id: 'f00bb9ec753c4a34'
+  - name: 'US · VMESS · ts-sf-clash · CFF625E0'
+    type: 'vmess'
+    server: '169.197.142.68'
+    port: 1270
+    uuid: '5c040f1d-45db-43bd-8d46-e4950e433735'
+    alterId: 0
+    cipher: 'auto'
     tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    endpoint-id: '22f727a0eb6f5a4b'
-  - name: '🇺🇸US_277|371KB/s|P002-260618 [cd51b3cc2bd7]'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.210'
     skip-cert-verify: true
-    sub_tag: 'P002-260618'
+    network: 'tcp'
+    endpoint-id: '8f70e3252a663be3'
+  - name: 'US · VMESS · radikal · 30815D63'
+    type: 'vmess'
+    server: '67.220.74.188'
+    port: 1270
+    uuid: '5c040f1d-45db-43bd-8d46-e4950e433735'
+    alterId: 0
+    cipher: 'auto'
+    network: 'tcp'
     tls: true
+    servername: 'xmfhlpy.com'
+    endpoint-id: 'c4d4fbcfe1667bce'
+  - type: 'vmess'
+    name: 'US · VMESS · radikal · 10F4119C-0e33a73b2a71ab62'
+    server: '38.110.1.246'
+    port: 18000
+    uuid: 'f8c8dc3d-0d37-46b0-8b34-a7232882fcfe'
+    alterId: 0
+    cipher: 'auto'
+    tls: false
+    sni: 'guanwang.awsno.com'
+    network: 'tcp'
+    endpoint-id: '0e33a73b2a71ab62'
+  - name: 'US · HTTP · kooker · E4D245D8'
     type: 'http'
-    udp: true
-    endpoint-id: 'b217ff12da937d6c'
-  - name: '🇺🇸US_66|761KB/s|R002-260618 [598978da4bbc]'
-    port: 9002
     server: '138.199.35.211'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: 'ccfa49dbe0f74fb1'
-  - name: '🇺🇸US_120|800KB/s|P002-260618 [7feeec8f30cf]'
-    password: 'None'
     port: 9002
-    server: '138.199.35.212'
     skip-cert-verify: true
-    sub_tag: 'P002-260618'
     tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '80895a96c6295ead'
-  - name: '🇺🇸US_224|759KB/s|R002-260618 [82a1098fb882]'
-    port: 9002
-    server: '138.199.35.215'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '4e8e1c3187e3a404'
-  - name: '🇺🇸US_42|718KB/s|P002-260618 [2df51a0db43f]'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.202'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '5091c3c6a5632402'
-  - name: '🇺🇸US_97|692KB/s|R002-260618 [2d2bb008072d]'
-    password: 'null'
-    port: 9002
-    server: '138.199.35.212'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
     username: 'null'
-    udp: true
-    endpoint-id: '4b6dbe416aae5e5f'
-  - name: '🇺🇸US_6|770KB/s|P002-260618 [342fedcdd2a9]'
     password: 'None'
-    port: 9002
-    server: '138.199.35.217'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
+    endpoint-id: 'e48111e2ecc2434c'
+  - name: 'NZ · SS · ts-sf-clash · 80A5B442'
+    type: 'ss'
+    server: '202.50.253.18'
+    port: 19999
+    cipher: 'aes-256-gcm'
+    alterId: 0
     tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '6b557e660da4c5d8'
-  - name: '🇺🇸US_101|320KB/s|P002-260618 [3fb4f934a2bc]'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.208'
     skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '0b438c1998e0b183'
-  - name: '🇺🇸US_20|578KB/s|P002-260618 [4cc71e0918ac]'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.216'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: 'a784549677cf0345'
-  - name: '🇺🇸US_334|804KB/s|R002-260618 [5385a051842e]'
-    password: 'null'
-    port: 9002
-    server: '138.199.35.216'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    endpoint-id: 'f5189279aa48c6e9'
-  - name: '🇺🇸US_107|742KB/s|P002-260618 [66ebf6ae1341]'
-    password: ''
-    port: 9002
-    server: '138.199.35.210'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    username: ''
-    udp: true
-    endpoint-id: '269ddeaf47fdd335'
-  - name: '🇺🇸US_228|689KB/s|P002-260618 [9411ee14b7b3]'
-    password: 'null'
-    port: 9002
-    server: '138.199.35.217'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    endpoint-id: '915530096742befa'
-  - name: '🇺🇸US_342|470KB/s [d4a1bf05a3c6]'
-    password: 'null'
-    port: 9002
-    server: '138.199.35.200'
-    skip-cert-verify: true
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    endpoint-id: 'def5a4f0b2321501'
-  - name: 'US · HTTP · clashnode · 5DB2CBF4'
-    type: 'http'
-    server: '138.199.35.219'
-    port: 9002
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    udp: true
-    username: 'null'
-    password: 'null'
-    endpoint-id: 'd770502da3de9f92'
-  - name: '🇺🇸US_9|774KB/s|P002-260618 [1e13e95b0e5a]'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.220'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: 'cc8428afcf80cbb0'
-  - name: '🇺🇸US_325|754KB/s|P002-260618 [2066bdd63838]'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.199'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: 'ce8b293a59a3c510'
-  - name: '🇺🇸US_139|838KB/s|P002-260618 [30b959b768eb]'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.214'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: 'e74af45dd435ef8e'
-  - name: '🇺🇸US_205|732KB/s|R002-260618 [39054f90cbcc]'
-    password: 'null'
-    port: 9002
-    server: '138.199.35.202'
-    skip-cert-verify: true
-    sni: '138.199.35.202'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    endpoint-id: '8d2fc3d8e4ec6236'
-  - name: '🇺🇸US_140|759KB/s|R002-260618 [57beb1e2a7df]'
-    password: 'null'
-    port: 9002
-    server: '138.199.35.198'
-    skip-cert-verify: true
-    sni: '138.199.35.198'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    endpoint-id: 'f8df99716a85628c'
-  - name: '🇺🇸US_239|793KB/s|P002-260618 [b90a89b0573a]'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.206'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '978362ac67400cfe'
-  - name: '🇺🇸US_195|749KB/s [bdd89167a37f]'
-    password: 'null'
-    port: 9002
-    server: '138.199.35.213'
-    skip-cert-verify: true
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    endpoint-id: 'a9eec207c6290af4'
-  - name: '🇺🇸US_141|784KB/s|P002-260618 [c3059253814a]'
-    password: 'null'
-    port: 9002
-    server: '138.199.35.198'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    endpoint-id: '0b88abd3210eb3d4'
-  - name: '🇺🇸US_121|764KB/s|P002-260618 [d6053f38ebec]'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.198'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '91b783c05ebd3e48'
-  - name: '🇺🇸US_13|831KB/s|P002-260618 [e842f77422a7]'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.207'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '949b1ca96c03850d'
-  - name: '🇺🇸US_223|812KB/s [f658df7df711]'
-    password: ''
-    port: 9002
-    server: '138.199.35.218'
-    skip-cert-verify: true
-    tls: true
-    type: 'http'
-    username: ''
-    udp: true
-    endpoint-id: '351dcbb70d0afdd5'
-  - name: 'US · HTTP · clashnode · 4A53BD15'
-    type: 'http'
-    server: '138.199.35.209'
-    port: 9002
-    skip-cert-verify: true
-    sni: '138.199.35.209'
-    sub_tag: 'R002-260618'
-    tls: true
-    udp: true
-    username: 'null'
-    password: 'null'
-    endpoint-id: '6e432f20341f6317'
-  - name: '🇺🇸US_61|498KB/s|R002-260618 [1ac4d958cac3]'
-    password: 'null'
-    port: 9002
-    server: '138.199.35.199'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    endpoint-id: '4a897fd241ab7690'
-  - name: '🇺🇸US_250|758KB/s|R002-260618 [4ac5d05f7655]'
-    port: 9002
-    server: '138.199.35.220'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '6493b98e9afea31a'
-  - name: '🇺🇸US_225|749KB/s|R002-260618 [54fae4ceb8c7]'
-    port: 9002
-    server: '138.199.35.216'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: 'e087c3cbc4a41d54'
-  - name: '🇺🇸US_90|413KB/s|R002-260618 [5bfea617b8dd]'
-    port: 9002
-    server: '138.199.35.204'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: 'cf366d738ac1179d'
-  - name: '🇺🇸US_173|837KB/s|P002-260618 [6c613d96f69b]'
-    password: 'null'
-    port: 9002
-    server: '138.199.35.209'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    endpoint-id: '5a1c593ad471c487'
-  - name: '🇺🇸US_193|748KB/s|R002-260618 [99f87f2b140a]'
-    password: 'null'
-    port: 9002
-    server: '138.199.35.210'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    endpoint-id: 'b5f583d9c4ba0cfb'
-  - name: '🇺🇸US_220|500KB/s [9ad570cf8a0d]'
-    password: ''
-    port: 9002
-    server: '138.199.35.205'
-    skip-cert-verify: true
-    tls: true
-    type: 'http'
-    username: ''
-    udp: true
-    endpoint-id: 'dbacf984d30f7bed'
-  - name: '🇺🇸US_343|799KB/s|P002-260618 [a8fb52dac60b]'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.196'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '5ce2ab2aa170435e'
-  - name: '🇺🇸US_218|835KB/s|P002-260618 [cc2d161c221c]'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.219'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '9de4a3caca4fd09d'
-  - name: '🇺🇸US_240|814KB/s|P002-260618 [d1e830ac3b71]'
-    password: 'null'
-    port: 9002
-    server: '138.199.35.220'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    endpoint-id: 'f5df955ef86aa7fa'
-  - name: '🇺🇸US_150|817KB/s|R002-260618 [1fd0f978ab09]'
-    password: 'null'
-    port: 9002
-    server: '138.199.35.197'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    endpoint-id: '15b709e5fcfacad4'
-  - name: '🇺🇸US_198|832KB/s|P002-260618 [8d81cfcb4761]'
-    password: 'null'
-    port: 9002
-    server: '138.199.35.218'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    endpoint-id: 'ff328adac6edb4e1'
-  - name: '🇺🇸US_419|755KB/s|K001-260618 [c6e1aea44c4a]'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.203'
-    skip-cert-verify: true
-    sub_tag: 'K001-260618'
-    tls: true
-    type: 'http'
-    username: ''
-    udp: true
-    endpoint-id: 'edf5b8f376671275'
-  - name: '🇺🇸US_281|775KB/s|P002-260618 [de266c2b5bde]'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.215'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '4feaa498e6860bf5'
-  - name: '🇺🇸US_227|796KB/s|P002-260618 [69a5c36ac9fa]'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.204'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '4686a98fb10918e7'
-  - name: '🇺🇸US_217|800KB/s|R002-260618 [69ea03375d59]'
-    password: 'None'
-    port: 9002
-    server: '138.199.35.195'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '35ba5e76f13f0e5f'
-  - name: '🇺🇸US_59|842KB/s|R002-260618 [712a67040d3e]'
-    port: 9002
-    server: '138.199.35.206'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '71c2e2b3da6b6861'
-  - name: '🇺🇸US_215|854KB/s|R002-260618 [d405161e00fc]'
-    port: 9002
-    server: '138.199.35.197'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    endpoint-id: '0cbdf96915d24775'
-  - name: '🇺🇸US_106|741KB/s|P002-260618 [2cca269a4ba7]'
-    password: 'null'
-    port: 9002
-    server: '138.199.35.195'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    username: 'null'
-    udp: true
-    endpoint-id: 'bc2c4f68a094b859'
-  - name: '@VPsave #1'
-    obfs: 'salamander'
-    obfs-password: 're61ep4ancwplwh8'
-    password: '57beeeb0-03fc-4fc9-94da-7604488a7134'
-    port: 40055
-    server: 'a3dgus.supertoolify.com'
-    skip-cert-verify: true
-    sni: 'psstatic.cdn.bcebos.com'
-    tls: false
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
+    endpoint-id: '147c917156524b8a'
+  - name: 'ZZ · HYSTERIA2 · wzmwayne · 7135E3AF'
     type: 'hysteria2'
-    endpoint-id: '9fe99c43114642a3'
-  - alpn:
-      - 'h3'
-    name: 'ᴛᴇʟᴇɢʀᴀᴍ ɪᴅ = @ꜰxxɴᴇᴛ🤡'
-    obfs: 'salamander'
-    obfs-password: 'qrl-03E8Q6JaUlAkOPHXQBwN'
-    password: '74bec046f0004aa5bc280ecc4ab50465'
+    server: '66.94.121.46'
     port: 443
-    server: '216.73.157.142'
-    skip-cert-verify: false
-    sni: '216.73.157.142'
-    tls: false
-    type: 'hysteria2'
-    endpoint-id: '64b5e21a0df3a6d1'
-  - name: '🇺🇸 23@exclavevpn'
-    obfs: 'salamander'
-    obfs-password: 're61ep4ancwplwh8'
-    password: '57beeeb0-03fc-4fc9-94da-7604488a7134'
-    port: 40055
-    server: '154.40.49.216'
     skip-cert-verify: true
-    sni: 'psstatic.cdn.bcebos.com'
-    tls: false
+    sni: ''
+    password: 'gf1:gfhysteria2024'
+    endpoint-id: 'fd7ec7b896a81896'
+  - name: '🇮🇪IE_1|319KB/s|R002-260618 [42e1acae4056]'
+    password: 'null'
+    port: 443
+    server: '34.249.214.108'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    endpoint-id: 'b03abbb3c2279405'
+  - name: 'DE · VMESS · freeclashnode · 45A4C049'
+    type: 'vmess'
+    server: '193.108.119.87'
+    port: 1270
+    uuid: '5c040f1d-45db-43bd-8d46-e4950e433735'
+    alterId: 0
+    cipher: 'auto'
+    network: 'tcp'
+    tls: true
+    servername: 'xmfhlpy.com'
+    endpoint-id: '87090f820547c2b8'
+  - name: 'DE · VMESS · nodev2ray · F9CDFBC6'
+    type: 'vmess'
+    server: '185.177.229.95'
+    port: 1270
+    uuid: '5c040f1d-45db-43bd-8d46-e4950e433735'
+    alterId: 0
+    cipher: 'auto'
+    network: 'tcp'
+    tls: true
+    servername: 'xmfhlpy.com'
+    endpoint-id: 'a80764c01f6143fd'
+  - name: 'DE · VMESS · freeclashnode · 328B8BAC'
+    type: 'vmess'
+    server: '193.108.117.61'
+    port: 1270
+    uuid: '5c040f1d-45db-43bd-8d46-e4950e433735'
+    alterId: 0
+    cipher: 'auto'
+    network: 'tcp'
+    tls: true
+    servername: 'xmfhlpy.com'
+    endpoint-id: '3d58f9c616929e82'
+  - name: 'FR · VMESS · freeclashnode · 4AD98028'
+    type: 'vmess'
+    server: '91.134.35.72'
+    port: 1270
+    uuid: '5c040f1d-45db-43bd-8d46-e4950e433735'
+    alterId: 0
+    cipher: 'auto'
+    network: 'tcp'
+    tls: true
+    servername: 'xmfhlpy.com'
+    endpoint-id: 'cda6e45378084a01'
+  - name: 'US · HTTP · kooker · B3B62EE7'
+    type: 'http'
+    server: 'usgp1-cdn-route.couldflare-cdn.com'
+    port: 443
+    tls: true
+    udp: true
+    sni: 'usgp1-cdn-route.couldflare-cdn.com'
+    username: 'mrwdfNTD8M79LCukCieldrqZWqs='
+    password: 'exaxgqkKkd0TAMrCxeonWg=='
+    endpoint-id: '3e588018b5e966f2'
+  - name: 'MX · SOCKS5 · wzmwayne · 8F44F357'
+    type: 'socks5'
+    server: '94.194.164.203'
+    port: 62000
+    username: 'rVkkraqT'
+    password: '2j7CCZQb'
+    endpoint-id: 'e0d4868cdf403880'
+  - name: 'ZZ · HYSTERIA2 · wzmwayne · 1E62CD28'
     type: 'hysteria2'
-    endpoint-id: '1f4b8d4f2d634864'
-  - alpn:
-      - 'h3'
-    name: '@V2rayNPVTConfig #1'
-    password: '04920673-035c-410d-94e4-5b1469d3fb6f'
-    port: 42848
-    server: '91.211.27.231'
-    skip-cert-verify: false
-    sni: '171.22.183.158'
-    tls: false
-    type: 'hysteria2'
-    endpoint-id: 'f6e46f7dd804451e'
-  - alpn:
+    server: '66.94.121.46'
+    port: 443
+    skip-cert-verify: true
+    sni: 'vk.com'
+    password: 'gf1:gfhysteria2024'
+    endpoint-id: '4e853ea8a9274b48'
+  - name: '🇳🇱NL_42|1.0MB/s|B007-260618 [17d40f4e692d]'
+    alpn:
       - 'h2'
       - 'http/1.1'
     client-fingerprint: 'chrome'
     encryption: 'none'
-    flow: 'xtls-rprx-vision'
-    name: '🇳🇱NL_9|4.1MB/s'
-    network: 'tcp'
+    fingerprint: '67fa1e374feaeb232157317d6ace682475cb1a826e0cf8657151a254681aed62'
+    network: 'xhttp'
     port: 443
-    server: '185.200.199.122'
+    server: '94.241.172.107'
+    sub_tag: 'B007-260618'
     tls: true
     type: 'vless'
     udp: true
-    uuid: '04920673-035c-410d-94e4-5b1469d3fb6f'
+    uuid: '4777d90d-265b-4927-a0d1-63f36ed1421c'
+    xhttp-opts:
+      mode: 'packet-up'
+      path: '/assets/nl02/'
     xudp: true
-    endpoint-id: 'b43ec9b5c5af9be8'
-  - name: '🇺🇸US_124|738KB/s|R002-260618 [f68eff2eac5f]'
-    port: 443
-    server: 'mmgr.club'
+    packet-encoding: 'xudp'
+    servername: '94.241.172.107'
+    endpoint-id: '68824dc4865509ae'
+  - name: 'CH · VMESS · radikal · A9575ECF'
+    type: 'vmess'
+    server: '186.190.215.4'
+    port: 1270
+    uuid: '5c040f1d-45db-43bd-8d46-e4950e433735'
+    alterId: 0
+    cipher: 'auto'
+    network: 'tcp'
+    tls: true
+    servername: 'xmfhlpy.com'
+    endpoint-id: 'f2b42e2e4e181774'
+  - name: '🇳🇱NL_45|138KB/s|B007-260618 [1b14feb3c364]'
+    cipher: 'chacha20-ietf-poly1305'
+    password: 'ijoUwfdnkz7mX4pWdkSpmEixTZCt2TRm1JDr4BSaBAWkLxYGoXBHXadFKY5D5ZfoVTwqsx46jCmEUDnQUizJDYrM7B5anhnu'
+    port: 42878
+    server: 'news.bushyjenz.cyou'
+    sub_tag: 'B007-260618'
+    type: 'ss'
+    udp: true
+    endpoint-id: '06df52a96863fa87'
+  - name: 'NL · HTTP · kooker · BD17B6BF'
+    type: 'http'
+    server: '84.17.47.123'
+    port: 9002
     skip-cert-verify: true
-    sub_tag: 'R002-260618'
+    tls: true
+    username: 'null'
+    password: 'null'
+    endpoint-id: 'fe70042538fcf42f'
+  - name: '🇳🇱NL_29|2.3MB/s|P002-260618 [a1a43e85b47a]'
+    password: 'None'
+    port: 9002
+    server: '84.17.47.146'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
     tls: true
     type: 'http'
     udp: true
-    sni: 'mmgr.club'
-    endpoint-id: '5ed19a1dde9594c0'
-  - name: 'ᴛᴇʟᴇɢʀᴀᴍ ɪᴅ = @ꜰxxɴᴇᴛ💘'
-    password: 'oracle_hy2_pass_2026'
-    port: 8443
-    server: '129.225.181.46'
-    skip-cert-verify: true
-    sni: 'bing.com'
-    tls: false
-    type: 'hysteria2'
-    endpoint-id: '457e27e70875d0aa'
-  - name: '🇺🇸US_369|1.1MB/s|S001-260618 [a66364c9e9f6]'
-    password: ''
-    port: 38182
-    server: '69.55.49.177'
-    skip-cert-verify: true
-    sub_tag: 'S001-260618'
-    type: 'socks5'
-    username: ''
-    udp: true
-    endpoint-id: '0ce5ca5ff68cdaa7'
-  - name: '🇺🇸US_4|232KB/s|R002-260618 [4b9bb8749abb]'
+    endpoint-id: '3ec59da15bdfe635'
+  - name: 'ZZ · VLESS · yudou · A6C135B2'
+    type: 'vless'
+    server: 'ws.liuzedong.ltd'
     port: 443
-    server: 'fan.365747.xyz'
-    skip-cert-verify: true
-    sni: 'fan.365747.xyz'
+    uuid: 'fcead694-2e27-4eeb-8836-9d4acf3e028b'
+    network: 'ws'
+    tls: true
+    servername: 'ws.liuzedong.ltd'
+    ws-opts:
+      path: '/ws'
+    endpoint-id: 'f649428a65216e91'
+  - name: 'US · HTTP · wzmwayne · 76A6B613'
+    type: 'http'
+    server: 'carolinafreigh.fun'
+    port: 443
     sub_tag: 'R002-260618'
     tls: true
-    type: 'http'
     udp: true
-    endpoint-id: '1b5f9ef740ef311b'
-  - name: '🇺🇸US_142|134KB/s|R002-260618 [423dd28e4065]'
+    sni: 'carolinafreigh.fun'
+    username: 'null'
+    password: 'null'
+    endpoint-id: '1451602c25e2f7f9'
+  - name: 'ZZ · VLESS · yudou · 7A0A532E'
+    type: 'vless'
+    server: 'ws.liuzedong.ltd'
+    port: 443
+    uuid: 'fcead694-2e27-4eeb-8836-9d4acf3e028b'
+    udp: true
+    tls: true
+    servername: 'ws.liuzedong.ltd'
+    sni: 'ws.liuzedong.ltd'
+    skip-cert-verify: false
+    network: 'ws'
+    ws-opts:
+      path: '/ws'
+    endpoint-id: '90bbebe64ff31d5e'
+  - name: 'NL · HTTP · wzmwayne · 3930A7D3'
+    type: 'http'
+    server: 'nl205.freeconnect.link'
+    port: 9251
+    sni: 'nl205.freeconnect.link'
+    tls: true
+    username: 'freeuser1'
+    password: 'freeuser1'
+    endpoint-id: '3ed3f40b837d3d5b'
+  - name: '🇩🇪DE_6|1010KB/s|R002-260618 [5af8b43bb3c2]'
     password: 'null'
     port: 443
-    server: 'fan.365747.xyz'
+    server: '159.69.94.125'
     skip-cert-verify: true
-    sni: 'fan.365747.xyz'
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     username: 'null'
     udp: true
-    endpoint-id: '85b4f9a6dac23411'
-  - name: '🇺🇸US_268|232KB/s|R002-260618 [5f9e954fe312]'
-    port: 443
-    server: '137.175.22.56'
+    endpoint-id: '3b89c7b35c28207d'
+  - name: 'DK · HTTP · kooker · 1BB680D1'
+    type: 'http'
+    server: '158.173.154.4'
+    port: 9002
+    tls: true
     skip-cert-verify: true
+    udp: true
+    password: 'None'
+    endpoint-id: '35ad299e4897ffd9'
+  - name: '🇫🇷FR_27|402KB/s|P002-260618 [b3d4aadd9f8a]'
+    password: 'null'
+    port: 443
+    server: '82.66.235.221'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    endpoint-id: 'a730bc39159c59f4'
+  - name: '🇩🇪DE_16|399KB/s|R002-260618 [62cee87d127c]'
+    port: 443
+    server: '176.94.74.21'
+    skip-cert-verify: true
+    sni: '176.94.74.21'
     sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
-    endpoint-id: '484efdf9bc5114b8'
+    endpoint-id: '5168f9b022d47cc7'
+  - name: 'JP · VMESS · radikal · 12EF882E'
+    type: 'vmess'
+    server: '161.33.20.255'
+    port: 8880
+    uuid: 'e0856508-d693-450a-a099-455091dc4f25'
+    alterId: 0
+    cipher: 'auto'
+    network: 'ws'
+    ws-opts:
+      path: 'e0856508-d693-450a-a099-455091dc4f25-vm'
+    endpoint-id: '98958eedae133433'
+  - type: 'vmess'
+    name: 'SG · VMESS · radikal · 90E5F85E'
+    server: '149.88.23.207'
+    port: 18000
+    uuid: 'f8c8dc3d-0d37-46b0-8b34-a7232882fcfe'
+    alterId: 0
+    cipher: 'auto'
+    tls: false
+    sni: '149.88.23.207'
+    network: 'tcp'
+    endpoint-id: 'bbda91e118dcef8d'
+  - type: 'vmess'
+    name: 'SG · VMESS · radikal · 2B08AFB1-7079b2252d28130d'
+    server: '149.88.23.202'
+    port: 18000
+    uuid: 'f8c8dc3d-0d37-46b0-8b34-a7232882fcfe'
+    alterId: 0
+    cipher: 'auto'
+    tls: false
+    sni: '149.88.23.202'
+    network: 'tcp'
+    endpoint-id: '7079b2252d28130d'
+  - name: '🇷🇴RO_10|434KB/s|R002-260618 [07f480b99a46]'
+    password: 'null'
+    port: 9002
+    server: '193.176.84.22'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    endpoint-id: '07a7b59d96fcb2b1'
+  - type: 'vmess'
+    name: 'SG · VMESS · radikal · 7E5A1B21-0ed0dc5e0b5a51dc'
+    server: 'ww11.levikogjgfdd.ir'
+    port: 18000
+    uuid: 'f8c8dc3d-0d37-46b0-8b34-a7232882fcfe'
+    alterId: 0
+    cipher: 'auto'
+    tls: false
+    sni: 'ww11.levikogjgfdd.ir'
+    network: 'raw'
+    endpoint-id: '0ed0dc5e0b5a51dc'
+  - name: 'BR · SOCKS5 · wzmwayne · DBB76A95'
+    type: 'socks5'
+    server: '191.7.129.133'
+    port: 62000
+    username: 'uwrgfkwg'
+    password: '0mvrt5jb'
+    endpoint-id: '2dbb126a40ca7ec8'
+  - type: 'vless'
+    name: 'ZZ · VLESS · yudou · A6C135B2-065dba01b1de1053'
+    server: 'ws.liuzedong.ltd'
+    port: 443
+    tls: true
+    uuid: 'FCEAD694-2E27-4EEB-8836-9D4ACF3E028B'
+    network: 'ws'
+    sni: 'ws.liuzedong.ltd'
+    ws-opts:
+      path: '/ws'
+    endpoint-id: '065dba01b1de1053'
+  - type: 'vless'
+    name: 'JP · VLESS · freeclashnode · 04A75C4E-93a702c5a7960dd4'
+    server: 'djj.zjlo.top'
+    port: 23169
+    tls: true
+    uuid: 'f67b1159-a61f-4ae4-9844-0701b716a290'
+    network: 'tcp'
+    sni: 'djj.zjlo.top'
+    flow: 'xtls-rprx-vision'
+    endpoint-id: '93a702c5a7960dd4'
+  - type: 'trojan'
+    name: 'KR · TROJAN · freeclashnode · 5AA4257A-d6ef58115af4c416'
+    server: 'ikr200.zxom.eu.org'
+    port: 20045
+    tls: false
+    password: '463f7453753f4d47'
+    network: 'tcp'
+    sni: 'ikr200.zxom.eu.org'
+    endpoint-id: 'd6ef58115af4c416'
+  - name: 'JP · SOCKS5 · kooker · DA9B54DC'
+    type: 'socks5'
+    server: '103.248.150.238'
+    port: 42000
+    skip-cert-verify: true
+    username: 'tB4vN7qP'
+    password: 'J5rM2xL9'
+    endpoint-id: '570e952fdf2185a2'
+  - name: 'KR · SOCKS5 · shaoyouvip · F09A8FB0'
+    type: 'socks5'
+    server: '59.11.209.162'
+    port: 1080
+    skip-cert-verify: true
+    udp: true
+    endpoint-id: '5a94b23da457c200'
+  - name: 'US · VMESS · radikal · F0EEDF26'
+    type: 'vmess'
+    server: '162.251.62.44'
+    port: 1270
+    uuid: '5c040f1d-45db-43bd-8d46-e4950e433735'
+    alterId: 0
+    cipher: 'auto'
+    network: 'tcp'
+    tls: true
+    servername: 'xmfhlpy.com'
+    endpoint-id: '6d5951f157e430e8'
+  - name: 'TW · ANYTLS · kooker · 3FDCF58E'
+    type: 'anytls'
+    server: 'rtifgjdr.df6h451rh.xin'
+    port: 443
+    servername: 'docs.microsoft.com'
+    skip-cert-verify: true
+    sni: 'docs.microsoft.com'
+    udp: true
+    password: '2902c46c8493'
+    endpoint-id: 'ed967f4fc28a54b6'
+  - name: 'ID · SOCKS5 · wzmwayne · 532BCB56'
+    type: 'socks5'
+    server: '202.155.99.32'
+    port: 62000
+    username: 'gebHTLF6'
+    password: 'APJ7RmY9'
+    endpoint-id: 'b822bf4a396255ad'
+  - name: 'TH · SOCKS5 · kooker · 93362691'
+    type: 'socks5'
+    server: '103.14.164.30'
+    port: 42000
+    username: 'route164JIa2CBPxfy'
+    password: 'VAwyJQX0iKMJiyCw5UVK9wGH'
+    endpoint-id: '9323b9905ea83c7b'
+  - name: 'TH · SOCKS5 · kooker · 67A05FA2'
+    type: 'socks5'
+    server: '103.14.164.202'
+    port: 42000
+    skip-cert-verify: true
+    username: 'route164JIa2CBPxfy'
+    password: 'VAwyJQX0iKMJiyCw5UVK9wGH'
+    endpoint-id: '1b2b67f1e559b39e'
+  - name: 'TH · SOCKS5 · kooker · 04519414'
+    type: 'socks5'
+    server: '87.84.49.206'
+    port: 62000
+    skip-cert-verify: true
+    username: 'ks878449260d'
+    password: 'YlRoWvE0dL_cUqS94wPeKnA4'
+    endpoint-id: 'd072dea92213b428'
+  - type: 'vless'
+    name: 'US美国(mibei77.com 米贝节点分享) (16)'
+    server: '196.199.122.2'
+    port: 443
+    uuid: '4201786b-d99b-4147-a5f0-20d47acddb81'
+    flow: 'xtls-rprx-vision'
+    udp: true
+    tls: true
+    servername: '7aa271t.es1.h1clayd.click'
+    sni: '7aa271t.es1.h1clayd.click'
+    skip-cert-verify: false
+    client-fingerprint: 'firefox'
+    reality-opts:
+      public-key: 'ZSmetD4e9QG5CiXhniHg5HJB68L4kwbgAkJmMHtVwEE'
+      short-id: '42426c882c5fcd41'
+    endpoint-id: 'ff2deea37fd95bf9'
+  - type: 'vless'
+    name: '尼日利亚(mibei77.com 米贝节点分享)'
+    server: '196.196.149.81'
+    port: 443
+    uuid: '4201786b-d99b-4147-a5f0-20d47acddb81'
+    flow: 'xtls-rprx-vision'
+    udp: true
+    tls: true
+    servername: '7aa271t.es1.h1clayd.click'
+    sni: '7aa271t.es1.h1clayd.click'
+    skip-cert-verify: false
+    client-fingerprint: 'firefox'
+    reality-opts:
+      public-key: 'ZSmetD4e9QG5CiXhniHg5HJB68L4kwbgAkJmMHtVwEE'
+      short-id: '42426c882c5fcd41'
+    endpoint-id: '21818038d5009718'
+  - type: 'vmess'
+    name: 'US · VMESS · radikal · A063687D-5cc0683ff1383d6d'
+    server: '67.220.85.46'
+    port: 18000
+    uuid: 'f8c8dc3d-0d37-46b0-8b34-a7232882fcfe'
+    alterId: 0
+    cipher: 'auto'
+    tls: false
+    sni: '67.220.85.46'
+    network: 'tcp'
+    endpoint-id: '5cc0683ff1383d6d'
+  - name: 'ZZ · VLESS · yudou · 29BFCED4'
+    type: 'vless'
+    server: '116.213.43.43'
+    port: 11107
+    reality-opts:
+      public-key: '6GRzkPbs12fKBdBBFzs5dmtmbSHCXMngUCBKLrXYm3U'
+      short-id: 'e2ccd8eedcbee2ce'
+    uuid: '08a37d1f-7bf1-4b5d-a2ec-5ced6a633d7f'
+    flow: 'xtls-rprx-vision'
+    udp: true
+    tls: true
+    servername: 'www.apple.com'
+    sni: 'www.apple.com'
+    skip-cert-verify: false
+    client-fingerprint: 'chrome'
+    endpoint-id: '86e593f0a657fb1a'
+  - name: '❓Other_99|210KB/s [fe68ba92b4d7]'
+    password: 'null'
+    port: 443
+    server: '129.153.93.183'
+    skip-cert-verify: true
+    tls: true
+    type: 'http'
+    username: 'null'
+    udp: true
+    endpoint-id: 'd21ff05147e803dd'
