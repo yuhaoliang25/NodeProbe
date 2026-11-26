@@ -132,16 +132,6 @@ proxies:
     username: 'testuser1'
     udp: true
     _poolOnly: true
-  - name: '🇺🇸US_335|176KB/s|R002-260618 [b293ec7d21de]'
-    port: 443
-    server: 'fan.596189.xyz'
-    skip-cert-verify: true
-    sni: 'fan.596189.xyz'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
   - name: '🇺🇸US_73|388KB/s|R002-260618 [f485c49773a6]'
     password: 'e4b72b531a2d10900519'
     port: 443
@@ -187,15 +177,6 @@ proxies:
     udp: true
     tls: true
     skip-cert-verify: true
-    _poolOnly: true
-  - name: '🇨🇿CZ_1|1.9MB/s|R002-260618 [dea96bfbdd9e]'
-    port: 443
-    server: '193.35.104.196'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
     _poolOnly: true
   - name: '🇳🇱NL_20|6.3MB/s|P002-260618 [d77b65a8fb8a]'
     password: 'None'
@@ -270,16 +251,6 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇳🇱NL_112|946KB/s|R002-260618 [28e6f82e9549]'
-    port: 443
-    server: '185.246.153.28'
-    skip-cert-verify: true
-    sni: '4a8c2906c96058315dffbc2b0e7ff19b-0c66a58858a795df.apache-iv.com'
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
   - name: '🇳🇱NL_124|5.5MB/s|K001-260618 [0314ff07d8b2]'
     password: 'null'
     port: 23856
@@ -342,26 +313,9 @@ proxies:
     username: 'testuser1'
     password: 'e4b72b531a2d10900519'
     _poolOnly: true
-  - name: '🇺🇸US_327|83KB/s|R002-260618 [f9ebf4bb49d2]'
-    port: 7615
-    server: '47.90.206.169'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
   - name: '[share-daily-node] US-HTTP-13'
     type: 'http'
     server: '38.28.193.188'
-    port: 443
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    _poolOnly: true
-  - name: '[share-daily-node] FR-HTTP-01'
-    type: 'http'
-    server: '141.94.16.4'
     port: 443
     udp: true
     tls: true
@@ -569,6 +523,13 @@ proxies:
     cipher: 'aes-256-gcm'
     password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
     _poolOnly: true
+  - name: 'IT - zhuhai.uk'
+    type: 'ss'
+    server: '202.50.253.18'
+    port: 19999
+    cipher: 'aes-256-gcm'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
+    _poolOnly: true
   - name: '🇮🇹IT-05 · 309K/s'
     server: '202.50.253.27'
     port: 19999
@@ -640,15 +601,6 @@ proxies:
   - name: '[cbusifabcap-clashmeta] ❓Other_23|318KB/s|R002-260618'
     port: 443
     server: '172.64.68.89'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇺🇸US_183|315KB/s|R002-260618 [f3757137fc03]'
-    port: 443
-    server: '129.153.93.183'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
@@ -1265,13 +1217,6 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - type: 'ss'
-    name: '🇳🇿 新西兰 V2CROSS.COM'
-    server: '202.50.253.63'
-    port: 19999
-    cipher: 'aes-256-gcm'
-    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
-    _poolOnly: true
   - name: '[0.01MB/s][726ms] [freeSub#393] D🔴🇭🇰[🎬📺🎭🎪]_dokng.com_d85a9'
     password: null
     port: 443
@@ -1784,6 +1729,21 @@ proxies:
     cipher: '2022-blake3-chacha20-poly1305'
     password: '3NBsnBLanPfG6i3S2GTHineswr6EeSJPb0PCeMQoGoA='
     _poolOnly: true
+  - name: '[VLESS] 🇺🇸 🇺🇸US(AzadNet.t.me) 133'
+    server: '13.141.36.10'
+    port: 443
+    type: 'vless'
+    tls: true
+    uuid: 'cda0862a-0f87-4be9-8ed8-1d0c9e382839'
+    servername: '5d0319t.nl7.h1clayd.click'
+    host: '5d0319t.nl7.h1clayd.click'
+    reality-opts:
+      public-key: 'l-GzBDuNuhnjxoRlZqKvT7jAt_sbVAxhGFsAttO5kXs'
+      short-id: '361d0dd59c70516f'
+    client-fingerprint: 'random'
+    skip-cert-verify: true
+    tfo: false
+    _poolOnly: true
   - client-fingerprint: 'firefox'
     name: '🇷🇺 俄罗斯 | RUS #6'
     network: 'ws'
@@ -1798,58 +1758,6 @@ proxies:
       headers:
         Host: 'paperbirch.merlano.monster'
       path: '/api/de1/stream'
-    _poolOnly: true
-  - alpn:
-      - 'h2'
-      - 'http/1.1'
-    client-fingerprint: 'firefox'
-    name: '🇩🇪 德国 | DEU #16'
-    network: 'xhttp'
-    port: 443
-    server: 'greenhouse.elvano.website'
-    servername: 'greenhouse.elvano.website'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '0b6a7fe0-206b-4071-9f96-cd397d1ec01a'
-    xhttp-opts:
-      host: 'greenhouse.elvano.website'
-      mode: 'auto'
-      path: '/api/de6/sync'
-    _poolOnly: true
-  - alpn:
-      - 'h2'
-      - 'http/1.1'
-    client-fingerprint: 'edge'
-    name: '🇷🇺 俄罗斯 | RUS #13'
-    network: 'xhttp'
-    port: 443
-    server: 'seaglass.gerqix.online'
-    servername: 'seaglass.gerqix.online'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '0b6a7fe0-206b-4071-9f96-cd397d1ec01a'
-    xhttp-opts:
-      host: 'seaglass.gerqix.online'
-      mode: 'auto'
-      path: '/api/de5/sync'
-    _poolOnly: true
-  - alpn:
-      - 'http/1.1'
-    client-fingerprint: 'firefox'
-    name: '🇩🇪[www.v2nodes.com] vless-DE-1... #11'
-    network: 'ws'
-    port: 443
-    server: 'sundial.filnex.baby'
-    servername: 'silverfen.elvano.website'
-    tls: true
-    type: 'vless'
-    uuid: '83706ae4-be2f-4b2b-8079-c3eb4e0b2e3e'
-    ws-opts:
-      headers:
-        Host: 'sundial.filnex.baby'
-      path: '/api/de4/stream'
     _poolOnly: true
   - name: '🇺🇸 美国_02 - v2raydog.com'
     server: '162.35.101.177'
@@ -1888,6 +1796,19 @@ proxies:
     tls: true
     type: 'http'
     udp: true
+    _poolOnly: true
+  - name: 'ZZ · VLESS · clashstair · C0CD6294'
+    type: 'vless'
+    server: '196.196.148.85'
+    port: 443
+    reality-opts:
+      public-key: 'l-GzBDuNuhnjxoRlZqKvT7jAt_sbVAxhGFsAttO5kXs'
+      short-id: '361d0dd59c70516f'
+    uuid: 'cda0862a-0f87-4be9-8ed8-1d0c9e382839'
+    udp: true
+    tls: true
+    servername: '5d0319t.nl7.h1clayd.click'
+    client-fingerprint: 'chrome'
     _poolOnly: true
   - name: '🇳🇱 荷兰_01 - v2raydog.com'
     server: '196.245.52.183'
@@ -2111,4 +2032,157 @@ proxies:
     tls: true
     type: 'http'
     udp: true
+    _poolOnly: true
+  - name: '🇳🇱NL_11|2.5MB/s|R002-260618'
+    password: 'null'
+    port: 9002
+    server: '84.17.47.126'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    username: 'null'
+    x-toolall-mihomo: true
+    _poolOnly: true
+  - name: 'DE - zhuhai.uk-source-a1729cc9e67d90b7'
+    type: 'http'
+    server: '158.173.154.1'
+    port: 9002
+    tls: true
+    sni: '158.173.154.1'
+    skip-cert-verify: true
+    _poolOnly: true
+  - name: 'FR - zhuhai.uk-source-6c818e90432e7c0a'
+    type: 'http'
+    server: '82.66.235.221'
+    port: 443
+    username: 'null'
+    password: 'null'
+    tls: true
+    sni: '82.66.235.221'
+    skip-cert-verify: true
+    _poolOnly: true
+  - name: 'DE - zhuhai.uk 02'
+    type: 'http'
+    server: '158.173.154.4'
+    port: 9002
+    tls: true
+    sni: '158.173.154.4'
+    skip-cert-verify: true
+    _poolOnly: true
+  - name: '🇩🇪DE_10|1.6MB/s'
+    password: 'null'
+    port: 443
+    server: '87.106.223.158'
+    skip-cert-verify: true
+    tls: true
+    type: 'http'
+    udp: true
+    username: 'null'
+    x-toolall-mihomo: true
+    _poolOnly: true
+  - name: '🇷🇺 俄罗斯 | RUS 5'
+    server: '78.159.240.62'
+    port: 2053
+    type: 'vless'
+    uuid: '37af0181-5598-4aad-a040-d926bcb65757'
+    tls: true
+    servername: 'polarladder.com'
+    client-fingerprint: 'chrome'
+    network: 'xhttp'
+    xhttp-opts:
+      path: '/api/v1/upload'
+      host: 'polarladder.com'
+      mode: 'auto'
+    udp: true
+    _poolOnly: true
+  - name: '🇩🇪 德国 | DEU 3-source-9c70813814da4008'
+    server: '196.196.148.76'
+    port: 443
+    type: 'vless'
+    uuid: '4201786b-d99b-4147-a5f0-20d47acddb81'
+    tls: true
+    flow: 'xtls-rprx-vision'
+    reality-opts:
+      public-key: 'VZS639V1i-35g7VXb9EoTYL-Srm7858sxcvFAunncmA'
+      short-id: '8d0d0679f42ffd98'
+    servername: '8a2e72t.nl20.h1clayd.shop'
+    client-fingerprint: 'firefox'
+    network: 'tcp'
+    udp: true
+    _poolOnly: true
+  - name: '🇳🇱 荷兰 | NLD 6'
+    server: '79.182.39.135'
+    port: 443
+    type: 'vless'
+    uuid: 'cda0862a-0f87-4be9-8ed8-1d0c9e382839'
+    tls: true
+    reality-opts:
+      public-key: 'zbz--PMjcIC4Ggr3j-ibDf0fzXRTj0lM_HzjPJyMkVE'
+      short-id: '50a749f0eccb628c'
+    servername: '15b171g.nl7.h1clayd.click'
+    client-fingerprint: 'firefox'
+    network: 'grpc'
+    grpc-opts:
+      grpc-mode: 'gun'
+      grpc-service-name: '5b79e8a94241'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇺 俄罗斯 | RUS 8'
+    server: '213.183.41.31'
+    port: 8463
+    type: 'vless'
+    uuid: 'eb62cabf-5901-403a-aa0c-b1d9ed1b346d'
+    tls: true
+    servername: 'share.plumstatic.com'
+    client-fingerprint: 'firefox'
+    network: 'ws'
+    ws-opts:
+      path: '/ws'
+    udp: true
+    _poolOnly: true
+  - name: '🇮🇪IE_1|1.1MB/s'
+    password: 'null'
+    port: 443
+    server: '18.200.158.139'
+    skip-cert-verify: true
+    tls: true
+    type: 'http'
+    username: 'null'
+    _poolOnly: true
+  - name: '🇷🇺 俄罗斯 | RUS 4-4e1ad3c3f397ae79'
+    server: '213.183.41.31'
+    port: 8459
+    type: 'vless'
+    uuid: 'eb62cabf-5901-403a-aa0c-b1d9ed1b346d'
+    tls: true
+    servername: 'photos.plumstatic.com'
+    client-fingerprint: 'firefox'
+    network: 'ws'
+    ws-opts:
+      path: '/ws'
+    udp: true
+    _poolOnly: true
+  - name: '🇸🇬 新加坡 | SGP 6'
+    server: '213.183.45.23'
+    port: 8444
+    type: 'vless'
+    uuid: 'eb62cabf-5901-403a-aa0c-b1d9ed1b346d'
+    tls: true
+    servername: 'media.plumstatic.com'
+    client-fingerprint: 'firefox'
+    network: 'ws'
+    ws-opts:
+      path: '/ws'
+    udp: true
+    _poolOnly: true
+  - name: '🇷🇺RU_1|3.2MB/s'
+    password: 'null'
+    port: 1446
+    server: '46.29.166.134'
+    skip-cert-verify: true
+    tls: true
+    type: 'http'
+    username: 'null'
     _poolOnly: true
