@@ -603,6 +603,15 @@ proxies:
     username: 'null'
     udp: true
     _poolOnly: true
+  - name: '🇺🇸US_253|81KB/s|R002-260618 [39215ca34ddc]'
+    port: 443
+    server: '137.175.22.72'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
   - name: '🇺🇸US_199|149KB/s|R002-260618 [f680b3bec0ff]'
     port: 443
     server: '137.175.22.29'
@@ -642,6 +651,14 @@ proxies:
     server: '129.153.93.183'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '[ermaozi-subscribe] US_speednode_0040'
+    port: 443
+    server: '38.247.141.135'
+    skip-cert-verify: true
     tls: true
     type: 'http'
     udp: true
@@ -742,6 +759,15 @@ proxies:
   - name: '[cbusifabcap-clashmeta] 🇩🇪DE_17|968KB/s|R002-260618'
     port: 443
     server: '176.94.74.21'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '035 | 313ms | 个人 seed33'
+    port: 443
+    server: '71.43.26.234'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
@@ -1758,37 +1784,6 @@ proxies:
     cipher: '2022-blake3-chacha20-poly1305'
     password: '3NBsnBLanPfG6i3S2GTHineswr6EeSJPb0PCeMQoGoA='
     _poolOnly: true
-  - name: '[VLESS] 🇺🇸 🇺🇸US(AzadNet.t.me) 135'
-    server: '4935e4t.de25.h1clayd.click'
-    port: 443
-    type: 'vless'
-    tls: true
-    uuid: '4201786b-d99b-4147-a5f0-20d47acddb81'
-    servername: '4935e4t.de25.h1clayd.click'
-    host: '4935e4t.de25.h1clayd.click'
-    flow: 'xtls-rprx-vision'
-    reality-opts:
-      public-key: 'MzgB17ZFbKqs8pbC3EscTzHid_ENc-k_Cp6nXl-2knw'
-      short-id: '6976d670818644cc'
-    client-fingerprint: 'random'
-    skip-cert-verify: true
-    tfo: false
-    _poolOnly: true
-  - name: '[VLESS] 🇺🇸 🇺🇸US(AzadNet.t.me) 133'
-    server: '13.141.36.10'
-    port: 443
-    type: 'vless'
-    tls: true
-    uuid: 'cda0862a-0f87-4be9-8ed8-1d0c9e382839'
-    servername: '5d0319t.nl7.h1clayd.click'
-    host: '5d0319t.nl7.h1clayd.click'
-    reality-opts:
-      public-key: 'l-GzBDuNuhnjxoRlZqKvT7jAt_sbVAxhGFsAttO5kXs'
-      short-id: '361d0dd59c70516f'
-    client-fingerprint: 'random'
-    skip-cert-verify: true
-    tfo: false
-    _poolOnly: true
   - client-fingerprint: 'firefox'
     name: '🇷🇺 俄罗斯 | RUS #6'
     network: 'ws'
@@ -2005,6 +2000,38 @@ proxies:
     sni: 'usgp1-cdn-route.couldflare-cdn.com'
     username: 'mrwdfNTD8M79LCukCieldrqZWqs='
     password: 'exaxgqkKkd0TAMrCxeonWg=='
+    _poolOnly: true
+  - type: 'vless'
+    name: 'US美国(mibei77.com 米贝节点分享) (16)'
+    server: '196.199.122.2'
+    port: 443
+    uuid: '4201786b-d99b-4147-a5f0-20d47acddb81'
+    flow: 'xtls-rprx-vision'
+    udp: true
+    tls: true
+    servername: '7aa271t.es1.h1clayd.click'
+    sni: '7aa271t.es1.h1clayd.click'
+    skip-cert-verify: false
+    client-fingerprint: 'firefox'
+    reality-opts:
+      public-key: 'ZSmetD4e9QG5CiXhniHg5HJB68L4kwbgAkJmMHtVwEE'
+      short-id: '42426c882c5fcd41'
+    _poolOnly: true
+  - type: 'vless'
+    name: '尼日利亚(mibei77.com 米贝节点分享)'
+    server: '196.196.149.81'
+    port: 443
+    uuid: '4201786b-d99b-4147-a5f0-20d47acddb81'
+    flow: 'xtls-rprx-vision'
+    udp: true
+    tls: true
+    servername: '7aa271t.es1.h1clayd.click'
+    sni: '7aa271t.es1.h1clayd.click'
+    skip-cert-verify: false
+    client-fingerprint: 'firefox'
+    reality-opts:
+      public-key: 'ZSmetD4e9QG5CiXhniHg5HJB68L4kwbgAkJmMHtVwEE'
+      short-id: '42426c882c5fcd41'
     _poolOnly: true
   - name: '❓Other_99|210KB/s [fe68ba92b4d7]'
     password: 'null'
