@@ -1,121 +1,95 @@
 proxies:
-  - name: '[OpenRay] 🌐XX-317'
-    type: 'vless'
-    server: '188.114.98.0'
-    port: 443
-    uuid: '53bbdad4-2f4e-45db-8df4-fa491a6a7227'
-    udp: true
-    tls: true
-    servername: 'freeceshi6.frii.site'
-    client-fingerprint: 'unsafe'
-    alpn:
-      - 'http/1.1'
+  - type: 'ss'
+    name: '🇺🇸US_446|1.3MB/s|B007-260618 [7881d9b17dae]'
+    server: '185.215.132.18'
+    port: 19999
+    cipher: 'aes-256-gcm'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
+    _poolOnly: true
+  - type: 'vless'
+    name: '🇺🇸US_49|822KB/s|S004-260618 [25efab7899d7]'
+    server: 'uspanel.unixzone.us'
+    port: 30016
+    tls: false
+    uuid: '03dc60cb-a8d4-4226-93fe-0e6cbf77fe5a'
     network: 'ws'
+    sni: 'uspanel.unixzone.us'
     ws-opts:
-      path: '/?Telegram---PLANB_NET---PLANB_NET---PLANB_NET---PLANB_NET'
+      path: '/usserver'
       headers:
-        Host: 'freeceshi6.frii.site'
+        Host: 'uspanel.unixzone.us'
     _poolOnly: true
-  - name: '[OpenRay] 🇺🇸US-1011'
-    type: 'trojan'
-    server: '66.163.122.46'
-    port: 443
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    udp: true
-    sni: 'searchnationwidecareerchangehelperandguidancetoday.com'
-    _poolOnly: true
-  - name: 'CA 🇨🇦 | @Raydikalx | 5A4804'
+  - alterId: 0
+    cipher: 'auto'
+    name: 'vmess-1827161032'
+    network: 'raw'
+    port: 48111
+    server: '129.146.143.80'
     type: 'vmess'
-    server: '104.21.0.1'
-    port: 8443
-    uuid: '60441548-b68e-43b2-8191-e3b884be4b3c'
+    udp: true
+    uuid: 'd4603cc2-e0ee-4651-83f5-1db5b7168177'
+    _poolOnly: true
+  - type: 'vmess'
+    name: '🇰🇷KR_39|286KB/s|M003-260806 [7029e53cadc5]'
+    server: '146.56.112.110'
+    port: 8888
+    uuid: 'e7c302f3-90d6-42dd-9d7d-94a3683a3707'
     alterId: 0
     cipher: 'auto'
-    udp: true
-    tls: true
-    servername: 'v2ray1.dozapp.xyz'
-    network: 'ws'
-    ws-opts:
-      path: '/lMnsZUN4/'
-      headers:
-        Host: 'v2ray1.dozapp.xyz'
-    _poolOnly: true
-  - name: 'C🟠🇯🇵hos[💬🎮✈️📚]_dokng.com_bd5beb5b'
-    client-fingerprint: 'firefox'
-    flow: 'xtls-rprx-vision'
+    tls: false
     network: 'tcp'
-    packet-encoding: 'xudp'
-    port: 23169
-    server: '155.248.175.201'
-    servername: 'djj.zjlo.top'
-    tls: true
-    type: 'vless'
-    uuid: 'f67b1159-a61f-4ae4-9844-0701b716a290'
-    x-toolall-mihomo: true
     _poolOnly: true
-  - name: '[OpenRay] 🇸🇬SG-2'
-    type: 'vless'
-    server: '103.106.229.177'
-    port: 21003
-    uuid: '67952583-8572-42e1-943d-0602794f885b'
-    udp: true
+  - type: 'vless'
+    name: '#466 🇩🇪 DE | "NetCom-R" AS215730 | ↓6.7 ↑4.4Mbps | 94.159.98.82 | DC·Clean'
+    server: '94.159.98.82'
+    port: 2053
     tls: true
-    servername: 'www.cloudflare.com'
-    client-fingerprint: 'chrome'
-    reality-opts:
-      public-key: 'IRaSB0ImgMO7fsrIbh9i3Pz-bgo5F1jKeC51Fpfs9AA'
-      short-id: 'f3602a3a1cf928b7'
+    uuid: 'fbe22815-0718-4eae-816f-e91c67d15b54'
+    network: 'tcp'
+    sni: '94.159.98.82'
+    flow: 'xtls-rprx-vision'
     _poolOnly: true
-  - name: '[OpenRay] 🇸🇬SG-63'
-    type: 'vless'
-    server: '103.106.229.177'
-    port: 21004
-    uuid: '67952583-8572-42e1-943d-0602794f885b'
-    udp: true
-    tls: true
-    servername: 'www.cloudflare.com'
-    client-fingerprint: 'firefox'
-    reality-opts:
-      public-key: 'IRaSB0ImgMO7fsrIbh9i3Pz-bgo5F1jKeC51Fpfs9AA'
-      short-id: '4e0418d648f86141'
-    _poolOnly: true
-  - name: '[OpenRay] 🇸🇬SG-193'
-    type: 'vless'
-    server: '103.106.229.177'
-    port: 21002
-    uuid: '67952583-8572-42e1-943d-0602794f885b'
-    udp: true
-    tls: true
-    servername: 'www.cloudflare.com'
-    client-fingerprint: 'chrome'
-    reality-opts:
-      public-key: 'IRaSB0ImgMO7fsrIbh9i3Pz-bgo5F1jKeC51Fpfs9AA'
-      short-id: 'd9a6b52e98121db2'
-    _poolOnly: true
-  - name: '🇩🇪DE_49|1.3MB/s|C002-260622 [6143dc2419a6]'
-    client-fingerprint: 'chrome'
+  - type: 'vless'
+    name: '#602 🇹🇭 TH | Readyidc AS56309 | ↓3.6 ↑?Mbps | 43.229.150.44 | RES·Clean'
+    server: '108.138.26.63'
+    port: 80
+    tls: false
+    uuid: '05f53797-bd04-4006-8a78-41c071e67837'
     network: 'ws'
-    port: 443
-    server: '185.18.250.2'
-    sub_tag: 'C002-260622'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '10997f19-2951-4a9b-a26f-611a6bd72d02'
+    sni: 'd27g7kjkk3cw22.cloudfront.net'
     ws-opts:
+      path: '/tikvpn2/'
       headers:
-        Host: 'worker3.sicoro1729.workers.dev'
-        User-Agent: 'Mozilla/5.0 (Linux; Android 7.0; Moto C Build/NRD90M.059) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36'
-      path: '/'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'worker3.sicoro1729.workers.dev'
+        Host: 'd27g7kjkk3cw22.cloudfront.net'
     _poolOnly: true
-  - name: '[OpenRay] 🇩🇪DE-18'
-    type: 'ss'
-    server: '178.162.254.38'
-    port: 8388
-    cipher: 'aes-256-gcm'
-    password: 'itzvpn@321'
+  - name: 'TW 28 [anytls]'
+    type: 'anytls'
+    server: 'rtifgjdr.df6h451rh.xin'
+    port: '443'
+    password: '2902c46c8493'
+    sni: 'rtifgjdr.df6h451rh.xin'
+    skip-cert-verify: true
+    client-fingerprint: 'chrome'
     udp: true
+    _poolOnly: true
+  - name: 'HK 10 [hysteria2]'
+    type: 'hysteria2'
+    server: '152.32.254.68'
+    port: '5010'
+    password: 'eBTe6Ax2pUts8oMEWoYVDfnSlHfkLffQ'
+    sni: '127.0.0.1'
+    skip-cert-verify: true
+    udp: true
+    obfs: 'salamander'
+    obfs-password: '7M4RXPFcQyQEGbkxBPfXo4bilMhCW2U9'
+    _poolOnly: true
+  - type: 'vless'
+    name: '#540 🇩🇪 DE | Zenlayer AS62610 | ↓5.4 ↑5.0Mbps | 89.127.2.127 | RES·Clean'
+    server: '189.30.65.203'
+    port: 2083
+    tls: false
+    uuid: '490dc3b4-8d1d-49fd-840e-bd5277b41557'
+    network: 'grpc'
+    grpc-opts:
+      grpc-service-name: 'service-41f6a2a01377'
     _poolOnly: true

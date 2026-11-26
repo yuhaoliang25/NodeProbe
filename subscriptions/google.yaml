@@ -1,482 +1,658 @@
 proxies:
-  - name: '[OpenRay] 🌐XX-317'
-    type: 'vless'
-    server: '188.114.98.0'
-    port: 443
-    uuid: '53bbdad4-2f4e-45db-8df4-fa491a6a7227'
-    udp: true
-    tls: true
-    servername: 'freeceshi6.frii.site'
-    client-fingerprint: 'unsafe'
-    alpn:
-      - 'http/1.1'
-    network: 'ws'
-    ws-opts:
-      path: '/?Telegram---PLANB_NET---PLANB_NET---PLANB_NET---PLANB_NET'
-      headers:
-        Host: 'freeceshi6.frii.site'
-    _poolOnly: true
-  - name: '🇩🇪DE_49|1.3MB/s|C002-260622 [6143dc2419a6]'
-    client-fingerprint: 'chrome'
-    network: 'ws'
-    port: 443
-    server: '185.18.250.2'
-    sub_tag: 'C002-260622'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '10997f19-2951-4a9b-a26f-611a6bd72d02'
-    ws-opts:
-      headers:
-        Host: 'worker3.sicoro1729.workers.dev'
-        User-Agent: 'Mozilla/5.0 (Linux; Android 7.0; Moto C Build/NRD90M.059) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36'
-      path: '/'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'worker3.sicoro1729.workers.dev'
-    _poolOnly: true
-  - name: '[OpenRay] 🌐XX-1130'
-    type: 'vless'
-    server: '104.16.244.34'
-    port: 2053
-    uuid: '97514cec-cf70-42b1-9743-3f89122adc8e'
-    udp: true
-    tls: true
-    servername: 'cffq.pages.dev'
-    network: 'ws'
-    ws-opts:
-      path: '%2F%3Fed%3D2560'
-      headers:
-        Host: 'cffq.pages.dev'
-    _poolOnly: true
-  - name: '[OpenRay] 🌐XX-26'
-    type: 'vless'
+  - type: 'vless'
+    name: '#865 🇺🇸 US | Cloudflare AS13335 | ↓? ↑?Mbps | 104.28.166.203 | RES·Flag'
     server: '172.64.154.113'
     port: 8443
-    uuid: '53bbdad4-2f4e-45db-8df4-fa491a6a7227'
-    udp: true
     tls: true
-    servername: 'freeceshi6.frii.site'
-    client-fingerprint: 'chrome'
+    uuid: '53bbdad4-2f4e-45db-8df4-fa491a6a7227'
     network: 'ws'
+    sni: 'freeceshi6.frii.site'
     ws-opts:
       path: '/?TELEGRAM--MARAMBASHI--MARAMBASHI--MARAMBASHI--MARAMBASHI?ed=512'
       headers:
         Host: 'freeceshi6.frii.site'
     _poolOnly: true
-  - name: '❓Other_121|567KB/s|M003-260806 [490e9bf82e6c]'
-    client-fingerprint: 'firefox'
-    network: 'ws'
-    port: 443
-    server: '45.135.235.255'
-    sub_tag: 'M003-260806'
-    tls: true
-    type: 'vless'
+  - name: 'US 05 [hysteria2]'
+    type: 'hysteria2'
+    server: '38.76.150.108'
+    port: '36712'
+    password: 'AIcYjw5Oc9Rrrr9SGDUBbBIC'
+    sni: '38.76.150.108'
+    skip-cert-verify: true
     udp: true
-    uuid: '48cfe81c-3f0b-457f-b740-fbbfc6f679aa'
-    ws-opts:
-      headers:
-        Host: 'worker3.jegakey970.workers.dev'
-        User-Agent: 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36'
-      path: '/'
-    xudp: true
-    packet-encoding: 'xudp'
-    servername: 'worker3.jegakey970.workers.dev'
     _poolOnly: true
-  - name: '[OpenRay] 🇺🇸US-1011'
-    type: 'trojan'
-    server: '66.163.122.46'
-    port: 443
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    udp: true
-    sni: 'searchnationwidecareerchangehelperandguidancetoday.com'
-    _poolOnly: true
-  - name: 'C🟠🇯🇵hos[💬🎮✈️📚]_dokng.com_bd5beb5b'
-    client-fingerprint: 'firefox'
-    flow: 'xtls-rprx-vision'
+  - alterId: 0
+    cipher: 'auto'
+    name: 'vmess-1827158215'
     network: 'tcp'
-    packet-encoding: 'xudp'
-    port: 23169
-    server: '155.248.175.201'
-    servername: 'djj.zjlo.top'
-    tls: true
-    type: 'vless'
-    uuid: 'f67b1159-a61f-4ae4-9844-0701b716a290'
-    x-toolall-mihomo: true
-    _poolOnly: true
-  - name: '[OpenRay] 🇸🇬SG-2'
-    type: 'vless'
-    server: '103.106.229.177'
-    port: 21003
-    uuid: '67952583-8572-42e1-943d-0602794f885b'
-    udp: true
-    tls: true
-    servername: 'www.cloudflare.com'
-    client-fingerprint: 'chrome'
-    reality-opts:
-      public-key: 'IRaSB0ImgMO7fsrIbh9i3Pz-bgo5F1jKeC51Fpfs9AA'
-      short-id: 'f3602a3a1cf928b7'
-    _poolOnly: true
-  - name: '[OpenRay] 🇸🇬SG-63'
-    type: 'vless'
-    server: '103.106.229.177'
-    port: 21004
-    uuid: '67952583-8572-42e1-943d-0602794f885b'
-    udp: true
-    tls: true
-    servername: 'www.cloudflare.com'
-    client-fingerprint: 'firefox'
-    reality-opts:
-      public-key: 'IRaSB0ImgMO7fsrIbh9i3Pz-bgo5F1jKeC51Fpfs9AA'
-      short-id: '4e0418d648f86141'
-    _poolOnly: true
-  - name: '[OpenRay] 🇸🇬SG-193'
-    type: 'vless'
-    server: '103.106.229.177'
-    port: 21002
-    uuid: '67952583-8572-42e1-943d-0602794f885b'
-    udp: true
-    tls: true
-    servername: 'www.cloudflare.com'
-    client-fingerprint: 'chrome'
-    reality-opts:
-      public-key: 'IRaSB0ImgMO7fsrIbh9i3Pz-bgo5F1jKeC51Fpfs9AA'
-      short-id: 'd9a6b52e98121db2'
-    _poolOnly: true
-  - name: '[OpenRay] 🇸🇬SG-109'
-    type: 'vless'
-    server: '103.106.229.177'
-    port: 21001
-    uuid: '67952583-8572-42e1-943d-0602794f885b'
-    udp: true
-    tls: true
-    servername: 'www.cloudflare.com'
-    client-fingerprint: 'chrome'
-    reality-opts:
-      public-key: 'IRaSB0ImgMO7fsrIbh9i3Pz-bgo5F1jKeC51Fpfs9AA'
-      short-id: 'a51c3ccb2320024a'
-    _poolOnly: true
-  - name: '[OpenRay] 🇩🇪DE-18'
-    type: 'ss'
-    server: '178.162.254.38'
-    port: 8388
-    cipher: 'aes-256-gcm'
-    password: 'itzvpn@321'
-    udp: true
-    _poolOnly: true
-  - name: 'CA 🇨🇦 | @Raydikalx | 5A4804'
+    port: 48111
+    server: '129.146.143.80'
     type: 'vmess'
-    server: '104.21.0.1'
+    udp: true
+    uuid: 'd4603cc2-e0ee-4651-83f5-1db5b7168177'
+    _poolOnly: true
+  - type: 'ss'
+    name: '🇺🇸US_446|1.3MB/s|B007-260618 [7881d9b17dae]'
+    server: '185.215.132.18'
+    port: 19999
+    cipher: 'aes-256-gcm'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
+    _poolOnly: true
+  - type: 'trojan'
+    name: '#35 🇺🇸 US | GTHost AS63023 | ↓36.3 ↑9.5Mbps | 216.152.156.159 | RES·Flag'
+    server: '216.152.156.42'
+    port: 443
+    tls: true
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    network: 'tcp'
+    sni: 'blog.healthcarejobshubenhancemedicalprofessionalskillstoday.com'
+    _poolOnly: true
+  - type: 'trojan'
+    name: '#162 🇺🇸 US | GlobalTeleHost AS63023 | ↓10.8 ↑6.8Mbps | 167.88.61.175 | DC·Flag'
+    server: '167.88.61.85'
+    port: 443
+    tls: true
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    network: 'tcp'
+    sni: 'resources.browseseniorrolesandenhanceyourcareertoday.com'
+    _poolOnly: true
+  - name: 'CH 02 [hysteria2]'
+    type: 'hysteria2'
+    server: '152.67.75.161'
+    port: '443'
+    password: '3a702d4d1de4949005d8431220e040fb'
+    sni: 'www.bing.com'
+    skip-cert-verify: true
+    udp: true
+    obfs: 'salamander'
+    obfs-password: 'c13f29db6a638ad2b211b9ce2669ef27'
+    _poolOnly: true
+  - type: 'trojan'
+    name: '#42 🇺🇸 US | GTHost AS63023 | ↓33.3 ↑10.1Mbps | 216.152.156.159 | RES·Flag'
+    server: '216.152.156.65'
+    port: 443
+    tls: true
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    network: 'tcp'
+    sni: 'learn.healthcarejobshubenhancemedicalprofessionalskillstoday.com'
+    _poolOnly: true
+  - name: 'JP 32 [ss]'
+    type: 'ss'
+    server: '8.216.17.19'
+    port: '5555'
+    cipher: 'aes-256-gcm'
+    password: '123456'
+    udp: true
+    _poolOnly: true
+  - type: 'vless'
+    name: '#466 🇩🇪 DE | "NetCom-R" AS215730 | ↓6.7 ↑4.4Mbps | 94.159.98.82 | DC·Clean'
+    server: '94.159.98.82'
+    port: 2053
+    tls: true
+    uuid: 'fbe22815-0718-4eae-816f-e91c67d15b54'
+    network: 'tcp'
+    sni: '94.159.98.82'
+    flow: 'xtls-rprx-vision'
+    _poolOnly: true
+  - type: 'vless'
+    name: '🇺🇸US_49|822KB/s|S004-260618 [25efab7899d7]'
+    server: 'uspanel.unixzone.us'
+    port: 30016
+    tls: false
+    uuid: '03dc60cb-a8d4-4226-93fe-0e6cbf77fe5a'
+    network: 'ws'
+    sni: 'uspanel.unixzone.us'
+    ws-opts:
+      path: '/usserver'
+      headers:
+        Host: 'uspanel.unixzone.us'
+    _poolOnly: true
+  - type: 'ss'
+    name: '#465 🇪🇸 ES | Psychz Networks AS40676 | ↓6.7 ↑4.7Mbps | 108.181.70.23 | DC·Flag'
+    server: '108.181.121.170'
+    port: 443
+    cipher: 'chacha20-ietf-poly1305'
+    password: 'qItG8SueYQcP'
+    _poolOnly: true
+  - name: 'NL 12 [hysteria2]'
+    type: 'hysteria2'
+    server: '185.200.199.179'
+    port: '54706'
+    password: 'Cqx5aT9Zux'
+    sni: '185.200.199.179'
+    skip-cert-verify: false
+    udp: true
+    _poolOnly: true
+  - client-fingerprint: 'chrome'
+    flow: 'xtls-rprx-vision'
+    name: 'vless-1827151978'
+    network: 'tcp'
+    port: 443
+    reality-opts:
+      public-key: 'rabtI-ymNXBUvYYRwAw8DiR-1pdP7U0WPIaCBHEkgzo'
+      short-id: '77bb0d07bddbc832'
+    server: '195.123.226.21'
+    servername: 'gateway.icloud.com'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '6589c320-db68-43cd-a273-b46299bab355'
+    _poolOnly: true
+  - name: 'KR 14 [hysteria2]'
+    type: 'hysteria2'
+    server: 'www.ddsos.cc'
+    port: '7788'
+    password: 'c8aa4ba6a243ddfdeb67515aa849624b'
+    sni: 'www.ddsos.cc'
+    skip-cert-verify: true
+    udp: true
+    _poolOnly: true
+  - type: 'trojan'
+    name: '#39 🇺🇸 US | GTHost AS63023 | ↓34.0 ↑12.9Mbps | 66.163.122.30 | DC·Flag'
+    server: '66.163.122.81'
+    port: 443
+    tls: true
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    network: 'tcp'
+    sni: 'courses.searchnationwidecareerchangehelperandguidancetoday.com'
+    _poolOnly: true
+  - type: 'vmess'
+    name: '🇰🇷KR_39|286KB/s|M003-260806 [7029e53cadc5]'
+    server: '146.56.112.110'
+    port: 8888
+    uuid: 'e7c302f3-90d6-42dd-9d7d-94a3683a3707'
+    alterId: 0
+    cipher: 'auto'
+    tls: false
+    network: 'tcp'
+    _poolOnly: true
+  - alterId: 0
+    cipher: 'auto'
+    name: 'vmess-1827161032'
+    network: 'raw'
+    port: 48111
+    server: '129.146.143.80'
+    type: 'vmess'
+    udp: true
+    uuid: 'd4603cc2-e0ee-4651-83f5-1db5b7168177'
+    _poolOnly: true
+  - name: 'SG 11 [hysteria2]'
+    type: 'hysteria2'
+    server: '138.2.89.249'
+    port: '443'
+    password: 'd042d150716709bb778cc73889cddb02'
+    sni: 'www.bing.com'
+    skip-cert-verify: true
+    udp: true
+    obfs: 'salamander'
+    obfs-password: '309502c4a8df10b46fb976d4a8c43f42'
+    _poolOnly: true
+  - name: 'EE 16 [vless]'
+    type: 'vless'
+    server: 'one.alpheratzz.org'
+    port: '8443'
+    uuid: '0173d52e-8e1b-4681-831e-11529677b72f'
+    network: 'tcp'
+    tls: true
+    udp: true
+    flow: 'xtls-rprx-vision'
+    servername: 'api-6b04608f.adhil.uk'
+    skip-cert-verify: true
+    client-fingerprint: 'safari'
+    alpn:
+      - 'h2'
+    _poolOnly: true
+  - name: 'HK 10 [hysteria2]'
+    type: 'hysteria2'
+    server: '152.32.254.68'
+    port: '5010'
+    password: 'eBTe6Ax2pUts8oMEWoYVDfnSlHfkLffQ'
+    sni: '127.0.0.1'
+    skip-cert-verify: true
+    udp: true
+    obfs: 'salamander'
+    obfs-password: '7M4RXPFcQyQEGbkxBPfXo4bilMhCW2U9'
+    _poolOnly: true
+  - name: '🇺🇸 HTTP 129.153.97.250:9443 M'
+    type: 'http'
+    server: '129.153.97.250'
+    port: 9443
+    udp: false
+    _poolOnly: true
+  - name: 'TW 28 [anytls]'
+    type: 'anytls'
+    server: 'rtifgjdr.df6h451rh.xin'
+    port: '443'
+    password: '2902c46c8493'
+    sni: 'rtifgjdr.df6h451rh.xin'
+    skip-cert-verify: true
+    client-fingerprint: 'chrome'
+    udp: true
+    _poolOnly: true
+  - name: 'JP 31 [anytls]'
+    type: 'anytls'
+    server: 'media.gosthk.site'
+    port: '57180'
+    password: 'a2d955fb-a739-4771-99bb-be80cad577f6'
+    sni: 'media.gosthk.site'
+    skip-cert-verify: false
+    client-fingerprint: 'chrome'
+    udp: true
+    _poolOnly: true
+  - type: 'trojan'
+    name: '#285 🇪🇸 ES | GTHost AS63023 | ↓9.0 ↑1.4Mbps | 66.163.118.203 | RES·Flag'
+    server: '66.163.118.166'
+    port: 443
+    tls: true
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    network: 'tcp'
+    sni: 'learn.discovergreatjobsandadvanceyourcareer.com'
+    _poolOnly: true
+  - name: 'JP 36 [ss]'
+    type: 'ss'
+    server: '47.91.2.13'
+    port: '5555'
+    cipher: 'aes-256-gcm'
+    password: '123456'
+    udp: true
+    _poolOnly: true
+  - type: 'vless'
+    name: '#602 🇹🇭 TH | Readyidc AS56309 | ↓3.6 ↑?Mbps | 43.229.150.44 | RES·Clean'
+    server: '108.138.26.63'
+    port: 80
+    tls: false
+    uuid: '05f53797-bd04-4006-8a78-41c071e67837'
+    network: 'ws'
+    sni: 'd27g7kjkk3cw22.cloudfront.net'
+    ws-opts:
+      path: '/tikvpn2/'
+      headers:
+        Host: 'd27g7kjkk3cw22.cloudfront.net'
+    _poolOnly: true
+  - name: 'JP 35 [anytls]'
+    type: 'anytls'
+    server: 'media.gosthk.site'
+    port: '57180'
+    password: 'c0e8e373-946f-4862-98e6-3aaf1db7b53c'
+    sni: 'media.gosthk.site'
+    skip-cert-verify: false
+    client-fingerprint: 'chrome'
+    udp: true
+    _poolOnly: true
+  - type: 'vless'
+    name: '#540 🇩🇪 DE | Zenlayer AS62610 | ↓5.4 ↑5.0Mbps | 89.127.2.127 | RES·Clean'
+    server: '189.30.65.203'
+    port: 2083
+    tls: false
+    uuid: '490dc3b4-8d1d-49fd-840e-bd5277b41557'
+    network: 'grpc'
+    grpc-opts:
+      grpc-service-name: 'service-41f6a2a01377'
+    _poolOnly: true
+  - name: 'CA 33 [anytls]'
+    type: 'anytls'
+    server: 'im.lovehk.xyz'
+    port: '443'
+    password: '9c69dfab-c59b-40a6-ae00-cca9e43ceb4f'
+    sni: 'im.lovehk.xyz'
+    skip-cert-verify: false
+    client-fingerprint: 'chrome'
+    udp: true
+    _poolOnly: true
+  - name: 'NL 19 [vless]'
+    type: 'vless'
+    server: '147.45.61.144'
+    port: '443'
+    uuid: '04812b68-47ad-48ee-b96d-ab9127679634'
+    network: 'tcp'
+    tls: true
+    udp: true
+    flow: 'xtls-rprx-vision'
+    reality-opts:
+      public-key: 'tmiOsPsVgiWU7usQWetCpVdEp3ZTWl9tPY-r399JdCs'
+      short-id: 'b725584749527b07'
+    servername: 's2.frenchymyrsep.click'
+    client-fingerprint: 'chrome'
+    _poolOnly: true
+  - name: 'CA 24 [anytls]'
+    type: 'anytls'
+    server: 'im.lovehk.xyz'
+    port: '443'
+    password: 'd2e242fe-3a90-4d5c-b890-6089474faa39'
+    sni: 'im.lovehk.xyz'
+    skip-cert-verify: false
+    client-fingerprint: 'chrome'
+    udp: true
+    _poolOnly: true
+  - name: 'JP 30 [ss]'
+    type: 'ss'
+    server: '8.216.8.176'
+    port: '5555'
+    cipher: 'aes-256-gcm'
+    password: '123456'
+    udp: true
+    _poolOnly: true
+  - type: 'vmess'
+    name: '#950 🇨🇦 CA → 🇺🇸 US | Contabo AS40021 | ↓? ↑?Mbps | 207.244.230.92 | DC·Flag'
+    server: '188.114.96.3'
     port: 8443
     uuid: '60441548-b68e-43b2-8191-e3b884be4b3c'
     alterId: 0
     cipher: 'auto'
-    udp: true
     tls: true
-    servername: 'v2ray1.dozapp.xyz'
+    sni: 'v2ray1.dozapp.xyz'
     network: 'ws'
     ws-opts:
       path: '/lMnsZUN4/'
       headers:
         Host: 'v2ray1.dozapp.xyz'
     _poolOnly: true
-  - name: '[OpenRay] 🇨🇦CA-8'
-    type: 'vless'
-    server: '104.16.10.104'
-    port: 443
-    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
-    udp: true
-    tls: true
-    servername: 'jp3.yohototo.top'
-    client-fingerprint: 'unsafe'
-    network: 'ws'
-    ws-opts:
-      path: '/tyxyws#telegram--MARAMBASHI--MARAMBASHI--MARAMBASHI--MARAMBASHI'
-      headers:
-        Host: 'jp3.yohototo.top'
+  - type: 'vmess'
+    name: '#968 🇹🇭 TH | Alibaba.com AS45102 | ↓? ↑?Mbps | 47.81.36.173 | DC·Clean'
+    server: '47.81.36.173'
+    port: 18565
+    uuid: '853a251f-de85-40cc-84a6-ab8748c7258c'
+    alterId: 0
+    cipher: 'auto'
+    tls: false
+    network: 'tcp'
     _poolOnly: true
-  - name: '[OpenRay] 🌐XX-1494'
-    type: 'vless'
-    server: '172.64.152.19'
-    port: 443
-    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
-    udp: true
-    tls: true
-    servername: 'jp3.yohototo.top'
-    network: 'ws'
-    ws-opts:
-      path: '/tyxyws'
-      headers:
-        Host: 'jp3.yohototo.top'
+  - type: 'vmess'
+    name: '#778 🇹🇭 TH | Kaopu Cloud HK AS138915 | ↓1.1 ↑0.6Mbps | 119.46.51.45 | DC·Clean'
+    server: '119.46.51.45'
+    port: 37515
+    uuid: '9b76bc31-17a5-4454-934a-8d5fb602cd70'
+    alterId: 0
+    cipher: 'auto'
+    tls: false
+    network: 'tcp'
     _poolOnly: true
-  - name: '[OpenRay] 🌐XX-507'
-    type: 'vless'
-    server: '104.16.10.63'
-    port: 443
-    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
-    udp: true
-    tls: true
-    servername: 'jp3.yohototo.top'
-    client-fingerprint: 'chrome'
-    network: 'ws'
-    ws-opts:
-      path: '/tyxyws'
-      headers:
-        Host: 'jp3.yohototo.top'
+  - type: 'ss'
+    name: '#937 🇹🇷 TR | YottaSrc AS213535 | ↓? ↑?Mbps | 107.181.155.27 | DC·Clean'
+    server: 'tr.subscriptionservice.ir'
+    port: 2089
+    cipher: 'chacha20-ietf-poly1305'
+    password: 'lZZzfo1mqH7PqnloAogdi2XBhlgiofMy'
     _poolOnly: true
-  - name: '[OpenRay] 🇰🇷KR-5'
-    type: 'vless'
-    server: '168.107.36.135'
-    port: 443
-    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
-    udp: true
-    tls: true
-    servername: 'jp3.yohototo.top'
-    client-fingerprint: 'chrome'
-    network: 'ws'
-    ws-opts:
-      path: '/tyxyws'
-      headers:
-        Host: 'jp3.yohototo.top'
-    _poolOnly: true
-  - name: '[OpenRay] 🌐XX-1036'
-    type: 'vless'
-    server: '104.16.10.2'
-    port: 443
-    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
-    udp: true
-    tls: true
-    servername: 'jp3.yohototo.top'
-    network: 'ws'
-    ws-opts:
-      path: '/tyxyws#telegram--MARAMBASHI--MARAMBASHI--MARAMBASHI--MARAMBASHI'
-      headers:
-        Host: 'jp3.yohototo.top'
-    _poolOnly: true
-  - name: '[OpenRay] 🇯🇵JP-164'
-    type: 'vless'
-    server: '45.66.129.12'
-    port: 443
-    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
-    udp: true
-    tls: true
-    servername: 'jp3.yohototo.top'
-    client-fingerprint: 'unsafe'
-    network: 'ws'
-    ws-opts:
-      path: '/tyxyws'
-      headers:
-        Host: 'jp3.yohototo.top'
-    _poolOnly: true
-  - name: '[OpenRay] 🇬🇧GB-74'
-    type: 'vless'
-    server: '57.129.132.223'
-    port: 80
-    uuid: 'dbb78c94-9f87-4d7d-b945-2000b60352fd'
-    udp: true
-    network: 'ws'
-    ws-opts:
-      path: '/vless/'
-      headers:
-        Host: '---@External_Net---@External_Net---@External_Net---@External_Net---@External_Net'
-    _poolOnly: true
-  - name: '[OpenRay] 🌐XX-1109'
-    type: 'vless'
-    server: '172.64.229.129'
-    port: 2052
-    uuid: '5744e593-1cc8-48fa-b8ca-57cd494fe35b'
-    udp: true
-    network: 'ws'
-    ws-opts:
-      path: '/rain1226'
-      headers:
-        Host: 'eu02.123450908.xyz'
-    _poolOnly: true
-  - name: '085 | 101ms | 机房 🇺🇸US_520/961KB/s/K001-260618 [0c64150eb2b'
-    password: 'None'
-    port: 9443
-    server: '198.44.135.19'
-    skip-cert-verify: true
-    sub_tag: 'K001-260618'
-    tls: true
-    type: 'http'
-    username: ''
-    udp: true
-    _poolOnly: true
-  - name: '❓Other_80|199KB/s|R002-260618 [6fc9be775683]'
-    port: 443
-    server: '198.44.135.27'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇸🇬 Singapore, Singapore (Outram) | 🌐 | [BL]'
-    type: 'vless'
-    server: '141.193.213.21'
+  - type: 'vless'
+    name: '#716 🇩🇪 DE | OVH AS16276 | ↓1.9 ↑3.8Mbps | 51.75.67.209 | DC·Flag'
+    server: '104.27.97.42'
     port: 8443
-    uuid: '4d8d9640-7cc7-4c55-ba54-6ce0d1709541'
-    udp: true
     tls: true
-    servername: 'matrix.learnpodedu.com'
-    client-fingerprint: 'chrome'
+    uuid: '3692de53-42e6-4aed-a522-40ec355dcd2f'
     network: 'ws'
+    sni: 'free.sahanwickramasinghe.com'
     ws-opts:
       path: '/'
       headers:
-        Host: 'matrix.learnpodedu.com'
+        Host: 'free.sahanwickramasinghe.com'
     _poolOnly: true
-  - name: 'HK 🇭🇰 | @Raydikalx | F125F6'
-    type: 'vmess'
-    server: '156.245.232.239'
-    port: 35043
-    uuid: 'b15e481d-17e4-41a8-84c2-23d4f0514d9a'
+  - type: 'vmess'
+    name: '🇺🇸US_331|76KB/s|M003-260806 [4a6de620d459]'
+    server: '104.17.77.77'
+    port: 8443
+    uuid: '60441548-b68e-43b2-8191-e3b884be4b3c'
     alterId: 0
     cipher: 'auto'
-    udp: true
-    network: 'ws'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: '156.245.232.239'
-    _poolOnly: true
-  - name: '日本 039'
-    type: 'vless'
-    network: 'ws'
-    server: '103.201.131.202'
-    port: 2053
-    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
-    servername: 'jp3.yohototo.top'
-    skip-cert-verify: false
     tls: true
-    udp: true
-    tfo: false
-    client-fingerprint: 'unsafe'
-    ws-opts:
-      headers:
-        Host: 'jp3.yohototo.top'
-      path: '/tyxyws'
-    _poolOnly: true
-  - name: '[OpenRay] 🌐XX-712'
-    type: 'vless'
-    server: '104.17.3.81'
-    port: 80
-    uuid: 'fdd8f4d0-4500-11ef-8227-1577c1651679'
-    udp: true
+    sni: 'v2ray1.dozapp.xyz'
     network: 'ws'
     ws-opts:
-      path: '/%2Fworryfree'
+      path: '/lMnsZUN4/'
       headers:
-        Host: 'sg-vless-ws.bypass.id'
+        Host: 'v2ray1.dozapp.xyz'
     _poolOnly: true
-  - name: 'CA 🇨🇦 | @Raydikalx | F7EAED'
-    type: 'vmess'
+  - type: 'vless'
+    name: '🇺🇸US_358|832KB/s|S004-260618 [3fbf02e695d3]'
+    server: '69.48.201.136'
+    port: 30016
+    tls: false
+    uuid: '03dc60cb-a8d4-4226-93fe-0e6cbf77fe5a'
+    network: 'ws'
+    sni: 'uspanel.unixzone.us'
+    ws-opts:
+      path: '/usserver'
+      headers:
+        Host: 'uspanel.unixzone.us'
+    _poolOnly: true
+  - name: '🇨🇲 HTTP 102.244.78.61:8090 M'
+    type: 'http'
+    server: '102.244.78.61'
+    port: 8090
+    udp: false
+    _poolOnly: true
+  - name: 'JP 34 [ss]'
+    type: 'ss'
+    server: '47.91.18.202'
+    port: '5555'
+    cipher: 'aes-256-gcm'
+    password: '123456'
+    udp: true
+    _poolOnly: true
+  - name: '🇻🇳 HTTP 160.30.204.24:10001 M'
+    type: 'http'
+    server: '160.30.204.24'
+    port: 10001
+    udp: false
+    _poolOnly: true
+  - name: '🇺🇸 SOCKS5 107.174.30.94:1080 M'
+    type: 'socks5'
+    server: '107.174.30.94'
+    port: 1080
+    udp: false
+    _poolOnly: true
+  - name: '🇵🇰 SOCKS5 110.39.151.50:1080 S'
+    type: 'socks5'
+    server: '110.39.151.50'
+    port: 1080
+    udp: false
+    _poolOnly: true
+  - type: 'vmess'
+    name: '#945 🇺🇸 US | Contabo AS40021 | ↓? ↑?Mbps | 207.244.230.92 | DC·Flag'
     server: '104.21.0.1'
+    port: 8443
+    uuid: '60441548-b68e-43b2-8191-e3b884be4b3c'
+    alterId: 0
+    cipher: 'auto'
+    tls: true
+    sni: 'v2ray1.dozapp.xyz'
+    network: 'ws'
+    ws-opts:
+      path: '/lMnsZUN4/'
+      headers:
+        Host: 'v2ray1.dozapp.xyz'
+    _poolOnly: true
+  - name: '🇨🇦 HTTP 159.203.61.169:3128 F'
+    type: 'http'
+    server: '159.203.61.169'
+    port: 3128
+    udp: false
+    _poolOnly: true
+  - name: '🇬🇧 HTTP 134.209.29.120:3128 F'
+    type: 'http'
+    server: '134.209.29.120'
+    port: 3128
+    udp: false
+    _poolOnly: true
+  - name: '🇺🇸 SOCKS5 138.68.60.8:1080 F'
+    type: 'socks5'
+    server: '138.68.60.8'
+    port: 1080
+    udp: false
+    _poolOnly: true
+  - name: '🇩🇪 HTTP 161.35.70.249:80 F'
+    type: 'http'
+    server: '161.35.70.249'
     port: 80
-    uuid: '0cf6d970-3f1d-4aae-a989-92a8f76ae3db'
+    udp: false
+    _poolOnly: true
+  - name: '🇯🇵 HTTP 139.162.78.109:8080 F'
+    type: 'http'
+    server: '139.162.78.109'
+    port: 8080
+    udp: false
+    _poolOnly: true
+  - type: 'vmess'
+    name: '#784 🇹🇼 TW | Chunghwa Telecom AS3462 | ↓1.0 ↑1.0Mbps | 211.72.156.9 | RES·Clean'
+    server: 'dog-tw.kunlun01dns.com'
+    port: 21037
+    uuid: '9464ca40-dd75-3742-a628-d931a9f413b2'
     alterId: 0
     cipher: 'auto'
-    udp: true
-    network: 'ws'
-    ws-opts:
-      path: '/ws'
-      headers:
-        Host: 'vmess.lbw666.dpdns.org'
+    tls: false
+    network: 'tcp'
     _poolOnly: true
-  - name: '[OpenRay] 🌐XX-1794'
-    type: 'vless'
-    server: '104.18.0.181'
-    port: 2052
-    uuid: '5744e593-1cc8-48fa-b8ca-57cd494fe35b'
-    udp: true
-    network: 'ws'
-    ws-opts:
-      path: '/rain1226'
-      headers:
-        Host: 'eu02.123450908.xyz'
+  - name: '🇸🇬 HTTP 128.199.202.122:8080 M'
+    type: 'http'
+    server: '128.199.202.122'
+    port: 8080
+    udp: false
     _poolOnly: true
-  - name: '[OpenRay] 🇯🇵JP-28'
-    type: 'vless'
-    server: '45.129.8.204'
-    port: 443
-    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
-    udp: true
+  - name: '🇮🇳 HTTP 139.59.1.14:8080 M'
+    type: 'http'
+    server: '139.59.1.14'
+    port: 8080
+    udp: false
+    _poolOnly: true
+  - name: '🇺🇸 SOCKS5 107.174.30.93:1080 S'
+    type: 'socks5'
+    server: '107.174.30.93'
+    port: 1080
+    udp: false
+    _poolOnly: true
+  - type: 'ss'
+    name: '#916 🇯🇵 JP | Alibaba AS45102 | ↓? ↑?Mbps | 47.91.16.50 | ?'
+    server: '47.91.16.50'
+    port: 5555
+    cipher: 'aes-256-gcm'
+    password: '123456'
+    _poolOnly: true
+  - type: 'vmess'
+    name: '#701 🇺🇸 US | PEG TECH AS54600 | ↓2.2 ↑1.3Mbps | 38.11.50.193 | RES·Flag'
+    server: '38.11.69.48'
+    port: 30004
+    uuid: '418048af-a293-4b99-9b0c-98ca3580dd24'
+    alterId: 64
+    cipher: 'auto'
     tls: true
-    servername: 'jp3.yohototo.top'
+    sni: 'www.83761815.xyz'
     network: 'ws'
     ws-opts:
-      path: '/tyxyws'
+      path: '/path/1698843555400'
       headers:
-        Host: 'jp3.yohototo.top'
+        Host: 'www.83761815.xyz'
     _poolOnly: true
-  - name: '[OpenRay] 🇯🇵JP-200'
+  - name: 'node-21-vless'
     type: 'vless'
-    server: '62.106.70.68'
-    port: 443
-    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
+    server: '46.29.255.123'
+    port: '59539'
+    uuid: '30572b57-f5ab-4eb8-82d4-a24d399b99f6'
+    network: 'tcp'
+    tls: true
     udp: true
-    tls: true
-    servername: 'jp3.yohototo.top'
-    network: 'ws'
-    ws-opts:
-      path: '/tyxyws'
-      headers:
-        Host: 'jp3.yohototo.top'
+    flow: 'xtls-rprx-vision'
+    reality-opts:
+      public-key: 'R6mPqCsjZMWauci4LHw7Qp1LGKmBd-sxMXplyOn9bSQ'
+    servername: 'cloudflare-dns.com'
+    client-fingerprint: 'firefox'
     _poolOnly: true
-  - name: '美国 395'
-    type: 'vmess'
-    network: 'ws'
-    server: '172.64.229.21'
-    port: 443
-    uuid: '0cf6d970-3f1d-4aae-a989-92a8f76ae3db'
-    skip-cert-verify: true
-    tls: true
+  - type: 'vmess'
+    name: '🇮🇳IN_30|465KB/s|A004-260618 [623a4de5e9ec]'
+    server: '152.67.8.205'
+    port: 80
+    uuid: '9db4c708-aef8-4359-821b-38e47990be0d'
     alterId: 0
     cipher: 'auto'
-    ws-opts:
-      headers:
-        Host: 'vmess.lbw666.dpdns.org'
-      path: '/ws?ed=2048'
-    _poolOnly: true
-  - name: '[OpenRay] 🌐XX-1285'
-    type: 'vless'
-    server: '104.16.0.1'
-    port: 2052
-    uuid: '5744e593-1cc8-48fa-b8ca-57cd494fe35b'
-    udp: true
+    tls: false
     network: 'ws'
     ws-opts:
-      path: '/rain1226'
+      path: '/'
       headers:
-        Host: 'eu02.123450908.xyz'
+        Host: 'in-152.67.8.205-0202'
     _poolOnly: true
-  - name: '[OpenRay] 🇯🇵JP-208'
-    type: 'vless'
-    server: '185.200.66.193'
+  - name: '🇮🇶 SOCKS5 130.255.94.32:5080 S'
+    type: 'socks5'
+    server: '130.255.94.32'
+    port: 5080
+    udp: false
+    _poolOnly: true
+  - name: '🇨🇦 SOCKS5 159.203.61.169:1080 M'
+    type: 'socks5'
+    server: '159.203.61.169'
+    port: 1080
+    udp: false
+    _poolOnly: true
+  - name: '🇺🇸 HTTP 138.68.60.8:3128 F'
+    type: 'http'
+    server: '138.68.60.8'
+    port: 3128
+    udp: false
+    _poolOnly: true
+  - type: 'vless'
+    name: '#627 🇨🇦 CA → 🇳🇱 NL | GTHost AS63023 | ↓3.2 ↑3.3Mbps | 167.17.70.66 | RES·Clean'
+    server: '188.114.98.0'
     port: 443
-    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
-    udp: true
     tls: true
-    servername: 'jp3.yohototo.top'
-    client-fingerprint: 'unsafe'
+    uuid: '364d2d52-e61e-4e52-80ec-2bc6bdf15349'
     network: 'ws'
+    sni: 'fr-free.fastestrelay.com'
     ws-opts:
-      path: '/tyxyws'
+      path: '/700gvl'
       headers:
-        Host: 'jp3.yohototo.top'
+        Host: 'fr-free.fastestrelay.com'
     _poolOnly: true
-  - name: '[OpenRay] 🇬🇧GB-4'
-    type: 'vless'
-    server: '51.38.71.147'
-    port: 443
-    uuid: 'fda89998-7e9a-4494-857a-cd0d00661b58'
-    udp: true
-    tls: true
-    servername: 'uk1.connectsuite.org'
+  - name: '🇬🇧 SOCKS5 134.209.29.120:1080 M'
+    type: 'socks5'
+    server: '134.209.29.120'
+    port: 1080
+    udp: false
+    _poolOnly: true
+  - name: '🇩🇪 SOCKS5 161.35.70.249:1080 M'
+    type: 'socks5'
+    server: '161.35.70.249'
+    port: 1080
+    udp: false
+    _poolOnly: true
+  - name: '🇯🇵 SOCKS5 139.162.78.109:1080 M'
+    type: 'socks5'
+    server: '139.162.78.109'
+    port: 1080
+    udp: false
+    _poolOnly: true
+  - name: '🇸🇬 SOCKS5 128.199.202.122:1080 M'
+    type: 'socks5'
+    server: '128.199.202.122'
+    port: 1080
+    udp: false
+    _poolOnly: true
+  - name: '🇮🇳 SOCKS5 139.59.1.14:1080 M'
+    type: 'socks5'
+    server: '139.59.1.14'
+    port: 1080
+    udp: false
+    _poolOnly: true
+  - name: '🇺🇸 HTTP 165.154.162.73:8888 M'
+    type: 'http'
+    server: '165.154.162.73'
+    port: 8888
+    udp: false
+    _poolOnly: true
+  - type: 'vless'
+    name: '🇫🇮FI_14|972KB/s|M003-260806 [182f31b84421]'
+    server: '213.176.92.168'
+    port: 14430
+    tls: false
+    uuid: 'ba52cc43-700d-4040-9444-29214c98e6e0'
     network: 'ws'
+    sni: '213.176.92.168'
     ws-opts:
-      path: '/cdn-cgi/ws'
+      path: '/vless'
       headers:
-        Host: 'uk1.connectsuite.org'
+        Host: '213.176.92.168'
+    _poolOnly: true
+  - name: '🇮🇩 SOCKS5 103.189.63.149:53053 S'
+    type: 'socks5'
+    server: '103.189.63.149'
+    port: 53053
+    udp: false
     _poolOnly: true
