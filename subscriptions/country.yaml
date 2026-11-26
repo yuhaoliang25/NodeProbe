@@ -1,335 +1,121 @@
 proxies:
-  - type: 'vless'
-    name: '🇺🇸US_386|1.7MB/s|A001-260618 [68d6e9954f94]'
-    server: '45.138.100.248'
-    port: 10443
-    tls: false
-    uuid: 'ae908ff5-f749-402c-af25-e6e9aef4d6bb'
-    network: 'tcp'
-    sni: '45.138.100.248'
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇺🇸_美国 (53) (2)'
-    server: '66.163.122.113'
-    port: 443
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    udp: true
-    tls: true
-    servername: 'api.searchnationwidecareerchangehelperandguidancetoday.com'
-    sni: 'api.searchnationwidecareerchangehelperandguidancetoday.com'
-    skip-cert-verify: false
-    _poolOnly: true
-  - type: 'vmess'
-    name: '🇺🇸_美国 (30) (2)'
-    server: '129.146.77.248'
-    port: 39495
-    uuid: 'f836c736-87fc-4fde-aabc-00857ecdff3e'
-    cipher: 'auto'
-    alterId: 0
-    udp: true
-    tls: false
-    servername: '129.146.77.248'
-    sni: '129.146.77.248'
-    skip-cert-verify: false
-    network: 'ws'
-    ws-opts:
-      path: '/cctv13.m3u8'
-      headers:
-        Host: '129.146.77.248'
-    _poolOnly: true
-  - name: 'VLESS-573ms-041'
-    server: '158.101.151.157'
-    port: 443
+  - name: '[OpenRay] 🌐XX-317'
     type: 'vless'
-    uuid: '66171cbe-0b4b-4b24-99f6-d5a822f4dc9a'
-    tls: true
-    servername: 'www.microsoft.com'
-    flow: 'xtls-rprx-vision'
-    reality-opts:
-      public-key: '99eQkMBHqOEKororOWKFlmH8M0o9VaVpV9w1vQIxhz8'
-      short-id: '684c7531e599dec0'
-    client-fingerprint: 'chrome'
-    network: 'tcp'
-    udp: true
-    _poolOnly: true
-  - type: 'vmess'
-    name: '🇰🇷KR_42|404KB/s|A004-260618 [179227e92034]'
-    server: '132.145.80.230'
-    port: 80
-    uuid: '5155860e-d07d-46c3-9128-3afbd84626c7'
-    alterId: 0
-    cipher: 'auto'
-    tls: false
-    network: 'ws'
-    ws-opts:
-      path: '/cctv13.m3u8'
-      headers:
-        Host: '132.145.80.230'
-    _poolOnly: true
-  - type: 'vless'
-    name: '[OpenRay] 🇰🇷KR-27'
-    server: '152.69.226.63'
-    port: 25555
-    tls: false
-    uuid: '27c5483f-17f4-48ae-9a04-def53d88440d'
-    network: 'ws'
-    sni: '152.69.226.63'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: '152.69.226.63'
-    _poolOnly: true
-  - type: 'vmess'
-    name: '🇰🇷_韩国 (3)'
-    server: '132.145.80.230'
-    port: 80
-    uuid: '5155860e-d07d-46c3-9128-3afbd84626c7'
-    cipher: 'auto'
-    alterId: 0
-    udp: true
-    tls: false
-    servername: '132.145.80.230'
-    sni: '132.145.80.230'
-    skip-cert-verify: false
-    network: 'ws'
-    ws-opts:
-      path: '/cctv13.m3u8'
-      headers:
-        Host: '132.145.80.230'
-    _poolOnly: true
-  - type: 'vmess'
-    name: '🇸🇬_新加坡 (7)'
-    server: '195.133.135.238'
-    port: 10086
-    uuid: 'b831381d-6324-4d53-ad4f-8cda48b30811'
-    cipher: 'auto'
-    alterId: 0
-    udp: true
-    tls: false
-    skip-cert-verify: false
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇸🇬_新加坡 (3)'
-    server: '15.235.184.127'
+    server: '188.114.98.0'
     port: 443
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    uuid: '53bbdad4-2f4e-45db-8df4-fa491a6a7227'
     udp: true
     tls: true
-    servername: 'exploredigitaljobplatformandfindonlinework.com'
-    sni: 'exploredigitaljobplatformandfindonlinework.com'
-    skip-cert-verify: false
-    _poolOnly: true
-  - name: '🇸🇬 新加坡 | SGP 6'
-    server: '213.183.45.23'
-    port: 8444
-    type: 'vless'
-    uuid: 'eb62cabf-5901-403a-aa0c-b1d9ed1b346d'
-    tls: true
-    servername: 'media.plumstatic.com'
-    client-fingerprint: 'firefox'
-    network: 'ws'
-    ws-opts:
-      path: '/ws'
-    udp: true
-    _poolOnly: true
-  - name: '🇬🇧 英国 | GBR 3-source-28e1192e25a8d4ae'
-    server: 'uk-tube-01.stre4m.net'
-    port: 13337
-    type: 'hysteria2'
-    password: '900c8c92-1979-4c7c-8f2f-63e87d53d8fe'
-    auth: '900c8c92-1979-4c7c-8f2f-63e87d53d8fe'
-    sni: 'mother-earth.fyi'
-    skip-cert-verify: true
+    servername: 'freeceshi6.frii.site'
+    client-fingerprint: 'unsafe'
     alpn:
-      - 'h3'
-    _poolOnly: true
-  - type: 'vless'
-    name: '🇩🇪DE_90|553KB/s|A004-260618 [14d5e93093da]'
-    server: '193.188.21.253'
-    port: 14430
-    tls: false
-    uuid: '57f7772d-f5d6-4d8f-992d-5fa5e0d6da55'
+      - 'http/1.1'
     network: 'ws'
-    sni: '193.188.21.253'
     ws-opts:
-      path: '/vless'
+      path: '/?Telegram---PLANB_NET---PLANB_NET---PLANB_NET---PLANB_NET'
       headers:
-        Host: '193.188.21.253'
+        Host: 'freeceshi6.frii.site'
     _poolOnly: true
-  - name: '🇩🇪 德国 06'
-    type: 'hysteria2'
-    server: '128.254.186.190'
-    port: 13337
-    password: '900c8c92-1979-4c7c-8f2f-63e87d53d8fe'
-    skip-cert-verify: false
-    sni: 'mother-earth.fyi'
-    _poolOnly: true
-  - name: 'DE - zhuhai.uk-source-a1729cc9e67d90b7'
-    type: 'http'
-    server: '158.173.154.1'
-    port: 9002
-    tls: true
-    sni: '158.173.154.1'
-    skip-cert-verify: true
-    _poolOnly: true
-  - type: 'vless'
-    name: '🇫🇷FR_123|625KB/s|F003-260618 [142cea95e34f]'
-    server: '138.124.70.41'
-    port: 14430
-    tls: false
-    uuid: '6cc745e3-4eb9-46c8-a4a1-85dee7b87edc'
-    network: 'ws'
-    sni: '138.124.70.41'
-    ws-opts:
-      path: '/vless'
-      headers:
-        Host: '138.124.70.41'
-    _poolOnly: true
-  - name: 'FR - zhuhai.uk-source-6c818e90432e7c0a'
-    type: 'http'
-    server: '82.66.235.221'
+  - name: '[OpenRay] 🇺🇸US-1011'
+    type: 'trojan'
+    server: '66.163.122.46'
     port: 443
-    username: 'null'
-    password: 'null'
-    tls: true
-    sni: '82.66.235.221'
-    skip-cert-verify: true
-    _poolOnly: true
-  - name: '🇫🇷FR_4|1018KB/s|K001-260618'
-    password: 'Zn5mR7vA'
-    port: 42000
-    server: '144.56.22.78'
-    skip-cert-verify: true
-    sub_tag: 'K001-260618'
-    type: 'socks5'
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
     udp: true
-    username: 'L8wP3kQx'
+    sni: 'searchnationwidecareerchangehelperandguidancetoday.com'
+    _poolOnly: true
+  - name: 'CA 🇨🇦 | @Raydikalx | 5A4804'
+    type: 'vmess'
+    server: '104.21.0.1'
+    port: 8443
+    uuid: '60441548-b68e-43b2-8191-e3b884be4b3c'
+    alterId: 0
+    cipher: 'auto'
+    udp: true
+    tls: true
+    servername: 'v2ray1.dozapp.xyz'
+    network: 'ws'
+    ws-opts:
+      path: '/lMnsZUN4/'
+      headers:
+        Host: 'v2ray1.dozapp.xyz'
+    _poolOnly: true
+  - name: 'C🟠🇯🇵hos[💬🎮✈️📚]_dokng.com_bd5beb5b'
+    client-fingerprint: 'firefox'
+    flow: 'xtls-rprx-vision'
+    network: 'tcp'
+    packet-encoding: 'xudp'
+    port: 23169
+    server: '155.248.175.201'
+    servername: 'djj.zjlo.top'
+    tls: true
+    type: 'vless'
+    uuid: 'f67b1159-a61f-4ae4-9844-0701b716a290'
     x-toolall-mihomo: true
     _poolOnly: true
-  - type: 'trojan'
-    name: 'TROJAN-3849ms-106-57b9db44254996b9'
-    server: '66.163.127.155'
-    port: 443
-    tls: true
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'indyourperfectremotetechjobfromthecomfortofhome.com'
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇳🇱_荷兰 (24)'
-    server: 'leviko-nl6763.shopingggg.ir'
-    port: 443
-    password: 'shadowsocks'
-    cipher: 'aes-128-gcm'
-    udp: true
-    tls: false
-    skip-cert-verify: false
-    _poolOnly: true
-  - type: 'vless'
-    name: '🇳🇱_荷兰 (2)'
-    server: '13.141.51.2'
-    port: 443
-    uuid: 'cda0862a-0f87-4be9-8ed8-1d0c9e382839'
+  - name: '[OpenRay] 🇸🇬SG-2'
+    type: 'vless'
+    server: '103.106.229.177'
+    port: 21003
+    uuid: '67952583-8572-42e1-943d-0602794f885b'
     udp: true
     tls: true
-    servername: '04535dt.us8.h1clayd.click'
-    sni: '04535dt.us8.h1clayd.click'
-    skip-cert-verify: false
+    servername: 'www.cloudflare.com'
+    client-fingerprint: 'chrome'
+    reality-opts:
+      public-key: 'IRaSB0ImgMO7fsrIbh9i3Pz-bgo5F1jKeC51Fpfs9AA'
+      short-id: 'f3602a3a1cf928b7'
+    _poolOnly: true
+  - name: '[OpenRay] 🇸🇬SG-63'
+    type: 'vless'
+    server: '103.106.229.177'
+    port: 21004
+    uuid: '67952583-8572-42e1-943d-0602794f885b'
+    udp: true
+    tls: true
+    servername: 'www.cloudflare.com'
     client-fingerprint: 'firefox'
     reality-opts:
-      public-key: 'UoS8qZ74hP_ECcncCz55lzvlcVss3R7VA0WYZE0YQCY'
-      short-id: 'ba2a3dce62b99092'
+      public-key: 'IRaSB0ImgMO7fsrIbh9i3Pz-bgo5F1jKeC51Fpfs9AA'
+      short-id: '4e0418d648f86141'
     _poolOnly: true
-  - type: 'ss'
-    name: '🇨🇦 Canada - 184.107.106.77 - By q31r-c6394617375e60c8'
-    server: '184.107.106.77'
+  - name: '[OpenRay] 🇸🇬SG-193'
+    type: 'vless'
+    server: '103.106.229.177'
+    port: 21002
+    uuid: '67952583-8572-42e1-943d-0602794f885b'
+    udp: true
+    tls: true
+    servername: 'www.cloudflare.com'
+    client-fingerprint: 'chrome'
+    reality-opts:
+      public-key: 'IRaSB0ImgMO7fsrIbh9i3Pz-bgo5F1jKeC51Fpfs9AA'
+      short-id: 'd9a6b52e98121db2'
+    _poolOnly: true
+  - name: '🇩🇪DE_49|1.3MB/s|C002-260622 [6143dc2419a6]'
+    client-fingerprint: 'chrome'
+    network: 'ws'
+    port: 443
+    server: '185.18.250.2'
+    sub_tag: 'C002-260622'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '10997f19-2951-4a9b-a26f-611a6bd72d02'
+    ws-opts:
+      headers:
+        Host: 'worker3.sicoro1729.workers.dev'
+        User-Agent: 'Mozilla/5.0 (Linux; Android 7.0; Moto C Build/NRD90M.059) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36'
+      path: '/'
+    xudp: true
+    packet-encoding: 'xudp'
+    servername: 'worker3.sicoro1729.workers.dev'
+    _poolOnly: true
+  - name: '[OpenRay] 🇩🇪DE-18'
+    type: 'ss'
+    server: '178.162.254.38'
     port: 8388
     cipher: 'aes-256-gcm'
     password: 'itzvpn@321'
-    _poolOnly: true
-  - type: 'trojan'
-    name: 'TROJAN-4486ms-116-001f916902a3f9d3'
-    server: '216.152.147.48'
-    port: 443
-    tls: true
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'courses.connectingpeoplewithgreatjobs.com'
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇨🇦 Canada - 216.152.147.89 - By q31r'
-    server: '216.152.147.89'
-    port: 443
-    tls: true
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'www.connectingpeoplewithgreatjobs.com'
-    _poolOnly: true
-  - name: 'VLESS-960ms-068'
-    server: '46.250.240.80'
-    port: 2053
-    type: 'vless'
-    uuid: 'f7fa5a16-1279-46ba-ac18-001b41884080'
-    tls: true
-    servername: 'www.cloudflare.com'
-    reality-opts:
-      public-key: 'nrG0dLD2wazG9wHwqCDb7sF6UNRophzBmCX3hDxuqAE'
-      short-id: '3611e663b53177f2'
-    client-fingerprint: 'chrome'
-    network: 'tcp'
-    udp: true
-    _poolOnly: true
-  - type: 'vmess'
-    name: '[OpenRay] 🇮🇳IN-51'
-    server: '152.67.8.205'
-    port: 80
-    uuid: '9db4c708-aef8-4359-821b-38e47990be0d'
-    alterId: 0
-    cipher: 'auto'
-    tls: false
-    sni: 'in-152.67.8.205-0200'
-    network: 'ws'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'in-152.67.8.205-0200'
-    _poolOnly: true
-  - name: '🇭🇰 香港 | HKG 6'
-    server: '116.213.43.43'
-    port: 11106
-    type: 'vless'
-    uuid: '2e7bd251-52be-4ffa-b79e-108e1fe07185'
-    tls: true
-    flow: 'xtls-rprx-vision'
-    reality-opts:
-      public-key: '-13uTSuqk44pCU0x6yvldaskzyRIlO2ihmDvM0FsBns'
-      short-id: 'da12e31124830d42'
-    servername: 'www.apple.com'
-    client-fingerprint: 'chrome'
-    network: 'tcp'
-    udp: true
-    _poolOnly: true
-  - name: 'HK - zhuhai.uk 02'
-    type: 'http'
-    server: 'fan.240104.xyz'
-    port: 443
-    username: 'null'
-    password: 'null'
-    tls: true
-    skip-cert-verify: true
-    _poolOnly: true
-  - name: 'VLESS-827ms-067'
-    server: '2.26.204.46'
-    port: 31001
-    type: 'vless'
-    uuid: '12a4f736-2238-49ee-831f-5516f15cc951'
-    tls: true
-    servername: 'mensura.cdn-apple.com'
-    flow: 'xtls-rprx-vision'
-    reality-opts:
-      public-key: 'lzpIiMqHXas_qayw-HvrySb78FNkVroBOqniwqPXPzY'
-      short-id: '39793bc4708abbbb'
-    client-fingerprint: 'chrome'
-    network: 'tcp'
     udp: true
     _poolOnly: true
