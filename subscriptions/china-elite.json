@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-11-26T12:49:53.537Z",
+  "generatedAt": "2026-11-26T22:17:45.379Z",
   "maxPaths": 3,
   "counts": {
-    "eligibleExits": 228,
+    "eligibleExits": 227,
     "chatgptEligibleExits": 278,
     "chatgptSelectedPaths": 3,
-    "chatgptIncumbentPaths": 3,
+    "chatgptIncumbentPaths": 2,
     "selectedPaths": 3,
     "publishedProxies": 3
   },
@@ -25,61 +25,61 @@
   "paths": [
     {
       "kind": "exit",
+      "endpointId": "a3f6417c87a3f816",
+      "name": "[ermaozi-subscribe] 🇩🇪DE_2|1017KB/s",
+      "score": 2007.9328457861984,
+      "recentSuccessRate": 1,
+      "lifetimeSuccessRate": 0.9979188345473465,
+      "observedRuns": 961,
+      "p95LatencyMs": 535,
+      "speedMbps": 27.276719592594915
+    },
+    {
+      "kind": "exit",
       "endpointId": "42b92fd19e27c47a",
       "name": "[cbusifabcap-clashmeta] ❓Other_23|318KB/s|R002-260618",
-      "score": 1939.8716322033724,
+      "score": 1989.6926981379124,
       "recentSuccessRate": 1,
-      "lifetimeSuccessRate": 0.9962894248608535,
-      "observedRuns": 1078,
-      "p95LatencyMs": 602,
-      "speedMbps": 15.25527994773541
+      "lifetimeSuccessRate": 0.9963503649635036,
+      "observedRuns": 1096,
+      "p95LatencyMs": 535,
+      "speedMbps": 23.307741433239638
     },
     {
       "kind": "exit",
-      "endpointId": "d8ba68c43e3dfacf",
-      "name": "[ermaozi-subscribe] 🇩🇪DE_2|2.9MB/s",
-      "score": 1899.2360100209303,
+      "endpointId": "d1f4a0d80288cf0b",
+      "name": "[zhuhaiuk-free-nodes] SG - zhuhai.uk 02",
+      "score": 1919.2580030344498,
       "recentSuccessRate": 1,
-      "lifetimeSuccessRate": 1,
-      "observedRuns": 9,
-      "p95LatencyMs": 541,
-      "speedMbps": 26.210189997667293
-    },
-    {
-      "kind": "exit",
-      "endpointId": "898c45bc5f6e51af",
-      "name": "[ermaozi-subscribe] 🇩🇪DE_1|2.5MB/s",
-      "score": 1889.3444327660761,
-      "recentSuccessRate": 1,
-      "lifetimeSuccessRate": 1,
-      "observedRuns": 9,
-      "p95LatencyMs": 679,
-      "speedMbps": 25.513962835086037
+      "lifetimeSuccessRate": 0.9947019867549669,
+      "observedRuns": 755,
+      "p95LatencyMs": 1364,
+      "speedMbps": 18.04496353789555
     }
   ],
   "chatgptPaths": [
     {
       "kind": "chatgpt-incumbent",
+      "endpointId": "a3f6417c87a3f816",
+      "name": "[ermaozi-subscribe] 🇩🇪DE_2|1017KB/s",
+      "score": 2007.9328457861984,
+      "chatgptScore": 1187.9731428460987,
+      "chatgptSuccessRate": 1
+    },
+    {
+      "kind": "chatgpt-incumbent",
       "endpointId": "42b92fd19e27c47a",
       "name": "[cbusifabcap-clashmeta] ❓Other_23|318KB/s|R002-260618",
-      "score": 1939.8716322033724,
-      "chatgptScore": 1115.8925474574273,
+      "score": 1989.6926981379124,
+      "chatgptScore": 1184.95015918553,
       "chatgptSuccessRate": 1
     },
     {
       "kind": "chatgpt-exploration",
       "endpointId": "2e1ea510a47dd56f",
       "name": "巴西 003",
-      "score": 1748.5798880845039,
-      "chatgptScore": 1138.301163454758,
-      "chatgptSuccessRate": 1
-    },
-    {
-      "kind": "chatgpt-exploration",
-      "endpointId": "9a3646d6f1b31bad",
-      "name": "巴西 002",
-      "score": 1687.5539412233572,
-      "chatgptScore": 1134.0322318533354,
+      "score": 1829.4839560257158,
+      "chatgptScore": 1142.2622730832193,
       "chatgptSuccessRate": 1
     }
   ]

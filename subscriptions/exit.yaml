@@ -178,6 +178,15 @@ proxies:
     tls: true
     skip-cert-verify: true
     _poolOnly: true
+  - name: '🇨🇿CZ_1|1.9MB/s|R002-260618 [dea96bfbdd9e]'
+    port: 443
+    server: '193.35.104.196'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
   - name: '🇳🇱NL_20|6.3MB/s|P002-260618 [d77b65a8fb8a]'
     password: 'None'
     port: 443
@@ -312,6 +321,15 @@ proxies:
     skip-cert-verify: false
     username: 'testuser1'
     password: 'e4b72b531a2d10900519'
+    _poolOnly: true
+  - name: '🇺🇸US_327|83KB/s|R002-260618 [f9ebf4bb49d2]'
+    port: 7615
+    server: '47.90.206.169'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
     _poolOnly: true
   - name: '[share-daily-node] US-HTTP-13'
     type: 'http'
@@ -1263,12 +1281,16 @@ proxies:
     type: 'http'
     username: 'null'
     _poolOnly: true
-  - name: '[zhuhaiuk-free-nodes] US - zhuhai.uk 18'
+  - name: '[share-daily-node] US-HTTP-97'
     type: 'http'
-    server: 'fan.226278.xyz'
+    server: '107.151.238.27'
     port: 443
+    udp: true
     tls: true
-    skip-cert-verify: true
+    sni: '6b97ee1b.acsnet.co'
+    skip-cert-verify: false
+    username: 'testuser1'
+    password: 'e4b72b531a2d10900519'
     _poolOnly: true
   - name: '[ermaozi-subscribe] 🇫🇷FR_3|1.1MB/s|P002-260618'
     password: 'None'
@@ -1414,14 +1436,6 @@ proxies:
     port: 443
     tls: true
     sni: '137.175.22.52'
-    skip-cert-verify: true
-    _poolOnly: true
-  - name: '[zhuhaiuk-free-nodes] IT - zhuhai.uk 04'
-    type: 'http'
-    server: '109.116.41.154'
-    port: 443
-    tls: true
-    sni: '109.116.41.154'
     skip-cert-verify: true
     _poolOnly: true
   - name: '[cbusifabcap-clashmeta] ❓Other_54|96KB/s|K001-260618'
@@ -1722,13 +1736,6 @@ proxies:
     grpc-opts:
       grpc-service-name: 'mobile.api.Event'
     _poolOnly: true
-  - name: '🇺🇸US-47.85.227.36-05'
-    server: '47.85.227.36'
-    port: 443
-    type: 'ss'
-    cipher: '2022-blake3-chacha20-poly1305'
-    password: '3NBsnBLanPfG6i3S2GTHineswr6EeSJPb0PCeMQoGoA='
-    _poolOnly: true
   - name: '[VLESS] 🇺🇸 🇺🇸US(AzadNet.t.me) 133'
     server: '13.141.36.10'
     port: 443
@@ -1743,21 +1750,6 @@ proxies:
     client-fingerprint: 'random'
     skip-cert-verify: true
     tfo: false
-    _poolOnly: true
-  - client-fingerprint: 'firefox'
-    name: '🇷🇺 俄罗斯 | RUS #6'
-    network: 'ws'
-    port: 443
-    server: 'ws3.falmero.store'
-    servername: 'paperbirch.merlano.monster'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '0b6a7fe0-206b-4071-9f96-cd397d1ec01a'
-    ws-opts:
-      headers:
-        Host: 'paperbirch.merlano.monster'
-      path: '/api/de1/stream'
     _poolOnly: true
   - name: '🇺🇸 美国_02 - v2raydog.com'
     server: '162.35.101.177'
