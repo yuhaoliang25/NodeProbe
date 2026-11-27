@@ -1,6 +1,13 @@
 proxies:
+  - type: 'ss'
+    name: '🇺🇸 | تلگرام: @IRJetConfig #RK-4f61340023a64da2'
+    server: '108.181.9.202'
+    port: 8388
+    cipher: 'chacha20-ietf-poly1305'
+    password: 'G5p6ww4o67HB'
+    endpoint-id: '4f61340023a64da2'
   - type: 'vless'
-    name: '#865 🇺🇸 US | Cloudflare AS13335 | ↓? ↑?Mbps | 104.28.166.203 | RES·Flag'
+    name: 'Channel : @Daily_Configs'
     server: '172.64.154.113'
     port: 8443
     tls: true
@@ -8,208 +15,219 @@ proxies:
     network: 'ws'
     sni: 'freeceshi6.frii.site'
     ws-opts:
-      path: '/?TELEGRAM--MARAMBASHI--MARAMBASHI--MARAMBASHI--MARAMBASHI?ed=512'
+      path: '/proxyip'
       headers:
         Host: 'freeceshi6.frii.site'
-    endpoint-id: 'f21b2874519a87e9'
-  - name: 'US 05 [hysteria2]'
-    type: 'hysteria2'
-    server: '38.76.150.108'
-    port: '36712'
-    password: 'AIcYjw5Oc9Rrrr9SGDUBbBIC'
-    sni: '38.76.150.108'
+    endpoint-id: 'd7e8150c8b208dd6'
+  - name: 'US 06 [anytls]'
+    type: 'anytls'
+    server: 'anytls2.864106.xyz'
+    port: '19000'
+    password: 'github.com/Alvin9999-newpac/fanqiang'
+    sni: 'anytls2.864106.xyz'
     skip-cert-verify: true
+    client-fingerprint: 'chrome'
     udp: true
-    endpoint-id: 'b890310ef6866a54'
-  - type: 'trojan'
-    name: '#35 🇺🇸 US | GTHost AS63023 | ↓36.3 ↑9.5Mbps | 216.152.156.159 | RES·Flag'
-    server: '216.152.156.42'
-    port: 443
-    tls: true
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'blog.healthcarejobshubenhancemedicalprofessionalskillstoday.com'
-    endpoint-id: '69b488cf9e21da03'
-  - type: 'trojan'
-    name: '#162 🇺🇸 US | GlobalTeleHost AS63023 | ↓10.8 ↑6.8Mbps | 167.88.61.175 | DC·Flag'
-    server: '167.88.61.85'
-    port: 443
-    tls: true
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'resources.browseseniorrolesandenhanceyourcareertoday.com'
-    endpoint-id: '11adc6f740251036'
-  - name: 'CH 02 [hysteria2]'
-    type: 'hysteria2'
-    server: '152.67.75.161'
-    port: '443'
-    password: '3a702d4d1de4949005d8431220e040fb'
-    sni: 'www.bing.com'
-    skip-cert-verify: true
-    udp: true
-    obfs: 'salamander'
-    obfs-password: 'c13f29db6a638ad2b211b9ce2669ef27'
-    endpoint-id: '5e3544de62eade8f'
-  - type: 'trojan'
-    name: '#42 🇺🇸 US | GTHost AS63023 | ↓33.3 ↑10.1Mbps | 216.152.156.159 | RES·Flag'
-    server: '216.152.156.65'
-    port: 443
-    tls: true
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'learn.healthcarejobshubenhancemedicalprofessionalskillstoday.com'
-    endpoint-id: '8d02620dd3a9366d'
-  - name: 'JP 32 [ss]'
-    type: 'ss'
-    server: '8.216.17.19'
-    port: '5555'
-    cipher: 'aes-256-gcm'
-    password: '123456'
-    udp: true
-    endpoint-id: 'c1d1e89bbc466060'
+    endpoint-id: '2e1d02d55daa555d'
   - type: 'ss'
-    name: '#465 🇪🇸 ES | Psychz Networks AS40676 | ↓6.7 ↑4.7Mbps | 108.181.70.23 | DC·Flag'
-    server: '108.181.121.170'
+    name: '🇺🇸 | تلگرام: @IRJetConfig #RK'
+    server: '108.181.88.2'
     port: 443
     cipher: 'chacha20-ietf-poly1305'
-    password: 'qItG8SueYQcP'
-    endpoint-id: '8a768a624bd6e6be'
-  - name: 'NL 12 [hysteria2]'
-    type: 'hysteria2'
-    server: '185.200.199.179'
-    port: '54706'
-    password: 'Cqx5aT9Zux'
-    sni: '185.200.199.179'
-    skip-cert-verify: false
-    udp: true
-    endpoint-id: '872816e6f198f881'
-  - name: 'KR 14 [hysteria2]'
-    type: 'hysteria2'
-    server: 'www.ddsos.cc'
-    port: '7788'
-    password: 'c8aa4ba6a243ddfdeb67515aa849624b'
-    sni: 'www.ddsos.cc'
-    skip-cert-verify: true
-    udp: true
-    endpoint-id: '437cae58d5a45cb3'
-  - type: 'trojan'
-    name: '#39 🇺🇸 US | GTHost AS63023 | ↓34.0 ↑12.9Mbps | 66.163.122.30 | DC·Flag'
-    server: '66.163.122.81'
+    password: '6yzcGxLalx0T'
+    endpoint-id: '067b0f4e4b875303'
+  - type: 'ss'
+    name: '🇺🇸 | تلگرام: @IRJetConfig #RK-74090ec3ce2b3ef1'
+    server: '38.99.82.34'
     port: 443
-    tls: true
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'courses.searchnationwidecareerchangehelperandguidancetoday.com'
-    endpoint-id: '61085f49de6bee34'
-  - name: 'SG 11 [hysteria2]'
-    type: 'hysteria2'
-    server: '138.2.89.249'
-    port: '443'
-    password: 'd042d150716709bb778cc73889cddb02'
-    sni: 'www.bing.com'
-    skip-cert-verify: true
-    udp: true
-    obfs: 'salamander'
-    obfs-password: '309502c4a8df10b46fb976d4a8c43f42'
-    endpoint-id: '29cd9c1f50fcade0'
-  - name: 'EE 16 [vless]'
-    type: 'vless'
-    server: 'one.alpheratzz.org'
-    port: '8443'
-    uuid: '0173d52e-8e1b-4681-831e-11529677b72f'
-    network: 'tcp'
-    tls: true
-    udp: true
-    flow: 'xtls-rprx-vision'
-    servername: 'api-6b04608f.adhil.uk'
-    skip-cert-verify: true
-    client-fingerprint: 'safari'
-    alpn:
-      - 'h2'
-    endpoint-id: '4d3ed8abacbe5601'
-  - name: 'HK 10 [hysteria2]'
-    type: 'hysteria2'
-    server: '152.32.254.68'
-    port: '5010'
-    password: 'eBTe6Ax2pUts8oMEWoYVDfnSlHfkLffQ'
-    sni: '127.0.0.1'
-    skip-cert-verify: true
-    udp: true
-    obfs: 'salamander'
-    obfs-password: '7M4RXPFcQyQEGbkxBPfXo4bilMhCW2U9'
-    endpoint-id: '0c8eab5c1ed6db13'
-  - name: '🇺🇸 HTTP 129.153.97.250:9443 M'
-    type: 'http'
-    server: '129.153.97.250'
-    port: 9443
-    udp: false
-    endpoint-id: '3d901c4796e870e0'
-  - name: 'TW 28 [anytls]'
-    type: 'anytls'
-    server: 'rtifgjdr.df6h451rh.xin'
-    port: '443'
-    password: '2902c46c8493'
-    sni: 'rtifgjdr.df6h451rh.xin'
-    skip-cert-verify: true
-    client-fingerprint: 'chrome'
-    udp: true
-    endpoint-id: '41b644e464caf918'
-  - name: 'JP 31 [anytls]'
-    type: 'anytls'
-    server: 'media.gosthk.site'
-    port: '57180'
-    password: 'a2d955fb-a739-4771-99bb-be80cad577f6'
-    sni: 'media.gosthk.site'
-    skip-cert-verify: false
-    client-fingerprint: 'chrome'
-    udp: true
-    endpoint-id: 'e2ba0b56578b6f6e'
+    cipher: 'chacha20-ietf-poly1305'
+    password: 'TyWIy6paiFUX'
+    endpoint-id: '74090ec3ce2b3ef1'
   - type: 'trojan'
-    name: '#285 🇪🇸 ES | GTHost AS63023 | ↓9.0 ↑1.4Mbps | 66.163.118.203 | RES·Flag'
-    server: '66.163.118.166'
+    name: '🇺🇸US_502|1.1MB/s|B007-260618 [3d2f555bde78]'
+    server: '216.152.155.50'
     port: 443
-    tls: true
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'learn.discovergreatjobsandadvanceyourcareer.com'
-    endpoint-id: 'ccf295029faf5f2a'
-  - name: 'JP 35 [anytls]'
-    type: 'anytls'
-    server: 'media.gosthk.site'
-    port: '57180'
-    password: 'c0e8e373-946f-4862-98e6-3aaf1db7b53c'
-    sni: 'media.gosthk.site'
-    skip-cert-verify: false
-    client-fingerprint: 'chrome'
-    udp: true
-    endpoint-id: '487e4d76f504eb5f'
-  - type: 'vless'
-    name: '#540 🇩🇪 DE | Zenlayer AS62610 | ↓5.4 ↑5.0Mbps | 89.127.2.127 | RES·Clean'
-    server: '189.30.65.203'
-    port: 2083
     tls: false
-    uuid: '490dc3b4-8d1d-49fd-840e-bd5277b41557'
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    network: 'tcp'
+    sni: 'cdn.nextjobopportunityandclaimyouridealrole.com'
+    endpoint-id: 'e5e4fb288ab63f42'
+  - type: 'ss'
+    name: '🇯🇵 🇯🇵JP-🚀@VPNine1-2f47983a24b3e53b'
+    server: '8.216.9.190'
+    port: 5555
+    cipher: 'aes-256-gcm'
+    password: '123456'
+    endpoint-id: '2f47983a24b3e53b'
+  - type: 'trojan'
+    name: '🇺🇸US_346|850KB/s|M003-260806 [d60ee2c3d529]'
+    server: '66.163.122.26'
+    port: 443
+    tls: false
+    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
+    network: 'tcp'
+    sni: 'blog.searchnationwidecareerchangehelperandguidancetoday.com'
+    endpoint-id: '8bde6b4f87ef8b85'
+  - type: 'ss'
+    name: '🇯🇵08 | ⚡Telegram = t.me/ex_proxies'
+    server: '8.216.5.230'
+    port: 5555
+    cipher: 'aes-256-gcm'
+    password: '123456'
+    endpoint-id: 'b13b0b33181603a3'
+  - type: 'ss'
+    name: '🇯🇵 🇯🇵JP-🚀@VPNine1-dff7deb9a9691cbc'
+    server: '8.216.9.151'
+    port: 5555
+    cipher: 'aes-256-gcm'
+    password: '123456'
+    endpoint-id: 'dff7deb9a9691cbc'
+  - type: 'ss'
+    name: 'T.me/Vpn_Mafia 🇩🇪'
+    server: '8.211.56.98'
+    port: 443
+    cipher: '2022-blake3-chacha20-poly1305'
+    password: '8yO3ANWefuuGs1lRKXECQA1FEhxlWFV2ppQMcBaZo5Y='
+    endpoint-id: 'a513cbfe3eae406b'
+  - type: 'ss'
+    name: '🇬🇧 🇬🇧GB-🚀@VPNine1-d662632604f7fd7d'
+    server: '66.163.117.141'
+    port: 443
+    cipher: 'chacha20-ietf-poly1305'
+    password: 'n87cM0Lv7Y3T'
+    endpoint-id: 'd662632604f7fd7d'
+  - type: 'ss'
+    name: '🇺🇸 | تلگرام: @IRJetConfig #RK-4639e24787271ace'
+    server: '108.181.133.138'
+    port: 443
+    cipher: 'chacha20-ietf-poly1305'
+    password: 'H12pAAJYL'
+    endpoint-id: '4639e24787271ace'
+  - type: 'ss'
+    name: '🇫🇷 🇫🇷FR-🚀@VPNine1'
+    server: '23.162.152.245'
+    port: 443
+    cipher: 'chacha20-ietf-poly1305'
+    password: 'ySGkGhr2sKHV'
+    endpoint-id: '7ea15ad9862e8478'
+  - type: 'ss'
+    name: '🇯🇵 🇯🇵JP-🚀@VPNine1-037f862f5dfde425'
+    server: '8.216.15.55'
+    port: 5555
+    cipher: 'aes-256-gcm'
+    password: '123456'
+    endpoint-id: '037f862f5dfde425'
+  - name: 'node-01-vless'
+    type: 'vless'
+    server: '136.234.173.231'
+    port: '8881'
+    uuid: 'e460e7b2-a146-4468-87ed-52510b2caae6'
     network: 'grpc'
+    tls: true
+    udp: true
+    reality-opts:
+      public-key: 'Dfgu8Ey0M8Hz4gXGZAwQ3H9jLt2HByVsjAOTWiuKDB0'
+      short-id: 'aabb'
+    servername: 'dl.google.com'
+    client-fingerprint: 'firefox'
     grpc-opts:
-      grpc-service-name: 'service-41f6a2a01377'
-    endpoint-id: 'a3fd1951ab5e50ee'
-  - name: 'CA 33 [anytls]'
-    type: 'anytls'
-    server: 'im.lovehk.xyz'
+      grpc-service-name: 'grpc-tunnel'
+    endpoint-id: '5d3f603cf7909e13'
+  - type: 'vmess'
+    name: '🇺🇸US_401|488KB/s|F003-260618 [43563ab6d2f5]'
+    server: '38.11.69.48'
+    port: 30004
+    uuid: '418048af-a293-4b99-9b0c-98ca3580dd24'
+    alterId: 64
+    cipher: 'auto'
+    tls: true
+    network: 'ws'
+    ws-opts:
+      path: '/path/1698843555400'
+      headers:
+        Host: 'www.83761815.xyz'
+    endpoint-id: '1cef937d1b2a7056'
+  - type: 'ss'
+    name: 'Channel: @Daily_Configs'
+    server: 'uk.fusetea.ir'
+    port: 154
+    cipher: 'chacha20-ietf-poly1305'
+    password: 'eCUs1n3b2Fh9b6WATvkNILLBzYbruQ_X'
+    endpoint-id: '2b57a15e84989c60'
+  - name: 'node-02-vless'
+    type: 'vless'
+    server: 'x.m-90.xyz'
     port: '443'
-    password: '9c69dfab-c59b-40a6-ae00-cca9e43ceb4f'
-    sni: 'im.lovehk.xyz'
-    skip-cert-verify: false
-    client-fingerprint: 'chrome'
+    uuid: 'eee8ae65-bc48-438f-a606-a96f10bfb3b8'
+    network: 'ws'
+    tls: true
     udp: true
-    endpoint-id: 'eea640eb288bd3fa'
-  - name: 'CA 24 [anytls]'
-    type: 'anytls'
-    server: 'im.lovehk.xyz'
-    port: '443'
-    password: 'd2e242fe-3a90-4d5c-b890-6089474faa39'
-    sni: 'im.lovehk.xyz'
-    skip-cert-verify: false
+    servername: 'x.m-90.xyz'
+    skip-cert-verify: true
     client-fingerprint: 'chrome'
-    udp: true
-    endpoint-id: 'c1f8a6adbad98f77'
+    ws-opts:
+      path: 't.me/TEAMNETGRATISCOL'
+      headers:
+        Host: 'x.m-90.xyz'
+    endpoint-id: '169653455f288e81'
+  - type: 'vless'
+    name: '🇺🇸+US+|+vpnkeys.me+|+459ms'
+    server: 'x.m-90.xyz'
+    port: 443
+    tls: true
+    uuid: 'eee8ae65-bc48-438f-a606-a96f10bfb3b8'
+    network: 'ws'
+    sni: 'x.m-90.xyz'
+    ws-opts:
+      path: 't.me/TEAMNETGRATISCOL'
+      headers:
+        Host: 'x.m-90.xyz'
+    endpoint-id: '2630f20ae57ca246'
+  - type: 'ss'
+    name: '@V2ray_Alpha🎱 8'
+    server: '91.206.92.158'
+    port: 18443
+    cipher: 'aes-256-gcm'
+    password: 'cCMJgJTA3BA489YUYrFq7XHXSiSpWlLa'
+    endpoint-id: '1d692a9fa9819eaf'
+  - type: 'vless'
+    name: '188.114.99.137'
+    server: '188.114.99.137'
+    port: 80
+    tls: false
+    uuid: 'c762af05-2e92-4133-bc30-8cf45dd40a28'
+    network: 'ws'
+    sni: 'suh.cryptofront.uk'
+    ws-opts:
+      path: '/'
+      headers:
+        Host: 'suh.cryptofront.uk'
+    endpoint-id: 'acbc14da1a17be5d'
+  - type: 'ss'
+    name: '🇯🇵06 | ⚡Telegram = t.me/ex_proxies-bdcd54191e29682d'
+    server: '8.216.9.154'
+    port: 5555
+    cipher: 'aes-256-gcm'
+    password: '123456'
+    endpoint-id: 'bdcd54191e29682d'
+  - type: 'ss'
+    name: '@FarazV2ray-source-769303351fcdbb54'
+    server: 'tr.subscriptionservice.ir'
+    port: 2089
+    cipher: 'chacha20-ietf-poly1305'
+    password: 'T199MCnogZBKi0QJdcSgUnoL3U9wl7t1'
+    endpoint-id: '769303351fcdbb54'
+  - type: 'ss'
+    name: '🇯🇵05 | ⚡Telegram = t.me/ex_proxies'
+    server: '8.211.128.146'
+    port: 5555
+    cipher: 'aes-256-gcm'
+    password: '123456'
+    endpoint-id: '8d87557e50cbe214'
+  - type: 'ss'
+    name: '🇯🇵 🇯🇵JP-🚀@VPNine1-8351cc1f0068737b'
+    server: '8.216.18.189'
+    port: 5555
+    cipher: 'aes-256-gcm'
+    password: '123456'
+    endpoint-id: '8351cc1f0068737b'
