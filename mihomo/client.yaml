@@ -35,6 +35,13 @@ rule-providers:
     interval: 86400
     url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs'
 proxies:
+  - name: '[ermaozi-subscribe] 🇩🇪DE_2|1017KB/s'
+    port: 443
+    server: '172.64.69.89'
+    skip-cert-verify: true
+    tls: true
+    type: 'http'
+    _poolOnly: true
   - name: '[cbusifabcap-clashmeta] ❓Other_23|318KB/s|R002-260618'
     port: 443
     server: '172.64.68.89'
@@ -44,48 +51,38 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '[ermaozi-subscribe] 🇩🇪DE_2|1017KB/s'
+  - name: '[ermaozi-subscribe] 🇩🇪DE_2|2.9MB/s'
+    password: 'null'
     port: 443
-    server: '172.64.69.89'
+    server: '172.64.68.89'
     skip-cert-verify: true
     tls: true
     type: 'http'
+    username: 'null'
     _poolOnly: true
-  - name: '[zhuhaiuk-free-nodes] SG - zhuhai.uk 02'
-    type: 'http'
-    server: '154.26.139.24'
+  - name: '🇮🇩ID_3|367KB/s|R002-260618 [ec91e15d058c]'
     port: 443
-    tls: true
+    server: '103.86.116.118'
     skip-cert-verify: true
-    _poolOnly: true
-  - name: '巴西 003'
-    type: 'vless'
-    network: 'grpc'
-    server: '201.51.12.98'
-    port: 443
-    uuid: '38308ff1-5aa9-494f-a25a-0f2870d56b3e'
-    servername: 'vps3.nemnogogo.com'
+    sub_tag: 'R002-260618'
     tls: true
+    type: 'http'
     udp: true
-    client-fingerprint: 'firefox'
-    grpc-opts:
-      grpc-mode: 'gun'
-      grpc-service-name: 'mobile.api.Event'
     _poolOnly: true
 proxy-groups:
   - name: 'PROXY'
     type: 'select'
     proxies:
-      - '[cbusifabcap-clashmeta] ❓Other_23|318KB/s|R002-260618'
       - '[ermaozi-subscribe] 🇩🇪DE_2|1017KB/s'
-      - '[zhuhaiuk-free-nodes] SG - zhuhai.uk 02'
+      - '[cbusifabcap-clashmeta] ❓Other_23|318KB/s|R002-260618'
+      - '[ermaozi-subscribe] 🇩🇪DE_2|2.9MB/s'
       - 'DIRECT'
   - name: 'CHATGPT'
     type: 'select'
     proxies:
-      - '[ermaozi-subscribe] 🇩🇪DE_2|1017KB/s'
       - '[cbusifabcap-clashmeta] ❓Other_23|318KB/s|R002-260618'
-      - '巴西 003'
+      - '[ermaozi-subscribe] 🇩🇪DE_2|1017KB/s'
+      - '🇮🇩ID_3|367KB/s|R002-260618 [ec91e15d058c]'
   - name: 'STICKY'
     type: 'select'
     proxies:

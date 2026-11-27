@@ -1,11 +1,4 @@
 proxies:
-  - name: '[ermaozi-subscribe] 🇩🇪DE_2|1017KB/s'
-    port: 443
-    server: '172.64.69.89'
-    skip-cert-verify: true
-    tls: true
-    type: 'http'
-    _poolOnly: true
   - name: '[cbusifabcap-clashmeta] ❓Other_23|318KB/s|R002-260618'
     port: 443
     server: '172.64.68.89'
@@ -15,17 +8,19 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '巴西 003'
-    type: 'vless'
-    network: 'grpc'
-    server: '201.51.12.98'
+  - name: '[ermaozi-subscribe] 🇩🇪DE_2|1017KB/s'
     port: 443
-    uuid: '38308ff1-5aa9-494f-a25a-0f2870d56b3e'
-    servername: 'vps3.nemnogogo.com'
+    server: '172.64.69.89'
+    skip-cert-verify: true
     tls: true
+    type: 'http'
+    _poolOnly: true
+  - name: '🇮🇩ID_3|367KB/s|R002-260618 [ec91e15d058c]'
+    port: 443
+    server: '103.86.116.118'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
     udp: true
-    client-fingerprint: 'firefox'
-    grpc-opts:
-      grpc-mode: 'gun'
-      grpc-service-name: 'mobile.api.Event'
     _poolOnly: true

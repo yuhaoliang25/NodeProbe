@@ -260,6 +260,16 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
+  - name: '🇳🇱NL_112|946KB/s|R002-260618 [28e6f82e9549]'
+    port: 443
+    server: '185.246.153.28'
+    skip-cert-verify: true
+    sni: '4a8c2906c96058315dffbc2b0e7ff19b-0c66a58858a795df.apache-iv.com'
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
   - name: '🇳🇱NL_124|5.5MB/s|K001-260618 [0314ff07d8b2]'
     password: 'null'
     port: 23856
@@ -526,13 +536,6 @@ proxies:
     type: 'http'
     username: 'null'
     udp: true
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇺🇸 美国 | USA-18d6837128ca52bd'
-    server: '202.50.253.36'
-    port: 19999
-    cipher: 'aes-256-gcm'
-    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
     _poolOnly: true
   - name: 'IT - zhuhai.uk'
     type: 'ss'
@@ -1440,6 +1443,14 @@ proxies:
     sni: '137.175.22.52'
     skip-cert-verify: true
     _poolOnly: true
+  - name: '[zhuhaiuk-free-nodes] IT - zhuhai.uk 04'
+    type: 'http'
+    server: '109.116.41.154'
+    port: 443
+    tls: true
+    sni: '109.116.41.154'
+    skip-cert-verify: true
+    _poolOnly: true
   - name: '[cbusifabcap-clashmeta] ❓Other_54|96KB/s|K001-260618'
     password: 'None'
     port: 443
@@ -1756,18 +1767,6 @@ proxies:
     grpc-opts:
       grpc-service-name: '99f2107b03f8'
     _poolOnly: true
-  - client-fingerprint: 'chrome'
-    name: '🇭🇰HK_1|2.3MB/s'
-    password: '0324fbc29561'
-    port: 443
-    server: '5641sdds.df6h451rh.xin'
-    servername: 'images.ctfassets.net'
-    skip-cert-verify: true
-    sni: 'images.ctfassets.net'
-    tls: true
-    type: 'anytls'
-    udp: true
-    _poolOnly: true
   - name: '🇮🇩ID_1|559KB/s|R002-260618 [1e85b67c9f00]'
     port: 443
     server: '178.248.73.58'
@@ -1947,6 +1946,21 @@ proxies:
       path: '/1812842934d4'
       mode: 'auto'
     _poolOnly: true
+  - type: 'vless'
+    name: 'US美国(mibei77.com 米贝节点分享) (36)'
+    server: '196.196.148.85'
+    port: 443
+    uuid: 'cda0862a-0f87-4be9-8ed8-1d0c9e382839'
+    udp: true
+    tls: true
+    servername: '5d0319t.nl7.h1clayd.click'
+    sni: '5d0319t.nl7.h1clayd.click'
+    skip-cert-verify: false
+    client-fingerprint: 'firefox'
+    reality-opts:
+      public-key: 'l-GzBDuNuhnjxoRlZqKvT7jAt_sbVAxhGFsAttO5kXs'
+      short-id: '361d0dd59c70516f'
+    _poolOnly: true
   - name: 'NL · HTTP · kooker · BD17B6BF'
     type: 'http'
     server: '84.17.47.123'
@@ -2046,21 +2060,6 @@ proxies:
     username: 'null'
     x-toolall-mihomo: true
     _poolOnly: true
-  - name: '🇷🇺 俄罗斯 | RUS 5'
-    server: '78.159.240.62'
-    port: 2053
-    type: 'vless'
-    uuid: '37af0181-5598-4aad-a040-d926bcb65757'
-    tls: true
-    servername: 'polarladder.com'
-    client-fingerprint: 'chrome'
-    network: 'xhttp'
-    xhttp-opts:
-      path: '/api/v1/upload'
-      host: 'polarladder.com'
-      mode: 'auto'
-    udp: true
-    _poolOnly: true
   - name: '🇩🇪 德国 | DEU 3-source-9c70813814da4008'
     server: '196.196.148.76'
     port: 443
@@ -2121,4 +2120,20 @@ proxies:
     type: 'http'
     udp: true
     x-toolall-mihomo: true
+    _poolOnly: true
+  - name: 'node-01-vless'
+    type: 'vless'
+    server: '136.234.173.231'
+    port: '8881'
+    uuid: 'e460e7b2-a146-4468-87ed-52510b2caae6'
+    network: 'grpc'
+    tls: true
+    udp: true
+    reality-opts:
+      public-key: 'Dfgu8Ey0M8Hz4gXGZAwQ3H9jLt2HByVsjAOTWiuKDB0'
+      short-id: 'aabb'
+    servername: 'dl.google.com'
+    client-fingerprint: 'firefox'
+    grpc-opts:
+      grpc-service-name: 'grpc-tunnel'
     _poolOnly: true
