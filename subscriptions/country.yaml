@@ -1,108 +1,95 @@
 proxies:
-  - type: 'ss'
-    name: '🇺🇸 SkyBit-81_2026-11-21_19-05'
-    server: '40.160.86.43'
-    port: 8388
-    cipher: 'aes-256-gcm'
-    password: 'itzvpn@321'
-    _poolOnly: true
-  - name: '[0.01MB/s][782ms] [freeSub#163] D🔴🇺🇸[🎬🤖📺🎭]_dokng.com_3a778'
-    port: 9002
-    server: '138.199.35.202'
-    skip-cert-verify: true
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
-  - name: '🇩🇪 德国 | VLESS | 001'
+  - name: '[VLESS] 🆔ar14n24b 🔒 VL-WS-N/A ❔ XX 162ms'
+    server: 'leviko-us6278.shopingggg.ir'
+    port: 8443
     type: 'vless'
-    server: '179.253.80.175'
-    port: 4443
-    uuid: 'a35c508f-4d5d-4531-842e-6e9d43c762c0'
-    udp: true
     tls: true
-    servername: 'swo2.nexfile.net'
-    client-fingerprint: 'chrome'
-    network: 'xhttp'
-    xhttp-opts:
-      path: '/api/v1/sync/'
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇯🇵 SkyBit-156_2026-11-21_19-05'
-    server: 'jpa.123069.xyz'
-    port: 53758
-    cipher: 'aes-128-gcm'
-    password: 'Bwlqh7GcFB'
-    _poolOnly: true
-  - name: '[0.07MB/s][554ms] [freeSub#172] D🔴🇯🇵[🎬🤖📺🎭]_dokng.com_4920b'
-    port: 443
-    server: 'fan.571589.xyz'
-    sni: 'fan.571589.xyz'
-    tls: true
-    type: 'http'
-    _poolOnly: true
-  - name: '🇺🇳 未知地区 | VMESS | 001'
-    type: 'vmess'
-    server: '168.110.63.247'
-    port: 8081
-    uuid: 'c3bde296-8e44-4b8c-a325-577d5b3cc7c8'
-    alterId: 0
-    cipher: 'auto'
-    udp: true
+    uuid: '53bbdad4-2f4e-45db-8df4-fa491a6a7227'
+    servername: 'freeceshi6.frii.site'
     network: 'ws'
     ws-opts:
-      path: '/vless'
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇸🇬 SkyBit-45_2026-11-21_19-05'
-    server: '149.88.106.74'
-    port: 19999
-    cipher: 'aes-256-gcm'
-    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇸🇬 SkyBit-13_2026-11-21_19-05'
-    server: '149.88.106.73'
-    port: 19999
-    cipher: 'aes-256-gcm'
-    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇬🇧 SkyBit-100_2026-11-21_19-05'
-    server: '141.98.101.182'
-    port: 443
-    cipher: 'aes-128-gcm'
-    password: 'shadowsocks'
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇬🇧 SkyBit-23_2026-11-21_19-05'
-    server: '141.98.101.179'
-    port: 443
-    cipher: 'aes-128-gcm'
-    password: 'shadowsocks'
-    _poolOnly: true
-  - type: 'vless'
-    name: '❓Other_31|142KB/s|M002-260618 [28c2cf46b49b]'
-    server: 'ov-germany1.09vpn.com'
-    port: 80
-    tls: false
-    uuid: '7d74eae4-8a06-4306-a923-ad686f30bf26'
-    network: 'ws'
-    sni: 'ov-germany1.09vpn.com'
-    ws-opts:
-      path: '/vless/'
+      path: '/'
       headers:
-        Host: 'ov-germany1.09vpn.com'
+        Host: 'freeceshi6.frii.site'
+    skip-cert-verify: true
+    tfo: false
+    _poolOnly: true
+  - name: '[VLESS] 🇺🇸 🆔soskeynet 🔒 VL-WS-N/A 🇺🇸 US 169ms'
+    server: 'leviko-us4350.shopingggg.ir'
+    port: 443
+    type: 'vless'
+    tls: true
+    uuid: '53bbdad4-2f4e-45db-8df4-fa491a6a7227'
+    servername: 'freeceshi6.frii.site'
+    alpn:
+      - 'http%2F1.1'
+    network: 'ws'
+    ws-opts:
+      path: '/proxyip'
+      headers:
+        Host: 'freeceshi6.frii.site'
+    skip-cert-verify: true
+    tfo: false
+    _poolOnly: true
+  - name: '[VLESS] 🆔ar14n24b 🔒 VL-WS-N/A ❔ XX 12ms'
+    server: '162.159.254.201'
+    port: 443
+    type: 'vless'
+    tls: true
+    uuid: '53bbdad4-2f4e-45db-8df4-fa491a6a7227'
+    servername: 'freeceshi6.frii.site'
+    alpn:
+      - 'http%2F1.1'
+    network: 'ws'
+    ws-opts:
+      path: '/?TELEGRAM---MARAMBASHI---MARAMBASHI---MARAMBASHI---MARAMBASHI'
+      headers:
+        Host: 'freeceshi6.frii.site'
+    skip-cert-verify: true
+    tfo: false
     _poolOnly: true
   - type: 'ss'
-    name: '🇩🇪 SkyBit-151_2026-11-21_19-05'
-    server: '193.108.116.98'
-    port: 19999
+    name: '🇯🇵 🇯🇵_日本 (20)'
+    server: '47.74.24.29'
+    port: 5555
     cipher: 'aes-256-gcm'
-    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
+    password: '123456'
     _poolOnly: true
-  - name: '[VLESS] 🇩🇪 REALITY|DE🇩🇪 | 48.103.231.2-443 | 160.89ms'
-    server: '48.103.231.2'
+  - name: '[VLESS] 🆔ar14n24b 🔒 VL-TCP- ❔ XX 165ms'
+    server: '47.84.226.221'
+    port: 443
+    type: 'vless'
+    tls: true
+    uuid: '49b91402-f8e3-4390-9d7b-b7eddc2684a4'
+    servername: 'www.samsung.com'
+    host: 'www.samsung.com'
+    flow: 'xtls-rprx-vision'
+    reality-opts:
+      public-key: 'gVQsvRtzd77zlvKW4Gk0dAOJNPRa7cfN1-jVe_AJ8Bo'
+      short-id: 'e1c483f9d4437d42'
+    client-fingerprint: 'random'
+    skip-cert-verify: true
+    tfo: false
+    _poolOnly: true
+  - name: '[VLESS] 🆔ar14n24b 🔒 VL-WS-N/A ❔ XX 192ms'
+    server: 'hw8.iranichergh.com'
+    port: 993
+    type: 'vless'
+    tls: true
+    uuid: '978d2a58-bd01-4b61-b953-dc8e66728460'
+    servername: 'hw8.iranichergh.com.'
+    alpn:
+      - 'http%2F1.1'
+    network: 'ws'
+    ws-opts:
+      path: '/'
+      headers:
+        Host: 'hw8.iranichergh.com.'
+    skip-cert-verify: true
+    tfo: false
+    _poolOnly: true
+  - name: '[VLESS] 🆔ar14n24b 🔒 VL-TCP- ❔ XX 182ms'
+    server: 'leviko-de5717.shopingggg.ir'
     port: 443
     type: 'vless'
     tls: true
@@ -117,53 +104,55 @@ proxies:
     skip-cert-verify: true
     tfo: false
     _poolOnly: true
-  - name: '🇳🇱 荷兰 | SS | 001'
-    type: 'ss'
-    server: '216.172.144.199'
-    port: 40643
-    cipher: 'chacha20-ietf-poly1305'
-    password: 'Xd4G9xn7AgT88msCYC9MZfavMUqd3dWFNAvswi6KfaD9YcexptMbPn4cSECEMzDgvAMomAWJHyweqJer99ssMVYGH6TK8k4c'
-    udp: true
-    _poolOnly: true
-  - name: '🇳🇱 荷兰 | VLESS | 002'
-    type: 'vless'
-    server: '196.196.148.63'
+  - name: '[VLESS] 🆔ar14n24b 🔒 VL-TCP- ❔ XX 323ms'
+    server: 'leviko-de9982.shopingggg.ir'
     port: 443
-    uuid: 'cda0862a-0f87-4be9-8ed8-1d0c9e382839'
-    udp: true
+    type: 'vless'
     tls: true
-    servername: '717252g.nl8.h1clayd.click'
-    client-fingerprint: 'firefox'
+    uuid: 'a346c521-7a7f-452b-9356-a4893feb5982'
+    servername: 'ee1-r.bankai.party'
+    host: 'ee1-r.bankai.party'
+    flow: 'xtls-rprx-vision'
     reality-opts:
-      public-key: 'PD8Jdlg3xB9QY--jwQjp8PFPzCS8-Oryw6-HWBcHMFU'
-      short-id: 'd3bd772514c87d28'
+      public-key: 'FWitre1jinQR7qz5HQ0q2Q4Gg9xA9B0SyizCziN7Ch0'
+      short-id: '457fab2ac885dbe0'
+    client-fingerprint: 'random'
+    skip-cert-verify: true
+    tfo: false
+    _poolOnly: true
+  - name: '[VLESS] 🆔ar14n24b 🔒 VL-GRPC-N/A ❔ XX 142ms'
+    server: '51.194.118.38'
+    port: 443
+    type: 'vless'
+    tls: true
+    uuid: '7ff1e7e1-2b5a-4e53-ae77-1516f9eb7754'
+    servername: 'a1259.ve8nzuk.com'
     network: 'grpc'
     grpc-opts:
-      grpc-service-name: '204adda7e3da'
-    _poolOnly: true
-  - name: '🇳🇱 荷兰 | VLESS | 003'
-    type: 'vless'
-    server: '196.196.148.63'
-    port: 443
-    uuid: 'cda0862a-0f87-4be9-8ed8-1d0c9e382839'
-    udp: true
-    tls: true
-    servername: 'fc82dfx.nl8.h1clayd.click'
-    client-fingerprint: 'chrome'
-    reality-opts:
-      public-key: 'dtO7khFLUkpFDQOtNzo4Th4hJKLoPSY2VtD_9k4Hgiw'
-      short-id: '7b2b1a14a6e0630d'
-    network: 'xhttp'
-    xhttp-opts:
-      path: '/0616f2d729aa'
-      mode: 'auto'
-    _poolOnly: true
-  - name: '[0.01MB/s][726ms] [freeSub#393] D🔴🇭🇰[🎬📺🎭🎪]_dokng.com_d85a9'
-    password: null
-    port: 443
-    server: 'fan.240104.xyz'
+      grpc-mode: 'gun'
+      grpc-service-name: '50a5f706c8ea4433838a207d435fbf031b008a9a'
     skip-cert-verify: true
+    tfo: false
+    _poolOnly: true
+  - name: '[VLESS] 🆔ar14n24b 🔒 VL-TCP- ❔ XX 148ms 2'
+    server: '79.182.70.232'
+    port: 443
+    type: 'vless'
     tls: true
-    type: 'http'
-    username: null
+    uuid: 'cda0862a-0f87-4be9-8ed8-1d0c9e382839'
+    servername: '5d0319t.nl7.h1clayd.click'
+    host: '5d0319t.nl7.h1clayd.click'
+    reality-opts:
+      public-key: 'l-GzBDuNuhnjxoRlZqKvT7jAt_sbVAxhGFsAttO5kXs'
+      short-id: '361d0dd59c70516f'
+    client-fingerprint: 'random'
+    skip-cert-verify: true
+    tfo: false
+    _poolOnly: true
+  - type: 'ss'
+    name: '🇺🇸 🇺🇸_美国 (44)'
+    server: 'waic.pro.main.sys-metric-report.com'
+    port: 28014
+    cipher: 'chacha20-ietf-poly1305'
+    password: 'abc62f00-95a8-4c2e-a85d-36a2cdc977da'
     _poolOnly: true
