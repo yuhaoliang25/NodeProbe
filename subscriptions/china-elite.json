@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-11-26T22:17:45.379Z",
+  "generatedAt": "2026-11-27T04:32:19.160Z",
   "maxPaths": 3,
   "counts": {
-    "eligibleExits": 227,
-    "chatgptEligibleExits": 278,
+    "eligibleExits": 223,
+    "chatgptEligibleExits": 284,
     "chatgptSelectedPaths": 3,
-    "chatgptIncumbentPaths": 2,
+    "chatgptIncumbentPaths": 3,
     "selectedPaths": 3,
     "publishedProxies": 3
   },
@@ -25,25 +25,25 @@
   "paths": [
     {
       "kind": "exit",
-      "endpointId": "a3f6417c87a3f816",
-      "name": "[ermaozi-subscribe] 🇩🇪DE_2|1017KB/s",
-      "score": 2007.9328457861984,
+      "endpointId": "42b92fd19e27c47a",
+      "name": "[cbusifabcap-clashmeta] ❓Other_23|318KB/s|R002-260618",
+      "score": 1952.2378536705112,
       "recentSuccessRate": 1,
-      "lifetimeSuccessRate": 0.9979188345473465,
-      "observedRuns": 961,
-      "p95LatencyMs": 535,
-      "speedMbps": 27.276719592594915
+      "lifetimeSuccessRate": 0.9963898916967509,
+      "observedRuns": 1108,
+      "p95LatencyMs": 961,
+      "speedMbps": 20.12912835841926
     },
     {
       "kind": "exit",
-      "endpointId": "42b92fd19e27c47a",
-      "name": "[cbusifabcap-clashmeta] ❓Other_23|318KB/s|R002-260618",
-      "score": 1989.6926981379124,
+      "endpointId": "a3f6417c87a3f816",
+      "name": "[ermaozi-subscribe] 🇩🇪DE_2|1017KB/s",
+      "score": 1949.903415320892,
       "recentSuccessRate": 1,
-      "lifetimeSuccessRate": 0.9963503649635036,
-      "observedRuns": 1096,
-      "p95LatencyMs": 535,
-      "speedMbps": 23.307741433239638
+      "lifetimeSuccessRate": 0.9979445015416238,
+      "observedRuns": 973,
+      "p95LatencyMs": 1645,
+      "speedMbps": 26.660676901256185
     },
     {
       "kind": "exit",
@@ -62,24 +62,24 @@
       "kind": "chatgpt-incumbent",
       "endpointId": "a3f6417c87a3f816",
       "name": "[ermaozi-subscribe] 🇩🇪DE_2|1017KB/s",
-      "score": 2007.9328457861984,
-      "chatgptScore": 1187.9731428460987,
+      "score": 1949.903415320892,
+      "chatgptScore": 1186.1964683531398,
       "chatgptSuccessRate": 1
     },
     {
       "kind": "chatgpt-incumbent",
       "endpointId": "42b92fd19e27c47a",
       "name": "[cbusifabcap-clashmeta] ❓Other_23|318KB/s|R002-260618",
-      "score": 1989.6926981379124,
-      "chatgptScore": 1184.95015918553,
+      "score": 1952.2378536705112,
+      "chatgptScore": 1170.8674202166503,
       "chatgptSuccessRate": 1
     },
     {
-      "kind": "chatgpt-exploration",
+      "kind": "chatgpt-incumbent",
       "endpointId": "2e1ea510a47dd56f",
       "name": "巴西 003",
-      "score": 1829.4839560257158,
-      "chatgptScore": 1142.2622730832193,
+      "score": 1868.8918000902056,
+      "chatgptScore": 1157.0037454132537,
       "chatgptSuccessRate": 1
     }
   ]

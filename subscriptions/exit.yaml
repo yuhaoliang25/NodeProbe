@@ -528,13 +528,6 @@ proxies:
     udp: true
     _poolOnly: true
   - type: 'ss'
-    name: '🇳🇿 新西兰 V2CROSS.COM-ceabb7d7f9a91666'
-    server: '202.50.253.72'
-    port: 19999
-    cipher: 'aes-256-gcm'
-    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
-    _poolOnly: true
-  - type: 'ss'
     name: '🇺🇸 美国 | USA-18d6837128ca52bd'
     server: '202.50.253.36'
     port: 19999
@@ -619,6 +612,15 @@ proxies:
   - name: '[cbusifabcap-clashmeta] ❓Other_23|318KB/s|R002-260618'
     port: 443
     server: '172.64.68.89'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_183|315KB/s|R002-260618 [f3757137fc03]'
+    port: 443
+    server: '129.153.93.183'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
     tls: true
@@ -1702,20 +1704,6 @@ proxies:
       grpc-mode: 'gun'
       grpc-service-name: 'mobile.api.Event'
     _poolOnly: true
-  - name: '俄罗斯 003'
-    type: 'vless'
-    network: 'xhttp'
-    server: '193.160.208.240'
-    port: 443
-    uuid: '4777d90d-265b-4927-a0d1-63f36ed1421c'
-    servername: '193.160.208.240'
-    tls: true
-    udp: true
-    client-fingerprint: 'firefox'
-    xhttp-opts:
-      mode: 'auto'
-      path: '/assets/twru01/'
-    _poolOnly: true
   - name: '[217.1ms +/-2ms] http-usgp1-cdn-route.couldfl(…)'
     server: 'usgp1-cdn-route.couldflare-cdn.com'
     port: 443
@@ -1915,22 +1903,6 @@ proxies:
     password: 'exaxgqkKkd0TAMrCxeonWg=='
     _poolOnly: true
   - type: 'vless'
-    name: 'US美国(mibei77.com 米贝节点分享) (16)'
-    server: '196.199.122.2'
-    port: 443
-    uuid: '4201786b-d99b-4147-a5f0-20d47acddb81'
-    flow: 'xtls-rprx-vision'
-    udp: true
-    tls: true
-    servername: '7aa271t.es1.h1clayd.click'
-    sni: '7aa271t.es1.h1clayd.click'
-    skip-cert-verify: false
-    client-fingerprint: 'firefox'
-    reality-opts:
-      public-key: 'ZSmetD4e9QG5CiXhniHg5HJB68L4kwbgAkJmMHtVwEE'
-      short-id: '42426c882c5fcd41'
-    _poolOnly: true
-  - type: 'vless'
     name: '尼日利亚(mibei77.com 米贝节点分享)'
     server: '196.196.149.81'
     port: 443
@@ -2121,19 +2093,6 @@ proxies:
       grpc-service-name: '5b79e8a94241'
     udp: true
     _poolOnly: true
-  - name: '🇷🇺 俄罗斯 | RUS 8'
-    server: '213.183.41.31'
-    port: 8463
-    type: 'vless'
-    uuid: 'eb62cabf-5901-403a-aa0c-b1d9ed1b346d'
-    tls: true
-    servername: 'share.plumstatic.com'
-    client-fingerprint: 'firefox'
-    network: 'ws'
-    ws-opts:
-      path: '/ws'
-    udp: true
-    _poolOnly: true
   - name: '🇮🇪IE_1|1.1MB/s'
     password: 'null'
     port: 443
@@ -2143,32 +2102,6 @@ proxies:
     type: 'http'
     username: 'null'
     _poolOnly: true
-  - name: '🇷🇺 俄罗斯 | RUS 4-4e1ad3c3f397ae79'
-    server: '213.183.41.31'
-    port: 8459
-    type: 'vless'
-    uuid: 'eb62cabf-5901-403a-aa0c-b1d9ed1b346d'
-    tls: true
-    servername: 'photos.plumstatic.com'
-    client-fingerprint: 'firefox'
-    network: 'ws'
-    ws-opts:
-      path: '/ws'
-    udp: true
-    _poolOnly: true
-  - name: '🇸🇬 新加坡 | SGP 6'
-    server: '213.183.45.23'
-    port: 8444
-    type: 'vless'
-    uuid: 'eb62cabf-5901-403a-aa0c-b1d9ed1b346d'
-    tls: true
-    servername: 'media.plumstatic.com'
-    client-fingerprint: 'firefox'
-    network: 'ws'
-    ws-opts:
-      path: '/ws'
-    udp: true
-    _poolOnly: true
   - name: '🇷🇺RU_1|3.2MB/s'
     password: 'null'
     port: 1446
@@ -2177,4 +2110,15 @@ proxies:
     tls: true
     type: 'http'
     username: 'null'
+    _poolOnly: true
+  - name: '🇳🇱NL_17|4.0MB/s|P002-260618'
+    password: 'None'
+    port: 9090
+    server: '185.53.129.141'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    x-toolall-mihomo: true
     _poolOnly: true
