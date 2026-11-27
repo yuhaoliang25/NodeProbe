@@ -1,118 +1,169 @@
 proxies:
-  - type: 'vless'
-    name: '🇩🇪DE_116|1.2MB/s|A004-260618 [31c87c8824f0]'
-    server: '172.64.229.129'
-    port: 2052
-    tls: false
-    uuid: '5744e593-1cc8-48fa-b8ca-57cd494fe35b'
-    network: 'ws'
-    sni: 'eu02.123450908.xyz'
-    ws-opts:
-      path: '/rain1226'
-      headers:
-        Host: 'eu02.123450908.xyz'
-    _poolOnly: true
   - type: 'ss'
-    name: '🇺🇸 | تلگرام: @IRJetConfig #RK-4f61340023a64da2'
-    server: '108.181.9.202'
+    name: '🇺🇸 SkyBit-81_2026-11-21_19-05'
+    server: '40.160.86.43'
     port: 8388
-    cipher: 'chacha20-ietf-poly1305'
-    password: 'G5p6ww4o67HB'
+    cipher: 'aes-256-gcm'
+    password: 'itzvpn@321'
     _poolOnly: true
-  - type: 'trojan'
-    name: '🇺🇸US_502|1.1MB/s|B007-260618 [3d2f555bde78]'
-    server: '216.152.155.50'
+  - name: '[0.01MB/s][782ms] [freeSub#163] D🔴🇺🇸[🎬🤖📺🎭]_dokng.com_3a778'
+    port: 9002
+    server: '138.199.35.202'
+    skip-cert-verify: true
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇩🇪 德国 | VLESS | 001'
+    type: 'vless'
+    server: '179.253.80.175'
+    port: 4443
+    uuid: 'a35c508f-4d5d-4531-842e-6e9d43c762c0'
+    udp: true
+    tls: true
+    servername: 'swo2.nexfile.net'
+    client-fingerprint: 'chrome'
+    network: 'xhttp'
+    xhttp-opts:
+      path: '/api/v1/sync/'
+    _poolOnly: true
+  - type: 'ss'
+    name: '🇯🇵 SkyBit-156_2026-11-21_19-05'
+    server: 'jpa.123069.xyz'
+    port: 53758
+    cipher: 'aes-128-gcm'
+    password: 'Bwlqh7GcFB'
+    _poolOnly: true
+  - name: '[0.07MB/s][554ms] [freeSub#172] D🔴🇯🇵[🎬🤖📺🎭]_dokng.com_4920b'
     port: 443
+    server: 'fan.571589.xyz'
+    sni: 'fan.571589.xyz'
+    tls: true
+    type: 'http'
+    _poolOnly: true
+  - name: '🇺🇳 未知地区 | VMESS | 001'
+    type: 'vmess'
+    server: '168.110.63.247'
+    port: 8081
+    uuid: 'c3bde296-8e44-4b8c-a325-577d5b3cc7c8'
+    alterId: 0
+    cipher: 'auto'
+    udp: true
+    network: 'ws'
+    ws-opts:
+      path: '/vless'
+    _poolOnly: true
+  - type: 'ss'
+    name: '🇸🇬 SkyBit-45_2026-11-21_19-05'
+    server: '149.88.106.74'
+    port: 19999
+    cipher: 'aes-256-gcm'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
+    _poolOnly: true
+  - type: 'ss'
+    name: '🇸🇬 SkyBit-13_2026-11-21_19-05'
+    server: '149.88.106.73'
+    port: 19999
+    cipher: 'aes-256-gcm'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
+    _poolOnly: true
+  - type: 'ss'
+    name: '🇬🇧 SkyBit-100_2026-11-21_19-05'
+    server: '141.98.101.182'
+    port: 443
+    cipher: 'aes-128-gcm'
+    password: 'shadowsocks'
+    _poolOnly: true
+  - type: 'ss'
+    name: '🇬🇧 SkyBit-23_2026-11-21_19-05'
+    server: '141.98.101.179'
+    port: 443
+    cipher: 'aes-128-gcm'
+    password: 'shadowsocks'
+    _poolOnly: true
+  - type: 'vless'
+    name: '❓Other_31|142KB/s|M002-260618 [28c2cf46b49b]'
+    server: 'ov-germany1.09vpn.com'
+    port: 80
     tls: false
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'cdn.nextjobopportunityandclaimyouridealrole.com'
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇯🇵 🇯🇵JP-🚀@VPNine1-2f47983a24b3e53b'
-    server: '8.216.9.190'
-    port: 5555
-    cipher: 'aes-256-gcm'
-    password: '123456'
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇯🇵08 | ⚡Telegram = t.me/ex_proxies'
-    server: '8.216.5.230'
-    port: 5555
-    cipher: 'aes-256-gcm'
-    password: '123456'
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇯🇵 🇯🇵JP-🚀@VPNine1-dff7deb9a9691cbc'
-    server: '8.216.9.151'
-    port: 5555
-    cipher: 'aes-256-gcm'
-    password: '123456'
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇬🇧 🇬🇧GB-🚀@VPNine1-d662632604f7fd7d'
-    server: '66.163.117.141'
-    port: 443
-    cipher: 'chacha20-ietf-poly1305'
-    password: 'n87cM0Lv7Y3T'
-    _poolOnly: true
-  - type: 'ss'
-    name: 'T.me/Vpn_Mafia 🇩🇪'
-    server: '8.211.56.98'
-    port: 443
-    cipher: '2022-blake3-chacha20-poly1305'
-    password: '8yO3ANWefuuGs1lRKXECQA1FEhxlWFV2ppQMcBaZo5Y='
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇫🇷 🇫🇷FR-🚀@VPNine1'
-    server: '23.162.152.245'
-    port: 443
-    cipher: 'chacha20-ietf-poly1305'
-    password: 'ySGkGhr2sKHV'
-    _poolOnly: true
-  - type: 'ss'
-    name: 'Channel: @Daily_Configs'
-    server: 'uk.fusetea.ir'
-    port: 154
-    cipher: 'chacha20-ietf-poly1305'
-    password: 'eCUs1n3b2Fh9b6WATvkNILLBzYbruQ_X'
-    _poolOnly: true
-  - type: 'vless'
-    name: '🇫🇷FR_309|920KB/s [ef728c90146a]'
-    server: '188.164.248.67'
-    port: 443
-    tls: true
-    uuid: '7b102311-43fd-4e8f-877e-8090623c101d'
+    uuid: '7d74eae4-8a06-4306-a923-ad686f30bf26'
     network: 'ws'
-    sni: 'vp21.cc.cd'
+    sni: 'ov-germany1.09vpn.com'
     ws-opts:
-      path: '/'
+      path: '/vless/'
       headers:
-        Host: 'vp21.cc.cd'
+        Host: 'ov-germany1.09vpn.com'
     _poolOnly: true
-  - type: 'vless'
-    name: '🇫🇷FR_228|2.1MB/s [c1ddeea8f42d]'
-    server: '188.164.248.123'
-    port: 8443
-    tls: true
-    uuid: '7b102311-43fd-4e8f-877e-8090623c101d'
-    network: 'ws'
-    sni: 'vp21.cc.cd'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'vp21.cc.cd'
+  - type: 'ss'
+    name: '🇩🇪 SkyBit-151_2026-11-21_19-05'
+    server: '193.108.116.98'
+    port: 19999
+    cipher: 'aes-256-gcm'
+    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
     _poolOnly: true
-  - type: 'vless'
-    name: '🇫🇷FR_312|612KB/s|F003-260618 [8fc5093ff7a0]'
-    server: '188.164.248.48'
-    port: 2083
+  - name: '[VLESS] 🇩🇪 REALITY|DE🇩🇪 | 48.103.231.2-443 | 160.89ms'
+    server: '48.103.231.2'
+    port: 443
+    type: 'vless'
     tls: true
-    uuid: 'a21b9103-1693-49c1-8dc9-e8e8098ee969'
-    network: 'ws'
-    sni: 'helloapps.cc.cd'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'helloapps.cc.cd'
+    uuid: 'a346c521-7a7f-452b-9356-a4893feb5982'
+    servername: 'ee1-r.bankai.party'
+    host: 'ee1-r.bankai.party'
+    flow: 'xtls-rprx-vision'
+    reality-opts:
+      public-key: 'FWitre1jinQR7qz5HQ0q2Q4Gg9xA9B0SyizCziN7Ch0'
+      short-id: '457fab2ac885dbe0'
+    client-fingerprint: 'random'
+    skip-cert-verify: true
+    tfo: false
+    _poolOnly: true
+  - name: '🇳🇱 荷兰 | SS | 001'
+    type: 'ss'
+    server: '216.172.144.199'
+    port: 40643
+    cipher: 'chacha20-ietf-poly1305'
+    password: 'Xd4G9xn7AgT88msCYC9MZfavMUqd3dWFNAvswi6KfaD9YcexptMbPn4cSECEMzDgvAMomAWJHyweqJer99ssMVYGH6TK8k4c'
+    udp: true
+    _poolOnly: true
+  - name: '🇳🇱 荷兰 | VLESS | 002'
+    type: 'vless'
+    server: '196.196.148.63'
+    port: 443
+    uuid: 'cda0862a-0f87-4be9-8ed8-1d0c9e382839'
+    udp: true
+    tls: true
+    servername: '717252g.nl8.h1clayd.click'
+    client-fingerprint: 'firefox'
+    reality-opts:
+      public-key: 'PD8Jdlg3xB9QY--jwQjp8PFPzCS8-Oryw6-HWBcHMFU'
+      short-id: 'd3bd772514c87d28'
+    network: 'grpc'
+    grpc-opts:
+      grpc-service-name: '204adda7e3da'
+    _poolOnly: true
+  - name: '🇳🇱 荷兰 | VLESS | 003'
+    type: 'vless'
+    server: '196.196.148.63'
+    port: 443
+    uuid: 'cda0862a-0f87-4be9-8ed8-1d0c9e382839'
+    udp: true
+    tls: true
+    servername: 'fc82dfx.nl8.h1clayd.click'
+    client-fingerprint: 'chrome'
+    reality-opts:
+      public-key: 'dtO7khFLUkpFDQOtNzo4Th4hJKLoPSY2VtD_9k4Hgiw'
+      short-id: '7b2b1a14a6e0630d'
+    network: 'xhttp'
+    xhttp-opts:
+      path: '/0616f2d729aa'
+      mode: 'auto'
+    _poolOnly: true
+  - name: '[0.01MB/s][726ms] [freeSub#393] D🔴🇭🇰[🎬📺🎭🎪]_dokng.com_d85a9'
+    password: null
+    port: 443
+    server: 'fan.240104.xyz'
+    skip-cert-verify: true
+    tls: true
+    type: 'http'
+    username: null
     _poolOnly: true

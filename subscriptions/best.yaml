@@ -1,233 +1,50 @@
 proxies:
-  - type: 'ss'
-    name: '🇺🇸 | تلگرام: @IRJetConfig #RK-4f61340023a64da2'
-    server: '108.181.9.202'
-    port: 8388
-    cipher: 'chacha20-ietf-poly1305'
-    password: 'G5p6ww4o67HB'
-    endpoint-id: '4f61340023a64da2'
-  - type: 'vless'
-    name: 'Channel : @Daily_Configs'
-    server: '172.64.154.113'
-    port: 8443
-    tls: true
-    uuid: '53bbdad4-2f4e-45db-8df4-fa491a6a7227'
-    network: 'ws'
-    sni: 'freeceshi6.frii.site'
-    ws-opts:
-      path: '/proxyip'
-      headers:
-        Host: 'freeceshi6.frii.site'
-    endpoint-id: 'd7e8150c8b208dd6'
-  - name: 'US 06 [anytls]'
-    type: 'anytls'
-    server: 'anytls2.864106.xyz'
-    port: '19000'
-    password: 'github.com/Alvin9999-newpac/fanqiang'
-    sni: 'anytls2.864106.xyz'
-    skip-cert-verify: true
-    client-fingerprint: 'chrome'
-    udp: true
-    endpoint-id: '2e1d02d55daa555d'
-  - type: 'ss'
-    name: '🇺🇸 | تلگرام: @IRJetConfig #RK'
-    server: '108.181.88.2'
+  - name: '[VLESS] 🇩🇪 REALITY|DE🇩🇪 | 48.103.231.2-443 | 160.89ms'
+    server: '48.103.231.2'
     port: 443
-    cipher: 'chacha20-ietf-poly1305'
-    password: '6yzcGxLalx0T'
-    endpoint-id: '067b0f4e4b875303'
-  - type: 'ss'
-    name: '🇺🇸 | تلگرام: @IRJetConfig #RK-74090ec3ce2b3ef1'
-    server: '38.99.82.34'
-    port: 443
-    cipher: 'chacha20-ietf-poly1305'
-    password: 'TyWIy6paiFUX'
-    endpoint-id: '74090ec3ce2b3ef1'
-  - type: 'trojan'
-    name: '🇺🇸US_502|1.1MB/s|B007-260618 [3d2f555bde78]'
-    server: '216.152.155.50'
-    port: 443
-    tls: false
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'cdn.nextjobopportunityandclaimyouridealrole.com'
-    endpoint-id: 'e5e4fb288ab63f42'
-  - type: 'ss'
-    name: '🇯🇵 🇯🇵JP-🚀@VPNine1-2f47983a24b3e53b'
-    server: '8.216.9.190'
-    port: 5555
-    cipher: 'aes-256-gcm'
-    password: '123456'
-    endpoint-id: '2f47983a24b3e53b'
-  - type: 'trojan'
-    name: '🇺🇸US_346|850KB/s|M003-260806 [d60ee2c3d529]'
-    server: '66.163.122.26'
-    port: 443
-    tls: false
-    password: '0ab6c98dae3b48e8b9c4a776b6c9c19a'
-    network: 'tcp'
-    sni: 'blog.searchnationwidecareerchangehelperandguidancetoday.com'
-    endpoint-id: '8bde6b4f87ef8b85'
-  - type: 'ss'
-    name: '🇯🇵08 | ⚡Telegram = t.me/ex_proxies'
-    server: '8.216.5.230'
-    port: 5555
-    cipher: 'aes-256-gcm'
-    password: '123456'
-    endpoint-id: 'b13b0b33181603a3'
-  - type: 'ss'
-    name: '🇯🇵 🇯🇵JP-🚀@VPNine1-dff7deb9a9691cbc'
-    server: '8.216.9.151'
-    port: 5555
-    cipher: 'aes-256-gcm'
-    password: '123456'
-    endpoint-id: 'dff7deb9a9691cbc'
-  - type: 'ss'
-    name: 'T.me/Vpn_Mafia 🇩🇪'
-    server: '8.211.56.98'
-    port: 443
-    cipher: '2022-blake3-chacha20-poly1305'
-    password: '8yO3ANWefuuGs1lRKXECQA1FEhxlWFV2ppQMcBaZo5Y='
-    endpoint-id: 'a513cbfe3eae406b'
-  - type: 'ss'
-    name: '🇬🇧 🇬🇧GB-🚀@VPNine1-d662632604f7fd7d'
-    server: '66.163.117.141'
-    port: 443
-    cipher: 'chacha20-ietf-poly1305'
-    password: 'n87cM0Lv7Y3T'
-    endpoint-id: 'd662632604f7fd7d'
-  - type: 'ss'
-    name: '🇺🇸 | تلگرام: @IRJetConfig #RK-4639e24787271ace'
-    server: '108.181.133.138'
-    port: 443
-    cipher: 'chacha20-ietf-poly1305'
-    password: 'H12pAAJYL'
-    endpoint-id: '4639e24787271ace'
-  - type: 'ss'
-    name: '🇫🇷 🇫🇷FR-🚀@VPNine1'
-    server: '23.162.152.245'
-    port: 443
-    cipher: 'chacha20-ietf-poly1305'
-    password: 'ySGkGhr2sKHV'
-    endpoint-id: '7ea15ad9862e8478'
-  - type: 'ss'
-    name: '🇯🇵 🇯🇵JP-🚀@VPNine1-037f862f5dfde425'
-    server: '8.216.15.55'
-    port: 5555
-    cipher: 'aes-256-gcm'
-    password: '123456'
-    endpoint-id: '037f862f5dfde425'
-  - name: 'node-01-vless'
     type: 'vless'
-    server: '136.234.173.231'
-    port: '8881'
-    uuid: 'e460e7b2-a146-4468-87ed-52510b2caae6'
-    network: 'grpc'
     tls: true
-    udp: true
+    uuid: 'a346c521-7a7f-452b-9356-a4893feb5982'
+    servername: 'ee1-r.bankai.party'
+    host: 'ee1-r.bankai.party'
+    flow: 'xtls-rprx-vision'
     reality-opts:
-      public-key: 'Dfgu8Ey0M8Hz4gXGZAwQ3H9jLt2HByVsjAOTWiuKDB0'
-      short-id: 'aabb'
-    servername: 'dl.google.com'
-    client-fingerprint: 'firefox'
-    grpc-opts:
-      grpc-service-name: 'grpc-tunnel'
-    endpoint-id: '5d3f603cf7909e13'
-  - type: 'vmess'
-    name: '🇺🇸US_401|488KB/s|F003-260618 [43563ab6d2f5]'
-    server: '38.11.69.48'
-    port: 30004
-    uuid: '418048af-a293-4b99-9b0c-98ca3580dd24'
-    alterId: 64
-    cipher: 'auto'
-    tls: true
-    network: 'ws'
-    ws-opts:
-      path: '/path/1698843555400'
-      headers:
-        Host: 'www.83761815.xyz'
-    endpoint-id: '1cef937d1b2a7056'
-  - type: 'ss'
-    name: 'Channel: @Daily_Configs'
-    server: 'uk.fusetea.ir'
-    port: 154
-    cipher: 'chacha20-ietf-poly1305'
-    password: 'eCUs1n3b2Fh9b6WATvkNILLBzYbruQ_X'
-    endpoint-id: '2b57a15e84989c60'
-  - name: 'node-02-vless'
-    type: 'vless'
-    server: 'x.m-90.xyz'
-    port: '443'
-    uuid: 'eee8ae65-bc48-438f-a606-a96f10bfb3b8'
-    network: 'ws'
-    tls: true
-    udp: true
-    servername: 'x.m-90.xyz'
+      public-key: 'FWitre1jinQR7qz5HQ0q2Q4Gg9xA9B0SyizCziN7Ch0'
+      short-id: '457fab2ac885dbe0'
+    client-fingerprint: 'random'
     skip-cert-verify: true
-    client-fingerprint: 'chrome'
-    ws-opts:
-      path: 't.me/TEAMNETGRATISCOL'
-      headers:
-        Host: 'x.m-90.xyz'
-    endpoint-id: '169653455f288e81'
-  - type: 'vless'
-    name: '🇺🇸+US+|+vpnkeys.me+|+459ms'
-    server: 'x.m-90.xyz'
+    tfo: false
+    endpoint-id: 'f1cb259b11f72e8d'
+  - name: '[VLESS] REALITY|SK🇸🇰 | 196.245.153.156-443 | 193.27ms'
+    server: '196.245.153.156'
     port: 443
+    type: 'vless'
     tls: true
-    uuid: 'eee8ae65-bc48-438f-a606-a96f10bfb3b8'
-    network: 'ws'
-    sni: 'x.m-90.xyz'
-    ws-opts:
-      path: 't.me/TEAMNETGRATISCOL'
-      headers:
-        Host: 'x.m-90.xyz'
-    endpoint-id: '2630f20ae57ca246'
-  - type: 'ss'
-    name: '@V2ray_Alpha🎱 8'
-    server: '91.206.92.158'
-    port: 18443
-    cipher: 'aes-256-gcm'
-    password: 'cCMJgJTA3BA489YUYrFq7XHXSiSpWlLa'
-    endpoint-id: '1d692a9fa9819eaf'
-  - type: 'vless'
-    name: '188.114.99.137'
-    server: '188.114.99.137'
-    port: 80
-    tls: false
-    uuid: 'c762af05-2e92-4133-bc30-8cf45dd40a28'
-    network: 'ws'
-    sni: 'suh.cryptofront.uk'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'suh.cryptofront.uk'
-    endpoint-id: 'acbc14da1a17be5d'
-  - type: 'ss'
-    name: '🇯🇵06 | ⚡Telegram = t.me/ex_proxies-bdcd54191e29682d'
-    server: '8.216.9.154'
-    port: 5555
-    cipher: 'aes-256-gcm'
-    password: '123456'
-    endpoint-id: 'bdcd54191e29682d'
-  - type: 'ss'
-    name: '@FarazV2ray-source-769303351fcdbb54'
-    server: 'tr.subscriptionservice.ir'
-    port: 2089
-    cipher: 'chacha20-ietf-poly1305'
-    password: 'T199MCnogZBKi0QJdcSgUnoL3U9wl7t1'
-    endpoint-id: '769303351fcdbb54'
-  - type: 'ss'
-    name: '🇯🇵05 | ⚡Telegram = t.me/ex_proxies'
-    server: '8.211.128.146'
-    port: 5555
-    cipher: 'aes-256-gcm'
-    password: '123456'
-    endpoint-id: '8d87557e50cbe214'
-  - type: 'ss'
-    name: '🇯🇵 🇯🇵JP-🚀@VPNine1-8351cc1f0068737b'
-    server: '8.216.18.189'
-    port: 5555
-    cipher: 'aes-256-gcm'
-    password: '123456'
-    endpoint-id: '8351cc1f0068737b'
+    uuid: 'cda0862a-0f87-4be9-8ed8-1d0c9e382839'
+    servername: '961ec0g.nl17.h1clayd.click'
+    network: 'grpc'
+    grpc-opts:
+      grpc-mode: 'gun'
+      grpc-service-name: '7d5abcd7d8a1'
+    reality-opts:
+      public-key: 'xn7KVKS5MOnsFrYrEeRS04JssBCOxh12rxegaDFyGkA'
+      short-id: '6d289ff0f47c0aac'
+    client-fingerprint: 'random'
+    skip-cert-verify: true
+    tfo: false
+    endpoint-id: '9340ba799588b752'
+  - name: '[VLESS] 🇳🇱 REALITY|NL🇳🇱 | 195.206.235.74-443 | 164.09ms'
+    server: '195.206.235.74'
+    port: 443
+    type: 'vless'
+    tls: true
+    uuid: 'cda0862a-0f87-4be9-8ed8-1d0c9e382839'
+    servername: 'f0d7aft.nl13.h1clayd.click'
+    host: 'f0d7aft.nl13.h1clayd.click'
+    reality-opts:
+      public-key: 'kkCGiCQCKnkozJR1KKCRNtmdBECmThCgI9VSv7iDcWI'
+      short-id: '8956c57cb4c4f8d2'
+    client-fingerprint: 'random'
+    skip-cert-verify: true
+    tfo: false
+    endpoint-id: '4aae7849188a580b'
