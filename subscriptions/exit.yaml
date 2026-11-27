@@ -349,6 +349,14 @@ proxies:
     tls: true
     skip-cert-verify: true
     _poolOnly: true
+  - name: '[share-daily-node] FR-HTTP-01'
+    type: 'http'
+    server: '141.94.16.4'
+    port: 443
+    udp: true
+    tls: true
+    skip-cert-verify: true
+    _poolOnly: true
   - name: '🇯🇵JP_19|94KB/s|K001-260618 [4a732b04dd53]'
     password: 'null'
     port: 443
@@ -1856,19 +1864,6 @@ proxies:
     type: 'http'
     username: ''
     udp: true
-    _poolOnly: true
-  - name: 'ZZ · VLESS · clashstair · C7620611'
-    type: 'vless'
-    server: '196.245.52.187'
-    port: 443
-    reality-opts:
-      public-key: 'UoS8qZ74hP_ECcncCz55lzvlcVss3R7VA0WYZE0YQCY'
-      short-id: 'ba2a3dce62b99092'
-    uuid: 'cda0862a-0f87-4be9-8ed8-1d0c9e382839'
-    udp: true
-    tls: true
-    servername: '04535dt.us8.h1clayd.click'
-    client-fingerprint: 'firefox'
     _poolOnly: true
   - name: 'NZ · SS · ts-sf-clash · 80A5B442'
     type: 'ss'
