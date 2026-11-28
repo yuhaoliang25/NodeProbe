@@ -218,6 +218,15 @@ proxies:
     udp: true
     username: 'testuser1'
     _poolOnly: true
+  - name: '🇮🇹IT_1|625KB/s|R002-260618 01'
+    port: 443
+    server: '91.243.118.217'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    endpoint-id: 'e019d09aa7573606'
   - name: '🇳🇱NL_109|3.1MB/s|R002-260618 [d87f2e8fe2b7]'
     password: 'null'
     port: 23856
@@ -1865,6 +1874,19 @@ proxies:
     username: ''
     udp: true
     _poolOnly: true
+  - name: 'ZZ · VLESS · clashstair · C7620611'
+    type: 'vless'
+    server: '196.245.52.187'
+    port: 443
+    reality-opts:
+      public-key: 'UoS8qZ74hP_ECcncCz55lzvlcVss3R7VA0WYZE0YQCY'
+      short-id: 'ba2a3dce62b99092'
+    uuid: 'cda0862a-0f87-4be9-8ed8-1d0c9e382839'
+    udp: true
+    tls: true
+    servername: '04535dt.us8.h1clayd.click'
+    client-fingerprint: 'firefox'
+    _poolOnly: true
   - name: 'NZ · SS · ts-sf-clash · 80A5B442'
     type: 'ss'
     server: '202.50.253.18'
@@ -2091,15 +2113,6 @@ proxies:
     password: 'null'
     port: 443
     server: '18.200.158.139'
-    skip-cert-verify: true
-    tls: true
-    type: 'http'
-    username: 'null'
-    _poolOnly: true
-  - name: '🇷🇺RU_1|3.2MB/s'
-    password: 'null'
-    port: 1446
-    server: '46.29.166.134'
     skip-cert-verify: true
     tls: true
     type: 'http'
