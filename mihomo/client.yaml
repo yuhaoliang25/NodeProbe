@@ -51,14 +51,12 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇮🇩ID_3|367KB/s|R002-260618 [ec91e15d058c]'
-    port: 443
-    server: '103.86.116.118'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
+  - name: '[zhuhaiuk-free-nodes] ID - zhuhai.uk'
     type: 'http'
-    udp: true
+    server: '103.86.117.202'
+    port: 443
+    tls: true
+    skip-cert-verify: true
     _poolOnly: true
 proxy-groups:
   - name: 'PROXY'
@@ -66,14 +64,14 @@ proxy-groups:
     proxies:
       - '[ermaozi-subscribe] 🇩🇪DE_2|1017KB/s'
       - '[cbusifabcap-clashmeta] ❓Other_23|318KB/s|R002-260618'
-      - '🇮🇩ID_3|367KB/s|R002-260618 [ec91e15d058c]'
+      - '[zhuhaiuk-free-nodes] ID - zhuhai.uk'
       - 'DIRECT'
   - name: 'CHATGPT'
     type: 'select'
     proxies:
-      - '[ermaozi-subscribe] 🇩🇪DE_2|1017KB/s'
       - '[cbusifabcap-clashmeta] ❓Other_23|318KB/s|R002-260618'
-      - '🇮🇩ID_3|367KB/s|R002-260618 [ec91e15d058c]'
+      - '[ermaozi-subscribe] 🇩🇪DE_2|1017KB/s'
+      - '[zhuhaiuk-free-nodes] ID - zhuhai.uk'
   - name: 'STICKY'
     type: 'select'
     proxies:

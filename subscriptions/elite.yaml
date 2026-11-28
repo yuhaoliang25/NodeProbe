@@ -15,12 +15,10 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '🇮🇩ID_3|367KB/s|R002-260618 [ec91e15d058c]'
-    port: 443
-    server: '103.86.116.118'
-    skip-cert-verify: true
-    sub_tag: 'R002-260618'
-    tls: true
+  - name: '[zhuhaiuk-free-nodes] ID - zhuhai.uk'
     type: 'http'
-    udp: true
+    server: '103.86.117.202'
+    port: 443
+    tls: true
+    skip-cert-verify: true
     _poolOnly: true

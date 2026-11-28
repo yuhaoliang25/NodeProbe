@@ -394,16 +394,6 @@ proxies:
     sni: 'fan.587475.xyz'
     skip-cert-verify: false
     _poolOnly: true
-  - name: '🇳🇱NL_126|1.9MB/s|P002-260618 [64363aa77890]'
-    password: 'None'
-    port: 443
-    server: '5.255.118.82'
-    skip-cert-verify: true
-    sub_tag: 'P002-260618'
-    tls: true
-    type: 'http'
-    udp: true
-    _poolOnly: true
   - name: '🇳🇱NL_125|1.1MB/s|R002-260618 [fa52015dee35]'
     port: 443
     server: '5.255.118.82'
@@ -553,13 +543,6 @@ proxies:
     type: 'http'
     username: 'null'
     udp: true
-    _poolOnly: true
-  - name: 'IT - zhuhai.uk'
-    type: 'ss'
-    server: '202.50.253.18'
-    port: 19999
-    cipher: 'aes-256-gcm'
-    password: 'ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4='
     _poolOnly: true
   - name: '🇮🇹IT-05 · 309K/s'
     server: '202.50.253.27'
@@ -808,15 +791,6 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
-  - name: '[698.0ms +/-5ms] http-84.17.47.125'
-    server: '84.17.47.125'
-    port: 9002
-    type: 'http'
-    username: 'null'
-    password: 'null'
-    tls: true
-    skip-cert-verify: true
-    _poolOnly: true
   - name: '[692.8ms +/-15ms] http-84.17.47.124'
     server: '84.17.47.124'
     port: 9002
@@ -862,6 +836,15 @@ proxies:
     port: 443
     server: '62.90.77.30'
     skip-cert-verify: true
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇫🇷FR_2082|911KB/s|R002-260618 01'
+    port: 8090
+    server: '83.206.1.225'
+    skip-cert-verify: true
+    sub_tag: 'R002-260618'
     tls: true
     type: 'http'
     udp: true
@@ -973,6 +956,15 @@ proxies:
     server: '38.28.185.163'
     skip-cert-verify: true
     sub_tag: 'R002-260618'
+    tls: true
+    type: 'http'
+    udp: true
+    _poolOnly: true
+  - name: '🇺🇸US_422|607KB/s|P002-260618 01'
+    port: 8443
+    server: '45.150.164.18'
+    skip-cert-verify: true
+    sub_tag: 'P002-260618'
     tls: true
     type: 'http'
     udp: true
@@ -1863,6 +1855,22 @@ proxies:
     type: 'http'
     udp: true
     _poolOnly: true
+  - alpn:
+      - 'h2'
+    client-fingerprint: 'firefox'
+    grpc-opts:
+      grpc-mode: 'gun'
+      grpc-service-name: 'mobile.api.Event'
+    name: '🇷🇺 俄罗斯 | RUS 6 #1'
+    network: 'grpc'
+    port: 443
+    server: 'vps3.nemnogogo.com'
+    servername: 'vps3.nemnogogo.com'
+    tls: true
+    type: 'vless'
+    udp: true
+    uuid: '38308ff1-5aa9-494f-a25a-0f2870d56b3e'
+    _poolOnly: true
   - name: '🇷🇴RO_97|1.5MB/s|K001-260618 [5a6d353e399f]'
     password: 'None'
     port: 9002
@@ -1977,6 +1985,36 @@ proxies:
     reality-opts:
       public-key: 'l-GzBDuNuhnjxoRlZqKvT7jAt_sbVAxhGFsAttO5kXs'
       short-id: '361d0dd59c70516f'
+    _poolOnly: true
+  - type: 'vless'
+    name: '塞舌尔(mibei77.com 米贝节点分享)-source-195a1d844a513b7e'
+    server: '196.245.52.183'
+    port: 443
+    uuid: 'cda0862a-0f87-4be9-8ed8-1d0c9e382839'
+    udp: true
+    tls: true
+    servername: 'e60833x.nl7.h1clayd.click'
+    sni: 'e60833x.nl7.h1clayd.click'
+    skip-cert-verify: false
+    client-fingerprint: 'firefox'
+    reality-opts:
+      public-key: 'jIRVNEf9SpuWP2nJrAbHGGIUnfzOmwZZlrNGw-Y-O2Q'
+      short-id: '2d2598d60447a967'
+    network: 'xhttp'
+    xhttp-opts:
+      path: '/d20896a4ce30'
+      mode: 'auto'
+    _poolOnly: true
+  - name: '🇺🇸US_40|732KB/s|K001-260618 [569c66c77b5f]'
+    password: 'None'
+    port: 443
+    server: '162.244.227.36'
+    skip-cert-verify: true
+    sub_tag: 'K001-260618'
+    tls: true
+    type: 'http'
+    username: ''
+    udp: true
     _poolOnly: true
   - name: 'NL · HTTP · kooker · BD17B6BF'
     type: 'http'
@@ -2118,6 +2156,15 @@ proxies:
     type: 'http'
     username: 'null'
     _poolOnly: true
+  - name: '🇷🇺RU_1|3.2MB/s'
+    password: 'null'
+    port: 1446
+    server: '46.29.166.134'
+    skip-cert-verify: true
+    tls: true
+    type: 'http'
+    username: 'null'
+    _poolOnly: true
   - name: '🇳🇱NL_17|4.0MB/s|P002-260618'
     password: 'None'
     port: 9090
@@ -2129,19 +2176,19 @@ proxies:
     udp: true
     x-toolall-mihomo: true
     _poolOnly: true
-  - name: 'node-01-vless'
+  - name: '[VLESS] 🇷🇺 🆔soskeynet 🔒 VL-GRPC-N/A 🇷🇺 RU 433ms'
+    server: 'leviko-ru0640.shopingggg.ir'
+    port: 443
     type: 'vless'
-    server: '136.234.173.231'
-    port: '8881'
-    uuid: 'e460e7b2-a146-4468-87ed-52510b2caae6'
-    network: 'grpc'
     tls: true
-    udp: true
-    reality-opts:
-      public-key: 'Dfgu8Ey0M8Hz4gXGZAwQ3H9jLt2HByVsjAOTWiuKDB0'
-      short-id: 'aabb'
-    servername: 'dl.google.com'
-    client-fingerprint: 'firefox'
+    uuid: '38308ff1-5aa9-494f-a25a-0f2870d56b3e'
+    servername: 'vps3.nemnogogo.com'
+    alpn:
+      - 'h2'
+    network: 'grpc'
     grpc-opts:
-      grpc-service-name: 'grpc-tunnel'
+      grpc-mode: 'gun'
+      grpc-service-name: 'mobile.api.Event'
+    skip-cert-verify: true
+    tfo: false
     _poolOnly: true
