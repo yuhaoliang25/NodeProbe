@@ -1,32 +1,17 @@
 proxies:
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: '🌐-vless-076'
-    network: 'raw'
+  - name: 'hysteria2-145039'
+    password: 'qQe1z5kU8kN6SlKnDt9Ru3Qp'
     port: 443
-    reality-opts:
-      public-key: 'xPnpkXu5qfwIArlHKvJsqKJnGdGbJK1tT2GzWMyLohA'
-      short-id: '9c56fddf237e8eaf'
-    server: '195.211.98.43'
-    servername: 'www.cloudflare.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '1b4b11d5-4c2d-4533-9a55-636757cdee94'
+    server: 'vpn-sg-001.fastervpn.world'
+    skip-cert-verify: true
+    sni: 'vpn-sg-001.fastervpn.world'
+    type: 'hysteria2'
     _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: '🌐-vless-037'
-    network: 'tcp'
-    port: 23576
-    reality-opts:
-      public-key: '1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s'
-      short-id: '01'
-    server: 'ww13.levikogjgfdd.ir'
-    servername: 'fuck.rkn'
-    tls: true
-    type: 'vless'
+  - cipher: 'aes-128-gcm'
+    name: 'shadowsocks-225'
+    password: 'shadowsocks'
+    port: 443
+    server: '141.98.101.178'
+    type: 'ss'
     udp: true
-    uuid: '48ff2b70-e180-582f-8866-d9a2edeed5f5'
-    sni: 'ww13.levikogjgfdd.ir'
     _poolOnly: true

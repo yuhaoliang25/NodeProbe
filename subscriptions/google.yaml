@@ -1,268 +1,160 @@
 proxies:
-  - name: '新加坡(yudou99.com 玉豆分享)-0d75f28b90e70339'
-    type: 'vless'
-    server: '43.174.195.1'
-    port: 443
-    uuid: '24916ad0-847d-4522-9e17-f4347dee57fd'
-    network: 'ws'
-    servername: 'kv.074167.xyz'
-    tls: true
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'kv.074167.xyz'
-    skip-cert-verify: true
-    udp: true
-    _poolOnly: true
-  - type: 'trojan'
-    name: '🇫🇷FR_164|616KB/s|C002-260622 [ec52f6b41047]'
-    server: '104.16.148.5'
-    port: 443
+  - type: 'vless'
+    name: '🇩🇪DE_83|1.0MB/s|A004-260618 [6c16d1f416bd]'
+    server: '172.64.150.43'
+    port: 2052
     tls: false
-    password: '19877587-ed94-4033-88cd-4ac50a5e8718'
+    uuid: '5744e593-1cc8-48fa-b8ca-57cd494fe35b'
     network: 'ws'
-    sni: 'dimskiee.biz.id'
+    sni: 'eu02.123450908.xyz'
     ws-opts:
-      path: '/WangCai-8'
+      path: '/rain1226'
+      headers:
+        Host: 'eu02.123450908.xyz'
     _poolOnly: true
-  - type: 'trojan'
-    name: '🇫🇷FR_285|1.1MB/s|S004-260618 [fe0bad18ca40]'
-    server: '188.114.97.9'
-    port: 443
+  - type: 'vless'
+    name: '🇩🇪DE_195|700KB/s|M002-260618 [e0576a8fa8ed]'
+    server: 'eu02.123450908.xyz'
+    port: 2052
     tls: false
-    password: 'TsX0XJKMa2h$CbKr0k'
+    uuid: '5744e593-1cc8-48fa-b8ca-57cd494fe35b'
     network: 'ws'
-    sni: 'IDB8onmVBntUyt5T7T6cEjFW8VLRB.PAGES.DeV'
+    sni: 'eu02.123450908.xyz'
     ws-opts:
-      path: '/tr/mPwnfIHtx0vldKy0A5AGJTZB'
-    _poolOnly: true
-  - type: 'vless'
-    name: '🇫🇷FR_738|4.5MB/s|B007-260618 01'
-    server: '188.164.248.81'
-    port: 2087
-    tls: true
-    uuid: '099244b9-2168-4dbd-870e-cbbe9d6eb573'
-    network: 'ws'
-    sni: 'whitecreeper.pages.dev'
-    ws-opts:
-      path: '/proxyip=ProxyIP.SG.CMLiussss.Net'
+      path: '/rain1226'
       headers:
-        Host: 'whitecreeper.pages.dev'
+        Host: 'eu02.123450908.xyz'
     _poolOnly: true
-  - type: 'vless'
-    name: '🇫🇷FR_244|1.6MB/s|M003-260806 [ee28d18b52c8]'
-    server: '104.18.35.86'
-    port: 2083
-    tls: true
-    uuid: 'a1de0630-5786-48a0-84f6-dc6f2de10d6d'
-    network: 'ws'
-    sni: 'vlsovip.1d.mom'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'vlsovip.1d.mom'
-    _poolOnly: true
-  - type: 'vless'
-    name: '🇫🇷FR_746|1.7MB/s|B007-260618 01'
-    server: '188.164.248.96'
-    port: 8443
-    tls: true
-    uuid: '099244b9-2168-4dbd-870e-cbbe9d6eb573'
-    network: 'ws'
-    sni: 'whitecreeper.pages.dev'
-    ws-opts:
-      path: '/proxyip=ProxyIP.SG.CMLiussss.Net'
-      headers:
-        Host: 'whitecreeper.pages.dev'
-    _poolOnly: true
-  - type: 'vless'
-    name: '🇫🇷FR_752|1.3MB/s|F003-260618 01'
-    server: '172.67.65.56'
-    port: 2053
-    tls: true
-    uuid: '099244b9-2168-4dbd-870e-cbbe9d6eb573'
-    network: 'ws'
-    sni: 'whitecreeper.pages.dev'
-    ws-opts:
-      path: '/proxyip=ProxyIP.SG.CMLiussss.Net'
-      headers:
-        Host: 'whitecreeper.pages.dev'
-    _poolOnly: true
-  - type: 'vless'
-    name: '🇫🇷FR_224|529KB/s|B007-260618 [eac5916c62ba]'
-    server: 'fans.liverpool.qzz.io'
-    port: 2053
-    tls: true
-    uuid: '2b8738de-1af5-4267-b101-c05707769ed4'
-    network: 'ws'
-    sni: 'FaNs.livErpoOl.qZZ.io'
-    ws-opts:
-      path: '/eyJqdW5rIjoiZXlpMnFWRURmWkp5ZCIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0='
-      headers:
-        Host: 'fans.liverpool.qzz.io'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: '🌐-vless-076'
-    network: 'raw'
+  - name: 'hysteria2-145039'
+    password: 'qQe1z5kU8kN6SlKnDt9Ru3Qp'
     port: 443
-    reality-opts:
-      public-key: 'xPnpkXu5qfwIArlHKvJsqKJnGdGbJK1tT2GzWMyLohA'
-      short-id: '9c56fddf237e8eaf'
-    server: '195.211.98.43'
-    servername: 'www.cloudflare.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '1b4b11d5-4c2d-4533-9a55-636757cdee94'
-    _poolOnly: true
-  - type: 'vless'
-    name: '🇫🇷FR_172|627KB/s|S004-260618 [f7402b4b4745]'
-    server: 'epam.com'
-    port: 443
-    tls: true
-    uuid: 'af51de90-852d-4eb6-a0c3-9ecca170385e'
-    network: 'ws'
-    sni: 'wallweb-av6.pages.dev'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'wallweb-av6.pages.dev'
-    _poolOnly: true
-  - type: 'vless'
-    name: '🇫🇷FR_417|881KB/s|F003-260618 [f6482edd6211]'
-    server: '172.66.0.172'
-    port: 443
-    tls: true
-    uuid: 'e53eacb6-cd30-4964-a57c-febcb5151b98'
-    network: 'ws'
-    sni: 'wallweb-4r0.pages.dev'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'wallweb-4r0.pages.dev'
-    _poolOnly: true
-  - client-fingerprint: 'chrome'
-    flow: 'xtls-rprx-vision'
-    name: '🌐-vless-037'
-    network: 'tcp'
-    port: 23576
-    reality-opts:
-      public-key: '1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s'
-      short-id: '01'
-    server: 'ww13.levikogjgfdd.ir'
-    servername: 'fuck.rkn'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '48ff2b70-e180-582f-8866-d9a2edeed5f5'
-    sni: 'ww13.levikogjgfdd.ir'
-    _poolOnly: true
-  - name: '英国(yudou99.com 玉豆分享)-1cbe84e2d6ebba6e'
-    type: 'vless'
-    server: '57.129.130.34'
-    port: 52014
-    uuid: '53367702-4b8d-431a-a193-34d7d057a065'
-    network: 'ws'
-    servername: 'jln31qtswdkut5.60kohcognywybguuq3ouc818oofnxfvn35daott.workers.dev'
-    tls: true
-    client-fingerprint: 'chrome'
-    ws-opts:
-      path: '/@Marisa_kristi'
-      headers:
-        Host: 'jln31qtswdkut5.60kohcognywybguuq3ouc818oofnxfvn35daott.workers.dev'
+    server: 'vpn-sg-001.fastervpn.world'
     skip-cert-verify: true
-    udp: true
+    sni: 'vpn-sg-001.fastervpn.world'
+    type: 'hysteria2'
     _poolOnly: true
-  - client-fingerprint: 'random'
-    flow: 'xtls-rprx-vision'
-    name: 'vless-1828531962'
-    network: 'tcp'
+  - cipher: 'aes-128-gcm'
+    name: 'shadowsocks-225'
+    password: 'shadowsocks'
     port: 443
-    reality-opts:
-      public-key: 'v4MuZIvFrTPT5GHMSaPryUAbIZlLstmsUTzmC1E-JTE'
-      short-id: '0dfc23fe80778c00'
-    server: '46.28.71.247'
-    servername: 'www.cloudflare.com'
-    tls: true
-    type: 'vless'
-    udp: true
-    uuid: '12c53e32-e589-47d6-b857-e4132294f767'
-    _poolOnly: true
-  - name: '德国(yudou99.com 玉豆分享)_2'
-    type: 'vless'
-    server: '178.105.133.160'
-    port: 4443
-    uuid: 'fb0818b3-4031-4843-b5f7-1d75177a1758'
-    network: 'ws'
-    servername: 'jln31qtswdkut5.60kohcognywybguuq3ouc818oofnxfvn35daott.workers.dev'
-    tls: true
-    client-fingerprint: 'chrome'
-    ws-opts:
-      path: '/@Marisa_kristi'
-      headers:
-        Host: 'jln31qtswdkut5.60kohcognywybguuq3ouc818oofnxfvn35daott.workers.dev'
-    skip-cert-verify: true
+    server: '141.98.101.178'
+    type: 'ss'
     udp: true
     _poolOnly: true
-  - name: '德国(yudou99.com 玉豆分享)-16a0d3e61fd4a552'
-    type: 'vless'
-    server: '5.75.195.83'
-    port: 56879
-    uuid: '7b0f8733-03cc-472b-9c50-ed159b48ef59'
-    network: 'ws'
-    servername: 'jln31qtswdkut5.60kohcognywybguuq3ouc818oofnxfvn35daott.workers.dev'
-    tls: true
-    client-fingerprint: 'chrome'
-    ws-opts:
-      path: '/@Marisa_kristi'
-      headers:
-        Host: 'jln31qtswdkut5.60kohcognywybguuq3ouc818oofnxfvn35daott.workers.dev'
+  - name: 'hysteria2-233021043'
+    password: 'https://xship.2fa.cat'
+    port: 443
+    server: 'starlink-ft.251313.xyz'
     skip-cert-verify: true
-    udp: true
-    _poolOnly: true
-  - name: '日本(yudou99.com 玉豆分享)-ae80a0230c7cbac7'
-    type: 'vless'
-    server: '203.137.165.164'
-    port: 57554
-    uuid: '0985e268-5c1c-4141-9d96-139f8046c47c'
-    network: 'ws'
-    servername: 'kqjifhg9rw.tradsc8p9xp7wxyqmc1wy0ah.workers.dev'
-    tls: true
-    client-fingerprint: 'chrome'
-    ws-opts:
-      path: '/@Marisa_kristi'
-      headers:
-        Host: 'kqjifhg9rw.tradsc8p9xp7wxyqmc1wy0ah.workers.dev'
-    skip-cert-verify: true
-    udp: true
+    sni: 'www.cloudflare.com'
+    type: 'hysteria2'
     _poolOnly: true
   - type: 'vless'
-    name: '日本(yudou99.com 玉豆分享)'
-    server: '203.137.165.164'
-    port: 57554
-    tls: true
-    uuid: '0985e268-5c1c-4141-9d96-139f8046c47c'
-    network: 'ws'
-    sni: 'kqjifhg9rw.tradsc8p9xp7wxyqmc1wy0ah.workers.dev'
-    ws-opts:
-      path: '/@Marisa_kristi'
-      headers:
-        Host: 'kqjifhg9rw.tradsc8p9xp7wxyqmc1wy0ah.workers.dev'
-    _poolOnly: true
-  - name: '德国(yudou99.com 玉豆分享)_3'
-    type: 'vless'
-    server: '104.18.42.98'
+    name: '🇯🇵JP_38|150KB/s|M002-260618 [9ec696201416]'
+    server: '104.16.10.185'
     port: 443
+    tls: true
     uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
     network: 'ws'
-    servername: 'jp3.yohototo.top'
-    tls: true
-    client-fingerprint: 'chrome'
+    sni: 'jp3.yohototo.top'
     ws-opts:
       path: '/tyxyws'
       headers:
         Host: 'jp3.yohototo.top'
-    skip-cert-verify: true
-    udp: true
+    _poolOnly: true
+  - type: 'vless'
+    name: '🇫🇷FR_499|696KB/s|M002-260618 [95f54bbdb169]'
+    server: 'OV-France1.09vpn.com'
+    port: 80
+    tls: false
+    uuid: 'f5c47e9c-914a-4a91-a81e-a5a77bc10fc1'
+    network: 'ws'
+    sni: 'OV-France1.09vpn.com'
+    ws-opts:
+      path: '/vless/'
+      headers:
+        Host: 'OV-France1.09vpn.com'
+    _poolOnly: true
+  - type: 'vless'
+    name: '🇯🇵JP_47|93KB/s|M002-260618 [d0c8d4a391d8]'
+    server: '154.31.114.162'
+    port: 8443
+    tls: true
+    uuid: '4e4f1f70-5e56-4a76-bb9d-db087f4690c4'
+    network: 'ws'
+    sni: 'jp3.yohototo.top'
+    ws-opts:
+      path: '/tyxyws'
+      headers:
+        Host: 'jp3.yohototo.top'
+    _poolOnly: true
+  - type: 'vmess'
+    name: '🇺🇸US_322|93KB/s|M002-260618 [a41d3b7a0170]'
+    server: 'cf.0sm.com'
+    port: 443
+    uuid: '0cf6d970-3f1d-4aae-a989-92a8f76ae3db'
+    alterId: 0
+    cipher: 'auto'
+    tls: true
+    sni: 'vmess.lbw666.dpdns.org'
+    network: 'ws'
+    ws-opts:
+      path: '/ws?ed=2048'
+      headers:
+        Host: 'vmess.lbw666.dpdns.org'
+    _poolOnly: true
+  - type: 'vmess'
+    name: '🇺🇸US_326|118KB/s|S004-260618 [93add7a10989]'
+    server: 'cf.0sm.com'
+    port: 80
+    uuid: '0cf6d970-3f1d-4aae-a989-92a8f76ae3db'
+    alterId: 0
+    cipher: 'auto'
+    tls: false
+    network: 'ws'
+    ws-opts:
+      path: '/ws?ed=2048'
+      headers:
+        Host: 'vmess.lbw666.dpdns.org'
+    _poolOnly: true
+  - type: 'vmess'
+    name: '🇺🇸US_340|568KB/s|A004-260618 [94742dfc6783]'
+    server: 'cf.0sm.com'
+    port: 80
+    uuid: '0cf6d970-3f1d-4aae-a989-92a8f76ae3db'
+    alterId: 0
+    cipher: 'auto'
+    tls: false
+    network: 'ws'
+    ws-opts:
+      path: '/ws'
+      headers:
+        Host: 'vmess.lbw666.dpdns.org'
+    _poolOnly: true
+  - type: 'vmess'
+    name: '🇺🇸US_328|365KB/s|S004-260618 [3a9b9f6d344f]'
+    server: '172.64.229.21'
+    port: 443
+    uuid: '0cf6d970-3f1d-4aae-a989-92a8f76ae3db'
+    alterId: 0
+    cipher: 'auto'
+    tls: true
+    sni: 'vmess.lbw666.dpdns.org'
+    network: 'ws'
+    ws-opts:
+      path: '/ws?ed=2048'
+      headers:
+        Host: 'vmess.lbw666.dpdns.org'
+    _poolOnly: true
+  - type: 'vmess'
+    name: '🇮🇳IN_1|360KB/s|A004-260618 [b3f3a42347ba]'
+    server: '152.67.8.205'
+    port: 80
+    uuid: '9db4c708-aef8-4359-821b-38e47990be0d'
+    alterId: 0
+    cipher: 'auto'
+    tls: false
+    network: 'ws'
+    ws-opts:
+      path: '/'
     _poolOnly: true
