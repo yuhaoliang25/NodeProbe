@@ -1,188 +1,32 @@
 proxies:
-  - name: '[VLESS] 🆔ar14n24b 🔒 VL-WS-N/A ❔ XX 162ms'
-    server: 'leviko-us6278.shopingggg.ir'
-    port: 8443
-    type: 'vless'
-    tls: true
-    uuid: '53bbdad4-2f4e-45db-8df4-fa491a6a7227'
-    servername: 'freeceshi6.frii.site'
-    network: 'ws'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'freeceshi6.frii.site'
-    skip-cert-verify: true
-    tfo: false
-    _poolOnly: true
-  - name: '[VLESS] 🇺🇸 🆔soskeynet 🔒 VL-WS-N/A 🇺🇸 US 169ms'
-    server: 'leviko-us4350.shopingggg.ir'
-    port: 443
-    type: 'vless'
-    tls: true
-    uuid: '53bbdad4-2f4e-45db-8df4-fa491a6a7227'
-    servername: 'freeceshi6.frii.site'
-    alpn:
-      - 'http%2F1.1'
-    network: 'ws'
-    ws-opts:
-      path: '/proxyip'
-      headers:
-        Host: 'freeceshi6.frii.site'
-    skip-cert-verify: true
-    tfo: false
-    _poolOnly: true
-  - name: '[VLESS] 🆔ar14n24b 🔒 VL-WS-N/A ❔ XX 12ms'
-    server: '162.159.254.201'
-    port: 443
-    type: 'vless'
-    tls: true
-    uuid: '53bbdad4-2f4e-45db-8df4-fa491a6a7227'
-    servername: 'freeceshi6.frii.site'
-    alpn:
-      - 'http%2F1.1'
-    network: 'ws'
-    ws-opts:
-      path: '/?TELEGRAM---MARAMBASHI---MARAMBASHI---MARAMBASHI---MARAMBASHI'
-      headers:
-        Host: 'freeceshi6.frii.site'
-    skip-cert-verify: true
-    tfo: false
-    _poolOnly: true
-  - name: '[VLESS] 🆔ar14n24b 🔒 VL-GRPC-N/A ❔ XX 142ms'
-    server: '51.194.118.38'
-    port: 443
-    type: 'vless'
-    tls: true
-    uuid: '7ff1e7e1-2b5a-4e53-ae77-1516f9eb7754'
-    servername: 'a1259.ve8nzuk.com'
-    network: 'grpc'
-    grpc-opts:
-      grpc-mode: 'gun'
-      grpc-service-name: '50a5f706c8ea4433838a207d435fbf031b008a9a'
-    skip-cert-verify: true
-    tfo: false
-    _poolOnly: true
-  - name: '[VLESS] 🆔ar14n24b 🔒 VL-GRPC-N/A ❔ XX 184ms'
-    server: 'leviko-se4581.shopingggg.ir'
-    port: 48115
-    type: 'vless'
-    tls: true
-    uuid: 'b2fe1fa4-6a79-4938-a3f4-63b54ae7f16b'
-    servername: '138-124-86-230.sslip.io'
-    network: 'grpc'
-    grpc-opts:
-      grpc-mode: 'gun'
-      grpc-service-name: '138-124-86-230-sslip-io'
-    skip-cert-verify: true
-    tfo: false
-    _poolOnly: true
-  - type: 'ss'
-    name: '🇺🇸 🇺🇸_美国 (44)'
-    server: 'waic.pro.main.sys-metric-report.com'
-    port: 28014
-    cipher: 'chacha20-ietf-poly1305'
-    password: 'abc62f00-95a8-4c2e-a85d-36a2cdc977da'
-    _poolOnly: true
-  - name: '[VLESS] 🆔ar14n24b 🔒 VL-TCP- ❔ XX 165ms'
-    server: '47.84.226.221'
-    port: 443
-    type: 'vless'
-    tls: true
-    uuid: '49b91402-f8e3-4390-9d7b-b7eddc2684a4'
-    servername: 'www.samsung.com'
-    host: 'www.samsung.com'
+  - client-fingerprint: 'chrome'
     flow: 'xtls-rprx-vision'
+    name: '🌐-vless-076'
+    network: 'raw'
+    port: 443
     reality-opts:
-      public-key: 'gVQsvRtzd77zlvKW4Gk0dAOJNPRa7cfN1-jVe_AJ8Bo'
-      short-id: 'e1c483f9d4437d42'
-    client-fingerprint: 'random'
-    skip-cert-verify: true
-    tfo: false
-    _poolOnly: true
-  - name: '[VLESS] 🆔ar14n24b 🔒 VL-WS-N/A ❔ XX 192ms'
-    server: 'hw8.iranichergh.com'
-    port: 993
-    type: 'vless'
+      public-key: 'xPnpkXu5qfwIArlHKvJsqKJnGdGbJK1tT2GzWMyLohA'
+      short-id: '9c56fddf237e8eaf'
+    server: '195.211.98.43'
+    servername: 'www.cloudflare.com'
     tls: true
-    uuid: '978d2a58-bd01-4b61-b953-dc8e66728460'
-    servername: 'hw8.iranichergh.com.'
-    alpn:
-      - 'http%2F1.1'
-    network: 'ws'
-    ws-opts:
-      path: '/'
-      headers:
-        Host: 'hw8.iranichergh.com.'
-    skip-cert-verify: true
-    tfo: false
-    _poolOnly: true
-  - name: '[VLESS] 🇷🇺 🆔soskeynet 🔒 VL-GRPC-N/A 🇷🇺 RU 433ms'
-    server: 'leviko-ru0640.shopingggg.ir'
-    port: 443
     type: 'vless'
-    tls: true
-    uuid: '38308ff1-5aa9-494f-a25a-0f2870d56b3e'
-    servername: 'vps3.nemnogogo.com'
-    alpn:
-      - 'h2'
-    network: 'grpc'
-    grpc-opts:
-      grpc-mode: 'gun'
-      grpc-service-name: 'mobile.api.Event'
-    skip-cert-verify: true
-    tfo: false
+    udp: true
+    uuid: '1b4b11d5-4c2d-4533-9a55-636757cdee94'
     _poolOnly: true
-  - type: 'ss'
-    name: '🇯🇵 🇯🇵_日本 (20)'
-    server: '47.74.24.29'
-    port: 5555
-    cipher: 'aes-256-gcm'
-    password: '123456'
-    _poolOnly: true
-  - name: '[VLESS] 🆔ar14n24b 🔒 VL-TCP- ❔ XX 182ms'
-    server: 'leviko-de5717.shopingggg.ir'
-    port: 443
-    type: 'vless'
-    tls: true
-    uuid: 'a346c521-7a7f-452b-9356-a4893feb5982'
-    servername: 'ee1-r.bankai.party'
-    host: 'ee1-r.bankai.party'
+  - client-fingerprint: 'chrome'
     flow: 'xtls-rprx-vision'
+    name: '🌐-vless-037'
+    network: 'tcp'
+    port: 23576
     reality-opts:
-      public-key: 'FWitre1jinQR7qz5HQ0q2Q4Gg9xA9B0SyizCziN7Ch0'
-      short-id: '457fab2ac885dbe0'
-    client-fingerprint: 'random'
-    skip-cert-verify: true
-    tfo: false
-    _poolOnly: true
-  - name: '[VLESS] 🆔ar14n24b 🔒 VL-TCP- ❔ XX 323ms'
-    server: 'leviko-de9982.shopingggg.ir'
-    port: 443
-    type: 'vless'
+      public-key: '1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s'
+      short-id: '01'
+    server: 'ww13.levikogjgfdd.ir'
+    servername: 'fuck.rkn'
     tls: true
-    uuid: 'a346c521-7a7f-452b-9356-a4893feb5982'
-    servername: 'ee1-r.bankai.party'
-    host: 'ee1-r.bankai.party'
-    flow: 'xtls-rprx-vision'
-    reality-opts:
-      public-key: 'FWitre1jinQR7qz5HQ0q2Q4Gg9xA9B0SyizCziN7Ch0'
-      short-id: '457fab2ac885dbe0'
-    client-fingerprint: 'random'
-    skip-cert-verify: true
-    tfo: false
-    _poolOnly: true
-  - name: '[VLESS] 🆔ar14n24b 🔒 VL-TCP- ❔ XX 148ms 2'
-    server: '79.182.70.232'
-    port: 443
     type: 'vless'
-    tls: true
-    uuid: 'cda0862a-0f87-4be9-8ed8-1d0c9e382839'
-    servername: '5d0319t.nl7.h1clayd.click'
-    host: '5d0319t.nl7.h1clayd.click'
-    reality-opts:
-      public-key: 'l-GzBDuNuhnjxoRlZqKvT7jAt_sbVAxhGFsAttO5kXs'
-      short-id: '361d0dd59c70516f'
-    client-fingerprint: 'random'
-    skip-cert-verify: true
-    tfo: false
+    udp: true
+    uuid: '48ff2b70-e180-582f-8866-d9a2edeed5f5'
+    sni: 'ww13.levikogjgfdd.ir'
     _poolOnly: true
